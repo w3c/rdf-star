@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>RDF*</title>
+  <script src="https://www.w3.org/Tools/respec/respec-w3c" class="remove" defer></script>
+  <script class="remove">
+   // All config options at https://respec.org/docs/
+   var respecConfig = {
+      specStatus: "CG-DRAFT",
+      editors: [
+        {
+          "name": "Olaf Hartig",
+          "url": "https://olafhartig.de/",
+          "company": "Linköping University",
+          "orcid": "0000-0002-1741-2090",
+          "companyURL": "https://liu.se/",
+        },{
+          "name":       "Pierre-Antoine Champin",
+          "url":        "http://champin.net/",
+          "company":    "ERCIM",
+          "companyURL": "https://www.ercim.eu/",
+          "w3cid":      42931,
+          "orcid": "0000-0001-7046-4474",
+        }
+      ],
+      github: "w3c/rdf-star",
+      shortName: "rdf-star",
+      group: "rdf-dev",
+      xref: ["RDF11-CONCEPTS"],
+    };
+  </script>
+  <style>
+    /* copied from TR/turtle */
+    .grammar td { font-family: monospace; vertical-align: top; }
+    .grammar-literal { color: gray;}
+    .grammar_comment { color: #A52A2A; font-style: italic; }
+  </style>
+</head>
+<body>
+  <section id="abstract">
+    <p>TODO</p>
+  </section>
+  <section id="sotd">
+  </section>
+
+  <section id="introduction" class="informative">
+    <h1>Introduction</h1>
+    <p>TODO, citing [[RDF-STAR-FOUNDATION]]</p>
+  </section>
+
+  <section id="conformance">
+    <p class=issue>TODO we may need to add more things here</p>
+  </section>
+
+  <section>
+    <h2>Syntax</h2>
+
+    <p>The syntax of RDF is defined in two layers:</p>
+    <ul>
+      <li>the <dfn>abstract syntax</dfn>, which is the conceptual data model of RDF, and</li>
+      <li>multiple <dfn data-cite="RDF11-CONCEPTS#dfn-concrete-rdf-syntax" data-lt="concrete syntax|concrete RDF syntax|concrete RDF syntaxes">concrete syntaxes</dfn> (such as RDF/XML [[RDF-SYNTAX-GRAMMAR]], Turtle [[TURTLE]] or JSON-LD [[JSON-LD11]]), which are data formats used to serialize the abstract syntax into files or over the wire.</li>
+    </ul>
+
+    <section>
+      <h2>Abstract syntax</h2>
+      <p>An <dfn data-lt="graph">RDF* graph</dfn> is a set of <a>RDF* triples</a>.</p>
+
+      <p>An <dfn data-lt="triple">RDF* triple</dfn> consists of three components:</p>
+      <ul>
+        <li>the <dfn data-cite="RDF11-CONCEPTS#dfn-subject">subject</dfn>, which is an <a>IRI</a>, a <a>blank node</a> or an <a>RDF* triple</a>;
+        <li>the <dfn data-cite="RDF11-CONCEPTS#dfn-predicate">predicate</dfn>, which is an <a>IRI</a>;
+        <li>the <dfn data-cite="RDF11-CONCEPTS#dfn-object">object</dfn>, which is an <a>IRI</a>, a <a>literal</a>, a <a>blank node</a> or an <a>RDF* triple</a>;
+      </ul>
+
+      <p>The definition relies on the notions of <dfn data-cite="RDF11-CONCEPTS#dfn-iri">IRI</dfn>, <dfn data-cite="RDF11-CONCEPTS#dfn-literal">literal</dfn> and <dfn data-cite="RDF11-CONCEPTS#dfn-blank-node">blank node</dfn> introduced by [[[RDF11-CONCEPTS]]] [[RDF11-CONCEPTS]]. It extends the definition of <dfn data-cite="RDF11-CONCEPTS#dfn-rdf-triple">RDF triple</dfn> by allowing the <a>subject</a> and <a>object</a> to be <a>triples</a> themselves.</p>
+
+      <p>For every <a>triple</a> <var>t</var>, we define its <dfn>elements</dfn> as the set containing its <a>subject</a>, its <a>predicate</a>, its <a>object</a>, plus all the <a>elements</a> of its <a>subject</a> and/or its <a>object</a> if they are themselves <a>RDF* triples</a>. By extension, we define the <a>elements</a> of an <a>RDF* graph</a> to be the union set of the <a>elements</a> of all its triples.</p>
+
+      <div class="example">
+        Consider the following <a>RDF* triple</a> (represented in Turtle*):
+        <pre class="nohighlight">
+          << _:a :name "Alice" >> :statedBy :bob.
+        </pre>
+        Its set of <a>elements</a> comprises the <a>IRIs</a> `:name`, `:statedBy`, `:bob`, the <a>blank node</a> `_:a`, the <a>literal</a> `"Alice"`, and the <a>triple</a> `<< _:a :name "Alice" >>`.
+      </div>
+
+      <p>An <a>RDF* triple</a> is not allowed to have itself as one of its elements.</p>
+
+      <aside class="note">
+        The restriction above means that <a>RDF* triples</a> can be recursively built by using “smaller” <a>triples</a> as their subject and/or object, but that a triple can not contain itself, neither directly (as its subject or object) nor indirectly (inside another triple used as subject or object). In other words, self-referential assertions (such as “this sentence has five words”) are out of scope of RDF*.
+      </aside>
+
+      <p>An <a>RDF* triple</a> used as the <a>subject</a> or <a>object</a> of another <a>RDF* triple</a> is called a <dfn data-lt="nested">nested triple</dfn>. An <a>RDF* triple</a> that is an element of an <a>RDF* graph</a> is called an <dfn data-lt="asserted">asserted triple</dfn>. Note that, in a given <a>RDF* graph</a>, the same <a>triple</a> MAY be both <a>nested</a> and <a>asserted</a>.</p>
+
+      <p><a>IRIs</a>, <a>literals</a>, <a>blank nodes</a> and <a>nested triples</a> are collectively known as <dfn>RDF* terms</dfn>.</p>
+
+    </section>
+
+    <section>
+      <h2>Turtle*</h2>
+      <p>In this section, we present Turtle*, an extension of the Turtle format [[TURTLE]] allowing to represent <a>RDF* graphs</a>. For the sake of conciseness, we only describe here the differences between Turtle* and Turtle.</p>
+
+      <p class="issue">Is it enough to "patch" the Turtle Syntax and Parsing section with RDF*-specific features, or should we </p>
+
+      <section>
+        <h2>Grammar</h2>
+        <p>Turtle* is defined to follow the <a href="https://www.w3.org/TR/turtle/#h3_sec-grammar-grammar">same grammar</a> as Turtle, <em>except</em> for the <abbr title="Extended Backus-Naur Form">EBNF</abbr> production rules [[XML]] specified below, which replace the rule with the same number (if any) in the grammar of Turtle.</p>
+
+        <table class="grammar">
+          <tr id="grammar-production-subject">
+            <td>[10]</td>
+            <td>`subject`</td>
+            <td>::=</td>
+            <td>
+              <a data-cite="TURTLE#grammar-production-iri">iri</a> `|`
+              <a data-cite="TURTLE#grammar-production-BlankNode">BlankNode</a> `|`
+              <a data-cite="TURTLE#grammar-production-collection">collection</a> `|`
+              <a href="#grammar-production-nestedTriple">nestedTriple</a>
+            </td>
+          </tr>
+          <tr id="grammar-production-object">
+            <td>[12]</td>
+            <td>`object`</td>
+            <td>::=</td>
+            <td><a data-cite="TURTLE#grammar-production-iri">iri</a> `|`
+              <a  data-cite="TURTLE#grammar-production-BlankNode">BlankNode</a> `|`
+              <a  data-cite="TURTLE#grammar-production-collection">collection</a> `|`
+              <a data-cite="TURTLE#grammar-production-blankNodePropertyList">blankNodePropertyList</a> `|`
+              <a data-cite="TURTLE#grammar-production-literal">literal</a> `|`
+              <a href="#grammar-production-nestedTriple">nestedTriple</a>
+            </td>
+          </tr>
+          <tr id="grammar-production-nestedTriple">
+            <td>[27]</td>
+            <td>`nestedTriple`</td>
+            <td>::=</td>
+            <td>`<<`
+              <a href="#grammar-production-nestedSubject">nestedSubject</a>
+              <a data-cite="TURTLE#grammar-production-verb">verb</a>
+              <a href="#grammar-production-nestedObject">nestedObject</a>
+              `>>`
+            </td>
+          </tr>
+          <tr id="grammar-production-nestedSubject">
+            <td>[28]</td>
+            <td>`nestedSubject`</td>
+            <td>::=</td>
+            <td><a data-cite="TURTLE#grammar-production-iri">iri</a> `|`
+              <a  data-cite="TURTLE#grammar-production-BlankNode">BlankNode</a> `|`
+              <a href="#grammar-production-nestedTriple">nestedTriple</a>
+            </td>
+          </tr>
+          <tr id="grammar-production-nestedObject">
+            <td>[29]</td>
+            <td>`nestedObject`</td>
+            <td>::=</td>
+            <td><a data-cite="TURTLE#grammar-production-iri">iri</a> `|`
+              <a  data-cite="TURTLE#grammar-production-BlankNode">BlankNode</a> `|`
+              <a data-cite="TURTLE#grammar-production-literal">literal</a> `|`
+              <a href="#grammar-production-nestedTriple">nestedTriple</a>
+            </td>
+          </tr>
+        </table>
+      </section>
+
+      <section>
+        <h2>Parsing</h2>
+        <p>A Turtle* parser is similar to a Turtle parser as defined in <a data-cite="TURTLE#h2_sec-parsing">Section 7 of the Turtle specification</a>, with two additional items in its state :</p>
+        <ul>
+          <li id="nested">Boolean `nestedFlag` — The `nestedFlag` is initialized to false.</li>
+          <li id="curObject"><a>RDF* Term</a> `curObject` — The `curObject` is bound to the <a href="#grammar-production-object">`object`</a> production in the context of a <a>nested triple</a>.</li>
+        </ul>
+        <p>Additionally, the <a data-cite="TURTLE#curSubject">`curSubject`</a> can be bound to any <a>RDF* term</a> (including a <a>nested triple</a>).</p>
+
+        <p>A Turtle* document defines an <a>RDF* graph</a> composed of a set of <a>RDF* triples</a>. The <a href="#grammar-production-subject">`subject`</a> production sets the `curSubject`. The <a data-cite="TURTLE#grammar-production-verb">`verb`</a> production sets the <a data-cite="TURTLE#curPredicate">`curPredicate`</a>. For each <a href="#grammar-production-object">`object`</a> `N`, an <a>RDF* triple</a> `curSubject curPredicate N` is generated, then if `nestedFlag` is false, this <a>triple</a> is added to the <a>RDF* graph</a>, otherwise it is assigned to `curObject`.</p>
+
+        <p>Beginning the <a href="#grammar-production-nestedTriple">`nestedTriple`</a> production records the `curSubject`, `curPredicate` and `nestedFlag`. It then sets `nestedFlag` to true. Finishing the <a href="#grammar-production-nestedTriple">`nestedTriple`</a> production yields the <a>RDF* triple</a> `curSubject curPredicate curObject` and restores the recorded values of `curSubject`, `curPredicate` and `nestedFlag`.</p>
+
+        <p>Productions <a data-cite="TURTLE#grammar-production-blankNodePropertyList">`blankNodePropertyList`</a> and <a data-cite="TURTLE#grammar-production-collection">`collection`</a> are handled exactly the same as in a Turtle parser (while still applying the changes above).</p>
+
+        <p></p>
+      </section>
+    </section>
+
+    <section class="informative">
+      <h2>Other concrete syntaxes</h2>
+
+      <p>While this document specifies only one <a>concrete syntax</a>, nothing prevent other <a>concrete syntaxes</a> of RDF* to be proposed. In particular, other existing <a>concrete syntaxes</a> for RDF, such as RDF/XML [[RDF-SYNTAX-GRAMMAR]], could be extended to support RDF*. In particular, the N-Triples syntax [[N-TRIPLES]] being a subset of Turtle, an appropriate subset of Turtle* could be defined to extend N-Triples accordingly.</p>
+    </section>
+
+  </section>
+
+  <section>
+    <h2>Model-theoretic semantics</h2>
+
+    <p>
+      Here we extend RDF <abbr title="model theoretic">MT</abbr> semantics [[RDF11-MT]] to RDF*.
+      Refering to <a>blank node</a>.
+      TODO
+    </p>
+
+  </section>
+
+  <section>
+    <h2>Querying RDF*</h2>
+
+    <section>
+      <h2>SPARQL*</h2>
+    </section>
+
+    <section>
+      <h2>Query Semantics</h2>
+    </section>
+
+  </section>
+
+</body>
+</html>

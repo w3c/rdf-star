@@ -85,10 +85,10 @@
         Its set of <a>elements</a> comprises the <a>IRIs</a> `:name`, `:statedBy`, `:bob`, the <a>blank node</a> `_:a`, the <a>literal</a> `"Alice"`, and the <a>triple</a> `<< _:a :name "Alice" >>`.
       </div>
 
-      <p>An <a>RDF* triple</a> is not allowed to have itself as one of its elements.</p>
+      <p>An <a>RDF* triple</a> MUST NOT have itself as one of its <a>elements</a>.</p>
 
       <aside class="note">
-        The restriction above means that <a>RDF* triples</a> can be recursively built by using “smaller” <a>triples</a> as their subject and/or object, but that a triple can not contain itself, neither directly (as its subject or object) nor indirectly (inside another triple used as subject or object). In other words, self-referential assertions (such as “this sentence has five words”) are out of scope of RDF*.
+        The restriction above means that <a>RDF* triples</a> can be recursively built by using “smaller” triples as their subject and/or object, but that a triple can not contain itself, neither directly (as its subject or object) nor indirectly (inside another triple used as subject or object). In other words, self-referential assertions (such as “this sentence has five words”) are out of scope of RDF*.
       </aside>
 
       <p>An <a>RDF* triple</a> used as the <a>subject</a> or <a>object</a> of another <a>RDF* triple</a> is called a <dfn data-lt="nested">nested triple</dfn>. An <a>RDF* triple</a> that is an element of an <a>RDF* graph</a> is called an <dfn data-lt="asserted">asserted triple</dfn>. Note that, in a given <a>RDF* graph</a>, the same <a>triple</a> MAY be both <a>nested</a> and <a>asserted</a>.</p>
@@ -178,7 +178,7 @@
 
         <p>Beginning the <a href="#grammar-production-nestedTriple">`nestedTriple`</a> production records the |curSubject| and |curPredicate|. Finishing the <a href="#grammar-production-nestedTriple">`nestedTriple`</a> production yields the <a>RDF* triple</a> |curSubject| |curPredicate| |curObject| and restores the recorded values of |curSubject| and |curPredicate|.</p>
 
-        <p>All other productions are handled as specified by <a data-cite="TURTLE#h2_sec-parsing">Section 7 of the Turtle specification</a> [[TURTLE]], while still applying the changes above recursively.</p>
+        <p>All other productions MUST be handled as specified by <a data-cite="TURTLE#h2_sec-parsing">Section 7 of the Turtle specification</a> [[TURTLE]], while still applying the changes above recursively.</p>
       </section>
     </section>
 

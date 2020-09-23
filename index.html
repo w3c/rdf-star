@@ -166,27 +166,24 @@
 
       <section>
         <h2>Parsing</h2>
-        <p>A Turtle* parser is similar to a Turtle parser as defined in <a data-cite="TURTLE#h2_sec-parsing">Section 7 of the Turtle specification</a>, with two additional items in its state :</p>
+        <p>A Turtle* parser is similar to a Turtle parser as defined in <a data-cite="TURTLE#h2_sec-parsing">Section 7 of the Turtle specification</a>, with an additional item in its state :</p>
         <ul>
-          <li id="nested">Boolean `nestedFlag` — The `nestedFlag` is initialized to false.</li>
-          <li id="curObject"><a>RDF* Term</a> `curObject` — The `curObject` is bound to the <a href="#grammar-production-object">`object`</a> production in the context of a <a>nested triple</a>.</li>
+          <li id="curObject"><a>RDF* Term</a> |curObject| — The |curObject| is bound to the <a href="#grammar-production-nestedObject">`nestedObject`</a> production.</li>
         </ul>
-        <p>Additionally, the <a data-cite="TURTLE#curSubject">`curSubject`</a> can be bound to any <a>RDF* term</a> (including a <a>nested triple</a>).</p>
+        <p>Additionally, the <a data-cite="TURTLE#curSubject">|curSubject|</a> can be bound to any <a>RDF* term</a> (including a <a>nested triple</a>).</p>
 
-        <p>A Turtle* document defines an <a>RDF* graph</a> composed of a set of <a>RDF* triples</a>. The <a href="#grammar-production-subject">`subject`</a> production sets the `curSubject`. The <a data-cite="TURTLE#grammar-production-verb">`verb`</a> production sets the <a data-cite="TURTLE#curPredicate">`curPredicate`</a>. For each <a href="#grammar-production-object">`object`</a> `N`, an <a>RDF* triple</a> `curSubject curPredicate N` is generated, then if `nestedFlag` is false, this <a>triple</a> is added to the <a>RDF* graph</a>, otherwise it is assigned to `curObject`.</p>
+        <p>A Turtle* document defines an <a>RDF* graph</a> composed of a set of <a>RDF* triples</a>. The <a href="#grammar-production-subject">`subject`</a> and <a href="#grammar-production-nestedSubject">`nestedSubject`</a> productions sets the |curSubject|. The <a data-cite="TURTLE#grammar-production-verb">`verb`</a> production sets the <a data-cite="TURTLE#curPredicate">|curPredicate|</a>. The <a href="#grammar-production-nestedObject">`nestedObject`</a> productions sets the |curObject|. For each <a href="#grammar-production-object">`object`</a> |N|, an <a>RDF* triple</a> |curSubject| |curPredicate| |N| is generated and added to the <a>RDF* graph</a>.</p>
 
-        <p>Beginning the <a href="#grammar-production-nestedTriple">`nestedTriple`</a> production records the `curSubject`, `curPredicate` and `nestedFlag`. It then sets `nestedFlag` to true. Finishing the <a href="#grammar-production-nestedTriple">`nestedTriple`</a> production yields the <a>RDF* triple</a> `curSubject curPredicate curObject` and restores the recorded values of `curSubject`, `curPredicate` and `nestedFlag`.</p>
+        <p>Beginning the <a href="#grammar-production-nestedTriple">`nestedTriple`</a> production records the |curSubject| and |curPredicate|. Finishing the <a href="#grammar-production-nestedTriple">`nestedTriple`</a> production yields the <a>RDF* triple</a> |curSubject| |curPredicate| |curObject| and restores the recorded values of |curSubject| and |curPredicate|.</p>
 
         <p>Productions <a data-cite="TURTLE#grammar-production-blankNodePropertyList">`blankNodePropertyList`</a> and <a data-cite="TURTLE#grammar-production-collection">`collection`</a> are handled exactly the same as in a Turtle parser (while still applying the changes above).</p>
-
-        <p></p>
       </section>
     </section>
 
     <section class="informative">
       <h2>Other concrete syntaxes</h2>
 
-      <p>While this document specifies only one <a>concrete syntax</a>, nothing prevent other <a>concrete syntaxes</a> of RDF* to be proposed. In particular, other existing <a>concrete syntaxes</a> for RDF, such as RDF/XML [[RDF-SYNTAX-GRAMMAR]], could be extended to support RDF*. In particular, the N-Triples syntax [[N-TRIPLES]] being a subset of Turtle, an appropriate subset of Turtle* could be defined to extend N-Triples accordingly.</p>
+      <p>While this document specifies only one <a>concrete syntax</a>, nothing prevents other <a>concrete syntaxes</a> of RDF* to be proposed. In particular, other existing <a>concrete syntaxes</a> for RDF, such as RDF/XML [[RDF-SYNTAX-GRAMMAR]], could be extended to support RDF*. In particular, the N-Triples syntax [[N-TRIPLES]] being a subset of Turtle, an appropriate subset of Turtle* could be defined to extend N-Triples accordingly.</p>
     </section>
 
   </section>

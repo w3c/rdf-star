@@ -105,7 +105,7 @@
 
       <section>
         <h2>Grammar</h2>
-        <p>Turtle* is defined to follow the <a href="https://www.w3.org/TR/turtle/#h3_sec-grammar-grammar">same grammar</a> as Turtle, <em>except</em> for the <abbr title="Extended Backus-Naur Form">EBNF</abbr> production rules [[XML]] specified below, which replace the rule with the same number (if any) in the grammar of Turtle.</p>
+        <p>Turtle* is defined to follow the <a data-cite="TURTLE#h3_sec-grammar-grammar">same grammar</a> as Turtle, <em>except</em> for the <abbr title="Extended Backus-Naur Form">EBNF</abbr> productions [[XML]] specified below, which replace the productions with the same number (if any) in the original grammar.</p>
 
         <table class="grammar">
           <tr id="grammar-production-subject">
@@ -162,11 +162,13 @@
             </td>
           </tr>
         </table>
+
+        <p class="note">The only changes are that <a href="#grammar-production-subject">`subject`</a> and <a href="#grammar-production-object">`object`</a> productions have been extended to accept <a>nested triples</a>, which are described by the new productions <a href="#grammar-production-nestedTriple">27</a> to <a href="#grammar-production-nestedObject">29</a>. Note that <a>nested triples</a> accept a more restricted range of <a>subject</a> and <a>object</a> expressions than <a>asserted triples</a>.</p>
       </section>
 
       <section>
         <h2>Parsing</h2>
-        <p>A Turtle* parser is similar to a Turtle parser as defined in <a data-cite="TURTLE#h2_sec-parsing">Section 7 of the Turtle specification</a>, with an additional item in its state :</p>
+        <p>A Turtle* parser is similar to a Turtle parser as defined in <a data-cite="TURTLE#h2_sec-parsing">Section 7 of the Turtle specification</a> [[TURTLE]], with an additional item in its state :</p>
         <ul>
           <li id="curObject"><a>RDF* Term</a> |curObject| — The |curObject| is bound to the <a href="#grammar-production-nestedObject">`nestedObject`</a> production.</li>
         </ul>
@@ -176,7 +178,7 @@
 
         <p>Beginning the <a href="#grammar-production-nestedTriple">`nestedTriple`</a> production records the |curSubject| and |curPredicate|. Finishing the <a href="#grammar-production-nestedTriple">`nestedTriple`</a> production yields the <a>RDF* triple</a> |curSubject| |curPredicate| |curObject| and restores the recorded values of |curSubject| and |curPredicate|.</p>
 
-        <p>Productions <a data-cite="TURTLE#grammar-production-blankNodePropertyList">`blankNodePropertyList`</a> and <a data-cite="TURTLE#grammar-production-collection">`collection`</a> are handled exactly the same as in a Turtle parser (while still applying the changes above).</p>
+        <p>All other productions are handled as specified by <a data-cite="TURTLE#h2_sec-parsing">Section 7 of the Turtle specification</a> [[TURTLE]], while still applying the changes above recursively.</p>
       </section>
     </section>
 

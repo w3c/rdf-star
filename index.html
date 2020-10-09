@@ -22,7 +22,13 @@
           "companyURL": "https://www.ercim.eu/",
           "w3cid":      42931,
           "orcid": "0000-0001-7046-4474",
-        }
+        },
+      ],
+      authors: [
+        {
+          "name": "Bryan Thompson",
+          "company": "Amazon",
+        },
       ],
       github: "w3c/rdf-star",
       shortName: "rdf-star",
@@ -31,9 +37,9 @@
     };
   </script>
   <style>
-    /* copied from TR/turtle */
+    /* copied from TR/turtle, and adapted for SPARQL rules */
     .grammar td { font-family: monospace; vertical-align: top; }
-    .grammar-literal { color: gray;}
+    .grammar-literal, .token { color: gray;}
     .grammar_comment { color: #A52A2A; font-style: italic; }
   </style>
 </head>
@@ -114,7 +120,7 @@
 
     <section>
       <h2>Grammar</h2>
-      <p>Turtle* is defined to follow the <a data-cite="TURTLE#h3_sec-grammar-grammar">same grammar</a> as Turtle, <em>except</em> for the <abbr title="Extended Backus-Naur Form">EBNF</abbr> productions [[XML]] specified below, which replace the productions with the same number (if any) in the original grammar.</p>
+      <p>Turtle* is defined to follow the <a data-cite="TURTLE#h3_sec-grammar-grammar">same grammar</a> as Turtle, <em>except</em> for the <a data-cite="XML#sec-notation"><abbr title="Extended Backus-Naur Form">EBNF</abbr> productions</a> specified below, which replace the productions with the same number (if any) in the original grammar.</p>
 
       <table class="grammar">
         <tr id="grammar-production-subject">
@@ -202,8 +208,122 @@
   <section>
     <h2>SPARQL*</h2>
 
+    <p>This section introduces SPARQL*, which is an RDF*-aware extension of the RDF query language SPARQL [[SPARQL11-QUERY]]; i.e., SPARQL* can be used to query RDF* graphs.</p>
+
     <section>
-      <h2>Syntax</h2>
+      <h2>Grammar</h2>
+
+      <p>SPARQL* is defined to follow the <a data-cite="SPARQL11-QUERY#sparqlGrammar">same grammar</a> as SPARQL, <em>except</em> for the <a data-cite="XML#sec-notation"><abbr title="Extended Backus-Naur Form">EBNF</abbr> productions</a> specified below, which replace the productions with the same number (if any) in the original grammar.</p>
+
+      <table class="grammar">
+        <tr id="rBind">
+          <td>[60]</td>
+          <td>`Bind`</td>
+          <td>::=</td>
+          <td>
+            <code class="token">'BIND'</code>
+            <code class="token">'('</code>
+            (
+              <a data-cite="SPARQL11-QUERY#rExpression">Expression</a> `|`
+              <a href="#rEmbTP">EmbTP</a>
+            )
+            <code class="token">'AS'</code>
+            <a data-cite="SPARQL11-QUERY#rVar">Var</a>
+            <code class="token">')'</code>
+          </td>
+        </tr>
+          <tr id="rTriplesSameSubject">
+          <td>[75]</td>
+          <td>`TriplesSameSubject`</td>
+          <td>::=</td>
+          <td>
+            <a href="#rVarOrTermOrEmbTP">VarOrTermOrEmbTP</a>
+            <a data-cite="SPARQL11-QUERY#rPropertyListNotEmpty">PropertyListNotEmpty</a>
+            `|`
+            <a data-cite="SPARQL11-QUERY#rTriplesNode">TriplesNode</a>
+            <a data-cite="SPARQL11-QUERY#rPropertyList">PropertyList</a>
+        </td>
+        <tr id="rObject">
+          <td>[80]</td>
+          <td>`Object`</td>
+          <td>::=</td>
+          <td>
+            <a data-cite="SPARQL11-QUERY#rGraphNode">GraphNode</a> `|`
+            <a href="#rEmbTP">EmbTP</a>
+          </td>
+        </tr>
+        <tr id="rTriplesSameSubjectPath">
+          <td>[81]</td>
+          <td>`TriplesSameSubjectPath`</td>
+          <td>::=</td>
+          <td>
+            <a href="#rVarOrTermOrEmbTP">VarOrTermOrEmbTP</a>
+            <a data-cite="SPARQL11-QUERY#rPropertyListPathNotEmpty">PropertyListPathNotEmpty</a>
+            `|`
+            <a data-cite="SPARQL11-QUERY#rTriplesNode">TriplesNode</a>
+            <a data-cite="SPARQL11-QUERY#rPropertyListPath">PropertyListPath</a>
+          </td>
+        </tr>
+        <tr id="rGraphNodePath">
+          <td>[105]</td>
+          <td>`GraphNodePath`</td>
+          <td>::=</td>
+          <td>
+            <a href="#rVarOrTermOrEmbTP">VarOrTermOrEmbTP</a> `|`
+            <a data-cite="SPARQL11-QUERY#rTriplesNodePath">TriplesNodePath</a> `|`
+          </td>
+        </tr>
+        <tr id="rEmbTP">
+          <td>[174]</td>
+          <td>`EmbTP`</td>
+          <td>::=</td>
+          <td>
+            <code class="token">'&lt;&lt'</code>
+            <a href="#rEmbSubjectOrObject">EmbSubjectOrObject</a>
+            <a data-cite="SPARQL11-QUERY#rVerb">Verb</a>
+            <a href="#rEmbSubjectOrObject">EmbSubjectOrObject</a>
+            <code class="token">'&gt;&gt'</code>
+          </td>
+        </tr>
+        <tr id="rEmbSubjectOrObject">
+          <td>[175]</td>
+          <td>`EmbSubjectOrObject`</td>
+          <td>::=</td>
+          <td>
+            <a data-cite="SPARQL11-QUERY#rVar">Var</a> `|`
+            <a data-cite="SPARQL11-QUERY#rBlankNode">BlankNode</a> `|`
+            <a data-cite="SPARQL11-QUERY#riri">iri</a> `|`
+            <a data-cite="SPARQL11-QUERY#rRDFLiteral">RDFLiteral</a> `|`
+            <a data-cite="SPARQL11-QUERY#rNumericLiteral">NumericLiteral</a> `|`
+            <a data-cite="SPARQL11-QUERY#rBooleanLiteral">BooleanLiteral</a> `|`
+            <a href="#rEmbTP">EmbTP</a>
+          </td>
+        </tr>
+        <tr id="rVarOrTermOrEmbTP">
+          <td>[176]</td>
+          <td>`VarOrTermOrEmbTP`</td>
+          <td>::=</td>
+          <td>
+            <a data-cite="SPARQL11-QUERY#rVar">Var</a> `|`
+            <a data-cite="SPARQL11-QUERY#rGraphTerm">GraphTerm</a> `|`
+            <a href="#rEmbTP">EmbTP</a>
+          </td>
+        </tr>
+      </table>
+
+      <p class="note">
+        This introduces a notation for <a>embedded triples</a>
+        (productions <a href="#rEmbTP">[174]</a> and following)
+        similar to the one defined in <a href="#turtle-star"></a>,
+        but accepting also variables.
+        These <a>embedded triples</a> are allowed in subject
+        (<a href="#rTriplesSameSubject">[75]</a>, <a href="#rTriplesSameSubjectPath">[81]</a>)
+        and object
+        (<a href="#rObject">[80]</a>, <a href="#rGraphNodePath">[105]</a>)
+        position of <a data-cite="SPARQL11-QUERY#defn_TriplePattern">triple patterns</a>,
+        as well as in `BIND` statements
+        (<a href="#rBind">[80]</a>).
+      </div>
     </section>
 
     <section>

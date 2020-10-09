@@ -33,7 +33,7 @@
       github: "w3c/rdf-star",
       shortName: "rdf-star",
       group: "rdf-dev",
-      xref: ["RDF11-CONCEPTS"],
+      xref: ["RDF11-CONCEPTS", "SPARQL11-QUERY"],
     };
   </script>
   <style>
@@ -42,6 +42,41 @@
     .grammar-literal, .token { color: gray;}
     .grammar_comment { color: #A52A2A; font-style: italic; }
   </style>
+  <script>
+    /* copied from JSON-LD specs */
+    function updateExample(doc, content) {
+      // perform transformations to make it render and prettier
+      return _esc(reindent(unComment(doc, content)));
+    }
+
+    function _esc(s) {
+      return s.replace(/&/g,'&amp;')
+        .replace(/>/g,'&gt;')
+        .replace(/"/g,'&quot;')
+        .replace(/</g,'&lt;');
+    }
+
+    function reindent(text) {
+      // TODO: use trimEnd when Edge supports it
+      const lines = text.trimRight().split("\n");
+      while (lines.length && !lines[0].trim()) {
+        lines.shift();
+      }
+      const indents = lines.filter(s => s.trim()).map(s => s.search(/[^\s]/));
+      const leastIndent = Math.min(...indents);
+      return lines.map(s => s.slice(leastIndent)).join("\n");
+    }
+
+    function unComment(doc, content) {
+      // perform transformations to make it render and prettier
+      return content
+        .replace(/<!--/, '')
+        .replace(/-->/, '')
+        .replace(/< !\s*-\s*-/g, '<!--')
+        .replace(/-\s*- >/g, '-->')
+        .replace(/-\s*-\s*&gt;/g, '--&gt;');
+    }
+  </script>
 </head>
 <body>
   <section id="abstract">
@@ -74,7 +109,7 @@
     <section id="conformance">
       <p class=issue>TODO we may need to add more things here</p>
     </section>
-    
+
   </section>
 
   <section id="concepts">
@@ -116,9 +151,9 @@
     <h2>Turtle*</h2>
     <p>In this section, we present Turtle*, an extension of the Turtle format [[TURTLE]] allowing to represent <a>RDF* graphs</a>. For the sake of conciseness, we only describe here the differences between Turtle* and Turtle.</p>
 
-    <p class="issue">Is it enough to "patch" the Turtle Syntax and Parsing section with RDF*-specific features, or should we </p>
+    <p class="issue">Is it enough to "patch" the Turtle Syntax and Parsing Section with RDF*-specific features, or should we </p>
 
-    <section>
+    <section id="turtle-star-grammar">
       <h2>Grammar</h2>
       <p>Turtle* is defined to follow the <a data-cite="TURTLE#h3_sec-grammar-grammar">same grammar</a> as Turtle, <em>except</em> for the <a data-cite="XML#sec-notation"><abbr title="Extended Backus-Naur Form">EBNF</abbr> productions</a> specified below, which replace the productions with the same number (if any) in the original grammar.</p>
 
@@ -208,9 +243,9 @@
   <section>
     <h2>SPARQL*</h2>
 
-    <p>This section introduces SPARQL*, which is an RDF*-aware extension of the RDF query language SPARQL [[SPARQL11-QUERY]]; i.e., SPARQL* can be used to query RDF* graphs.</p>
+    <p>This Section introduces SPARQL*, which is an RDF*-aware extension of the RDF query language SPARQL [[SPARQL11-QUERY]]; i.e., SPARQL* can be used to query RDF* graphs.</p>
 
-    <section>
+    <section id="sparql-star-grammar">
       <h2>Grammar</h2>
 
       <p>SPARQL* is defined to follow the <a data-cite="SPARQL11-QUERY#sparqlGrammar">same grammar</a> as SPARQL, <em>except</em> for the <a data-cite="XML#sec-notation"><abbr title="Extended Backus-Naur Form">EBNF</abbr> productions</a> specified below, which replace the productions with the same number (if any) in the original grammar.</p>
@@ -315,19 +350,168 @@
         This introduces a notation for <a>embedded triples</a>
         (productions <a href="#rEmbTP">[174]</a> and following)
         similar to the one defined in <a href="#turtle-star"></a>,
-        but accepting also variables.
+        but accepting also <a>variables</a>.
         These <a>embedded triples</a> are allowed in subject
         (<a href="#rTriplesSameSubject">[75]</a>, <a href="#rTriplesSameSubjectPath">[81]</a>)
         and object
         (<a href="#rObject">[80]</a>, <a href="#rGraphNodePath">[105]</a>)
-        position of <a data-cite="SPARQL11-QUERY#defn_TriplePattern">triple patterns</a>,
-        as well as in `BIND` statements
+        position of <a>triple patterns</a>,
+        as well as in BIND statements
         (<a href="#rBind">[80]</a>).
       </div>
     </section>
 
     <section>
-      <h2>Query Semantics</h2>
+      <h2>Algebra</h2>
+
+      <p class="issue">In [[RDF-STAR-FOUNDATION]], the algebra is not based on [[SPARQL11-QUERY]], but on Pérez <i>et al.</i> 2009. To we want to keep this, or should we align more closely to the W3C spec?</p>
+
+      <p>TODO here the definitions of
+        <dfn>BGP*</dfn>,
+        <dfn>embedded triple pattern</dfn>,
+        <dfn>triple* pattern</dfn>,
+        <dfn>SPARQL* expression</dfn>,
+        <dfn>solution* mapping</dfn>,
+        <dfn>evaluation</dfn>,
+        ...
+        We reuse from [[SPARQL11-QUERY]] the following terms:
+        <dfn data-cite="SPARQL11-QUERY#defn_RDFTerm">RDF Term</dfn>,
+        <dfn data-cite="SPARQL11-QUERY#defn_TriplePattern">triple patterns</dfn>,
+        <dfn data-cite="SPARQL11-QUERY#defn_PropertyPathPattern">property path pattern</dfn>,
+        <dfn data-cite="SPARQL11-QUERY#defn_PropertyPathExpr">property path expression</dfn>,
+        <dfn data-cite="SPARQL11-QUERY#defn_QueryVariable" data-lt="variable">query variable</dfn>,
+        <dfn data-cite="SPARQL11-QUERY#defn_SolutionMapping">solution mapping</dfn>,
+        ...
+
+      </p>
+    </section>
+
+    <section>
+      <h2>Translation to the algebra</h2>
+
+      <p>Based on the SPARQL grammar the SPARQL specification <q>defines the process of converting graph patterns and solution modifiers in a SPARQL query string into a SPARQL algebra expression</q> [<a data-cite="SPARQL11-QUERY#sparqlQuery">SPARQL11-QUERY, Section 18.2</a>].  This process must be adjusted to consider the extended grammar introduced <a href="#sparql-star-grammar">above</a>. In the following, any step of the conversion process that requires adjustment is discussed.</p>
+
+      <section>
+        <h2>Variable Scope</h2>
+
+        <p>As a basis of the translation, the SPARQL specification introduces a notion of <a data-cite="SPARQL11-QUERY#variableScope">in-scope variables</a>. To cover the new syntax elements introduced in <a href="#sparql-star-grammar"></a> this notion MUST be extended as follows.</p>
+
+        <ul>
+          <li>A <a>variable</a> is in-scope of a <a>BGP*</a> |B| if the <a>variable</a> occurs in |B|, which includes an occurrence in any <a>embedded triple pattern</a> in |B| (independent of the level of nesting).</li>
+          <li>A <a>variable</a> is in-scope of a <a>property path pattern</a> if the variable occurs in that pattern, which includes an occurrence in any embedded triple pattern in the pattern (independent of the level of nesting).</li>
+          <li>A <a>variable</a> is in-scope of a BIND clause of the form `BIND ( T AS v )` (where |T| is an <a>embedded triple pattern</a>) if the variable is variable |v| or the variable occurs in the <a>embedded triple pattern</a> |T|. As for standard BIND clauses with expressions, variable |v| must <q>not [be] in-scope from the preceeding elements in the group graph pattern in which [the BIND clause] is used</q> [<a data-cite="SPARQL11-QUERY#variableScope">SPARQL11-QUERY, Section 18.2.1]</a>].</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Expand Syntax Forms</h2>
+
+        <p>The translation process starts with expanding <q>abbreviations for IRIs and triple patterns</q> [<a data-cite="SPARQL11-QUERY#sparqlExpandForms">SPARQL11-QUERY, Section 18.2.2.1</a>]. This step MUST be extended in two ways:</p>
+
+        <ol>
+          <li><div>
+            <p>Abbreviations for <a>triple patterns</a> with <a>embedded triple patterns</a> MUST be expanded as if each <a>embedded triple pattern</a> was a <a>variable</a> (or an <a>RDF term</a>).
+
+            <div class="example">
+              For instance, the following syntax expression:
+              <pre data-transform="updateExample" 
+                data-content-type="application/sparql-query"
+                class="nohighlight"
+              >
+                <!--
+                <<?c a rdfs:Class>> dct:source ?src ;
+                    prov:wasDerivedFrom <<?c a owl:Class>> .
+                -->
+              </pre>
+              must be expanded to
+              <pre data-transform="updateExample" 
+                data-content-type="application/sparql-query"
+                class="nohighlight"
+              >
+                <!--
+                <<?c a rdfs:Class>> dct:source ?src .
+                <<?c a rdfs:Class>> prov:wasDerivedFrom <<?c a owl:Class>> .
+                -->
+              </pre>
+            </div>  
+          </div></li>
+          <li><div>
+            <p>Abbreviations for IRIs in all <a>embedded triple patterns</a> MUST be expanded.</p>
+
+            <div class="example">
+              For instance, the embedded triple pattern
+              <pre data-transform="updateExample" 
+                data-content-type="application/sparql-query"
+                class="nohighlight"
+              >
+                <!--
+                <<?c a rdfs:Class>>
+                -->
+              </pre>
+              must be expanded to
+              <pre data-transform="updateExample" 
+                data-content-type="application/sparql-query"
+                class="nohighlight"
+              >
+                <!--
+                <<?c <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2000/01/rdf-schema#Class>>>
+                -->
+              </pre>
+            </div>
+          </div></li>
+        </ol>
+      </section>
+
+      <section>
+        <h2>Translate Property Path Patterns</h2>
+
+        <p>The <a data-cite="SPARQL11-QUERY#sparqlTranslatePathPatterns">translation of property path patterns</a> has to be adjusted because the extended grammar allows for property path patterns whose subject or object is an <a>embedded triple pattern</a> (cf. <a href="#sparql-star-grammar"></a>).</p>
+
+        <p>The translation as specified in the W3C specification distinguishes four cases. The first three of these cases do not require adjustment because they are taken care of either by recursion or by the adjusted translation of basic graph patterns (as defined in <a href="#translate-bgp"></a> below). However, the fourth case MUST be adjusted as follows.</p>
+
+        <p>Let |X| |P| |Y| be a string that corresponds to the fourth case in [<a data-cite="SPARQL11-QUERY#sparqlTranslatePathPatterns">SPARQL11-QUERY, Section 18.2.2.4</a>]. Given the grammar introduced in <a href="#sparql-star-grammar"></a>, |X| and |Y| may be an <a>RDF term</a>, a <a>variable</a>, or an <a>embedded triple pattern</a>, respectively (and |P| is a <a>property path expression</a>). The string |X| |P| |Y| is translated to the algebra expression `Path`(<var>X’</var>,|P|,<var>Y’</var>) where <var>X’</var> and <var>Y’</var> are the result of calling a function named `Lift` for |X| and |Y|, respectively. For some input string |Z| (such as |X| or |Y|) that can be an <a>RDF term</a>, a <a>variable</a>, or an <a>embedded triple pattern</a>, the function `Lift` is defined as follows:</p>
+
+        <ol id="lift">
+          <li>If |Z| is an <a>embedded triple pattern</a> &lt;&lt;|S|,|P|,|O|&gt;&gt; then return the <a>triple* pattern</a> (`Lift`(|S|, |P|, `Lift`(|O|));</li>
+          <li>Otherwise, return |Z|.</li>
+        </ol>
+      </section>
+
+      <section id="translate-bgp">
+        <h2>Translate Basic Graph Patterns</h2>
+
+        <p>After translating <a>property path patterns</a>, the translation process collects <q>any adjacent triple patterns [...] to form a basic graph pattern</q> [<a data-cite="SPARQL11-QUERY#sparqlTranslateBasicGraphPatterns">SPARQL11-QUERY, Section 18.2.2.5</a>]. This step has to be adjusted because <a>triple patterns</a> in the extended syntax may have an <a>embedded triple pattern</a> in their subject position or in their object position (or in both). To ensure that every result of this step is a <a>BGP*</a>, before adding a <a>triple pattern</a> to its corresponding collection, its subject and object MUST be replaced by the result of calling <a href="#lift">function `Lift`</a> for the subject and the object, respectively.</p>
+      </section>
+
+      <section id="translate-bind">
+        <h2>Translate BIND Clauses with an Embedded Triple Pattern</h2>
+
+        <p>The extended grammar in <a href="#sparql-star-grammar"></a> allows for BIND clauses with an <a>embedded triple pattern</a>. The translation of such a BIND clause to a SPARQL algebra expression requires a new algebra symbol:</p>
+
+        <ul>
+          <li>TR( <a>triple* pattern</a>, <a>variable</a> )</li>
+        </ul>
+
+        <p>Note that this symbol corresponds to <a>SPARQL* expressions</a> of the form (`tp` AS `?v`).</p>
+
+        <p>Then, any string of the form `BIND( T AS v )` with |T| being an <a>embedded triple pattern</a> (i.e., not a standard BIND expression) is translated to the algebra expression `TR`(<var>T’</var>, |v|) where <var>T’</var> is the result of the <a href="#lift">function `Lift`</a> for |T|.</p>
+
+        <p>Notice, the translation of BIND clauses with an <a>embedded triple pattern</a> as defined in this section is used during <a data-cite="SPARQL11-QUERY#sparqlTranslateGraphPatterns">the translation of group graph patterns</a>. The case of BIND clauses with an <a>embedded triple pattern</a> is covered in this translation of group graph patterns by the last, “catch all other” `IF` statement (i.e., the `IF` statement with the condition `E is any other form`) and not by the `IF` statement for BIND clauses with an expression.</p>
+      </section>
+    </section>
+
+    <section>
+      <h2>Evaluation Semantics</h2>
+
+      <p>The SPARQL specification defines a function “eval(D(G), algebra expression) as the evaluation of an algebra expression with respect to a dataset D having active graph G”[<a href="SPARQL11-QUERY#sparqlAlgebraEval">SPARQL11-QUERY, Section 18.6</a>]. Recall that the active graph |G| in the context of SPARQL* is an <a>RDF* graph</a>, and so is any other graph in dataset |D|. The definition of function eval is recursive; the two base cases of this definition for SPARQL* are given as follows:</p>
+
+      <ul>
+        <li>For any <a>BGP*</a> |B|, eval(D(|G|), |B|) = ⟦|B|⟧<sub>|G|</sub>(where ⟦|B|⟧<sub>|G|</sub> is the <a>evaluation</a> of |B| over <a>RDF* graph</a> |G|.</li>
+
+        <li>For any algebra expression |E| of the form TR(|tp|, |?v|) where |tp| is a <a>triple* pattern</a> and |?v| is a <a>variable</a> (as introduced <a href="#translate-bind"></a>>), eval(D(|G|), |E|) = ⟦(|tp| AS |?v|)⟧<sub>|G|</sub> (where ⟦(|tp| AS |?v|)⟧<sub>|G|</sub> is the <a>evaluation</a> of SPARQL* expression (|tp| AS |?v|) over <a>RDF* graph</a> |G|.</li>
+      </ul>
+
+      <p>For any other algebra expression, the SPARQL specification defines algebra operators [[SPARQL11-QUERY]]. These definitions can be extended naturally to operate over multisets of <a>solution* mappings</a> (instead of ordinary <a>solution mappings</a>). Given this extension, the recursive steps of the definition of function eval for SPARQL* are the same as in the SPARQL specification.</p>
     </section>
 
   </section>
@@ -342,6 +526,5 @@
     </p>
 
   </section>
-
 </body>
 </html>

@@ -51,17 +51,18 @@
       <h2>Background and Motivation</h2>
 
       <p>TODO, citing [[RDF-STAR-FOUNDATION]]</p>
-      <p>The syntax of RDF is defined in two layers:</p>
-      <ul>
-        <li>the <dfn>abstract syntax</dfn>, which is the conceptual data model of RDF, and</li>
-        <li>multiple <dfn data-cite="RDF11-CONCEPTS#dfn-concrete-rdf-syntax" data-lt="concrete syntax|concrete RDF syntax|concrete RDF syntaxes">concrete syntaxes</dfn> (such as RDF/XML [[RDF-SYNTAX-GRAMMAR]], Turtle [[TURTLE]] or JSON-LD [[JSON-LD11]]), which are data formats used to serialize the abstract syntax into files or over the wire.</li>
-      </ul>
     </section>
 
     <section class="informative">
       <h2>Overview</h2>
 
       <p>TODO</p>
+      <p>The syntax of RDF is defined in two layers:</p>
+      <ul>
+        <li>the <dfn>abstract syntax</dfn>, which is the conceptual data model of RDF, and</li>
+        <li>multiple <dfn data-cite="RDF11-CONCEPTS#dfn-concrete-rdf-syntax" data-lt="concrete syntax|concrete RDF syntax|concrete RDF syntaxes">concrete syntaxes</dfn> (such as RDF/XML [[RDF-SYNTAX-GRAMMAR]], Turtle [[TURTLE]] or JSON-LD [[JSON-LD11]]), which are data formats used to serialize the abstract syntax into files or over the wire.</li>
+      </ul>
+      <p>Similarly, this document defines the <a>abstract syntax</a> of RDF* in <a href="#concepts"></a>, and one <a>concrete syntax</a> based on Turtle [[TURTLE]] in <a href="#turtle-star"></a>.</p>
     </section>
 
     <section id="conformance">
@@ -70,7 +71,7 @@
     
   </section>
 
-  <section>
+  <section id="concepts">
     <h2>Concepts and Abstract Syntax</h2>
     <p>An <dfn data-lt="graph">RDF* graph</dfn> is a set of <a>RDF* triples</a>.</p>
 
@@ -105,7 +106,7 @@
 
   </section>
 
-  <section>
+  <section id="turtle-star">
     <h2>Turtle*</h2>
     <p>In this section, we present Turtle*, an extension of the Turtle format [[TURTLE]] allowing to represent <a>RDF* graphs</a>. For the sake of conciseness, we only describe here the differences between Turtle* and Turtle.</p>
 

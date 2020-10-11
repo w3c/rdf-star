@@ -145,6 +145,8 @@
 
     <p><a>IRIs</a>, <a>literals</a>, <a>blank nodes</a> and <a>embedded triples</a> are collectively known as <dfn>RDF* terms</dfn>.</p>
 
+    <p class="issue">The notion of <a>embedded triples</a> has a meaning only within the context of a given <a>RDF* graph</a>. In contrast, the notion of <a>RDF* terms</a> should be a general concept. Consequently, the notion of <a>RDF* terms</a> cannot be defined based on the notion of <a>embedded triples</a>. I propose to replace <a>embedded triples</a> in the definition by <a>RDF* triples</a>. -Olaf</p>
+
     <p>An <dfn data-lt="dataset">RDF* dataset</dfn> is a set {<var>G</var>, (<var>u<sub>1</sub></var>,<var>G<sub>1</sub></var>), ..., (<var>u<sub>n</sub></var>,<var>G<sub>n</sub></var>)} that consists of one <a>RDF* graph</a>&nbsp;<var>G</var>, called the <dfn data-lt="default-graph">default graph</dfn> of the dataset, and zero or more pairs (<var>u<sub>i</sub></var>,<var>G<sub>i</sub></var>) where each <var>u<sub>i</sub></var> is an <a>IRI</a> and each <var>G<sub>i</sub></var> is an <a>RDF* graph</a> such that all <var>u<sub>i</sub></var> are distinct within the dataset.</p>
   </section>
 
@@ -511,6 +513,8 @@
 
         <li>For any algebra expression |E| of the form TR(|tp|, |?v|) where |tp| is a <a>triple* pattern</a> and |?v| is a <a>variable</a> (as introduced <a href="#translate-bind"></a>>), eval(D(|G|), |E|) = ⟦(|tp| AS |?v|)⟧<sub>|G|</sub> (where ⟦(|tp| AS |?v|)⟧<sub>|G|</sub> is the <a>evaluation</a> of SPARQL* expression (|tp| AS |?v|) over <a>RDF* graph</a> |G|.</li>
       </ul>
+
+      <p class="issue">⟦|B|⟧<sub>|G|</sub> is not defined anywhere here, and neither is ⟦(|tp| AS |?v|)⟧<sub>|G|</sub>.  -Olaf</p>
 
       <p>For any other algebra expression, the SPARQL specification defines algebra operators [[SPARQL11-QUERY]]. These definitions can be extended naturally to operate over multisets of <a>solution* mappings</a> (instead of ordinary <a>solution mappings</a>). Given this extension, the recursive steps of the definition of function eval for SPARQL* are the same as in the SPARQL specification.</p>
     </section>

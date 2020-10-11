@@ -116,16 +116,16 @@
     <h2>Concepts and Abstract Syntax</h2>
     <p>An <dfn data-lt="graph">RDF* graph</dfn> is a set of <a>RDF* triples</a>.</p>
 
-    <p>An <dfn data-lt="triple">RDF* triple</dfn> consists of three components:</p>
+    <p>An <dfn data-lt="triple">RDF* triple</dfn> is a 3-tuple that consists of three components:</p>
     <ul>
       <li>the <dfn data-cite="RDF11-CONCEPTS#dfn-subject">subject</dfn>, which is an <a>IRI</a>, a <a>blank node</a> or an <a>RDF* triple</a>;
       <li>the <dfn data-cite="RDF11-CONCEPTS#dfn-predicate">predicate</dfn>, which is an <a>IRI</a>;
       <li>the <dfn data-cite="RDF11-CONCEPTS#dfn-object">object</dfn>, which is an <a>IRI</a>, a <a>literal</a>, a <a>blank node</a> or an <a>RDF* triple</a>;
     </ul>
 
-    <p>The definition relies on the notions of <dfn data-cite="RDF11-CONCEPTS#dfn-iri">IRI</dfn>, <dfn data-cite="RDF11-CONCEPTS#dfn-literal">literal</dfn> and <dfn data-cite="RDF11-CONCEPTS#dfn-blank-node">blank node</dfn> introduced by [[[RDF11-CONCEPTS]]] [[RDF11-CONCEPTS]]. It extends the definition of <dfn data-cite="RDF11-CONCEPTS#dfn-rdf-triple">RDF triple</dfn> by allowing the <a>subject</a> and <a>object</a> to be <a>triples</a> themselves.</p>
+    <p>The definition relies on the notions of <dfn data-cite="RDF11-CONCEPTS#dfn-iri">IRI</dfn>, <dfn data-cite="RDF11-CONCEPTS#dfn-literal">literal</dfn> and <dfn data-cite="RDF11-CONCEPTS#dfn-blank-node">blank node</dfn> introduced by [[[RDF11-CONCEPTS]]] [[RDF11-CONCEPTS]]. It extends the definition of <dfn data-cite="RDF11-CONCEPTS#dfn-rdf-triple">RDF triple</dfn> by allowing the <a>subject</a> and the <a>object</a> to be another <a>triple</a>.</p>
 
-    <p>For every <a>triple</a> <var>t</var>, we define its <dfn>elements</dfn> as the set containing its <a>subject</a>, its <a>predicate</a>, its <a>object</a>, plus all the <a>elements</a> of its <a>subject</a> and/or its <a>object</a> if they are themselves <a>RDF* triples</a>. By extension, we define the <a>elements</a> of an <a>RDF* graph</a> to be the union set of the <a>elements</a> of all its triples.</p>
+    <p>For every <a>RDF* triple</a> <var>t</var>, we define its <dfn>elements</dfn> as the set containing its <a>subject</a>, its <a>predicate</a>, its <a>object</a>, plus all the <a>elements</a> of its <a>subject</a> and/or its <a>object</a> if they are themselves <a>RDF* triples</a>. By extension, we define the <a>elements</a> of an <a>RDF* graph</a> to be the union set of the <a>elements</a> of all its triples.</p>
 
     <div class="example">
       Consider the following <a>RDF* triple</a> (represented in Turtle*):
@@ -141,10 +141,11 @@
       The restriction above means that <a>RDF* triples</a> can be recursively built by using “smaller” triples as their subject and/or object, but that a triple can not contain itself, neither directly (as its subject or object) nor indirectly (inside another triple used as subject or object). In other words, self-referential assertions (such as “this sentence has five words”) are out of scope of RDF*.
     </aside>
 
-    <p>An <a>RDF* triple</a> used as the <a>subject</a> or <a>object</a> of another <a>RDF* triple</a> is called a <dfn data-lt="embedded">embedded triple</dfn>. An <a>RDF* triple</a> that is an element of an <a>RDF* graph</a> is called an <dfn data-lt="asserted">asserted triple</dfn>. Note that, in a given <a>RDF* graph</a>, the same <a>triple</a> MAY be both <a>embedded</a> and <a>asserted</a>.</p>
+    <p>An <a>RDF* triple</a> used as the <a>subject</a> or <a>object</a> of another <a>RDF* triple</a> is called an <dfn data-lt="embedded">embedded triple</dfn>. An <a>RDF* triple</a> that is an element of an <a>RDF* graph</a> is called an <dfn data-lt="asserted">asserted triple</dfn>. Note that, in a given <a>RDF* graph</a>, the same <a>triple</a> MAY be both <a>embedded</a> and <a>asserted</a>.</p>
 
     <p><a>IRIs</a>, <a>literals</a>, <a>blank nodes</a> and <a>embedded triples</a> are collectively known as <dfn>RDF* terms</dfn>.</p>
 
+    <p>An <dfn data-lt="dataset">RDF* dataset</dfn> is a set {<var>G</var>, (<var>u<sub>1</sub></var>,<var>G<sub>1</sub></var>), ..., (<var>u<sub>n</sub></var>,<var>G<sub>n</sub></var>)} that consists of one <a>RDF* graph</a>&nbsp;<var>G</var>, called the <dfn data-lt="default-graph">default graph</dfn> of the dataset, and zero or more pairs (<var>u<sub>i</sub></var>,<var>G<sub>i</sub></var>) where each <var>u<sub>i</sub></var> is an <a>IRI</a> and each <var>G<sub>i</sub></var> is an <a>RDF* graph</a> such that all <var>u<sub>i</sub></var> are distinct within the dataset.</p>
   </section>
 
   <section id="turtle-star">

@@ -248,6 +248,33 @@
 
     <p>This Section introduces SPARQL*, which is an RDF*-aware extension of the RDF query language SPARQL [[SPARQL11-QUERY]]; i.e., SPARQL* can be used to query RDF* graphs.</p>
 
+    <section>
+      <h2>Initial Definitions</h2>
+
+      <p>A <dfn data-lt="triple-star-pattern">SPARQL* triple pattern</dfn> is a 3-tuple that is defined recursively as follows:</p>
+      <ol>
+        <li>Every <a>triple pattern</a> is a SPARQL* triple pattern;
+        <li>If |t| and <var>t'</var> are SPARQL* triple patterns, |x| is an <a>RDF term</a> or a <a>query variable</a>, and |p| is an <a>IRI</a> or a <a>query variable</a>, then (|t|,&nbsp;|p|,&nbsp;|x|), (|x|,&nbsp;|p|,&nbsp;|t|), and (|t|,&nbsp;|p|,&nbsp;<var>t'</var>) are SPARQL* triple patterns.
+      </ol>
+
+      <p>As for <a>RDF* triples</a>, a <a>SPARQL* triple pattern</a> MUST NOT contain itself.
+
+      <p>A <dfn data-lt="bgp-star">SPARQL* basic graph pattern</dfn> is a set of <a>SPARQL* triple patterns</a>.</p>
+
+      <p>A <dfn data-lt="ppp-star">SPARQL* property path pattern</dfn> is a 3-tuple (|s|,|p|,|o|) where</p>
+      <ul>
+        <li>|s| is either an <a>RDF term</a>, a <a>query variable</a>, or a <a>SPARQL* triple pattern</a>,
+        <li>|p| is a <a>property path expression</a>, and
+        <li>|o| is either an <a>RDF term</a>, a <a>query variable</a>, or a <a>SPARQL* triple pattern</a>.
+      </ul>
+
+      <p class="issue">I have added the definition above for the moment. However, there is additional work to be done to define the semantics of such <a>SPARQL* property path patterns</a>. In fact, even for standard <a>property path patterns</a>, the semantics has to be extended to use them over <a>RDF* graphs</a>.</p>
+
+      <p>A <dfn data-lt="solution-star-mapping">SPARQL* solution mapping</dfn>&nbsp;μ is a partial function from the set of all <a>query variables</a> to the union set of all <a>RDF terms</a> and all <a>RDF* triples</a>.
+      The domain of μ, denoted by dom(μ), is the set of <a>query variables</a> for which μ is defined.</p>
+
+    </section>
+
     <section id="sparql-star-grammar">
       <h2>Grammar</h2>
 

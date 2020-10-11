@@ -123,7 +123,7 @@
       <li>the <dfn data-cite="RDF11-CONCEPTS#dfn-object">object</dfn>, which is an <a>IRI</a>, a <a>literal</a>, a <a>blank node</a> or an <a>RDF* triple</a>;
     </ul>
 
-    <p>The definition relies on the notions of <dfn data-cite="RDF11-CONCEPTS#dfn-iri">IRI</dfn>, <dfn data-cite="RDF11-CONCEPTS#dfn-literal">literal</dfn> and <dfn data-cite="RDF11-CONCEPTS#dfn-blank-node">blank node</dfn> introduced by [[[RDF11-CONCEPTS]]] [[RDF11-CONCEPTS]]. It extends the definition of <dfn data-cite="RDF11-CONCEPTS#dfn-rdf-triple">RDF triple</dfn> by allowing the <a>subject</a> and the <a>object</a> to be another <a>triple</a>.</p>
+    <p>The definition relies on the notions of <dfn data-cite="RDF11-CONCEPTS#dfn-iri">IRI</dfn>, <dfn data-cite="RDF11-CONCEPTS#dfn-literal">literal</dfn> and <dfn data-cite="RDF11-CONCEPTS#dfn-blank-node">blank node</dfn> introduced by [[[RDF11-CONCEPTS]]] [[RDF11-CONCEPTS]]. It extends the definition of <dfn data-cite="RDF11-CONCEPTS#dfn-rdf-triple">RDF triple</dfn> by allowing the <a>subject</a> and the <a>object</a> to be an <a>RDF* triple</a>.</p>
 
     <p>For every <a>RDF* triple</a> <var>t</var>, we define its <dfn>elements</dfn> as the set containing its <a>subject</a>, its <a>predicate</a>, its <a>object</a>, plus all the <a>elements</a> of its <a>subject</a> and/or its <a>object</a> if they are themselves <a>RDF* triples</a>. By extension, we define the <a>elements</a> of an <a>RDF* graph</a> to be the union set of the <a>elements</a> of all its triples.</p>
 
@@ -257,7 +257,10 @@
         <li>If |t| and <var>t'</var> are SPARQL* triple patterns, |x| is an <a>RDF term</a> or a <a>query variable</a>, and |p| is an <a>IRI</a> or a <a>query variable</a>, then (|t|,&nbsp;|p|,&nbsp;|x|), (|x|,&nbsp;|p|,&nbsp;|t|), and (|t|,&nbsp;|p|,&nbsp;<var>t'</var>) are SPARQL* triple patterns.
       </ol>
 
-      <p>As for <a>RDF* triples</a>, a <a>SPARQL* triple pattern</a> MUST NOT contain itself.
+      <p>The definition of <a>SPARQL* triple patterns</a> relies on the notions of a
+      <dfn data-cite="SPARQL11-QUERY#defn-TriplePattern">triple pattern</dfn>, an <dfn data-cite="SPARQL11-QUERY#defn-RDFTerm">RDF term</dfn>, and a <dfn data-cite="SPARQL11-QUERY#defn-QueryVariable">query variable</dfn> as introduced by [[[SPARQL11-QUERY]]] [[SPARQL11-QUERY]]. In fact, the notion of a <a>SPARQL* triple pattern</a> extends the notion of a <a>triple pattern</a> by allowing the subject or the object to be a <a>SPARQL* triple pattern</a>.</p>
+
+      <p>As for <a>RDF* triples</a>, a <a>SPARQL* triple pattern</a> MUST NOT contain itself.</p>
 
       <p>A <dfn data-lt="bgp-star">SPARQL* basic graph pattern</dfn> is a set of <a>SPARQL* triple patterns</a>.</p>
 
@@ -268,10 +271,12 @@
         <li>|o| is either an <a>RDF term</a>, a <a>query variable</a>, or a <a>SPARQL* triple pattern</a>.
       </ul>
 
-      <p class="issue">I have added the definition above for the moment. However, there is additional work to be done to define the semantics of such <a>SPARQL* property path patterns</a>. In fact, even for standard <a>property path patterns</a>, the semantics has to be extended to use them over <a>RDF* graphs</a>.</p>
+      <p class="issue">I have added the definition above for the moment. However, there is additional work to be done to define the semantics of such <a>SPARQL* property path patterns</a>. In fact, even for standard <a>property path patterns</a>, the semantics has to be extended to use them over <a>RDF* graphs</a>. -Olaf</p>
 
       <p>A <dfn data-lt="solution-star-mapping">SPARQL* solution mapping</dfn>&nbsp;μ is a partial function from the set of all <a>query variables</a> to the union set of all <a>RDF terms</a> and all <a>RDF* triples</a>.
       The domain of μ, denoted by dom(μ), is the set of <a>query variables</a> for which μ is defined.</p>
+
+      <p>The notion of a <a>SPARQL* solution mapping</a> extends the notion of a <a>solution mapping</a> as introduced by [[[SPARQL11-QUERY]]] [[SPARQL11-QUERY]]; that is, every SPARQL <a>solution mapping</a> is a <a>SPARQL* solution mapping</a>. However, in contrast to SPARQL <a>solution mappings</a>, <a>SPARQL* solution mappings</a> may map <a>variables</a> also to <a>RDF* triples</a>.
 
     </section>
 

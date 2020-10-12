@@ -107,7 +107,7 @@
     </section>
 
     <section id="conformance">
-      <p class=issue>TODO we may need to add more things here</p>
+      <div class=issue data-number="3"></div>
     </section>
 
   </section>
@@ -156,8 +156,6 @@
   <section id="turtle-star">
     <h2>Turtle*</h2>
     <p>In this section, we present Turtle*, an extension of the Turtle format [[TURTLE]] allowing to represent <a>RDF* graphs</a>. For the sake of conciseness, we only describe here the differences between Turtle* and Turtle.</p>
-
-    <p class="issue">Is it enough to "patch" the Turtle Syntax and Parsing Section with RDF*-specific features, or should we </p>
 
     <section id="turtle-star-grammar">
       <h2>Grammar</h2>
@@ -274,7 +272,7 @@
         <li>|o| is either an <a>RDF term</a>, a <a>query variable</a>, or a <a>SPARQL* triple pattern</a>.
       </ul>
 
-      <p class="issue">I have added the definition above for the moment. However, there is additional work to be done to define the semantics of such <a>SPARQL* property path patterns</a>. In fact, even for standard <a>property path patterns</a>, the semantics has to be extended to use them over <a>RDF* graphs</a>. -Olaf</p>
+      <div class="issue" data-number="4"></div>
 
       <p>A <dfn data-lt="solution-star-mapping">SPARQL* solution mapping</dfn>&nbsp;μ is a partial function from the set of all <a>query variables</a> to the union set of all <a>RDF terms</a> and all <a>RDF* triples</a>.
       The domain of μ, denoted by dom(μ), is the set of <a>query variables</a> for which μ is defined.</p>
@@ -401,8 +399,6 @@
 
     <section>
       <h2>Algebra</h2>
-
-      <p class="issue">In [[RDF-STAR-FOUNDATION]], the algebra is not based on [[SPARQL11-QUERY]], but on Pérez <i>et al.</i> 2009. To we want to keep this, or should we align more closely to the W3C spec?</p>
 
       <p>TODO here the definitions of
         <dfn>BGP*</dfn>,
@@ -547,7 +543,7 @@
         <li>For any algebra expression |E| of the form TR(|tp|, <var>?v</var>) where |tp| is a <a>triple* pattern</a> and <var>?v</var> is a <a>variable</a> (as introduced <a href="#translate-bind"></a>>), eval(D(|G|), |E|) = ⟦(|tp| AS <var>?v</var>)⟧<sub>|G|</sub> (where ⟦(|tp| AS <var>?v</var>)⟧<sub>|G|</sub> is the <a>evaluation</a> of SPARQL* expression (|tp| AS <var>?v</var>) over <a>RDF* graph</a> |G|.</li>
       </ul>
 
-      <p class="issue">⟦|B|⟧<sub>|G|</sub> is not defined anywhere here, and neither is ⟦(|tp| AS <var>?v</var>)⟧<sub>|G|</sub>.  -Olaf</p>
+      <div class="issue" data-number="5"></div>
 
       <p>For any other algebra expression, the SPARQL specification defines algebra operators [[SPARQL11-QUERY]]. These definitions can be extended naturally to operate over multisets of <a>solution* mappings</a> (instead of ordinary <a>solution mappings</a>). Given this extension, the recursive steps of the definition of function eval for SPARQL* are the same as in the SPARQL specification.</p>
     </section>
@@ -563,6 +559,10 @@
       TODO
     </p>
 
+  </section>
+
+  <section class="appendix" id="issue-summary">
+    <!-- A list of issues will magically appear here -->
   </section>
 </body>
 </html>

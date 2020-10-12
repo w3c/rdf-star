@@ -143,9 +143,8 @@
 
     <p>An <a>RDF* triple</a> used as the <a>subject</a> or <a>object</a> of another <a>RDF* triple</a> is called an <dfn data-lt="embedded">embedded triple</dfn>. An <a>RDF* triple</a> that is an element of an <a>RDF* graph</a> is called an <dfn data-lt="asserted">asserted triple</dfn>. Note that, in a given <a>RDF* graph</a>, the same <a>triple</a> MAY be both <a>embedded</a> and <a>asserted</a>.</p>
 
-    <p><a>IRIs</a>, <a>literals</a>, <a>blank nodes</a> and <a>embedded triples</a> are collectively known as <dfn>RDF* terms</dfn>.</p>
+    <p><a>IRIs</a>, <a>literals</a>, <a>blank nodes</a> and <a>RDF* triples</a> are collectively known as <dfn>RDF* terms</dfn>.</p>
 
-    <p class="issue">The notion of <a>embedded triples</a> has a meaning only within the context of a given <a>RDF* graph</a>. In contrast, the notion of <a>RDF* terms</a> should be a general concept. Consequently, the notion of <a>RDF* terms</a> cannot be defined based on the notion of <a>embedded triples</a>. I propose to replace <a>embedded triples</a> in the definition by <a>RDF* triples</a>. -Olaf</p>
 
     <p>An <dfn data-lt="dataset">RDF* dataset</dfn> is a set {<var>G</var>, (<var>u<sub>1</sub></var>,<var>G<sub>1</sub></var>), ..., (<var>u<sub>n</sub></var>,<var>G<sub>n</sub></var>)} that consists of one <a>RDF* graph</a>&nbsp;<var>G</var>, called the <dfn data-lt="default-graph">default graph</dfn> of the dataset, and zero or more pairs (<var>u<sub>i</sub></var>,<var>G<sub>i</sub></var>) where each <var>u<sub>i</sub></var> is an <a>IRI</a> and each <var>G<sub>i</sub></var> is an <a>RDF* graph</a> such that all <var>u<sub>i</sub></var> are distinct within the dataset.</p>
   </section>

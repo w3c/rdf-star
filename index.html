@@ -91,7 +91,7 @@
     <section class="informative">
       <h2>Background and Motivation</h2>
 
-      <p>TODO, citing [[RDF-STAR-FOUNDATION]]</p>
+      <p>TODO, citing [[RDF-STAR-FOUNDATION]]</p>
     </section>
 
     <section class="informative">
@@ -101,7 +101,7 @@
       <p>The syntax of RDF is defined in two layers:</p>
       <ul>
         <li>the <dfn>abstract syntax</dfn>, which is the conceptual data model of RDF, and</li>
-        <li>multiple <dfn data-cite="RDF11-CONCEPTS#dfn-concrete-rdf-syntax" data-lt="concrete syntax|concrete RDF syntax|concrete RDF syntaxes">concrete syntaxes</dfn> (such as RDF/XML [[RDF-SYNTAX-GRAMMAR]], Turtle [[TURTLE]] or JSON-LD [[JSON-LD11]]), which are data formats used to serialize the abstract syntax into files or over the wire.</li>
+        <li>multiple <dfn data-cite="RDF11-CONCEPTS#dfn-concrete-rdf-syntax" data-lt="concrete syntax|concrete RDF syntax|concrete RDF syntaxes">concrete syntaxes</dfn> (such as RDF/XML [[RDF-SYNTAX-GRAMMAR]], Turtle [[TURTLE]] or JSON-LD [[JSON-LD11]]), which are data formats used to serialize the abstract syntax into files or over the wire.</li>
       </ul>
       <p>Similarly, this document defines the <a>abstract syntax</a> of RDF* in <a href="#concepts"></a>, and one <a>concrete syntax</a> based on Turtle [[TURTLE]] in <a href="#turtle-star"></a>.</p>
     </section>
@@ -123,7 +123,7 @@
       <li>the <dfn data-cite="RDF11-CONCEPTS#dfn-object">object</dfn>, which is an <a>IRI</a>, a <a>literal</a>, a <a>blank node</a> or an <a>RDF* triple</a>;
     </ul>
 
-    <p>The definition relies on the notions of <dfn data-cite="RDF11-CONCEPTS#dfn-iri">IRI</dfn>, <dfn data-cite="RDF11-CONCEPTS#dfn-literal">literal</dfn> and <dfn data-cite="RDF11-CONCEPTS#dfn-blank-node">blank node</dfn> introduced by [[[RDF11-CONCEPTS]]] [[RDF11-CONCEPTS]]. It extends the definition of <dfn data-cite="RDF11-CONCEPTS#dfn-rdf-triple">RDF triple</dfn> by allowing the <a>subject</a> and the <a>object</a> to be an <a>RDF* triple</a>.</p>
+    <p>The definition relies on the notions of <dfn data-cite="RDF11-CONCEPTS#dfn-iri">IRI</dfn>, <dfn data-cite="RDF11-CONCEPTS#dfn-literal">literal</dfn> and <dfn data-cite="RDF11-CONCEPTS#dfn-blank-node">blank node</dfn> introduced by [[[RDF11-CONCEPTS]]] [[RDF11-CONCEPTS]]. It extends the definition of <dfn data-cite="RDF11-CONCEPTS#dfn-rdf-triple">RDF triple</dfn> by allowing the <a>subject</a> and the <a>object</a> to be an <a>RDF* triple</a>.</p>
 
     <p>For every <a>RDF* triple</a> <var>t</var>, we define its <dfn>elements</dfn> as the set containing its <a>subject</a>, its <a>predicate</a>, its <a>object</a>, plus all the <a>elements</a> of its <a>subject</a> and/or its <a>object</a> if they are themselves <a>RDF* triples</a>. By extension, we define the <a>elements</a> of an <a>RDF* graph</a> to be the union set of the <a>elements</a> of all its triples.</p>
 
@@ -258,7 +258,7 @@
       </ol>
 
       <p>The definition of <a>SPARQL* triple patterns</a> relies on the notions of a
-      <dfn data-cite="SPARQL11-QUERY#defn-TriplePattern">triple pattern</dfn>, an <dfn data-cite="SPARQL11-QUERY#defn-RDFTerm">RDF term</dfn>, and a <dfn data-cite="SPARQL11-QUERY#defn-QueryVariable">query variable</dfn> as introduced by [[[SPARQL11-QUERY]]] [[SPARQL11-QUERY]]. In fact, the notion of a <a>SPARQL* triple pattern</a> extends the notion of a <a>triple pattern</a> by allowing the subject or the object to be a <a>SPARQL* triple pattern</a>.</p>
+      <dfn data-cite="SPARQL11-QUERY#defn-TriplePattern">triple pattern</dfn>, an <dfn data-cite="SPARQL11-QUERY#defn-RDFTerm">RDF term</dfn>, and a <dfn data-cite="SPARQL11-QUERY#defn-QueryVariable" data-lt="variable">query variable</dfn> as introduced by [[[SPARQL11-QUERY]]] [[SPARQL11-QUERY]]. In fact, the notion of a <a>SPARQL* triple pattern</a> extends the notion of a <a>triple pattern</a> by allowing the subject or the object to be a <a>SPARQL* triple pattern</a>.</p>
 
       <p>As for <a>RDF* triples</a>, a <a>SPARQL* triple pattern</a> MUST NOT contain itself.</p>
 
@@ -276,7 +276,7 @@
       <p>A <dfn data-lt="solution-star-mapping">SPARQL* solution mapping</dfn>&nbsp;μ is a partial function from the set of all <a>query variables</a> to the union set of all <a>RDF terms</a> and all <a>RDF* triples</a>.
       The domain of μ, denoted by dom(μ), is the set of <a>query variables</a> for which μ is defined.</p>
 
-      <p>The notion of a <a>SPARQL* solution mapping</a> extends the notion of a <a>solution mapping</a> as introduced by [[[SPARQL11-QUERY]]] [[SPARQL11-QUERY]]; that is, every SPARQL <a>solution mapping</a> is a <a>SPARQL* solution mapping</a>. However, in contrast to SPARQL <a>solution mappings</a>, <a>SPARQL* solution mappings</a> may map <a>variables</a> also to <a>RDF* triples</a>.
+      <p>The notion of a <a>SPARQL* solution mapping</a> extends the notion of a <a>solution mapping</a> as introduced by [[[SPARQL11-QUERY]]] [[SPARQL11-QUERY]]; that is, every SPARQL <a>solution mapping</a> is a <a>SPARQL* solution mapping</a>. However, in contrast to SPARQL <a>solution mappings</a>, <a>SPARQL* solution mappings</a> may map <a>variables</a> also to <a>RDF* triples</a>.
 
     </section>
 
@@ -392,14 +392,14 @@
         (<a href="#rObject">[80]</a>, <a href="#rGraphNodePath">[105]</a>)
         position of <a>triple patterns</a>,
         as well as in BIND statements
-        (<a href="#rBind">[80]</a>).
+        (<a href="#rBind">[60]</a>).
       </div>
     </section>
 
     <section>
       <h2>Algebra</h2>
 
-      <p class="issue">In [[RDF-STAR-FOUNDATION]], the algebra is not based on [[SPARQL11-QUERY]], but on Pérez <i>et al.</i> 2009. To we want to keep this, or should we align more closely to the W3C spec?</p>
+      <p class="issue">In [[RDF-STAR-FOUNDATION]], the algebra is not based on [[SPARQL11-QUERY]], but on Pérez <i>et al.</i> 2009. To we want to keep this, or should we align more closely to the W3C spec?</p>
 
       <p>TODO here the definitions of
         <dfn>BGP*</dfn>,
@@ -409,12 +409,10 @@
         <dfn>solution* mapping</dfn>,
         <dfn>evaluation</dfn>,
         ...
-        We reuse from [[SPARQL11-QUERY]] the following terms:
-        <dfn data-cite="SPARQL11-QUERY#defn_RDFTerm">RDF Term</dfn>,
+        We reuse from [[SPARQL11-QUERY]] the following terms:
         <dfn data-cite="SPARQL11-QUERY#defn_TriplePattern">triple patterns</dfn>,
         <dfn data-cite="SPARQL11-QUERY#defn_PropertyPathPattern">property path pattern</dfn>,
         <dfn data-cite="SPARQL11-QUERY#defn_PropertyPathExpr">property path expression</dfn>,
-        <dfn data-cite="SPARQL11-QUERY#defn_QueryVariable" data-lt="variable">query variable</dfn>,
         <dfn data-cite="SPARQL11-QUERY#defn_SolutionMapping">solution mapping</dfn>,
         ...
 
@@ -434,7 +432,7 @@
         <ul>
           <li>A <a>variable</a> is in-scope of a <a>BGP*</a> |B| if the <a>variable</a> occurs in |B|, which includes an occurrence in any <a>embedded triple pattern</a> in |B| (independent of the level of nesting).</li>
           <li>A <a>variable</a> is in-scope of a <a>property path pattern</a> if the variable occurs in that pattern, which includes an occurrence in any embedded triple pattern in the pattern (independent of the level of nesting).</li>
-          <li>A <a>variable</a> is in-scope of a BIND clause of the form `BIND ( T AS v )` (where |T| is an <a>embedded triple pattern</a>) if the variable is variable |v| or the variable occurs in the <a>embedded triple pattern</a> |T|. As for standard BIND clauses with expressions, variable |v| must <q>not [be] in-scope from the preceeding elements in the group graph pattern in which [the BIND clause] is used</q> [<a data-cite="SPARQL11-QUERY#variableScope">SPARQL11-QUERY, Section 18.2.1]</a>].</li>
+          <li>A <a>variable</a> is in-scope of a BIND clause of the form `BIND ( T AS v )` (where |T| is an <a>embedded triple pattern</a>) if the variable is variable |v| or the variable occurs in the <a>embedded triple pattern</a> |T|. As for standard BIND clauses with expressions, variable |v| must <q>not [be] in-scope from the preceeding elements in the group graph pattern in which [the BIND clause] is used</q> [<a data-cite="SPARQL11-QUERY#variableScope">SPARQL11-QUERY, Section 18.2.1]</a>].</li>
         </ul>
       </section>
 
@@ -504,7 +502,7 @@
 
         <p>The translation as specified in the W3C specification distinguishes four cases. The first three of these cases do not require adjustment because they are taken care of either by recursion or by the adjusted translation of basic graph patterns (as defined in <a href="#translate-bgp"></a> below). However, the fourth case MUST be adjusted as follows.</p>
 
-        <p>Let |X| |P| |Y| be a string that corresponds to the fourth case in [<a data-cite="SPARQL11-QUERY#sparqlTranslatePathPatterns">SPARQL11-QUERY, Section 18.2.2.4</a>]. Given the grammar introduced in <a href="#sparql-star-grammar"></a>, |X| and |Y| may be an <a>RDF term</a>, a <a>variable</a>, or an <a>embedded triple pattern</a>, respectively (and |P| is a <a>property path expression</a>). The string |X| |P| |Y| is translated to the algebra expression `Path`(<var>X’</var>,|P|,<var>Y’</var>) where <var>X’</var> and <var>Y’</var> are the result of calling a function named `Lift` for |X| and |Y|, respectively. For some input string |Z| (such as |X| or |Y|) that can be an <a>RDF term</a>, a <a>variable</a>, or an <a>embedded triple pattern</a>, the function `Lift` is defined as follows:</p>
+        <p>Let |X| |P| |Y| be a string that corresponds to the fourth case in [<a data-cite="SPARQL11-QUERY#sparqlTranslatePathPatterns">SPARQL11-QUERY, Section 18.2.2.4</a>]. Given the grammar introduced in <a href="#sparql-star-grammar"></a>, |X| and |Y| may be an <a>RDF term</a>, a <a>variable</a>, or an <a>embedded triple pattern</a>, respectively (and |P| is a <a>property path expression</a>). The string |X| |P| |Y| is translated to the algebra expression `Path`(<var>X’</var>,|P|,<var>Y’</var>) where <var>X’</var> and <var>Y’</var> are the result of calling a function named `Lift` for |X| and |Y|, respectively. For some input string |Z| (such as |X| or |Y|) that can be an <a>RDF term</a>, a <a>variable</a>, or an <a>embedded triple pattern</a>, the function `Lift` is defined as follows:</p>
 
         <ol id="lift">
           <li>If |Z| is an <a>embedded triple pattern</a> &lt;&lt;|S|,|P|,|O|&gt;&gt; then return the <a>triple* pattern</a> (`Lift`(|S|, |P|, `Lift`(|O|));</li>
@@ -515,7 +513,7 @@
       <section id="translate-bgp">
         <h2>Translate Basic Graph Patterns</h2>
 
-        <p>After translating <a>property path patterns</a>, the translation process collects <q>any adjacent triple patterns [...] to form a basic graph pattern</q> [<a data-cite="SPARQL11-QUERY#sparqlTranslateBasicGraphPatterns">SPARQL11-QUERY, Section 18.2.2.5</a>]. This step has to be adjusted because <a>triple patterns</a> in the extended syntax may have an <a>embedded triple pattern</a> in their subject position or in their object position (or in both). To ensure that every result of this step is a <a>BGP*</a>, before adding a <a>triple pattern</a> to its corresponding collection, its subject and object MUST be replaced by the result of calling <a href="#lift">function `Lift`</a> for the subject and the object, respectively.</p>
+        <p>After translating <a>property path patterns</a>, the translation process collects <q>any adjacent triple patterns [...] to form a basic graph pattern</q> [<a data-cite="SPARQL11-QUERY#sparqlTranslateBasicGraphPatterns">SPARQL11-QUERY, Section 18.2.2.5</a>]. This step has to be adjusted because <a>triple patterns</a> in the extended syntax may have an <a>embedded triple pattern</a> in their subject position or in their object position (or in both). To ensure that every result of this step is a <a>BGP*</a>, before adding a <a>triple pattern</a> to its corresponding collection, its subject and object MUST be replaced by the result of calling <a href="#lift">function `Lift`</a> for the subject and the object, respectively.</p>
       </section>
 
       <section id="translate-bind">
@@ -538,15 +536,15 @@
     <section>
       <h2>Evaluation Semantics</h2>
 
-      <p>The SPARQL specification defines a function “eval(D(G), algebra expression) as the evaluation of an algebra expression with respect to a dataset D having active graph G”[<a href="SPARQL11-QUERY#sparqlAlgebraEval">SPARQL11-QUERY, Section 18.6</a>]. Recall that the active graph |G| in the context of SPARQL* is an <a>RDF* graph</a>, and so is any other graph in dataset |D|. The definition of function eval is recursive; the two base cases of this definition for SPARQL* are given as follows:</p>
+      <p>The SPARQL specification defines a function <q>eval(D(G), algebra expression) as the evaluation of an algebra expression with respect to a dataset D having active graph G</q> [<a href="SPARQL11-QUERY#sparqlAlgebraEval">SPARQL11-QUERY, Section 18.6</a>]. Recall that the active graph |G| in the context of SPARQL* is an <a>RDF* graph</a>, and so is any other graph in dataset |D|. The definition of function eval is recursive; the two base cases of this definition for SPARQL* are given as follows:</p>
 
       <ul>
-        <li>For any <a>BGP*</a> |B|, eval(D(|G|), |B|) = ⟦|B|⟧<sub>|G|</sub>(where ⟦|B|⟧<sub>|G|</sub> is the <a>evaluation</a> of |B| over <a>RDF* graph</a> |G|.</li>
+        <li>For any <a>BGP*</a> |B|, eval(D(|G|), |B|) = ⟦|B|⟧<sub>|G|</sub> (where ⟦|B|⟧<sub>|G|</sub> is the <a>evaluation</a> of |B| over <a>RDF* graph</a> |G|).</li>
 
-        <li>For any algebra expression |E| of the form TR(|tp|, |?v|) where |tp| is a <a>triple* pattern</a> and |?v| is a <a>variable</a> (as introduced <a href="#translate-bind"></a>>), eval(D(|G|), |E|) = ⟦(|tp| AS |?v|)⟧<sub>|G|</sub> (where ⟦(|tp| AS |?v|)⟧<sub>|G|</sub> is the <a>evaluation</a> of SPARQL* expression (|tp| AS |?v|) over <a>RDF* graph</a> |G|.</li>
+        <li>For any algebra expression |E| of the form TR(|tp|, <var>?v</var>) where |tp| is a <a>triple* pattern</a> and <var>?v</var> is a <a>variable</a> (as introduced <a href="#translate-bind"></a>>), eval(D(|G|), |E|) = ⟦(|tp| AS <var>?v</var>)⟧<sub>|G|</sub> (where ⟦(|tp| AS <var>?v</var>)⟧<sub>|G|</sub> is the <a>evaluation</a> of SPARQL* expression (|tp| AS <var>?v</var>) over <a>RDF* graph</a> |G|.</li>
       </ul>
 
-      <p class="issue">⟦|B|⟧<sub>|G|</sub> is not defined anywhere here, and neither is ⟦(|tp| AS |?v|)⟧<sub>|G|</sub>.  -Olaf</p>
+      <p class="issue">⟦|B|⟧<sub>|G|</sub> is not defined anywhere here, and neither is ⟦(|tp| AS <var>?v</var>)⟧<sub>|G|</sub>.  -Olaf</p>
 
       <p>For any other algebra expression, the SPARQL specification defines algebra operators [[SPARQL11-QUERY]]. These definitions can be extended naturally to operate over multisets of <a>solution* mappings</a> (instead of ordinary <a>solution mappings</a>). Given this extension, the recursive steps of the definition of function eval for SPARQL* are the same as in the SPARQL specification.</p>
     </section>
@@ -557,7 +555,7 @@
     <h2>RDF* semantics</h2>
 
     <p>
-      Here we extend RDF <abbr title="model theoretic">MT</abbr> semantics [[RDF11-MT]] to RDF*.
+      Here we extend RDF <abbr title="model theoretic">MT</abbr> semantics [[RDF11-MT]] to RDF*.
       Referring to <a>blank node</a>.
       TODO
     </p>

@@ -38,6 +38,7 @@
       shortName: "rdf-star",
       group: "rdf-dev",
       xref: ["RDF11-CONCEPTS", "SPARQL11-QUERY", "RDF11-MT"],
+      maxTocLevel: 2,
     };
   </script>
   <style>
@@ -134,8 +135,13 @@
 
     <div class="example">
       Consider the following <a>RDF* triple</a> (represented in Turtle*):
-      <pre class="nohighlight">
-        &lt;&lt;_:a :name "Alice" >> :statedBy :bob.
+      <pre data-transform="updateExample"
+        data-content-type="text/x-turtle-star"
+        class="nohighlight example"
+      >
+        <!--
+        << _:a :name "Alice" >> :statedBy :bob.
+        -->
       </pre>
       Its set of <a>elements</a> comprises the <a>IRIs</a> `:name`, `:statedBy`, `:bob`, the <a>blank node</a> `_:a`, the <a>literal</a> `"Alice"`, and the <a>triple</a> `&lt;&lt; _:a :name "Alice" >>`.
     </div>
@@ -444,8 +450,8 @@
             <div class="example">
               For instance, the following syntax expression:
               <pre data-transform="updateExample"
-                data-content-type="application/sparql-query"
-                class="nohighlight"
+                data-content-type="application/x-sparql-star-query"
+                class="nohighlight example"
               >
                 <!--
                 <<?c a rdfs:Class>> dct:source ?src ;
@@ -454,8 +460,8 @@
               </pre>
               must be expanded to
               <pre data-transform="updateExample"
-                data-content-type="application/sparql-query"
-                class="nohighlight"
+                data-content-type="application/x-sparql-star-query"
+                class="nohighlight example"
               >
                 <!--
                 <<?c a rdfs:Class>> dct:source ?src .
@@ -470,8 +476,8 @@
             <div class="example">
               For instance, the embedded triple pattern
               <pre data-transform="updateExample"
-                data-content-type="application/sparql-query"
-                class="nohighlight"
+                data-content-type="application/x-sparql-star-query"
+                class="nohighlight example"
               >
                 <!--
                 <<?c a rdfs:Class>>
@@ -479,8 +485,8 @@
               </pre>
               must be expanded to
               <pre data-transform="updateExample"
-                data-content-type="application/sparql-query"
-                class="nohighlight"
+                data-content-type="application/x-sparql-star-query"
+                class="nohighlight example"
               >
                 <!--
                 <<?c <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2000/01/rdf-schema#Class>>>
@@ -570,7 +576,7 @@
 
       <section>
         <h2>Semantic condition for ground graphs</h2>
-        <p>We say that an <a>RDF* graph</a> is <dfn data-lt="ground RDF* graph">ground</dfn> if its set of <a>elements</a> contains no <a>blank node</a>. This is a generalization of the notion of <a data-cite="RDF11-MT#dfn-ground">ground RDF graph</a> [[RDF11-MT]]. The denotation of a <a>ground RDF* graph</a> in an <a>RDF* simple interpretation</a> |I| is then given by the following rules, where the interpretation is also treated as a function from expressions (names, triples and graphs) to elements of the universe and truth values:</p>
+        <p>We say that an <a>RDF* graph</a> is <dfn data-lt="ground RDF* graph">ground</dfn> if its set of <a>elements</a> contains no <a>blank node</a>. This is a generalization of the notion of <a data-cite="RDF11-MT#dfn-ground">ground RDF graph</a> [[RDF11-MT]]. The denotation of a <a>ground RDF* graph</a> in an <a>RDF* simple interpretation</a> |I| is then given by the following rules, where the interpretation is also treated as a function from expressions (terms, triples and graphs) to elements of the universe and truth values:</p>
 
         <ul id="semantic-condition-ground-graphs">
           <li>if |E| is a <a>literal</a> then |I|(|E|) = |IL|(|E|)</li>
@@ -596,7 +602,7 @@
       <section>
         <h2>Semantic condition with blank nodes</h2>
 
-        <p>An invertible mapping from the set <a>blank nodes</a> to itself is called a <dfn>blank node renaming</dfn>. By extension, we define the application of a <a>blank node renaming</a> |R| to other <a>RDF* terms</a> and to <a>RDF* graphs</a> as follow:</p>
+        <p>An invertible mapping from the set <a>blank nodes</a> into itself is called a <dfn>blank node renaming</dfn>. By extension, we define the application of a <a>blank node renaming</a> |R| to other <a>RDF* terms</a> and to <a>RDF* graphs</a> as follow:</p>
 
         <ul>
           <li>if |E| is an <a>IRI</a> or a <a>literal</a>, then |R|(|E|) = |E|</li>
@@ -604,7 +610,7 @@
           <li>if |E| is an <a>RDF* graph</a>, then |R|(|E|) = {|R|(|t|) for all |t| ∈ |E|} </li>
         </ul>
 
-        <p>Suppose |I| is an <a>RDF* simple interpretation</a> and |A| is a mapping from a set of <a>blank nodes</a> to the universe |IR| of |I|. Define the mapping [|I|+|A|] of <a>RDF* terms</a> into |IR| to be |A| on blank nodes of the set, and |I| for any other term; and extend this mapping to <a>RDF* triples</a> and <a>RDF* graphs</a> using <a href="#semantic-condition-ground-graphs">the rules given above for ground graphs</a>. Then the denotation of any <a>RDF* graph</a> in |I| is given by:</p>
+        <p>Suppose |I| is an <a>RDF* simple interpretation</a> and |A| is a mapping from a set of <a>blank nodes</a> to the universe |IR| of |I|. Define the mapping [|I|+|A|] of <a>RDF* terms</a> into |IR| to be |A| on blank nodes of the set, and |I| on any other term; and extend this mapping to <a>RDF* triples</a> and <a>RDF* graphs</a> using <a href="#semantic-condition-ground-graphs">the rules given above for ground graphs</a>. Then the denotation of any <a>RDF* graph</a> in |I| is given by:</p>
 
         <ul>
           <li>If |E| is an <a>RDF* graph</a>, |I|(|E|)=true if [|I|+|A|](|R|(|E|))=true<ul>
@@ -614,14 +620,14 @@
         </ul>
 
         <div class="note">
-          For the special case of a standard <a>RDF graphs</a> and standard <a>simple interpretation</a>, the condition above is equivalent to the one defined in [[[RDF11-MT]]], which only requires a mapping |A|, but no <a>blank node renaming</a>. Indeed, if the <a href="RDF11-MT#blank_nodes">original condition</a> holds, then the identity function can trivially be chosen to fulfill for |R|. Conversely, if the condition above holds with |R| and |A|, then the mapping |A|∘|R| can be used to fulfill the original condition.
+          For the special case of a standard <a>RDF graph</a> and an RDF <a>simple interpretation</a>, the condition above is equivalent to the one defined in [[[RDF11-MT]]], which only requires a mapping |A|, but no <a>blank node renaming</a>. Indeed, if the <a href="RDF11-MT#blank_nodes">original condition</a> holds, then the identity function can trivially be chosen for |R| to fulfill the condition above. Conversely, if the condition above holds with |R| and |A|, then the mapping |A|∘|R| can be used to fulfill the original condition.
         </div>
       </section>
 
       <section>
         <h2>Entailment</h2>
 
-        <p>Following [[[RDF11-MT]]], we extend the notions of satisfiability and entailment to <a>RDF* graphs</a>. An <a>RDF* simple interpretation</a> <dfn>satisfies</dfn> |E| when |I|(|E|)=true. |E| is (simply) <dfn>satisfiable</dfn> when an <a>RDF* simple interpretation</a> exists which satisfies it, otherwise (simply) <dfn>unsatisfiable</dfn>. An <a>RDF* graph</a> |G| simply <dfn>entails</dfn> an <a>RDF* graph</a> H when every interpretation which satisfies |G| also satisfies |H|. If two <a>RDF* graphs</a> |G| and |H| each entail the other then they are logically <dfn>equivalent</dfn>.</p>
+        <p>Following [[[RDF11-MT]]], we extend the notions of satisfiability and entailment. An <a>RDF* simple interpretation</a> <dfn data-lt="satisfiability">satisfies</dfn> |E| when |I|(|E|)=true. |E| is (simply) <dfn>satisfiable</dfn> when an <a>RDF* simple interpretation</a> exists which satisfies it, otherwise (simply) <dfn>unsatisfiable</dfn>. An <a>RDF* graph</a> |G| simply <dfn>entails</dfn> an <a>RDF* graph</a> H when every interpretation which satisfies |G| also satisfies |H|. If two <a>RDF* graphs</a> |G| and |H| each entail the other then they are logically <dfn>equivalent</dfn>.</p>
 
         <p>Any <a data-cite="RDF11-MT#dfn-semantic-extension">semantic extension</a> of RDF MAY be extended to RDF* by replacing the semantic conditions, the notion of satisfiability and the notion of entailment, defined in [[[RDF11-MT]]], by their corresponding extension defined above. This is notably the case for <a data-cite="RDF11-MT#D_entailment">Datatype entailment</a> and <a data-cite="RDF11-MT#rdfs_entailment">RDFS entailment</a>.</p>
       </section>
@@ -630,9 +636,145 @@
     <section class="informative">
       <h2>Design rationale</h2>
 
-      <p>In this section, we discuss a number of desired features of RDF* semantics, in order to shed light on the design of its semantics.</p>
+      <p>In this section, we discuss a number of desired features of RDF* semantics, in order to shed light on the design choices made in the previous section</p>
 
-      <p>TODO</p>
+      <section>
+        <h2>Quoting without asserting</h2>
+
+        <p>RDF* must be able to quote a triple without asserting it, so that we can represent peoples' beliefs without endorsing them, or facts are no longer or not yet true. This is ensured by the fact that the semantic condition on <a>embedded triples</a> (introduced for in RDF*) is different from the one on <a>asserted triples</a> (inherited from RDF).</p>
+
+        For example, the following graph:
+        <pre data-transform="updateExample"
+          data-content-type="text/x-turtle-star"
+          class="nohighlight example"
+        >
+          <!--
+          :alice :believes << :bob :name "Charlie" >>.
+          -->
+        </pre>
+        does <em>not entail</em> `:bob :name "Charlie"`,
+        and the SPARQL* query below executed against the graph above would return no result.
+        <pre data-transform="updateExample"
+        data-content-type="application/x-sparql-star-query"
+        class="nohighlight example"
+        >
+          <!--
+          SELECT ?name { :bob :name ?name }
+          -->
+        </pre>
+      </section>
+
+      <section>
+        <h2>Blank node scope</h2>
+
+        <p><a>Blank nodes</a> in <a>embedded triples</a> have the same scope as blank nodes used in the <a>subject</a> or <a>object</a> position of <a>asserted triples</a> (usually the whole graph or the whole dataset in which they appear). This means that the same <a>blank node</a> identifier used in different <a>embedded triples</a>, or at different levels of nesting, will refer to the same thing.</p>
+
+        <p>For example, in the following graph:</p>
+        <pre data-transform="updateExample"
+          data-content-type="text/x-turtle-star"
+          class="nohighlight example"
+        >
+          <!--
+          :alice :knows _:x.
+          :alice :believes << _:x :name "Charlie" >>.
+          :alice :believes << _:x :workingFor :acme >>.
+          -->
+        </pre>
+        <p>the three occurrence of `_:x` must refer to the same resource in every interpretation of the graph. In other words, it must be the same resource that Alice knows, that she believes is named "Charlie", and that she believes works for ACME.</p>
+        <p>As a consequence, the following query will return `"Charlie"`:</p>
+        <pre data-transform="updateExample"
+          data-content-type="application/x-sparql-star-query"
+          class="nohighlight example"
+        >
+          <!--
+          SELECT ?name {
+            :alice :knows ?x.
+            :alice :believes << ?x :name ?name >>.
+            :alice :believes << ?x :workingFor :acme >>.
+          }
+          -->
+        </pre>
+        <p>As another consequence, the following graph does <em>not entail</em> the graph above (because the graph below allows the resource known by Alice to be different from the one about which she has believes).</p>
+        <pre data-transform="updateExample"
+          data-content-type="text/x-turtle-star"
+          class="nohighlight example"
+        >
+          <!--
+          :alice :knows _:y.
+          :alice :believes << _:x :name "Charlie" >>.
+          :alice :believes << _:x :workingFor :acme >>.
+          -->
+        </pre>
+
+        <p>Formally, the second graph is satisfied by an interpretation where:</p>
+        <ul>
+          <li>|IS|: `:alice`→A, `:knows`→K, `:believes`→B, `:name`→N, `:workingFor`→W, `:acme`→M</li>
+          <li>|IL|: `"Charlie"`→C
+          <li>|IT|: `&lt;&lt; _:x :name "Charlie" &gt;&gt;`→T1, `&lt;&lt; _:x :workingFor :acme &gt;&gt;`→T2</li>
+          <li>|IEXT|(K) = {(A,Y)}</li>
+          <li>|IEXT|(B) = {(A,T1), (A,T2)}</li>
+          <li>|ITEXT|(T1) = (X,N,C)</li>
+          <li>|ITEXT|(T2) = (X,W,M)</li>
+        </ul>
+        <p>but this interpretation can not satisfy the first graph, because the mapping `A` must map `_:x` to both Y (to satisfy |IEXT|(K)) and to X (to satisfy |ITEXT|(T1) and |ITEXT|(T2)).</p>
+      </section>
+
+      <section id="referential-opacity">
+        <h2>Referential opacity</h2>
+
+        <p><a>Embedded triples</a> are referentially opaque, meaning that triples using different terms are considered different, even if their terms can be inferred to be synonyms. Although RDF* simple <a href="#entailment">entailment</a> has no mean to entail any kind of synonymy, it is possible in some <a data-cite="RDF11-MT#dfn-semantic-extension">semantic extensions</a>, such as OWL [[OWL2-RDF-BASED-SEMANTICS]].
+
+        <p>A well known example is the <a href="https://www.w3.org/2001/12/attributions/#superman">superman problem</a>:</p>
+
+        <pre data-transform="updateExample"
+          data-content-type="text/x-turtle-star"
+          class="nohighlight example"
+        >
+          <!--
+          :loisLane :believes << :superman :can :fly >>.
+          :superman owl:sameAs :clarkKent.
+          :superman :can :fly.
+          -->
+        </pre>
+
+        <p>Intuitively: this graph states that Superman and Clark Kent are the same person, so if Superman can fly, then it follows that Clark Kent can as well. So, under OWL2-entailment, this graph entails `:clarkKent :can :fly`. However, Lois Lane <em>does not know</em> that Superman and Clark Kent are the same person. So from her point of view, the two triples are not equivalent, and she can believe one without believing the other.</p>
+
+        <p>Referential opacity is ensured by differentiating the <em>intension</em> of embedded triples (represented by the |IT| mapping) from their extension (represented by |ITEXT|). Since |IT| is based solely on the syntax of triples, two syntactically different triples can always have different intentions, even if they are semantically equivalent (i.e. their extensions are identical).</p>
+      </section>
+
+      <section id="bnode-identifiers-not-significant">
+        <h2>Blank node identifiers are not significant</h2>
+        <p>In standard RDF, renaming a blank node does not change the semantics of a graph (provided that the new name was not already in use in that graph). This is ensured by the fact that RDF <a>simple interpretations</a> do not depend on <a>blank node</a> identifiers at all. In RDF*, however, because of the need for <a href="#referential-opacity">referential opacity</a>, the |IT| mapping does depend on the <a>blank node</a> identifiers used in the <a>embedded triple</a>. This is why the notion of <a>satisfiability</a> in RDF additionally relies on a <a>blank node renaming</a>.</p>
+
+        <p>Consider the following graph:</p>
+        <pre data-transform="updateExample"
+          data-content-type="text/x-turtle-star"
+          class="nohighlight example"
+        >
+          <!--
+          :alice :believes << _:x :name "Charlie" >>.
+          -->
+        </pre>
+        <p>Every interpretation satisfying this graph must have, for some A, B, C, N, T and X:</p>
+        <ul>
+          <li>|IS|: `:alice`→A, `:believes`→B, `:name`→N</li>
+          <li>|IL|: `"Charlie"`→C
+          <li>|IT|: `&lt;&lt; _:x :name "Charlie" &gt;&gt;`→T</li>
+          <li>|IEXT|(B) = {(A,T)}</li>
+          <li>|ITEXT|(T) = (X,N,C)</li>
+        </ul>
+        <p>Any such interpretation can be shown to also satisfy the graph below:</p>
+        <pre data-transform="updateExample"
+          data-content-type="text/x-turtle-star"
+          class="nohighlight example"
+        >
+          <!--
+          :alice :believes << _:y :name "Charlie" >>.
+          -->
+        </pre>
+        <p>For this, we must chose |R| such that |R|(`_:y`)=`_:x`, and |A| such that |A|(`_:x`)=X.</p>
+      </section>
+
     </section>
 
   </section>

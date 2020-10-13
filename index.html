@@ -190,12 +190,9 @@
           <td>[12]</td>
           <td>`object`</td>
           <td>::=</td>
-          <td><a data-cite="TURTLE#grammar-production-iri">iri</a> `|`
-            <a  data-cite="TURTLE#grammar-production-BlankNode">BlankNode</a> `|`
-            <a  data-cite="TURTLE#grammar-production-collection">collection</a> `|`
-            <a data-cite="TURTLE#grammar-production-blankNodePropertyList">blankNodePropertyList</a> `|`
-            <a data-cite="TURTLE#grammar-production-literal">literal</a> `|`
-            <a href="#grammar-production-embTriple">embTriple</a>
+          <td>
+            <a href="#grammar-production-object2">object2</a>
+            <a href="#grammar-production-annotation">annotation</a>?
           </td>
         </tr>
         <tr id="grammar-production-embTriple">
@@ -214,7 +211,8 @@
           <td>[28]</td>
           <td>`embSubject`</td>
           <td>::=</td>
-          <td><a data-cite="TURTLE#grammar-production-iri">iri</a> `|`
+          <td>
+            <a data-cite="TURTLE#grammar-production-iri">iri</a> `|`
             <a  data-cite="TURTLE#grammar-production-BlankNode">BlankNode</a> `|`
             <a href="#grammar-production-embTriple">embTriple</a>
           </td>
@@ -223,10 +221,34 @@
           <td>[29]</td>
           <td>`embObject`</td>
           <td>::=</td>
-          <td><a data-cite="TURTLE#grammar-production-iri">iri</a> `|`
+          <td>
+            <a data-cite="TURTLE#grammar-production-iri">iri</a> `|`
             <a  data-cite="TURTLE#grammar-production-BlankNode">BlankNode</a> `|`
             <a data-cite="TURTLE#grammar-production-literal">literal</a> `|`
             <a href="#grammar-production-embTriple">embTriple</a>
+          </td>
+        </tr>
+        <tr id="grammar-production-object2">
+          <td>[30]</td>
+          <td>`object2`</td>
+          <td>::=</td>
+          <td>
+            <a data-cite="TURTLE#grammar-production-iri">iri</a> `|`
+            <a  data-cite="TURTLE#grammar-production-BlankNode">BlankNode</a> `|`
+            <a  data-cite="TURTLE#grammar-production-collection">collection</a> `|`
+            <a data-cite="TURTLE#grammar-production-blankNodePropertyList">blankNodePropertyList</a> `|`
+            <a data-cite="TURTLE#grammar-production-literal">literal</a> `|`
+            <a href="#grammar-production-embTriple">embTriple</a>
+          </td>
+        </tr>
+        <tr id="grammar-production-annotation">
+          <td>[31]</td>
+          <td>`annotation`</td>
+          <td>::=</td>
+          <td>
+            <code class="grammar-literal">'{|'</code>
+            <a  data-cite="TURTLE#grammar-production-predicateObjectList">predicateObjectList</a>
+            <code class="grammar-literal">'|}'</code>
           </td>
         </tr>
       </table>

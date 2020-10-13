@@ -287,7 +287,7 @@
         <li>|o| is either an <a>RDF term</a>, a <a>query variable</a>, or a <a>SPARQL* triple pattern</a>.
       </ul>
 
-      <div class="issue" data-number="4"></div>
+      <div class="issue" data-number="7"></div>
 
       <p>A <dfn data-lt="solution-star-mapping">SPARQL* solution mapping</dfn> μ is a partial function from the set of all <a>query variables</a> to the union set of all <a>RDF* terms</a>.
       The domain of μ, denoted by dom(μ), is the set of <a>query variables</a> for which μ is defined.</p>
@@ -540,7 +540,7 @@
         <li>For any algebra expression |E| of the form TR(|tp|, <var>?v</var>) where |tp| is a <a>SPARQL* triple pattern</a> and <var>?v</var> is a <a>variable</a> (as introduced <a href="#translate-bind"></a>>), eval(D(|G|), |E|) = ⟦(|tp| AS <var>?v</var>)⟧<sub>|G|</sub> (where ⟦(|tp| AS <var>?v</var>)⟧<sub>|G|</sub> is the <a>evaluation</a> of SPARQL* expression (|tp| AS <var>?v</var>) over <a>RDF* graph</a> |G|.</li>
       </ul>
 
-      <div class="issue" data-number="5"></div>
+      <div class="issue" data-number="8"></div>
 
       <p>For any other algebra expression, the SPARQL specification defines algebra operators [[SPARQL11-QUERY]]. These definitions can be extended naturally to operate over multisets of <a>SPARQL* solution mappings</a> (instead of ordinary <a>solution mappings</a>). Given this extension, the recursive steps of the definition of function eval for SPARQL* are the same as in the SPARQL specification.</p>
     </section>

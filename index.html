@@ -142,7 +142,7 @@
 
     <p><a>IRIs</a>, <a>literals</a>, <a>blank nodes</a> and <a>RDF* triples</a> are collectively known as <dfn>RDF* terms</dfn>.</p>
 
-    <p>For every <a>RDF* triple</a> <var>t</var>, we define its <dfn>elements</dfn> as the set containing its <a>subject</a>, its <a>predicate</a>, its <a>object</a>, plus all the <a>elements</a> of its <a>subject</a> and/or its <a>object</a> if they are themselves <a>RDF* triples</a>. By extension, we define the <a>elements</a> of an <a>RDF* graph</a> to be the union set of the <a>elements</a> of all its triples.</p>
+    <p>For every <a>RDF* triple</a> <var>t</var>, we define its <dfn data-lt="constituent">constituent terms</dfn> (or simply constituents) as the set containing its <a>subject</a>, its <a>predicate</a>, its <a>object</a>, plus all the <a>constituent terms</a> of its <a>subject</a> and/or its <a>object</a> if they are themselves <a>RDF* triples</a>. By extension, we define the <a>constituent terms</a> of an <a>RDF* graph</a> to be the union set of the <a>constituent terms</a> of all its triples.</p>
 
     <div class="example">
       Consider the following <a>RDF* triple</a> (represented in Turtle*):
@@ -154,7 +154,7 @@
         << _:a :name "Alice" >> :statedBy :bob.
         -->
       </pre>
-      Its set of <a>elements</a> comprises the <a>IRIs</a> `:name`, `:statedBy`, `:bob`, the <a>blank node</a> `_:a`, the <a>literal</a> `"Alice"`, and the <a>triple</a> `&lt;&lt; _:a :name "Alice" >>`.
+      Its set of <a>constituent terms</a> comprises the <a>IRIs</a> `:name`, `:statedBy`, `:bob`, the <a>blank node</a> `_:a`, the <a>literal</a> `"Alice"`, and the <a>triple</a> `&lt;&lt; _:a :name "Alice" >>`.
     </div>
 
     <p>An <a>RDF* triple</a> used as the <a>subject</a> or <a>object</a> of another <a>RDF* triple</a> is called an <dfn data-lt="embedded">embedded triple</dfn>. An <a>RDF* triple</a> that is an element of an <a>RDF* graph</a> is called an <dfn data-lt="asserted">asserted triple</dfn>. Note that, in a given <a>RDF* graph</a>, the same <a>triple</a> MAY be both <a>embedded</a> and <a>asserted</a>.</p>
@@ -608,7 +608,7 @@
 
       <section>
         <h2>Semantic condition for ground graphs</h2>
-        <p>We say that an <a>RDF* graph</a> is <dfn data-lt="ground RDF* graph">ground</dfn> if its set of <a>elements</a> contains no <a>blank node</a>. This is a generalization of the notion of <a data-cite="RDF11-MT#dfn-ground">ground RDF graph</a> [[RDF11-MT]]. The denotation of a <a>ground RDF* graph</a> in an <a>RDF* simple interpretation</a> |I| is then given by the following rules, where the interpretation is also treated as a function from expressions (terms, triples and graphs) to elements of the universe and truth values:</p>
+        <p>We say that an <a>RDF* graph</a> is <dfn data-lt="ground RDF* graph">ground</dfn> if its set of <a>constituent terms</a> contains no <a>blank node</a>. This is a generalization of the notion of <a data-cite="RDF11-MT#dfn-ground">ground RDF graph</a> [[RDF11-MT]]. The denotation of a <a>ground RDF* graph</a> in an <a>RDF* simple interpretation</a> |I| is then given by the following rules, where the interpretation is also treated as a function from expressions (terms, triples and graphs) to elements of the universe and truth values:</p>
 
         <ul id="semantic-condition-ground-graphs">
           <li>if |E| is a <a>literal</a> then |I|(|E|) = |IL|(|E|)</li>
@@ -620,7 +620,7 @@
           </ul></li>
           <li>if |E| is an <a>RDF* graph</a> then then |I|(|E|) = true if<ul>
             <li>for every <a>RDF* triple</a> |t| ∈ |E|, |I|(|t|) = true, and</li>
-            <li>for every <a>RDF* triple</a> |t| = (|s|,|p|,|o|) ∈ <a>elements</a>(|E|), |ITEXT|(|IT|(|t|)) = (|I|(|s|), |I|(|p|), |I|(|o|))</li>
+            <li>for every <a>RDF* triple</a> |t| = (|s|,|p|,|o|) ∈ <a>constituents</a>(|E|), |ITEXT|(|IT|(|t|)) = (|I|(|s|), |I|(|p|), |I|(|o|))</li>
           </ul>otherwise |I|(|E|) = false</li>
         </ul>
 
@@ -647,7 +647,7 @@
         <ul>
           <li>If |E| is an <a>RDF* graph</a>, |I|(|E|)=true if [|I|+|A|](|R|(|E|))=true<ul>
             <li>for some <a>blank node renaming</a> |R|, and</li>
-            <li>for some mapping |A| from the set of <a>blank nodes</a> in <a>elements</a>(|R|(|E|)) into |IR|</li>
+            <li>for some mapping |A| from the set of <a>blank nodes</a> in <a>constituents</a>(|R|(|E|)) into |IR|</li>
           </ul>otherwise |I|(|E|)=false</li>
         </ul>
 

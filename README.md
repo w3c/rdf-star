@@ -1,1 +1,20 @@
-see https://w3c.github.io/rdf-star/
+## Draft ##
+
+See https://w3c.github.io/rdf-star/
+
+## Preliminary implementations ##
+
+| SA | PG | Implementation | Notes - Documentation
+|----|----|----------------|----------------------
+|    |  + | AllegroGraph   | in the works - https://lists.w3.org/Archives/Public/public-rdf-star/2020Aug/0021.html
+|    |  x | AnzoGraph      | https://docs.cambridgesemantics.com/anzograph/v2.2/userdoc/lpgs.htm?Highlight=rdf
+|    |  x | BlazeGraph     | https://github.com/blazegraph/database/wiki/Reification_Done_Right
+|  x |    | GraphDB        | http://graphdb.ontotext.com/documentation/9.2/free/devhub/rdf-sparql-star.html
+|  x |    | Jena           | https://jena.apache.org/documentation/rdfstar/
+|  + |  + | N3             | deferred - https://github.com/w3c/N3/issues/27#issuecomment-644768502
+|  x |    | rdf4j          | https://rdf4j.org/documentation/programming/rdfstar/
+|  x |  + | rdfjs/N3.js    | PG may become configurable soon - https://github.com/rdfjs/data-model-spec/pull/165
+|  x |  x | RubyRDF        | http://rdf.greggkellogg.net/yard/file.rdf-README.html#rdf-rdfstar
+|    |  x | Stardog        | https://www.stardog.com/docs/#_edge_properties
+      
+Source: https://lists.w3.org/Archives/Public/public-rdf-star/2020Aug/0026.html

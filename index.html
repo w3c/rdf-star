@@ -593,7 +593,7 @@
     <section>
       <h2>Definitions</h2>
 
-      <p>An <a>RDF* triple</a> is said to be <dfn data-lt="ground RDF* triple|ground RDF* graph|ground triple|ground graph">ground</dfn> if it has no <a>blank node</a> in its <a>constituent terms</a>. An <a>RDF* graph</a> is <a>ground</a> if all its triples are <a>ground</a>. This definition generalizes the notion of <a data-cite="RDF11-MT#dfn-ground">ground RDF graph</a>.</p>
+      <p>An <a>RDF* triple</a> is said to be <dfn data-lt="ground RDF* triple|ground RDF* graph|ground triple|ground graph">ground</dfn> if it has no <a>blank node</a> in its <a>constituent terms</a>. An <a>RDF* graph</a> is <a>ground</a> if all its triples are <a>ground</a>. This definition generalizes the notion of <a data-cite="RDF11-MT#dfn-ground">ground RDF graph</a>. <a>IRIs</a>, <a>literals</a> and <a>ground RDF* terms</a> are collectively known as <dfn>ground RDF* terms</dfn>.</p>
 
       <p>An <dfn>RDF* simple interpretation</dfn> |I| is a structure consisting of:</p>
       <ol>
@@ -633,7 +633,7 @@
         
         <p>Given an <a>RDF* graph</a> |E|, we call the <dfn data-abbr="ebn">embedded blank nodes</dfn> of |E| the set of <a>blank nodes</a> appearing in <a>subject</a> or <a>object</a> position of some <a>embedded triple</a> in |E|; we call the <dfn data-abbr="obn">open blank nodes</dfn> of |E| all the other blank nodes appearing in |E|.</p>
 
-        <p>A mapping from a set <a>blank nodes</a> into a set of <a>RDF* terms</a> is called a <dfn>grounding function</dfn>. We define the extended application of a <a>grounding function</a> <var>Γ</var> to other <a>RDF* terms</a> and to <a>RDF* graphs</a> as follows:</p>
+        <p>A mapping from a set <a>blank nodes</a> into a set of <a>ground RDF* terms</a> is called a <dfn>grounding function</dfn>. We define the extended application of a <a>grounding function</a> <var>Γ</var> to other <a>RDF* terms</a> and to <a>RDF* graphs</a> as follows:</p>
 
         <ul>
           <li>if |E| is a <a>blank node</a> then <var>Γ</var>*(|E|) = <var>Γ</var>(|E|) if it is defined, |E| otherwise</li>
@@ -649,7 +649,7 @@
             <li>true if there exists
               <ul>
                 <li>a mapping |A| from <a>obn</a>(|E|) into |IR|, and</li>
-                <li>a <a>grounding function</a> <var>Γ</var> from <a>ebn</a>(|E|) into <a>RDF* terms</a></li>
+                <li>a <a>grounding function</a> <var>Γ</var> from <a>ebn</a>(|E|) into <a>ground RDF* terms</a></li>
               </ul>
               such that [|I|+|A|](<var>Γ</var>*(|E|))=true
             </li>

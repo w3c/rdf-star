@@ -631,7 +631,7 @@
       <section>
         <h2>Semantic condition with blank nodes</h2>
         
-        <p>Given an <a>RDF* graph</a> |E|, we call the <dfn data-abbr="abn">asserted blank nodes</dfn> of |E| the set of <a>blank nodes</a> appearing in <a>subject</a> or <a>object</a> position of some <a>asserted triple</a> in |E|; we call the <dfn data-abbr="ebn">embedded blank nodes</dfn> of |E| the set of <a>blank nodes</a> appearing in <a>subject</a> or <a>object</a> position of some <a>embedded triple</a> in |E|. Note that <a>abn</a>(|E|) and <a>ebn</a>(|E|) may have a non-empty intersection.</p>
+        <p>Given an <a>RDF* graph</a> |E|, we call the <dfn data-abbr="ebn">embedded blank nodes</dfn> of |E| the set of <a>blank nodes</a> appearing in <a>subject</a> or <a>object</a> position of some <a>embedded triple</a> in |E|; we call the <dfn data-abbr="obn">open blank nodes</dfn> of |E| all the other blank nodes appearing in |E|.</p>
 
         <p>A mapping from a set <a>blank nodes</a> into a set of <a>RDF* terms</a> is called a <dfn>grounding function</dfn>. We define the extended application of a <a>grounding function</a> <var>Γ</var> to other <a>RDF* terms</a> and to <a>RDF* graphs</a> as follows:</p>
 
@@ -648,14 +648,10 @@
           <li>If |E| is an <a>RDF* graph</a>, |I|(|E|)=<ul>
             <li>true if there exists
               <ul>
-                <li>a mapping |A| from <a>abn</a>(|E|) into |IR|, and</li>
+                <li>a mapping |A| from <a>obn</a>(|E|) into |IR|, and</li>
                 <li>a <a>grounding function</a> <var>Γ</var> from <a>ebn</a>(|E|) into <a>RDF* terms</a></li>
               </ul>
-              such that
-              <ul>
-                <li>for any <a>blank node</a> |b| in <a>abn</a>(|E|)∩<a>ebn</a>(|E|), |I|(<var>Γ</var>(|b|))=|A|(|b|), and</li>
-                <li>[|I|+|A|](<var>Γ</var>*(|E|))=true</li>
-              </ul>
+              such that [|I|+|A|](<var>Γ</var>*(|E|))=true
             </li>
             <li>
               false otherwise
@@ -784,11 +780,11 @@
           <li>|IEXT|(K) = {(A,Y)}</li>
           <li>|IEXT|(C) = {(T1, A), (T2, A)}</li>
         </ul>
-        <p>with Γ: `_:x`→`:bob`, and A: `_:y`→Y. But this interpretation can not satisfy <a href="#bnode-scope-ex1">the first graph</a>, because it would require</p>
+        <p>with Γ: `_:x`→`:bob`, and A: `_:y`→Y. But this interpretation can not satisfy <a href="#bnode-scope-ex1">the first graph</a>, because it would require a <a>grounding function</a> Γ' such that</p>
         <ul>
-          <li>a grounding function Γ: `_:x`→`:bob`, to satisfy |IEXT|(C),</li>
-          <li>a mapping A: `_:x`→Y, to satisfy |IEXT|(K),</li>
-          <li>this would violate the condition that |I|(Γ(`_:x`)) and A(`_:x`) must be equal (since `_:x` is both an <a>asserted blank node</a> and an <a>embedded blank node</a>).</li>
+          <li>I(Γ'(`_:x`)) = Y in order to satisfy the first triple,</li>
+          <li>Γ'(`_:x`) = `:bob` in order to satisfy the second and third triple,</li>
+          <li>and both can not be true at the same time in the interpretation above.</li>
         </ul>
       </section>
 

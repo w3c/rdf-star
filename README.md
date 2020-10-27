@@ -14,7 +14,7 @@ See https://w3c.github.io/rdf-star/
 |  x |  + | EYE            | PG can be emulated by adding rules - https://github.com/josd/eye/
 |  x |    | rdf4j          | https://rdf4j.org/documentation/programming/rdfstar/
 |  x |  + | rdfjs/N3.js    | PG may become configurable soon - https://github.com/rdfjs/data-model-spec/pull/165
-|  x |  x | RubyRDF        | http://rdf.greggkellogg.net/yard/file.rdf-README.html#rdf-rdfstar
+|  x |  x | RubyRDF        | https://github.com/ruby-rdf/rdf#rdf-rdfstar
 |    |  x | Stardog        | https://www.stardog.com/docs/#_edge_properties
 |    |  x | Corese         | http://ns.inria.fr/sparql-extension/rdfstar.html
       

@@ -11,7 +11,7 @@ See https://w3c.github.io/rdf-star/
 |    |  x | BlazeGraph     | https://github.com/blazegraph/database/wiki/Reification_Done_Right
 |  x |    | GraphDB        | http://graphdb.ontotext.com/documentation/9.2/free/devhub/rdf-sparql-star.html
 |  x |    | Jena           | https://jena.apache.org/documentation/rdfstar/
-|  + |  + | N3             | deferred - https://github.com/w3c/N3/issues/27#issuecomment-644768502
+|  x |  + | EYE            | PG can be emulated by adding rules - https://github.com/josd/eye/
 |  x |    | rdf4j          | https://rdf4j.org/documentation/programming/rdfstar/
 |  x |  + | rdfjs/N3.js    | PG may become configurable soon - https://github.com/rdfjs/data-model-spec/pull/165
 |  x |  x | RubyRDF        | http://rdf.greggkellogg.net/yard/file.rdf-README.html#rdf-rdfstar

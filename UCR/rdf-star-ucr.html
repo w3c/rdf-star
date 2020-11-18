@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <title>RDF* Use Cases and Requirements</title>
+
+    <script src='https://www.w3.org/Tools/respec/respec-w3c' async class='remove'></script>
+    <script class='remove'>
+      var respecConfig = {
+        specStatus: "unofficial",
+        editors: [{
+          name: "RDF Star Community",
+          url: "https://github.com/w3c/rdf-star/issues/29",
+        }],
+      github: "https://github.com/w3c/rdf-star/",
+	    shortName: "rdf-star-ucr",
+      };
+    </script>
+    <style>
+      .contributor:before { content: "Contributed by: "; font-weight: bold; }
+    </style>
+  </head>
+  
+  <body>
+    <h1>RDF* Use Cases and Requirements</h1>
+    <section id='abstract'>
+      <p>
+         This document describes use cases that justify the extension of RDF in the current work in RDF star
+        community group. It is  collaborative work and is a non normative part of this group output.   
+      </p>
+    </section>
+    <section id='sotd'>
+      <p>
+      This document is a community working draft.
+      </p>
+    </section>
+
+    <section>
+      <h2>Introduction</h2>
+       <p>
+        This document collects together use cases and requirments for RDF* (RDF Star).
+        These use case were provided by members of the 
+        <a href="https://www.w3.org/community/rdf-dev/">W3C RDF Community Group</a>
+        on the <a href="https://lists.w3.org/Archives/Public/public-rdf-star/"
+                  >RDF* mailing list</a>
+        and <a href="https://github.com/w3c/rdf-star/issues/29">issue 29</a>
+        of the  community's GitHub repository.
+    </section>
+
+    <section>
+      <h2>Contributing Use Cases and Requirements</h2>
+      <p>
+        Add a comment to 
+        <a href="https://github.com/w3c/rdf-star/issues/29">issue 29</a>
+      </p>
+      <p>
+      It is helpful to include some text in the form:
+      </p>
+      <pre>
+        WHO:   As an <actor>
+        WHAT: I want a <feature>
+        WHY:  So that <benefit>
+      </pre>       
+      <p>
+        This is not mandatory.
+      </p>
+    </section>
+
+    <section>
+      <h2>Submitted Use Cases</h2>
+    </section>
+
+    <section>
+      <h2>Previous Material</h2>
+      <p>
+        From <a 
+href="https://github.com/w3c/EasierRDF/blob/master/RDFstar/RDFStarUCandRequirements.html">
+          EasierRDF-RDFstar/RDFStarUCandRequirements.html
+        </a>.
+      </p>
+
+      <section id="annotationsNotInGraph">
+        <h3>Annotations of triples that are not in the graph</h3>
+        <p class="contributor">Richard Cyganiak.</p>
+        <p>I want to be able to annotate triples that are not in the graph</p>
+        <p>As an web user, I want to be able to annotate any triples,
+          regardless of whether they are in the same graph or not. Then I can annotate
+          triples in a graph elsewhere on the web.
+        </p>
+      </section>
+
+		  <section id="annotationsTripleInGraph">
+        <h3>Annotations of triples where the triples are in another graph of the same RDF Dataset</h3>
+        <p class="contributor">Andy Seaborne</p>
+        <p>
+          As an information engineer, I want to be able to manage annotation triples
+          separately from the data triples themselves. I wish to have a separategraph in
+          the same RDF dataset.
+          This will make data management more convenient - e.g. publishing without
+          annotations; e.g. querying the data without the annotations visible.
+        </p>
+      </section>
+
+      <section id="graphmetadacombination">
+        <h3>Combination of RDF* and graph-level metadata (named graphs)</h3>
+        <p class="contributor">Dan Brickley</p>
+        <p>I want to use an RDF* triple to capture something like, 
+          e.g., "the graph denoted by IRI ex:mygraph contains the edge/triple (ex:Bob, foaf:knows, ex:Alice)."</p>
+      </section>
+            
+      <section id="combiningTrigNamedGraph">
+        <h3>Combining TriG / Named Graphs / RDF*</h3>
+        <p class="contributor">Ghislain Atemezing</p>
+        <p>I want to combine TriG notation / Named Graph / RDF* all together. What is feasible or not with RDF*?</p>
+      </section>
+      
+      <section id="AssertingAnnotatedArcs">
+        <h3>Asserting Annotated Arcs</h3>
+        <p class="contributor">Jeff Lerman</p>
+      </section>
+
+  </body>
+</html>

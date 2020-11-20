@@ -33,6 +33,10 @@
           "name": "Bryan Thompson",
           "company": "Amazon",
         },
+        {
+          "name": "Jeen Broekstra",
+          "company": "metaphacts",
+        },
       ],
       github: "w3c/rdf-star",
       shortName: "rdf-star",
@@ -558,22 +562,119 @@
     <section>
       <h2>Query Result Formats</h2>
 
-      <p>TODO: brief introduction paragraph (including a note that result of a CONSTRUCT query or a DESCRIBE query can be serialized using <a href="#turtle-star">Turtle*</a>)</p>
-
+      <p>In SPARQL, queries can take four forms: <em>SELECT</em>, <em>CONSTRUCT</em>, <em>DESCRIBE</em>, and <em>ASK</em>. [<a href="SPARQL11-QUERY#queryForms">SPARQL11-QUERY, Section 16</a>] The first of these returns its query solution as a set of variable bindings. The second and third both return an RDF graph, and the last returns a simple boolean value.
+      </p>
+      <p>The result of the <em>ASK</em> query form is not changed by the introduction of RDF*, and the result of the <em>CONSTRUCT</em> and <em>DESCRIBE</em> forms can be represented by<a href="#turtle-star">Turtle*</a>. However, since the <em>SELECT</em> form deals with returning RDF terms, the specific serialization formats for representing such query results need to be extended so that the new <a> embedded</a> triple RDF term can be represented. In this section, we propose extensions for the two most common formats for this purpose: [[[sparql11-results-json]]], and [[[rdf-sparql-XMLres]]].</p>
       <section>
         <h2>SPARQL* Query Results JSON Format</h2>
-
-        <div class="issue" data-number="13"></div>
-
+        <p>
+        The result of a SPARQL SELECT query is serialized in JSON as defined in [[[sparql11-results-json]]], which specifies a JSON representation of variable bindings to RDF terms (see [<a href="sparql11-results-json#select-results">sparql11-results-json, Section 3.2</a>]). To accomodate the new RDF term for <a>embedded</a> triples that RDF* introduces, the table of RDF term JSON representations in  <a href="sparql11-results-json#select-encode-terms">sparql11-results-json, Section 3.2.2</a> is extended with the following entry:
+        </p>
+        <dl>
+            <dt>An <a>embedded</a> triple with subject RDF term <em>S</em>, predicate RDF term <em>P</em> and object RDF term <em>O</em></dt>
+            <dd>
+              <pre>
+                {
+                  "type": "triple",
+                  "value": {
+                     "subject": <i><b>S</b></i>,
+                     "predicate": <i><b>P</b></i>,
+                     "object": <i><b>O</b></i>
+                  }
+                }
+              </pre>
+            </dd>
+          </dl>
+        <div class="example">
+            Consider the following RDF term, an <a>embedded</a> triple in Turtle* syntax:
+          <pre data-transform="updateExample"
+            data-content-type="text/x-turtle-star"
+            class="nohighlight example"
+          >
+            <!--
+            << <http://example.org/alice> <http://example.org/name> "Alice" >>
+            -->
+          </pre>
+          This term is represented in JSON as follows:
+          <pre>
+                {
+                  "type": "triple",
+                  "value": {
+                     "subject": {
+                        "type": "uri",
+                        "value" "http://example.org/alice"
+                     },
+                     "predicate": {
+                        "type": "uri",
+                        "value" "http://example.org/name"
+                     },
+                     "object": {
+                        "type": "literal",
+                        "value" "Alice",
+                        "datatype": "http://www.w3.org/2001/XMLSchema#string"
+                     },
+                  }
+                }
+          </pre>
+        </div>
+      <!-- <div class="issue" data-number="13"></div> -->
       </section>
 
       <section>
         <h2>SPARQL* Query Results XML Format</h2>
+       <p>
+        The result of a SPARQL SELECT query is serialized in XML as defined in [[[rdf-sparql-XMLres]]]. This format proposes an XML representation of variable bindings to RDF terms.
+       </p>
+       <p>To accomodate the new RDF term for <a>embedded</a> triples that RDF* introduces, the list of RDF terms and their XML representations in [<a href="rdf-sparql-XMLres#results">rdf-sparql-XMLres, Section 2.3.1</a>] is extended as follows:
+        </p>
+        <p>
+        <dl>
+            <dt>An <a>embedded</a> triple with subject term <em>S</em>, predicate term <em>P</em>, and object term <em>O</em></dt>
+          <dd>
+            <pre class="xml">
+             &lt;binding&gt;
+                &lt;triple&gt;
+                  &lt;subject&gt;<em>S</em>&lt;subject&gt;
+                  &lt;predicate&gt;<em>P</em>&lt;predicate&gt;
+                  &lt;object&gt;<em>O</em>&lt;object&gt;
+                &lt;/triple&gt;
+              &lt;/binding&gt;
+            </pre>
+          </dd>
+        </dl>
+        <div class="example">
+            Consider the following RDF term, an <a>embedded</a> triple in Turtle* syntax:
+          <pre data-transform="updateExample"
+            data-content-type="text/x-turtle-star"
+            class="nohighlight example"
+          >
+            <!--
+            << <http://example.org/alice> <http://example.org/name> "Alice" >>
+            -->
+          </pre>
+          This term is represented in XML as follows:
+          <pre class="xml">
+            &lt;triple&gt;
+                &lt;subject&gt;
+                    &lt;uri&gt;http://example.org/alice&lt;/uri&gt;
+                &lt;/subject&gt;
+                &lt;predicate&gt;
+                    &lt;uri&gt;http://example.org/name&lt;/uri&gt;
+                &lt;/predicate&gt;
+                &lt;object&gt;
+                    &lt;literal datatype='http://www.w3.org/2001/XMLSchema#string'&gt;Alice&lt;/literal&gt;
+                &lt;/object&gt;
+            &lt;/triple&gt;
+          </pre>
+        </div>
 
-        <div class="issue" data-number="12"></div>
+        <!-- <div class="issue" data-number="12"></div> -->
 
       </section>
-      
+
+    </section>
+
+  </section>
     </section>
 
   </section>

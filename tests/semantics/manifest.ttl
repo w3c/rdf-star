@@ -14,16 +14,23 @@
 @prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
 
 <> rdf:type mf:Manifest ;
-  rdfs:label "RDF Schema and Semantics tests" ;
+  rdfs:label "RDF* Semantics tests" ;
   mf:entries (
-      # TODO
+      <#all-identical-embedded-triples-are-the-same>
+      <#bnodes-in-embedded-subject> 
+      <#bnodes-in-embedded-object>
+      <#bnodes-in-embedded-subject-and-object>
+      <#bnodes-in-embedded-subject-and-object-fail>
+      <#same-bnode-same-embedded-term>
+      <#different-bnodes-same-embedded-term>
+      <#malformed-lireral>
+      <#malformed-lireral-bnode>
+      <#opaque-lireral>
   ) .
 
 <#all-identical-embedded-triples-are-the-same> a mf:PositiveEntailmentTest;
   mf:name "all-identical-embedded-triples-are-the-same";
-  rdfs:comment """
-    Multiple occurences of the same embedded triples are undistinguishable in the abstract model.
-  """;
+  rdfs:comment """Multiple occurences of the same embedded triples are undistinguishable in the abstract model.""";
   rdft:approval rdft:Proposed;
   mf:entailmentRegime "simple" ;
   mf:recognizedDatatypes ( ) ;
@@ -33,9 +40,7 @@
 
 <#bnodes-in-embedded-subject> a mf:PositiveEntailmentTest;
   mf:name "bnodes-in-embedded-subject";
-  rdfs:comment """
-    Terms in embedded triples can be replaced by fresh bnodes.
-  """;
+  rdfs:comment """Terms in embedded triples can be replaced by fresh bnodes.""";
   rdft:approval rdft:Proposed;
   mf:entailmentRegime "simple" ;
   mf:recognizedDatatypes ( ) ;
@@ -45,9 +50,7 @@
 
 <#bnodes-in-embedded-object> a mf:PositiveEntailmentTest;
   mf:name "bnodes-in-embedded-object";
-  rdfs:comment """
-    Terms in embedded triples can be replaced by fresh bnodes.
-  """;
+  rdfs:comment """Terms in embedded triples can be replaced by fresh bnodes.""";
   rdft:approval rdft:Proposed;
   mf:entailmentRegime "simple" ;
   mf:recognizedDatatypes ( ) ;
@@ -57,9 +60,7 @@
 
 <#bnodes-in-embedded-subject-and-object> a mf:PositiveEntailmentTest;
   mf:name "bnodes-in-embedded-subject-and-object";
-  rdfs:comment """
-    Terms in embedded triples can be replaced by fresh bnodes.
-  """;
+  rdfs:comment """Terms in embedded triples can be replaced by fresh bnodes.""";
   rdft:approval rdft:Proposed;
   mf:entailmentRegime "simple" ;
   mf:recognizedDatatypes ( ) ;
@@ -69,9 +70,7 @@
 
 <#bnodes-in-embedded-subject-and-object-fail> a mf:NegativeEntailmentTest;
   mf:name "bnodes-in-embedded-subject-and-object-fail";
-  rdfs:comment """
-    The same bnode can not match different embedded terms.
-  """;
+  rdfs:comment """The same bnode can not match different embedded terms.""";
   rdft:approval rdft:Proposed;
   mf:entailmentRegime "simple" ;
   mf:recognizedDatatypes ( ) ;
@@ -81,9 +80,7 @@
 
 <#same-bnode-same-embedded-term> a mf:PositiveEntailmentTest;
   mf:name "same-bnode-same-embedded-term";
-  rdfs:comment """
-    Different bnodes can match identical embedded terms.
-  """;
+  rdfs:comment """Different bnodes can match identical embedded terms.""";
   rdft:approval rdft:Proposed;
   mf:entailmentRegime "simple" ;
   mf:recognizedDatatypes ( ) ;
@@ -93,12 +90,42 @@
 
 <#different-bnodes-same-embedded-term> a mf:PositiveEntailmentTest;
   mf:name "different-bnodes-same-embedded-term";
-  rdfs:comment """
-    Different bnodes can match identical embedded terms.
-  """;
+  rdfs:comment """Different bnodes can match identical embedded terms.""";
   rdft:approval rdft:Proposed;
   mf:entailmentRegime "simple" ;
   mf:recognizedDatatypes ( ) ;
   mf:unrecognizedDatatypes ( ) ;
   mf:action <test003a.ttl>;
   mf:result <test002sor.ttl> .
+
+## TODO add tests where blank nodes are constrained by other triples
+
+<#malformed-lireral> a mf:NegativeEntailmentTest;
+  mf:name "maformed-literal";
+  rdfs:comment """Malformed literals are allowed when embedded.""";
+  rdft:approval rdft:Proposed;
+  mf:entailmentRegime "RDFS" ;
+  mf:recognizedDatatypes ( xsd:integer ) ;
+  mf:unrecognizedDatatypes ( ) ;
+  mf:action <malformed-literal.ttl>;
+  mf:result false .
+
+<#malformed-lireral-bnode> a mf:NegativeEntailmentTest;
+  mf:name "maformed-literal-bnode";
+  rdfs:comment """Malformed literals can be replaced by blank nodes.""";
+  rdft:approval rdft:Proposed;
+  mf:entailmentRegime "RDFS" ;
+  mf:recognizedDatatypes ( xsd:integer ) ;
+  mf:unrecognizedDatatypes ( ) ;
+  mf:action <malformed-literal.ttl>;
+  mf:result <test002or.ttl> .
+
+<#opaque-lireral> a mf:NegativeEntailmentTest;
+  mf:name "opauqe-literal";
+  rdfs:comment """Embedded literals are opaque, even when their datatype is recognized.""";
+  rdft:approval rdft:Proposed;
+  mf:entailmentRegime "RDFS" ;
+  mf:recognizedDatatypes ( xsd:integer ) ;
+  mf:unrecognizedDatatypes ( ) ;
+  mf:action <non-canonical-literal.ttl>;
+  mf:result <canonical-literal.ttl> .

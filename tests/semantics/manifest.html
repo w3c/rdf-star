@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<style>
+    .included a, .entries a {
+        text-decoration: none;
+    }
+
+    .included a:hover, .entries a:hover {
+        text-decoration: underline;
+    }
+
+    .entries .rejected {
+        text-decoration: line-through red;
+    }
+
+    .entries .approved::after {
+        content: "✓";
+    }
+
+    .entry h2 a {
+        text-decoration: none;
+    }
+
+    .approved tr.status td {
+        color: darkGreen;
+    }
+
+    .proposed tr.status td {
+        color: orange;
+    }
+
+    .rejected tr.status td {
+        color: red;
+    }
+
+    tr.recognized td, tr.unrecognized td {
+        font-family: monospace;
+    }
+
+    pre {
+        border: thin solid black;
+        background-color: lightYellow;
+        padding: .6em 1em;
+    }
+</style>
+<title>manifest</title>
+<h1>manifest</h1>
+<p>Generated from <a href="manifest.jsonld">manifest.jsonld</a></p><p>RDF* Semantics tests</p>
+<p><strong>Entries:</strong></p>
+<ul class="entries">
+<li class="proposed"><a href="#all-identical-embedded-triples-are-the-same">all-identical-embedded-triples-are-the-same</a>
+<li class="proposed"><a href="#bnodes-in-embedded-subject">bnodes-in-embedded-subject</a>
+<li class="proposed"><a href="#bnodes-in-embedded-object">bnodes-in-embedded-object</a>
+<li class="proposed"><a href="#bnodes-in-embedded-subject-and-object">bnodes-in-embedded-subject-and-object</a>
+<li class="proposed"><a href="#bnodes-in-embedded-subject-and-object-fail">bnodes-in-embedded-subject-and-object-fail</a>
+<li class="proposed"><a href="#same-bnode-same-embedded-term">same-bnode-same-embedded-term</a>
+<li class="proposed"><a href="#different-bnodes-same-embedded-term">different-bnodes-same-embedded-term</a>
+<li class="proposed"><a href="#constrained-bnodes-in-embedded-subject">constrained-bnodes-in-embedded-subject</a>
+<li class="proposed"><a href="#constrained-bnodes-in-embedded-object">constrained-bnodes-in-embedded-object</a>
+<li class="proposed"><a href="#constrained-bnodes-in-embedded-fail">constrained-bnodes-in-embedded-subject-fail</a>
+<li class="proposed"><a href="#malformed-lireral">maformed-literal</a>
+<li class="proposed"><a href="#malformed-literal-bnode">malformed-literal-bnode</a>
+<li class="proposed"><a href="#opaque-literal">opaque-literal</a>
+<li class="proposed"><a href="#opaque-language-string">opaque-language-string</a>
+<li class="proposed"><a href="#opaque-iri">opaque-iri</a>
+</ul>
+<section id="all-identical-embedded-triples-are-the-same" class="entry proposed">
+<h2>all-identical-embedded-triples-are-the-same <a href="#all-identical-embedded-triples-are-the-same">🔗</a></h2>
+<table class="properties">
+<tr class="status"><th>status:</th><td>proposed</td>
+<tr class="type"><th>type:</th><td>positive entailment test</td>
+<tr class="regime"><th>regime:</th><td>simple</td>
+</table>
+<div><code><a href="test001a.ttl">test001a.ttl</a></code></div>
+<pre>
+prefix : &lt;http://example.com/ns#&gt;
+
+&lt;&lt; :a :b :c &gt;&gt; :p1 :o1.
+&lt;&lt; :a :b :c &gt;&gt; :p2 :o2.
+</pre>
+<div>MUST entail</div>
+<div><code><a href="test001r.ttl">test001r.ttl</a></code></div>
+<pre>
+prefix : &lt;http://example.com/ns#&gt;
+
+&lt;&lt; :a :b :c &gt;&gt; :p1 :o1; :p2 :o2.
+</pre>
+<p>Multiple occurences of the same embedded triples are undistinguishable in the abstract model.</p>
+</section><section id="bnodes-in-embedded-subject" class="entry proposed">
+<h2>bnodes-in-embedded-subject <a href="#bnodes-in-embedded-subject">🔗</a></h2>
+<table class="properties">
+<tr class="status"><th>status:</th><td>proposed</td>
+<tr class="type"><th>type:</th><td>positive entailment test</td>
+<tr class="regime"><th>regime:</th><td>simple</td>
+</table>
+<div><code><a href="test002a.ttl">test002a.ttl</a></code></div>
+<pre>
+prefix : &lt;http://example.com/ns#&gt;
+
+&lt;&lt; :a :b :c &gt;&gt; :p1 :o1.
+</pre>
+<div>MUST entail</div>
+<div><code><a href="test002sr.ttl">test002sr.ttl</a></code></div>
+<pre>
+prefix : &lt;http://example.com/ns#&gt;
+
+&lt;&lt; _:x :b :c &gt;&gt; :p1 :o1.
+</pre>
+<p>Terms in embedded triples can be replaced by fresh bnodes.</p>
+</section><section id="bnodes-in-embedded-object" class="entry proposed">
+<h2>bnodes-in-embedded-object <a href="#bnodes-in-embedded-object">🔗</a></h2>
+<table class="properties">
+<tr class="status"><th>status:</th><td>proposed</td>
+<tr class="type"><th>type:</th><td>positive entailment test</td>
+<tr class="regime"><th>regime:</th><td>simple</td>
+</table>
+<div><code><a href="test002a.ttl">test002a.ttl</a></code></div>
+<pre>
+prefix : &lt;http://example.com/ns#&gt;
+
+&lt;&lt; :a :b :c &gt;&gt; :p1 :o1.
+</pre>
+<div>MUST entail</div>
+<div><code><a href="test002or.ttl">test002or.ttl</a></code></div>
+<pre>
+prefix : &lt;http://example.com/ns#&gt;
+
+&lt;&lt; :a :b _:x &gt;&gt; :p1 :o1.
+</pre>
+<p>Terms in embedded triples can be replaced by fresh bnodes.</p>
+</section><section id="bnodes-in-embedded-subject-and-object" class="entry proposed">
+<h2>bnodes-in-embedded-subject-and-object <a href="#bnodes-in-embedded-subject-and-object">🔗</a></h2>
+<table class="properties">
+<tr class="status"><th>status:</th><td>proposed</td>
+<tr class="type"><th>type:</th><td>positive entailment test</td>
+<tr class="regime"><th>regime:</th><td>simple</td>
+</table>
+<div><code><a href="test002a.ttl">test002a.ttl</a></code></div>
+<pre>
+prefix : &lt;http://example.com/ns#&gt;
+
+&lt;&lt; :a :b :c &gt;&gt; :p1 :o1.
+</pre>
+<div>MUST entail</div>
+<div><code><a href="test002sor.ttl">test002sor.ttl</a></code></div>
+<pre>
+prefix : &lt;http://example.com/ns#&gt;
+
+&lt;&lt; _:x :b _:y &gt;&gt; :p1 :o1.
+</pre>
+<p>Terms in embedded triples can be replaced by fresh bnodes.</p>
+</section><section id="bnodes-in-embedded-subject-and-object-fail" class="entry proposed">
+<h2>bnodes-in-embedded-subject-and-object-fail <a href="#bnodes-in-embedded-subject-and-object-fail">🔗</a></h2>
+<table class="properties">
+<tr class="status"><th>status:</th><td>proposed</td>
+<tr class="type"><th>type:</th><td>negative entailment test</td>
+<tr class="regime"><th>regime:</th><td>simple</td>
+</table>
+<div><code><a href="test002a.ttl">test002a.ttl</a></code></div>
+<pre>
+prefix : &lt;http://example.com/ns#&gt;
+
+&lt;&lt; :a :b :c &gt;&gt; :p1 :o1.
+</pre>
+<div>MUST NOT entail</div>
+<div><code><a href="test002sbr.ttl">test002sbr.ttl</a></code></div>
+<pre>
+prefix : &lt;http://example.com/ns#&gt;
+
+&lt;&lt; _:x :b _:x &gt;&gt; :p1 :o1.
+</pre>
+<p>The same bnode can not match different embedded terms.</p>
+</section><section id="same-bnode-same-embedded-term" class="entry proposed">
+<h2>same-bnode-same-embedded-term <a href="#same-bnode-same-embedded-term">🔗</a></h2>
+<table class="properties">
+<tr class="status"><th>status:</th><td>proposed</td>
+<tr class="type"><th>type:</th><td>positive entailment test</td>
+<tr class="regime"><th>regime:</th><td>simple</td>
+</table>
+<div><code><a href="test003a.ttl">test003a.ttl</a></code></div>
+<pre>
+prefix : &lt;http://example.com/ns#&gt;
+
+&lt;&lt; :a :b :a &gt;&gt; :p1 :o1.
+</pre>
+<div>MUST entail</div>
+<div><code><a href="test002sbr.ttl">test002sbr.ttl</a></code></div>
+<pre>
+prefix : &lt;http://example.com/ns#&gt;
+
+&lt;&lt; _:x :b _:x &gt;&gt; :p1 :o1.
+</pre>
+<p>Identical embedde term can be replaced by the same fresh bnode multiple times.</p>
+</section><section id="different-bnodes-same-embedded-term" class="entry proposed">
+<h2>different-bnodes-same-embedded-term <a href="#different-bnodes-same-embedded-term">🔗</a></h2>
+<table class="properties">
+<tr class="status"><th>status:</th><td>proposed</td>
+<tr class="type"><th>type:</th><td>positive entailment test</td>
+<tr class="regime"><th>regime:</th><td>simple</td>
+</table>
+<div><code><a href="test003a.ttl">test003a.ttl</a></code></div>
+<pre>
+prefix : &lt;http://example.com/ns#&gt;
+
+&lt;&lt; :a :b :a &gt;&gt; :p1 :o1.
+</pre>
+<div>MUST entail</div>
+<div><code><a href="test002sor.ttl">test002sor.ttl</a></code></div>
+<pre>
+prefix : &lt;http://example.com/ns#&gt;
+
+&lt;&lt; _:x :b _:y &gt;&gt; :p1 :o1.
+</pre>
+<p>Different bnodes can match identical embedded terms.</p>
+</section><section id="constrained-bnodes-in-embedded-subject" class="entry proposed">
+<h2>constrained-bnodes-in-embedded-subject <a href="#constrained-bnodes-in-embedded-subject">🔗</a></h2>
+<table class="properties">
+<tr class="status"><th>status:</th><td>proposed</td>
+<tr class="type"><th>type:</th><td>positive entailment test</td>
+<tr class="regime"><th>regime:</th><td>simple</td>
+</table>
+<div><code><a href="test004a.ttl">test004a.ttl</a></code></div>
+<pre>
+prefix : &lt;http://example.com/ns#&gt;
+
+&lt;&lt; :a :b :c &gt;&gt; :p1 :o1.
+:a :label "A".
+:c :label "C".</pre>
+<div>MUST entail</div>
+<div><code><a href="test004sr.ttl">test004sr.ttl</a></code></div>
+<pre>
+prefix : &lt;http://example.com/ns#&gt;
+
+&lt;&lt; _:x :b :c &gt;&gt; :p1 :o1.
+_:x :label "A".
+</pre>
+<p>Terms in embedded triples and outside can be replaced by fresh bnodes</p>
+</section><section id="constrained-bnodes-in-embedded-object" class="entry proposed">
+<h2>constrained-bnodes-in-embedded-object <a href="#constrained-bnodes-in-embedded-object">🔗</a></h2>
+<table class="properties">
+<tr class="status"><th>status:</th><td>proposed</td>
+<tr class="type"><th>type:</th><td>positive entailment test</td>
+<tr class="regime"><th>regime:</th><td>simple</td>
+</table>
+<div><code><a href="test004a.ttl">test004a.ttl</a></code></div>
+<pre>
+prefix : &lt;http://example.com/ns#&gt;
+
+&lt;&lt; :a :b :c &gt;&gt; :p1 :o1.
+:a :label "A".
+:c :label "C".</pre>
+<div>MUST entail</div>
+<div><code><a href="test004or.ttl">test004or.ttl</a></code></div>
+<pre>
+prefix : &lt;http://example.com/ns#&gt;
+
+&lt;&lt; :a :b _:x &gt;&gt; :p1 :o1.
+_:x :label "C".
+</pre>
+<p>Terms in embedded triples and outside can be replaced by fresh bnodes.</p>
+</section><section id="constrained-bnodes-in-embedded-fail" class="entry proposed">
+<h2>constrained-bnodes-in-embedded-subject-fail <a href="#constrained-bnodes-in-embedded-fail">🔗</a></h2>
+<table class="properties">
+<tr class="status"><th>status:</th><td>proposed</td>
+<tr class="type"><th>type:</th><td>negative entailment test</td>
+<tr class="regime"><th>regime:</th><td>simple</td>
+</table>
+<div><code><a href="test004a.ttl">test004a.ttl</a></code></div>
+<pre>
+prefix : &lt;http://example.com/ns#&gt;
+
+&lt;&lt; :a :b :c &gt;&gt; :p1 :o1.
+:a :label "A".
+:c :label "C".</pre>
+<div>MUST NOT entail</div>
+<div><code><a href="test004fr.ttl">test004fr.ttl</a></code></div>
+<pre>
+prefix : &lt;http://example.com/ns#&gt;
+
+&lt;&lt; _:x :b :c &gt;&gt; :p1 :o1.
+_:x :label "C".
+</pre>
+<p>Embedded bnode identifiers share the same scope as non-embedded ones. A bnode occuring both in embedded triples and in asserted triples must statisfy them all at the same time.</p>
+</section><section id="malformed-lireral" class="entry proposed">
+<h2>maformed-literal <a href="#malformed-lireral">🔗</a></h2>
+<table class="properties">
+<tr class="status"><th>status:</th><td>proposed</td>
+<tr class="type"><th>type:</th><td>negative entailment test</td>
+<tr class="regime"><th>regime:</th><td>RDF</td>
+<tr class="recognized"><th>recognizing:</th><td>xsd:integer</td>
+</table>
+<div><code><a href="malformed-literal.ttl">malformed-literal.ttl</a></code></div>
+<pre>
+@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+
+&lt;&lt; :a :b "c"^^xsd:integer &gt;&gt; :p1 :o1.</pre>
+<div>MUST NOT entail</div>
+<div>a contradiction</div><p>Malformed literals are allowed when embedded.</p>
+</section><section id="malformed-literal-bnode" class="entry proposed">
+<h2>malformed-literal-bnode <a href="#malformed-literal-bnode">🔗</a></h2>
+<table class="properties">
+<tr class="status"><th>status:</th><td>proposed</td>
+<tr class="type"><th>type:</th><td>positive entailment test</td>
+<tr class="regime"><th>regime:</th><td>RDF</td>
+<tr class="recognized"><th>recognizing:</th><td>xsd:integer</td>
+</table>
+<div><code><a href="malformed-literal.ttl">malformed-literal.ttl</a></code></div>
+<pre>
+@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+
+&lt;&lt; :a :b "c"^^xsd:integer &gt;&gt; :p1 :o1.</pre>
+<div>MUST entail</div>
+<div><code><a href="test002or.ttl">test002or.ttl</a></code></div>
+<pre>
+prefix : &lt;http://example.com/ns#&gt;
+
+&lt;&lt; :a :b _:x &gt;&gt; :p1 :o1.
+</pre>
+<p>Malformed literals can be replaced by blank nodes.</p>
+</section><section id="opaque-literal" class="entry proposed">
+<h2>opaque-literal <a href="#opaque-literal">🔗</a></h2>
+<table class="properties">
+<tr class="status"><th>status:</th><td>proposed</td>
+<tr class="type"><th>type:</th><td>negative entailment test</td>
+<tr class="regime"><th>regime:</th><td>RDF</td>
+<tr class="recognized"><th>recognizing:</th><td>xsd:integer</td>
+</table>
+<div><code><a href="non-canonical-literal.ttl">non-canonical-literal.ttl</a></code></div>
+<pre>
+prefix : &lt;http://example.com/ns#&gt;
+prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt;
+
+&lt;&lt; :a :b "042"^^xsd:integer &gt;&gt; :p1 :o1.</pre>
+<div>MUST NOT entail</div>
+<div><code><a href="canonical-literal.ttl">canonical-literal.ttl</a></code></div>
+<pre>
+prefix : &lt;http://example.com/ns#&gt;
+prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt;
+
+&lt;&lt; :a :b "42"^^xsd:integer &gt;&gt; :p1 :o1.</pre>
+<p>Embedded literals are opaque, even when their datatype is recognized.</p>
+</section><section id="opaque-language-string" class="entry proposed">
+<h2>opaque-language-string <a href="#opaque-language-string">🔗</a></h2>
+<table class="properties">
+<tr class="status"><th>status:</th><td>proposed</td>
+<tr class="type"><th>type:</th><td>negative entailment test</td>
+<tr class="regime"><th>regime:</th><td>RDF</td>
+</table>
+<div><code><a href="lowercase-language-string.ttl">lowercase-language-string.ttl</a></code></div>
+<pre>
+prefix : &lt;http://example.com/ns#&gt;
+prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt;
+
+&lt;&lt; :a :b "hello"@en-us &gt;&gt; :p1 :o1.</pre>
+<div>MUST NOT entail</div>
+<div><code><a href="upercase-language-string.ttl">upercase-language-string.ttl</a></code></div>
+<pre>
+prefix : &lt;http://example.com/ns#&gt;
+
+&lt;&lt; :a :b "hello"@en-US &gt;&gt; :p1 :o1.</pre>
+<p>Embedded literals (including language strings) are opaque, even when their datatype is recognized.</p>
+</section><section id="opaque-iri" class="entry proposed">
+<h2>opaque-iri <a href="#opaque-iri">🔗</a></h2>
+<table class="properties">
+<tr class="status"><th>status:</th><td>proposed</td>
+<tr class="type"><th>type:</th><td>negative entailment test</td>
+<tr class="regime"><th>regime:</th><td>RDFS-Plus</td>
+</table>
+<div><code><a href="superman.ttl">superman.ttl</a></code></div>
+<pre>
+prefix : &lt;http://example.com/ns#&gt;
+prefix owl: &lt;http://www.w3.org/2002/07/owl#&gt;
+
+&lt;&lt; :superman :can :fly &gt;&gt; :reportedBy :clark.
+:clark owl:sameAs :superman.</pre>
+<div>MUST NOT entail</div>
+<div><code><a href="superman_undesired_entailment.ttl">superman_undesired_entailment.ttl</a></code></div>
+<pre>
+prefix : &lt;http://example.com/ns#&gt;
+
+&lt;&lt; :clark :can :fly &gt;&gt; :reportedBy :clark.
+</pre>
+<p>Embedded IRIs are opaque.</p>
+</section>

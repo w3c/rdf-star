@@ -14,9 +14,6 @@ def make_html(jsonld: Path):
     dir = jsonld.parent
     html = dir.joinpath(jsonld.stem + '.html')
     print(html)
-    if html.exists() and html.stat().st_mtime > jsonld.stat().st_mtime:
-        print("skipping (up-to-date)")
-        return
     with jsonld.open() as f:
         manifest = json.load(f)
     with html.open('w') as out:

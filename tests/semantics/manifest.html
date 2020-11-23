@@ -291,7 +291,8 @@ _:x :label "C".
 </table>
 <div><code><a href="malformed-literal.ttl">malformed-literal.ttl</a></code></div>
 <pre>
-@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+prefix : &lt;http://example.com/ns#&gt;
+prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt;
 
 &lt;&lt; :a :b "c"^^xsd:integer &gt;&gt; :p1 :o1.</pre>
 <div>MUST NOT entail</div>
@@ -306,7 +307,8 @@ _:x :label "C".
 </table>
 <div><code><a href="malformed-literal.ttl">malformed-literal.ttl</a></code></div>
 <pre>
-@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+prefix : &lt;http://example.com/ns#&gt;
+prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt;
 
 &lt;&lt; :a :b "c"^^xsd:integer &gt;&gt; :p1 :o1.</pre>
 <div>MUST entail</div>

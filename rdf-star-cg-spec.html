@@ -294,10 +294,12 @@
 
       <div class="issue" data-number="7"></div>
 
-      <p>A <dfn data-lt="solution-star-mapping">SPARQL* solution mapping</dfn> μ is a partial function from the set of all <a>query variables</a> to the union set of all <a>RDF* terms</a>.
+      <p>A <dfn data-lt="solution-star-mapping">SPARQL* solution mapping</dfn> μ is a partial function from the set of all <a>query variables</a> to the set of all <a>RDF* terms</a>.
       The domain of μ, denoted by dom(μ), is the set of <a>query variables</a> for which μ is defined.</p>
 
       <p class="note">The notion of a <a>SPARQL* solution mapping</a> extends the notion of a standard SPARQL <a>solution mapping</a>; that is, every SPARQL <a>solution mapping</a> is a <a>SPARQL* solution mapping</a>. However, in contrast to SPARQL <a>solution mappings</a>, <a>SPARQL* solution mappings</a> may map <a>variables</a> also to <a>RDF* triples</a>.</p>
+
+      <p>All notions related to SPARQL solution mappings carry over naturally to SPARQL* solution mappings. In particular, the definition of <dfn data-cite="SPARQL11-QUERY#defn_algCompatibleMapping">compatibility</dfn> extends naturally to SPARQL* solution mappings: Two <a>SPARQL* solution mappings</a> μ<sub>1</sub> and μ<sub>2</sub> are compatible if, for every variable v that is both in dom(μ<sub>1</sub>) and in dom(μ<sub>2</sub>), μ<sub>1</sub>(v) and μ<sub>2</sub>(v) are the same <a>RDF* term</a>. In this case, μ<sub>1</sub> ∪ μ<sub>2</sub> is also a SPARQL* solution mapping. Moreover, for any SPARQL* solution mapping&nbsp;μ we write card[Ω](μ) to denote the cardinality of μ in a multiset Ω of such mappings.</p>
 
     </section>
 
@@ -542,7 +544,7 @@
         <dfn>evaluation</dfn>...
       </p>
 
-      <p>The SPARQL specification defines a function <q>eval(D(G), algebra expression) as the evaluation of an algebra expression with respect to a dataset D having active graph G</q> [<a href="SPARQL11-QUERY#sparqlAlgebraEval">SPARQL11-QUERY, Section 18.6</a>]. Recall that the active graph |G| in the context of SPARQL* is an <a>RDF* graph</a>, and so is any other graph in dataset |D|. The definition of function eval is recursive; the two base cases of this definition for SPARQL* are given as follows:</p>
+      <p>The SPARQL specification defines a function <q>eval(D(G), algebra expression) as the evaluation of an algebra expression with respect to a dataset D having active graph G</q> [<a href="SPARQL11-QUERY#sparqlAlgebraEval">SPARQL11-QUERY, Section 18.6</a>]. Recall that the dataset |D| in the context of SPARQL* is an <a>RDF* dataset</a> and, thus, the active graph |G| is an <a>RDF* graph</a>, and so is any other graph in dataset |D|. The definition of function eval is recursive; the two base cases of this definition for SPARQL* are given as follows:</p>
 
       <ul>
         <li>For any <a>BGP*</a> |B|, eval(D(|G|), |B|) = ⟦|B|⟧<sub>|G|</sub> (where ⟦|B|⟧<sub>|G|</sub> is the <a>evaluation</a> of |B| over <a>RDF* graph</a> |G|).</li>

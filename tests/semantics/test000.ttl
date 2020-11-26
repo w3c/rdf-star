@@ -1,4 +1,4 @@
 prefix : <http://example.com/ns#>
 
 << :a :b :c >> :p1 :o1.
-:s2 :p2 << :x : y :z >>.
+:s2 :p2 << :x :y :z >>.

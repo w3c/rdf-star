@@ -54,6 +54,8 @@ def make_html(jsonld: Path):
         for entry in entries:
             eid = entry['@id']
             name = entry['name']
+            if eid[1:] != name:
+                print(f"{eid}'s name does not match id")
             approval = entry['approval'].lower()
             out.write(f'<section id="{eid[1:]}" class="entry {approval}">\n')
             out.write(f'<h2>{name} <a href="{eid}">🔗</a></h2>\n')

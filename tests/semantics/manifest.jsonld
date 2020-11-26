@@ -29,6 +29,18 @@
             "result": "test001r.ttl"
         },
         {
+            "@id": "#embedded-triples-no-spurious",
+            "@type": "NegativeEntailmentTest",
+            "name": "embedded-triples-no-spurious",
+            "comment": "This test ensures that other entailments are not spurious.",
+            "approval": "Proposed",
+            "entailmentRegime": "simple" ,
+            "recognizedDatatypes": [] ,
+            "unrecognizedDatatypes": [] ,
+            "action": "test002a.ttl",
+            "result": "test005.ttl"
+        },
+        {
             "@id": "#bnodes-in-embedded-subject",
             "@type": "PositiveEntailmentTest",
             "name": "bnodes-in-embedded-subject",
@@ -127,7 +139,7 @@
         {
             "@id": "#constrained-bnodes-in-embedded-fail",
             "@type": "NegativeEntailmentTest",
-            "name": "constrained-bnodes-in-embedded-subject-fail",
+            "name": "constrained-bnodes-in-embedded-fail",
             "comment": "Embedded bnode identifiers share the same scope as non-embedded ones. A bnode occuring both in embedded triples and in asserted triples must statisfy them all at the same time.",
             "approval": "Proposed",
             "entailmentRegime": "simple" ,
@@ -137,9 +149,9 @@
             "result": "test004fr.ttl"
         },
         {
-            "@id": "#malformed-lireral",
+            "@id": "#malformed-literal",
             "@type": "NegativeEntailmentTest",
-            "name": "maformed-literal",
+            "name": "malformed-literal",
             "comment": "Malformed literals are allowed when embedded.",
             "approval": "Proposed",
             "entailmentRegime": "RDF" ,
@@ -147,6 +159,30 @@
             "unrecognizedDatatypes": [] ,
             "action": "malformed-literal.ttl",
             "result": false
+        },
+        {
+            "@id": "#malformed-literal-accepted",
+            "@type": "PositiveEntailmentTest",
+            "name": "malformed-literal-accepted",
+            "comment": "Malformed literals are allowed when embedded.",
+            "approval": "Proposed",
+            "entailmentRegime": "RDF" ,
+            "recognizedDatatypes": ["xsd:integer"] ,
+            "unrecognizedDatatypes": [] ,
+            "action": "malformed-literal.ttl",
+            "result": "malformed-literal.ttl"
+        },
+        {
+            "@id": "#malformed-literal-no-spurious",
+            "@type": "NegativeEntailmentTest",
+            "name": "malformed-literal-no-spurious",
+            "comment": "Embedded malformed literals do not lead to spurious entailment.",
+            "approval": "Proposed",
+            "entailmentRegime": "RDF" ,
+            "recognizedDatatypes": ["xsd:integer"] ,
+            "unrecognizedDatatypes": [] ,
+            "action": "malformed-literal.ttl",
+            "result": "malformed-literal-other.ttl"
         },
         {   
             "@id": "#malformed-literal-bnode",
@@ -159,6 +195,30 @@
             "unrecognizedDatatypes": [] ,
             "action": "malformed-literal.ttl",
             "result": "test002or.ttl"
+        },
+        {   
+            "@id": "#malformed-literal-bnode-2",
+            "@type": "PositiveEntailmentTest",
+            "name": "malformed-literal-bnode-2",
+            "comment": "Identical malformed literals can be replaced with the same blank node.",
+            "approval": "Proposed",
+            "entailmentRegime": "RDF" ,
+            "recognizedDatatypes": ["xsd:integer"] ,
+            "unrecognizedDatatypes": [] ,
+            "action": "malformed-literal-2a.ttl",
+            "result": "malformed-literal-2r.ttl"
+        },
+        {   
+            "@id": "#malformed-literal-bnode-3",
+            "@type": "NegativeEntailmentTest",
+            "name": "malformed-literal-bnode-3",
+            "comment": "Identical malformed literals can not be replaced with the same blank node.",
+            "approval": "Proposed",
+            "entailmentRegime": "RDF" ,
+            "recognizedDatatypes": ["xsd:integer"] ,
+            "unrecognizedDatatypes": [] ,
+            "action": "malformed-literal-3a.ttl",
+            "result": "malformed-literal-3r.ttl"
         },
         {            
             "@id": "#opaque-literal",
@@ -195,6 +255,18 @@
             "unrecognizedDatatypes": [] ,
             "action": "superman.ttl",
             "result": "superman_undesired_entailment.ttl"
+        },
+        {
+            "@id": "#control-sameas",
+            "@type": "PositiveEntailmentTest",
+            "name": "control-sameas",
+            "comment": "Check that owl:sameAs works as expected, to ensure that opaque-iri does not pass spuriously.",
+            "approval": "Proposed",
+            "entailmentRegime": "RDFS-Plus" ,
+            "recognizedDatatypes": [] ,
+            "unrecognizedDatatypes": [] ,
+            "action": "control-sameas-a.ttl",
+            "result": "control-sameas-r.ttl"
         },
         {
             "@id": "#sa-mode",

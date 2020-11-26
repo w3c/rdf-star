@@ -270,7 +270,7 @@
     <section>
       <h2>Initial Definitions</h2>
 
-      <p>In the following, we introduce a number of SPARQL* specific definitions, which rely on the following notions, defined in [[[SPARQL11-QUERY]]] [[SPARQL11-QUERY]]: <dfn data-cite="SPARQL11-QUERY#defn_RDFTerm">RDF term</dfn>, <dfn data-cite="SPARQL11-QUERY#defn_QueryVariable" data-lt="variable">query variable</dfn>, <dfn data-cite="SPARQL11-QUERY#defn_TriplePattern">triple pattern</dfn>,
+      <p>In the following, we introduce a number of SPARQL*-specific definitions, which rely on the following notions, defined in [[[SPARQL11-QUERY]]] [[SPARQL11-QUERY]]: <dfn data-cite="SPARQL11-QUERY#defn_RDFTerm">RDF term</dfn>, <dfn data-cite="SPARQL11-QUERY#defn_QueryVariable" data-lt="variable">query variable</dfn>, <dfn data-cite="SPARQL11-QUERY#defn_TriplePattern">triple pattern</dfn>,
       <dfn data-cite="SPARQL11-QUERY#defn_PropertyPathPattern">property path pattern</dfn>,
       <dfn data-cite="SPARQL11-QUERY#defn_PropertyPathExpr">property path expression</dfn>,
       and <dfn data-cite="SPARQL11-QUERY#defn_sparqlSolutionMapping">solution mapping</dfn>.</p>
@@ -299,7 +299,27 @@
 
       <p class="note">The notion of a <a>SPARQL* solution mapping</a> extends the notion of a standard SPARQL <a>solution mapping</a>; that is, every SPARQL <a>solution mapping</a> is a <a>SPARQL* solution mapping</a>. However, in contrast to SPARQL <a>solution mappings</a>, <a>SPARQL* solution mappings</a> may map <a>variables</a> also to <a>RDF* triples</a>.</p>
 
-      <p>All notions related to SPARQL solution mappings carry over naturally to SPARQL* solution mappings. In particular, the definition of <dfn data-cite="SPARQL11-QUERY#defn_algCompatibleMapping">compatibility</dfn> extends naturally to SPARQL* solution mappings: Two <a>SPARQL* solution mappings</a> μ<sub>1</sub> and μ<sub>2</sub> are compatible if, for every variable v that is both in dom(μ<sub>1</sub>) and in dom(μ<sub>2</sub>), μ<sub>1</sub>(v) and μ<sub>2</sub>(v) are the same <a>RDF* term</a>. In this case, μ<sub>1</sub> ∪ μ<sub>2</sub> is also a SPARQL* solution mapping. Moreover, for any SPARQL* solution mapping&nbsp;μ we write card[Ω](μ) to denote the cardinality of μ in a multiset Ω of such mappings.</p>
+      <p>All notions related to SPARQL solution mappings carry over naturally to SPARQL* solution mappings. In particular, the definition of <dfn data-cite="SPARQL11-QUERY#defn_algCompatibleMapping">compatibility</dfn> extends naturally to SPARQL* solution mappings: Two <a>SPARQL* solution mappings</a> μ<sub>1</sub> and μ<sub>2</sub> are compatible if, for every variable v that is both in dom(μ<sub>1</sub>) and in dom(μ<sub>2</sub>), μ<sub>1</sub>(v) and μ<sub>2</sub>(v) are the same <a>RDF* term</a>.
+      In this case, μ<sub>1</sub> ∪ μ<sub>2</sub> is also a SPARQL* solution mapping.
+      Moreover, for any SPARQL* solution mapping&nbsp;μ we write card[Ω](μ) to denote the cardinality of μ in a multiset Ω of such mappings.
+      Finally, given a <a>BGP*</a>&nbsp;|B| and a SPARQL* solution mapping&nbsp;μ, we write μ(|B|) to denote the result of replacing every variable&nbsp;|v| in |B| for which μ is defined with μ(v).
+      </p>
+
+      <p>Next, we aim to carry over the notion of <a data-cite="SPARQL11-QUERY#BGPsparql">solutions for BGPs</a> to <a>BGP*</a>. To this end, we first define an auxiliary concept that carries over the notion of an
+      <a data-cite="RDF11-MT#definst">RDF instance mapping</a> [[RDF11-MT]] to RDF*.</p>
+
+      <p>An <dfn data-lt="rdf-star-instance-mapping">RDF* instance mapping</dfn>&nbsp;σ is a partial function from the set of all <a>blank nodes</a> to the set of all <a>RDF* terms</a>.
+      The domain of&nbsp;σ, denoted by dom(σ), is the set of <a>blank nodes</a> for which σ is defined.</p>
+
+      <p>Similar to the corresponding notation for solution mappings, for an RDF* instance mapping&nbsp;σ and a BGP*&nbsp;|B| we write σ(|B|) to denote the result of replacing every blank node&nbsp;|b| in |B| for which σ is defined with σ(b).</p>
+
+      <p>Now we are ready to define the notion of solution for BGP*.</p>
+
+      <p>Given a <a>BGP*</a>&nbsp;|B| and an <a>RDF* graph</a>&nbsp;|G|, a <a>SPARQL* solution mapping</a>&nbsp;μ is a <dfn data-lt="bgp-star-solution">solution for the BGP*</dfn>&nbsp;|B| <b>over</b>&nbsp;|G| if it has the following two properties</p>
+      <ul>
+        <li>dom(μ) is equivalent to the set of query variables in&nbsp;|B|, and
+        <li>there exists an <a>RDF* instance mapping</a>&nbsp;σ such that dom(σ) is equivalent to the set of blank nodes in&nbsp;|B| and μ(σ(|B|)) is a subgraph of |G|.
+      </ul>
 
     </section>
 
@@ -528,8 +548,6 @@
           <li>TR( <a>SPARQL* triple pattern</a>, <a>variable</a> )</li>
         </ul>
 
-        <p>Note that this symbol corresponds to <a>SPARQL* expressions</a> of the form (`tp` AS `?v`).</p>
-
         <p>Then, any string of the form `BIND( T AS v )` with |T| being an <a>embedded triple pattern</a> (i.e., not a standard BIND expression) is translated to the algebra expression `TR`(<var>T’</var>, |v|) where <var>T’</var> is the result of the <a href="#lift">function `Lift`</a> for |T|.</p>
 
         <p>Notice, the translation of BIND clauses with an <a>embedded triple pattern</a> as defined in this section is used during <a data-cite="SPARQL11-QUERY#sparqlTranslateGraphPatterns">the translation of group graph patterns</a>. The case of BIND clauses with an <a>embedded triple pattern</a> is covered in this translation of group graph patterns by the last, “catch all other” `IF` statement (i.e., the `IF` statement with the condition `E is any other form`) and not by the `IF` statement for BIND clauses with an expression.</p>
@@ -539,17 +557,12 @@
     <section>
       <h2>Evaluation Semantics</h2>
 
-      <p>TODO here the definitions of
-        <dfn>SPARQL* expression</dfn>,
-        <dfn>evaluation</dfn>...
-      </p>
-
-      <p>The SPARQL specification defines a function <q>eval(D(G), algebra expression) as the evaluation of an algebra expression with respect to a dataset D having active graph G</q> [<a href="SPARQL11-QUERY#sparqlAlgebraEval">SPARQL11-QUERY, Section 18.6</a>]. Recall that the dataset |D| in the context of SPARQL* is an <a>RDF* dataset</a> and, thus, the active graph |G| is an <a>RDF* graph</a>, and so is any other graph in dataset |D|. The definition of function eval is recursive; the two base cases of this definition for SPARQL* are given as follows:</p>
+      <p>The SPARQL specification defines a function <q>eval(|D|(|G|), algebra expression) as the evaluation of an algebra expression with respect to a dataset |D| having active graph |G|</q> [<a href="SPARQL11-QUERY#sparqlAlgebraEval">SPARQL11-QUERY, Section 18.6</a>]. Recall that the dataset |D| in the context of SPARQL* is an <a>RDF* dataset</a> and, thus, the active graph |G| is an <a>RDF* graph</a>, and so is any other graph in dataset |D|. The definition of function eval is recursive; the two base cases of this definition for SPARQL* are given as follows:</p>
 
       <ul>
-        <li>For any <a>BGP*</a> |B|, eval(D(|G|), |B|) = ⟦|B|⟧<sub>|G|</sub> (where ⟦|B|⟧<sub>|G|</sub> is the <a>evaluation</a> of |B| over <a>RDF* graph</a> |G|).</li>
+        <li>For every <a>BGP*</a> |B|, eval(|D|(|G|), |B|) is a multiset Ω that consists of all <a>SPARQL* solution mappings</a> that are a <a>solution for the BGP*</a>&nbsp;|B| over&nbsp;|G|. For every such mapping&nbsp;μ, card[Ω](μ) is the number of distinct <a>RDF* instance mappings</a>&nbsp;σ such that dom(σ) is equivalent to the set of blank nodes in&nbsp;|B| and μ(σ(|B|)) is a subgraph of |G|. (For any SPARQL* solution mapping&nbsp;μ' that is <em>not</em> a solution for&nbsp;|B| over&nbsp;|G|, we have that card[Ω](μ')=0; i.e., μ' is not in Ω).</li>
 
-        <li>For any algebra expression |E| of the form TR(|tp|, <var>?v</var>) where |tp| is a <a>SPARQL* triple pattern</a> and <var>?v</var> is a <a>variable</a> (as introduced <a href="#translate-bind"></a>>), eval(D(|G|), |E|) = ⟦(|tp| AS <var>?v</var>)⟧<sub>|G|</sub> (where ⟦(|tp| AS <var>?v</var>)⟧<sub>|G|</sub> is the <a>evaluation</a> of SPARQL* expression (|tp| AS <var>?v</var>) over <a>RDF* graph</a> |G|.</li>
+        <li>For any algebra expression |E| of the form TR(|tp|, <var>?v</var>) where |tp| is a <a>SPARQL* triple pattern</a> and <var>?v</var> is a <a>variable</a> (as introduced <a href="#translate-bind"></a>>), eval(|D|(|G|), |E|) is ... TODO ...</li>
       </ul>
 
       <div class="issue" data-number="8"></div>

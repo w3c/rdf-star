@@ -5,10 +5,22 @@
     "comment": "RDF* Semantics tests",
     "entries": [
         {
+            "@id": "#embeded-triples-everywhere",
+            "@type": "PositiveEntailmentTest",
+            "name": "embeded-triples-everywhere",
+            "comment": "Embedded triples can appear in subject or object position (EVENTUALLY, this should be a Turtle* test rather than a semantics test).",
+            "approval": "Proposed",
+            "entailmentRegime": "simple",
+            "recognizedDatatypes": [],
+            "unrecognizedDatatypes": [],
+            "action": "test000.ttl",
+            "result": "test000.ttl"
+        },
+        {
             "@id": "#all-identical-embedded-triples-are-the-same",
             "@type": "PositiveEntailmentTest",
             "name": "all-identical-embedded-triples-are-the-same",
-            "comment": "Multiple occurences of the same embedded triples are undistinguishable in the abstract model.",
+            "comment": "Multiple occurences of the same embedded triples are undistinguishable in the abstract model (EVENTUALLY, this should be a Turtle* test rather than a semantics test).",
             "approval": "Proposed",
             "entailmentRegime": "simple",
             "recognizedDatatypes": [],

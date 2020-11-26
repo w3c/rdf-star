@@ -48,6 +48,7 @@
 <p>Generated from <a href="manifest.jsonld">manifest.jsonld</a></p><p>RDF* Semantics tests</p>
 <p><strong>Entries:</strong></p>
 <ul class="entries">
+<li class="proposed"><a href="#embeded-triples-everywhere">embeded-triples-everywhere</a>
 <li class="proposed"><a href="#all-identical-embedded-triples-are-the-same">all-identical-embedded-triples-are-the-same</a>
 <li class="proposed"><a href="#bnodes-in-embedded-subject">bnodes-in-embedded-subject</a>
 <li class="proposed"><a href="#bnodes-in-embedded-object">bnodes-in-embedded-object</a>
@@ -64,7 +65,30 @@
 <li class="proposed"><a href="#opaque-language-string">opaque-language-string</a>
 <li class="proposed"><a href="#opaque-iri">opaque-iri</a>
 </ul>
-<section id="all-identical-embedded-triples-are-the-same" class="entry proposed">
+<section id="embeded-triples-everywhere" class="entry proposed">
+<h2>embeded-triples-everywhere <a href="#embeded-triples-everywhere">🔗</a></h2>
+<table class="properties">
+<tr class="status"><th>status:</th><td>proposed</td>
+<tr class="type"><th>type:</th><td>positive entailment test</td>
+<tr class="regime"><th>regime:</th><td>simple</td>
+</table>
+<div><code><a href="test000.ttl">test000.ttl</a></code></div>
+<pre>
+prefix : &lt;http://example.com/ns#&gt;
+
+&lt;&lt; :a :b :c &gt;&gt; :p1 :o1.
+:s2 :p2 &lt;&lt; :x : y :z &gt;&gt;.
+</pre>
+<div>MUST entail</div>
+<div><code><a href="test000.ttl">test000.ttl</a></code></div>
+<pre>
+prefix : &lt;http://example.com/ns#&gt;
+
+&lt;&lt; :a :b :c &gt;&gt; :p1 :o1.
+:s2 :p2 &lt;&lt; :x : y :z &gt;&gt;.
+</pre>
+<p>Embedded triples can appear in subject or object position (EVENTUALLY, this should be a Turtle* test rather than a semantics test).</p>
+</section><section id="all-identical-embedded-triples-are-the-same" class="entry proposed">
 <h2>all-identical-embedded-triples-are-the-same <a href="#all-identical-embedded-triples-are-the-same">🔗</a></h2>
 <table class="properties">
 <tr class="status"><th>status:</th><td>proposed</td>
@@ -85,7 +109,7 @@ prefix : &lt;http://example.com/ns#&gt;
 
 &lt;&lt; :a :b :c &gt;&gt; :p1 :o1; :p2 :o2.
 </pre>
-<p>Multiple occurences of the same embedded triples are undistinguishable in the abstract model.</p>
+<p>Multiple occurences of the same embedded triples are undistinguishable in the abstract model (EVENTUALLY, this should be a Turtle* test rather than a semantics test).</p>
 </section><section id="bnodes-in-embedded-subject" class="entry proposed">
 <h2>bnodes-in-embedded-subject <a href="#bnodes-in-embedded-subject">🔗</a></h2>
 <table class="properties">

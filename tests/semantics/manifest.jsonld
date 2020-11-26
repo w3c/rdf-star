@@ -195,6 +195,30 @@
             "unrecognizedDatatypes": [] ,
             "action": "superman.ttl",
             "result": "superman_undesired_entailment.ttl"
+        },
+        {
+            "@id": "#sa-mode",
+            "@type": "NegativeEntailmentTest",
+            "name": "sa-mode",
+            "comment": "Embedded triples are not asserted (see also sa-mode).",
+            "approval": "Proposed",
+            "entailmentRegime": "simple" ,
+            "recognizedDatatypes": [] ,
+            "unrecognizedDatatypes": [] ,
+            "action": "test002a.ttl",
+            "result": "test002pgr.ttl"
+        },
+        {
+            "@id": "#pg-mode",
+            "@type": "PositiveEntailmentTest",
+            "name": "pg-mode",
+            "comment": "Embedded triples are asserted (see also pg-mode).",
+            "approval": "Proposed",
+            "entailmentRegime": "simple" ,
+            "recognizedDatatypes": [] ,
+            "unrecognizedDatatypes": [] ,
+            "action": "test002a.ttl",
+            "result": "test002pgr.ttl"
         }
     ]
 }

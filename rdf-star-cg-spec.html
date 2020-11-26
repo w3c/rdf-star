@@ -660,15 +660,18 @@
         <dl>
             <dt>An <a>embedded</a> triple with subject term `S`, predicate term `P`, and object term `O`</dt>
           <dd>
-            <pre class="xml">
-             &lt;binding&gt;
-                &lt;triple&gt;
-                  &lt;subject&gt;<em>S</em>&lt;subject&gt;
-                  &lt;predicate&gt;<em>P</em>&lt;predicate&gt;
-                  &lt;object&gt;<em>O</em>&lt;object&gt;
-                &lt;/triple&gt;
-              &lt;/binding&gt;
+            <pre data-transform="updateExample" class="xml">
+              <!--
+              <binding>
+                <triple>
+                  <subject>S</subject>
+                  <predicate>S</predicate>
+                  <object>S</object>
+                </triple>
+              </binding>
+              -->
             </pre>
+            where `S`, `P` and `O` are encoded recursively, using the same format, without the enclosing `&lt;binding&gt;` tag.
           </dd>
         </dl>
         <div class="example">

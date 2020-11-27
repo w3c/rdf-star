@@ -5,16 +5,28 @@
     "comment": "RDF* Semantics tests",
     "entries": [
         {
-            "@id": "#embeded-triples-everywhere",
+            "@id": "#triple-in-subject",
             "@type": "PositiveEntailmentTest",
-            "name": "embeded-triples-everywhere",
-            "comment": "Embedded triples can appear in subject or object position (EVENTUALLY, this should be a Turtle* test rather than a semantics test).",
-            "approval": "Proposed",
+            "name": "triple-in-subject",
+            "comment": "Embedded triples can appear in subject position (EVENTUALLY, this should be a Turtle* test rather than a semantics test).",
+            "approval": "Approved",
             "entailmentRegime": "simple",
             "recognizedDatatypes": [],
             "unrecognizedDatatypes": [],
-            "action": "test000.ttl",
-            "result": "test000.ttl"
+            "action": "test000s.ttl",
+            "result": "test000s.ttl"
+        },
+        {
+            "@id": "#triple-in-object",
+            "@type": "PositiveEntailmentTest",
+            "name": "triple-in-object",
+            "comment": "Embedded triples can appear in object position (EVENTUALLY, this should be a Turtle* test rather than a semantics test).",
+            "approval": "Approved",
+            "entailmentRegime": "simple",
+            "recognizedDatatypes": [],
+            "unrecognizedDatatypes": [],
+            "action": "test000o.ttl",
+            "result": "test000o.ttl"
         },
         {
             "@id": "#all-identical-embedded-triples-are-the-same",

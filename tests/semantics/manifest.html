@@ -48,7 +48,8 @@
 <p>Generated from <a href="manifest.jsonld">manifest.jsonld</a></p><p>RDF* Semantics tests</p>
 <p><strong>Entries:</strong></p>
 <ul class="entries">
-<li class="proposed"><a href="#embeded-triples-everywhere">embeded-triples-everywhere</a>
+<li class="approved"><a href="#triple-in-subject">triple-in-subject</a>
+<li class="approved"><a href="#triple-in-object">triple-in-object</a>
 <li class="proposed"><a href="#all-identical-embedded-triples-are-the-same">all-identical-embedded-triples-are-the-same</a>
 <li class="proposed"><a href="#embedded-triples-no-spurious">embedded-triples-no-spurious</a>
 <li class="proposed"><a href="#bnodes-in-embedded-subject">bnodes-in-embedded-subject</a>
@@ -76,29 +77,48 @@
 <li class="proposed"><a href="#sa-mode">sa-mode</a>
 <li class="proposed"><a href="#pg-mode">pg-mode</a>
 </ul>
-<section id="embeded-triples-everywhere" class="entry proposed">
-<h2>embeded-triples-everywhere <a href="#embeded-triples-everywhere">🔗</a></h2>
+<section id="triple-in-subject" class="entry approved">
+<h2>triple-in-subject <a href="#triple-in-subject">🔗</a></h2>
 <table class="properties">
-<tr class="status"><th>status:</th><td>proposed</td>
+<tr class="status"><th>status:</th><td>approved</td>
 <tr class="type"><th>type:</th><td>positive entailment test</td>
 <tr class="regime"><th>regime:</th><td>simple</td>
 </table>
-<div><code><a href="test000.ttl">test000.ttl</a></code></div>
+<div><code><a href="test000s.ttl">test000s.ttl</a></code></div>
 <pre>
 prefix : &lt;http://example.com/ns#&gt;
 
 &lt;&lt; :a :b :c &gt;&gt; :p1 :o1.
-:s2 :p2 &lt;&lt; :x :y :z &gt;&gt;.
 </pre>
 <div>MUST entail</div>
-<div><code><a href="test000.ttl">test000.ttl</a></code></div>
+<div><code><a href="test000s.ttl">test000s.ttl</a></code></div>
 <pre>
 prefix : &lt;http://example.com/ns#&gt;
 
 &lt;&lt; :a :b :c &gt;&gt; :p1 :o1.
-:s2 :p2 &lt;&lt; :x :y :z &gt;&gt;.
 </pre>
-<p>Embedded triples can appear in subject or object position (EVENTUALLY, this should be a Turtle* test rather than a semantics test).</p>
+<p>Embedded triples can appear in subject position (EVENTUALLY, this should be a Turtle* test rather than a semantics test).</p>
+</section><section id="triple-in-object" class="entry approved">
+<h2>triple-in-object <a href="#triple-in-object">🔗</a></h2>
+<table class="properties">
+<tr class="status"><th>status:</th><td>approved</td>
+<tr class="type"><th>type:</th><td>positive entailment test</td>
+<tr class="regime"><th>regime:</th><td>simple</td>
+</table>
+<div><code><a href="test000o.ttl">test000o.ttl</a></code></div>
+<pre>
+prefix : &lt;http://example.com/ns#&gt;
+
+:s1 :p1 &lt;&lt; :x :y :z &gt;&gt;.
+</pre>
+<div>MUST entail</div>
+<div><code><a href="test000o.ttl">test000o.ttl</a></code></div>
+<pre>
+prefix : &lt;http://example.com/ns#&gt;
+
+:s1 :p1 &lt;&lt; :x :y :z &gt;&gt;.
+</pre>
+<p>Embedded triples can appear in object position (EVENTUALLY, this should be a Turtle* test rather than a semantics test).</p>
 </section><section id="all-identical-embedded-triples-are-the-same" class="entry proposed">
 <h2>all-identical-embedded-triples-are-the-same <a href="#all-identical-embedded-triples-are-the-same">🔗</a></h2>
 <table class="properties">

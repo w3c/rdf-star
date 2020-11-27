@@ -60,16 +60,19 @@
 <li class="proposed"><a href="#constrained-bnodes-in-embedded-subject">constrained-bnodes-in-embedded-subject</a>
 <li class="proposed"><a href="#constrained-bnodes-in-embedded-object">constrained-bnodes-in-embedded-object</a>
 <li class="proposed"><a href="#constrained-bnodes-in-embedded-fail">constrained-bnodes-in-embedded-fail</a>
+<li class="proposed"><a href="#malformed-literal-control">malformed-literal-control</a>
 <li class="proposed"><a href="#malformed-literal">malformed-literal</a>
 <li class="proposed"><a href="#malformed-literal-accepted">malformed-literal-accepted</a>
 <li class="proposed"><a href="#malformed-literal-no-spurious">malformed-literal-no-spurious</a>
 <li class="proposed"><a href="#malformed-literal-bnode">malformed-literal-bnode</a>
 <li class="proposed"><a href="#malformed-literal-bnode-2">malformed-literal-bnode-2</a>
 <li class="proposed"><a href="#malformed-literal-bnode-3">malformed-literal-bnode-3</a>
+<li class="proposed"><a href="#opaque-literal-control">opaque-literal-control</a>
 <li class="proposed"><a href="#opaque-literal">opaque-literal</a>
+<li class="proposed"><a href="#opaque-language-string-control">opaque-language-string-control</a>
 <li class="proposed"><a href="#opaque-language-string">opaque-language-string</a>
+<li class="proposed"><a href="#opaque-iri-control">opaque-iri-control</a>
 <li class="proposed"><a href="#opaque-iri">opaque-iri</a>
-<li class="proposed"><a href="#control-sameas">control-sameas</a>
 <li class="proposed"><a href="#sa-mode">sa-mode</a>
 <li class="proposed"><a href="#pg-mode">pg-mode</a>
 </ul>
@@ -334,6 +337,22 @@ prefix : &lt;http://example.com/ns#&gt;
 _:x :label "C".
 </pre>
 <p>Embedded bnode identifiers share the same scope as non-embedded ones. A bnode occuring both in embedded triples and in asserted triples must statisfy them all at the same time.</p>
+</section><section id="malformed-literal-control" class="entry proposed">
+<h2>malformed-literal-control <a href="#malformed-literal-control">🔗</a></h2>
+<table class="properties">
+<tr class="status"><th>status:</th><td>proposed</td>
+<tr class="type"><th>type:</th><td>positive entailment test</td>
+<tr class="regime"><th>regime:</th><td>RDF</td>
+<tr class="recognized"><th>recognizing:</th><td>xsd:integer</td>
+</table>
+<div><code><a href="malformed-literal-control.ttl">malformed-literal-control.ttl</a></code></div>
+<pre>
+prefix : &lt;http://example.com/ns#&gt;
+prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt;
+
+:a :b "c"^^xsd:integer.</pre>
+<div>MUST entail</div>
+<div>a contradiction</div><p>Checks that xsd:integer is indeed recognized, to ensure that malformed-literal* tests do not pass spuriously.</p>
 </section><section id="malformed-literal" class="entry proposed">
 <h2>malformed-literal <a href="#malformed-literal">🔗</a></h2>
 <table class="properties">
@@ -464,6 +483,28 @@ prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt;
 &lt;&lt; :a :b _:x &gt;&gt; :p1 :o1.
 &lt;&lt; :d :b _:x &gt;&gt; :p2 :o2.</pre>
 <p>Identical malformed literals can not be replaced with the same blank node.</p>
+</section><section id="opaque-literal-control" class="entry proposed">
+<h2>opaque-literal-control <a href="#opaque-literal-control">🔗</a></h2>
+<table class="properties">
+<tr class="status"><th>status:</th><td>proposed</td>
+<tr class="type"><th>type:</th><td>positive entailment test</td>
+<tr class="regime"><th>regime:</th><td>RDF</td>
+<tr class="recognized"><th>recognizing:</th><td>xsd:integer</td>
+</table>
+<div><code><a href="non-canonical-literal-control.ttl">non-canonical-literal-control.ttl</a></code></div>
+<pre>
+prefix : &lt;http://example.com/ns#&gt;
+prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt;
+
+:a :b "042"^^xsd:integer.</pre>
+<div>MUST entail</div>
+<div><code><a href="canonical-literal-control.ttl">canonical-literal-control.ttl</a></code></div>
+<pre>
+prefix : &lt;http://example.com/ns#&gt;
+prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt;
+
+:a :b "42"^^xsd:integer.</pre>
+<p>Checks that xsd:integer is indeed recognized, to ensure that opaque-literal does not pass spuriously.</p>
 </section><section id="opaque-literal" class="entry proposed">
 <h2>opaque-literal <a href="#opaque-literal">🔗</a></h2>
 <table class="properties">
@@ -486,6 +527,26 @@ prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt;
 
 &lt;&lt; :a :b "42"^^xsd:integer &gt;&gt; :p1 :o1.</pre>
 <p>Embedded literals are opaque, even when their datatype is recognized.</p>
+</section><section id="opaque-language-string-control" class="entry proposed">
+<h2>opaque-language-string-control <a href="#opaque-language-string-control">🔗</a></h2>
+<table class="properties">
+<tr class="status"><th>status:</th><td>proposed</td>
+<tr class="type"><th>type:</th><td>positive entailment test</td>
+<tr class="regime"><th>regime:</th><td>RDF</td>
+</table>
+<div><code><a href="lowercase-language-string-control.ttl">lowercase-language-string-control.ttl</a></code></div>
+<pre>
+prefix : &lt;http://example.com/ns#&gt;
+prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt;
+
+:a :b "hello"@en-us.</pre>
+<div>MUST entail</div>
+<div><code><a href="upercase-language-string-control.ttl">upercase-language-string-control.ttl</a></code></div>
+<pre>
+prefix : &lt;http://example.com/ns#&gt;
+
+:a :b "hello"@en-US.</pre>
+<p>Checks that language strings are indeed recognized, to ensure that opaque-language-string does not pass spuriously.</p>
 </section><section id="opaque-language-string" class="entry proposed">
 <h2>opaque-language-string <a href="#opaque-language-string">🔗</a></h2>
 <table class="properties">
@@ -506,6 +567,29 @@ prefix : &lt;http://example.com/ns#&gt;
 
 &lt;&lt; :a :b "hello"@en-US &gt;&gt; :p1 :o1.</pre>
 <p>Embedded literals (including language strings) are opaque, even when their datatype is recognized.</p>
+</section><section id="opaque-iri-control" class="entry proposed">
+<h2>opaque-iri-control <a href="#opaque-iri-control">🔗</a></h2>
+<table class="properties">
+<tr class="status"><th>status:</th><td>proposed</td>
+<tr class="type"><th>type:</th><td>positive entailment test</td>
+<tr class="regime"><th>regime:</th><td>RDFS-Plus</td>
+</table>
+<div><code><a href="control-sameas-a.ttl">control-sameas-a.ttl</a></code></div>
+<pre>
+prefix : &lt;http://example.com/ns#&gt;
+prefix owl: &lt;http://www.w3.org/2002/07/owl#&gt;
+
+:superman :can :fly .
+:clark owl:sameAs :superman.
+</pre>
+<div>MUST entail</div>
+<div><code><a href="control-sameas-r.ttl">control-sameas-r.ttl</a></code></div>
+<pre>
+prefix : &lt;http://example.com/ns#&gt;
+
+:clark :can :fly .
+</pre>
+<p>Check that owl:sameAs works as expected, to ensure that opaque-iri does not pass spuriously.</p>
 </section><section id="opaque-iri" class="entry proposed">
 <h2>opaque-iri <a href="#opaque-iri">🔗</a></h2>
 <table class="properties">
@@ -528,29 +612,6 @@ prefix : &lt;http://example.com/ns#&gt;
 &lt;&lt; :clark :can :fly &gt;&gt; :reportedBy :clark.
 </pre>
 <p>Embedded IRIs are opaque.</p>
-</section><section id="control-sameas" class="entry proposed">
-<h2>control-sameas <a href="#control-sameas">🔗</a></h2>
-<table class="properties">
-<tr class="status"><th>status:</th><td>proposed</td>
-<tr class="type"><th>type:</th><td>positive entailment test</td>
-<tr class="regime"><th>regime:</th><td>RDFS-Plus</td>
-</table>
-<div><code><a href="control-sameas-a.ttl">control-sameas-a.ttl</a></code></div>
-<pre>
-prefix : &lt;http://example.com/ns#&gt;
-prefix owl: &lt;http://www.w3.org/2002/07/owl#&gt;
-
-:superman :can :fly .
-:clark owl:sameAs :superman.
-</pre>
-<div>MUST entail</div>
-<div><code><a href="control-sameas-r.ttl">control-sameas-r.ttl</a></code></div>
-<pre>
-prefix : &lt;http://example.com/ns#&gt;
-
-:clark :can :fly .
-</pre>
-<p>Check that owl:sameAs works as expected, to ensure that opaque-iri does not pass spuriously.</p>
 </section><section id="sa-mode" class="entry proposed">
 <h2>sa-mode <a href="#sa-mode">🔗</a></h2>
 <table class="properties">

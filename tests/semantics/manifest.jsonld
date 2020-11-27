@@ -148,6 +148,18 @@
             "action": "test004a.ttl",
             "result": "test004fr.ttl"
         },
+        {   
+            "@id": "#malformed-literal-control",
+            "@type": "PositiveEntailmentTest",
+            "name": "malformed-literal-control",
+            "comment": "Checks that xsd:integer is indeed recognized, to ensure that malformed-literal* tests do not pass spuriously.",
+            "approval": "Proposed",
+            "entailmentRegime": "RDF" ,
+            "recognizedDatatypes": ["xsd:integer"] ,
+            "unrecognizedDatatypes": [] ,
+            "action": "malformed-literal-control.ttl",
+            "result": false
+        },
         {
             "@id": "#malformed-literal",
             "@type": "NegativeEntailmentTest",
@@ -221,6 +233,18 @@
             "result": "malformed-literal-3r.ttl"
         },
         {            
+            "@id": "#opaque-literal-control",
+            "@type": "PositiveEntailmentTest",
+            "name": "opaque-literal-control",
+            "comment": "Checks that xsd:integer is indeed recognized, to ensure that opaque-literal does not pass spuriously.",
+            "approval": "Proposed",
+            "entailmentRegime": "RDF" ,
+            "recognizedDatatypes": ["xsd:integer"] ,
+            "unrecognizedDatatypes": [] ,
+            "action": "non-canonical-literal-control.ttl",
+            "result": "canonical-literal-control.ttl"
+        },
+        {            
             "@id": "#opaque-literal",
             "@type": "NegativeEntailmentTest",
             "name": "opaque-literal",
@@ -231,6 +255,18 @@
             "unrecognizedDatatypes": [] ,
             "action": "non-canonical-literal.ttl",
             "result": "canonical-literal.ttl"
+        },
+        {            
+            "@id": "#opaque-language-string-control",
+            "@type": "PositiveEntailmentTest",
+            "name": "opaque-language-string-control",
+            "comment": "Checks that language strings are indeed recognized, to ensure that opaque-language-string does not pass spuriously.",
+            "approval": "Proposed",
+            "entailmentRegime": "RDF" ,
+            "recognizedDatatypes": [] ,
+            "unrecognizedDatatypes": [] ,
+            "action": "lowercase-language-string-control.ttl",
+            "result": "upercase-language-string-control.ttl"
         },
         {            
             "@id": "#opaque-language-string",
@@ -245,6 +281,18 @@
             "result": "upercase-language-string.ttl"
         },
         {
+            "@id": "#opaque-iri-control",
+            "@type": "PositiveEntailmentTest",
+            "name": "opaque-iri-control",
+            "comment": "Check that owl:sameAs works as expected, to ensure that opaque-iri does not pass spuriously.",
+            "approval": "Proposed",
+            "entailmentRegime": "RDFS-Plus" ,
+            "recognizedDatatypes": [] ,
+            "unrecognizedDatatypes": [] ,
+            "action": "control-sameas-a.ttl",
+            "result": "control-sameas-r.ttl"
+        },
+        {
             "@id": "#opaque-iri",
             "@type": "NegativeEntailmentTest",
             "name": "opaque-iri",
@@ -255,18 +303,6 @@
             "unrecognizedDatatypes": [] ,
             "action": "superman.ttl",
             "result": "superman_undesired_entailment.ttl"
-        },
-        {
-            "@id": "#control-sameas",
-            "@type": "PositiveEntailmentTest",
-            "name": "control-sameas",
-            "comment": "Check that owl:sameAs works as expected, to ensure that opaque-iri does not pass spuriously.",
-            "approval": "Proposed",
-            "entailmentRegime": "RDFS-Plus" ,
-            "recognizedDatatypes": [] ,
-            "unrecognizedDatatypes": [] ,
-            "action": "control-sameas-a.ttl",
-            "result": "control-sameas-r.ttl"
         },
         {
             "@id": "#sa-mode",

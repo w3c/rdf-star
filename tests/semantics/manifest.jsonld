@@ -160,6 +160,18 @@
             "action": "test004a.ttl",
             "result": "test004fr.ttl"
         },
+        {
+            "@id": "#constrained-bnodes-on-literal",
+            "@type": "PositiveEntailmentTest",
+            "name": "constrained-bnodes-on-literal",
+            "comment": "Literals in embedded triples and outside can be replaced by fresh bnodes.",
+            "approval": "Proposed",
+            "entailmentRegime": "simple" ,
+            "recognizedDatatypes": [] ,
+            "unrecognizedDatatypes": [] ,
+            "action": "test006a.ttl",
+            "result": "test006r.ttl"
+        },
         {   
             "@id": "#malformed-literal-control",
             "@type": "PositiveEntailmentTest",

@@ -61,6 +61,7 @@
 <li class="proposed"><a href="#constrained-bnodes-in-embedded-subject">constrained-bnodes-in-embedded-subject</a>
 <li class="proposed"><a href="#constrained-bnodes-in-embedded-object">constrained-bnodes-in-embedded-object</a>
 <li class="proposed"><a href="#constrained-bnodes-in-embedded-fail">constrained-bnodes-in-embedded-fail</a>
+<li class="proposed"><a href="#constrained-bnodes-on-literal">constrained-bnodes-on-literal</a>
 <li class="proposed"><a href="#malformed-literal-control">malformed-literal-control</a>
 <li class="proposed"><a href="#malformed-literal">malformed-literal</a>
 <li class="proposed"><a href="#malformed-literal-accepted">malformed-literal-accepted</a>
@@ -357,6 +358,29 @@ prefix : &lt;http://example.com/ns#&gt;
 _:x :label "C".
 </pre>
 <p>Embedded bnode identifiers share the same scope as non-embedded ones. A bnode occuring both in embedded triples and in asserted triples must statisfy them all at the same time.</p>
+</section><section id="constrained-bnodes-on-literal" class="entry proposed">
+<h2>constrained-bnodes-on-literal <a href="#constrained-bnodes-on-literal">🔗</a></h2>
+<table class="properties">
+<tr class="status"><th>status:</th><td>proposed</td>
+<tr class="type"><th>type:</th><td>positive entailment test</td>
+<tr class="regime"><th>regime:</th><td>simple</td>
+</table>
+<div><code><a href="test006a.ttl">test006a.ttl</a></code></div>
+<pre>
+prefix : &lt;http://example.com/ns#&gt;
+prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt;
+
+&lt;&lt; :a :b "42"^^xsd:integer &gt;&gt; :p1 :o1.
+:s2 :p2 "42"^^xsd:integer.</pre>
+<div>MUST entail</div>
+<div><code><a href="test006r.ttl">test006r.ttl</a></code></div>
+<pre>
+prefix : &lt;http://example.com/ns#&gt;
+prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt;
+
+&lt;&lt; :a :b _:x &gt;&gt; :p1 :o1.
+:s2 :p2 _:x.</pre>
+<p>Literals in embedded triples and outside can be replaced by fresh bnodes.</p>
 </section><section id="malformed-literal-control" class="entry proposed">
 <h2>malformed-literal-control <a href="#malformed-literal-control">🔗</a></h2>
 <table class="properties">

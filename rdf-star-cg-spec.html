@@ -163,7 +163,7 @@
 
     <ul>
       <li>Exactly one <dfn data-cite="RDF11-CONCEPTS#dfn-default-graph">default graph</dfn>, being an <a>RDF* graph</a>. The <a>default graph</a> does not have a name and MAY be empty.</li>
-      <li>Zero or more <dfn data-cite="RDF11-CONCEPTS#dfn-named-graph">named graphs</dfn>. Each <a>named graph</a> is a pair consisting of an <a>IRI</a> or a <a>blank node</a> (the <dfn data-cite="RDF11-CONCEPTS#dfn-graph-name">graph name</dfn>), and an <a>RDF* graph</a>. <a>Graph names</a> are unique within an <a>RDF* dataset</a>.</li>
+      <li>Zero or more <dfn data-cite="RDF11-CONCEPTS#dfn-named-graph">named graphs</dfn>. Each <a>named graph</a> is a pair consisting of an <a>IRI</a> or a <a>blank node</a> (called the <dfn data-cite="RDF11-CONCEPTS#dfn-graph-name">graph name</dfn>), and an <a>RDF* graph</a>. <a>Graph names</a> are unique within an <a>RDF* dataset</a>.</li>
     </ul>
 
     <p>Again, this definition is an extension of the notion of <dfn data-cite="RDF11-CONCEPTS#dfn-rdf-dataset">RDF dataset</dfn>, hence it follows that any <a>RDF dataset</a> is also an <a>RDF* dataset</a>.</p>
@@ -171,11 +171,11 @@
 
   <section id="turtle-star">
     <h2>Turtle*</h2>
-    <p>In this section, we present Turtle*, an extension of the Turtle format [[TURTLE]] allowing to represent <a>RDF* graphs</a>. For the sake of conciseness, we only describe here the differences between Turtle* and Turtle.</p>
+    <p>In this section, we present Turtle*, an extension of the Turtle format [[TURTLE]] allowing the representation of <a>RDF* graphs</a>. For the sake of conciseness, we only describe here the differences between Turtle* and Turtle.</p>
 
     <section id="turtle-star-grammar">
       <h2>Grammar</h2>
-      <p>Turtle* is defined to follow the <a data-cite="TURTLE#h3_sec-grammar-grammar">same grammar</a> as Turtle, <em>except</em> for the <a data-cite="XML#sec-notation"><abbr title="Extended Backus-Naur Form">EBNF</abbr> productions</a> specified below, which replace the productions with the same number (if any) in the original grammar.</p>
+      <p>Turtle* is defined to follow the <a data-cite="TURTLE#h3_sec-grammar-grammar">same grammar</a> as Turtle, <em>except</em> for the <a data-cite="XML#sec-notation"><abbr title="Extended Backus-Naur Form">EBNF</abbr> productions</a> specified below, which replace the productions having the same number (if any) in the original grammar.</p>
 
       <table class="grammar">
         <tr id="grammar-production-subject">
@@ -245,9 +245,9 @@
       <ul>
         <li id="curObject"><a>RDF* Term</a> |curObject| — The |curObject| is bound to the <a href="#grammar-production-embObject">`embObject`</a> production.</li>
       </ul>
-      <p>Additionally, the <a data-cite="TURTLE#curSubject">|curSubject|</a> can be bound to any <a>RDF* term</a> (including a <a>embedded triple</a>).</p>
+      <p>Additionally, the <a data-cite="TURTLE#curSubject">|curSubject|</a> can be bound to any <a>RDF* term</a> (including an <a>embedded triple</a>).</p>
 
-      <p>A Turtle* document defines an <a>RDF* graph</a> composed of a set of <a>RDF* triples</a>. The <a href="#grammar-production-subject">`subject`</a> and <a href="#grammar-production-embSubject">`embSubject`</a> productions sets the |curSubject|. The <a data-cite="TURTLE#grammar-production-verb">`verb`</a> production sets the <a data-cite="TURTLE#curPredicate">|curPredicate|</a>. The <a href="#grammar-production-embObject">`embObject`</a> productions sets the |curObject|. For each <a href="#grammar-production-object">`object`</a> |N|, an <a>RDF* triple</a> |curSubject| |curPredicate| |N| is generated and added to the <a>RDF* graph</a>.</p>
+      <p>A Turtle* document defines an <a>RDF* graph</a> composed of a set of <a>RDF* triples</a>. The <a href="#grammar-production-subject">`subject`</a> and <a href="#grammar-production-embSubject">`embSubject`</a> productions set the |curSubject|. The <a data-cite="TURTLE#grammar-production-verb">`verb`</a> production sets the <a data-cite="TURTLE#curPredicate">|curPredicate|</a>. The <a href="#grammar-production-embObject">`embObject`</a> productions set the |curObject|. For each <a href="#grammar-production-object">`object`</a> |N|, an <a>RDF* triple</a> |curSubject| |curPredicate| |N| is generated and added to the <a>RDF* graph</a>.</p>
 
       <p>Beginning the <a href="#grammar-production-embTriple">`embTriple`</a> production records the |curSubject| and |curPredicate|. Finishing the <a href="#grammar-production-embTriple">`embTriple`</a> production yields the <a>RDF* triple</a> |curSubject| |curPredicate| |curObject| and restores the recorded values of |curSubject| and |curPredicate|.</p>
 
@@ -257,7 +257,7 @@
     <section class="informative">
       <h2>Other Concrete Syntaxes</h2>
 
-      <p>While this document specifies only one <a>concrete syntax</a>, nothing prevents other <a>concrete syntaxes</a> of RDF* to be proposed. In particular, other existing <a>concrete syntaxes</a> for RDF, such as RDF/XML [[RDF-SYNTAX-GRAMMAR]], could be extended to support RDF*. In particular, the N-Triples syntax [[N-TRIPLES]] being a subset of Turtle, an appropriate subset of Turtle* could be defined to extend N-Triples accordingly.</p>
+      <p>While this document specifies only one <a>concrete syntax</a>, nothing prevents other <a>concrete syntaxes</a> of RDF* from being proposed. In particular, other existing <a>concrete syntaxes</a> for RDF, such as RDF/XML [[RDF-SYNTAX-GRAMMAR]], could be extended to support RDF*. In particular, the N-Triples syntax [[N-TRIPLES]] being a subset of Turtle, an appropriate subset of Turtle* could be defined to extend N-Triples accordingly.</p>
     </section>
 
   </section>
@@ -299,7 +299,7 @@
 
       <p class="note">The notion of a <a>SPARQL* solution mapping</a> extends the notion of a standard SPARQL <a>solution mapping</a>; that is, every SPARQL <a>solution mapping</a> is a <a>SPARQL* solution mapping</a>. However, in contrast to SPARQL <a>solution mappings</a>, <a>SPARQL* solution mappings</a> may map <a>variables</a> also to <a>RDF* triples</a>.</p>
 
-      <p>All notions related to SPARQL solution mappings carry over naturally to SPARQL* solution mappings. In particular, the definition of <dfn data-cite="SPARQL11-QUERY#defn_algCompatibleMapping">compatibility</dfn> extends naturally to SPARQL* solution mappings: Two <a>SPARQL* solution mappings</a> μ<sub>1</sub> and μ<sub>2</sub> are compatible if, for every variable v that is both in dom(μ<sub>1</sub>) and in dom(μ<sub>2</sub>), μ<sub>1</sub>(v) and μ<sub>2</sub>(v) are the same <a>RDF* term</a>.
+      <p>All notions related to SPARQL solution mappings carry over naturally to SPARQL* solution mappings. In particular, the definition of <dfn data-cite="SPARQL11-QUERY#defn_algCompatibleMapping">compatibility</dfn> extends naturally to SPARQL* solution mappings: two <a>SPARQL* solution mappings</a> μ<sub>1</sub> and μ<sub>2</sub> are compatible if, for every variable v that is both in dom(μ<sub>1</sub>) and in dom(μ<sub>2</sub>), μ<sub>1</sub>(v) and μ<sub>2</sub>(v) are the same <a>RDF* term</a>.
       In this case, μ<sub>1</sub> ∪ μ<sub>2</sub> is also a SPARQL* solution mapping.
       Moreover, for any SPARQL* solution mapping&nbsp;μ we write card[Ω](μ) to denote the cardinality of μ in a multiset Ω of such mappings.
       Finally, given a <a>BGP*</a>&nbsp;|B| and a SPARQL* solution mapping&nbsp;μ, we write μ(|B|) to denote the result of replacing every variable&nbsp;|v| in |B| for which μ is defined with μ(v).
@@ -326,7 +326,7 @@
     <section id="sparql-star-grammar">
       <h2>Grammar</h2>
 
-      <p>SPARQL* is defined to follow the <a data-cite="SPARQL11-QUERY#sparqlGrammar">same grammar</a> as SPARQL, <em>except</em> for the <a data-cite="XML#sec-notation"><abbr title="Extended Backus-Naur Form">EBNF</abbr> productions</a> specified below, which replace the productions with the same number (if any) in the original grammar.</p>
+      <p>SPARQL* is defined to follow the <a data-cite="SPARQL11-QUERY#sparqlGrammar">same grammar</a> as SPARQL, <em>except</em> for the <a data-cite="XML#sec-notation"><abbr title="Extended Backus-Naur Form">EBNF</abbr> productions</a> specified below, which replace the productions having the same number (if any) in the original grammar.</p>
 
       <table class="grammar">
         <tr id="rBind">
@@ -429,11 +429,11 @@
         (productions <a href="#rEmbTP">[174]</a> and following),
         which is similar to the one defined for <a>embedded triples</a> in <a href="#turtle-star"></a>,
         but accepting also <a>variables</a>.
-        These <a>embedded triple patterns</a> are allowed in subject
+        These <a>embedded triple patterns</a> are allowed in the subject
         (<a href="#rTriplesSameSubject">[75]</a>, <a href="#rTriplesSameSubjectPath">[81]</a>)
         and object
         (<a href="#rObject">[80]</a>, <a href="#rGraphNodePath">[105]</a>)
-        position of <a>SPARQL* triple patterns</a>,
+        positions of <a>SPARQL* triple patterns</a>,
         as well as in BIND statements
         (<a href="#rBind">[60]</a>).
       </p>
@@ -445,7 +445,7 @@
     <section>
       <h2>Translation to the Algebra</h2>
 
-      <p>Based on the SPARQL grammar the SPARQL specification <q>defines the process of converting graph patterns and solution modifiers in a SPARQL query string into a SPARQL algebra expression</q> [<a data-cite="SPARQL11-QUERY#sparqlQuery">SPARQL11-QUERY, Section 18.2</a>].  This process must be adjusted to consider the extended grammar introduced <a href="#sparql-star-grammar">above</a>. In the following, any step of the conversion process that requires adjustment is discussed.</p>
+      <p>Based on the SPARQL grammar, the SPARQL specification <q>defines the process of converting graph patterns and solution modifiers in a SPARQL query string into a SPARQL algebra expression</q> [<a data-cite="SPARQL11-QUERY#sparqlQuery">SPARQL11-QUERY, Section 18.2</a>].  This process must be adjusted to consider the extended grammar introduced <a href="#sparql-star-grammar">above</a>. In the following, any step of the conversion process that requires adjustment is discussed.</p>
 
       <section>
         <h2>Variable Scope</h2>
@@ -560,7 +560,7 @@
       <p>The SPARQL specification defines a function <q>eval(|D|(|G|), algebra expression) as the evaluation of an algebra expression with respect to a dataset |D| having active graph |G|</q> [<a href="SPARQL11-QUERY#sparqlAlgebraEval">SPARQL11-QUERY, Section 18.6</a>]. Recall that the dataset |D| in the context of SPARQL* is an <a>RDF* dataset</a> and, thus, the active graph |G| is an <a>RDF* graph</a>, and so is any other graph in dataset |D|. The definition of function eval is recursive; the two base cases of this definition for SPARQL* are given as follows:</p>
 
       <ol>
-        <li>For every <a>BGP*</a> |B|, eval(|D|(|G|), |B|) is a multiset Ω that consists of all <a>SPARQL* solution mappings</a> that are a <a>solution for the BGP*</a>&nbsp;|B| over&nbsp;|G|. For every such mapping&nbsp;μ, card[Ω](μ) is the number of distinct <a>RDF* instance mappings</a>&nbsp;σ such that dom(σ) is equivalent to the set of blank nodes in&nbsp;|B| and μ(σ(|B|)) is a subgraph of |G|. (For any SPARQL* solution mapping&nbsp;μ' that is <em>not</em> a solution for&nbsp;|B| over&nbsp;|G|, we have that card[Ω](μ')=0; i.e., μ' is not in Ω).</li>
+        <li>For every <a>BGP*</a> |B|, eval(|D|(|G|), |B|) is a multiset Ω that consists of all <a>SPARQL* solution mappings</a> that are a <a>solution for the BGP*</a>&nbsp;|B| over&nbsp;|G|. For every such mapping&nbsp;μ, card[Ω](μ) is the number of distinct <a>RDF* instance mappings</a>&nbsp;σ such that dom(σ) is equivalent to the set of blank nodes in&nbsp;|B| and μ(σ(|B|)) is a subgraph of |G|. (For any SPARQL* solution mapping&nbsp;μ' that is <em>not</em> a solution for&nbsp;|B| over&nbsp;|G|, we have that card[Ω](μ')=0; i.e., μ' is not in Ω.)</li>
 
         <li>For any algebra expression |E| of the form TR(|tp|, <var>?v</var>) where |tp| is a <a>SPARQL* triple pattern</a> and <var>?v</var> is a <a>variable</a> (as introduced in <a href="#translate-bind"></a>), eval(|D|(|G|), |E|) is a multiset Ω that consists of as many <a>SPARQL* solution mappings</a> as there are solution mappings in Ω', where Ω'=eval(|D|(|G|),{|tp|}), such that for every μ' in Ω' there exists a μ in Ω that has the following four properties:
           <ul>
@@ -698,7 +698,7 @@
     <section class="informative">
       <h2>Design Rationale</h2>
 
-      <p>In this section, we discuss a number of desired features of RDF* semantics, in order to shed light on the design choices made in the previous section</p>
+      <p>In this section, we discuss a number of desired features of RDF* semantics in order to shed light on the design choices made in the previous section</p>
 
       <section>
         <h2>Quoting without asserting</h2>

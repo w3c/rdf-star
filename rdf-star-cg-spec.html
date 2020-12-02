@@ -165,7 +165,7 @@
 
     <ul>
       <li>Exactly one <dfn data-cite="RDF11-CONCEPTS#dfn-default-graph">default graph</dfn>, being an <a>RDF* graph</a>. The <a>default graph</a> does not have a name and MAY be empty.</li>
-      <li>Zero or more <dfn data-cite="RDF11-CONCEPTS#dfn-named-graph">named graphs</dfn>. Each <a>named graph</a> is a pair consisting of an <a>IRI</a> or a <a>blank node</a> (called the <dfn data-cite="RDF11-CONCEPTS#dfn-graph-name">graph name</dfn>), and an <a>RDF* graph</a>. <a>Graph names</a> are unique within an <a>RDF* dataset</a>.</li>
+      <li>Zero or more <dfn data-cite="RDF11-CONCEPTS#dfn-named-graph">named graphs</dfn>. Each <a>named graph</a> is a pair consisting of either an <a>IRI</a> or a <a>blank node</a> (called the <dfn data-cite="RDF11-CONCEPTS#dfn-graph-name">graph name</dfn>), and an <a>RDF* graph</a>. <a>Graph names</a> are unique within an <a>RDF* dataset</a>.</li>
     </ul>
 
     <p>Again, this definition is an extension of the notion of <dfn data-cite="RDF11-CONCEPTS#dfn-rdf-dataset">RDF dataset</dfn>, hence it follows that any <a>RDF dataset</a> is also an <a>RDF* dataset</a>.</p>
@@ -559,24 +559,24 @@
     <section>
       <h2>Evaluation Semantics</h2>
 
-      <p>The SPARQL specification defines a function <q>eval(|D|(|G|), algebra expression) as the evaluation of an algebra expression with respect to a dataset |D| having active graph |G|</q> [<a href="SPARQL11-QUERY#sparqlAlgebraEval">SPARQL11-QUERY, Section 18.6</a>]. Recall that the dataset |D| in the context of SPARQL* is an <a>RDF* dataset</a> and, thus, the active graph |G| is an <a>RDF* graph</a>, and so is any other graph in dataset |D|. The definition of function eval is recursive; the two base cases of this definition for SPARQL* are given as follows:</p>
+      <p>The SPARQL specification defines a function <q>eval(|D|(|G|), algebra expression) as the evaluation of an algebra expression with respect to a dataset |D| having active graph |G|</q> [<a data-cite="SPARQL11-QUERY#sparqlAlgebraEval">SPARQL11-QUERY, Section 18.6</a>]. Recall that the dataset |D| in the context of SPARQL* is an <a>RDF* dataset</a> and, thus, the active graph |G| is an <a>RDF* graph</a>, and so is any other graph in dataset |D|. The definition of the <a data-cite="SPARQL11-QUERY#sparqlAlgebraEval">eval</a> function is recursive; the two base cases of this definition for SPARQL* are given as follows:</p>
 
       <ol>
         <li>For every <a>BGP*</a> |B|, eval(|D|(|G|), |B|) is a multiset Ω that consists of all <a>SPARQL* solution mappings</a> that are a <a>solution for the BGP*</a>&nbsp;|B| over&nbsp;|G|. For every such mapping&nbsp;μ, card[Ω](μ) is the number of distinct <a>RDF* instance mappings</a>&nbsp;σ such that dom(σ) is equivalent to the set of blank nodes in&nbsp;|B| and μ(σ(|B|)) is a subgraph of |G|. (For any SPARQL* solution mapping&nbsp;μ' that is <em>not</em> a solution for&nbsp;|B| over&nbsp;|G|, we have that card[Ω](μ')=0; i.e., μ' is not in Ω.)</li>
 
         <li>For any algebra expression |E| of the form TR(|tp|, <var>?v</var>) where |tp| is a <a>SPARQL* triple pattern</a> and <var>?v</var> is a <a>variable</a> (as introduced in <a href="#translate-bind"></a>), eval(|D|(|G|), |E|) is a multiset Ω that consists of as many <a>SPARQL* solution mappings</a> as there are solution mappings in Ω', where Ω'=eval(|D|(|G|),{|tp|}), such that for every μ' in Ω' there exists a μ in Ω that has the following four properties:
-          <ul>
-            <li>dom(μ) = dom(μ') ∪ {<var>?v</var>},</li>
-            <li>μ and μ' are compatible,</li>
-            <li>μ(<var>?v</var>) = μ'(|tp|), and</li>
-            <li>card[Ω](μ) = card[Ω'](μ').</li>
-          </ul>
+          <ol type="i">
+            <li>dom(μ) = dom(μ') ∪ {<var>?v</var>}</li>
+            <li>μ and μ' are compatible</li>
+            <li>μ(<var>?v</var>) = μ'(|tp|)</li>
+            <li>card[Ω](μ) = card[Ω'](μ')</li>
+          </ol>
         </li>
       </ol>
 
       <div class="issue" data-number="8"></div>
 
-      <p>For any other algebra expression, the SPARQL specification defines algebra operators [[SPARQL11-QUERY]]. These definitions can be extended naturally to operate over multisets of <a>SPARQL* solution mappings</a> (instead of ordinary <a>solution mappings</a>). Given this extension, the recursive steps of the definition of function eval for SPARQL* are the same as in the SPARQL specification.</p>
+      <p>For any other algebra expression, the SPARQL specification defines algebra operators [[SPARQL11-QUERY]]. These definitions can be extended naturally to operate over multisets of <a>SPARQL* solution mappings</a> (instead of ordinary <a>solution mappings</a>). Given this extension, the recursive steps of the definition of the <a data-cite="SPARQL11-QUERY#sparqlAlgebraEval">eval</a> function for SPARQL* are the same as in the SPARQL specification.</p>
     </section>
 
     <section>

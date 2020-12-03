@@ -621,15 +621,14 @@
 
       <p>An <dfn>RDF* simple interpretation</dfn> |I| is a structure consisting of:</p>
       <ol>
-        <li>A non-empty set |IR| of resources, called the domain or universe of |I|.</li>
+        <li>A non-empty set |IR| of resources, called the domain or universe of |I|, and containing all RDF* <a>ground</a> triples.</li>
         <li>A set |IP|, called the set of properties of |I|.</li>
         <li>A mapping |IEXT| from |IP| into the powerset of |IR|×|IR| i.e. the set of sets of pairs (|x|,|y|) with |x| and |y| in |IR|.</li>
         <li>A mapping |IS| from <a>IRIs</a> into |IR|∪|IP|.</li>
         <li>A partial mapping |IL| from <a>literals</a> into |IR|.</li>
-        <li>A partial mapping |IT| from <a>ground RDF* triples</a> into |IR|, such that for any two <a>triples</a> (|s1|,|p1|,|o1|) and (|s2|,|p2|,|o2|), |IT|(|s1|,|p1|,|o1|)=|IT|(|s2|,|p2|,|o2|) implies |IG|(|s1|)=|IG|(|s2|), |IG|(|p1|)=|IG|(|p2|) and |IG|(|o1|)=|IG|(|o2|), where |IG|=|IS|∪|IL|∪|IT|.</li>
       </ol>
 
-      <p>This definition is identical to the definition of <dfn data-cite="RDF11-MT#dfn-simple-interpretation">simple interpretation</dfn> [[RDF11-MT]] up to item 5 included. Item 6 extends it to support <a>RDF* triples</a>. Any RDF <a>simple interpretation</a> can be considered as an <a>RDF* simple interpretation</a> with |IT|=∅.</p>
+      <p>This definition is identical to the definition of <dfn data-cite="RDF11-MT#dfn-simple-interpretation">simple interpretation</dfn> [[RDF11-MT]], except for the requirement on |I| to contain all RDF* <a>ground</a> triples. Any RDF <a>simple interpretation</a> can therefore be exteneded into an <a>RDF* simple interpretation</a> by adding all RDF* <a>ground</a> triples in |I|.</p>
 
       <section>
         <h2>Semantic condition for ground graphs</h2>
@@ -638,14 +637,14 @@
         <ul id="semantic-condition-ground-graphs">
           <li>if |E| is a <a>literal</a> then |I|(|E|) = |IL|(|E|)</li>
           <li>if |E| is an <a>IRI</a> then |I|(|E|) = |IS|(|E|)</li>
-          <li>if |E| is a <a>ground RDF* triple</a> then |I|(|E|) = |IT|(|E|)</li>
+          <li>if |E| is a <a>ground RDF* triple</a> then |I|(|E|) = |E|</li>
           <li>if |E| is an <a>RDF* graph</a> then |I|(|E|) =<ul>
             <li>true if for every <a>asserted triple</a> (|s|,|p|,|o|) ∈ |E|, (|I|(|s|),|I|(|o|)) ∈ |IEXT|(|I|(|p|))</li>
             <li>false otherwise</li>
           </ul>
         </ul>
 
-        <p>Since |IL| and |IT| are partial mappings, |I|(|E|) may be undefined for some <a>literal</a> or <a>triple</a> |E|. In that case, |E| has no semantic value in |I|, so any <a>asserted triple</a> having E as <a>subject</a> or <a>object</a> it will fail to satisfy the condition above, hence any <a>graph</a> containing such <a>asserted triple</a> will be false.</p>
+        <p>Since |IL| is a partial mapping, |I|(|E|) may be undefined for some <a>literal</a> |E|. In that case, |E| has no semantic value in |I|, so any <a>asserted triple</a> having E as <a>object</a> it will fail to satisfy the condition above, hence any <a>graph</a> containing such <a>asserted triple</a> will be false. Note however that <a>embedded triples</a> containing |E| do not prevent that triple from having a semantic value, nor the graph from being true.</p>
 
         <div class="note">
           In the <a data-cite="RDF11-MT#semantic-condition-for-ground-graphs">original condition for simple entailment</a> [[RDF11-MT]], the denotation of an <a>RDF triple</a> is a boolean, while above we define the denotation of an <a>RDF* triple</a> to be an element of the universe. However, the denotation of any <a>RDF graph</a> is always the same under the original condition and the condition above. Therefore, the condition above can be considered as an extension of the original one to support any <a>RDF* graph</a>.
@@ -655,9 +654,9 @@
       <section>
         <h2>Semantic condition with blank nodes</h2>
         
-        <p>Given an <a>RDF* graph</a> |E|, we call the <dfn data-abbr="ebn">embedded blank nodes</dfn> of |E| the set of <a>blank nodes</a> appearing in <a>subject</a> or <a>object</a> position of some <a>embedded triple</a> in |E|; we call the <dfn data-abbr="obn">open blank nodes</dfn> of |E| all the other blank nodes appearing in |E|.</p>
+        <p>Given an <a>RDF* graph</a> |E|, we call the <dfn data-abbr="ebn">embedded blank nodes</dfn> of |E| the set of <a>blank nodes</a> appearing in <a>subject</a> or <a>object</a> position of some <a>embedded triple</a> in |E|; we call the <dfn data-abbr="obn">open blank nodes</dfn> of |E| all the other blank nodes appearing in |E| (that is, those appearing only as the subject or object of asserted triples).</p>
 
-        <p>A mapping from a set <a>blank nodes</a> into a set of <a>ground RDF* terms</a> is called a <dfn>grounding function</dfn>. We define the extended application of a <a>grounding function</a> <var>Γ</var> to other <a>RDF* terms</a> and to <a>RDF* graphs</a> as follows:</p>
+        <p>A mapping from a set of <a>blank nodes</a> into a set of <a>ground RDF* terms</a> is called a <dfn>grounding function</dfn>. We define the extended application of a <a>grounding function</a> <var>Γ</var> to other <a>RDF* terms</a> and to <a>RDF* graphs</a> as follows:</p>
 
         <ul>
           <li>if |E| is a <a>blank node</a> then <var>Γ</var>*(|E|) = <var>Γ</var>(|E|) if it is defined, |E| otherwise</li>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<style>
+    .included a, .entries a {
+        text-decoration: none;
+    }
+
+    .included a:hover, .entries a:hover {
+        text-decoration: underline;
+    }
+
+    .entries .rejected {
+        text-decoration: line-through red;
+    }
+
+    .entries .approved::after {
+        content: "✓";
+    }
+
+    .entry h2 a {
+        text-decoration: none;
+    }
+
+    .approved tr.status td {
+        color: darkGreen;
+    }
+
+    .proposed tr.status td {
+        color: orange;
+    }
+
+    .rejected tr.status td {
+        color: red;
+    }
+
+    tr.recognized td, tr.unrecognized td {
+        font-family: monospace;
+    }
+
+    pre {
+        border: thin solid black;
+        background-color: lightYellow;
+        padding: .6em 1em;
+    }
+</style>
+<title>manifest</title>
+<h1>manifest</h1>
+<p>Generated from <a href="manifest.jsonld">manifest.jsonld</a></p><p>RDF* SPARQL tests</p>
+<p><strong>Includes:</strong></p>
+<ul class="inclueded">
+<li><a href="manifest-syntax.html">manifest-syntax</a>
+<li><a href="manifest-query.html">manifest-query</a>
+<li><a href="manifest-update.html">manifest-update</a>
+</ul>
+<h2>About this test suite</h2>
+<a href="https://w3c.github.io/rdf-tests/sparql11/">https://w3c.github.io/rdf-tests/sparql11/</a>

@@ -1,0 +1,8 @@
+{
+    "@context": "../manifest-context.jsonld",
+    "@id" :"",
+    "@type": "Manifest",
+    "comment": "RDF* SPARQL Query tests",
+    "entries": [
+   ]
+}

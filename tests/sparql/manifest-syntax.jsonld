@@ -1,0 +1,24 @@
+{
+    "@context": "../manifest-context.jsonld",
+    "@id" :"",
+    "@type": "Manifest",
+    "comment": "RDF* SPARQL Syntax tests",
+    "entries": [
+        {
+            "@id": "#embedded-triple-subject",
+            "@type": "PositiveSyntaxTest",
+            "name": "embedded-triple-subject",
+            "comment": "Embedded triples can appear in subject position.",
+            "approval": "Proposed",
+            "action": "syntax/embedded-triple-subject.rq"
+        },
+        {
+            "@id": "#incomplete-embedded-triple",
+            "@type": "NegativeSyntaxTest",
+            "name": "incomplete-embedded-triple",
+            "comment": "Embedded triples must contain exactly 3 terms.",
+            "approval": "Proposed",
+            "action": "syntax/incomplete-embedded-triple.rq"
+        }
+   ]
+}

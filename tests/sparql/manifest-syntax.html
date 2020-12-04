@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<style>
+    .included a, .entries a {
+        text-decoration: none;
+    }
+
+    .included a:hover, .entries a:hover {
+        text-decoration: underline;
+    }
+
+    .entries .rejected {
+        text-decoration: line-through red;
+    }
+
+    .entries .approved::after {
+        content: "✓";
+    }
+
+    .entry h2 a {
+        text-decoration: none;
+    }
+
+    .approved tr.status td {
+        color: darkGreen;
+    }
+
+    .proposed tr.status td {
+        color: orange;
+    }
+
+    .rejected tr.status td {
+        color: red;
+    }
+
+    tr.recognized td, tr.unrecognized td {
+        font-family: monospace;
+    }
+
+    pre {
+        border: thin solid black;
+        background-color: lightYellow;
+        padding: .6em 1em;
+    }
+</style>
+<title>manifest-syntax</title>
+<h1>manifest-syntax</h1>
+<p>Generated from <a href="manifest-syntax.jsonld">manifest-syntax.jsonld</a></p><p>RDF* SPARQL Syntax tests</p>
+<p><strong>Entries:</strong></p>
+<ul class="entries">
+<li class="proposed"><a href="#embedded-triple-subject">embedded-triple-subject</a>
+<li class="proposed"><a href="#incomplete-embedded-triple">incomplete-embedded-triple</a>
+</ul>
+<section id="embedded-triple-subject" class="entry proposed">
+<h2>embedded-triple-subject <a href="#embedded-triple-subject">🔗</a></h2>
+<table class="properties">
+<tr class="status"><th>status:</th><td>proposed</td>
+<tr class="type"><th>type:</th><td>PositiveSyntaxTest</td>
+</table>
+<div><code><a href="syntax/embedded-triple-subject.rq">syntax/embedded-triple-subject.rq</a></code></div>
+<pre>
+PREFIX : &lt;http://example.com/ns#&gt;
+
+SELECT * {
+    &lt;&lt; :a :b :c &gt;&gt; :p1 :o1.
+}</pre>
+<div>MUST be accepted</div>
+<p>Embedded triples can appear in subject position.</p>
+</section><section id="incomplete-embedded-triple" class="entry proposed">
+<h2>incomplete-embedded-triple <a href="#incomplete-embedded-triple">🔗</a></h2>
+<table class="properties">
+<tr class="status"><th>status:</th><td>proposed</td>
+<tr class="type"><th>type:</th><td>NegativeSyntaxTest</td>
+</table>
+<div><code><a href="syntax/incomplete-embedded-triple.rq">syntax/incomplete-embedded-triple.rq</a></code></div>
+<pre>
+PREFIX : &lt;http://example.com/ns#&gt;
+
+SELECT * {
+    &lt;&lt; :a :b &gt;&gt; :p1 :o1.
+}</pre>
+<div>MUST be rejected</div>
+<p>Embedded triples must contain exactly 3 terms.</p>
+</section>

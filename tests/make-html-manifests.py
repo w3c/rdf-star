@@ -6,7 +6,7 @@ def main():
     dir = Path(__file__).parent
     for i in [
         ["semantics", "manifest.jsonld"],
-        #["sparql", "manifest.jsonld"],
+        ["sparql", "manifest.jsonld"],
     ]:
         make_html(dir.joinpath(*i))
 
@@ -36,28 +36,30 @@ def make_html(jsonld: Path):
                 out.write(f'<li><a href="{url}">{name}</a>\n')
             out.write("</ul>\n")
 
-        entries = manifest['entries']
-        if not entries:
-            return
-        out.write('<p><strong>Entries:</strong></p>\n<ul class="entries">\n')
-        for (i, entry) in enumerate(entries):
-            eid = entry.get('@id', f"#{jsonld.name}_entry{i}")
-            name = entry.get('name', eid[1:])
-            approval = entry['approval'].lower()
-            out.write(f'<li class="{approval}"><a href="{eid}">{name}</a>\n')
-            # store computed values for the next loop
-            entry['@id'] = eid
-            entry['name'] = name
-            # 
-        out.write("</ul>\n")
+        entries = manifest.get('entries') or []
+        if entries:
+            out.write('<p><strong>Entries:</strong></p>\n<ul class="entries">\n')
+            for (i, entry) in enumerate(entries):
+                eid = entry.get('@id', f"#{jsonld.name}_entry{i}")
+                name = entry.get('name', eid[1:])
+                approval = entry['approval'].lower()
+                out.write(f'<li class="{approval}"><a href="{eid}">{name}</a>\n')
+                # store computed values for the next loop
+                entry['@id'] = eid
+                entry['name'] = name
+                #
+            out.write("</ul>\n")
 
         see_also = manifest.get('seeAlso')
         if see_also:
-            see_also = dir.joinpath(*see_also.split('/'))
-            out.write('<h2>About this test suite</h2>\n<pre>\n')
-            out.write(see_also.read_text())
-            out.write('</pre>\n')
-
+            out.write('<h2>About this test suite</h2>\n')
+            if see_also.startswith('http://') or see_also.startswith('https://'):
+                out.write(f'<a href="{see_also}">{see_also}</a>\n')
+            else:
+                see_also = dir.joinpath(*see_also.split('/'))
+                out.write('<pre>\n')
+                out.write(see_also.read_text())
+                out.write('</pre>\n')
 
         for entry in entries:
             eid = entry['@id']
@@ -82,9 +84,10 @@ def make_html(jsonld: Path):
 
             write_file(out, entry['action'], dir)
             out.write(f"<div>{result_message(entry)}</div>\n")
-            if entry['result'] is False:
+            result = entry.get('result')
+            if result is False:
                 out.write("<div>a contradiction</div>")
-            else:
+            elif result:
                 write_file(out, entry['result'], dir)
             if 'comment' in entry:
                 out.write(f"<p>{entry['comment']}</p>\n")
@@ -117,6 +120,8 @@ def result_message(entry: dict) -> str:
     msg = {
         'PositiveEntailmentTest': 'MUST entail',
         'NegativeEntailmentTest': 'MUST NOT entail',
+        'PositiveSyntaxTest': 'MUST be accepted',
+        'NegativeSyntaxTest': 'MUST be rejected',
     }.get(typ)
     if msg is None:
         if typ.startswith('Netagitve'):

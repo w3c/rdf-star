@@ -51,6 +51,14 @@ def make_html(jsonld: Path):
             # 
         out.write("</ul>\n")
 
+        see_also = manifest.get('seeAlso')
+        if see_also:
+            see_also = dir.joinpath(*see_also.split('/'))
+            out.write('<h2>About this test suite</h2>\n<pre>\n')
+            out.write(see_also.read_text())
+            out.write('</pre>\n')
+
+
         for entry in entries:
             eid = entry['@id']
             name = entry['name']

@@ -5,7 +5,7 @@
         "mf": "http://www.w3.org/2001/sw/DataAccess/tests/test-manifest#",
         "rdft":   "http://www.w3.org/ns/rdftest#",
         "xsd":   "http://www.w3.org/2001/XMLSchema#",
-        
+
         "@vocab": "mf",
         "include": {
             "@type": "@id",
@@ -31,6 +31,10 @@
         },
 
         "comment": "rdfs:comment",
+        "seeAlso": {
+            "@id": "rdfs:seeAlso",
+            "@type": "@id"
+        },
         "approval": {
             "@id": "rdft:approval",
             "@type": "@id"

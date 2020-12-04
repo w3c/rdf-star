@@ -1,8 +1,9 @@
 {
-    "@context": "manifest-context.jsonld",
+    "@context": "../manifest-context.jsonld",
     "@id" :"",
     "@type": "Manifest",
     "comment": "RDF* Semantics tests",
+    "seeAlso": "README",
     "entries": [
         {
             "@id": "#triple-in-subject",

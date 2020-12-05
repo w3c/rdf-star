@@ -1,8 +1,5 @@
-==== Main document
+### Current Document
+* [_Use Cases & Requirements_](rdf-star-ucr.html)
 
-[rdf-star-ucr.html](rdf-star-ucr.html)
-
-==== RDFStarUCandRequirements.html
-
-UC&R document started in EasierRDF
-https://github.com/w3c/EasierRDF/blob/master/RDFstar/RDFStarUCandRequirements.html
+### Previous Work
+* [_Use Cases & Requirements_, started in EasierRDF; now incorporated into current doc](RDFStarUCandRequirements.html)

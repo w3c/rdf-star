@@ -29,6 +29,7 @@ PREFIX :       <#>
         :turtle-star-bad-3
         :turtle-star-bad-4
         :turtle-star-bad-5
+        :turtle-star-bad-6
 
         :turtle-star-ann-1
         :turtle-star-ann-2
@@ -111,6 +112,11 @@ PREFIX :       <#>
 :turtle-star-bad-5 rdf:type rdft:TestTurtleNegativeSyntax ;
     mf:name      "Turtle* - bad - blank node  as predicate in triple term";
     mf:action    <turtle-star-syntax-bad-05.ttl> ;
+    .
+
+:turtle-star-bad-6 rdf:type rdft:TestTurtleNegativeSyntax ;
+    mf:name      "Turtle* - bad - compound blank node expression";
+    mf:action    <turtle-star-syntax-bad-06.ttl> ;
     .
 
 ## Anotation syntax

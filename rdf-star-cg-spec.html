@@ -621,14 +621,14 @@
 
       <p>An <dfn>RDF* simple interpretation</dfn> |I| is a structure consisting of:</p>
       <ol>
-        <li>A non-empty set |IR| of resources, called the domain or universe of |I|, and containing all <a>ground RDF* terms</a>.</li>
+        <li>A non-empty set |IR| of resources, called the domain or universe of |I|, and containing all <a>RDF* terms</a>.</li>
         <li>A set |IP|, called the set of properties of |I|.</li>
         <li>A mapping |IEXT| from |IP| into the powerset of |IR|×|IR| i.e. the set of sets of pairs (|x|,|y|) with |x| and |y| in |IR|.</li>
         <li>A mapping |IS| from <a>IRIs</a> into |IR|∪|IP|.</li>
         <li>A partial mapping |IL| from <a>literals</a> into |IR|.</li>
       </ol>
 
-      <p>This definition is identical to the definition of <dfn data-cite="RDF11-MT#dfn-simple-interpretation">simple interpretation</dfn> [[RDF11-MT]], except for the requirement on |I| to contain all <a>RDF* ground terms</a>. Any <a>RDF* simple interpretation</a> is therefore also an RDF <a>simple interpretation</a>, and any RDF <a>simple interpretation</a> can be extended into an <a>RDF* simple interpretation</a> simply by adding all <a>ground RDF* terms</a> in |I|.</p>
+      <p>This definition is identical to the definition of <dfn data-cite="RDF11-MT#dfn-simple-interpretation">simple interpretation</dfn> [[RDF11-MT]], except for the requirement on |IR| to contain all <a>RDF* terms</a>. Any <a>RDF* simple interpretation</a> is therefore also an RDF <a>simple interpretation</a>, and any RDF <a>simple interpretation</a> can be extended into an <a>RDF* simple interpretation</a> simply by adding all <a>RDF* terms</a> in |IR|.</p>
 
       <section>
         <h2>Semantic condition for ground graphs</h2>
@@ -654,32 +654,32 @@
       <section>
         <h2>Semantic condition with blank nodes</h2>
         
-        <p>Given an <a>RDF* graph</a> |E|, we call the <dfn data-abbr="ebn">embedded blank nodes</dfn> of |E| the set of <a>blank nodes</a> appearing in <a>subject</a> or <a>object</a> position of some <a>embedded triple</a> in |E|; we call the <dfn data-abbr="abn">asserted blank nodes</dfn> of |E| the set of <a>blank nodes</a> appearing in <a>subject</a> or <a>object</a> position of some <a>asserted triple</a>. Note that the intersection of <a>ebn</a> and <a>abn</a> is not necessarily empty.</p>
+        <p>Given an <a>RDF* graph</a> |E|, we call the <dfn data-abbr="ebn">embedded blank nodes</dfn> of |E| the set of <a>blank nodes</a> appearing in <a>subject</a> or <a>object</a> position of some <a>embedded triple</a> in |E|; we call the <dfn data-abbr="abn">asserted blank nodes</dfn> of |E| the set of <a>blank nodes</a> appearing in <a>subject</a> or <a>object</a> position of some <a>asserted triple</a>. Note that the intersection of <a>ebn</a> and <a>abn</a> may be non-empty.</p>
 
-        <p>Suppose |I| is an <a>RDF* simple interpretation</a>,|A| is a mapping from a set of <a>blank nodes</a> to the universe |IR| of |I|, and <var>Γ</var> is a mapping from a set of <a>blank nodes</a> to the set of <a>ground RDF* terms</a> (which is also a subset of |IR|). Define the mappings [|I|+|A|+<var>Γ</var>] and [|I|+<var>Γ</var>] of <a>RDF* terms</a> into |IR| as follows.</p>
+        <p>Suppose |I| is an <a>RDF* simple interpretation</a>, |A| is a mapping from a set of <a>blank nodes</a> to the universe |IR| of |I|, and <var>Γ</var> is a mapping from a set of <a>blank nodes</a> to the set of <a>RDF* terms</a> (which is also a subset of |IR|). Define the mappings [|I|+|A|/<var>Γ</var>] and [|I|+<var>Γ</var>] of <a>RDF* terms</a> into |IR| as follows.</p>
         
         <ul>
-          <li>if |E| is a <a>blank node</a> then [|I|+|A|+<var>Γ</var>](|E|) = |A|(|E|) if it is defined, |E| otherwise</li>
-          <li>if |E| is an <a>IRI</a> or a <a>literal</a>, then [|I|+|A|+<var>Γ</var>](|E|) = |E|</li>
-          <li>if |E| is an <a>RDF* triple</a> (|s|,|p|,|o|), then [|I|+|A|+<var>Γ</var>](|E|) = ([|I|+<var>Γ</var>](|s|),[|I|+<var>Γ</var>](|p|),[|I|+<var>Γ</var>](|o|))</li>
+          <li>if |E| is a <a>blank node</a> then [|I|+|A|/<var>Γ</var>](|E|) = |A|(|E|) if it is defined, |E| otherwise</li>
+          <li>if |E| is an <a>IRI</a> or a <a>literal</a>, then [|I|+|A|/<var>Γ</var>](|E|) = |E|</li>
+          <li>if |E| is an <a>RDF* triple</a> (|s|,|p|,|o|), then [|I|+|A|/<var>Γ</var>](|E|) = ([|I|+<var>Γ</var>](|s|),[|I|+<var>Γ</var>](|p|),[|I|+<var>Γ</var>](|o|))</li>
           <li>if |E| is a <a>blank node</a> then [|I|+<var>Γ</var>](|E|) = <var>Γ</var>(|E|) if it is defined, |E| otherwise</li>
           <li>if |E| is an <a>IRI</a> or a <a>literal</a>, then [|I|+<var>Γ</var>](|E|) = |E|</li>
           <li>if |E| is an <a>RDF* triple</a> (|s|,|p|,|o|), then [|I|+<var>Γ</var>](|E|) = ([|I|+<var>Γ</var>](|s|),[|I|+<var>Γ</var>](|p|),[|I|+<var>Γ</var>](|o|))</li>
         </ul>
         
-        <p>Extend the mapping [|I|+|A|+<var>Γ</var>] to <a>RDF* graphs</a> using <a href="#semantic-condition-ground-graphs">the rules given above for ground graphs</a>. Then the denotation of any <a>RDF* graph</a> in |I| is given by:</p>
+        <p>Extend the mapping [|I|+|A|/<var>Γ</var>] to <a>RDF* graphs</a> using <a href="#semantic-condition-ground-graphs">the rules given above for ground graphs</a>. Then the denotation of any <a>RDF* graph</a> in |I| is given by:</p>
 
         <ul>
           <li>If |E| is an <a>RDF* graph</a>, |I|(|E|)=<ul>
             <li>true if there exists
               <ul>
                 <li>a mapping |A| from <a>abn</a>(|E|) into |IR|, and</li>
-                <li>a mapping <var>Γ</var> from <a>ebn</a>(|E|) into <a>ground RDF* terms</a></li>
+                <li>a mapping <var>Γ</var> from <a>ebn</a>(|E|) into <a>RDF* terms</a></li>
               </ul>
               such that
               <ul>
-                <li>for all |b| in <a>abn</a>(|E|) ∩ <a>ebn</a>(|E|), |I|(<var>Γ</var>(|b|) = |A|(|b|), and</li>
-                <li>[|I|+|A|+<var>Γ</var>]((|E|))=true</li>
+                <li>for all |b| in <a>abn</a>(|E|) ∩ <a>ebn</a>(|E|), |I|(<var>Γ</var>(|b|)) = |A|(|b|), and</li>
+                <li>[|I|+|A|/<var>Γ</var>]((|E|))=true</li>
               </ul>
             </li>
             <li>

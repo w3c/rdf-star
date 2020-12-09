@@ -630,61 +630,68 @@
 
       <p>This definition is identical to the definition of <dfn data-cite="RDF11-MT#dfn-simple-interpretation">simple interpretation</dfn> [[RDF11-MT]], except for the requirement on |IR| to contain all <a>RDF* terms</a>. Any <a>RDF* simple interpretation</a> is therefore also an RDF <a>simple interpretation</a>, and any RDF <a>simple interpretation</a> can be extended into an <a>RDF* simple interpretation</a> simply by adding all <a>RDF* terms</a> in |IR|.</p>
 
+      <p>The denotation of an <a>RDF* term</a> in an <a>RDF* simple interpretation</a> |I| is then given by the following rules, where the interpretation is also treated as a function:</p>
+
+      <ul id="semantic-condition-terms">
+        <li>if |E| is a <a>literal</a> then |I|(|E|) = |IL|(|E|)</li>
+        <li>if |E| is an <a>IRI</a> then |I|(|E|) = |IS|(|E|)</li>
+        <li>if |E| is an <a>RDF* triple</a> then |I|(|E|) = |E|</li>
+      </ul>
+
+      <p>Notice that <a>blank nodes</a> have no defined denotation in a <a>simple interpretation</a>. Note however that any <a>RDF* triple</a>, including non-<a>ground</a> triples, have a denotation (which is themselves).</p>
+
       <section>
         <h2>Semantic condition for ground graphs</h2>
-        <p>The denotation of a <a>ground RDF* graph</a> in an <a>RDF* simple interpretation</a> |I| is then given by the following rules, where the interpretation is also treated as a function from expressions (terms, triples and graphs) to elements of the universe and truth values:</p>
+        <p>The above rules for denotation are extended for <a>ground RDF* graphs</a>, that are considered to denote a truth value:</p>
 
         <ul id="semantic-condition-ground-graphs">
-          <li>if |E| is a <a>literal</a> then |I|(|E|) = |IL|(|E|)</li>
-          <li>if |E| is an <a>IRI</a> then |I|(|E|) = |IS|(|E|)</li>
-          <li>if |E| is a <a>ground RDF* triple</a> then |I|(|E|) = |E|</li>
           <li>if |E| is an <a>RDF* graph</a> then |I|(|E|) =<ul>
             <li>true if for every <a>asserted triple</a> (|s|,|p|,|o|) ∈ |E|, (|I|(|s|),|I|(|o|)) ∈ |IEXT|(|I|(|p|))</li>
             <li>false otherwise</li>
           </ul>
         </ul>
 
-        <p>Since |IL| is a partial mapping, |I|(|E|) may be undefined for some <a>literal</a> |E|. In that case, |E| has no semantic value in |I|, so any <a>asserted triple</a> having E as <a>object</a> it will fail to satisfy the condition above, hence any <a>graph</a> containing such <a>asserted triple</a> will be false. Note however that <a>embedded triples</a> containing |E| do not prevent that triple from having a semantic value, nor the graph from being true.</p>
+        <p>Since |IL| is a partial mapping, |I|(|E|) may be undefined for some <a>literal</a> |E|. In that case, |E| has no semantic value in |I|, so any <a>asserted triple</a> having E as <a>object</a> will fail to satisfy the condition above, hence any <a>graph</a> containing such <a>asserted triples</a> will be false. Note however that <a>embedded triples</a> containing |E| do not prevent that triple from having a semantic value, nor the graph from being true.</p>
 
         <div class="note">
-          In the <a data-cite="RDF11-MT#semantic-condition-for-ground-graphs">original condition for simple entailment</a> [[RDF11-MT]], the denotation of an <a>RDF triple</a> is a boolean, while above we define the denotation of an <a>RDF* triple</a> to be an element of the universe. However, the denotation of any <a>RDF graph</a> is always the same under the original condition and the condition above. Therefore, the condition above can be considered as an extension of the original one to support any <a>RDF* graph</a>.
+          In the <a data-cite="RDF11-MT#semantic-condition-for-ground-graphs">original condition for simple entailment</a> [[RDF11-MT]], the denotation of an <a>RDF triple</a> is a boolean, while above we define the denotation of an <a>RDF* triple</a> to be an element of the universe. However, the denotation of any <a>RDF graph</a> is always the same under the original condition and the condition above. Therefore, the condition above can be considered as an extension of the original one to support any <a>ground RDF* graph</a>.
         </div>
       </section>
 
       <section>
         <h2>Semantic condition with blank nodes</h2>
         
-        <p>Given an <a>RDF* graph</a> |E|, we call the <dfn data-abbr="ebn">embedded blank nodes</dfn> of |E| the set of <a>blank nodes</a> appearing in <a>subject</a> or <a>object</a> position of some <a>embedded triple</a> in |E|; we call the <dfn data-abbr="abn">asserted blank nodes</dfn> of |E| the set of <a>blank nodes</a> appearing in <a>subject</a> or <a>object</a> position of some <a>asserted triple</a>. Note that the intersection of <a>ebn</a> and <a>abn</a> may be non-empty.</p>
+        <p>Given an <a>RDF* graph</a> |E|, we call the <dfn data-abbr="ebn">embedded blank nodes</dfn> of |E| the set of <a>blank nodes</a> appearing in the <a>constituent terms</a> of some <a>embedded triple</a> in |E|; we call the <dfn data-abbr="abn">asserted blank nodes</dfn> of |E| the set of <a>blank nodes</a> appearing in <a>subject</a> or <a>object</a> position of some <a>asserted triple</a>. Note that the intersection of <a>ebn</a> and <a>abn</a> may be non-empty.</p>
 
-        <p>Suppose |I| is an <a>RDF* simple interpretation</a>, |A| is a mapping from a set of <a>blank nodes</a> to the universe |IR| of |I|, and <var>Γ</var> is a mapping from a set of <a>blank nodes</a> to the set of <a>RDF* terms</a> (which is also a subset of |IR|). Define the mappings [|I|+|A|/<var>Γ</var>] and [<var>Γ</var>] of <a>RDF* terms</a> into |IR| as follows.</p>
+        <p>Suppose |I| is an <a>RDF* simple interpretation</a>, |A| is a mapping from a set of <a>blank nodes</a> to the universe |IR| of |I|, and |B| is a mapping from a set of <a>blank nodes</a> to the set of <a>RDF* terms</a> (which is also a subset of |IR|). Define the mappings [|I|+|A|+|B|] and [|B|] of <a>RDF* terms</a> into |IR| as follows.</p>
         
         <ul>
-          <li>[|I|+|A|/<var>Γ</var>]:<ul>
+          <li>[|I|+|A|+|B|]:<ul>
 
-            <li>if |E| is a <a>blank node</a> then [|I|+|A|/<var>Γ</var>](|E|) = |A|(|E|) if it is defined, |E| otherwise</li>
-            <li>if |E| is an <a>IRI</a> or a <a>literal</a>, then [|I|+|A|/<var>Γ</var>](|E|) = I(|E|)</li>
-            <li>if |E| is an <a>RDF* triple</a> (|s|,|p|,|o|), then [|I|+|A|/<var>Γ</var>](|E|) = ([<var>Γ</var>](|s|),[<var>Γ</var>](|p|),[<var>Γ</var>](|o|))</li>
+            <li>if |E| is an <a>IRI</a> or a <a>literal</a>, then [|I|+|A|+|B|](|E|) = |I|(|E|)</li>
+            <li>if |E| is a <a>blank node</a> then [|I|+|A|+|B|](|E|) = |A|(|E|)</li>
+            <li>if |E| is an <a>RDF* triple</a>, then [|I|+|A|+|B|](|E|) = [|B|](|E|)
           </ul></li>
-          <li>[<var>Γ</var>]:<ul>
-            <li>if |E| is a <a>blank node</a> then [<var>Γ</var>](|E|) = <var>Γ</var>(|E|) if it is defined, |E| otherwise</li>
-            <li>if |E| is an <a>IRI</a> or a <a>literal</a>, then [<var>Γ</var>](|E|) = |E|</li>
-            <li>if |E| is an <a>RDF* triple</a> (|s|,|p|,|o|), then [<var>Γ</var>](|E|) = ([<var>Γ</var>](|s|),[<var>Γ</var>](|p|),[<var>Γ</var>](|o|))</li>
+          <li>[|B|]:<ul>
+            <li>if |E| is an <a>IRI</a> or a <a>literal</a>, then [|B|](|E|) = |E|</li>
+            <li>if |E| is a <a>blank node</a> then [|B|](|E|) = |B|(|E|)</li>
+            <li>if |E| is an <a>RDF* triple</a> (|s|,|p|,|o|), then [|B|](|E|) = ([|B|](|s|),[|B|](|p|),[|B|](|o|))</li>
           </ul></li>
         </ul>
         
-        <p>Extend the mapping [|I|+|A|/<var>Γ</var>] to <a>RDF* graphs</a> using <a href="#semantic-condition-ground-graphs">the rules given above for ground graphs</a>. Then the denotation of any <a>RDF* graph</a> in |I| is given by:</p>
+        <p>Extend the mapping [|I|+|A|+|B|] to <a>RDF* graphs</a> using <a href="#semantic-condition-ground-graphs">the rules given above for ground graphs</a>. Then the denotation of any <a>RDF* graph</a> in |I| is given by:</p>
 
         <ul>
           <li>If |E| is an <a>RDF* graph</a>, |I|(|E|)=<ul>
             <li>true if there exists
               <ul>
                 <li>a mapping |A| from <a>abn</a>(|E|) into |IR|, and</li>
-                <li>a mapping <var>Γ</var> from <a>ebn</a>(|E|) into <a>RDF* terms</a></li>
+                <li>a mapping |B| from <a>ebn</a>(|E|) into <a>RDF* terms</a></li>
               </ul>
               such that
               <ul>
-                <li>for all |b| in <a>abn</a>(|E|) ∩ <a>ebn</a>(|E|), |I|(<var>Γ</var>(|b|)) = |A|(|b|), and</li>
-                <li>[|I|+|A|/<var>Γ</var>]((|E|))=true</li>
+                <li>for all |b| ∈ <a>abn</a>(|E|) ∩ <a>ebn</a>(|E|), |B|(|b|) is not a blank node and |I|(|B|(|b|)) = |A|(|b|), and</li>
+                <li>[|I|+|A|+|B|](|E|)=true</li>
               </ul>
             </li>
             <li>
@@ -694,8 +701,9 @@
         </ul>
 
         <div class="note">
-          For the special case of a standard <a>RDF graph</a> and an RDF <a>simple interpretation</a>, the condition above is equivalent to the one defined in [[[RDF11-MT]]], which only requires a mapping |A|. Indeed, since <a>RDF graphs</a> have no <a>embedded triples</a>, the empty mapping is the only possible choice for <var>Γ</var>, and it trivially satisfies the dependency condition on |A| and <var>Γ</var>.
+          For the special case of a standard <a>RDF graph</a> and an RDF <a>simple interpretation</a>, the condition above is equivalent to the one defined in [[[RDF11-MT]]], which only requires a mapping |A|. Indeed, since <a>RDF graphs</a> have no <a>embedded triples</a>, <a>ebn</a>(|E|) is empty, |B| can only be the empty mapping, and [|I|+|A|+|B|] is equivalent [|I|+|A|].
         </div>
+
       </section>
 
       <section>

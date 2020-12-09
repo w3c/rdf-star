@@ -690,7 +690,10 @@
               </ul>
               such that
               <ul>
-                <li>for all |b| ∈ <a>abn</a>(|E|) ∩ <a>ebn</a>(|E|), |B|(|b|) is not a blank node and |I|(|B|(|b|)) = |A|(|b|), and</li>
+                <li>for all |b| ∈ <a>abn</a>(|E|) ∩ <a>ebn</a>(|E|), either<ul>
+                  <li>|B|(|b|) is not a blank node and |I|(|B|(|b|)) = |A|(|b|), or</li>
+                  <li>|B|(|b|) is a blank node and |A|(|B|(|b|)) = |A|(|b|),</li>
+                </ul>and,</li>
                 <li>[|I|+|A|+|B|](|E|)=true</li>
               </ul>
             </li>

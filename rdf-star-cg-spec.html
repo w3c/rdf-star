@@ -527,12 +527,16 @@
 
         <p>The translation as specified in the W3C specification distinguishes four cases. The first three of these cases do not require adjustment because they are taken care of either by recursion or by the adjusted translation of basic graph patterns (as defined in <a href="#translate-bgp"></a> below). However, the fourth case MUST be adjusted as follows.</p>
 
-        <p>Let |X| |P| |Y| be a string that corresponds to the fourth case in [<a data-cite="SPARQL11-QUERY#sparqlTranslatePathPatterns">SPARQL11-QUERY, Section 18.2.2.4</a>]. Given the grammar introduced in <a href="#sparql-star-grammar"></a>, |X| and |Y| may be an <a>RDF term</a>, a <a>variable</a>, or an <a>embedded triple pattern</a>, respectively (and |P| is a <a>property path expression</a>). The string |X| |P| |Y| is translated to the algebra expression `Path`(<var>X’</var>,|P|,<var>Y’</var>) where <var>X’</var> and <var>Y’</var> are the result of calling a function named `Lift` for |X| and |Y|, respectively. For some input string |Z| (such as |X| or |Y|) that can be an <a>RDF term</a>, a <a>variable</a>, or an <a>embedded triple pattern</a>, the function `Lift` is defined as follows:</p>
+        <p>Let |X| |P| |Y| be a string that corresponds to the fourth case in [<a data-cite="SPARQL11-QUERY#sparqlTranslatePathPatterns">SPARQL11-QUERY, Section 18.2.2.4</a>]. Given the grammar introduced in <a href="#sparql-star-grammar"></a>, |X| and |Y| may be an <a>RDF term</a>, a <a>variable</a>, or an <a>embedded triple pattern</a>, respectively (and |P| is a <a>property path expression</a>). The string |X| |P| |Y| is translated to the algebra expression `Path`(<var>X’</var>,|P|,<var>Y’</var>) where <var>X’</var> and <var>Y’</var> are the result of calling a function named `Lift` for |X| and |Y|, respectively. For some input string |Z| (such as |X| or |Y|) that can be an <a>RDF term</a>, a <a>variable</a>, or an <a>embedded triple pattern</a>, the function `Lift` is defined recursively as follows:</p>
 
         <ol id="lift">
-          <li>If |Z| is an <a>embedded triple pattern</a> &lt;&lt;|S|,|P|,|O|&gt;&gt; then return the <a>SPARQL* triple pattern</a> (`Lift`(|S|, |P|, `Lift`(|O|));</li>
+          <li>If |Z| is an <a>embedded triple pattern</a> &lt;&lt;|S|,|P|,|O|&gt;&gt; then return the <a>SPARQL* triple pattern</a> (`Lift`(|S|), |P|, `Lift`(|O|));</li>
           <li>Otherwise, return |Z|.</li>
         </ol>
+
+        <div class="note">
+          The purpose of the function `Lift` is to translate <a>embedded triple patterns</a> as given in the SPARQL* syntax (see <a href="#sparql-star-grammar"></a>) into <a>SPARQL* triple patterns</a> as considered in the algebra.
+        </div>
       </section>
 
       <section id="translate-bgp">

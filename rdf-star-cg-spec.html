@@ -523,7 +523,7 @@
       <section>
         <h2>Translate Property Path Patterns</h2>
 
-        <p>The <a data-cite="SPARQL11-QUERY#sparqlTranslatePathPatterns">translation of property path patterns</a> has to be adjusted because the extended grammar allows for property path patterns whose subject or object is an <a>embedded triple pattern</a> (cf. <a href="#sparql-star-grammar"></a>).</p>
+        <p>The <a data-cite="SPARQL11-QUERY#sparqlTranslatePathPatterns">translation of property path patterns</a> has to be adjusted because the extended grammar allows for <a>SPARQL* property path patterns</a> whose subject or object is a <a>SPARQL* triple pattern</a>.</p>
 
         <p>The translation as specified in the W3C specification distinguishes four cases. The first three of these cases do not require adjustment because they are taken care of either by recursion or by the adjusted translation of basic graph patterns (as defined in <a href="#translate-bgp"></a> below). However, the fourth case MUST be adjusted as follows.</p>
 
@@ -535,7 +535,7 @@
         </ol>
 
         <div class="note">
-          The purpose of the function `Lift` is to translate <a>embedded triple patterns</a> as given in the SPARQL* syntax (see <a href="#sparql-star-grammar"></a>) into <a>SPARQL* triple patterns</a> as considered in the algebra.
+          The purpose of this translation step is to convert any property path pattern as can be written based on the extended grammar for SPARQL* (cf. <a href="#sparql-star-grammar"></a>) into a <a>SPARQL* property path pattern</a> as considered in the algebra. To this end, the function `Lift` translates every <a>embedded triple pattern</a> as can be written in the SPARQL* syntax into a <a>SPARQL* triple pattern</a>.
         </div>
       </section>
 

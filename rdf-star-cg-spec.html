@@ -180,6 +180,20 @@
       <p>Turtle* is defined to follow the <a data-cite="TURTLE#h3_sec-grammar-grammar">same grammar</a> as Turtle, <em>except</em> for the <a data-cite="XML#sec-notation"><abbr title="Extended Backus-Naur Form">EBNF</abbr> productions</a> specified below, which replace the productions having the same number (if any) in the original grammar.</p>
 
       <table class="grammar">
+        <tr id="grammar-production-objectList">
+          <td>[8]</td>
+          <td>`objectList`</td>
+          <td>::=</td>
+          <td>
+            <a href="#grammar-production-object">object</a>
+            <a href="#grammar-production-annotation">annotation</a>`?`
+            `(`
+            <code class="grammar-literal">','</code>
+            <a href="#grammar-production-object">object</a>
+            <a href="#grammar-production-annotation">annotation</a>`?`
+            `)*`
+          </td>
+        </tr>
         <tr id="grammar-production-subject">
           <td>[10]</td>
           <td>`subject`</td>
@@ -196,18 +210,12 @@
           <td>`object`</td>
           <td>::=</td>
           <td>
-            <a href="#grammar-production-objectC">objectC</a>
-            <a href="#grammar-production-annotation">annotation</a>?
-          </td>
-        </tr>
-        <tr id="grammar-production-collection">
-          <td>[15]</td>
-          <td>`collection`</td>
-          <td>::=</td>
-          <td>
-            <code class="grammar-literal">'('</code>
-            <a href="#grammar-production-objectC">objectC</a>*
-            <code class="grammar-literal">')'</code>
+            <a data-cite="TURTLE#grammar-production-iri">iri</a> `|`
+            <a  data-cite="TURTLE#grammar-production-BlankNode">BlankNode</a> `|`
+            <a  data-cite="TURTLE#grammar-production-collection">collection</a> `|`
+            <a data-cite="TURTLE#grammar-production-blankNodePropertyList">blankNodePropertyList</a> `|`
+            <a data-cite="TURTLE#grammar-production-literal">literal</a> `|`
+            <a href="#grammar-production-embTriple">embTriple</a>
           </td>
         </tr>
         <tr id="grammar-production-embTriple">
@@ -243,19 +251,6 @@
             <a href="#grammar-production-embTriple">embTriple</a>
           </td>
         </tr>
-        <tr id="grammar-production-objectC">
-          <td>[30]</td>
-          <td>`objectC`</td>
-          <td>::=</td>
-          <td>
-            <a data-cite="TURTLE#grammar-production-iri">iri</a> `|`
-            <a  data-cite="TURTLE#grammar-production-BlankNode">BlankNode</a> `|`
-            <a  data-cite="TURTLE#grammar-production-collection">collection</a> `|`
-            <a data-cite="TURTLE#grammar-production-blankNodePropertyList">blankNodePropertyList</a> `|`
-            <a data-cite="TURTLE#grammar-production-literal">literal</a> `|`
-            <a href="#grammar-production-embTriple">embTriple</a>
-          </td>
-        </tr>
         <tr id="grammar-production-annotation">
           <td>[31]</td>
           <td>`annotation`</td>
@@ -268,7 +263,7 @@
         </tr>
       </table>
 
-      <p class="note">The only changes are that <a href="#grammar-production-subject">`subject`</a> and <a href="#grammar-production-object">`object`</a> productions have been extended to accept <a>embedded triples</a>, which are described by the new productions <a href="#grammar-production-embTriple">27</a> to <a href="#grammar-production-embObject">29</a>. Note that <a>embedded triples</a> accept a more restricted range of <a>subject</a> and <a>object</a> expressions than <a>asserted triples</a>.</p>
+      <p class="note">The changes are that <a href="#grammar-production-subject">`subject`</a> and <a href="#grammar-production-object">`object`</a> productions have been extended to accept <a>embedded triples</a>, which are described by the new productions <a href="#grammar-production-embTriple">27</a> to <a href="#grammar-production-embObject">29</a>. Note that <a>embedded triples</a> accept a more restricted range of <a>subject</a> and <a>object</a> expressions than <a>asserted triples</a>. Additionally, the <a href="#grammar-production-objectList">`objectList`</a> production now accepts an optional <a href="#annotation-production-annotation">annotation</a> after each object.</p>
 
       <div class="issue" data-number="9"></div>
     </section>
@@ -281,7 +276,7 @@
       </ul>
       <p>Additionally, the <a data-cite="TURTLE#curSubject">|curSubject|</a> can be bound to any <a>RDF* term</a> (including an <a>embedded triple</a>).</p>
 
-      <p>A Turtle* document defines an <a>RDF* graph</a> composed of a set of <a>RDF* triples</a>. The <a href="#grammar-production-subject">`subject`</a> and <a href="#grammar-production-embSubject">`embSubject`</a> productions set the |curSubject|. The <a data-cite="TURTLE#grammar-production-verb">`verb`</a> production sets the <a data-cite="TURTLE#curPredicate">|curPredicate|</a>. The <a href="#grammar-production-objectC">`objectC`</a> and <a href="#grammar-production-embObject">`embObject`</a> productions set the |curObject|. Finishing the <a href="#grammar-production-objectC">`objectC`</a> production, an <a>RDF* triple</a> |curSubject| |curPredicate| |curObject| is generated and added to the <a>RDF* graph</a>.</p>
+      <p>A Turtle* document defines an <a>RDF* graph</a> composed of a set of <a>RDF* triples</a>. The <a href="#grammar-production-subject">`subject`</a> and <a href="#grammar-production-embSubject">`embSubject`</a> productions set the |curSubject|. The <a data-cite="TURTLE#grammar-production-verb">`verb`</a> production sets the <a data-cite="TURTLE#curPredicate">|curPredicate|</a>. The <a href="#grammar-production-object">`object`</a> and <a href="#grammar-production-embObject">`embObject`</a> productions set the |curObject|. Finishing the <a href="#grammar-production-object">`object`</a> production, an <a>RDF* triple</a> |curSubject| |curPredicate| |curObject| is generated and added to the <a>RDF* graph</a>.</p>
 
       <p>Beginning the <a href="#grammar-production-embTriple">`embTriple`</a> production records the |curSubject| and |curPredicate|. Finishing the <a href="#grammar-production-embTriple">`embTriple`</a> production yields the <a>RDF* triple</a> |curSubject| |curPredicate| |curObject| and restores the recorded values of |curSubject| and |curPredicate|.</p>
 

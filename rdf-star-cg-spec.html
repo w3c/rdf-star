@@ -361,7 +361,8 @@
     <section id="sparql-star-grammar">
       <h2>Grammar</h2>
 
-      <p>SPARQL* is defined to follow the <a data-cite="SPARQL11-QUERY#sparqlGrammar">same grammar</a> as SPARQL, <em>except</em> for the <a data-cite="XML#sec-notation"><abbr title="Extended Backus-Naur Form">EBNF</abbr> productions</a> specified below, which replace the productions having the same number (if any) in the original grammar.</p>
+      <p>SPARQL* is defined to follow the <a data-cite="SPARQL11-QUERY#sparqlGrammar">same grammar</a> as SPARQL, <em>except</em> for the <a data-cite="XML#sec-notation"><abbr title="Extended Backus-Naur Form">EBNF</abbr> productions</a> specified below, which replace the productions having the same number (if any) in the original grammar. Productions <a href="#rEmbTP">[174]</a> and following have been added and have no counterpart in
+      the original grammar.</p>
 
       <table class="grammar">
         <tr id="rBind">
@@ -493,6 +494,10 @@
         positions of <a>SPARQL* triple patterns</a>,
         as well as in BIND statements
         (<a href="#rBind">[60]</a>).
+      </p>
+
+      <p>
+        Additionally, the <a href="#rObjectList">ObjectList</a> production now accepts an optional <dfn>annotation pattern</dfn> after each object.
       </p>
 
       <div class="issue" data-number="6"></div>

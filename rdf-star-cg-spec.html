@@ -590,9 +590,12 @@
     <section>
       <h2>Query Result Formats</h2>
 
-      <p>In SPARQL, queries can take four forms: <em>SELECT</em>, <em>CONSTRUCT</em>, <em>DESCRIBE</em>, and <em>ASK</em> - see <a data-cite="SPARQL11-QUERY#queryForms">SPARQL1.1 Query, Section 16</a> [[SPARQL11-QUERY]]. The first of these returns a query solution as a set of variable bindings. The second and third both return an RDF graph, and the last returns a boolean value.
+      <p>In SPARQL, queries can take four forms: <em>SELECT</em>, <em>CONSTRUCT</em>, <em>DESCRIBE</em>, and <em>ASK</em> - see <a data-cite="SPARQL11-QUERY#QueryForms">SPARQL1.1 Query, Section 16</a> [[SPARQL11-QUERY]]. The first of these returns a <a data-cite="SPARQL11-QUERY#defn_sparqlSolutionSequence">sequence of solution mappings</a> that contain variable bindings. The second and third both return an RDF graph, and the last returns a boolean value.
       </p>
       <p>The result of the <em>ASK</em> query form is not changed by the introduction of RDF*, and the result of the <em>CONSTRUCT</em> and <em>DESCRIBE</em> forms can be represented by <a href="#turtle-star">Turtle*</a>. However, since the <em>SELECT</em> form deals with returning individual RDF terms, the specific serialization formats for representing such query results need to be extended so that the new <a>embedded</a> triple RDF term can be represented. In this section, we propose extensions for the two most common formats for this purpose: [[[sparql11-results-json]]], and [[[rdf-sparql-XMLres]]].</p>
+
+      <div class="issue" data-number="43"></div>
+
       <section>
         <h2>SPARQL* Query Results JSON Format</h2>
         <p>
@@ -665,8 +668,8 @@
               <binding>
                 <triple>
                   <subject>S</subject>
-                  <predicate>S</predicate>
-                  <object>S</object>
+                  <predicate>P</predicate>
+                  <object>O</object>
                 </triple>
               </binding>
               -->

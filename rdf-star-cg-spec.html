@@ -981,13 +981,13 @@
     <section class="appendix">
       <h2>SA-mode and PG-mode</h2>
 
-      <p>A lot of discussions on the <a href="https://lists.w3.org/Archives/Public/public-rdf-star/">RDF* mailing list</a> and <a href="https://github.com/w3c/rdf-star">GitHub repository</a> refer to SA-mode and PG-mode. Those abbreviations stand for "Separate Assertion mode" and "Property Graph mode". They originate in the fact that different versions of RDF* have been published over the years, with different designs. In PG-mode, any <a>embedded triple</a> was also considered <a>asserted</a>. SA-mode, on the other hand, allowed to mention <a>embedded triples</a> without asserting them, requiring them to be asserted separately, if that is the intent. SA-mode was more flexible, but induced redundancy in the use-cases that PG-mode was designed to address.</p>
+      <p>A lot of discussions on the <a href="https://lists.w3.org/Archives/Public/public-rdf-star/">RDF* mailing list</a> and <a href="https://github.com/w3c/rdf-star">GitHub repository</a> refer to SA-mode and PG-mode. Those abbreviations stand for "Separate Assertion mode" and "Property Graph mode". They originate in the fact that different versions of RDF* have been published over the years, with different designs. In PG-mode, any <a>embedded triple</a> was also considered <a>asserted</a>. SA-mode, on the other hand, allowed the use of <a>embedded triples</a> without those triples being automatically <a>asserted</a>, requiring that they be <a>asserted</a> separately when that was intended. SA-mode was more flexible, but induced redundancy in the use-cases that PG-mode was designed to address.</p>
 
-      <p>The notion of <a href="#grammar-production-annotation">annotations</a> in the <a href="#turtle-star">Turtle*</a> syntax was introduced to remove the need for different modes. Instead of interpreting the same syntax differently (which would have caused interoperability problems), it was decided to provide two different syntaxes for each use case.</p>
+      <p>The notion of <a href="#grammar-production-annotation">annotations</a> in the <a href="#turtle-star">Turtle*</a> syntax was introduced to remove the need for different modes. Rather than interpret the same syntax differently in each mode, which would have caused interoperability problems and required a switch for those modes, it was decided to provide a different syntax for each use case.</p>
 
       <ul>
-        <li>The `<< ... >>` syntax represents an <a>embedded triples</a> without asserting it (thus answering the needs for the former SA-mode).</li>
-        <li>The `{| ... |}` syntax creates triples where the subject is an <a>embedded</a> version of the previously <a>asserted</a> triple, without the need to repeat it (thus answering the needs for the former PG-mode).</li>
+        <li>The <code>&lt;&lt; ... &gt;&gt;</code> syntax represents an <a>embedded triple</a> without asserting it, satisfying the need formerly filled by SA-mode.</li>
+        <li>The <code>{| ... |}</code> syntax creates triples where the subject is interpreted as an <a>embedded</a> version of the triple previously requiring distinct <a>assertion</a>, without the need to repeat it, satisfying the need formerly filled by PG-mode.</li>
       </ul>
     </section>
 

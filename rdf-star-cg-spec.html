@@ -371,10 +371,10 @@
           <td>
             <code class="token">'BIND'</code>
             <code class="token">'('</code>
-            (
+            `(`
               <a data-cite="SPARQL11-QUERY#rExpression">Expression</a> `|`
               <a href="#rEmbTP">EmbTP</a>
-            )
+            `)`
             <code class="token">'AS'</code>
             <a data-cite="SPARQL11-QUERY#rVar">Var</a>
             <code class="token">')'</code>
@@ -391,6 +391,18 @@
             <a data-cite="SPARQL11-QUERY#rTriplesNode">TriplesNode</a>
             <a data-cite="SPARQL11-QUERY#rPropertyList">PropertyList</a>
         </td>
+        <tr id="rObjectList">
+          <td>[79]</td>
+          <td>`ObjectList`</td>
+          <td>::=</td>
+          <td>
+            <a data-cite="SPARQL11-QUERY#rObject">Object</a> <a href="#rAnnotationPattern">AnnotationPattern</a>`?`
+            `(`
+              <code class="token">','</code>
+              <a data-cite="SPARQL11-QUERY#rObject">Object</a> <a href="#rAnnotationPattern">AnnotationPattern</a>`?`
+            `)*`
+          </td>
+        </tr>
         <tr id="rObject">
           <td>[80]</td>
           <td>`Object`</td>
@@ -455,6 +467,16 @@
             <a data-cite="SPARQL11-QUERY#rVar">Var</a> `|`
             <a data-cite="SPARQL11-QUERY#rGraphTerm">GraphTerm</a> `|`
             <a href="#rEmbTP">EmbTP</a>
+          </td>
+        </tr>
+        <tr id="rAnnotationPattern">
+          <td>[177]</td>
+          <td>`AnnotationPattern`</td>
+          <td>::=</td>
+          <td>
+            <code class="token">'{|'</code>
+            <a data-cite="SPARQL11-QUERY#rPropertyListNotEmpty">PropertyListNotEmpty</a>
+            <code class="token">'|}'</code>
           </td>
         </tr>
       </table>

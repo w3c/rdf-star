@@ -42,6 +42,10 @@
         background-color: lightYellow;
         padding: .6em 1em;
     }
+
+    .TestTurtleNegativeSyntax pre, .NegativeSyntaxTest pre, .NegativeEntailmentTest pre.result {
+        background-color: lightPink;
+    }
 </style>
 <title>manifest-syntax</title>
 <h1>manifest-syntax</h1>
@@ -51,7 +55,7 @@
 <li class="proposed"><a href="#embedded-triple-subject">embedded-triple-subject</a>
 <li class="proposed"><a href="#incomplete-embedded-triple">incomplete-embedded-triple</a>
 </ul>
-<section id="embedded-triple-subject" class="entry proposed">
+<section id="embedded-triple-subject" class="entry proposed PositiveSyntaxTest">
 <h2>embedded-triple-subject <a href="#embedded-triple-subject">🔗</a></h2>
 <table class="properties">
 <tr class="status"><th>status:</th><td>proposed</td>
@@ -66,7 +70,7 @@ SELECT * {
 }</pre>
 <div>MUST be accepted</div>
 <p>Embedded triples can appear in subject position.</p>
-</section><section id="incomplete-embedded-triple" class="entry proposed">
+</section><section id="incomplete-embedded-triple" class="entry proposed NegativeSyntaxTest">
 <h2>incomplete-embedded-triple <a href="#incomplete-embedded-triple">🔗</a></h2>
 <table class="properties">
 <tr class="status"><th>status:</th><td>proposed</td>

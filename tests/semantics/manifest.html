@@ -42,6 +42,10 @@
         background-color: lightYellow;
         padding: .6em 1em;
     }
+
+    .TestTurtleNegativeSyntax pre, .NegativeSyntaxTest pre, .NegativeEntailmentTest pre.result {
+        background-color: lightPink;
+    }
 </style>
 <title>manifest</title>
 <h1>manifest</h1>
@@ -131,7 +135,7 @@ A document on the results of the testing will eventually be at
 http://w3c.github.io/rdf-star/tests/reports.html .
 This document will have more information on submitting reports, including examples
 of what the reports should contain.</pre>
-<section id="triple-in-subject" class="entry approved">
+<section id="triple-in-subject" class="entry approved PositiveEntailmentTest">
 <h2>triple-in-subject <a href="#triple-in-subject">🔗</a></h2>
 <table class="properties">
 <tr class="status"><th>status:</th><td>approved</td>
@@ -146,13 +150,13 @@ prefix : &lt;http://example.com/ns#&gt;
 </pre>
 <div>MUST entail</div>
 <div><code><a href="test000s.ttl">test000s.ttl</a></code></div>
-<pre>
+<pre class="result">
 prefix : &lt;http://example.com/ns#&gt;
 
 &lt;&lt; :a :b :c &gt;&gt; :p1 :o1.
 </pre>
 <p>Embedded triples can appear in subject position (EVENTUALLY, this should be a Turtle* test rather than a semantics test).</p>
-</section><section id="triple-in-object" class="entry approved">
+</section><section id="triple-in-object" class="entry approved PositiveEntailmentTest">
 <h2>triple-in-object <a href="#triple-in-object">🔗</a></h2>
 <table class="properties">
 <tr class="status"><th>status:</th><td>approved</td>
@@ -167,13 +171,13 @@ prefix : &lt;http://example.com/ns#&gt;
 </pre>
 <div>MUST entail</div>
 <div><code><a href="test000o.ttl">test000o.ttl</a></code></div>
-<pre>
+<pre class="result">
 prefix : &lt;http://example.com/ns#&gt;
 
 :s1 :p1 &lt;&lt; :x :y :z &gt;&gt;.
 </pre>
 <p>Embedded triples can appear in object position (EVENTUALLY, this should be a Turtle* test rather than a semantics test).</p>
-</section><section id="all-identical-embedded-triples-are-the-same" class="entry proposed">
+</section><section id="all-identical-embedded-triples-are-the-same" class="entry proposed PositiveEntailmentTest">
 <h2>all-identical-embedded-triples-are-the-same <a href="#all-identical-embedded-triples-are-the-same">🔗</a></h2>
 <table class="properties">
 <tr class="status"><th>status:</th><td>proposed</td>
@@ -189,13 +193,13 @@ prefix : &lt;http://example.com/ns#&gt;
 </pre>
 <div>MUST entail</div>
 <div><code><a href="test001r.ttl">test001r.ttl</a></code></div>
-<pre>
+<pre class="result">
 prefix : &lt;http://example.com/ns#&gt;
 
 &lt;&lt; :a :b :c &gt;&gt; :p1 :o1; :p2 :o2.
 </pre>
 <p>Multiple occurences of the same embedded triples are undistinguishable in the abstract model (EVENTUALLY, this should be a Turtle* test rather than a semantics test).</p>
-</section><section id="embedded-triples-no-spurious" class="entry proposed">
+</section><section id="embedded-triples-no-spurious" class="entry proposed NegativeEntailmentTest">
 <h2>embedded-triples-no-spurious <a href="#embedded-triples-no-spurious">🔗</a></h2>
 <table class="properties">
 <tr class="status"><th>status:</th><td>proposed</td>
@@ -210,13 +214,13 @@ prefix : &lt;http://example.com/ns#&gt;
 </pre>
 <div>MUST NOT entail</div>
 <div><code><a href="test005.ttl">test005.ttl</a></code></div>
-<pre>
+<pre class="result">
 prefix : &lt;http://example.com/ns#&gt;
 
 &lt;&lt; :a :b :d &gt;&gt; :p1 :o1.
 </pre>
 <p>This test ensures that other entailments are not spurious.</p>
-</section><section id="bnodes-in-embedded-subject" class="entry proposed">
+</section><section id="bnodes-in-embedded-subject" class="entry proposed PositiveEntailmentTest">
 <h2>bnodes-in-embedded-subject <a href="#bnodes-in-embedded-subject">🔗</a></h2>
 <table class="properties">
 <tr class="status"><th>status:</th><td>proposed</td>
@@ -231,13 +235,13 @@ prefix : &lt;http://example.com/ns#&gt;
 </pre>
 <div>MUST entail</div>
 <div><code><a href="test002sr.ttl">test002sr.ttl</a></code></div>
-<pre>
+<pre class="result">
 prefix : &lt;http://example.com/ns#&gt;
 
 &lt;&lt; _:x :b :c &gt;&gt; :p1 :o1.
 </pre>
 <p>Terms in embedded triples can be replaced by fresh bnodes.</p>
-</section><section id="bnodes-in-embedded-object" class="entry proposed">
+</section><section id="bnodes-in-embedded-object" class="entry proposed PositiveEntailmentTest">
 <h2>bnodes-in-embedded-object <a href="#bnodes-in-embedded-object">🔗</a></h2>
 <table class="properties">
 <tr class="status"><th>status:</th><td>proposed</td>
@@ -252,13 +256,13 @@ prefix : &lt;http://example.com/ns#&gt;
 </pre>
 <div>MUST entail</div>
 <div><code><a href="test002or.ttl">test002or.ttl</a></code></div>
-<pre>
+<pre class="result">
 prefix : &lt;http://example.com/ns#&gt;
 
 &lt;&lt; :a :b _:x &gt;&gt; :p1 :o1.
 </pre>
 <p>Terms in embedded triples can be replaced by fresh bnodes.</p>
-</section><section id="bnodes-in-embedded-subject-and-object" class="entry proposed">
+</section><section id="bnodes-in-embedded-subject-and-object" class="entry proposed PositiveEntailmentTest">
 <h2>bnodes-in-embedded-subject-and-object <a href="#bnodes-in-embedded-subject-and-object">🔗</a></h2>
 <table class="properties">
 <tr class="status"><th>status:</th><td>proposed</td>
@@ -273,13 +277,13 @@ prefix : &lt;http://example.com/ns#&gt;
 </pre>
 <div>MUST entail</div>
 <div><code><a href="test002sor.ttl">test002sor.ttl</a></code></div>
-<pre>
+<pre class="result">
 prefix : &lt;http://example.com/ns#&gt;
 
 &lt;&lt; _:x :b _:y &gt;&gt; :p1 :o1.
 </pre>
 <p>Terms in embedded triples can be replaced by fresh bnodes.</p>
-</section><section id="bnodes-in-embedded-subject-and-object-fail" class="entry proposed">
+</section><section id="bnodes-in-embedded-subject-and-object-fail" class="entry proposed NegativeEntailmentTest">
 <h2>bnodes-in-embedded-subject-and-object-fail <a href="#bnodes-in-embedded-subject-and-object-fail">🔗</a></h2>
 <table class="properties">
 <tr class="status"><th>status:</th><td>proposed</td>
@@ -294,13 +298,13 @@ prefix : &lt;http://example.com/ns#&gt;
 </pre>
 <div>MUST NOT entail</div>
 <div><code><a href="test002sbr.ttl">test002sbr.ttl</a></code></div>
-<pre>
+<pre class="result">
 prefix : &lt;http://example.com/ns#&gt;
 
 &lt;&lt; _:x :b _:x &gt;&gt; :p1 :o1.
 </pre>
 <p>The same bnode can not match different embedded terms.</p>
-</section><section id="same-bnode-same-embedded-term" class="entry proposed">
+</section><section id="same-bnode-same-embedded-term" class="entry proposed PositiveEntailmentTest">
 <h2>same-bnode-same-embedded-term <a href="#same-bnode-same-embedded-term">🔗</a></h2>
 <table class="properties">
 <tr class="status"><th>status:</th><td>proposed</td>
@@ -315,13 +319,13 @@ prefix : &lt;http://example.com/ns#&gt;
 </pre>
 <div>MUST entail</div>
 <div><code><a href="test002sbr.ttl">test002sbr.ttl</a></code></div>
-<pre>
+<pre class="result">
 prefix : &lt;http://example.com/ns#&gt;
 
 &lt;&lt; _:x :b _:x &gt;&gt; :p1 :o1.
 </pre>
 <p>Identical embedde term can be replaced by the same fresh bnode multiple times.</p>
-</section><section id="different-bnodes-same-embedded-term" class="entry proposed">
+</section><section id="different-bnodes-same-embedded-term" class="entry proposed PositiveEntailmentTest">
 <h2>different-bnodes-same-embedded-term <a href="#different-bnodes-same-embedded-term">🔗</a></h2>
 <table class="properties">
 <tr class="status"><th>status:</th><td>proposed</td>
@@ -336,13 +340,13 @@ prefix : &lt;http://example.com/ns#&gt;
 </pre>
 <div>MUST entail</div>
 <div><code><a href="test002sor.ttl">test002sor.ttl</a></code></div>
-<pre>
+<pre class="result">
 prefix : &lt;http://example.com/ns#&gt;
 
 &lt;&lt; _:x :b _:y &gt;&gt; :p1 :o1.
 </pre>
 <p>Different bnodes can match identical embedded terms.</p>
-</section><section id="constrained-bnodes-in-embedded-subject" class="entry proposed">
+</section><section id="constrained-bnodes-in-embedded-subject" class="entry proposed PositiveEntailmentTest">
 <h2>constrained-bnodes-in-embedded-subject <a href="#constrained-bnodes-in-embedded-subject">🔗</a></h2>
 <table class="properties">
 <tr class="status"><th>status:</th><td>proposed</td>
@@ -358,14 +362,14 @@ prefix : &lt;http://example.com/ns#&gt;
 :c :label "C".</pre>
 <div>MUST entail</div>
 <div><code><a href="test004sr.ttl">test004sr.ttl</a></code></div>
-<pre>
+<pre class="result">
 prefix : &lt;http://example.com/ns#&gt;
 
 &lt;&lt; _:x :b :c &gt;&gt; :p1 :o1.
 _:x :label "A".
 </pre>
 <p>Terms in embedded triples and outside can be replaced by fresh bnodes</p>
-</section><section id="constrained-bnodes-in-embedded-object" class="entry proposed">
+</section><section id="constrained-bnodes-in-embedded-object" class="entry proposed PositiveEntailmentTest">
 <h2>constrained-bnodes-in-embedded-object <a href="#constrained-bnodes-in-embedded-object">🔗</a></h2>
 <table class="properties">
 <tr class="status"><th>status:</th><td>proposed</td>
@@ -381,14 +385,14 @@ prefix : &lt;http://example.com/ns#&gt;
 :c :label "C".</pre>
 <div>MUST entail</div>
 <div><code><a href="test004or.ttl">test004or.ttl</a></code></div>
-<pre>
+<pre class="result">
 prefix : &lt;http://example.com/ns#&gt;
 
 &lt;&lt; :a :b _:x &gt;&gt; :p1 :o1.
 _:x :label "C".
 </pre>
 <p>Terms in embedded triples and outside can be replaced by fresh bnodes.</p>
-</section><section id="constrained-bnodes-in-embedded-fail" class="entry proposed">
+</section><section id="constrained-bnodes-in-embedded-fail" class="entry proposed NegativeEntailmentTest">
 <h2>constrained-bnodes-in-embedded-fail <a href="#constrained-bnodes-in-embedded-fail">🔗</a></h2>
 <table class="properties">
 <tr class="status"><th>status:</th><td>proposed</td>
@@ -404,14 +408,14 @@ prefix : &lt;http://example.com/ns#&gt;
 :c :label "C".</pre>
 <div>MUST NOT entail</div>
 <div><code><a href="test004fr.ttl">test004fr.ttl</a></code></div>
-<pre>
+<pre class="result">
 prefix : &lt;http://example.com/ns#&gt;
 
 &lt;&lt; _:x :b :c &gt;&gt; :p1 :o1.
 _:x :label "C".
 </pre>
 <p>Embedded bnode identifiers share the same scope as non-embedded ones. A bnode occuring both in embedded triples and in asserted triples must statisfy them all at the same time.</p>
-</section><section id="constrained-bnodes-on-literal" class="entry proposed">
+</section><section id="constrained-bnodes-on-literal" class="entry proposed PositiveEntailmentTest">
 <h2>constrained-bnodes-on-literal <a href="#constrained-bnodes-on-literal">🔗</a></h2>
 <table class="properties">
 <tr class="status"><th>status:</th><td>proposed</td>
@@ -427,14 +431,14 @@ prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt;
 :s2 :p2 "42"^^xsd:integer.</pre>
 <div>MUST entail</div>
 <div><code><a href="test006r.ttl">test006r.ttl</a></code></div>
-<pre>
+<pre class="result">
 prefix : &lt;http://example.com/ns#&gt;
 prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt;
 
 &lt;&lt; :a :b _:x &gt;&gt; :p1 :o1.
 :s2 :p2 _:x.</pre>
 <p>Literals in embedded triples and outside can be replaced by fresh bnodes.</p>
-</section><section id="malformed-literal-control" class="entry proposed">
+</section><section id="malformed-literal-control" class="entry proposed PositiveEntailmentTest">
 <h2>malformed-literal-control <a href="#malformed-literal-control">🔗</a></h2>
 <table class="properties">
 <tr class="status"><th>status:</th><td>proposed</td>
@@ -450,7 +454,7 @@ prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt;
 :a :b "c"^^xsd:integer.</pre>
 <div>MUST entail</div>
 <div>a contradiction</div><p>Checks that xsd:integer is indeed recognized, to ensure that malformed-literal* tests do not pass spuriously.</p>
-</section><section id="malformed-literal" class="entry proposed">
+</section><section id="malformed-literal" class="entry proposed NegativeEntailmentTest">
 <h2>malformed-literal <a href="#malformed-literal">🔗</a></h2>
 <table class="properties">
 <tr class="status"><th>status:</th><td>proposed</td>
@@ -466,7 +470,7 @@ prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt;
 &lt;&lt; :a :b "c"^^xsd:integer &gt;&gt; :p1 :o1.</pre>
 <div>MUST NOT entail</div>
 <div>a contradiction</div><p>Malformed literals are allowed when embedded.</p>
-</section><section id="malformed-literal-accepted" class="entry proposed">
+</section><section id="malformed-literal-accepted" class="entry proposed PositiveEntailmentTest">
 <h2>malformed-literal-accepted <a href="#malformed-literal-accepted">🔗</a></h2>
 <table class="properties">
 <tr class="status"><th>status:</th><td>proposed</td>
@@ -482,13 +486,13 @@ prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt;
 &lt;&lt; :a :b "c"^^xsd:integer &gt;&gt; :p1 :o1.</pre>
 <div>MUST entail</div>
 <div><code><a href="malformed-literal.ttl">malformed-literal.ttl</a></code></div>
-<pre>
+<pre class="result">
 prefix : &lt;http://example.com/ns#&gt;
 prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt;
 
 &lt;&lt; :a :b "c"^^xsd:integer &gt;&gt; :p1 :o1.</pre>
 <p>Malformed literals are allowed when embedded.</p>
-</section><section id="malformed-literal-no-spurious" class="entry proposed">
+</section><section id="malformed-literal-no-spurious" class="entry proposed NegativeEntailmentTest">
 <h2>malformed-literal-no-spurious <a href="#malformed-literal-no-spurious">🔗</a></h2>
 <table class="properties">
 <tr class="status"><th>status:</th><td>proposed</td>
@@ -504,13 +508,13 @@ prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt;
 &lt;&lt; :a :b "c"^^xsd:integer &gt;&gt; :p1 :o1.</pre>
 <div>MUST NOT entail</div>
 <div><code><a href="malformed-literal-other.ttl">malformed-literal-other.ttl</a></code></div>
-<pre>
+<pre class="result">
 prefix : &lt;http://example.com/ns#&gt;
 prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt;
 
 &lt;&lt; :a :b "d"^^xsd:integer &gt;&gt; :p1 :o1.</pre>
 <p>Embedded malformed literals do not lead to spurious entailment.</p>
-</section><section id="malformed-literal-bnode" class="entry proposed">
+</section><section id="malformed-literal-bnode" class="entry proposed PositiveEntailmentTest">
 <h2>malformed-literal-bnode <a href="#malformed-literal-bnode">🔗</a></h2>
 <table class="properties">
 <tr class="status"><th>status:</th><td>proposed</td>
@@ -526,13 +530,13 @@ prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt;
 &lt;&lt; :a :b "c"^^xsd:integer &gt;&gt; :p1 :o1.</pre>
 <div>MUST entail</div>
 <div><code><a href="test002or.ttl">test002or.ttl</a></code></div>
-<pre>
+<pre class="result">
 prefix : &lt;http://example.com/ns#&gt;
 
 &lt;&lt; :a :b _:x &gt;&gt; :p1 :o1.
 </pre>
 <p>Malformed literals can be replaced by blank nodes.</p>
-</section><section id="malformed-literal-bnode-2" class="entry proposed">
+</section><section id="malformed-literal-bnode-2" class="entry proposed PositiveEntailmentTest">
 <h2>malformed-literal-bnode-2 <a href="#malformed-literal-bnode-2">🔗</a></h2>
 <table class="properties">
 <tr class="status"><th>status:</th><td>proposed</td>
@@ -549,14 +553,14 @@ prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt;
 &lt;&lt; :d :b "c"^^xsd:integer &gt;&gt; :p2 :o2.</pre>
 <div>MUST entail</div>
 <div><code><a href="malformed-literal-2r.ttl">malformed-literal-2r.ttl</a></code></div>
-<pre>
+<pre class="result">
 prefix : &lt;http://example.com/ns#&gt;
 prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt;
 
 &lt;&lt; :a :b _:x &gt;&gt; :p1 :o1.
 &lt;&lt; :d :b _:x &gt;&gt; :p2 :o2.</pre>
 <p>Identical malformed literals can be replaced with the same blank node.</p>
-</section><section id="malformed-literal-bnode-3" class="entry proposed">
+</section><section id="malformed-literal-bnode-3" class="entry proposed NegativeEntailmentTest">
 <h2>malformed-literal-bnode-3 <a href="#malformed-literal-bnode-3">🔗</a></h2>
 <table class="properties">
 <tr class="status"><th>status:</th><td>proposed</td>
@@ -573,14 +577,14 @@ prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt;
 &lt;&lt; :d :b "d"^^xsd:integer &gt;&gt; :p2 :o2.</pre>
 <div>MUST NOT entail</div>
 <div><code><a href="malformed-literal-3r.ttl">malformed-literal-3r.ttl</a></code></div>
-<pre>
+<pre class="result">
 prefix : &lt;http://example.com/ns#&gt;
 prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt;
 
 &lt;&lt; :a :b _:x &gt;&gt; :p1 :o1.
 &lt;&lt; :d :b _:x &gt;&gt; :p2 :o2.</pre>
 <p>Identical malformed literals can not be replaced with the same blank node.</p>
-</section><section id="opaque-literal-control" class="entry proposed">
+</section><section id="opaque-literal-control" class="entry proposed PositiveEntailmentTest">
 <h2>opaque-literal-control <a href="#opaque-literal-control">🔗</a></h2>
 <table class="properties">
 <tr class="status"><th>status:</th><td>proposed</td>
@@ -596,13 +600,13 @@ prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt;
 :a :b "042"^^xsd:integer.</pre>
 <div>MUST entail</div>
 <div><code><a href="canonical-literal-control.ttl">canonical-literal-control.ttl</a></code></div>
-<pre>
+<pre class="result">
 prefix : &lt;http://example.com/ns#&gt;
 prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt;
 
 :a :b "42"^^xsd:integer.</pre>
 <p>Checks that xsd:integer is indeed recognized, to ensure that opaque-literal does not pass spuriously.</p>
-</section><section id="opaque-literal" class="entry proposed">
+</section><section id="opaque-literal" class="entry proposed NegativeEntailmentTest">
 <h2>opaque-literal <a href="#opaque-literal">🔗</a></h2>
 <table class="properties">
 <tr class="status"><th>status:</th><td>proposed</td>
@@ -618,13 +622,13 @@ prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt;
 &lt;&lt; :a :b "042"^^xsd:integer &gt;&gt; :p1 :o1.</pre>
 <div>MUST NOT entail</div>
 <div><code><a href="canonical-literal.ttl">canonical-literal.ttl</a></code></div>
-<pre>
+<pre class="result">
 prefix : &lt;http://example.com/ns#&gt;
 prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt;
 
 &lt;&lt; :a :b "42"^^xsd:integer &gt;&gt; :p1 :o1.</pre>
 <p>Embedded literals are opaque, even when their datatype is recognized.</p>
-</section><section id="opaque-language-string-control" class="entry proposed">
+</section><section id="opaque-language-string-control" class="entry proposed PositiveEntailmentTest">
 <h2>opaque-language-string-control <a href="#opaque-language-string-control">🔗</a></h2>
 <table class="properties">
 <tr class="status"><th>status:</th><td>proposed</td>
@@ -639,12 +643,12 @@ prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt;
 :a :b "hello"@en-us.</pre>
 <div>MUST entail</div>
 <div><code><a href="upercase-language-string-control.ttl">upercase-language-string-control.ttl</a></code></div>
-<pre>
+<pre class="result">
 prefix : &lt;http://example.com/ns#&gt;
 
 :a :b "hello"@en-US.</pre>
 <p>Checks that language strings are indeed recognized, to ensure that opaque-language-string does not pass spuriously.</p>
-</section><section id="opaque-language-string" class="entry proposed">
+</section><section id="opaque-language-string" class="entry proposed NegativeEntailmentTest">
 <h2>opaque-language-string <a href="#opaque-language-string">🔗</a></h2>
 <table class="properties">
 <tr class="status"><th>status:</th><td>proposed</td>
@@ -659,12 +663,12 @@ prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt;
 &lt;&lt; :a :b "hello"@en-us &gt;&gt; :p1 :o1.</pre>
 <div>MUST NOT entail</div>
 <div><code><a href="upercase-language-string.ttl">upercase-language-string.ttl</a></code></div>
-<pre>
+<pre class="result">
 prefix : &lt;http://example.com/ns#&gt;
 
 &lt;&lt; :a :b "hello"@en-US &gt;&gt; :p1 :o1.</pre>
 <p>Embedded literals (including language strings) are opaque, even when their datatype is recognized.</p>
-</section><section id="opaque-iri-control" class="entry proposed">
+</section><section id="opaque-iri-control" class="entry proposed PositiveEntailmentTest">
 <h2>opaque-iri-control <a href="#opaque-iri-control">🔗</a></h2>
 <table class="properties">
 <tr class="status"><th>status:</th><td>proposed</td>
@@ -681,13 +685,13 @@ prefix owl: &lt;http://www.w3.org/2002/07/owl#&gt;
 </pre>
 <div>MUST entail</div>
 <div><code><a href="control-sameas-r.ttl">control-sameas-r.ttl</a></code></div>
-<pre>
+<pre class="result">
 prefix : &lt;http://example.com/ns#&gt;
 
 :clark :can :fly .
 </pre>
 <p>Check that owl:sameAs works as expected, to ensure that opaque-iri does not pass spuriously.</p>
-</section><section id="opaque-iri" class="entry proposed">
+</section><section id="opaque-iri" class="entry proposed NegativeEntailmentTest">
 <h2>opaque-iri <a href="#opaque-iri">🔗</a></h2>
 <table class="properties">
 <tr class="status"><th>status:</th><td>proposed</td>
@@ -703,13 +707,13 @@ prefix owl: &lt;http://www.w3.org/2002/07/owl#&gt;
 :clark owl:sameAs :superman.</pre>
 <div>MUST NOT entail</div>
 <div><code><a href="superman_undesired_entailment.ttl">superman_undesired_entailment.ttl</a></code></div>
-<pre>
+<pre class="result">
 prefix : &lt;http://example.com/ns#&gt;
 
 &lt;&lt; :clark :can :fly &gt;&gt; :reportedBy :clark.
 </pre>
 <p>Embedded IRIs are opaque.</p>
-</section><section id="embedded-not-asserted" class="entry proposed">
+</section><section id="embedded-not-asserted" class="entry proposed NegativeEntailmentTest">
 <h2>embedded-not-asserted <a href="#embedded-not-asserted">🔗</a></h2>
 <table class="properties">
 <tr class="status"><th>status:</th><td>proposed</td>
@@ -724,13 +728,13 @@ prefix : &lt;http://example.com/ns#&gt;
 </pre>
 <div>MUST NOT entail</div>
 <div><code><a href="test002pgr.ttl">test002pgr.ttl</a></code></div>
-<pre>
+<pre class="result">
 prefix : &lt;http://example.com/ns#&gt;
 
 :a :b :c.
 </pre>
 <p>Embedded triples are not asserted.</p>
-</section><section id="annotated-asserted" class="entry proposed">
+</section><section id="annotated-asserted" class="entry proposed PositiveEntailmentTest">
 <h2>annotated-asserted <a href="#annotated-asserted">🔗</a></h2>
 <table class="properties">
 <tr class="status"><th>status:</th><td>proposed</td>
@@ -745,13 +749,13 @@ prefix : &lt;http://example.com/ns#&gt;
 </pre>
 <div>MUST entail</div>
 <div><code><a href="test007r1.ttl">test007r1.ttl</a></code></div>
-<pre>
+<pre class="result">
 prefix : &lt;http://example.com/ns#&gt;
 
 :a :b :c.
 </pre>
 <p>Annotated triples are asserted.</p>
-</section><section id="annotation" class="entry proposed">
+</section><section id="annotation" class="entry proposed PositiveEntailmentTest">
 <h2>annotation <a href="#annotation">🔗</a></h2>
 <table class="properties">
 <tr class="status"><th>status:</th><td>proposed</td>
@@ -766,13 +770,13 @@ prefix : &lt;http://example.com/ns#&gt;
 </pre>
 <div>MUST entail</div>
 <div><code><a href="test007r2.ttl">test007r2.ttl</a></code></div>
-<pre>
+<pre class="result">
 prefix : &lt;http://example.com/ns#&gt;
 
 &lt;&lt; :a :b :c &gt;&gt; :p1 :o1.
 </pre>
 <p>Annotation are about the annotated triple.</p>
-</section><section id="annotation-unfolded" class="entry proposed">
+</section><section id="annotation-unfolded" class="entry proposed PositiveEntailmentTest">
 <h2>annotation-unfolded <a href="#annotation-unfolded">🔗</a></h2>
 <table class="properties">
 <tr class="status"><th>status:</th><td>proposed</td>
@@ -788,10 +792,10 @@ prefix : &lt;http://example.com/ns#&gt;
 </pre>
 <div>MUST entail</div>
 <div><code><a href="test007a.ttl">test007a.ttl</a></code></div>
-<pre>
+<pre class="result">
 prefix : &lt;http://example.com/ns#&gt;
 
 :a :b :c {| :p1 :o1 |}.
 </pre>
-<p>Annotation is the same as separate asserion.</p>
+<p>Annotation is the same as separate assertions.</p>
 </section>

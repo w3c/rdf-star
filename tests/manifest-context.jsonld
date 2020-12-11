@@ -6,7 +6,7 @@
         "rdft": "http://www.w3.org/ns/rdftest#",
         "xsd":  "http://www.w3.org/2001/XMLSchema#",
 
-        "@vocab": "mf:",
+        "@vocab": "http://www.w3.org/2001/sw/DataAccess/tests/test-manifest#",
         "include": {
             "@type": "@id",
             "@container": "@list"
@@ -41,6 +41,12 @@
         },
         "Approved": "rdft:Approved",
         "Proposed": "rdft:Proposed",
-        "Rejected": "rdft:Rejected"
+        "Rejected": "rdft:Rejected",
+        "TestTurtlePositiveSyntax": "rdft:TestTurtlePositiveSyntax",
+        "TestTurtleNegativeSyntax": "rdft:TestTurtleNegativeSyntax"
+    },
+    "@type": "mf:Manifest",
+    "entries": {
+        "@embed": true
     }
 }

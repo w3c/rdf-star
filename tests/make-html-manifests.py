@@ -1,28 +1,36 @@
 #!/usr/bin/env python
 from pathlib import Path
 import json
+import os
+import sys
+from urllib.parse import urlparse
+
+DIR = Path(__file__).parent
 
 def main():
-    dir = Path(__file__).parent
     for i in [
         ["semantics", "manifest.jsonld"],
         ["sparql", "manifest.jsonld"],
+        ["turtle", "syntax", "manifest.ttl"],
     ]:
-        make_html(dir.joinpath(*i))
+        make_html(DIR.joinpath(*i))
 
-def make_html(jsonld: Path):
-    dir = jsonld.parent
-    html = dir.joinpath(jsonld.stem + '.html')
+def make_html(path: Path):
+    dir = path.parent
+    html = dir.joinpath(path.stem + '.html')
+    manifest = open_manifest(path)
+    if manifest is None:
+        eprint(f"Don't know how to parse {path}")
+        return
+
     print(html)
-    with jsonld.open() as f:
-        manifest = json.load(f)
     with html.open('w') as out:
         out.write("<!DOCTYPE html>\n")
         out.write('<meta charset="UTF-8">')
         out.write(STYLE)
-        out.write(f"<title>{jsonld.stem}</title>\n")
-        out.write(f"<h1>{jsonld.stem}</h1>\n")
-        out.write(f'<p>Generated from <a href="{jsonld.name}">{jsonld.name}</a></p>')
+        out.write(f"<title>{path.stem}</title>\n")
+        out.write(f"<h1>{path.stem}</h1>\n")
+        out.write(f'<p>Generated from <a href="{path.name}">{path.name}</a></p>')
         if 'comment' in manifest:
             out.write(f"<p>{manifest['comment']}</p>\n")
 
@@ -40,9 +48,9 @@ def make_html(jsonld: Path):
         if entries:
             out.write('<p><strong>Entries:</strong></p>\n<ul class="entries">\n')
             for (i, entry) in enumerate(entries):
-                eid = entry.get('@id', f"#{jsonld.name}_entry{i}")
+                eid = entry.get('@id', f"#{path.name}_entry{i}")
                 name = entry.get('name', eid[1:])
-                approval = entry['approval'].lower()
+                approval = entry.get('approval', 'proposed').lower()
                 out.write(f'<li class="{approval}"><a href="{eid}">{name}</a>\n')
                 # store computed values for the next loop
                 entry['@id'] = eid
@@ -63,11 +71,13 @@ def make_html(jsonld: Path):
 
         for entry in entries:
             eid = entry['@id']
+            typ = entry['@type']
             name = entry['name']
             if eid[1:] != name:
-                print(f"{eid}'s name does not match id")
-            approval = entry['approval'].lower()
-            out.write(f'<section id="{eid[1:]}" class="entry {approval}">\n')
+                if not eid.startswith('#turtle-star-'):
+                    print(f"{eid}'s name does not match id")
+            approval = entry.get('approval', 'proposed').lower()
+            out.write(f'<section id="{eid[1:]}" class="entry {approval} {typ}">\n')
             out.write(f'<h2>{name} <a href="{eid}">🔗</a></h2>\n')
             out.write('<table class="properties">\n')
             out.write(f'<tr class="status"><th>status:</th><td>{approval}</td>\n')
@@ -88,7 +98,7 @@ def make_html(jsonld: Path):
             if result is False:
                 out.write("<div>a contradiction</div>")
             elif result:
-                write_file(out, entry['result'], dir)
+                write_file(out, entry['result'], dir, cls="result")
             if 'comment' in entry:
                 out.write(f"<p>{entry['comment']}</p>\n")
             out.write("</section>")
@@ -101,11 +111,14 @@ def readable_type(entry: dict) -> str:
         'NegativeEntailmentTest': 'negative entailment test',
     }.get(typ, typ)
 
-def write_file(out, relative_url, current_dir):
+def write_file(out, relative_url, current_dir, cls=None):
     out.write(f'<div><code><a href="{relative_url}">{relative_url}</a></code></div>\n')
     try:
         with current_dir.joinpath(*relative_url.split('/')).open() as f:
-            out.write("<pre>\n")
+            out.write("<pre")
+            if cls is not None:
+                out.write(f" class=\"{cls}\"")
+            out.write(">\n")
             quoted = f.read().replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;')
             out.write(quoted)
     except Exception as e:
@@ -122,6 +135,8 @@ def result_message(entry: dict) -> str:
         'NegativeEntailmentTest': 'MUST NOT entail',
         'PositiveSyntaxTest': 'MUST be accepted',
         'NegativeSyntaxTest': 'MUST be rejected',
+        'TestTurtlePositiveSyntax': 'MUST be accepted',
+        'TestTurtleNegativeSyntax': 'MUST be rejected',
     }.get(typ)
     if msg is None:
         if typ.startswith('Netagitve'):
@@ -129,6 +144,43 @@ def result_message(entry: dict) -> str:
         else:
             msg = 'MUST result into'
     return msg
+
+def open_manifest(path: Path) -> dict:
+    if path.suffix == ".jsonld":
+        with path.open() as f:
+            return json.load(f)
+    if path.suffix == ".ttl":
+        return rdf_to_json("turtle", path)
+
+def rdf_to_json(format, path: Path) -> dict:
+    try:
+        import rdflib
+        from pyld import jsonld
+    except ImportError:
+        eprint("In order to process TTL manifests, you need RDFlib and PyLD:") 
+        eprint("  python -m pip install rdflib PyLD") 
+        return None
+    g = rdflib.Graph()
+    with path.open() as f:
+        g.load(f, format=format)
+    nq = g.serialize(format="ntriples").decode("utf-8")
+
+    extended = jsonld.from_rdf(nq)
+    with DIR.joinpath("manifest-context.jsonld").open() as f:
+        frame = json.load(f)
+    manifest = jsonld.frame(extended, frame)
+
+    # ugly hack to "relativize" IRIs
+    manifest = json.dumps(manifest)
+    manifest = manifest.replace(f'file://{path.absolute()}#', "#")
+    manifest = manifest.replace(f'file://{path.parent.absolute()}/', "")
+    manifest = json.loads(manifest)
+
+    return manifest
+
+def eprint(*args, **kw):
+    kw.setdefault('file', sys.stderr)
+    print(*args, **kw)
 
 STYLE = '''
 <style>
@@ -172,6 +224,10 @@ STYLE = '''
         border: thin solid black;
         background-color: lightYellow;
         padding: .6em 1em;
+    }
+
+    .TestTurtleNegativeSyntax pre, .NegativeSyntaxTest pre, .NegativeEntailmentTest pre.result {
+        background-color: lightPink;
     }
 </style>
 ''' 

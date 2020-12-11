@@ -75,8 +75,10 @@
 <li class="proposed"><a href="#opaque-language-string">opaque-language-string</a>
 <li class="proposed"><a href="#opaque-iri-control">opaque-iri-control</a>
 <li class="proposed"><a href="#opaque-iri">opaque-iri</a>
-<li class="proposed"><a href="#sa-mode">sa-mode</a>
-<li class="proposed"><a href="#pg-mode">pg-mode</a>
+<li class="proposed"><a href="#embedded-not-asserted">embedded-not-asserted</a>
+<li class="proposed"><a href="#annotated-asserted">annotated-asserted</a>
+<li class="proposed"><a href="#annotation">annotation</a>
+<li class="proposed"><a href="#annotation-unfolded">annotation-unfolded</a>
 </ul>
 <h2>About this test suite</h2>
 <pre>
@@ -707,8 +709,8 @@ prefix : &lt;http://example.com/ns#&gt;
 &lt;&lt; :clark :can :fly &gt;&gt; :reportedBy :clark.
 </pre>
 <p>Embedded IRIs are opaque.</p>
-</section><section id="sa-mode" class="entry proposed">
-<h2>sa-mode <a href="#sa-mode">🔗</a></h2>
+</section><section id="embedded-not-asserted" class="entry proposed">
+<h2>embedded-not-asserted <a href="#embedded-not-asserted">🔗</a></h2>
 <table class="properties">
 <tr class="status"><th>status:</th><td>proposed</td>
 <tr class="type"><th>type:</th><td>negative entailment test</td>
@@ -727,26 +729,69 @@ prefix : &lt;http://example.com/ns#&gt;
 
 :a :b :c.
 </pre>
-<p>Embedded triples are not asserted (see also sa-mode).</p>
-</section><section id="pg-mode" class="entry proposed">
-<h2>pg-mode <a href="#pg-mode">🔗</a></h2>
+<p>Embedded triples are not asserted.</p>
+</section><section id="annotated-asserted" class="entry proposed">
+<h2>annotated-asserted <a href="#annotated-asserted">🔗</a></h2>
 <table class="properties">
 <tr class="status"><th>status:</th><td>proposed</td>
 <tr class="type"><th>type:</th><td>positive entailment test</td>
 <tr class="regime"><th>regime:</th><td>simple</td>
 </table>
-<div><code><a href="test002a.ttl">test002a.ttl</a></code></div>
+<div><code><a href="test007a.ttl">test007a.ttl</a></code></div>
 <pre>
 prefix : &lt;http://example.com/ns#&gt;
 
-&lt;&lt; :a :b :c &gt;&gt; :p1 :o1.
+:a :b :c {| :p1 :o1 |}.
 </pre>
 <div>MUST entail</div>
-<div><code><a href="test002pgr.ttl">test002pgr.ttl</a></code></div>
+<div><code><a href="test007r1.ttl">test007r1.ttl</a></code></div>
 <pre>
 prefix : &lt;http://example.com/ns#&gt;
 
 :a :b :c.
 </pre>
-<p>Embedded triples are asserted (see also pg-mode).</p>
+<p>Annotated triples are asserted.</p>
+</section><section id="annotation" class="entry proposed">
+<h2>annotation <a href="#annotation">🔗</a></h2>
+<table class="properties">
+<tr class="status"><th>status:</th><td>proposed</td>
+<tr class="type"><th>type:</th><td>positive entailment test</td>
+<tr class="regime"><th>regime:</th><td>simple</td>
+</table>
+<div><code><a href="test007a.ttl">test007a.ttl</a></code></div>
+<pre>
+prefix : &lt;http://example.com/ns#&gt;
+
+:a :b :c {| :p1 :o1 |}.
+</pre>
+<div>MUST entail</div>
+<div><code><a href="test007r2.ttl">test007r2.ttl</a></code></div>
+<pre>
+prefix : &lt;http://example.com/ns#&gt;
+
+&lt;&lt; :a :b :c &gt;&gt; :p1 :o1.
+</pre>
+<p>Annotation are about the annotated triple.</p>
+</section><section id="annotation-unfolded" class="entry proposed">
+<h2>annotation-unfolded <a href="#annotation-unfolded">🔗</a></h2>
+<table class="properties">
+<tr class="status"><th>status:</th><td>proposed</td>
+<tr class="type"><th>type:</th><td>positive entailment test</td>
+<tr class="regime"><th>regime:</th><td>simple</td>
+</table>
+<div><code><a href="test007a2.ttl">test007a2.ttl</a></code></div>
+<pre>
+prefix : &lt;http://example.com/ns#&gt;
+
+:a :b :c.
+&lt;&lt; :a :b :c &gt;&gt; :p1 :o1.
+</pre>
+<div>MUST entail</div>
+<div><code><a href="test007a.ttl">test007a.ttl</a></code></div>
+<pre>
+prefix : &lt;http://example.com/ns#&gt;
+
+:a :b :c {| :p1 :o1 |}.
+</pre>
+<p>Annotation is the same as separate asserion.</p>
 </section>

@@ -330,10 +330,10 @@
             "result": "superman_undesired_entailment.ttl"
         },
         {
-            "@id": "#sa-mode",
+            "@id": "#embedded-not-asserted",
             "@type": "NegativeEntailmentTest",
-            "name": "sa-mode",
-            "comment": "Embedded triples are not asserted (see also sa-mode).",
+            "name": "embedded-not-asserted",
+            "comment": "Embedded triples are not asserted.",
             "approval": "Proposed",
             "entailmentRegime": "simple" ,
             "recognizedDatatypes": [] ,
@@ -342,16 +342,40 @@
             "result": "test002pgr.ttl"
         },
         {
-            "@id": "#pg-mode",
+            "@id": "#annotated-asserted",
             "@type": "PositiveEntailmentTest",
-            "name": "pg-mode",
-            "comment": "Embedded triples are asserted (see also pg-mode).",
+            "name": "annotated-asserted",
+            "comment": "Annotated triples are asserted.",
             "approval": "Proposed",
             "entailmentRegime": "simple" ,
             "recognizedDatatypes": [] ,
             "unrecognizedDatatypes": [] ,
-            "action": "test002a.ttl",
-            "result": "test002pgr.ttl"
+            "action": "test007a.ttl",
+            "result": "test007r1.ttl"
+        },
+        {
+            "@id": "#annotation",
+            "@type": "PositiveEntailmentTest",
+            "name": "annotation",
+            "comment": "Annotation are about the annotated triple.",
+            "approval": "Proposed",
+            "entailmentRegime": "simple" ,
+            "recognizedDatatypes": [] ,
+            "unrecognizedDatatypes": [] ,
+            "action": "test007a.ttl",
+            "result": "test007r2.ttl"
+        },
+        {
+            "@id": "#annotation-unfolded",
+            "@type": "PositiveEntailmentTest",
+            "name": "annotation-unfolded",
+            "comment": "Annotation is the same as separate assertions.",
+            "approval": "Proposed",
+            "entailmentRegime": "simple" ,
+            "recognizedDatatypes": [] ,
+            "unrecognizedDatatypes": [] ,
+            "action": "test007a2.ttl",
+            "result": "test007a.ttl"
         }
     ]
 }

@@ -524,11 +524,41 @@
       <section>
         <h2>Expand Syntax Forms</h2>
 
-        <p>The translation process starts with expanding <q>abbreviations for IRIs and triple patterns</q> [<a data-cite="SPARQL11-QUERY#sparqlExpandForms">SPARQL11-QUERY, Section 18.2.2.1</a>]. This step MUST be extended in two ways:</p>
+        <p>The translation process starts with expanding <q>abbreviations for IRIs and triple patterns</q> [<a data-cite="SPARQL11-QUERY#sparqlExpandForms">SPARQL11-QUERY, Section 18.2.2.1</a>]. This step MUST be extended in three ways:</p>
 
         <ol>
           <li><div>
-            <p>Abbreviations for <a>triple patterns</a> with <a>embedded triple patterns</a> MUST be expanded as if each <a>embedded triple pattern</a> was a <a>variable</a> (or an <a>RDF term</a>).
+            <p><a>Annotation patterns</a> MUST be replaced by additional <a>SPARQL* triple patterns</a> that have the annotated triple pattern as an <a>embedded triple pattern</a> in their subject position.</p>
+
+            <div class="example">
+              For instance, the following syntax expression:
+              <pre data-transform="updateExample"
+                data-content-type="application/x-sparql-star-query"
+                class="nohighlight example"
+              >
+                <!--
+                ?x :p :o1 {| :ap1 ?y;
+                             :ap2 ?z |} ,
+                      :o2 {| :ap3 ?z |} .
+                -->
+              </pre>
+              must be replaced by
+              <pre data-transform="updateExample"
+                data-content-type="application/x-sparql-star-query"
+                class="nohighlight example"
+              >
+                <!--
+                ?x :p :o1 .
+                <<?x :p :o1>> :ap1 ?y ;
+                              :ap2 ?z .
+                <<?x :p :o2>> :ap3 ?z .
+                -->
+              </pre>
+            </div>
+
+          </div></li>
+          <li><div>
+            <p>Abbreviations for <a>triple patterns</a> with <a>embedded triple patterns</a> MUST be expanded as if each <a>embedded triple pattern</a> was a <a>variable</a> (or an <a>RDF term</a>).</p>
 
             <div class="example">
               For instance, the following syntax expression:

@@ -106,15 +106,68 @@
     <section class="informative">
       <h2>Overview</h2>
 
-      <p>TODO (the purpose of this section will be to provide an informal introduction to the approach for practitioners)</p>
+<p>The RDF data model lets you state facts in three-part subject-predicate-object statements known as triples. For example, with a single RDF triple you can say that employee38 has a hireDate of "2020-04-03". A triple's predicate is a property specified with an IRI (an Internationalized version of a URI) to identify the namespace of the property name. A triple's subject and object can each be any entity that can be referenced using an IRI, and the object can also be a literal value such as "2020-04-03" or another data type such as a numeric or Boolean value. </p>
+
+<p>The subject and object of a triple can themselves be triples. In the statement "employee22 claims that employee38 has a familyName of 'Smith'", the object of the triple that has employee22 as its subject is the statement "employee38 has a familyName of 'Smith'". This use of a triple as the subject or object resource of another triple so that we can say things about that triple is known as <a href='https://www.w3.org/TR/1999/REC-rdf-syntax-19990222/#higherorder'>reification</a>. </p>
+<p>The concept of reification has always been part of RDF, but expressing it in RDF concrete syntaxes such as Turtle, n-triples, and RDF/XML has been verbose and cumbersome. This specification describes a new, more compact conceptual data model and Turtle concrete syntax for reification known as RDF* (pronounced "RDF star"). This model and syntax enable the creation of concise triples that reference other triples as subject and object resources.</p>
+
+<p>Triples that include a triple as a subject or an object are known as RDF* triples. The following dataset shows the example triples from above using the Turtle RDF* syntax, which uses double angle brackets to enclose a triple serving as a subject or object resource:</p>
+
+      <pre data-transform="updateExample"
+        data-content-type="text/x-turtle-star"
+        class="nohighlight example"
+      >
+        <!--
+@prefix : <http://www.example.org/> .
+
+:employee38 :hireDate "2020-04-03" .
+:employee22 :claims << :employee38 :familyName "Smith" >> .
+        -->
+      </pre>
+
+<p>After declaring a prefix so that IRIs can be abbreviated, the first triple in this example asserts that employee38 has a hireDate of "2020-04-03". Note that this dataset does not assert that employee38 has a familyName of "Smith"; it says that employee22 has made that claim. In other words, the triple "employee38 has a familyName of 'Smith'" is not what we call an asserted triple, like "employee38 has a hireDate of '2020-04-03'" above; it is known as an embedded triple. (If we added the triple `:employee38 :familyName "Smith"` below the triple about employee22's claim in the example above, then this triple about employee38's familyName would be both an embedded triple and an asserted one.) </p>
+
+<p>This specification also describes an extension to the SPARQL Protocol and Query Language known as SPARQL* (pronounced "SPARQL star") for the querying of RDF* triples. For example, the following SPARQL* query asks "who has made any claims about employee38?"</p>
+
+<pre data-transform="updateExample"
+     data-content-type="application/x-sparql-star-query"
+     class="nohighlight example"
+>
+                <!--
+PREFIX : <http://www.example.org/> 
+
+SELECT ?claimer WHERE {
+   ?claimer :claims << :employee38 ?property ?value >>
+}
+-->
+</pre>
+    
+
+<p> SPARQL query triple patterns that include a triple pattern as a subject or object are known as SPARQL* triple patterns. </p>
+
+<p>For the remainder of this document, examples will assume that the following prefixes have been declared to represent the IRIs shown with them here: </p>
+
+<table>
+<tr><td>`:`</td><td>`&lt;http://www.example.org/&gt;`</td></tr>
+<tr><td>`rdfs:`</td><td>`&lt;http://www.w3.org/2000/01/rdf-schema#>`</td></tr>
+<tr><td>`owl:`</td><td>`&lt;http://www.w3.org/2002/07/owl#>`</td></tr>
+<tr><td>`prov:`</td><td>`&lt;http://www.w3.org/ns/prov#>`</td></tr>
+<tr><td>`dc:`</td><td>`&lt;http://purl.org/dc/elements/1.1/>`</td></tr>
+<tr><td>`dct:`</td><td>`&lt;http://purl.org/dc/terms/>`</td></tr>
+</table>
+<!-- 
+<p>TODO (the purpose of this section will be to provide an informal introduction to the approach for practitioners)</p>
+
+*** Note from Bob: the following was in this section but I think it's a bit too technical to qualify as part of an informal introduction to the approach for practitioners.  I didn't delete it because I thought you'd want to move it somewhere. ***
+
+</p>
       <p>The syntax of RDF is defined in two layers:</p>
       <ul>
         <li>the <dfn>abstract syntax</dfn>, which is the conceptual data model of RDF, and</li>
         <li>multiple <dfn data-cite="RDF11-CONCEPTS#dfn-concrete-rdf-syntax" data-lt="concrete syntax|concrete RDF syntax|concrete RDF syntaxes">concrete syntaxes</dfn> (such as RDF/XML [[RDF-SYNTAX-GRAMMAR]], Turtle [[TURTLE]] or JSON-LD [[JSON-LD11]]), which are data formats used to serialize the abstract syntax into files or over the wire.</li>
       </ul>
       <p>Similarly, this document defines the <a>abstract syntax</a> of RDF* in <a href="#concepts"></a>, and one <a>concrete syntax</a> based on Turtle [[TURTLE]] in <a href="#turtle-star"></a>.</p>
-
-      <p>TODO list the prefix definitions implicitly used in all examples</p>
+-->
     </section>
 
     <section id="conformance">

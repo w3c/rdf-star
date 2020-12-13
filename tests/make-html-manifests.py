@@ -12,6 +12,8 @@ def main():
         ["semantics", "manifest.jsonld"],
         ["sparql", "manifest.jsonld"],
         ["turtle", "syntax", "manifest.ttl"],
+        ["turtle", "eval", "manifest.ttl"],
+        ["nt", "syntax", "manifest.ttl"],
     ]:
         make_html(DIR.joinpath(*i))
 
@@ -73,9 +75,6 @@ def make_html(path: Path):
             eid = entry['@id']
             typ = entry['@type']
             name = entry['name']
-            if eid[1:] != name:
-                if not eid.startswith('#turtle-star-'):
-                    print(f"{eid}'s name does not match id")
             approval = entry.get('approval', 'proposed').lower()
             out.write(f'<section id="{eid[1:]}" class="entry {approval} {typ}">\n')
             out.write(f'<h2>{name} <a href="{eid}">🔗</a></h2>\n')

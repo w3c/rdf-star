@@ -1,0 +1,79 @@
+## Distributed under both the "W3C Test Suite License" [1]
+## and the "W3C 3-clause BSD License".
+## [1] https://www.w3.org/Consortium/Legal/2008/04-testsuite-license
+## [2] https://www.w3.org/Consortium/Legal/2008/03-bsd-license
+
+PREFIX rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs:   <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX mf:     <http://www.w3.org/2001/sw/DataAccess/tests/test-manifest#>
+PREFIX rdft:   <http://www.w3.org/ns/rdftest#>
+PREFIX :       <#>
+
+<>  rdf:type mf:Manifest ;
+    rdfs:label "Turtle* Evaluation Tests" ;
+    mf:entries
+    (
+        :turtle-star-1
+        :turtle-star-2
+        :turtle-star-bnode-1
+        :turtle-star-bnode-2
+        :turtle-star-annotation-1
+        :turtle-star-annotation-2
+        :turtle-star-annotation-3
+        :turtle-star-annotation-4
+        :turtle-star-annotation-5
+    ) .
+
+:turtle-star-1 rdf:type rdft:TestTurtleEval ;
+   mf:name      "Turtle* - subject triple term" ;
+   mf:action    <turtle-star-eval-01.ttl> ;
+   mf:result    <turtle-star-eval-01.nt> ;
+   .
+
+:turtle-star-2 rdf:type rdft:TestTurtleEval ;
+   mf:name      "Turtle* - object triple term" ;
+   mf:action    <turtle-star-eval-02.ttl> ;
+   mf:result    <turtle-star-eval-02.nt> ;
+   .
+
+:turtle-star-bnode-1 rdf:type rdft:TestTurtleEval ;
+   mf:name      "Turtle* - blank node label" ;
+   mf:action    <turtle-star-eval-bnode-1.ttl> ;
+   mf:result    <turtle-star-eval-bnode-1.nt> ;
+   .
+   
+:turtle-star-bnode-2 rdf:type rdft:TestTurtleEval ;
+   mf:name      "Turtle* - blank node labels" ;
+   mf:action    <turtle-star-eval-bnode-2.ttl> ;
+   mf:result    <turtle-star-eval-bnode-2.nt> ;
+   .
+
+:turtle-star-annotation-1 rdf:type rdft:TestTurtleEval ;
+   mf:name      "Turtle* - Annotation form" ;
+   mf:action    <turtle-star-eval-annotation-1.ttl> ;
+   mf:result    <turtle-star-eval-annotation-1.nt> ;
+   .
+   
+:turtle-star-annotation-2 rdf:type rdft:TestTurtleEval ;
+   mf:name      "Turtle* - Annotation example" ;
+   mf:action    <turtle-star-eval-annotation-2.ttl> ;
+   mf:result    <turtle-star-eval-annotation-2.nt> ;
+   .
+   
+:turtle-star-annotation-3 rdf:type rdft:TestTurtleEval ;
+   mf:name      "Turtle* - Annotation - predicate and object lists" ;
+   mf:action    <turtle-star-eval-annotation-3.ttl> ;
+   mf:result    <turtle-star-eval-annotation-3.nt> ;
+   .
+   
+:turtle-star-annotation-4 rdf:type rdft:TestTurtleEval ;
+   mf:name      "Turtle* - Annotation - nested" ;
+   mf:action    <turtle-star-eval-annotation-4.ttl> ;
+   mf:result    <turtle-star-eval-annotation-4.nt> ;
+   .
+   
+:turtle-star-annotation-5 rdf:type rdft:TestTurtleEval ;
+   mf:name      "Turtle* - Annotation object list" ;
+   mf:action    <turtle-star-eval-annotation-5.ttl> ;
+   mf:result    <turtle-star-eval-annotation-5.nt> ;
+   .

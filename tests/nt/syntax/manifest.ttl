@@ -16,6 +16,8 @@ PREFIX :       <#>
         :ntriples-star-1
         :ntriples-star-2
         :ntriples-star-3
+        :ntriples-star-4
+        :ntriples-star-5
 
         :ntriples-star-bnode-1
         :ntriples-star-bnode-2
@@ -32,6 +34,8 @@ PREFIX :       <#>
         :nt-ttl-star-1
         :nt-ttl-star-2
         :nt-ttl-star-3
+        :nt-ttl-star-4
+        :nt-ttl-star-5
 
         :nt-ttl-star-bnode-1
         :nt-ttl-star-bnode-2
@@ -59,6 +63,16 @@ PREFIX :       <#>
    mf:action    <ntriples-star-syntax-3.nt> ;
    .
 
+:ntriples-star-4 rdf:type rdft:TestNTriplesPositiveSyntax ;
+   mf:name      "N-Triples* - whitespace and terms" ;
+   mf:action    <ntriples-star-syntax-4.nt> ;
+   .
+
+:ntriples-star-5 rdf:type rdft:TestNTriplesPositiveSyntax ;
+   mf:name      "N-Triples* - Nested, no whitespace" ;
+   mf:action    <ntriples-star-syntax-5.nt> ;
+   .
+
 # Blank nodes
 
 :ntriples-star-bnode-1 rdf:type rdft:TestNTriplesPositiveSyntax ;
@@ -72,7 +86,7 @@ PREFIX :       <#>
    .
    
 :ntriples-star-nested-1 rdf:type rdft:TestNTriplesPositiveSyntax ;
-   mf:name      "N-Triples* -  Nested subject term" ;
+   mf:name      "N-Triples* - Nested subject term" ;
    mf:action    <ntriples-star-nested-1.nt> ;
    .
 
@@ -82,7 +96,6 @@ PREFIX :       <#>
    .
 
 ## Bad syntax
-
  
 :ntriples-star-bad-1 rdf:type rdft:TestNTriplesNegativeSyntax ;
     mf:name      "N-Triples* - Bad - triple term as predicate" ;
@@ -125,6 +138,16 @@ PREFIX :       <#>
    mf:action    <nt-ttl-star-syntax-3.ttl> ;
    .
 
+:nt-ttl-star-4 rdf:type rdft:TestNTriplesPositiveSyntax ;
+   mf:name      "N-Triples* as Turtle* - whitespace and terms" ;
+   mf:action    <ntriples-star-syntax-4.nt> ;
+   .
+
+:nt-ttl-star-5 rdf:type rdft:TestNTriplesPositiveSyntax ;
+   mf:name      "N-Triples* as Turtle* - Nested, no whitespace" ;
+   mf:action    <ntriples-star-syntax-5.nt> ;
+   .
+
 # Blank nodes
 
 :nt-ttl-star-bnode-1 rdf:type rdft:TestTurtlePositiveSyntax ;
@@ -138,7 +161,7 @@ PREFIX :       <#>
    .
    
 :nt-ttl-star-nested-1 rdf:type rdft:TestTurtlePositiveSyntax ;
-   mf:name      "N-Triples* as Turtle* -  Nested subject term" ;
+   mf:name      "N-Triples* as Turtle* - Nested subject term" ;
    mf:action    <nt-ttl-star-nested-1.ttl> ;
    .
 

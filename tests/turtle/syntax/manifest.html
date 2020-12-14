@@ -53,20 +53,21 @@
 <ul class="entries">
 <li class="proposed"><a href="#turtle-star-1">Turtle* - subject triple term</a>
 <li class="proposed"><a href="#turtle-star-2">Turtle* - object triple term</a>
-<li class="proposed"><a href="#turtle-star-3">Turtle* - triple term inside blankNodePropertyList</a>
-<li class="proposed"><a href="#turtle-star-4">Turtle* - triple term inside collection</a>
-<li class="proposed"><a href="#turtle-star-5">Turtle* - nested triple term, subject position</a>
-<li class="proposed"><a href="#turtle-star-6">Turtle* - nested triple term, object position</a>
-<li class="proposed"><a href="#turtle-star-7">Turtle* - compound forms</a>
-<li class="proposed"><a href="#turtle-star-8">Turtle* - blank node subject</a>
-<li class="proposed"><a href="#turtle-star-9">Turtle* - blank node object</a>
-<li class="proposed"><a href="#turtle-star-10">Turtle* - blank node</a>
+<li class="proposed"><a href="#turtle-star-inside-1">Turtle* - triple term inside blankNodePropertyList</a>
+<li class="proposed"><a href="#turtle-star-inside-2">Turtle* - triple term inside collection</a>
+<li class="proposed"><a href="#turtle-star-nested-1">Turtle* - nested triple term, subject position</a>
+<li class="proposed"><a href="#turtle-star-nested-2">Turtle* - nested triple term, object position</a>
+<li class="proposed"><a href="#turtle-star-compound-1">Turtle* - compound forms</a>
+<li class="proposed"><a href="#turtle-star-bnode-1">Turtle* - blank node subject</a>
+<li class="proposed"><a href="#turtle-star-bnode-2">Turtle* - blank node object</a>
+<li class="proposed"><a href="#turtle-star-bnode-3">Turtle* - blank node</a>
 <li class="proposed"><a href="#turtle-star-bad-1">Turtle* - bad - triple term as predicate</a>
 <li class="proposed"><a href="#turtle-star-bad-2">Turtle* - bad - triple term outside triple</a>
 <li class="proposed"><a href="#turtle-star-bad-3">Turtle* - bad - collection list in triple term</a>
 <li class="proposed"><a href="#turtle-star-bad-4">Turtle* - bad - literal in subject position of triple term</a>
 <li class="proposed"><a href="#turtle-star-bad-5">Turtle* - bad - blank node  as predicate in triple term</a>
 <li class="proposed"><a href="#turtle-star-bad-6">Turtle* - bad - compound blank node expression</a>
+<li class="proposed"><a href="#turtle-star-bad-7">Turtle* - bad - empty annotation</a>
 <li class="proposed"><a href="#turtle-star-ann-1">Turtle* - Annotation form</a>
 <li class="proposed"><a href="#turtle-star-ann-2">Turtle* - Annotation example</a>
 </ul>
@@ -98,8 +99,8 @@ PREFIX : &lt;http://example/&gt;
 :x :p &lt;&lt;:s :p :o&gt;&gt; .
 </pre>
 <div>MUST be accepted</div>
-</section><section id="turtle-star-3" class="entry proposed TestTurtlePositiveSyntax">
-<h2>Turtle* - triple term inside blankNodePropertyList <a href="#turtle-star-3">🔗</a></h2>
+</section><section id="turtle-star-inside-1" class="entry proposed TestTurtlePositiveSyntax">
+<h2>Turtle* - triple term inside blankNodePropertyList <a href="#turtle-star-inside-1">🔗</a></h2>
 <table class="properties">
 <tr class="status"><th>status:</th><td>proposed</td>
 <tr class="type"><th>type:</th><td>TestTurtlePositiveSyntax</td>
@@ -112,8 +113,8 @@ PREFIX : &lt;http://example/&gt;
 [ :q &lt;&lt;:s :p :o&gt;&gt; ] :b :c .
 </pre>
 <div>MUST be accepted</div>
-</section><section id="turtle-star-4" class="entry proposed TestTurtlePositiveSyntax">
-<h2>Turtle* - triple term inside collection <a href="#turtle-star-4">🔗</a></h2>
+</section><section id="turtle-star-inside-2" class="entry proposed TestTurtlePositiveSyntax">
+<h2>Turtle* - triple term inside collection <a href="#turtle-star-inside-2">🔗</a></h2>
 <table class="properties">
 <tr class="status"><th>status:</th><td>proposed</td>
 <tr class="type"><th>type:</th><td>TestTurtlePositiveSyntax</td>
@@ -127,8 +128,8 @@ PREFIX : &lt;http://example/&gt;
 ( &lt;&lt;:s :p :o1&gt;&gt; &lt;&lt;:s :p :o2&gt;&gt; )  :q 123 .
 </pre>
 <div>MUST be accepted</div>
-</section><section id="turtle-star-5" class="entry proposed TestTurtlePositiveSyntax">
-<h2>Turtle* - nested triple term, subject position <a href="#turtle-star-5">🔗</a></h2>
+</section><section id="turtle-star-nested-1" class="entry proposed TestTurtlePositiveSyntax">
+<h2>Turtle* - nested triple term, subject position <a href="#turtle-star-nested-1">🔗</a></h2>
 <table class="properties">
 <tr class="status"><th>status:</th><td>proposed</td>
 <tr class="type"><th>type:</th><td>TestTurtlePositiveSyntax</td>
@@ -144,8 +145,8 @@ PREFIX : &lt;http://example/&gt;
 &lt;&lt; &lt;&lt;:s :p :o &gt;&gt; :r :z &gt;&gt; :q 1 .
 </pre>
 <div>MUST be accepted</div>
-</section><section id="turtle-star-6" class="entry proposed TestTurtlePositiveSyntax">
-<h2>Turtle* - nested triple term, object position <a href="#turtle-star-6">🔗</a></h2>
+</section><section id="turtle-star-nested-2" class="entry proposed TestTurtlePositiveSyntax">
+<h2>Turtle* - nested triple term, object position <a href="#turtle-star-nested-2">🔗</a></h2>
 <table class="properties">
 <tr class="status"><th>status:</th><td>proposed</td>
 <tr class="type"><th>type:</th><td>TestTurtlePositiveSyntax</td>
@@ -159,8 +160,8 @@ PREFIX : &lt;http://example/&gt;
 &lt;&lt; :a :q &lt;&lt;:s :p :o &gt;&gt;&gt;&gt; :r :z .
 </pre>
 <div>MUST be accepted</div>
-</section><section id="turtle-star-7" class="entry proposed TestTurtlePositiveSyntax">
-<h2>Turtle* - compound forms <a href="#turtle-star-7">🔗</a></h2>
+</section><section id="turtle-star-compound-1" class="entry proposed TestTurtlePositiveSyntax">
+<h2>Turtle* - compound forms <a href="#turtle-star-compound-1">🔗</a></h2>
 <table class="properties">
 <tr class="status"><th>status:</th><td>proposed</td>
 <tr class="type"><th>type:</th><td>TestTurtlePositiveSyntax</td>
@@ -180,8 +181,8 @@ PREFIX : &lt;http://example/&gt;
 &lt;&lt; &lt;&lt;:x :r :z &gt;&gt; :p &lt;&lt;:a :b :c&gt;&gt; &gt;&gt; .
 </pre>
 <div>MUST be accepted</div>
-</section><section id="turtle-star-8" class="entry proposed TestTurtlePositiveSyntax">
-<h2>Turtle* - blank node subject <a href="#turtle-star-8">🔗</a></h2>
+</section><section id="turtle-star-bnode-1" class="entry proposed TestTurtlePositiveSyntax">
+<h2>Turtle* - blank node subject <a href="#turtle-star-bnode-1">🔗</a></h2>
 <table class="properties">
 <tr class="status"><th>status:</th><td>proposed</td>
 <tr class="type"><th>type:</th><td>TestTurtlePositiveSyntax</td>
@@ -194,8 +195,8 @@ _:a :p :o .
 &lt;&lt;_:a :p :o &gt;&gt; :q 456 .
 </pre>
 <div>MUST be accepted</div>
-</section><section id="turtle-star-9" class="entry proposed TestTurtlePositiveSyntax">
-<h2>Turtle* - blank node object <a href="#turtle-star-9">🔗</a></h2>
+</section><section id="turtle-star-bnode-2" class="entry proposed TestTurtlePositiveSyntax">
+<h2>Turtle* - blank node object <a href="#turtle-star-bnode-2">🔗</a></h2>
 <table class="properties">
 <tr class="status"><th>status:</th><td>proposed</td>
 <tr class="type"><th>type:</th><td>TestTurtlePositiveSyntax</td>
@@ -208,8 +209,8 @@ PREFIX : &lt;http://example/&gt;
 &lt;&lt;:s :p _:a &gt;&gt; :q 456 .
 </pre>
 <div>MUST be accepted</div>
-</section><section id="turtle-star-10" class="entry proposed TestTurtlePositiveSyntax">
-<h2>Turtle* - blank node <a href="#turtle-star-10">🔗</a></h2>
+</section><section id="turtle-star-bnode-3" class="entry proposed TestTurtlePositiveSyntax">
+<h2>Turtle* - blank node <a href="#turtle-star-bnode-3">🔗</a></h2>
 <table class="properties">
 <tr class="status"><th>status:</th><td>proposed</td>
 <tr class="type"><th>type:</th><td>TestTurtlePositiveSyntax</td>
@@ -302,6 +303,19 @@ PREFIX : &lt;http://example/&gt;
 
 
 &lt;&lt;:s :p [ :p1 :o1 ]  &gt;&gt; :q 123 .
+</pre>
+<div>MUST be rejected</div>
+</section><section id="turtle-star-bad-7" class="entry proposed TestTurtleNegativeSyntax">
+<h2>Turtle* - bad - empty annotation <a href="#turtle-star-bad-7">🔗</a></h2>
+<table class="properties">
+<tr class="status"><th>status:</th><td>proposed</td>
+<tr class="type"><th>type:</th><td>TestTurtleNegativeSyntax</td>
+</table>
+<div><code><a href="turtle-star-syntax-bad-07.ttl">turtle-star-syntax-bad-07.ttl</a></code></div>
+<pre>
+PREFIX : &lt;http://example/&gt;
+
+:s :p :o {|  |} .
 </pre>
 <div>MUST be rejected</div>
 </section><section id="turtle-star-ann-1" class="entry proposed TestTurtlePositiveSyntax">

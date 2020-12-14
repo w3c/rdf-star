@@ -425,6 +425,27 @@
             <a data-cite="SPARQL11-QUERY#rPropertyListPath">PropertyListPath</a>
           </td>
         </tr>
+        <tr id="rObjectListPath">
+          <td>[86]</td>
+          <td>`ObjectListPath`</td>
+          <td>::=</td>
+          <td>
+            <a data-cite="SPARQL11-QUERY#rObjectPath">ObjectPath</a> <a href="#rAnnotationPattern">AnnotationPattern</a>`?`
+            `(`
+              <code class="token">','</code>
+              <a data-cite="SPARQL11-QUERY#rObjectPath">ObjectPath</a> <a href="#rAnnotationPattern">AnnotationPattern</a>`?`
+            `)*`
+          </td>
+        </tr>
+        <tr id="rObjectPath">
+          <td>[87]</td>
+          <td>`ObjectPath`</td>
+          <td>::=</td>
+          <td>
+            <a data-cite="SPARQL11-QUERY#rGraphNode">GraphNode</a> `|`
+            <a href="#rEmbTP">EmbTP</a>
+          </td>
+        </tr>
         <tr id="rGraphNodePath">
           <td>[105]</td>
           <td>`GraphNodePath`</td>
@@ -497,7 +518,7 @@
       </p>
 
       <p>
-        Additionally, the <a href="#rObjectList">ObjectList</a> production now accepts an optional <dfn>annotation pattern</dfn> after each object.
+        Additionally, both the <a href="#rObjectList">ObjectList</a> and the <a href="#rObjectListPath">ObjectListPath</a> productions now accept an optional <dfn>annotation pattern</dfn> after each object.
       </p>
 
       <div class="issue" data-number="6"></div>

@@ -111,7 +111,7 @@
 <p>The subject and object of a triple can themselves be triples. In the statement "employee22 claims that employee38 has a familyName of 'Smith'", the object of the triple that has employee22 as its subject is the statement "employee38 has a familyName of 'Smith'". This use of a triple as the subject or object resource of another triple so that we can say things about that triple is known as <a href='https://www.w3.org/TR/1999/REC-rdf-syntax-19990222/#higherorder'>reification</a>. </p>
 <p>The concept of reification has always been part of RDF, but expressing it in RDF concrete syntaxes such as Turtle, n-triples, and RDF/XML has been verbose and cumbersome. This specification describes a new, more compact conceptual data model and Turtle concrete syntax for reification known as RDF* (pronounced "RDF star") and Turtle* (pronounced "Turtle star"), respectively. This model and syntax enable the creation of concise triples that reference other triples as subject and object resources.</p>
 
-<p>Triples that include a triple as a subject or an object are known as RDF* triples. The following dataset shows the example triples from above using the Turtle RDF* syntax, which uses double angle brackets to enclose a triple serving as a subject or object resource:</p>
+<p>Triples that include a triple as a subject or an object are known as RDF* triples. The following dataset shows the example RDF* triples from above using the Turtle* syntax, which uses double angle brackets to enclose a triple serving as a subject or object resource:</p>
 
       <pre data-transform="updateExample"
         data-content-type="text/x-turtle-star"

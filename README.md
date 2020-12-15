@@ -15,7 +15,7 @@ See https://w3c.github.io/rdf-star/
 | EYE            |  x   |  x   | SA is the default. PG can be emulated by adding rules | https://github.com/josd/eye/
 | rdf4j          |  x   |      | | https://rdf4j.org/documentation/programming/rdfstar/
 | rdfjs/N3.js    |  x   |  +   | PG may become configurable soon | https://github.com/rdfjs/data-model-spec/pull/165
-| RubyRDF        |  x   |  x   | | https://github.com/ruby-rdf/rdf#rdf-rdfstar
+| RubyRDF        |  x   |      | | https://github.com/ruby-rdf/rdf#rdf-rdfstar
 | Stardog        |      |  x   | | https://www.stardog.com/docs/#_edge_properties
 
 ### key ###

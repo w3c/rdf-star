@@ -229,7 +229,7 @@ SELECT ?claimer WHERE {
 
     <p>Again, this definition is an extension of the notion of <a>RDF dataset</a>, hence it follows that any <a>RDF dataset</a> is also an <a>RDF* dataset</a>.</p>
 
-    <section class="informative">
+    <section class="informative" id="type-token">
       <h2>RDF* triples and the type-token distinction</h2>
 
       <p>According to the definitions above, an <a>RDF* triple</a> is an abstract entity whose identity is entirely defined by its subject, predicate an object. In other words, given three <a>RDF* terms</a> |s|, |p| and |o|, the embedded triple (|s|, |p|, |o|) is assumed to represent the <em>same thing</em> everywhere it occurs, including across different graphs (just like the same IRI |p| is assumed to represent the same thing everywhere it occurs).</p>
@@ -1052,7 +1052,7 @@ SELECT ?claimer WHERE {
   <section class="appendix">
     <h2>Historical remarks</h2>
 
-    <section class="appendix">
+    <section>
       <h2>SA-mode and PG-mode</h2>
 
       <p>A lot of discussions on the <a href="https://lists.w3.org/Archives/Public/public-rdf-star/">RDF* mailing list</a> and <a href="https://github.com/w3c/rdf-star">GitHub repository</a> refer to SA-mode and PG-mode. Those abbreviations stand for "Separate Assertion mode" and "Property Graph mode". They originate in the fact that different versions of RDF* have been published over the years, with different designs. In PG-mode, any <a>embedded triple</a> was also considered <a>asserted</a>. SA-mode, on the other hand, allowed the use of <a>embedded triples</a> without those triples being automatically <a>asserted</a>, requiring that they be <a>asserted</a> separately when that was intended. SA-mode was more flexible, but induced redundancy in the use-cases that PG-mode was designed to address.</p>
@@ -1063,6 +1063,29 @@ SELECT ?claimer WHERE {
         <li>The <code>&lt;&lt; ... &gt;&gt;</code> syntax represents a triple that is <a>embedded</a> without being <a>asserted</a>, satisfying the need formerly filled by SA-mode.</li>
         <li>The <code>:a :b :c {| :p :o ... |}</code> annotation syntax creates triples where the subject is an <a>embedded</a> version of the triple <a>asserted</a> just before the annotation (here, <code>:a :b :c</code>), without the need to repeat it, satisfying the need formerly filled by PG-mode.</li>
       </ul>
+    </section>
+
+    <section>
+      <h2>The seminal example</h2>
+
+      <p>The motivating example in the original RDF* paper [[RDF-STAR-FOUNDATION]] was on a provenance use-case, and is repeated below.</p>
+
+      <pre data-transform="updateExample"
+        data-content-type="text/x-turtle-star"
+        class="nohighlight example"
+      >
+        <!--
+        # the controversial seminal example
+        :bob foaf:name "Bob".
+        <<:bob foaf:age 23>> dct:creator <http://example.com/crawlers#c1> ;
+                             dct:source <http://example.net/listing.html> .
+        -->
+      </pre>
+
+      <p>This example was further debated on the <a href="https://lists.w3.org/Archives/Public/public-rdf-star/">RDF* mailing list</a>, as it may have set wrong expectations about what RDF* embedded triples represent. More precisely, from this example, one may wrongly assume that `<<:bob foaf:age 23>>` represent the <em>occurrence</em> of the given triple at the address `http://example.net/listing.html`. This impression may be reinforced by the use of `dct:creator`: arguably, a triple (as a unique abstract entity) is not "created" by anyone, while an occurrence thereof can be said to be created of authored.</p>
+
+      <p>In retrospect, it would probably have been better to only use the `dct:source` property on the triple, and maybe to give it two values (as it is possible for the same unique triple to be mentioned in several sources). Another solution would have been to adopt a more complex modeling as in <a href="#type-token-example"></a>. However, the purpose of that example was not to discuss the subtleties of the type-token distinction (see <a href="#type-token"></a>), but on the contrary to provide a simple minimal example of how RDF* could be used.</p>
+  
     </section>
 
   </section>

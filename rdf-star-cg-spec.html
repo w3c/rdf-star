@@ -229,14 +229,14 @@ SELECT ?claimer WHERE {
 
     <p>Again, this definition is an extension of the notion of <a>RDF dataset</a>, hence it follows that any <a>RDF dataset</a> is also an <a>RDF* dataset</a>.</p>
 
-    <section class="informative" id="type-token">
-      <h2>RDF* triples and the type-token distinction</h2>
+    <section class="informative" id="occurrences">
+      <h2>Triples and occurrences</h2>
 
       <p>According to the definitions above, an <a>RDF* triple</a> is an abstract entity whose identity is entirely defined by its subject, predicate and object. In other words, given three <a>RDF* terms</a> |s|, |p|, and |o|, the embedded triple (|s|, |p|, |o|) is assumed to represent the <em>same thing</em> everywhere it occurs, including across different graphs (just like the same IRI |p| is assumed to represent the same thing everywhere it occurs).</p>
 
-      <p>In some situations, however, it might be necessary to distinguish the <em>occurrences</em> of a triple (in different Turtle or Turtle* files, for example). Consider the following sentence: "The triple `:s :p :o` was added in file1.ttl by Alice, and the same triple was added in file2.ttl by Bob." Note that words "same triple" in this sentence may be confusing, because although the triple (as an abstract entity) is the same, its respective occurrences in the two files are different things, each within a different file and with a different author. This is known as the <a href="https://en.wikipedia.org/wiki/Type%E2%80%93token_distinction">type-token distinction</a>. As the embedded triple represents a unique abstract entity, adequately conveying the meaning of the sentence above requires additional nodes to represent each occurrence, as illustrated below.</p>
+      <p>In some situations, however, it might be necessary to distinguish the <em>occurrences</em> of a triple (in different Turtle or Turtle* files, for example). Consider the following sentence: "The triple `:s :p :o` was added in file1.ttl by Alice, and the same triple was added in file2.ttl by Bob." Note that the words "same triple" in this sentence may be confusing, because although the triple (as an abstract entity) is the same, its respective occurrences in the two files are different things, each within a different file and with a different author (this is known, in philosophy and linguistics, as the <a href="https://en.wikipedia.org/wiki/Type%E2%80%93token_distinction">type-token distinction</a>). As the embedded triple represents a unique abstract entity, adequately conveying the meaning of the sentence above requires additional nodes to represent each occurrence, as illustrated below.</p>
 
-      <pre data-transform="updateExample" id="type-token-example"
+      <pre data-transform="updateExample" id="occurrences-example"
         data-content-type="text/x-turtle-star"
         class="nohighlight example"
       >
@@ -1082,9 +1082,9 @@ SELECT ?claimer WHERE {
         -->
       </pre>
 
-      <p>This example was further debated on the <a href="https://lists.w3.org/Archives/Public/public-rdf-star/">RDF* mailing list</a>, as it may have set wrong expectations about what RDF* embedded triples represent. More precisely, from this example, one may wrongly assume that `<<:bob foaf:age 23>>` represent the <em>occurrence</em> of the given triple at the address `http://example.net/listing.html`. This impression may be reinforced by the use of `dct:creator`: arguably, a triple (as a unique abstract entity) is not "created" by anyone, while an occurrence thereof can be said to be created or authored.</p>
+      <p>This example was further debated on the <a href="https://lists.w3.org/Archives/Public/public-rdf-star/">RDF* mailing list</a>, as it may have set wrong expectations about what RDF* embedded triples represent. More precisely, from this example, one may wrongly assume that `<<:bob foaf:age 23>>` represent the <em>occurrence</em> of the given triple at the address `http://example.net/listing.html` (see <a href="#occurrences"></a>). This impression may be reinforced by the use of `dct:creator`: arguably, a triple (as a unique abstract entity) is not "created" by anyone, while an occurrence thereof can be said to be created or authored.</p>
 
-      <p>In retrospect, it would probably have been better to only use the `dct:source` property on the triple, and maybe to give it two values (as it is possible for the same unique triple to be mentioned in several sources). Another solution would have been to adopt a more complex modeling, as in <a href="#type-token-example"></a>. However, the purpose of that example was not to discuss the subtleties of the type-token distinction (see <a href="#type-token"></a>), but on the contrary to provide a simple minimal example of how RDF* could be used.</p>
+      <p>In retrospect, it would probably have been better to only use the `dct:source` property on the triple, and maybe to give it two values (as it is possible for the same unique triple to be mentioned in several sources). Another solution would have been to adopt a more complex modeling, as in <a href="#occurrences-example"></a>, although the purpose of that particular example was not to discuss the subtleties of the triple-occurrence distinction, but to provide a simple minimal example of how RDF* could be used.</p>
   
     </section>
 

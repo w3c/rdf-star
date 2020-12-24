@@ -5,7 +5,7 @@
     "comment": "RDF* SPARQL tests",
     "seeAlso": "https://w3c.github.io/rdf-tests/sparql11/",
     "include": [
-        "manifest-syntax.jsonld",
+        "syntax/manifest.jsonld",
         "manifest-query.jsonld",
         "manifest-update.jsonld"
    ]

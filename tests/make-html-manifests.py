@@ -10,10 +10,11 @@ DIR = Path(__file__).parent
 def main():
     for i in [
         ["semantics", "manifest.jsonld"],
-        ["sparql", "manifest.jsonld"],
         ["turtle", "syntax", "manifest.ttl"],
         ["turtle", "eval", "manifest.ttl"],
         ["nt", "syntax", "manifest.ttl"],
+        ["sparql", "syntax", "manifest.ttl"],
+#        ["sparql", "eval", "manifest.ttl"]
     ]:
         make_html(DIR.joinpath(*i))
 
@@ -132,8 +133,9 @@ def result_message(entry: dict) -> str:
     msg = {
         'PositiveEntailmentTest': 'MUST entail',
         'NegativeEntailmentTest': 'MUST NOT entail',
-        'PositiveSyntaxTest': 'MUST be accepted',
-        'NegativeSyntaxTest': 'MUST be rejected',
+        'PositiveSyntaxTest11': 'MUST be accepted',
+        'NegativeSyntaxTest11': 'MUST be rejected',
+        
         'TestTurtlePositiveSyntax': 'MUST be accepted',
         'TestTurtleNegativeSyntax': 'MUST be rejected',
     }.get(typ)
@@ -225,7 +227,10 @@ STYLE = '''
         padding: .6em 1em;
     }
 
-    .TestTurtleNegativeSyntax pre, .NegativeSyntaxTest pre, .NegativeEntailmentTest pre.result {
+    .TestTurtleNegativeSyntax pre,
+    .NegativeSyntaxTest11 pre,
+    .NegativeUpdateSyntaxTest11 pre,
+    .NegativeEntailmentTest pre.result {
         background-color: lightPink;
     }
 </style>

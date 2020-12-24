@@ -43,7 +43,10 @@
         padding: .6em 1em;
     }
 
-    .TestTurtleNegativeSyntax pre, .NegativeSyntaxTest pre, .NegativeEntailmentTest pre.result {
+    .TestTurtleNegativeSyntax pre,
+    .NegativeSyntaxTest11 pre,
+    .NegativeUpdateSyntaxTest11 pre,
+    .NegativeEntailmentTest pre.result {
         background-color: lightPink;
     }
 </style>
@@ -67,9 +70,12 @@
 <li class="proposed"><a href="#turtle-star-bad-4">Turtle* - bad - literal in subject position of triple term</a>
 <li class="proposed"><a href="#turtle-star-bad-5">Turtle* - bad - blank node  as predicate in triple term</a>
 <li class="proposed"><a href="#turtle-star-bad-6">Turtle* - bad - compound blank node expression</a>
-<li class="proposed"><a href="#turtle-star-bad-7">Turtle* - bad - empty annotation</a>
+<li class="proposed"><a href="#turtle-star-bad-7">Turtle* - bad - incomplete triple term</a>
+<li class="proposed"><a href="#turtle-star-bad-8">Turtle* - bad - over-long triple term</a>
 <li class="proposed"><a href="#turtle-star-ann-1">Turtle* - Annotation form</a>
 <li class="proposed"><a href="#turtle-star-ann-2">Turtle* - Annotation example</a>
+<li class="proposed"><a href="#turtle-star-bad-ann-1">Turtle* - bad - empty annotation</a>
+<li class="proposed"><a href="#turtle-star-bad-ann-2">Turtle* - bad - triple as annotation</a>
 </ul>
 <section id="turtle-star-1" class="entry proposed TestTurtlePositiveSyntax">
 <h2>Turtle* - subject triple term <a href="#turtle-star-1">🔗</a></h2>
@@ -306,7 +312,7 @@ PREFIX : &lt;http://example/&gt;
 </pre>
 <div>MUST be rejected</div>
 </section><section id="turtle-star-bad-7" class="entry proposed TestTurtleNegativeSyntax">
-<h2>Turtle* - bad - empty annotation <a href="#turtle-star-bad-7">🔗</a></h2>
+<h2>Turtle* - bad - incomplete triple term <a href="#turtle-star-bad-7">🔗</a></h2>
 <table class="properties">
 <tr class="status"><th>status:</th><td>proposed</td>
 <tr class="type"><th>type:</th><td>TestTurtleNegativeSyntax</td>
@@ -315,7 +321,20 @@ PREFIX : &lt;http://example/&gt;
 <pre>
 PREFIX : &lt;http://example/&gt;
 
-:s :p :o {|  |} .
+:s :p &lt;&lt; :p :r &gt;&gt; .
+</pre>
+<div>MUST be rejected</div>
+</section><section id="turtle-star-bad-8" class="entry proposed TestTurtleNegativeSyntax">
+<h2>Turtle* - bad - over-long triple term <a href="#turtle-star-bad-8">🔗</a></h2>
+<table class="properties">
+<tr class="status"><th>status:</th><td>proposed</td>
+<tr class="type"><th>type:</th><td>TestTurtleNegativeSyntax</td>
+</table>
+<div><code><a href="turtle-star-syntax-bad-08.ttl">turtle-star-syntax-bad-08.ttl</a></code></div>
+<pre>
+PREFIX : &lt;http://example/&gt;
+
+:s :p &lt;&lt; :g :s :p :o &gt;&gt; .
 </pre>
 <div>MUST be rejected</div>
 </section><section id="turtle-star-ann-1" class="entry proposed TestTurtlePositiveSyntax">
@@ -351,4 +370,33 @@ PREFIX xsd:     &lt;http://www.w3.org/2001/XMLSchema#&gt;
           |} .
 </pre>
 <div>MUST be accepted</div>
+</section><section id="turtle-star-bad-ann-1" class="entry proposed TestTurtleNegativeSyntax">
+<h2>Turtle* - bad - empty annotation <a href="#turtle-star-bad-ann-1">🔗</a></h2>
+<table class="properties">
+<tr class="status"><th>status:</th><td>proposed</td>
+<tr class="type"><th>type:</th><td>TestTurtleNegativeSyntax</td>
+</table>
+<div><code><a href="turtle-star-syntax-bad-ann-1.ttl">turtle-star-syntax-bad-ann-1.ttl</a></code></div>
+<pre>
+PREFIX : &lt;http://example.com/ns#&gt;
+
+SELECT * {
+  :s :p :o {|  |} .
+}
+
+</pre>
+<div>MUST be rejected</div>
+</section><section id="turtle-star-bad-ann-2" class="entry proposed TestTurtleNegativeSyntax">
+<h2>Turtle* - bad - triple as annotation <a href="#turtle-star-bad-ann-2">🔗</a></h2>
+<table class="properties">
+<tr class="status"><th>status:</th><td>proposed</td>
+<tr class="type"><th>type:</th><td>TestTurtleNegativeSyntax</td>
+</table>
+<div><code><a href="turtle-star-syntax-bad-ann-2.ttl">turtle-star-syntax-bad-ann-2.ttl</a></code></div>
+<pre>
+PREFIX : &lt;http://example.com/ns#&gt;
+
+:a :b :c {| :s :p :o |} .
+</pre>
+<div>MUST be rejected</div>
 </section>

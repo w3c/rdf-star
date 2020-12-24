@@ -35,9 +35,13 @@ PREFIX :       <#>
         :turtle-star-bad-5
         :turtle-star-bad-6
         :turtle-star-bad-7
+        :turtle-star-bad-8
 
         :turtle-star-ann-1
         :turtle-star-ann-2
+        
+        :turtle-star-bad-ann-1
+        :turtle-star-bad-ann-2
     ) .
 
 ## Good Syntax
@@ -125,11 +129,16 @@ PREFIX :       <#>
     .
 
 :turtle-star-bad-7 rdf:type rdft:TestTurtleNegativeSyntax ;
-    mf:name      "Turtle* - bad - empty annotation";
+    mf:name      "Turtle* - bad - incomplete triple term";
     mf:action    <turtle-star-syntax-bad-07.ttl> ;
     .
 
-## Anotation syntax
+:turtle-star-bad-8 rdf:type rdft:TestTurtleNegativeSyntax ;
+    mf:name      "Turtle* - bad - over-long triple term";
+    mf:action    <turtle-star-syntax-bad-08.ttl> ;
+    .
+
+## Annotation syntax
 
 :turtle-star-ann-1 rdf:type rdft:TestTurtlePositiveSyntax ;
     mf:name      "Turtle* - Annotation form" ;
@@ -140,3 +149,16 @@ PREFIX :       <#>
     mf:name      "Turtle* - Annotation example" ;
     mf:action    <turtle-star-annotation-2.ttl> ;
     .
+
+## Bad annotation syntax
+
+:turtle-star-bad-ann-1 rdf:type rdft:TestTurtleNegativeSyntax ;
+    mf:name      "Turtle* - bad - empty annotation" ;
+    mf:action    <turtle-star-syntax-bad-ann-1.ttl> ;
+   .
+
+:turtle-star-bad-ann-2 rdf:type rdft:TestTurtleNegativeSyntax ;
+    mf:name      "Turtle* - bad - triple as annotation" ;
+    mf:action    <turtle-star-syntax-bad-ann-2.ttl> ;
+   .
+

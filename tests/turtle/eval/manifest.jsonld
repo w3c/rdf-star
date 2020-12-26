@@ -1,0 +1,63 @@
+{
+    "@context" : "../../manifest-context.jsonld",
+    "@id" :      "",
+    "@type" :    "mf:Manifest",
+    "label" :    "Turtle* Evaluation Tests",
+    "entries" :  [
+	{
+	    "@id" :    "#turtle-star-1",
+	    "@type" :  "rdft:TestTurtleEval",
+	    "action" : "turtle-star-eval-01.ttl",
+	    "name" :   "Turtle* - subject triple term",
+	    "result" : "turtle-star-eval-01.nt"
+	}, {
+	    "@id" :    "#turtle-star-2",
+	    "@type" :  "rdft:TestTurtleEval",
+	    "action" : "turtle-star-eval-02.ttl",
+	    "name" :   "Turtle* - object triple term",
+	    "result" : "turtle-star-eval-02.nt"
+	}, {
+	    "@id" :    "#turtle-star-annotation-1",
+	    "@type" :  "rdft:TestTurtleEval",
+	    "action" : "turtle-star-eval-annotation-1.ttl",
+	    "name" :   "Turtle* - Annotation form",
+	    "result" : "turtle-star-eval-annotation-1.nt"
+	}, {
+	    "@id" :    "#turtle-star-annotation-2",
+	    "@type" :  "rdft:TestTurtleEval",
+	    "action" : "turtle-star-eval-annotation-2.ttl",
+	    "name" :   "Turtle* - Annotation example",
+	    "result" : "turtle-star-eval-annotation-2.nt"
+	}, {
+	    "@id" :    "#turtle-star-annotation-3",
+	    "@type" :  "rdft:TestTurtleEval",
+	    "action" : "turtle-star-eval-annotation-3.ttl",
+	    "name" :   "Turtle* - Annotation - predicate and object lists",
+	    "result" : "turtle-star-eval-annotation-3.nt"
+	}, {
+	    "@id" :    "#turtle-star-annotation-4",
+	    "@type" :  "rdft:TestTurtleEval",
+	    "action" : "turtle-star-eval-annotation-4.ttl",
+	    "name" :   "Turtle* - Annotation - nested",
+	    "result" : "turtle-star-eval-annotation-4.nt"
+	}, {
+	    "@id" :    "#turtle-star-annotation-5",
+	    "@type" :  "rdft:TestTurtleEval",
+	    "action" : "turtle-star-eval-annotation-5.ttl",
+	    "name" :   "Turtle* - Annotation object list",
+	    "result" : "turtle-star-eval-annotation-5.nt"
+	}, {
+	    "@id" :    "#turtle-star-bnode-1",
+	    "@type" :  "rdft:TestTurtleEval",
+	    "action" : "turtle-star-eval-bnode-1.ttl",
+	    "name" :   "Turtle* - blank node label",
+	    "result" : "turtle-star-eval-bnode-1.nt"
+	}, {
+	    "@id" :    "#turtle-star-bnode-2",
+	    "@type" :  "rdft:TestTurtleEval",
+	    "action" : "turtle-star-eval-bnode-2.ttl",
+	    "name" :   "Turtle* - blank node labels",
+	    "result" : "turtle-star-eval-bnode-2.nt"
+	}
+    ]
+}

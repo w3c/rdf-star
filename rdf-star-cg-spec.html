@@ -172,6 +172,21 @@ SELECT ?claimer WHERE {
   <section id="concepts">
     <h2>Concepts and Abstract Syntax</h2>
 
+    <p>In the following, we we introduce a number of SPARQL*-specific definitions, which rely on the following notions (extending some of them) defined in [[[RDF11-CONCEPTS]]] [[RDF11-CONCEPTS]]:
+    <dfn data-cite="RDF11-CONCEPTS#dfn-blank-node">blank node</dfn>,
+    <dfn data-cite="RDF11-CONCEPTS#dfn-default-graph">default graph</dfn>,
+    <dfn data-cite="RDF11-CONCEPTS#dfn-graph-name">graph name</dfn>,
+    <dfn data-cite="RDF11-CONCEPTS#dfn-iri">IRI</dfn>,
+    <dfn data-cite="RDF11-CONCEPTS#dfn-literal">literal</dfn>,
+    <dfn data-cite="RDF11-CONCEPTS#dfn-named-graph">named graphs</dfn>,
+    <dfn data-cite="RDF11-CONCEPTS#dfn-object">object</dfn>,
+    <dfn data-cite="RDF11-CONCEPTS#dfn-predicate">predicate</dfn>,
+    <dfn data-cite="RDF11-CONCEPTS#dfn-rdf-dataset">RDF dataset</dfn>,
+    <dfn data-cite="RDF11-CONCEPTS#dfn-rdf-graph">RDF graph</dfn>,
+    <dfn data-cite="RDF11-CONCEPTS#dfn-rdf-triple">RDF triple</dfn>,
+    and <dfn data-cite="RDF11-CONCEPTS#dfn-subject">subject</dfn>
+    </p>
+
     <p>An <dfn data-lt="graph">RDF* graph</dfn> is a set of <a>RDF* triples</a>.</p>
 
     <p>An <dfn data-lt="triple">RDF* triple</dfn> is a 3-tuple defined recursively as follows:</p>
@@ -180,17 +195,7 @@ SELECT ?claimer WHERE {
       <li>if |t| and <var>t'</var> are <a>RDF* triples</a>, |s| is an <a>IRI</a> or a <a>blank node</a>, |p| is an <a>IRI</a>, |o| is an <a>IRI</a>, a <a>blank node</a> or a <a>literal</a>, then (|t|, |p|, |o|), (|s|, |p|, |t|) and (|t|, |p|, <var>t'</var>) are <a>RDF* triples</a>.</li>
     </ul>
 
-    <p>As for <a>RDF triples</a>, we call the 3 components of an <a>RDF* triple</a> its <dfn data-cite="RDF11-CONCEPTS#dfn-subject">subject</dfn>, <dfn data-cite="RDF11-CONCEPTS#dfn-predicate">predicate</dfn> and <dfn data-cite="RDF11-CONCEPTS#dfn-object">object</dfn>, respectively. From the definitions above, it follows that any <a>RDF graph</a> is also an <a>RDF* graph</a>. Note also that, by definition, an RDF* triple cannot contain itself and cannot be nested infinitely.</p>
-
-    <!-- the paragraph below is totally uninformative, but the "foreign" dfn are required-->
-    <p style="display: none">The definition relies on the notions of
-      <dfn data-cite="RDF11-CONCEPTS#dfn-iri">IRI</dfn>,
-      <dfn data-cite="RDF11-CONCEPTS#dfn-literal">literal</dfn>,
-      <dfn data-cite="RDF11-CONCEPTS#dfn-blank-node">blank node</dfn>,
-      <dfn data-cite="RDF11-CONCEPTS#dfn-rdf-triple">RDF triple</dfn>,
-      and <dfn data-cite="RDF11-CONCEPTS#dfn-rdf-graph">RDF graph</dfn>,
-      introduced by [[[RDF11-CONCEPTS]]] [[RDF11-CONCEPTS]].
-    </p>
+    <p>As for <a>RDF triples</a>, we call the 3 components of an <a>RDF* triple</a> its <a>subject</a>, <a>predicate</a> and <a>object</a>, respectively. From the definitions above, it follows that any <a>RDF graph</a> is also an <a>RDF* graph</a>. Note also that, by definition, an RDF* triple cannot contain itself and cannot be nested infinitely.</p>
 
     <p><a>IRIs</a>, <a>literals</a>, <a>blank nodes</a> and <a>RDF* triples</a> are collectively known as <dfn>RDF* terms</dfn>.</p>
 
@@ -214,11 +219,11 @@ SELECT ?claimer WHERE {
     <p>An <dfn data-lt="dataset">RDF* dataset</dfn> is a collection of <a>RDF* graphs</a>, and comprises:</p>
 
     <ul>
-      <li>Exactly one <dfn data-cite="RDF11-CONCEPTS#dfn-default-graph">default graph</dfn>, being an <a>RDF* graph</a>. The <a>default graph</a> does not have a name and MAY be empty.</li>
-      <li>Zero or more <dfn data-cite="RDF11-CONCEPTS#dfn-named-graph">named graphs</dfn>. Each <a>named graph</a> is a pair consisting of either an <a>IRI</a> or a <a>blank node</a> (called the <dfn data-cite="RDF11-CONCEPTS#dfn-graph-name">graph name</dfn>), and an <a>RDF* graph</a>. <a>Graph names</a> are unique within an <a>RDF* dataset</a>.</li>
+      <li>Exactly one <a>default graph</a>, being an <a>RDF* graph</a>. The <a>default graph</a> does not have a name and MAY be empty.</li>
+      <li>Zero or more <a>named graphs</a>. Each <a>named graph</a> is a pair consisting of either an <a>IRI</a> or a <a>blank node</a> (called the <a>graph name</a>), and an <a>RDF* graph</a>. <a>Graph names</a> are unique within an <a>RDF* dataset</a>.</li>
     </ul>
 
-    <p>Again, this definition is an extension of the notion of <dfn data-cite="RDF11-CONCEPTS#dfn-rdf-dataset">RDF dataset</dfn>, hence it follows that any <a>RDF dataset</a> is also an <a>RDF* dataset</a>.</p>
+    <p>Again, this definition is an extension of the notion of <a>RDF dataset</a>, hence it follows that any <a>RDF dataset</a> is also an <a>RDF* dataset</a>.</p>
   </section>
 
   <section id="turtle-star">
@@ -387,7 +392,7 @@ SELECT ?claimer WHERE {
       </p>
 
       <p>Next, we aim to carry over the notion of <a data-cite="SPARQL11-QUERY#BGPsparql">solutions for BGPs</a> to <a>BGP*</a>. To this end, we first define an auxiliary concept that carries over the notion of an
-      <a data-cite="RDF11-MT#definst">RDF instance mapping</a> [[RDF11-MT]] to RDF*.</p>
+      <a data-cite="RDF11-MT#dfn-instance">RDF instance mapping</a> [[RDF11-MT]] to RDF*.</p>
 
       <p>An <dfn data-lt="rdf-star-instance-mapping">RDF* instance mapping</dfn>&nbsp;σ is a partial function from the set of all <a>blank nodes</a> to the set of all <a>RDF* terms</a>.
       The domain of&nbsp;σ, denoted by dom(σ), is the set of <a>blank nodes</a> for which σ is defined.</p>

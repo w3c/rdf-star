@@ -150,7 +150,7 @@ SELECT ?claimer WHERE {
 }
 -->
 </pre>
-    
+
 
 <p> SPARQL query triple patterns that include a triple pattern as a subject or object are known as SPARQL* triple patterns. </p>
 
@@ -351,7 +351,7 @@ SELECT ?claimer WHERE {
 
     <section>
       <h2>Parsing</h2>
-      <p>A Turtle* parser is similar to a Turtle parser as defined in <a data-cite="TURTLE#h2_sec-parsing">Section 7 of the Turtle specification</a> [[TURTLE]], with an additional item in its state :</p>
+      <p>A Turtle* parser is similar to a Turtle parser as defined in <a data-cite="TURTLE#h2_sec-parsing">Section 7 of the Turtle specification</a> [[TURTLE]], with an additional item in its state:</p>
       <ul>
         <li id="curObject"><a>RDF* Term</a> |curObject| — The |curObject| is bound to the <a href="#grammar-production-embObject">`embObject`</a> production.</li>
       </ul>
@@ -829,9 +829,120 @@ SELECT ?claimer WHERE {
   <section>
     <h2>RDF* Semantics</h2>
 
-    <p>In this section, we provide a model-theoretic semantics for RDF*, by extending the one defined in [[[RDF11-MT]]] [[RDF11-MT]].</p>
+    <p>In this section, we provide a model-theoretic semantics for RDF*, based on the one defined in [[[RDF11-MT]]] [[RDF11-MT]]. More precisely, we define a mapping from RDF*'s abstract syntax into standard RDF's abstract syntax, as well as a <a>semantic extension</a> accounting for RDF* specifities.</p>
 
+    <p>The key idea of this semantics is that <a>embedded triples</a> simply denote themselves. The rationale is that RDF* allows to annotate or talk about triples, hence triples become elements of the domain of discourse.</p>
+
+    <p>In the following, we introduce a number of RDF*-specific definitions, which rely on the following notions, defined in [[[RDF11-CONCEPTS]]] [[RDF11-CONCEPTS]] and [[[RDF11-MT]]] [[RDF11-MT]]:
+      <dfn data-cite="RDF11-CONCEPTS#dfn-datatype">datatype</dfn>,
+      <dfn data-cite="RDF11-MT#dfn-ground">ground</dfn>,
+      <dfn data-cite="RDF11-CONCEPTS#dfn-lexical-form">lexical form</dfn>,
+      <dfn data-cite="RDF11-CONCEPTS#dfn-lexical-space">lexical space</dfn>,
+      <dfn data-cite="RDF11-CONCEPTS#dfn-lexical-to-value-mapping">lexical-to-value mapping</dfn>,
+      <dfn data-cite="RDF11-MT#dfn-rdf-interpretation">RDF interpretation</dfn>,
+      <dfn data-cite="RDF11-MT#dfn-recognize" data-lt="recognized|recognizing">recognize</dfn>,
+      <dfn data-cite="RDF11-MT#dfn-semantic-extension">semantic extension</dfn>,
+      <dfn data-cite="RDF11-CONCEPTS#dfn-simple-literal">simple literal</dfn>,
+      and <dfn data-cite="RDF11-CONCEPTS#dfn-value-space">value space</dfn>.
+    </p>
+
+<<<<<<< HEAD
     <div class="issue" data-number="81">one proposal on the table</div>
+=======
+    <section>
+      <h2>Definitions</h2>
+
+      <p>We consider five specific <a>IRIs</a> <var>D*</var>, <var>S*</var>, <var>P*</var>, <var>O*</var> and <var>I*</var> that will have a special semantics in RDF*.</p>
+
+      <p>We introduce a new <a>datatype</a>, denoted by the <a>IRI</a> <var>D*</var>, and defined as follow:</p>
+      <ul>
+        <li>its <a>value space</a> is the union of the set of <a>IRIs</a> with the set of <a>Literals</a>.</li>
+        <li>its <a>lexical space</a> is the set of strings satisfying the <a data-cite="N-TRIPLES#grammar-production-IRIREF">`IRIREF`</a> or <a data-cite="N-TRIPLES#grammar-production-literal">`literal`</a> production rules of the N-Triples grammar [[N-TRIPLES]], furthermore complying with the <a data-cite="N-TRIPLES#h2_canonical-ntriples">canonical form</a>, and having either an explicit datatype or language tag for `literal` (i.e. no <a>simple literal</a>).</li>
+        <li>its <a>lexical-to-value mapping</a> consists in parsing the <a>lexical form</a> as specified by [<a data-cite="N-TRIPLES#h3_sec-parsing-terms">N-TRIPLES, Section 8.1</a>].</li>
+      </ul>
+      <p>Any <a>RDF* interpretation</a> (see below) will be required to <a>recognize</a> this <a>datatype</a>, i.e. to correctly map <a>literals</a> of that datatype to the appropriate <a>IRI</a> or <a>literal</a>.</p>
+
+      <p>For any <a>RDF* graph</a> |G|, we call the <dfn>asserted blank nodes</dfn> of |G| the set of <a>blank nodes</a> used in the <a>subject</a> or <a>object</a> position of some <a>asserted triple</a>. We call the <dfn>embedded blank nodes</dfn> of |G| the set of <a>blank nodes</a> used in the <a>subject</a> or <a>object</a> position of some <a>embedded triple</a>. We call the <dfn>mixed blank nodes</dfn> of |G| the set of <a>blank nodes</a> that are at the same time asserted and embedded.</p>
+    </section>
+
+    <section>
+      <h2>Mapping RDF* abstract syntax to RDF</h2>
+
+      <p>Given an <a>RDF* graph</a> |G|, the following steps transform it into an <a>RDF graph</a> that we call |unstar|(|G|).</p>
+
+      <ol>
+        <li>Define an injective mapping |Q| from the set of <a>mixed blank nodes</a> of |G| to a set of fresh (i.e. not occurring in |G|) <a>blank nodes</a>.</li>
+        <li>Extend |Q| to other <a>RDF* terms</a> as follow:<ul>
+          <li>for any <a>IRI</a> or <a>literal</a> |g|,  |Q|(|g|) is a <a>literal</a> of <a>datatype</a> <var>D*</var>, whose value through the <a>lexical-to-value mapping</a> is |g|,</li>
+          <li>for any <a>blank node</a> |b| that is not a <a>mixed blank node</a>, |Q|(|b|) = |b|,</li>
+          <li>for any <a>RDF* triple</a> |t|, |Q|(|t|) = |t|.</li>
+        </ul></li>
+        <li>For each <a>mixed blank node</a> |b| of |G|, add the following triple in |G|: (|Q|(|b|), <var>I*</var>, |b|).</li>
+        <li>For each <a>embedded triple</a> (|s|, |p|, |o|) in <a>constituents</a>(|G|), replace all its occurrences in |G| with a fresh blank node |b|, and add the three following triples in |G|: (|b|, <var>S*</var>, |Q|(|s|)), (|b|, <var>P*</var>, |Q|(|p|)), and (|b|, <var>O*</var>, |Q|(|o|)).
+        </li>
+      </ol>
+      <p>After these steps, |unstar|(|G|) is an <a>RDF graph</a>, as it contains no embedded triples. Note that if |G| was already an <a>RDF graph</a>, then |unstar|(|G|) = |G|.</p>
+
+    </section>
+
+    <section>
+      <h2>RDF* Interpretation</h2>
+
+      <p>Given a set |D| of <a>IRIs</a> denoting <a>datatypes</a>, an <dfn>RDF* interpretation</dfn> (<a>recognizing</a> |D|) is an <a>RDF interpretation</a> (<a>recognizing</a> |D|) satisfying the following additional constraints:</p>
+
+      <ul>
+        <li><var>D*</var> must be an element of the set |D| of <a>recognized</a> <a>datatypes</a>.</li>
+        <li>The universe |IR| must contain all <a>RDF* terms</a>.</li>
+        <li>|IEXT|(<var>S*</var>) = { ( (|s|, |p|, |o|), |s| ) for all <a>RDF* triple</a> (|s|, |p|, |o|) }</li>
+        <li>|IEXT|(<var>P*</var>) = { ( (|s|, |p|, |o|), |p| ) for all <a>RDF* triple</a> (|s|, |p|, |o|) }</li>
+        <li>|IEXT|(<var>O*</var>) = { ( (|s|, |p|, |o|), |o| ) for all <a>RDF* triple</a> (|s|, |p|, |o|) }</li>
+        <li>|IEXT|(<var>I*</var>) = |IS| ∪ |IL| ∪ |IDT| (where |IDT| is the identity function on the set of all <a>RDF* triples</a>)</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>RDF* Entailment</h2>
+
+      <p>Following [[[RDF11-MT]]], we extend the notions of satisfiability and entailment for <a>RDF* interpretations</a>. Given a set |D| of <a>IRIs</a> denoting <a>datatypes</a> and two <a>RDF* graphs</a> |G| and |H|:<p>
+      <ul>
+        <li>An <a>RDF* interpretation</a> |I| <dfn data-lt="satisfying|satisfies">satisfies</dfn> |G| if |I|(|unstar|(|G|)) = true. In the particular case of <a>RDF graphs</a>, this is equivalent to |I|(|G|) = true, consistently with the definitions in [[RDF11-MT]].</li>
+        <li>|G| <dfn>RDF* entails (recognizing |D|)</dfn> |H| when every <a>RDF* interpretation</a> <a>recognizing</a> |D| which <a>satisfies</a> |G| also <a>satisfies</a> |H|.</li>
+        <li>We simply say that |G| <dfn>RDF* entails</dfn> |H| when |D| = {`rdf:langString`, `xsd:string`, <var>D*</var>}.</li>
+        <li>|G| is <dfn>RDF* unsatisfiable (recognizing |D|)</dfn> when it has no <a>satisfying</a> <a>RDF* interpretation</a> (<a>recognizing</a> |D|).</li>
+      </ul>
+    </section>
+
+    <section class="informative">
+      <h2>Remarks</h2>
+      <p>Any <a>ground</a> <a>embedded triple</a> (|s|, |p|, |o|) is technically replaced by a blank node, acting as an existential variable, but it is pinpointed by <var>S*</var>, <var>P*</var> and <var>O*</var> to a single element of the universe, which is the triple (|s|, |p|, |o|) itself. As such, it behaves similarly to a literal (it denotes the same thing in every interpretation).</p>
+
+      <p>A non-<a>ground</a> <a>embedded triple</a>, such as `&lt;&lt; :s :p _:x &gt;&gt;` is replaced by a blank node, acting as an existential variable, that can be mapped to any triple with subject `http://example.org/s` and predicate `http://example.org/p`. This is consistent with the SPARQL* evaluation semantics.</p>
+
+      <p>The point above means that we have no way to precisely mention a specific triple containing a <a>blank node</a>. This is not considered as a problem, however, since such limitations already exist in RDF: there is no way in RDF concrete syntaxes to mention a specific <a>blank node</a> |b| as defined in the abstract syntax.</p>
+        
+      <p>The point above means that the following piece of Turtle* `&lt;file.ttl&gt; :contains &lt;&lt; :s :p _:x &gt;&gt;.` does only say "file.ttl contains a triple with subject `http://example.org/s` and predicate `http://example.org/p`", it does not add "and a <a>blank node</a> as its object" (because `_:x` here can could be mapped to any <a>RDF* term</a>). There is currently no way to convey the second part of the sentence, but one could imagine an additional vocabulary to do that, if deemed useful.</p>
+
+      <p>Another subtlety about <a>blank nodes</a> is that <a>mixed blank nodes</a> are mapped to a <em>pair</em> of distinct but related <a>blank nodes</a>. Consider the following Turtle* example.</p>
+
+      <pre data-transform="updateExample"
+           data-content-type="application/x-sparql-star-query"
+           class="nohighlight example"
+      >
+          <!--
+              :alice :father _:x.
+              << _:x :name "Bob" >> :accordingTo :alice.
+          -->
+      </pre>
+
+      <p>The first `_:x` is interpreted as a <a>blank node</a> (let's call it |x|) acting as an existential variable that can be mapped to virtually anything. The second `_:x` is internally changed to |Q|(|x|), another <a>blank node</a>, which can be mapped only to <a>RDF* terms</a>, as it must be in the range of <var>S*</var>. Both <a>blank nodes</a> |x| and |Q|(|x|) are constrained by the <var>I*</var> property, which ensures that, modulo one level of indirection, they always represent the same thing.</p>
+
+      <p>Finally, it is worth noticing that the <a>IRIs</a> <var>D*</var>, <var>S*</var>, <var>P*</var>, <var>O*</var> and <var>I*</var> are not explicitly specified (besides their existence) by this document. With this omission, this specification provides no standard way to convey an <a>RDF* graph</a> using older RDF concrete syntaxes – only the RDF*-specific extensions of those concrete syntaxes can be used for that. Otherwise, it would have been possible to describe incomplete or ill-formed <a>RDF* triples</a> (a problem that exists with <a data-cite="RDF-SCHEMA#ch_collectionvocab">RDF collections</a> for example), thus forcing implementations to deal with pathological cases, and preventing useful optimisations.</p>
+
+      <p class="issue">
+        Do we want to keep it that way, or do we want to specify these IRIs (or some of them) anyway?
+      </p>
+    </section>
+>>>>>>> 7660ed2... Proposal for a syntactic-sugar based semantics
 
   </section>
 

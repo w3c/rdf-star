@@ -125,7 +125,7 @@
         -->
       </pre>
 
-<p>After declaring a prefix so that IRIs can be abbreviated, the first triple in this example asserts that employee38 has a hireDate of "2020-04-03". Note that this dataset does not assert that employee38 has a familyName of "Smith"; it says that employee22 has made that claim. In other words, the triple "employee38 has a familyName of 'Smith'" is not what we call an asserted triple, like "employee38 has a hireDate of '2020-04-03'" above; it is known as an embedded triple. (If we added the triple `:employee38 :familyName "Smith"` below the triple about employee22's claim in the example above, then this triple about employee38's familyName would be both an embedded triple and an asserted one.) </p>
+<p>After declaring a prefix so that IRIs can be abbreviated, the first triple in this example asserts that employee38 has a familyName of "Smith". Note that this dataset does not assert that employee38 has a jobTitle of "Assistant Designer"; it says that employee22 has made that claim. In other words, the triple "employee38 has a jobTitle of 'Assistant Designer'" is not what we call an asserted triple, like "employee38 has a familyName of 'Smith'" above; it is known as an embedded triple. (If we added the triple `:employee38 :jobTitle "Assistant Designer"` below the triple about employee22's claim in the example above, then this triple about employee38's jobTitle would be both an embedded triple and an asserted one.) </p>
 
 <p>This specification also describes an extension to the SPARQL Protocol and Query Language known as SPARQL* (pronounced "SPARQL star") for the querying of RDF* triples. For example, the following SPARQL* query asks "who has made any claims about employee38?"</p>
 

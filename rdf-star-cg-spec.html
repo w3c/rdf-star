@@ -160,19 +160,7 @@ SELECT ?claimer WHERE {
 <tr><td>`dc:`</td><td>`&lt;http://purl.org/dc/elements/1.1/>`</td></tr>
 <tr><td>`dct:`</td><td>`&lt;http://purl.org/dc/terms/>`</td></tr>
 </table>
-<!-- 
-<p>TODO (the purpose of this section will be to provide an informal introduction to the approach for practitioners)</p>
 
-*** Note from Bob: the following was in this section but I think it's a bit too technical to qualify as part of an informal introduction to the approach for practitioners.  I didn't delete it because I thought you'd want to move it somewhere. ***
-
-</p>
-      <p>The syntax of RDF is defined in two layers:</p>
-      <ul>
-        <li>the <dfn>abstract syntax</dfn>, which is the conceptual data model of RDF, and</li>
-        <li>multiple <dfn data-cite="RDF11-CONCEPTS#dfn-concrete-rdf-syntax" data-lt="concrete syntax|concrete RDF syntax|concrete RDF syntaxes">concrete syntaxes</dfn> (such as RDF/XML [[RDF-SYNTAX-GRAMMAR]], Turtle [[TURTLE]] or JSON-LD [[JSON-LD11]]), which are data formats used to serialize the abstract syntax into files or over the wire.</li>
-      </ul>
-      <p>Similarly, this document defines the <a>abstract syntax</a> of RDF* in <a href="#concepts"></a>, and one <a>concrete syntax</a> based on Turtle [[TURTLE]] in <a href="#turtle-star"></a>.</p>
--->
     </section>
 
     <section id="conformance">
@@ -548,7 +536,7 @@ SELECT ?claimer WHERE {
         <ul>
           <li>A <a>variable</a> is in-scope of a <a>BGP*</a> |B| if the <a>variable</a> occurs in |B|, which includes an occurrence in any <a>embedded triple pattern</a> in |B| (independent of the level of nesting).</li>
           <li>A <a>variable</a> is in-scope of a <a>property path pattern</a> if the variable occurs in that pattern, which includes an occurrence in any embedded triple pattern in the pattern (independent of the level of nesting).</li>
-          <li>A <a>variable</a> is in-scope of a BIND clause of the form `BIND ( T AS v )` (where |T| is an <a>embedded triple pattern</a>) if the variable is variable |v| or the variable occurs in the <a>embedded triple pattern</a> |T|. As for standard BIND clauses with expressions, variable |v| must <q>not [be] in-scope from the preceeding elements in the group graph pattern in which [the BIND clause] is used</q> [<a data-cite="SPARQL11-QUERY#variableScope">SPARQL11-QUERY, Section 18.2.1]</a>].</li>
+          <li>A <a>variable</a> is in-scope of a BIND clause of the form `BIND ( T AS v )` (where |T| is an <a>embedded triple pattern</a>) if the variable is variable |v| or the variable occurs in the <a>embedded triple pattern</a> |T|. As for standard BIND clauses with expressions, variable |v| must <q>not [be] in-scope from the preceding elements in the group graph pattern in which [the BIND clause] is used</q> [<a data-cite="SPARQL11-QUERY#variableScope">SPARQL11-QUERY, Section 18.2.1]</a>].</li>
         </ul>
       </section>
 
@@ -684,7 +672,7 @@ SELECT ?claimer WHERE {
       <section>
         <h2>SPARQL* Query Results JSON Format</h2>
         <p>
-        The result of a SPARQL SELECT query is serialized in JSON as defined in [[[sparql11-results-json]]], which specifies a JSON representation of variable bindings to RDF terms (see [<a data-cite="sparql11-results-json#select-results">sparql11-results-json, Section 3.2</a>]). To accomodate the new RDF term for <a>embedded</a> triples that RDF* introduces, the table of RDF term JSON representations in  <a data-cite="sparql11-results-json#select-encode-terms">sparql11-results-json, Section 3.2.2</a> is extended with the following entry:
+        The result of a SPARQL SELECT query is serialized in JSON as defined in [[[sparql11-results-json]]], which specifies a JSON representation of variable bindings to RDF terms (see [<a data-cite="sparql11-results-json#select-results">sparql11-results-json, Section 3.2</a>]). To accommodate the new RDF term for <a>embedded</a> triples that RDF* introduces, the table of RDF term JSON representations in  <a data-cite="sparql11-results-json#select-encode-terms">sparql11-results-json, Section 3.2.2</a> is extended with the following entry:
         </p>
         <dl>
             <dt>An <a>embedded</a> triple with subject RDF term `S`, predicate RDF term `P` and object RDF term `O`</dt>
@@ -742,7 +730,7 @@ SELECT ?claimer WHERE {
        <p>
         The result of a SPARQL SELECT query is serialized in XML as defined in [[[rdf-sparql-XMLres]]]. This format proposes an XML representation of variable bindings to RDF terms.
        </p>
-       <p>To accomodate the new RDF term for <a>embedded</a> triples that RDF* introduces, the list of RDF terms and their XML representations in [<a href="rdf-sparql-XMLres#results">rdf-sparql-XMLres, Section 2.3.1</a>] is extended as follows:
+       <p>To accommodate the new RDF term for <a>embedded</a> triples that RDF* introduces, the list of RDF terms and their XML representations in [<a href="rdf-sparql-XMLres#results">rdf-sparql-XMLres, Section 2.3.1</a>] is extended as follows:
         </p>
         <p>
         <dl>
@@ -794,9 +782,6 @@ SELECT ?claimer WHERE {
 
       </section>
 
-    </section>
-
-  </section>
     </section>
 
   </section>

@@ -153,7 +153,7 @@ SELECT ?claimer WHERE {
 }
 -->
 </pre>
-    
+
 
 <p> SPARQL query triple patterns that include a triple pattern as a subject or object are known as SPARQL-star triple patterns. </p>
 
@@ -906,9 +906,66 @@ SELECT ?claimer WHERE {
   <section>
     <h2>RDF-star Semantics</h2>
 
-    <p>In this section, we provide a model-theoretic semantics for RDF-star, by extending the one defined in [[[RDF11-MT]]] [[RDF11-MT]].</p>
+    <p>In this section, we provide a model-theoretic semantics for RDF*, based on the one defined in [[[RDF11-MT]]] [[RDF11-MT]]. More precisely, we define a mapping from RDF*'s abstract syntax into standard RDF's abstract syntax, and define the semantics of <a>RDF* graphs</a> in terms of the semantics of the mapped <a>RDF graphs</a>.</p>
 
-    <div class="issue" data-number="81">one proposal on the table</div>
+    <p>In the following, we introduce a number of RDF*-specific definitions, which rely on the following notions, defined in [[[RDF11-CONCEPTS]]] [[RDF11-CONCEPTS]] and [[[RDF11-MT]]] [[RDF11-MT]]:
+      <dfn data-cite="RDF11-CONCEPTS#dfn-datatype">datatype</dfn>,
+      <dfn data-cite="RDF11-CONCEPTS#dfn-lexical-form">lexical form</dfn>,
+      <dfn data-cite="RDF11-MT#dfn-ill-typed">ill-typed</dfn>,
+      <dfn data-cite="RDF11-MT#dfn-merging" data-lt="merge">merging</dfn>,
+      <dfn data-cite="RDF11-MT#dfn-satisfiable" data-lt="satisfiable">satisfiability</dfn>,
+      <dfn data-cite="RDF11-MT#dfn-unsatisfiable" data-lt="unsatisfiable">unsatisfiability</dfn>,
+      <dfn data-cite="RDF11-MT#dfn-entail" data-lt="entail|entailed">entailment</dfn>,
+      and <dfn data-cite="RDF11-MT#dfn-equivalent" data-lt="equivalent">equivalence</dfn>.
+    </p>
+
+    <section>
+      <h2>Mapping RDF* abstract syntax to RDF</h2>
+
+      <p>We consider six <a>IRIs</a> |ST:subject term|, |PT:predicate term|, |OT:object term|, |SS:subject string|, |PS:predicate string| and |OS:object string| that will have a special meaning in our mapping.</p>
+
+      <p>We define a mapping |L| that maps any term |t| that is either an <a>IRI</a> or a <a>literal</a> to a literal with <ul>
+        <li>`xsd:string` as its the <a>datatype</a>, and</li>
+        <li>the <a data-cite="N-TRIPLES#canonical-ntriples">canonical N-Triples</a> representation of |t| as its <a>lexical form</a> [[N-TRIPLES]]. If `t` is itself a literal with the `xsd:string` <a>datatype</a>, the representation MUST NOT include the datatype.</li>
+      </ul>
+      </p>
+
+      <p>Given an <a>RDF* graph</a> |G|, the following steps transform it into an <a>RDF graph</a> that we call |unstar|(|G|).</p>
+
+      <ol>
+        <li>Pick an <a>RDF* triple</a> (|s|, |p|, |o|) in the <a>constituents</a> |G| such that neither |s|, |p| nor |o| is an <a>embedded triple</a>.</li>
+        <li>Mint a fresh blank node |b|, and replace by |b| all occurrences of (|s|, |p|, |o|) in the subject or object position of an <a>asserted</a> or <a>embedded triple</a> of |G|.</li>
+        <li>Add the following <a>asserted triples</a> to |G|:<ul>
+          <li>(|b|, |ST|, |s|)</li>
+          <li>(|b|, |PT|, |p|)</li>
+          <li>(|b|, |OT|, |o|) unless |o| is an <a>ill-typed</a> literal</li>
+          <li>(|b|, |SS|, |L|(|s|)) unless |s| is <a>blank node</a></li>
+          <li>(|b|, |PS|, |L|(|p|))</li>
+          <li>(|b|, |OS|, |L|(|o|)) unless |o| is <a>blank node</a></li>
+        </ul></li>
+        <li>Repeats the steps above until there are no embedded triple left in |G|</li>
+      </ol>
+      <p>After these steps, |unstar|(|G|) is an <a>RDF graph</a>, as it contains no embedded triples. Note that if |G| was already an <a>RDF graph</a>, then |unstar|(|G|) = |G|.</p>
+
+    </section>
+
+    <section>
+      <h2>Entailment of <a>RDF* graphs</a></h2>
+
+      <p>Following [[[RDF11-MT]]], we extend the notions of <a>satisfiability</a> and <a>entailment</a> for <a>RDF* graphs</a>. Given two <a>RDF* graphs</a> |G| and |H|:<p>
+      <ul>
+        <li>We say that |G| is (simply) <a>satisfiable</a> (resp. <a>unsatisfiable</a>) if and only if |unstar|(|G|) is (simply) <a>satisfiable</a> (resp. <a>unsatisfiable</a>).</li>
+        <li>We say that |H| is (simply) <a>entailed</a> by (resp. <a>equivalent</a> to) |G| if and only if |unstar|(|H|) is (simply) <a>entailed</a> by (resp. <a>equivalent</a> to) |unstar|(|G|).</li>
+        <li>Other notions of <a>satisfiability</a> and <a>entailment</a>, such as <a data-cite="RDF11-MT#rdf-entailment">RDF entailment</a> or <a data-cite="RDF11-MT#rdfs-entailment">RDFS entailment</a>, can be extended in the same way for <a>RDF* graphs</a>.</li>
+      </ul>
+    </section>
+
+    <section class="informative">
+      <h2>Remarks</h2>
+
+      <p>Care must be taken when <a>RDF* graphs</a> are combined through union or <a>merging</a>. Given two <a>RDF* graphs</a> |G| and |H|, |unstar|(|G| ∪ |H|) ≠ |unstar|(|G|) ∪ |unstar|(|H|). More precisely, if |G| and |H| contain the same embedded triple, this triple will be mapped to a single blank node in |unstar|(|G| ∪ |H|), but in two potentially different blank nodes in |unstar|(|G|) ∪ |unstar|(|H|), which will need to be unified in order to get the correct entailments.</p>
+
+    </section>
 
     <div class="issue" data-number="88">another proposal on the table</div>
 

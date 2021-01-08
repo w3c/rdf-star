@@ -33,6 +33,8 @@ PREFIX :       <#>
         :sparql-star-ann-1
         :sparql-star-ann-2
         :sparql-star-ann-3
+        :sparql-star-ann-4
+        :sparql-star-ann-5
 
         :sparql-star-bad-1
         :sparql-star-bad-2
@@ -55,6 +57,8 @@ PREFIX :       <#>
         :sparql-star-update-1
         :sparql-star-update-2
         :sparql-star-update-3
+        :sparql-star-update-4
+        :sparql-star-update-5
         
         :sparql-star-bad-update-1
         :sparql-star-bad-update-2
@@ -181,6 +185,16 @@ PREFIX :       <#>
     mf:action    <sparql-star-annotation-3.rq> ;
     .
 
+:sparql-star-ann-4 rdf:type mf:PositiveSyntaxTest11 ;
+    mf:name      "SPARQL* - Annotation with embedding" ;
+    mf:action    <sparql-star-annotation-4.rq> ;
+    .
+
+:sparql-star-ann-5 rdf:type mf:PositiveSyntaxTest11 ;
+    mf:name      "SPARQL* - Annotation on triple with embedded object" ;
+    mf:action    <sparql-star-annotation-5.rq> ;
+    .
+
 ## Bad annotation syntax
 
 :sparql-star-bad-ann-1 rdf:type mf:NegativeSyntaxTest11 ;
@@ -233,6 +247,16 @@ PREFIX :       <#>
 :sparql-star-update-3  rdf:type mf:PositiveUpdateSyntaxTest11 ;
     mf:name      "SPARQL* - update";
     mf:action    <sparql-star-syntax-update-3.ru> ;
+    .
+
+:sparql-star-update-4  rdf:type mf:PositiveUpdateSyntaxTest11 ;
+    mf:name      "SPARQL* - update with embedding";
+    mf:action    <sparql-star-syntax-update-4.ru> ;
+    .
+
+:sparql-star-update-5  rdf:type mf:PositiveUpdateSyntaxTest11 ;
+    mf:name      "SPARQL* - update with embedded object";
+    mf:action    <sparql-star-syntax-update-5.ru> ;
     .
 
 ## SPARQL* Update - bad syntax

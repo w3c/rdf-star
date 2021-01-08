@@ -40,6 +40,16 @@
 	    "action" :  "sparql-star-annotation-3.rq",
 	    "name" :    "SPARQL* - Annotation example"
 	}, {
+	    "@id" :     "#sparql-star-ann-4",
+	    "@type" :   "mf:PositiveSyntaxTest11",
+	    "action" :  "sparql-star-annotation-4.rq",
+	    "name" :    "SPARQL* - Annotation with embedding"
+	}, {
+	    "@id" :     "#sparql-star-ann-5",
+	    "@type" :   "mf:PositiveSyntaxTest11",
+	    "action" :  "sparql-star-annotation-5.rq",
+	    "name" :    "SPARQL* - Annotation on triple with embedded object"
+	}, {
 	    "@id" :     "#sparql-star-bad-1",
 	    "@type" :   "mf:NegativeSyntaxTest11",
 	    "action" :  "sparql-star-syntax-bad-01.rq",
@@ -178,6 +188,16 @@
 	    "@id" :     "#sparql-star-update-3",
 	    "@type" :   "mf:PositiveUpdateSyntaxTest11",
 	    "action" :  "sparql-star-syntax-update-3.ru",
+	    "name" :    "SPARQL* - update"
+	}, {
+	    "@id" :     "#sparql-star-update-4",
+	    "@type" :   "mf:PositiveUpdateSyntaxTest11",
+	    "action" :  "sparql-star-syntax-update-4.ru",
+	    "name" :    "SPARQL* - update"
+	}, {
+	    "@id" :     "#sparql-star-update-5",
+	    "@type" :   "mf:PositiveUpdateSyntaxTest11",
+	    "action" :  "sparql-star-syntax-update-5.ru",
 	    "name" :    "SPARQL* - update"
 	}
     ]

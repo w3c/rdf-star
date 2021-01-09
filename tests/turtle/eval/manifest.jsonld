@@ -1,63 +1,136 @@
 {
-    "@context" : "../../manifest-context.jsonld",
-    "@id" :      "",
-    "@type" :    "mf:Manifest",
-    "label" :    "Turtle* Evaluation Tests",
-    "entries" :  [
-	{
-	    "@id" :    "#turtle-star-1",
-	    "@type" :  "rdft:TestTurtleEval",
-	    "action" : "turtle-star-eval-01.ttl",
-	    "name" :   "Turtle* - subject triple term",
-	    "result" : "turtle-star-eval-01.nt"
-	}, {
-	    "@id" :    "#turtle-star-2",
-	    "@type" :  "rdft:TestTurtleEval",
-	    "action" : "turtle-star-eval-02.ttl",
-	    "name" :   "Turtle* - object triple term",
-	    "result" : "turtle-star-eval-02.nt"
-	}, {
-	    "@id" :    "#turtle-star-annotation-1",
-	    "@type" :  "rdft:TestTurtleEval",
-	    "action" : "turtle-star-eval-annotation-1.ttl",
-	    "name" :   "Turtle* - Annotation form",
-	    "result" : "turtle-star-eval-annotation-1.nt"
-	}, {
-	    "@id" :    "#turtle-star-annotation-2",
-	    "@type" :  "rdft:TestTurtleEval",
-	    "action" : "turtle-star-eval-annotation-2.ttl",
-	    "name" :   "Turtle* - Annotation example",
-	    "result" : "turtle-star-eval-annotation-2.nt"
-	}, {
-	    "@id" :    "#turtle-star-annotation-3",
-	    "@type" :  "rdft:TestTurtleEval",
-	    "action" : "turtle-star-eval-annotation-3.ttl",
-	    "name" :   "Turtle* - Annotation - predicate and object lists",
-	    "result" : "turtle-star-eval-annotation-3.nt"
-	}, {
-	    "@id" :    "#turtle-star-annotation-4",
-	    "@type" :  "rdft:TestTurtleEval",
-	    "action" : "turtle-star-eval-annotation-4.ttl",
-	    "name" :   "Turtle* - Annotation - nested",
-	    "result" : "turtle-star-eval-annotation-4.nt"
-	}, {
-	    "@id" :    "#turtle-star-annotation-5",
-	    "@type" :  "rdft:TestTurtleEval",
-	    "action" : "turtle-star-eval-annotation-5.ttl",
-	    "name" :   "Turtle* - Annotation object list",
-	    "result" : "turtle-star-eval-annotation-5.nt"
-	}, {
-	    "@id" :    "#turtle-star-bnode-1",
-	    "@type" :  "rdft:TestTurtleEval",
-	    "action" : "turtle-star-eval-bnode-1.ttl",
-	    "name" :   "Turtle* - blank node label",
-	    "result" : "turtle-star-eval-bnode-1.nt"
-	}, {
-	    "@id" :    "#turtle-star-bnode-2",
-	    "@type" :  "rdft:TestTurtleEval",
-	    "action" : "turtle-star-eval-bnode-2.ttl",
-	    "name" :   "Turtle* - blank node labels",
-	    "result" : "turtle-star-eval-bnode-2.nt"
-	}
-    ]
+  "@context": {
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "mf": "http://www.w3.org/2001/sw/DataAccess/tests/test-manifest#",
+    "rdft": "http://www.w3.org/ns/rdftest#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "@vocab": "http://www.w3.org/2001/sw/DataAccess/tests/test-manifest#",
+    "include": {
+      "@type": "@id",
+      "@container": "@list"
+    },
+    "entries": {
+      "@type": "@id",
+      "@container": "@list"
+    },
+    "recognizedDatatypes": {
+      "@type": "@id",
+      "@container": "@list"
+    },
+    "unrecognizedDatatypes": {
+      "@type": "@id",
+      "@container": "@list"
+    },
+    "action": {
+      "@type": "@id"
+    },
+    "result": {
+      "@type": "@id"
+    },
+    "label": "rdfs:label",
+    "comment": "rdfs:comment",
+    "seeAlso": {
+      "@id": "rdfs:seeAlso",
+      "@type": "@id"
+    },
+    "approval": {
+      "@id": "rdft:approval",
+      "@type": "@id"
+    },
+    "Approved": "rdft:Approved",
+    "Proposed": "rdft:Proposed",
+    "Rejected": "rdft:Rejected",
+    "TestTurtlePositiveSyntax": "rdft:TestTurtlePositiveSyntax",
+    "TestTurtleNegativeSyntax": "rdft:TestTurtleNegativeSyntax"
+  },
+  "@id": "eval",
+  "@type": "Manifest",
+  "label": "Turtle* Evaluation Tests",
+  "entries": [
+    {
+      "@id": "#turtle-star-1",
+      "@type": "rdft:TestTurtleEval",
+      "action": "turtle-star-eval-01.ttl",
+      "result": "turtle-star-eval-01.nt",
+      "name": "Turtle* - subject triple term"
+    },
+    {
+      "@id": "#turtle-star-2",
+      "@type": "rdft:TestTurtleEval",
+      "action": "turtle-star-eval-02.ttl",
+      "result": "turtle-star-eval-02.nt",
+      "name": "Turtle* - object triple term"
+    },
+    {
+      "@id": "#turtle-star-bnode-1",
+      "@type": "rdft:TestTurtleEval",
+      "action": "turtle-star-eval-bnode-1.ttl",
+      "result": "turtle-star-eval-bnode-1.nt",
+      "name": "Turtle* - blank node label"
+    },
+    {
+      "@id": "#turtle-star-bnode-2",
+      "@type": "rdft:TestTurtleEval",
+      "action": "turtle-star-eval-bnode-2.ttl",
+      "result": "turtle-star-eval-bnode-2.nt",
+      "name": "Turtle* - blank node labels"
+    },
+    {
+      "@id": "#turtle-star-annotation-1",
+      "@type": "rdft:TestTurtleEval",
+      "action": "turtle-star-eval-annotation-1.ttl",
+      "result": "turtle-star-eval-annotation-1.nt",
+      "name": "Turtle* - Annotation form"
+    },
+    {
+      "@id": "#turtle-star-annotation-2",
+      "@type": "rdft:TestTurtleEval",
+      "action": "turtle-star-eval-annotation-2.ttl",
+      "result": "turtle-star-eval-annotation-2.nt",
+      "name": "Turtle* - Annotation example"
+    },
+    {
+      "@id": "#turtle-star-annotation-3",
+      "@type": "rdft:TestTurtleEval",
+      "action": "turtle-star-eval-annotation-3.ttl",
+      "result": "turtle-star-eval-annotation-3.nt",
+      "name": "Turtle* - Annotation - predicate and object lists"
+    },
+    {
+      "@id": "#turtle-star-annotation-4",
+      "@type": "rdft:TestTurtleEval",
+      "action": "turtle-star-eval-annotation-4.ttl",
+      "result": "turtle-star-eval-annotation-4.nt",
+      "name": "Turtle* - Annotation - nested"
+    },
+    {
+      "@id": "#turtle-star-annotation-5",
+      "@type": "rdft:TestTurtleEval",
+      "action": "turtle-star-eval-annotation-5.ttl",
+      "result": "turtle-star-eval-annotation-5.nt",
+      "name": "Turtle* - Annotation object list"
+    },
+    {
+      "@id": "#turtle-star-embed-annotation-1",
+      "@type": "rdft:TestTurtleEval",
+      "action": "turtle-star-eval-embed-annotation-1.ttl",
+      "result": "turtle-star-eval-embed-annotation-1.nt",
+      "name": "Turtle* - Annotation with embedding"
+    },
+    {
+      "@id": "#turtle-star-embed-annotation-2",
+      "@type": "rdft:TestTurtleEval",
+      "action": "turtle-star-eval-embed-annotation-2.ttl",
+      "result": "turtle-star-eval-embed-annotation-2.nt",
+      "name": "Turtle* - Annotation on triple with embedded subject"
+    },
+    {
+      "@id": "#turtle-star-embed-annotation-3",
+      "@type": "rdft:TestTurtleEval",
+      "action": "turtle-star-eval-embed-annotation-3.ttl",
+      "result": "turtle-star-eval-embed-annotation-3.nt",
+      "name": "Turtle* - Annotation on triple with embedded object"
+    }
+  ]
 }

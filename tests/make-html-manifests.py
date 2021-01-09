@@ -9,7 +9,7 @@ DIR = Path(__file__).parent
 
 def main():
     for i in [
-        ["semantics", "manifest.jsonld"],
+        ["semantics", "manifest.ttl"],
         ["turtle", "syntax", "manifest.ttl"],
         ["turtle", "eval", "manifest.ttl"],
         ["nt", "syntax", "manifest.ttl"],

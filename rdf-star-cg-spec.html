@@ -857,10 +857,10 @@ SELECT ?claimer WHERE {
       <p>We introduce a new <a>datatype</a>, denoted by the <a>IRI</a> <var>D*</var>, and defined as follow:</p>
       <ul>
         <li>its <a>value space</a> is the union of the set of <a>IRIs</a> with the set of <a>Literals</a>.</li>
-        <li>its <a>lexical space</a> is the set of strings satisfying the <a data-cite="N-TRIPLES#grammar-production-IRIREF">`IRIREF`</a> or <a data-cite="N-TRIPLES#grammar-production-literal">`literal`</a> production rules of the N-Triples grammar [[N-TRIPLES]], furthermore complying with the <a data-cite="N-TRIPLES#h2_canonical-ntriples">canonical form</a>, and having either an explicit datatype or language tag for `literal` (i.e. no <a>simple literal</a>).</li>
+        <li>its <a>lexical space</a> is the set of strings satisfying the <a data-cite="N-TRIPLES#grammar-production-IRIREF">`IRIREF`</a> or <a data-cite="N-TRIPLES#grammar-production-literal">`literal`</a> production rules of the N-Triples grammar [[N-TRIPLES]], furthermore complying with the <a data-cite="N-TRIPLES#h2_canonical-ntriples">canonical form</a>, and having either an explicit datatype or language tag for `literal` (i.e., no <a>simple literal</a>).</li>
         <li>its <a>lexical-to-value mapping</a> consists in parsing the <a>lexical form</a> as specified by [<a data-cite="N-TRIPLES#h3_sec-parsing-terms">N-TRIPLES, Section 8.1</a>].</li>
       </ul>
-      <p>Any <a>RDF* interpretation</a> (see below) will be required to <a>recognize</a> this <a>datatype</a>, i.e. to correctly map <a>literals</a> of that datatype to the appropriate <a>IRI</a> or <a>literal</a>.</p>
+      <p>Any <a>RDF* interpretation</a> (see below) will be required to <a>recognize</a> this <a>datatype</a>, i.e., to correctly map <a>literals</a> of that datatype to the appropriate <a>IRI</a> or <a>literal</a>.</p>
 
       <p>For any <a>RDF* graph</a> |G|, we call the <dfn>asserted blank nodes</dfn> of |G| the set of <a>blank nodes</a> used in the <a>subject</a> or <a>object</a> position of some <a>asserted triple</a>. We call the <dfn>embedded blank nodes</dfn> of |G| the set of <a>blank nodes</a> used in the <a>subject</a> or <a>object</a> position of some <a>embedded triple</a>. We call the <dfn>mixed blank nodes</dfn> of |G| the set of <a>blank nodes</a> that are at the same time asserted and embedded.</p>
     </section>
@@ -871,8 +871,8 @@ SELECT ?claimer WHERE {
       <p>Given an <a>RDF* graph</a> |G|, the following steps transform it into an <a>RDF graph</a> that we call |unstar|(|G|).</p>
 
       <ol>
-        <li>Define an injective mapping |Q| from the set of <a>mixed blank nodes</a> of |G| to a set of fresh (i.e. not occurring in |G|) <a>blank nodes</a>.</li>
-        <li>Extend |Q| to other <a>RDF* terms</a> as follow:<ul>
+        <li>Define an injective mapping |Q| from the set of <a>mixed blank nodes</a> of |G| to a set of fresh (i.e., not occurring in |G|) <a>blank nodes</a>.</li>
+        <li>Extend |Q| to other <a>RDF* terms</a> as follows:<ul>
           <li>for any <a>IRI</a> or <a>literal</a> |g|,  |Q|(|g|) is a <a>literal</a> of <a>datatype</a> <var>D*</var>, whose value through the <a>lexical-to-value mapping</a> is |g|,</li>
           <li>for any <a>blank node</a> |b| that is not a <a>mixed blank node</a>, |Q|(|b|) = |b|,</li>
           <li>for any <a>RDF* triple</a> |t|, |Q|(|t|) = |t|.</li>
@@ -905,7 +905,7 @@ SELECT ?claimer WHERE {
 
       <p>Following [[[RDF11-MT]]], we extend the notions of satisfiability and entailment for <a>RDF* interpretations</a>. Given a set |D| of <a>IRIs</a> denoting <a>datatypes</a> and two <a>RDF* graphs</a> |G| and |H|:<p>
       <ul>
-        <li>An <a>RDF* interpretation</a> |I| <dfn data-lt="satisfying|satisfies">satisfies</dfn> |G| if |I|(|unstar|(|G|)) = true. In the particular case of <a>RDF graphs</a>, this is equivalent to |I|(|G|) = true, consistently with the definitions in [[RDF11-MT]].</li>
+        <li>An <a>RDF* interpretation</a> |I| <dfn data-lt="satisfying|satisfies">satisfies</dfn> |G| if |I|(|unstar|(|G|)) = true. In the particular case of <a>RDF graphs</a>, this is equivalent to |I|(|G|) = true, consistent with the definitions in [[RDF11-MT]].</li>
         <li>|G| <dfn>RDF* entails (recognizing |D|)</dfn> |H| when every <a>RDF* interpretation</a> <a>recognizing</a> |D| which <a>satisfies</a> |G| also <a>satisfies</a> |H|.</li>
         <li>We simply say that |G| <dfn>RDF* entails</dfn> |H| when |D| = {`rdf:langString`, `xsd:string`, <var>D*</var>}.</li>
         <li>|G| is <dfn>RDF* unsatisfiable (recognizing |D|)</dfn> when it has no <a>satisfying</a> <a>RDF* interpretation</a> (<a>recognizing</a> |D|).</li>
@@ -914,7 +914,7 @@ SELECT ?claimer WHERE {
 
     <section class="informative">
       <h2>Remarks</h2>
-      <p>Any <a>ground</a> <a>embedded triple</a> (|s|, |p|, |o|) is technically replaced by a blank node, acting as an existential variable, but it is pinpointed by <var>S*</var>, <var>P*</var> and <var>O*</var> to a single element of the universe, which is the triple (|s|, |p|, |o|) itself. As such, it behaves similarly to a literal (it denotes the same thing in every interpretation).</p>
+      <p>Any <a>ground</a> <a>embedded triple</a> (|s|, |p|, |o|) is technically replaced by a blank node, acting as an existential variable, but it is pinpointed by <var>S*</var>, <var>P*</var> and <var>O*</var> to a single element of the universe, which is the triple (|s|, |p|, |o|) itself. As such, it behaves similarly to a literal (i.e., it denotes the same thing in every interpretation).</p>
 
       <p>A non-<a>ground</a> <a>embedded triple</a>, such as `&lt;&lt; :s :p _:x &gt;&gt;` is replaced by a blank node, acting as an existential variable, that can be mapped to any triple with subject `http://example.org/s` and predicate `http://example.org/p`. This is consistent with the SPARQL* evaluation semantics.</p>
 
@@ -936,7 +936,7 @@ SELECT ?claimer WHERE {
 
       <p>The first `_:x` is interpreted as a <a>blank node</a> (let's call it |x|) acting as an existential variable that can be mapped to virtually anything. The second `_:x` is internally changed to |Q|(|x|), another <a>blank node</a>, which can be mapped only to <a>RDF* terms</a>, as it must be in the range of <var>S*</var>. Both <a>blank nodes</a> |x| and |Q|(|x|) are constrained by the <var>I*</var> property, which ensures that, modulo one level of indirection, they always represent the same thing.</p>
 
-      <p>Finally, it is worth noticing that the <a>IRIs</a> <var>D*</var>, <var>S*</var>, <var>P*</var>, <var>O*</var> and <var>I*</var> are not explicitly specified (besides their existence) by this document. With this omission, this specification provides no standard way to convey an <a>RDF* graph</a> using older RDF concrete syntaxes – only the RDF*-specific extensions of those concrete syntaxes can be used for that. Otherwise, it would have been possible to describe incomplete or ill-formed <a>RDF* triples</a> (a problem that exists with <a data-cite="RDF-SCHEMA#ch_collectionvocab">RDF collections</a> for example), thus forcing implementations to deal with pathological cases, and preventing useful optimisations.</p>
+      <p>Finally, it is worth noticing that the <a>IRIs</a> <var>D*</var>, <var>S*</var>, <var>P*</var>, <var>O*</var> and <var>I*</var> are not explicitly specified (beyond their existence) by this document. With this omission, this specification provides no standard way to convey an <a>RDF* graph</a> using older RDF concrete syntaxes &mdash; only the RDF*-specific extensions of those concrete syntaxes can be used for that. Otherwise, it would have been possible to describe incomplete or ill-formed <a>RDF* triples</a> (a problem that exists with <a data-cite="RDF-SCHEMA#ch_collectionvocab">RDF collections</a> for example), thus forcing implementations to deal with pathological cases, and preventing useful optimisations.</p>
 
       <p class="issue">
         Do we want to keep it that way, or do we want to specify these IRIs (or some of them) anyway?

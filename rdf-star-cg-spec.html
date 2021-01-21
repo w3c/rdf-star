@@ -898,6 +898,12 @@ SELECT ?claimer WHERE {
         <li>|IEXT|(<var>I*</var>) = |IS| ∪ |IL| ∪ |IDT| (where |IDT| is the identity function on the set of all <a>RDF* triples</a> contained in |IR|)</li>
       </ul>
 
+      <div class="note">
+        <p>The first constraint forces the domain |IR| of any <a>RDF* interpretation</a> to contain the value space of <var>D*</var>, i.e. all <a>IRIs</a> and <a>literals</a>. Furthermore, any <a>RDF* interpretation</a> satisfying an <a>RDF* graph</a> that contains <a>embedded triples</a> will have to satisfy the constraints on |IEXT|(<var>S*</var>), |IEXT|(<var>P*</var>) and |IEXT|(<var>O*</var>), requiring |IR| to contain the corresponding <a>RDF* triples</a> as well as their constituents (possibly <a>blank nodes</a>).</p>
+
+        <p>It is important to understand the <a href="https://en.wikipedia.org/wiki/Use%E2%80%93mention_distinction">use-mention distinction</a> at play here. <a>RDF* terms</a> <em>used</em> in the abstract syntax denote any element of |IR|, while <a>RDF* terms</a> belonging to |IR| may be denoted (or <em>mentioned</em>) by a different term, regardless of their own denotation, if any. For example, the <a>IRI</a> `&lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#nil&gt;` belongs to |IR| (all <a>IRIs</a> do), and can be mentioned by using the <a>literal</a> `"&lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#nil&gt;"^^D*` (which denotes that <a>IRI</a> by definition of <var>D*</var>). On the other hand, when used in the graph, this <a>IRI</a> denotes an empty list.</p>
+
+      </div>
     </section>
 
     <section>

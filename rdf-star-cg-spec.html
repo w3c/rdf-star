@@ -892,12 +892,12 @@ SELECT ?claimer WHERE {
 
       <ul>
         <li><var>D*</var> must be an element of the set |D| of <a>recognized</a> <a>datatypes</a>.</li>
-        <li>The universe |IR| must contain all <a>RDF* terms</a>.</li>
-        <li>|IEXT|(<var>S*</var>) = { ( (|s|, |p|, |o|), |s| ) for all <a>RDF* triple</a> (|s|, |p|, |o|) }</li>
-        <li>|IEXT|(<var>P*</var>) = { ( (|s|, |p|, |o|), |p| ) for all <a>RDF* triple</a> (|s|, |p|, |o|) }</li>
-        <li>|IEXT|(<var>O*</var>) = { ( (|s|, |p|, |o|), |o| ) for all <a>RDF* triple</a> (|s|, |p|, |o|) }</li>
-        <li>|IEXT|(<var>I*</var>) = |IS| ∪ |IL| ∪ |IDT| (where |IDT| is the identity function on the set of all <a>RDF* triples</a>)</li>
+        <li>|IEXT|(<var>S*</var>) ⊆ { ( (|s|, |p|, |o|), |s| ) for all <a>RDF* triple</a> (|s|, |p|, |o|) }</li>
+        <li>|IEXT|(<var>P*</var>) ⊆ { ( (|s|, |p|, |o|), |p| ) for all <a>RDF* triple</a> (|s|, |p|, |o|) }</li>
+        <li>|IEXT|(<var>O*</var>) ⊆ { ( (|s|, |p|, |o|), |o| ) for all <a>RDF* triple</a> (|s|, |p|, |o|) }</li>
+        <li>|IEXT|(<var>I*</var>) = |IS| ∪ |IL| ∪ |IDT| (where |IDT| is the identity function on the set of all <a>RDF* triples</a> contained in |IR|)</li>
       </ul>
+
     </section>
 
     <section>

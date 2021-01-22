@@ -49,7 +49,7 @@
       shortName: "rdf-star",
       group: "rdf-dev",
       xref: ["RDF11-CONCEPTS", "SPARQL11-QUERY", "RDF11-MT"],
-      maxTocLevel: 2,
+      maxTocLevel: 3,
     };
   </script>
   <style>
@@ -257,7 +257,9 @@ SELECT ?claimer WHERE {
 
   </section>
 
-  <section id="turtle-star">
+  <section>
+  <h2>Concrete Syntaxes</h2>
+    <section id="turtle-star">
     <h2>Turtle*</h2>
     <p>In this section, we present Turtle*, an extension of the Turtle format [[TURTLE]] allowing the representation of <a>RDF* graphs</a>. For the sake of conciseness, we only describe here the differences between Turtle* and Turtle.</p>
 
@@ -368,11 +370,67 @@ SELECT ?claimer WHERE {
 
       <p>All other productions MUST be handled as specified by <a data-cite="TURTLE#h2_sec-parsing">Section 7 of the Turtle specification</a> [[TURTLE]], while still applying the changes above recursively.</p>
     </section>
+  </section>
+
+    <section id="n-triples-star">
+    <h2>N-Triples*</h2>
+
+    <p>This section describes N-Triples*, a minimal extension of the N-Triples format [[N-TRIPLES]] allowing a subject or an object of a triple to be an embedded triple. Note that there is no annotation syntax in N-Triples*.</p>
+
+    <section id="n-triples-star-grammar">
+      <h2>Grammar</h2>
+      <p>N-Triples* is defined to follow the same grammar as the <a data-cite="N-TRIPLES#n-triples-grammar">N-Triples Grammar</a>, except for the EBNF productions specified below, which replace the productions having the same number (if any) in the original grammar.</p>
+
+      <table class="n-triples-star-ebnf">
+        <tbody id="grammar-productions" class="ebnf">
+          <tr id="grammar-production-nt-subject">
+            <td>[3]</td>
+            <td><code>subject</code></td>
+            <td>::=</td>
+            <td><a data-cite="N-TRIPLES#grammar-production-IRIREF">IRIREF</a> <code>|</code> <a data-cite="N-TRIPLES#grammar-production-BLANK_NODE_LABEL">BLANK_NODE_LABEL</a> <code>|</code> <a href="#grammar-production-nt-embTriple">embTriple</a></td>
+          </tr>
+          <tr id="grammar-production-nt-object">
+            <td>[5]</td>
+            <td><code>object</code></td>
+            <td>::=</td>
+            <td><a data-cite="N-TRIPLES#grammar-production-IRIREF">IRIREF</a> <code>|</code> <a data-cite="N-TRIPLES#grammar-production-BLANK_NODE_LABEL">BLANK_NODE_LABEL</a> <code>|</code> <a data-cite="N-TRIPLES#grammar-production-literal">literal</a> <code>|</code> <a href="#grammar-production-nt-embTriple">embTriple</a></td>
+          </tr>
+          <tr id="grammar-production-nt-embTriple">
+            <td>[7]</td>
+            <td><code>embTriple</code></td>
+            <td>::=</td>
+            <td>&quot;&lt;&lt;&quot; <a href="#grammar-production-nt-subject">subject</a> <a data-cite="N-TRIPLES#grammar-production-predicate">predicate</a> <a href="#grammar-production-nt-object">object</a> &quot;&gt;&gt;&quot;</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="note">As with Turtle*, the changes are that <a href="#grammar-production-nt-subject">`subject`</a> and <a href="#grammar-production-nt-object">`object`</a> productions have been extended to accept <a>embedded triples</a>, which are described by the new production <a href="#grammar-production-nt-embTriple">7</a>. N-Triples* does not include an <a href="#grammar-production-annotation">annotation</a> form.</p>
+    </section>
+
+    <section id="n-triples-star-parsing">
+      <h2>Parsing</h2>
+      <p>In contrast to [[N-TRIPLES]], N-Triples* allows recursion on the <a href="#grammar-production-nt-subject">`subject`</a> and <a href="#grammar-production-nt-object">`object`</a> productions.</p>
+
+    <p>An N-Triples* document defines an <a>RDF* graph</a> composed of a set of <a>RDF* triples</a>. The <a href="N-TRIPLES#grammar-production-triple">`triple`</a> production produces an <a>RDF* triple</a> defined by the terms constructed for <a href="#grammar-production-nt-subject">`subject`</a>, <a data-cite="N-TRIPLES#grammar-production-predicate">`predicate`</a> and <a href="#grammar-production-nt-object">`object`</a>.</p>
+
+      <p>In addition to the <a data-cite="N-TRIPLES#sec-parsing-terms">Term Constructors</a> defined in [[N-TRIPLES]], an additional constructor is defined for <a href="#grammar-production-nt-embTriple">`embTriple`</a> of type <a>RDF* triple</a> defined by the terms constructed for <a href="#grammar-production-nt-subject">`subject`</a>, <a data-cite="N-TRIPLES#grammar-production-predicate">`predicate`</a> and <a href="#grammar-production-nt-object">`object`</a>.</p>
+
+    <p>All other productions MUST be handled as specified by <a data-cite="N-TRIPLES#sec-parsing-terms">Section 8.1 of the N-Triples specification</a> [[N-TRIPLES]], while still applying the changes above recursively.</p>
+    </section>
+    </section>
+
+    <section id="n-triples-star">
+    <h2>N-Quads*</h2>
+
+    <p>The [[N-QUADS]] format is extended to describe the N-Quads* format using the same production updates described in the <a href="#n-triples-star-grammar">N-Triples Grammar</a>.</p>
+
+    <p class="note">As RDF* describes <a>embedded triples</a> and not embedded quads, the <a data-cite="N-QUADS#grammar-production-graphLabel">`graphLabel`</a> component of an N-Quads <a data-cite="N-QUADS#grammar-production-statement">`statement`</a> does not apply to the <a href="#grammar-production-nt-embTriple">`embTriple`</a> component.</p>
+  </section>
 
     <section class="informative">
       <h2>Other Concrete Syntaxes</h2>
 
-      <p>While this document specifies only one concrete syntax, nothing prevents other concrete syntaxes of RDF* from being proposed. In particular, other existing concrete syntaxes for RDF, such as RDF/XML [[RDF-SYNTAX-GRAMMAR]], could be extended to support RDF*. In particular, the N-Triples syntax [[N-TRIPLES]] being a subset of Turtle, an appropriate subset of Turtle* could be defined to extend N-Triples accordingly.</p>
+      <p>While this document specifies a small number concrete syntaxes, nothing prevents other concrete syntaxes of RDF* from being proposed. In particular, other existing concrete syntaxes for RDF, such as RDF/XML [[RDF-SYNTAX-GRAMMAR]], could be extended to support RDF*.</p>
     </section>
 
   </section>

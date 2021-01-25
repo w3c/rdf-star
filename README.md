@@ -26,5 +26,5 @@ See https://w3c.github.io/rdf-star/
       
 Source: https://lists.w3.org/Archives/Public/public-rdf-star/2020Aug/0026.html
 
-[SA]: https://lists.w3.org/Archives/Public/public-rdf-star/2019Sep/0051.html
-[PG]: https://lists.w3.org/Archives/Public/public-rdf-star/2019Sep/0051.html
+[SA]: https://w3c.github.io/rdf-star/rdf-star-cg-spec.html#sa-mode-and-pg-mode
+[PG]: https://w3c.github.io/rdf-star/rdf-star-cg-spec.html#sa-mode-and-pg-mode

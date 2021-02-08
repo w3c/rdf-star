@@ -18,6 +18,7 @@ jobs:
     - name: ReSpec Checker
       uses: w3c/spec-prod@v1
       with:
+        TOOLCHAIN: respec
         SOURCE: rdf-star-cg-spec.html
         VALIDATE_LINKS: true
         VALIDATE_MARKUP: true

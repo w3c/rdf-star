@@ -1,0 +1,23 @@
+# This workflow validates the document for markup and examples.
+name: CI
+
+on:
+  push:
+    branches: [ '**' ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  tests:
+    name: Build and Validate
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    # Validate via ReSpec
+    # See https://github.com/w3c/spec-prod/blob/main/docs/examples.md
+    - name: ReSpec Checker
+      uses: w3c/spec-prod@v1
+      with:
+        SOURCE: rdf-star-cg-spec.html
+        VALIDATE_LINKS: true
+        VALIDATE_MARKUP: true

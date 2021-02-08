@@ -394,7 +394,7 @@ SELECT ?claimer WHERE {
     </section>
     </section>
 
-    <section id="n-triples-star">
+    <section id="n-quads-star">
     <h2>N-Quads*</h2>
 
     <p>The [[N-QUADS]] format is extended to describe the N-Quads* format using the same production updates described in the <a href="#n-triples-star-grammar">N-Triples* Grammar</a>.</p>
@@ -402,8 +402,8 @@ SELECT ?claimer WHERE {
     <p class="note">As RDF* describes <a>embedded triples</a> and not embedded quads, the <a data-cite="N-QUADS#grammar-production-graphLabel">`graphLabel`</a> component of an N-Quads <a data-cite="N-QUADS#grammar-production-statement">`statement`</a> does not apply to the <a href="#grammar-production-nt-embTriple">`embTriple`</a> component.</p>
 
     <p>An N-Quads* document defines an <a>RDF* dataset</a> composed of
-      a single <a>default graph</a>, which is an <a>RDF* graph</a>,
-      and zero or more <a>named graphs</a>, which are <a>RDF graphs</a>.</p>
+      a single <a>default graph</a>, and zero or more <a>named graphs</a>,
+      all of which are <a>RDF* graphs</a>.</p>
 
     <p>A conforming N-Quads* parser MUST parse any valid
       <strong>N-Quads document</strong> and additionally parse the 

@@ -911,6 +911,7 @@ SELECT ?claimer WHERE {
     <p>In the following, we introduce a number of RDF*-specific definitions, which rely on the following notions, defined in [[[RDF11-CONCEPTS]]] [[RDF11-CONCEPTS]] and [[[RDF11-MT]]] [[RDF11-MT]]:
       <dfn data-cite="RDF11-CONCEPTS#dfn-datatype">datatype</dfn>,
       <dfn data-cite="RDF11-CONCEPTS#dfn-lexical-form">lexical form</dfn>,
+      <dfn data-cite="RDF11-CONCEPTS#dfn-simple-literal">simple literal</dfn>,
       <dfn data-cite="RDF11-MT#dfn-ill-typed">ill-typed</dfn>,
       <dfn data-cite="RDF11-MT#dfn-merging" data-lt="merge">merging</dfn>,
       <dfn data-cite="RDF11-MT#dfn-satisfiable" data-lt="satisfiable">satisfiability</dfn>,
@@ -924,16 +925,16 @@ SELECT ?claimer WHERE {
 
       <p>We consider six <a>IRIs</a> |ST:subject term|, |PT:predicate term|, |OT:object term|, |SS:subject string|, |PS:predicate string| and |OS:object string| that will have a special meaning in our mapping.</p>
 
-      <p>We define a mapping |L| that maps any term |t| that is either an <a>IRI</a> or a <a>literal</a> to a literal with <ul>
-        <li>`xsd:string` as its the <a>datatype</a>, and</li>
-        <li>the <a data-cite="N-TRIPLES#canonical-ntriples">canonical N-Triples</a> representation of |t| as its <a>lexical form</a> [[N-TRIPLES]]. If `t` is itself a literal with the `xsd:string` <a>datatype</a>, the representation MUST NOT include the datatype.</li>
+      <p>We define a mapping |L| that maps any <a>IRI</a> or <a>literal</a> |t| to a literal with <ul>
+        <li>`xsd:string` as its <a>datatype</a>, and</li>
+        <li>the <a data-cite="N-TRIPLES#canonical-ntriples">canonical N-Triples</a> representation of |t| as its <a>lexical form</a> [[N-TRIPLES]]. If |t| is itself a literal with the `xsd:string` <a>datatype</a>, the representation MUST be a <a>simple literal</a>.</li>
       </ul>
       </p>
 
       <p>Given an <a>RDF* graph</a> |G|, the following steps transform it into an <a>RDF graph</a> that we call |unstar|(|G|).</p>
 
       <ol>
-        <li>Pick an <a>RDF* triple</a> (|s|, |p|, |o|) in the <a>constituents</a> of |G| such that neither |s|, |p| nor |o| is an <a>embedded triple</a>.</li>
+        <li>Pick an <a>RDF* triple</a> (|s|, |p|, |o|) in the <a>constituents</a> of |G| such that neither |s| nor |o| is an <a>embedded triple</a>.</li>
         <li>Mint a fresh blank node |b|, and replace by |b| all occurrences of (|s|, |p|, |o|) in the subject or object position of an <a>asserted</a> or <a>embedded triple</a> of |G|.</li>
         <li>Add the following <a>asserted triples</a> to |G|:<ul>
           <li>(|b|, |ST|, |s|)</li>
@@ -943,7 +944,7 @@ SELECT ?claimer WHERE {
           <li>(|b|, |PS|, |L|(|p|))</li>
           <li>(|b|, |OS|, |L|(|o|)) unless |o| is <a>blank node</a></li>
         </ul></li>
-        <li>Repeats the steps above until there are no embedded triple left in |G|</li>
+        <li>Repeat the steps above until there are no embedded triple left in |G|.</li>
       </ol>
       <p>After these steps, |unstar|(|G|) is an <a>RDF graph</a>, as it contains no embedded triples. Note that if |G| was already an <a>RDF graph</a>, then |unstar|(|G|) = |G|.</p>
 

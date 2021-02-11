@@ -287,6 +287,76 @@ r:47e1cf2 a :Commit ;
           so that a triple can be searched for across commit history in SPARQL*.
         </p>
       </section>
+
+      <section id="rdfsSupport">
+        <h4>SPARQL*/RDF* and RDFS support</h4>
+        <p><a href="https://github.com/w3c/rdf-star/issues/80#issuecomment-777292682">Submitted Use Case</a></p>
+        <p>
+          As a user, I want to express facts as triple statements `{:s :p :o}` within a
+          triplestore.  Later on I realise I want to add facts about this fact.  However
+          the {:s :p :o} triple has already been asserted in the triplestore, so I need to
+          add a reification.
+        </p>
+        <pre>
+          :key rdf:subject :s ; rdf:predicate :p ; rdf:object :o .
+        </pre>
+        <p>
+          Now I can add facts about the fact:
+        </p>
+        <pre>
+          :key :uom :cm ; :accuracy ".32" .
+        </pre>
+        <p>
+          So far 'standard' reification.
+        </p>
+        <p>
+          However, as a user I want to add some RDFS 'referential' integrity to help
+          manage the use of additional predicates such a :uom and :accuracy.  Since the
+          rdfs:domain of rdf:subject, rdf:predicate, and rdf:object, it can be inferred
+          that :key is a rdf:Statement.  This then implies that the rdfs:domain of :uom
+          and :accuracy is also rdf:Statement. Thus if I continue reifying other
+          statements, any predicates associated with the reified statement must have a
+          rdfs:domain of rdf:Statement.
+        </p>
+        <p>
+          So as a user who wants to add some RDFS-based control over the model, I would
+          introduce a rdfs:subClassOf so that predicates associated with this subClass
+          have a rdfs:domain of this subclass
+        </p>
+        <p>
+          Triple:
+        </p>
+        <pre>
+          :Peter :married :Beth
+          </pre>
+        <p>
+        Reified Triple:
+        </p>
+        <pre>
+        :marriageKey rdf:subject :Peter ; rdf:predicate :married ; rdf:object :Beth .
+
+        :marriageKey a :Marriage ;
+                :when "1980" ;
+    		        :where "Kelby" .
+        </pre>
+        <p>
+          with the following RDFS assertions:
+        </p>
+        <pre>
+          :Marriage rdfs:subClassOf rdf:Statement .
+        </pre>
+and
+        <pre>
+        :when rdfs:domain  :Marriage .
+        :where rdfs:domain  :Marriage .
+        </pre>
+        <p>
+          The benefits are that I can combine triple reification with RDFS providing the
+          same benefits that rdfs offers to rdfs:Class to rdf:Statement.
+        </p>
+
+      </section>
+
     </section>
 
     <section>

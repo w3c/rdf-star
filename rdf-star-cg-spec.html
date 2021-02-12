@@ -906,9 +906,9 @@ SELECT ?claimer WHERE {
   <section>
     <h2>RDF-star Semantics</h2>
 
-    <p>In this section, we provide a model-theoretic semantics for RDF*, based on the one defined in [[[RDF11-MT]]] [[RDF11-MT]]. More precisely, we define a mapping from RDF*'s abstract syntax into standard RDF's abstract syntax, and define the semantics of <a>RDF* graphs</a> in terms of the semantics of the mapped <a>RDF graphs</a>.</p>
+    <p>In this section, we provide a model-theoretic semantics for RDF-star, based on the one defined in [[[RDF11-MT]]] [[RDF11-MT]]. More precisely, we define a mapping from RDF-star's abstract syntax into standard RDF's abstract syntax, and define the semantics of <a>RDF-star graphs</a> in terms of the semantics of the mapped <a>RDF graphs</a>.</p>
 
-    <p>In the following, we introduce a number of RDF*-specific definitions, which rely on the following notions, defined in [[[RDF11-CONCEPTS]]] [[RDF11-CONCEPTS]] and [[[RDF11-MT]]] [[RDF11-MT]]:
+    <p>In the following, we introduce a number of definitions specific to RDF-star, which rely on the following notions, defined in [[[RDF11-CONCEPTS]]] [[RDF11-CONCEPTS]] and [[[RDF11-MT]]] [[RDF11-MT]]:
       <dfn data-cite="RDF11-CONCEPTS#dfn-datatype">datatype</dfn>,
       <dfn data-cite="RDF11-CONCEPTS#dfn-lexical-form">lexical form</dfn>,
       <dfn data-cite="RDF11-CONCEPTS#dfn-simple-literal">simple literal</dfn>,
@@ -921,7 +921,7 @@ SELECT ?claimer WHERE {
     </p>
 
     <section id="mapping">
-      <h2>Mapping RDF* abstract syntax to RDF</h2>
+      <h2>Mapping RDF-star abstract syntax to RDF</h2>
 
       <p>We consider six <a>IRIs</a> |ST:subject term|, |PT:predicate term|, |OT:object term|, |SS:subject string|, |PS:predicate string| and |OS:object string| that will have a special meaning in our mapping.</p>
 
@@ -931,10 +931,10 @@ SELECT ?claimer WHERE {
       </ul>
       </p>
 
-      <p>Given an <a>RDF* graph</a> |G|, the following steps transform it into an <a>RDF graph</a> that we call |unstar|(|G|).</p>
+      <p>Given an <a>RDF-star graph</a> |G|, the following steps transform it into an <a>RDF graph</a> that we call |unstar|(|G|).</p>
 
       <ol>
-        <li>Pick an <a>RDF* triple</a> (|s|, |p|, |o|) in the <a>constituents</a> of |G| such that neither |s| nor |o| is an <a>embedded triple</a>.</li>
+        <li>Pick an <a>RDF-star triple</a> (|s|, |p|, |o|) in the <a>constituents</a> of |G| such that neither |s| nor |o| is an <a>embedded triple</a>.</li>
         <li>Mint a fresh blank node |b|, and replace by |b| all occurrences of (|s|, |p|, |o|) in the subject or object position of an <a>asserted</a> or <a>embedded triple</a> of |G|.</li>
         <li>Add the following <a>asserted triples</a> to |G|:<ul>
           <li>(|b|, |ST|, |s|)</li>
@@ -951,13 +951,13 @@ SELECT ?claimer WHERE {
     </section>
 
     <section>
-      <h2>Entailment of <a>RDF* graphs</a></h2>
+      <h2>Entailment of <a>RDF-star graphs</a></h2>
 
-      <p>Following [[[RDF11-MT]]], we extend the notions of <a>satisfiability</a> and <a>entailment</a> for <a>RDF* graphs</a>. Given two <a>RDF* graphs</a> |G| and |H|:<p>
+      <p>Following [[[RDF11-MT]]], we extend the notions of <a>satisfiability</a> and <a>entailment</a> for <a>RDF-star graphs</a>. Given two <a>RDF-star graphs</a> |G| and |H|:<p>
       <ul>
         <li>We say that |G| is (simply) <a>satisfiable</a> (resp. <a>unsatisfiable</a>) if and only if |unstar|(|G|) is (simply) <a>satisfiable</a> (resp. <a>unsatisfiable</a>).</li>
         <li>We say that |H| is (simply) <a>entailed</a> by (resp. <a>equivalent</a> to) |G| if and only if |unstar|(|H|) is (simply) <a>entailed</a> by (resp. <a>equivalent</a> to) |unstar|(|G|).</li>
-        <li>Other notions of <a>satisfiability</a> and <a>entailment</a>, such as <a data-cite="RDF11-MT#rdf-entailment">RDF entailment</a> or <a data-cite="RDF11-MT#rdfs-entailment">RDFS entailment</a>, can be extended in the same way for <a>RDF* graphs</a>.</li>
+        <li>Other notions of <a>satisfiability</a> and <a>entailment</a>, such as <a data-cite="RDF11-MT#rdf-entailment">RDF entailment</a> or <a data-cite="RDF11-MT#rdfs-entailment">RDFS entailment</a>, can be extended in the same way for <a>RDF-star graphs</a>.</li>
       </ul>
     </section>
 
@@ -965,19 +965,19 @@ SELECT ?claimer WHERE {
       <h2>Remarks</h2>
 
       <section>
-        <h2>Combining RDF* graphs</h2>
+        <h2>Combining RDF-star graphs</h2>
 
-        <p>Care must be taken when <a>RDF graphs</a> that result from <a>RDF* graphs</a> are combined through union or <a>merging</a>. Given two <a>RDF* graphs</a> |G| and |H|, it may be the case that |unstar|(|G| ∪ |H|) ≠ |unstar|(|G|) ∪ |unstar|(|H|). More precisely, if |G| and |H| contain the same <a>embedded triple</a>, this triple will be mapped to a single blank node in |unstar|(|G| ∪ |H|), but in two potentially different blank nodes in |unstar|(|G|) ∪ |unstar|(|H|). These blank nodes will need to be unified in order to get the correct entailments.</p>
+        <p>Care must be taken when <a>RDF graphs</a> that result from <a>RDF-star graphs</a> are combined through union or <a>merging</a>. Given two <a>RDF-star graphs</a> |G| and |H|, it may be the case that |unstar|(|G| ∪ |H|) ≠ |unstar|(|G|) ∪ |unstar|(|H|). More precisely, if |G| and |H| contain the same <a>embedded triple</a>, this triple will be mapped to a single blank node in |unstar|(|G| ∪ |H|), but in two potentially different blank nodes in |unstar|(|G|) ∪ |unstar|(|H|). These blank nodes will need to be unified in order to get the correct entailments.</p>
 
       </section>
       <section>
         <h2>Considerations on interoperability</h2>
 
-        <p>The special properties (|ST|, |PT|, etc.), used in the mapping for representing <a>embedded triples</a> in plain RDF, are deliberately not specified. As a consequence, although any <a>RDF* graph</a> |G| is semantically equivalent to an <a>RDF graph</a> |unstar|(|G|), that latter graph is implementation dependent, as different systems will use a different concrete <a>IRI</a> for each special property.</p>
+        <p>The special properties (|ST|, |PT|, etc.), used in the mapping for representing <a>embedded triples</a> in plain RDF, are deliberately not specified. As a consequence, although any <a>RDF-star graph</a> |G| is semantically equivalent to an <a>RDF graph</a> |unstar|(|G|), that latter graph is implementation dependent, as different systems will use a different concrete <a>IRI</a> for each special property.</p>
 
-        <p>This makes it impossible for RDF*-aware systems to reliably exchange <a>RDF* graphs</a> in their mapped form using non-RDF* concrete syntaxes (unless of course the <a>RDF* graph</a> contains no <a>embedded triple</a>). However, such systems can always use <a href="#turtle-star">Turtle*</a> or other extended concrete syntaxes, so that does not limit interoperability among them. On the other hand, it prevents the unrestricted use of the special properties, because that may lead to surprising corner cases, as illustrated in <a href="#unrestricted-use-of-ST-and-SS"></a>. Supporting these corner cases would be a significant burden on RDF* implementations, for a very limited utility.</p>
+        <p>This makes it impossible for RDF-star-aware systems to reliably exchange <a>RDF-star graphs</a> in their mapped form using non-RDF-star concrete syntaxes (unless of course the <a>RDF-star graph</a> contains no <a>embedded triple</a>). However, such systems can always use <a href="#turtle-star">Turtle-star</a> or other extended concrete syntaxes, so that does not limit interoperability among them. On the other hand, it prevents the unrestricted use of the special properties, because that may lead to surprising corner cases, as illustrated in <a href="#unrestricted-use-of-ST-and-SS"></a>. Supporting these corner cases would be a significant burden on RDF-star implementations, for a very limited utility.</p>
 
-        <p>Furthermore, it is expected that some implementations will not rely on the mapping, but represent and work directly with the <a href="#concepts">abstract syntax</a> of RDF*. For these implementations, having to handle both the native and the mapped representation of <a>embedded triples</a> would be even more challenging.</p>
+        <p>Furthermore, it is expected that some implementations will not rely on the mapping, but represent and work directly with the <a href="#concepts">abstract syntax</a> of RDF-star. For these implementations, having to handle both the native and the mapped representation of <a>embedded triples</a> would be even more challenging.</p>
 
         <pre id="unrestricted-use-of-ST-and-SS"
         data-transform="updateExample"
@@ -1025,7 +1025,7 @@ SELECT ?claimer WHERE {
     <section>
       <h2>The seminal example</h2>
 
-      <p>The motivating example in the original RDF* paper [[RDF-STAR-FOUNDATION]] was on a provenance use-case, and is repeated below.</p>
+      <p>The motivating example in the original RDF-star paper [[RDF-STAR-FOUNDATION]] was on a provenance use-case, and is repeated below.</p>
 
       <pre data-transform="updateExample"
         data-content-type="text/x-turtle-star"
@@ -1041,8 +1041,8 @@ SELECT ?claimer WHERE {
 
       <p>This example was further debated on the <a href="https://lists.w3.org/Archives/Public/public-rdf-star/">RDF-star mailing list</a>, as it appears to have set wrong expectations about what embedded triples represent. More precisely, from this example, one may wrongly assume that `&lt;&lt;:bob foaf:age 23>>` represents the <em>occurrence</em> of the given triple at the address `http://example.net/listing.html` (see <a href="#occurrences"></a>). This impression may be reinforced by the use of `dct:creator`: arguably, a triple (as a unique abstract entity) is not "created" by anyone, while an occurrence thereof can be said to be created or authored.</p>
 
-      <p>Another serious issue with this example is that it does not allow the addition of other creators and sources for the triple: one could not tell which source corresponds to which creator. Correctly capturing this information would require additional nodes to explicitly represent triple occurrences, as in <a href="#occurrences-example"></a>. In retrospect, the provenance use-case, although a valid use-case for RDF*, was not the most suitable choice for an introductory example.</p>
-  
+      <p>Another serious issue with this example is that it does not allow the addition of other creators and sources for the triple: one could not tell which source corresponds to which creator. Correctly capturing this information would require additional nodes to explicitly represent triple occurrences, as in <a href="#occurrences-example"></a>. In retrospect, the provenance use-case, although a valid use-case for RDF-star, was not the most suitable choice for an introductory example.</p>
+
     </section>
 
   </section>

@@ -967,7 +967,7 @@ SELECT ?claimer WHERE {
       <section>
         <h2>Combining RDF* graphs</h2>
 
-        <p>Care must be taken when <a>RDF* graphs</a> are combined through union or <a>merging</a>. Given two <a>RDF* graphs</a> |G| and |H|, it may be the case that |unstar|(|G| ∪ |H|) ≠ |unstar|(|G|) ∪ |unstar|(|H|). More precisely, if |G| and |H| contain the same <a>embedded triple</a>, this triple will be mapped to a single blank node in |unstar|(|G| ∪ |H|), but in two potentially different blank nodes in |unstar|(|G|) ∪ |unstar|(|H|). These blank nodes will need to be unified in order to get the correct entailments.</p>
+        <p>Care must be taken when <a>RDF graphs</a> that result from <a>RDF* graphs</a> are combined through union or <a>merging</a>. Given two <a>RDF* graphs</a> |G| and |H|, it may be the case that |unstar|(|G| ∪ |H|) ≠ |unstar|(|G|) ∪ |unstar|(|H|). More precisely, if |G| and |H| contain the same <a>embedded triple</a>, this triple will be mapped to a single blank node in |unstar|(|G| ∪ |H|), but in two potentially different blank nodes in |unstar|(|G|) ∪ |unstar|(|H|). These blank nodes will need to be unified in order to get the correct entailments.</p>
 
       </section>
       <section>

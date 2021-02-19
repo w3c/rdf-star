@@ -719,7 +719,7 @@ SELECT ?claimer WHERE {
               >
                 <!--
                 <<?c a owl:Class>> dct:source ?src .
-                <<?c a rdfs:Class>> :entailing <<?c a rdfs:Class>> .
+                <<?c a owl:Class>> :entailing <<?c a rdfs:Class>> .
                 -->
               </pre>
             </div>
@@ -791,7 +791,7 @@ SELECT ?claimer WHERE {
       </section>
     </section>
 
-    <section>
+    <section id="evaluation-semantics">
       <h2>Evaluation Semantics</h2>
 
       <p>The SPARQL specification defines a function <q>eval(|D|(|G|), algebra expression) as the evaluation of an algebra expression with respect to a dataset |D| having active graph |G|</q> [<a data-cite="SPARQL11-QUERY#sparqlAlgebraEval">SPARQL11-QUERY, Section 18.6</a>]. Recall that the dataset |D| in the context of SPARQL-star is an <a>RDF-star dataset</a> and, thus, the active graph |G| is an <a>RDF-star graph</a>, and so is any other graph in dataset |D|. The definition of the <a data-cite="SPARQL11-QUERY#sparqlAlgebraEval">eval</a> function is recursive; the two base cases of this definition for SPARQL-star are given as follows:</p>
@@ -941,7 +941,206 @@ SELECT ?claimer WHERE {
   <section>
     <h2>SPARQL-star Update</h2>
 
-    <div class="issue" data-number="14"></div>
+    <p>This section specifies SPARQL-star Update, an update language for RDF-star. This language extends SPARQL Update [[SPARQL11-UPDATE]], the update language for RDF, by adding RDF-star-specific features and semantics.</p>
+
+    <section class="informative">
+      <h2>Informal Description</h2>
+
+      <p>While SPARQL Update operates over a <a data-cite="SPARQL11-UPDATE#graphStore">graph store</a> that consists of RDF graphs, SPARQL-star Update extends the notion of graph store to contain RDF-star graphs instead of RDF graphs. That is, a <a data-cite="SPARQL11-UPDATE#defn_graphStore">graph store</a> in the context of SPARQL-star Update contains one (unnamed) slot holding an RDF-star graph, referred to as the default graph, and zero or more named slots holding other RDF-star graphs, referred to as named graphs. Then, all <a data-cite="SPARQL11-UPDATE#graphManagement">graph management operations</a> in SPARQL Update (<a data-cite="SPARQL11-UPDATE#create">CREATE</a>, <a data-cite="SPARQL11-UPDATE#drop">DROP</a>, <a data-cite="SPARQL11-UPDATE#copy">COPY</a>, <a data-cite="SPARQL11-UPDATE#move">MOVE</a>, <a data-cite="SPARQL11-UPDATE#add">ADD</a>) carry over directly to SPARQL-star Update with the only difference being that in SPARQL-star Update these operations manage RDF-star graphs. For instance, the <a data-cite="SPARQL11-UPDATE#create">CREATE</a> operation in SPARQL-star Update creates an RDF-star graph rather than a pure RDF graph. Similarly, the <a data-cite="SPARQL11-UPDATE#graphUpdate">graph update operations</a> <a data-cite="SPARQL11-UPDATE#load">LOAD</a> and <a data-cite="SPARQL11-UPDATE#clear">CLEAR</a> in SPARQL-star Update operate with RDF-star graphs in the same way as their SPARQL Update counterparts operate with RDF graphs.</p>
+
+      <p>The only operations that SPARQL-star Update actually extends are the graph update operations <a data-cite="SPARQL11-UPDATE#insertData">INSERT DATA</a>, <a data-cite="SPARQL11-UPDATE#deleteData">DELETE DATA</a>, and <a data-cite="SPARQL11-UPDATE#deleteInsert">DELETE/INSERT</a>. This section describes these extensions informally. While this description focuses mainly on updates to the default graph, the operations can also be applied to the named graphs.</p>
+
+      <section>
+        <h2>INSERT DATA</h2>
+
+        <p>The <a data-cite="SPARQL11-UPDATE#insertData">INSERT DATA</a> operation can be used to add a given set of triples into the graph store. In the context of SPARQL-star Update, these triples may be <a>RDF-star triples</a>. As an example, consider the following INSERT DATA operation.</p>
+
+        <pre data-transform="updateExample"
+             data-content-type="application/x-sparql-star-query"
+             class="nohighlight example"
+        >
+          <!--
+          PREFIX : <http://www.example.org/>
+
+          INSERT DATA {
+            :alice :claims << :bob :age 23 >> .
+          }
+          -->
+        </pre>
+
+        <p>Suppose this INSERT DATA operation is executed over a graph store with an empty default graph. After executing this operation, the default graph contains the given (nested) RDF-star triple. Now, it is possible to query for this triple. For instance, the following SPARQL-star query returns a single solution mapping in which the variables ?p and ?a are mapped to the IRI <code>:alice</code> and the literal <code>23</code>, respectively.</p>
+
+        <pre data-transform="updateExample"
+             data-content-type="application/x-sparql-star-query"
+             class="nohighlight example"
+        >
+          <!--
+          PREFIX : <http://www.example.org/>
+
+          SELECT ?p ?a WHERE {
+            ?p :claims << :bob :age ?a >> .
+          }
+          -->
+        </pre>
+
+        <p>Notice that inserting a nested triple does not automatically also insert its embedded triple(s) as asserted triple(s) into the graph. Hence, in the previous example, after executing the given INSERT DATA operation, the default graph does <em>not</em> contain the triple <code>:bob :age 23</code>. In other words, a query such as the following would have an empty result.</p>
+
+        <pre data-transform="updateExample"
+             data-content-type="application/x-sparql-star-query"
+             class="nohighlight example"
+        >
+          <!--
+          PREFIX : <http://www.example.org/>
+
+          SELECT ?a WHERE {
+            :bob :age ?a .
+          }
+          -->
+        </pre>
+
+        <p>For an embedded triple to be present in the graph as an asserted triple, it needs to be inserted as such. For instance, the INSERT DATA operation in the example above may be modified as follows in order to insert not only the nested triple but also the triple <code>:bob :age 23</code>.</p>
+
+        <pre data-transform="updateExample"
+             data-content-type="application/x-sparql-star-query"
+             class="nohighlight example"
+        >
+          <!--
+          PREFIX : <http://www.example.org/>
+
+          INSERT DATA {
+            :bob :age 23 .
+            :alice :claims << :bob :age 23 >> .
+          }
+          -->
+        </pre>
+
+      </section>
+
+      <section>
+        <h2>DELETE DATA</h2>
+
+        <p>The <a data-cite="SPARQL11-UPDATE#deleteData">DELETE DATA</a> operation can be used to remove a given set of triples from the graph store. In the context of SPARQL-star Update, this may include removing nested RDF-star triples as demonstrated in the following example.</p>
+
+        <pre data-transform="updateExample"
+             data-content-type="application/x-sparql-star-query"
+             class="nohighlight example"
+        >
+          <!--
+          PREFIX : <http://www.example.org/>
+
+          DELETE DATA {
+            :alice :claims << :bob :age 23 >> .
+          }
+          -->
+        </pre>
+
+        <p>After executing this DELETE DATA operation over a graph store with a default graph that contains the given nested triple, the graph will not contain this triple any longer. If the graph did not contain that nested triple in the first place, the graph will remain unchanged by the given DELETE DATA operation.</p>
+
+        <p>Notice that deleting triples by using the DELETE DATA operation does not affect any other triples in the corresponding graphs. For instance, for a default graph that contains the triple <code>:bob :age 23</code> as an asserted triple, the DELETE DATA operation given above does <em>not</em> delete this asserted triple. In contrast, the following operation would delete this asserted triple but it would <em>not</em> delete any nested triple that contains the given triple as an embedded triple.</p>
+
+        <pre data-transform="updateExample"
+             data-content-type="application/x-sparql-star-query"
+             class="nohighlight example"
+        >
+          <!--
+          PREFIX : <http://www.example.org/>
+
+          DELETE DATA {
+            :bob :age 23 .
+          }
+          -->
+        </pre>
+
+      </section>
+
+      <section>
+        <h2>DELETE/INSERT</h2>
+
+        <p>The <a data-cite="SPARQL11-UPDATE#deleteInsert">DELETE/INSERT</a> operation can be used to remove or add triples based on variable bindings obtained by evaluating a given WHERE clause. As an example, the following DELETE/INSERT operation replaces all nested triples in which <code>:alice</code> is the subject by nested triples in which <code>:carol</code> is the subject.</p>
+
+        <pre data-transform="updateExample"
+             data-content-type="application/x-sparql-star-query"
+             class="nohighlight example"
+        >
+          <!--
+          PREFIX : <http://www.example.org/>
+
+          DELETE { :alice ?pp <<?s ?p ?o>> . }
+          INSERT { :carol ?pp <<?s ?p ?o>> . }
+          WHERE {  :alice ?pp <<?s ?p ?o>> . }
+          -->
+        </pre>
+
+        <p>As in SPARQL Update, in SPARQL-star Update it is possible to use variations of the DELETE/INSERT operations in which either the DELETE clause or the INSERT clause are omitted.</p>
+
+        <p>When removing triples via the DELETE clause (irrespective of whether the INSERT clause is omitted or not), the effects with respect to nested triples must be the same as described above for the DELETE DATA operation; i.e., only the triples that are explicitly identified to be deleted are deleted. Similarly, inserting triples via the INSERT clause has the same effects as described above for the INSERT DATA operation; i.e., inserting nested triples does not automatically also insert their embedded triples as asserted triples into the graph. Of course, it is possible to request such inserts explicitly as demonstrated in the following example.</p>
+
+        <pre data-transform="updateExample"
+             data-content-type="application/x-sparql-star-query"
+             class="nohighlight example"
+        >
+          <!--
+          PREFIX : <http://www.example.org/>
+
+          DELETE { :alice ?pp <<?s ?p ?o>> . }
+          INSERT { :carol ?pp <<?s ?p ?o>> .  ?s ?p ?o .}
+          WHERE {  :alice ?pp <<?s ?p ?o>> . }
+          -->
+        </pre>
+
+        <p>While all SPARQL-star Update examples above focus only on the default graph of a graph store, SPARQL-star Update can also be used to update the named graphs of a graph store, which works in exactly the same way as in SPARQL Update. As a possible example consider the following INSERT operation which retrieves all embedded triples found in nested triples in the default graph and inserts them as asserted triples into the named graph with IRI&nbsp;<code>:graph2</code>.</p>
+
+        <pre data-transform="updateExample"
+             data-content-type="application/x-sparql-star-query"
+             class="nohighlight example"
+        >
+          <!--
+          PREFIX : <http://www.example.org/>
+
+          INSERT {
+            GRAPH :graph2 { ?s ?p ?o }
+          }
+          WHERE {
+            { <<?s ?p ?o>> ?pp ?oo }
+            UNION
+            { ?ss ?pp <<?s ?p ?o>> }
+          }
+          -->
+        </pre>
+
+      </section>
+
+    </section>
+
+<!--
+    <section>
+      <h2>Initial Definitions</h2>
+
+      <p>We begin by introducing an RDF-star-aware notion of a <a data-cite="SPARQL11-UPDATE#defn_graphStore">graph store</a> [[SPARQL11-UPDATE]].</p>
+
+      <p>A <dfn data-lt="graphStore-star">RDF-star graph store</dfn> |GS|&nbsp;=&nbsp;{ |DG|, (|iri|<sub>1</sub>, |G|<sub>1</sub>),  ... , (|iri|<sub>|n|</sub>, |G|<sub>|n|</sub>) } is a mutable container of <a>RDF-star graphs</a>. It has one unnamed (default) slot and zero or more named slots. The unnamed slot holds an RDF-star graph&nbsp;|DG|, which is called the <em>default graph</em>; each named slot is a pair (|iri|<sub>|i|</sub>, |G|<sub>|i|</sub>) of an RDF-star graph&nbsp;|G|<sub>|i|</sub> and an associated <a>IRI</a>&nbsp;|iri|<sub>i</sub> where</p>
+      <ul>
+        <li>|n| ≥ 0,</li>
+        <li>for each 1 ≤ |i| ≤ |n|, |G|<sub>|i|</sub> is an RDF-star graph associated with the named slot identified by IRI&nbsp;|iri|<sub>|i|</sub>,</li>
+        <li>all these IRIs are distinct, i.e., |i| ≠ |j| implies that |iri|<sub>|i|</sub> ≠ |iri|<sub>|j|</sub>.</li>
+      </ul>
+
+    </section>
+-->
+
+    <section>
+      <h2>Grammar</h2>
+
+      <p>SPARQL-star Update is an extension of the SPARQL Update language [[SPARQL11-UPDATE]]. As mentioned in <a data-cite="SPARQL11-UPDATE#grammar">SPARQL&nbsp;1.1 Update, Appendix&nbsp;C</a>&nbsp;[[SPARQL11-UPDATE]], the grammar of the latter is provided as part of the <a data-cite="SPARQL11-QUERY#sparqlGrammar">SPARQL&nbsp;1.1 Query grammar</a>. Similarly, the grammar of SPARQL-star Update is provided as part of the grammar of the SPARQL-star query language, which is defined by the SPARQL&nbsp;1.1 Query grammar with the extensions specified in <a href="#sparql-star-grammar"></a>. As a result of these extensions, the production rules <a data-cite="SPARQL11-QUERY#rQuadData">QuadData</a> and <a data-cite="SPARQL11-QUERY#rQuadPattern">QuadPattern</a>, which are used in the definition of SPARQL Update [[SPARQL11-UPDATE]], are extended to capture nested triples and nested triple patterns as demonstrated in the examples above.</p>
+
+    </section>
+
+    <section>
+      <h2>Semantics</h2>
+
+      <p>The semantics of SPARQL-star Update operations can also be defined by a simple extension of <a data-cite="SPARQL11-UPDATE#formalModel">the formalization of SPARQL Update</a>&nbsp;[[SPARQL11-UPDATE]]. This extension assumes that any mention of "RDF triple" or "triple" in the formalization of SPARQL Update is understood as an <a>RDF-star triple</a>. Similarly, "RDF graph" and "solution mapping" are understood as <a>RDF-star graph</a> and <a>SPARQL-star solution mapping</a>, respectively. Any mention of the "evaluation function eval()" is understood as the eval function for SPARQL-star as defined in <a href="#evaluation-semantics"></a>.</p>
+
+    </section>
 
   </section>
 

@@ -1056,7 +1056,7 @@ SELECT ?claimer WHERE {
       <section>
         <h2>DELETE/INSERT</h2>
 
-        <p>The <a data-cite="SPARQL11-UPDATE#deleteInsert">DELETE/INSERT</a> operation can be used to remove or add triples based on variable bindings obtained by evaluating a given WHERE clause. As an example, the following DELETE/INSERT operation replaces all nested triples in which <code>:alice</code> is the subject by nested triples in which <code>:alicia</code> is the subject.</p>
+        <p>The <a data-cite="SPARQL11-UPDATE#deleteInsert">DELETE/INSERT</a> operation can be used to remove or add triples based on variable bindings obtained by evaluating a given WHERE clause. As an example, the following DELETE/INSERT operation replaces all nested triples in which <code>:alice</code> is the subject by nested triples in which <code>:carol</code> is the subject.</p>
 
         <pre data-transform="updateExample"
              data-content-type="application/x-sparql-star-query"
@@ -1065,9 +1065,9 @@ SELECT ?claimer WHERE {
           <!--
           PREFIX : <http://www.example.org/>
 
-          DELETE { :alice  ?pp <<?s ?p ?o>> . }
-          INSERT { :alicia ?pp <<?s ?p ?o>> . }
-          WHERE {  :alice  ?pp <<?s ?p ?o>> . }
+          DELETE { :alice ?pp <<?s ?p ?o>> . }
+          INSERT { :carol ?pp <<?s ?p ?o>> . }
+          WHERE {  :alice ?pp <<?s ?p ?o>> . }
           -->
         </pre>
 
@@ -1082,9 +1082,9 @@ SELECT ?claimer WHERE {
           <!--
           PREFIX : <http://www.example.org/>
 
-          DELETE { :alice  ?pp <<?s ?p ?o>> . }
-          INSERT { :alicia ?pp <<?s ?p ?o>> .  ?s ?p ?o .}
-          WHERE {  :alice  ?pp <<?s ?p ?o>> . }
+          DELETE { :alice ?pp <<?s ?p ?o>> . }
+          INSERT { :carol ?pp <<?s ?p ?o>> .  ?s ?p ?o .}
+          WHERE {  :alice ?pp <<?s ?p ?o>> . }
           -->
         </pre>
 

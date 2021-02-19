@@ -430,10 +430,10 @@
           <td>`ObjectListPath`</td>
           <td>::=</td>
           <td>
-            <a data-cite="SPARQL11-QUERY#rObjectPath">ObjectPath</a> <a href="#rAnnotationPattern">AnnotationPattern</a>`?`
+            <a data-cite="SPARQL11-QUERY#rObjectPath">ObjectPath</a> <a href="#rAnnotationPatternPath">AnnotationPatternPath</a>`?`
             `(`
               <code class="token">','</code>
-              <a data-cite="SPARQL11-QUERY#rObjectPath">ObjectPath</a> <a href="#rAnnotationPattern">AnnotationPattern</a>`?`
+              <a data-cite="SPARQL11-QUERY#rObjectPath">ObjectPath</a> <a href="#rAnnotationPatternPath">AnnotationPatternPath</a>`?`
             `)*`
           </td>
         </tr>
@@ -489,6 +489,16 @@
           <td>
             <code class="token">'{|'</code>
             <a data-cite="SPARQL11-QUERY#rPropertyListNotEmpty">PropertyListNotEmpty</a>
+            <code class="token">'|}'</code>
+          </td>
+        </tr>
+        <tr id="rAnnotationPatternPath">
+          <td>[178]</td>
+          <td>`AnnotationPatternPath`</td>
+          <td>::=</td>
+          <td>
+            <code class="token">'{|'</code>
+            <a data-cite="SPARQL11-QUERY#rPropertyListPathNotEmpty">PropertyListPathNotEmpty</a>
             <code class="token">'|}'</code>
           </td>
         </tr>

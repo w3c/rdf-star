@@ -52,11 +52,11 @@
 </style>
 <title>manifest</title>
 <h1>manifest</h1>
-<p>Generated from <a href="manifest.jsonld">manifest.jsonld</a></p><p>RDF* Semantics tests</p>
+<p>Generated from <a href="manifest.ttl">manifest.ttl</a></p><p>RDF* Semantics tests</p>
 <p><strong>Entries:</strong></p>
 <ul class="entries">
-<li class="approved"><a href="#triple-in-subject">triple-in-subject</a>
-<li class="approved"><a href="#triple-in-object">triple-in-object</a>
+<li class="proposed"><a href="#triple-in-subject">triple-in-subject</a>
+<li class="proposed"><a href="#triple-in-object">triple-in-object</a>
 <li class="proposed"><a href="#all-identical-embedded-triples-are-the-same">all-identical-embedded-triples-are-the-same</a>
 <li class="proposed"><a href="#embedded-triples-no-spurious">embedded-triples-no-spurious</a>
 <li class="proposed"><a href="#bnodes-in-embedded-subject">bnodes-in-embedded-subject</a>
@@ -138,10 +138,10 @@ A document on the results of the testing will eventually be at
 http://w3c.github.io/rdf-star/tests/reports.html .
 This document will have more information on submitting reports, including examples
 of what the reports should contain.</pre>
-<section id="triple-in-subject" class="entry approved PositiveEntailmentTest">
+<section id="triple-in-subject" class="entry proposed PositiveEntailmentTest">
 <h2>triple-in-subject <a href="#triple-in-subject">🔗</a></h2>
 <table class="properties">
-<tr class="status"><th>status:</th><td>approved</td>
+<tr class="status"><th>status:</th><td>proposed</td>
 <tr class="type"><th>type:</th><td>positive entailment test</td>
 <tr class="regime"><th>regime:</th><td>simple</td>
 </table>
@@ -159,10 +159,10 @@ prefix : &lt;http://example.com/ns#&gt;
 &lt;&lt; :a :b :c &gt;&gt; :p1 :o1.
 </pre>
 <p>Embedded triples can appear in subject position (EVENTUALLY, this should be a Turtle* test rather than a semantics test).</p>
-</section><section id="triple-in-object" class="entry approved PositiveEntailmentTest">
+</section><section id="triple-in-object" class="entry proposed PositiveEntailmentTest">
 <h2>triple-in-object <a href="#triple-in-object">🔗</a></h2>
 <table class="properties">
-<tr class="status"><th>status:</th><td>approved</td>
+<tr class="status"><th>status:</th><td>proposed</td>
 <tr class="type"><th>type:</th><td>positive entailment test</td>
 <tr class="regime"><th>regime:</th><td>simple</td>
 </table>
@@ -456,7 +456,7 @@ prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt;
 
 :a :b "c"^^xsd:integer.</pre>
 <div>MUST entail</div>
-<div>a contradiction</div><p>Checks that xsd:integer is indeed recognized, to ensure that malformed-literal* tests do not pass spuriously.</p>
+<p>Checks that xsd:integer is indeed recognized, to ensure that malformed-literal* tests do not pass spuriously.</p>
 </section><section id="malformed-literal" class="entry proposed NegativeEntailmentTest">
 <h2>malformed-literal <a href="#malformed-literal">🔗</a></h2>
 <table class="properties">
@@ -472,7 +472,7 @@ prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt;
 
 &lt;&lt; :a :b "c"^^xsd:integer &gt;&gt; :p1 :o1.</pre>
 <div>MUST NOT entail</div>
-<div>a contradiction</div><p>Malformed literals are allowed when embedded.</p>
+<p>Malformed literals are allowed when embedded.</p>
 </section><section id="malformed-literal-accepted" class="entry proposed PositiveEntailmentTest">
 <h2>malformed-literal-accepted <a href="#malformed-literal-accepted">🔗</a></h2>
 <table class="properties">

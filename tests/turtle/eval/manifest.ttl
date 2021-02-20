@@ -28,13 +28,13 @@ PREFIX :       <#>
     ) .
 
 :turtle-star-1 rdf:type rdft:TestTurtleEval ;
-   mf:name      "Turtle-star - subject triple term" ;
+   mf:name      "Turtle-star - subject embedded triple" ;
    mf:action    <turtle-star-eval-01.ttl> ;
    mf:result    <turtle-star-eval-01.nt> ;
    .
 
 :turtle-star-2 rdf:type rdft:TestTurtleEval ;
-   mf:name      "Turtle-star - object triple term" ;
+   mf:name      "Turtle-star - object embedded triple" ;
    mf:action    <turtle-star-eval-02.ttl> ;
    mf:result    <turtle-star-eval-02.nt> ;
    .

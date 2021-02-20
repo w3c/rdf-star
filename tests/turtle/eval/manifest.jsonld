@@ -53,14 +53,14 @@
       "@type": "rdft:TestTurtleEval",
       "action": "turtle-star-eval-01.ttl",
       "result": "turtle-star-eval-01.nt",
-      "name": "Turtle-star - subject triple term"
+      "name": "Turtle-star - subject embedded triple"
     },
     {
       "@id": "#turtle-star-2",
       "@type": "rdft:TestTurtleEval",
       "action": "turtle-star-eval-02.ttl",
       "result": "turtle-star-eval-02.nt",
-      "name": "Turtle-star - object triple term"
+      "name": "Turtle-star - object embedded triple"
     },
     {
       "@id": "#turtle-star-bnode-1",

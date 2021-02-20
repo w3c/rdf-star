@@ -8,72 +8,107 @@
 	    "@id" :     "#sparql-star-1",
 	    "@type" :   "mf:PositiveSyntaxTest11",
 	    "action" :  "sparql-star-syntax-basic-01.rq",
-	    "name" :    "SPARQL-star - subject triple term"
+	    "name" :    "SPARQL-star - subject embedded triple"
 	}, {
 	    "@id" :     "#sparql-star-2",
 	    "@type" :   "mf:PositiveSyntaxTest11",
 	    "action" :  "sparql-star-syntax-basic-02.rq",
-	    "name" :    "SPARQL-star - object triple term"
+	    "name" :    "SPARQL-star - object embedded triple"
 	}, {
 	    "@id" :     "#sparql-star-3",
 	    "@type" :   "mf:PositiveSyntaxTest11",
 	    "action" :  "sparql-star-syntax-basic-03.rq",
-	    "name" :    "SPARQL-star - subject triple term - vars"
+	    "name" :    "SPARQL-star - subject embedded triple - vars"
 	}, {
 	    "@id" :     "#sparql-star-4",
 	    "@type" :   "mf:PositiveSyntaxTest11",
 	    "action" :  "sparql-star-syntax-basic-04.rq",
-	    "name" :    "SPARQL-star - object triple term - vars"
+	    "name" :    "SPARQL-star - object embedded triple - vars"
 	}, {
-	    "@id" :     "#sparql-star-ann-1",
+	    "@id" :     "#sparql-star-5",
 	    "@type" :   "mf:PositiveSyntaxTest11",
-	    "action" :  "sparql-star-annotation-1.rq",
+	    "action" :  "sparql-star-syntax-basic-05.rq",
+	    "name" :    "SPARQL-star - Embedded triple in VALUES"
+	}, {
+	    "@id" :     "#sparql-star-6",
+	    "@type" :   "mf:PositiveSyntaxTest11",
+	    "action" :  "sparql-star-syntax-basic-06.rq",
+	    "name" :    "SPARQL-star - Embedded triple in CONSTRUCT"
+	}, {
+    	    "@id" :     "#sparql-star-5",
+	    "@type" :   "mf:PositiveSyntaxTest11",
+	    "action" :  "sparql-star-syntax-basic-07.rq",
+	    "name" :    "SPARQL-star - Embedded triples in CONSTRUCT WHERE"
+	}, {
+	    "@id" :     "#sparql-star-ann-01",
+	    "@type" :   "mf:PositiveSyntaxTest11",
+	    "action" :  "sparql-star-annotation-01.rq",
 	    "name" :    "SPARQL-star - Annotation form"
 	}, {
-	    "@id" :     "#sparql-star-ann-2",
+	    "@id" :     "#sparql-star-ann-02",
 	    "@type" :   "mf:PositiveSyntaxTest11",
-	    "action" :  "sparql-star-annotation-2.rq",
+	    "action" :  "sparql-star-annotation-02.rq",
 	    "name" :    "SPARQL-star - Annotation example"
 	}, {
-	    "@id" :     "#sparql-star-ann-3",
+	    "@id" :     "#sparql-star-ann-03",
 	    "@type" :   "mf:PositiveSyntaxTest11",
-	    "action" :  "sparql-star-annotation-3.rq",
+	    "action" :  "sparql-star-annotation-03.rq",
 	    "name" :    "SPARQL-star - Annotation example"
 	}, {
-	    "@id" :     "#sparql-star-ann-4",
+	    "@id" :     "#sparql-star-ann-04",
 	    "@type" :   "mf:PositiveSyntaxTest11",
-	    "action" :  "sparql-star-annotation-4.rq",
+	    "action" :  "sparql-star-annotation-04.rq",
 	    "name" :    "SPARQL-star - Annotation with embedding"
 	}, {
-	    "@id" :     "#sparql-star-ann-5",
+	    "@id" :     "#sparql-star-ann-05",
 	    "@type" :   "mf:PositiveSyntaxTest11",
-	    "action" :  "sparql-star-annotation-5.rq",
+	    "action" :  "sparql-star-annotation-05.rq",
 	    "name" :    "SPARQL-star - Annotation on triple with embedded object"
+	}, {
+	    "@id" :     "#sparql-star-ann-06",
+	    "@type" :   "mf:PositiveSyntaxTest11",
+	    "action" :  "sparql-star-annotation-06.rq",
+	    "name" :    "SPARQL-star - Annotation with path"
+	}, {
+	    "@id" :     "#sparql-star-ann-07",
+	    "@type" :   "mf:PositiveSyntaxTest11",
+	    "action" :  "sparql-star-annotation-07.rq",
+	    "name" :    "SPARQL-star - Annotation with nested path"
+	}, {
+	    "@id" :     "#sparql-star-ann-08",
+	    "@type" :   "mf:PositiveSyntaxTest11",
+	    "action" :  "sparql-star-annotation-08.rq",
+	    "name" :    "SPARQL-star - Annotation in CONSTRUCT "
+	}, {
+	    "@id" :     "#sparql-star-ann-09",
+	    "@type" :   "mf:PositiveSyntaxTest11",
+	    "action" :  "sparql-star-annotation-09.rq",
+	    "name" :    "SPARQL-star - Annotation in CONSTRUCT WHERE"
 	}, {
 	    "@id" :     "#sparql-star-bad-1",
 	    "@type" :   "mf:NegativeSyntaxTest11",
 	    "action" :  "sparql-star-syntax-bad-01.rq",
-	    "name" :    "SPARQL-star - bad - triple term as predicate"
+	    "name" :    "SPARQL-star - bad - embedded triple as predicate"
 	}, {
 	    "@id" :     "#sparql-star-bad-2",
 	    "@type" :   "mf:NegativeSyntaxTest11",
 	    "action" :  "sparql-star-syntax-bad-02.rq",
-	    "name" :    "SPARQL-star - bad - triple term outside triple"
+	    "name" :    "SPARQL-star - bad - embedded triple outside triple"
 	}, {
 	    "@id" :     "#sparql-star-bad-3",
 	    "@type" :   "mf:NegativeSyntaxTest11",
 	    "action" :  "sparql-star-syntax-bad-03.rq",
-	    "name" :    "SPARQL-star - bad - collection list in triple term"
+	    "name" :    "SPARQL-star - bad - collection list in embedded triple"
 	}, {
 	    "@id" :     "#sparql-star-bad-4",
 	    "@type" :   "mf:NegativeSyntaxTest11",
 	    "action" :  "sparql-star-syntax-bad-04.rq",
-	    "name" :    "SPARQL-star - bad - literal in subject position of triple term"
+	    "name" :    "SPARQL-star - bad - literal in subject position of embedded triple"
 	}, {
 	    "@id" :     "#sparql-star-bad-5",
 	    "@type" :   "mf:NegativeSyntaxTest11",
 	    "action" :  "sparql-star-syntax-bad-05.rq",
-	    "name" :    "SPARQL-star - bad - blank node  as predicate in triple term"
+	    "name" :    "SPARQL-star - bad - blank node  as predicate in embedded triple"
 	}, {
 	    "@id" :     "#sparql-star-bad-6",
 	    "@type" :   "mf:NegativeSyntaxTest11",
@@ -83,12 +118,22 @@
 	    "@id" :     "#sparql-star-bad-7",
 	    "@type" :   "mf:NegativeSyntaxTest11",
 	    "action" :  "sparql-star-syntax-bad-07.rq",
-	    "name" :    "SPARQL-star - bad - incomplete triple term"
+	    "name" :    "SPARQL-star - bad - incomplete embedded triple"
 	}, {
 	    "@id" :     "#sparql-star-bad-8",
 	    "@type" :   "mf:NegativeSyntaxTest11",
 	    "action" :  "sparql-star-syntax-bad-08.rq",
-	    "name" :    "SPARQL-star - bad - quad triple term"
+	    "name" :    "SPARQL-star - bad - quad embedded triple"
+	}, {
+	    "@id" :     "#sparql-star-bad-9",
+	    "@type" :   "mf:NegativeSyntaxTest11",
+	    "action" :  "sparql-star-syntax-bad-09.rq",
+	    "name" :    "SPARQL-star - bad - variable in embedded triple in VALUES"
+	}, {
+	    "@id" :     "#sparql-star-bad-10",
+	    "@type" :   "mf:NegativeSyntaxTest11",
+	    "action" :  "sparql-star-syntax-bad-10.rq",
+	    "name" :    "SPARQL-star - bad - blank node in embedded triple in VALUES"
 	}, {
 	    "@id" :     "#sparql-star-bad-ann-1",
 	    "@type" :   "mf:NegativeSyntaxTest11",
@@ -125,6 +170,16 @@
 	    "action" :  "sparql-star-syntax-bad-ann-path-5.rq",
 	    "name" :    "SPARQL-star - bad - path - p?"
 	}, {
+	    "@id" :     "#sparql-star-bad-ann-path-6",
+	    "@type" :   "mf:NegativeSyntaxTest11",
+	    "action" :  "sparql-star-syntax-bad-ann-path-6.rq",
+	    "name" :    "SPARQL-star - bad - path in CONSTRUCT"
+	}, {
+	    "@id" :     "#sparql-star-bad-ann-path-7",
+	    "@type" :   "mf:NegativeSyntaxTest11",
+	    "action" :  "sparql-star-syntax-bad-ann-path-7.rq",
+	    "name" :    "SPARQL-star - bad - path in CONSTRUCT"
+	}, {
 	    "@id" :     "#sparql-star-bad-update-1",
 	    "@type" :   "mf:NegativeUpdateSyntaxTest11",
 	    "action" :  "sparql-star-syntax-bad-update-1.ru",
@@ -133,6 +188,16 @@
 	    "@id" :     "#sparql-star-bad-update-2",
 	    "@type" :   "mf:NegativeUpdateSyntaxTest11",
 	    "action" :  "sparql-star-syntax-bad-update-2.ru",
+	    "name" :    "SPARQL-star - update - bad syntax"
+	}, {
+	    "@id" :     "#sparql-star-bad-update-3",
+	    "@type" :   "mf:NegativeUpdateSyntaxTest11",
+	    "action" :  "sparql-star-syntax-bad-update-3.ru",
+	    "name" :    "SPARQL-star - update - bad syntax"
+	}, {
+	    "@id" :     "#sparql-star-bad-update-4",
+	    "@type" :   "mf:NegativeUpdateSyntaxTest11",
+	    "action" :  "sparql-star-syntax-bad-update-4.ru",
 	    "name" :    "SPARQL-star - update - bad syntax"
 	}, {
 	    "@id" :     "#sparql-star-bnode-1",
@@ -158,22 +223,22 @@
 	    "@id" :     "#sparql-star-inside-1",
 	    "@type" :   "mf:PositiveSyntaxTest11",
 	    "action" :  "sparql-star-syntax-inside-01.rq",
-	    "name" :    "SPARQL-star - triple term inside blankNodePropertyList"
+	    "name" :    "SPARQL-star - embedded triple inside blankNodePropertyList"
 	}, {
 	    "@id" :     "#sparql-star-inside-2",
 	    "@type" :   "mf:PositiveSyntaxTest11",
 	    "action" :  "sparql-star-syntax-inside-02.rq",
-	    "name" :    "SPARQL-star - triple term inside collection"
+	    "name" :    "SPARQL-star - embedded triple inside collection"
 	}, {
 	    "@id" :     "#sparql-star-nested-1",
 	    "@type" :   "mf:PositiveSyntaxTest11",
 	    "action" :  "sparql-star-syntax-nested-01.rq",
-	    "name" :    "SPARQL-star - nested triple term, subject position"
+	    "name" :    "SPARQL-star - nested embedded triple, subject position"
 	}, {
 	    "@id" :     "#sparql-star-nested-2",
 	    "@type" :   "mf:PositiveSyntaxTest11",
 	    "action" :  "sparql-star-syntax-nested-02.rq",
-	    "name" :    "SPARQL-star - nested triple term, object position"
+	    "name" :    "SPARQL-star - nested embedded triple, object position"
 	}, {
 	    "@id" :     "#sparql-star-update-1",
 	    "@type" :   "mf:PositiveUpdateSyntaxTest11",
@@ -193,12 +258,27 @@
 	    "@id" :     "#sparql-star-update-4",
 	    "@type" :   "mf:PositiveUpdateSyntaxTest11",
 	    "action" :  "sparql-star-syntax-update-4.ru",
-	    "name" :    "SPARQL-star - update"
+	    "name" :    "SPARQL-star - update with embedding"
 	}, {
 	    "@id" :     "#sparql-star-update-5",
 	    "@type" :   "mf:PositiveUpdateSyntaxTest11",
 	    "action" :  "sparql-star-syntax-update-5.ru",
-	    "name" :    "SPARQL-star - update"
+	    "name" :    "SPARQL-star - update with embedded object"
+	}, {
+	    "@id" :     "#sparql-star-update-6",
+	    "@type" :   "mf:PositiveUpdateSyntaxTest11",
+	    "action" :  "sparql-star-syntax-update-6.ru",
+	    "name" :    "SPARQL-star - update with annotation template"
+	}, {
+	    "@id" :     "#sparql-star-update-7",
+	    "@type" :   "mf:PositiveUpdateSyntaxTest11",
+	    "action" :  "sparql-star-syntax-update-7.ru",
+	    "name" :    "SPARQL-star - update with annotation, template and pattern"
+	}, {
+	    "@id" :     "#sparql-star-update-8",
+	    "@type" :   "mf:PositiveUpdateSyntaxTest11",
+	    "action" :  "sparql-star-syntax-update-8.ru",
+	    "name" :    "SPARQL-star - update DATA with annotation"
 	}
     ]
 }

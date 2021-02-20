@@ -592,10 +592,7 @@ SELECT ?claimer WHERE {
           <td>`Object`</td>
           <td>::=</td>
           <td>
-            `(`
-              <a data-cite="SPARQL11-QUERY#rGraphNode">GraphNode</a> `|`
-              <a href="#rEmbTP">EmbTP</a>
-            `)`
+            <a data-cite="SPARQL11-QUERY#rGraphNode">GraphNode</a>
             <a href="#rAnnotationPattern">AnnotationPattern</a>`?`
           </td>
         </tr>
@@ -618,6 +615,15 @@ SELECT ?claimer WHERE {
           <td>
             <a href="#rGraphNodePath">GraphNodePath</a>
             <a href="#rAnnotationPatternPath">AnnotationPatternPath</a>`?`
+          </td>
+        </tr>
+        <tr id="rGraphNode">
+          <td>[104]</td>
+          <td>`GraphNode`</td>
+          <td>::=</td>
+          <td>
+            <a href="#rVarOrTermOrEmbTP">VarOrTermOrEmbTP</a> `|`
+            <a data-cite="SPARQL11-QUERY#rTriplesNodePath">TriplesNode</a>
           </td>
         </tr>
         <tr id="rGraphNodePath">
@@ -692,13 +698,8 @@ SELECT ?claimer WHERE {
         (productions <a href="#rEmbTP">[174]</a> and following),
         which is similar to the one defined for <a>embedded triples</a> in <a href="#turtle-star"></a>,
         but accepting also <a>variables</a>.
-        These <a>embedded triple patterns</a> are allowed in the subject
-        (<a href="#rTriplesSameSubject">[75]</a>, <a href="#rTriplesSameSubjectPath">[81]</a>)
-        and object
-        (<a href="#rObject">[80]</a>, <a href="#rGraphNodePath">[105]</a>)
-        positions of <a>SPARQL-star triple patterns</a>,
-        as well as in BIND statements
-        (<a href="#rBind">[60]</a>).
+        These embedded triple patterns are allowed in both the subject position (<a href="#rTriplesSameSubject">[75]</a>, <a href="#rTriplesSameSubjectPath">[81]</a>) and the object position (<a href="#rObject">[80]</a>, <a href="#rObjectPath">[87]</a>)
+        of <a>SPARQL-star triple patterns</a>, as well as in BIND statements (<a href="#rBind">[60]</a>) and in <a data-cite="SPARQL11-QUERY#collections">the short-hand notation for querying collections</a> (<a data-cite="SPARQL11-QUERY#rCollection">[102]</a>, <a data-cite="SPARQL11-QUERY#rCollectionPath">[103]</a>).
       </p>
 
       <p>

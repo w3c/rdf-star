@@ -5,4 +5,3 @@ INSERT {
 } WHERE {
    ?S ?P << :a :b ?O >> {| ?Y ?Z |}
 }
-

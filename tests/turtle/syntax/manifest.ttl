@@ -10,7 +10,7 @@ PREFIX rdft:   <http://www.w3.org/ns/rdftest#>
 PREFIX :       <#>
 
 <>  rdf:type mf:Manifest ;
-    rdfs:label "Turtle* Syntax Tests" ;
+    rdfs:label "Turtle-star Syntax Tests" ;
     mf:entries
     (
         :turtle-star-1
@@ -47,118 +47,118 @@ PREFIX :       <#>
 ## Good Syntax
 
 :turtle-star-1 rdf:type rdft:TestTurtlePositiveSyntax ;
-   mf:name      "Turtle* - subject triple term" ;
+   mf:name      "Turtle-star - subject triple term" ;
    mf:action    <turtle-star-syntax-basic-01.ttl> ;
    .
 
 :turtle-star-2 rdf:type rdft:TestTurtlePositiveSyntax ;
-   mf:name      "Turtle* - object triple term" ;
+   mf:name      "Turtle-star - object triple term" ;
    mf:action    <turtle-star-syntax-basic-02.ttl> ;
    .
 
 :turtle-star-inside-1 rdf:type rdft:TestTurtlePositiveSyntax ;
-   mf:name      "Turtle* - triple term inside blankNodePropertyList" ;
+   mf:name      "Turtle-star - triple term inside blankNodePropertyList" ;
    mf:action    <turtle-star-syntax-inside-01.ttl> ;
    .
 
 :turtle-star-inside-2 rdf:type rdft:TestTurtlePositiveSyntax ;
-   mf:name      "Turtle* - triple term inside collection" ;
+   mf:name      "Turtle-star - triple term inside collection" ;
    mf:action    <turtle-star-syntax-inside-02.ttl> ;
    .
 
 :turtle-star-nested-1 rdf:type rdft:TestTurtlePositiveSyntax ;
-   mf:name      "Turtle* - nested triple term, subject position" ;
+   mf:name      "Turtle-star - nested triple term, subject position" ;
    mf:action    <turtle-star-syntax-nested-01.ttl> ;
    .
 
 :turtle-star-nested-2 rdf:type rdft:TestTurtlePositiveSyntax ;
-   mf:name      "Turtle* - nested triple term, object position" ;
+   mf:name      "Turtle-star - nested triple term, object position" ;
    mf:action     <turtle-star-syntax-nested-02.ttl> ;
    .
 
 :turtle-star-compound-1 rdf:type rdft:TestTurtlePositiveSyntax ;
-   mf:name      "Turtle* - compound forms" ;
+   mf:name      "Turtle-star - compound forms" ;
    mf:action    <turtle-star-syntax-compound.ttl> ;
    .
 
 :turtle-star-bnode-1 rdf:type rdft:TestTurtlePositiveSyntax ;
-   mf:name      "Turtle* - blank node subject" ;
+   mf:name      "Turtle-star - blank node subject" ;
    mf:action    <turtle-star-syntax-bnode-01.ttl> ;
    .
 
 :turtle-star-bnode-2 rdf:type rdft:TestTurtlePositiveSyntax ;
-   mf:name      "Turtle* - blank node object" ;
+   mf:name      "Turtle-star - blank node object" ;
    mf:action    <turtle-star-syntax-bnode-02.ttl> ;
    .
 
 :turtle-star-bnode-3 rdf:type rdft:TestTurtlePositiveSyntax ;
-   mf:name      "Turtle* - blank node" ;
+   mf:name      "Turtle-star - blank node" ;
    mf:action    <turtle-star-syntax-bnode-03.ttl> ;
    .
 
 ## Bad Syntax
 
 :turtle-star-bad-1 rdf:type rdft:TestTurtleNegativeSyntax ;
-    mf:name      "Turtle* - bad - triple term as predicate" ;
+    mf:name      "Turtle-star - bad - triple term as predicate" ;
     mf:action    <turtle-star-syntax-bad-01.ttl> ;
     .
 
 :turtle-star-bad-2 rdf:type rdft:TestTurtleNegativeSyntax ;
-    mf:name      "Turtle* - bad - triple term outside triple" ;
+    mf:name      "Turtle-star - bad - triple term outside triple" ;
     mf:action    <turtle-star-syntax-bad-02.ttl> ;
     .
 
 :turtle-star-bad-3 rdf:type rdft:TestTurtleNegativeSyntax ;
-    mf:name      "Turtle* - bad - collection list in triple term" ;
+    mf:name      "Turtle-star - bad - collection list in triple term" ;
     mf:action    <turtle-star-syntax-bad-03.ttl> ;
     .
 
 :turtle-star-bad-4 rdf:type rdft:TestTurtleNegativeSyntax ;
-    mf:name      "Turtle* - bad - literal in subject position of triple term" ;
+    mf:name      "Turtle-star - bad - literal in subject position of triple term" ;
     mf:action    <turtle-star-syntax-bad-04.ttl> ;
     .
 
 :turtle-star-bad-5 rdf:type rdft:TestTurtleNegativeSyntax ;
-    mf:name      "Turtle* - bad - blank node  as predicate in triple term";
+    mf:name      "Turtle-star - bad - blank node  as predicate in triple term";
     mf:action    <turtle-star-syntax-bad-05.ttl> ;
     .
 
 :turtle-star-bad-6 rdf:type rdft:TestTurtleNegativeSyntax ;
-    mf:name      "Turtle* - bad - compound blank node expression";
+    mf:name      "Turtle-star - bad - compound blank node expression";
     mf:action    <turtle-star-syntax-bad-06.ttl> ;
     .
 
 :turtle-star-bad-7 rdf:type rdft:TestTurtleNegativeSyntax ;
-    mf:name      "Turtle* - bad - incomplete triple term";
+    mf:name      "Turtle-star - bad - incomplete triple term";
     mf:action    <turtle-star-syntax-bad-07.ttl> ;
     .
 
 :turtle-star-bad-8 rdf:type rdft:TestTurtleNegativeSyntax ;
-    mf:name      "Turtle* - bad - over-long triple term";
+    mf:name      "Turtle-star - bad - over-long triple term";
     mf:action    <turtle-star-syntax-bad-08.ttl> ;
     .
 
 ## Annotation syntax
 
 :turtle-star-ann-1 rdf:type rdft:TestTurtlePositiveSyntax ;
-    mf:name      "Turtle* - Annotation form" ;
+    mf:name      "Turtle-star - Annotation form" ;
     mf:action    <turtle-star-annotation-1.ttl> ;
    .
 
 :turtle-star-ann-2 rdf:type rdft:TestTurtlePositiveSyntax ;
-    mf:name      "Turtle* - Annotation example" ;
+    mf:name      "Turtle-star - Annotation example" ;
     mf:action    <turtle-star-annotation-2.ttl> ;
     .
 
 ## Bad annotation syntax
 
 :turtle-star-bad-ann-1 rdf:type rdft:TestTurtleNegativeSyntax ;
-    mf:name      "Turtle* - bad - empty annotation" ;
+    mf:name      "Turtle-star - bad - empty annotation" ;
     mf:action    <turtle-star-syntax-bad-ann-1.ttl> ;
    .
 
 :turtle-star-bad-ann-2 rdf:type rdft:TestTurtleNegativeSyntax ;
-    mf:name      "Turtle* - bad - triple as annotation" ;
+    mf:name      "Turtle-star - bad - triple as annotation" ;
     mf:action    <turtle-star-syntax-bad-ann-2.ttl> ;
    .
 

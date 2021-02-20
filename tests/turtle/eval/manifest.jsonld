@@ -46,91 +46,91 @@
   },
   "@id": "eval",
   "@type": "Manifest",
-  "label": "Turtle* Evaluation Tests",
+  "label": "Turtle-star Evaluation Tests",
   "entries": [
     {
       "@id": "#turtle-star-1",
       "@type": "rdft:TestTurtleEval",
       "action": "turtle-star-eval-01.ttl",
       "result": "turtle-star-eval-01.nt",
-      "name": "Turtle* - subject triple term"
+      "name": "Turtle-star - subject triple term"
     },
     {
       "@id": "#turtle-star-2",
       "@type": "rdft:TestTurtleEval",
       "action": "turtle-star-eval-02.ttl",
       "result": "turtle-star-eval-02.nt",
-      "name": "Turtle* - object triple term"
+      "name": "Turtle-star - object triple term"
     },
     {
       "@id": "#turtle-star-bnode-1",
       "@type": "rdft:TestTurtleEval",
       "action": "turtle-star-eval-bnode-1.ttl",
       "result": "turtle-star-eval-bnode-1.nt",
-      "name": "Turtle* - blank node label"
+      "name": "Turtle-star - blank node label"
     },
     {
       "@id": "#turtle-star-bnode-2",
       "@type": "rdft:TestTurtleEval",
       "action": "turtle-star-eval-bnode-2.ttl",
       "result": "turtle-star-eval-bnode-2.nt",
-      "name": "Turtle* - blank node labels"
+      "name": "Turtle-star - blank node labels"
     },
     {
       "@id": "#turtle-star-annotation-1",
       "@type": "rdft:TestTurtleEval",
       "action": "turtle-star-eval-annotation-1.ttl",
       "result": "turtle-star-eval-annotation-1.nt",
-      "name": "Turtle* - Annotation form"
+      "name": "Turtle-star - Annotation form"
     },
     {
       "@id": "#turtle-star-annotation-2",
       "@type": "rdft:TestTurtleEval",
       "action": "turtle-star-eval-annotation-2.ttl",
       "result": "turtle-star-eval-annotation-2.nt",
-      "name": "Turtle* - Annotation example"
+      "name": "Turtle-star - Annotation example"
     },
     {
       "@id": "#turtle-star-annotation-3",
       "@type": "rdft:TestTurtleEval",
       "action": "turtle-star-eval-annotation-3.ttl",
       "result": "turtle-star-eval-annotation-3.nt",
-      "name": "Turtle* - Annotation - predicate and object lists"
+      "name": "Turtle-star - Annotation - predicate and object lists"
     },
     {
       "@id": "#turtle-star-annotation-4",
       "@type": "rdft:TestTurtleEval",
       "action": "turtle-star-eval-annotation-4.ttl",
       "result": "turtle-star-eval-annotation-4.nt",
-      "name": "Turtle* - Annotation - nested"
+      "name": "Turtle-star - Annotation - nested"
     },
     {
       "@id": "#turtle-star-annotation-5",
       "@type": "rdft:TestTurtleEval",
       "action": "turtle-star-eval-annotation-5.ttl",
       "result": "turtle-star-eval-annotation-5.nt",
-      "name": "Turtle* - Annotation object list"
+      "name": "Turtle-star - Annotation object list"
     },
     {
       "@id": "#turtle-star-embed-annotation-1",
       "@type": "rdft:TestTurtleEval",
       "action": "turtle-star-eval-embed-annotation-1.ttl",
       "result": "turtle-star-eval-embed-annotation-1.nt",
-      "name": "Turtle* - Annotation with embedding"
+      "name": "Turtle-star - Annotation with embedding"
     },
     {
       "@id": "#turtle-star-embed-annotation-2",
       "@type": "rdft:TestTurtleEval",
       "action": "turtle-star-eval-embed-annotation-2.ttl",
       "result": "turtle-star-eval-embed-annotation-2.nt",
-      "name": "Turtle* - Annotation on triple with embedded subject"
+      "name": "Turtle-star - Annotation on triple with embedded subject"
     },
     {
       "@id": "#turtle-star-embed-annotation-3",
       "@type": "rdft:TestTurtleEval",
       "action": "turtle-star-eval-embed-annotation-3.ttl",
       "result": "turtle-star-eval-embed-annotation-3.nt",
-      "name": "Turtle* - Annotation on triple with embedded object"
+      "name": "Turtle-star - Annotation on triple with embedded object"
     }
   ]
 }

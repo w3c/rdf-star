@@ -557,7 +557,7 @@ SELECT ?claimer WHERE {
     <section id="sparql-star-grammar">
       <h2>Grammar</h2>
 
-      <p>SPARQL-star is defined to follow the <a data-cite="SPARQL11-QUERY#sparqlGrammar">same grammar</a> as SPARQL, <em>except</em> for the <a data-cite="XML#sec-notation"><abbr title="Extended Backus-Naur Form">EBNF</abbr> productions</a> specified below, which replace the productions having the same number (if any) in the original grammar.</p>
+      <p>SPARQL-star is defined to follow the <a data-cite="SPARQL11-QUERY#sparqlGrammar">same grammar</a> as SPARQL, <em>except</em> for the <a data-cite="XML#sec-notation"><abbr title="Extended Backus-Naur Form">EBNF</abbr> productions</a> specified below, which replace the productions having the same number (if any) in the original grammar. Productions <a href="#rEmbTP">[174]</a> and following have been added and have no counterpart in the original grammar.</p>
 
       <table class="grammar">
         <tr id="rBind">
@@ -567,10 +567,10 @@ SELECT ?claimer WHERE {
           <td>
             <code class="token">'BIND'</code>
             <code class="token">'('</code>
-            (
+            `(`
               <a data-cite="SPARQL11-QUERY#rExpression">Expression</a> `|`
               <a href="#rEmbTP">EmbTP</a>
-            )
+            `)`
             <code class="token">'AS'</code>
             <a data-cite="SPARQL11-QUERY#rVar">Var</a>
             <code class="token">')'</code>
@@ -587,6 +587,18 @@ SELECT ?claimer WHERE {
             <a data-cite="SPARQL11-QUERY#rTriplesNode">TriplesNode</a>
             <a data-cite="SPARQL11-QUERY#rPropertyList">PropertyList</a>
         </td>
+        <tr id="rObjectList">
+          <td>[79]</td>
+          <td>`ObjectList`</td>
+          <td>::=</td>
+          <td>
+            <a href="#rObject">Object</a> <a href="#rAnnotationPattern">AnnotationPattern</a>`?`
+            `(`
+              <code class="token">','</code>
+              <a href="#rObject">Object</a> <a href="#rAnnotationPattern">AnnotationPattern</a>`?`
+            `)*`
+          </td>
+        </tr>
         <tr id="rObject">
           <td>[80]</td>
           <td>`Object`</td>
@@ -606,6 +618,18 @@ SELECT ?claimer WHERE {
             `|`
             <a data-cite="SPARQL11-QUERY#rTriplesNode">TriplesNode</a>
             <a data-cite="SPARQL11-QUERY#rPropertyListPath">PropertyListPath</a>
+          </td>
+        </tr>
+        <tr id="rObjectListPath">
+          <td>[86]</td>
+          <td>`ObjectListPath`</td>
+          <td>::=</td>
+          <td>
+            <a data-cite="SPARQL11-QUERY#rObjectPath">ObjectPath</a> <a href="#rAnnotationPatternPath">AnnotationPatternPath</a>`?`
+            `(`
+              <code class="token">','</code>
+              <a data-cite="SPARQL11-QUERY#rObjectPath">ObjectPath</a> <a href="#rAnnotationPatternPath">AnnotationPatternPath</a>`?`
+            `)*`
           </td>
         </tr>
         <tr id="rGraphNodePath">
@@ -653,6 +677,26 @@ SELECT ?claimer WHERE {
             <a href="#rEmbTP">EmbTP</a>
           </td>
         </tr>
+        <tr id="rAnnotationPattern">
+          <td>[177]</td>
+          <td>`AnnotationPattern`</td>
+          <td>::=</td>
+          <td>
+            <code class="token">'{|'</code>
+            <a data-cite="SPARQL11-QUERY#rPropertyListNotEmpty">PropertyListNotEmpty</a>
+            <code class="token">'|}'</code>
+          </td>
+        </tr>
+        <tr id="rAnnotationPatternPath">
+          <td>[178]</td>
+          <td>`AnnotationPatternPath`</td>
+          <td>::=</td>
+          <td>
+            <code class="token">'{|'</code>
+            <a data-cite="SPARQL11-QUERY#rPropertyListPathNotEmpty">PropertyListPathNotEmpty</a>
+            <code class="token">'|}'</code>
+          </td>
+        </tr>
       </table>
 
       <p>
@@ -667,6 +711,10 @@ SELECT ?claimer WHERE {
         positions of <a>SPARQL-star triple patterns</a>,
         as well as in BIND statements
         (<a href="#rBind">[60]</a>).
+      </p>
+
+      <p>
+        Additionally, both the <a href="#rObjectList">ObjectList</a> and the <a href="#rObjectListPath">ObjectListPath</a> productions now accept an optional <dfn>annotation pattern</dfn> after each object.
       </p>
 
       <div class="issue" data-number="6"></div>
@@ -695,9 +743,39 @@ SELECT ?claimer WHERE {
       <section>
         <h2>Expand Syntax Forms</h2>
 
-        <p>The translation process starts with expanding <q>abbreviations for IRIs and triple patterns</q> [<a data-cite="SPARQL11-QUERY#sparqlExpandForms">SPARQL11-QUERY, Section 18.2.2.1</a>]. This step MUST be extended in two ways:</p>
+        <p>The translation process starts with expanding <q>abbreviations for IRIs and triple patterns</q> [<a data-cite="SPARQL11-QUERY#sparqlExpandForms">SPARQL11-QUERY, Section 18.2.2.1</a>]. This step MUST be extended in three ways:</p>
 
         <ol>
+          <li><div>
+            <p><a>Annotation patterns</a> MUST be replaced by additional <a>SPARQL-star triple patterns</a> that have the annotated triple pattern as an <a>embedded triple pattern</a> in their subject position.</p>
+
+            <div class="example">
+              For instance, the following syntax expression:
+              <pre data-transform="updateExample"
+                data-content-type="application/x-sparql-star-query"
+                class="nohighlight example"
+              >
+                <!--
+                ?x :p :o1 {| :ap1 ?y;
+                             :ap2 ?z |} ,
+                      :o2 {| :ap3 ?z |} .
+                -->
+              </pre>
+              must be replaced by
+              <pre data-transform="updateExample"
+                data-content-type="application/x-sparql-star-query"
+                class="nohighlight example"
+              >
+                <!--
+                ?x :p :o1, o2 .
+                <<?x :p :o1>> :ap1 ?y ;
+                              :ap2 ?z .
+                <<?x :p :o2>> :ap3 ?z .
+                -->
+              </pre>
+            </div>
+
+          </div></li>
           <li><div>
             <p>Abbreviations for <a>triple patterns</a> with <a>embedded triple patterns</a> MUST be expanded as if each <a>embedded triple pattern</a> was a <a>variable</a> (or an <a>RDF term</a>).
 

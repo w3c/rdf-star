@@ -47,32 +47,32 @@ PREFIX :       <#>
 ## Good Syntax
 
 :turtle-star-1 rdf:type rdft:TestTurtlePositiveSyntax ;
-   mf:name      "Turtle-star - subject triple term" ;
+   mf:name      "Turtle-star - subject embedded triple" ;
    mf:action    <turtle-star-syntax-basic-01.ttl> ;
    .
 
 :turtle-star-2 rdf:type rdft:TestTurtlePositiveSyntax ;
-   mf:name      "Turtle-star - object triple term" ;
+   mf:name      "Turtle-star - object embedded triple" ;
    mf:action    <turtle-star-syntax-basic-02.ttl> ;
    .
 
 :turtle-star-inside-1 rdf:type rdft:TestTurtlePositiveSyntax ;
-   mf:name      "Turtle-star - triple term inside blankNodePropertyList" ;
+   mf:name      "Turtle-star - embedded triple inside blankNodePropertyList" ;
    mf:action    <turtle-star-syntax-inside-01.ttl> ;
    .
 
 :turtle-star-inside-2 rdf:type rdft:TestTurtlePositiveSyntax ;
-   mf:name      "Turtle-star - triple term inside collection" ;
+   mf:name      "Turtle-star - embedded triple inside collection" ;
    mf:action    <turtle-star-syntax-inside-02.ttl> ;
    .
 
 :turtle-star-nested-1 rdf:type rdft:TestTurtlePositiveSyntax ;
-   mf:name      "Turtle-star - nested triple term, subject position" ;
+   mf:name      "Turtle-star - nested embedded triple, subject position" ;
    mf:action    <turtle-star-syntax-nested-01.ttl> ;
    .
 
 :turtle-star-nested-2 rdf:type rdft:TestTurtlePositiveSyntax ;
-   mf:name      "Turtle-star - nested triple term, object position" ;
+   mf:name      "Turtle-star - nested embedded triple, object position" ;
    mf:action     <turtle-star-syntax-nested-02.ttl> ;
    .
 
@@ -99,27 +99,27 @@ PREFIX :       <#>
 ## Bad Syntax
 
 :turtle-star-bad-1 rdf:type rdft:TestTurtleNegativeSyntax ;
-    mf:name      "Turtle-star - bad - triple term as predicate" ;
+    mf:name      "Turtle-star - bad - embedded triple as predicate" ;
     mf:action    <turtle-star-syntax-bad-01.ttl> ;
     .
 
 :turtle-star-bad-2 rdf:type rdft:TestTurtleNegativeSyntax ;
-    mf:name      "Turtle-star - bad - triple term outside triple" ;
+    mf:name      "Turtle-star - bad - embedded triple outside triple" ;
     mf:action    <turtle-star-syntax-bad-02.ttl> ;
     .
 
 :turtle-star-bad-3 rdf:type rdft:TestTurtleNegativeSyntax ;
-    mf:name      "Turtle-star - bad - collection list in triple term" ;
+    mf:name      "Turtle-star - bad - collection list in embedded triple" ;
     mf:action    <turtle-star-syntax-bad-03.ttl> ;
     .
 
 :turtle-star-bad-4 rdf:type rdft:TestTurtleNegativeSyntax ;
-    mf:name      "Turtle-star - bad - literal in subject position of triple term" ;
+    mf:name      "Turtle-star - bad - literal in subject position of embedded triple" ;
     mf:action    <turtle-star-syntax-bad-04.ttl> ;
     .
 
 :turtle-star-bad-5 rdf:type rdft:TestTurtleNegativeSyntax ;
-    mf:name      "Turtle-star - bad - blank node  as predicate in triple term";
+    mf:name      "Turtle-star - bad - blank node  as predicate in embedded triple";
     mf:action    <turtle-star-syntax-bad-05.ttl> ;
     .
 
@@ -129,12 +129,12 @@ PREFIX :       <#>
     .
 
 :turtle-star-bad-7 rdf:type rdft:TestTurtleNegativeSyntax ;
-    mf:name      "Turtle-star - bad - incomplete triple term";
+    mf:name      "Turtle-star - bad - incomplete embedded triple";
     mf:action    <turtle-star-syntax-bad-07.ttl> ;
     .
 
 :turtle-star-bad-8 rdf:type rdft:TestTurtleNegativeSyntax ;
-    mf:name      "Turtle-star - bad - over-long triple term";
+    mf:name      "Turtle-star - bad - over-long embedded triple";
     mf:action    <turtle-star-syntax-bad-08.ttl> ;
     .
 

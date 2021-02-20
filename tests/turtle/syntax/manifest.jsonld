@@ -2,118 +2,118 @@
     "@context" : "../../manifest-context.jsonld",
     "@id" :      "",
     "@type" :    "mf:Manifest",
-    "label" :    "Turtle* Syntax Tests",
+    "label" :    "Turtle-star Syntax Tests",
     "entries" :  [
 	{
 	    "@id" :    "#turtle-star-1",
 	    "@type" :  "rdft:TestTurtlePositiveSyntax",
 	    "action" : "turtle-star-syntax-basic-01.ttl",
-	    "name" :   "Turtle* - subject triple term"
+	    "name" :   "Turtle-star - subject triple term"
 	}, {
 	    "@id" :    "#turtle-star-2",
 	    "@type" :  "rdft:TestTurtlePositiveSyntax",
 	    "action" : "turtle-star-syntax-basic-02.ttl",
-	    "name" :   "Turtle* - object triple term"
+	    "name" :   "Turtle-star - object triple term"
 	}, {
 	    "@id" :    "#turtle-star-ann-1",
 	    "@type" :  "rdft:TestTurtlePositiveSyntax",
 	    "action" : "turtle-star-annotation-1.ttl",
-	    "name" :   "Turtle* - Annotation form"
+	    "name" :   "Turtle-star - Annotation form"
 	}, {
 	    "@id" :    "#turtle-star-ann-2",
 	    "@type" :  "rdft:TestTurtlePositiveSyntax",
 	    "action" : "turtle-star-annotation-2.ttl",
-	    "name" :   "Turtle* - Annotation example"
+	    "name" :   "Turtle-star - Annotation example"
 	}, {
 	    "@id" :    "#turtle-star-bad-1",
 	    "@type" :  "rdft:TestTurtleNegativeSyntax",
 	    "action" : "turtle-star-syntax-bad-01.ttl",
-	    "name" :   "Turtle* - bad - triple term as predicate"
+	    "name" :   "Turtle-star - bad - triple term as predicate"
 	}, {
 	    "@id" :    "#turtle-star-bad-2",
 	    "@type" :  "rdft:TestTurtleNegativeSyntax",
 	    "action" : "turtle-star-syntax-bad-02.ttl",
-	    "name" :   "Turtle* - bad - triple term outside triple"
+	    "name" :   "Turtle-star - bad - triple term outside triple"
 	}, {
 	    "@id" :    "#turtle-star-bad-3",
 	    "@type" :  "rdft:TestTurtleNegativeSyntax",
 	    "action" : "turtle-star-syntax-bad-03.ttl",
-	    "name" :   "Turtle* - bad - collection list in triple term"
+	    "name" :   "Turtle-star - bad - collection list in triple term"
 	}, {
 	    "@id" :    "#turtle-star-bad-4",
 	    "@type" :  "rdft:TestTurtleNegativeSyntax",
 	    "action" : "turtle-star-syntax-bad-04.ttl",
-	    "name" :   "Turtle* - bad - literal in subject position of triple term"
+	    "name" :   "Turtle-star - bad - literal in subject position of triple term"
 	}, {
 	    "@id" :    "#turtle-star-bad-5",
 	    "@type" :  "rdft:TestTurtleNegativeSyntax",
 	    "action" : "turtle-star-syntax-bad-05.ttl",
-	    "name" :   "Turtle* - bad - blank node  as predicate in triple term"
+	    "name" :   "Turtle-star - bad - blank node  as predicate in triple term"
 	}, {
 	    "@id" :    "#turtle-star-bad-6",
 	    "@type" :  "rdft:TestTurtleNegativeSyntax",
 	    "action" : "turtle-star-syntax-bad-06.ttl",
-	    "name" :   "Turtle* - bad - compound blank node expression"
+	    "name" :   "Turtle-star - bad - compound blank node expression"
 	}, {
 	    "@id" :    "#turtle-star-bad-7",
 	    "@type" :  "rdft:TestTurtleNegativeSyntax",
 	    "action" : "turtle-star-syntax-bad-07.ttl",
-	    "name" :   "Turtle* - bad - incomplete triple term"
+	    "name" :   "Turtle-star - bad - incomplete triple term"
 	}, {
 	    "@id" :    "#turtle-star-bad-8",
 	    "@type" :  "rdft:TestTurtleNegativeSyntax",
 	    "action" : "turtle-star-syntax-bad-08.ttl",
-	    "name" :   "Turtle* - bad - over-long triple term"
+	    "name" :   "Turtle-star - bad - over-long triple term"
 	}, {
 	    "@id" :    "#turtle-star-bad-ann-1",
 	    "@type" :  "rdft:TestTurtleNegativeSyntax",
 	    "action" : "turtle-star-syntax-bad-ann-1.ttl",
-	    "name" :   "Turtle* - bad - empty annotation"
+	    "name" :   "Turtle-star - bad - empty annotation"
 	}, {
 	    "@id" :    "#turtle-star-bad-ann-2",
 	    "@type" :  "rdft:TestTurtleNegativeSyntax",
 	    "action" : "turtle-star-syntax-bad-ann-2.ttl",
-	    "name" :   "Turtle* - bad - triple as annotation"
+	    "name" :   "Turtle-star - bad - triple as annotation"
 	}, {
 	    "@id" :    "#turtle-star-bnode-1",
 	    "@type" :  "rdft:TestTurtlePositiveSyntax",
 	    "action" : "turtle-star-syntax-bnode-01.ttl",
-	    "name" :   "Turtle* - blank node subject"
+	    "name" :   "Turtle-star - blank node subject"
 	}, {
 	    "@id" :    "#turtle-star-bnode-2",
 	    "@type" :  "rdft:TestTurtlePositiveSyntax",
 	    "action" : "turtle-star-syntax-bnode-02.ttl",
-	    "name" :   "Turtle* - blank node object"
+	    "name" :   "Turtle-star - blank node object"
 	}, {
 	    "@id" :    "#turtle-star-bnode-3",
 	    "@type" :  "rdft:TestTurtlePositiveSyntax",
 	    "action" : "turtle-star-syntax-bnode-03.ttl",
-	    "name" :   "Turtle* - blank node"
+	    "name" :   "Turtle-star - blank node"
 	}, {
 	    "@id" :    "#turtle-star-compound-1",
 	    "@type" :  "rdft:TestTurtlePositiveSyntax",
 	    "action" : "turtle-star-syntax-compound.ttl",
-	    "name" :   "Turtle* - compound forms"
+	    "name" :   "Turtle-star - compound forms"
 	}, {
 	    "@id" :    "#turtle-star-inside-1",
 	    "@type" :  "rdft:TestTurtlePositiveSyntax",
 	    "action" : "turtle-star-syntax-inside-01.ttl",
-	    "name" :   "Turtle* - triple term inside blankNodePropertyList"
+	    "name" :   "Turtle-star - triple term inside blankNodePropertyList"
 	}, {
 	    "@id" :    "#turtle-star-inside-2",
 	    "@type" :  "rdft:TestTurtlePositiveSyntax",
 	    "action" : "turtle-star-syntax-inside-02.ttl",
-	    "name" :   "Turtle* - triple term inside collection"
+	    "name" :   "Turtle-star - triple term inside collection"
 	}, {
 	    "@id" :    "#turtle-star-nested-1",
 	    "@type" :  "rdft:TestTurtlePositiveSyntax",
 	    "action" : "turtle-star-syntax-nested-01.ttl",
-	    "name" :   "Turtle* - nested triple term, subject position"
+	    "name" :   "Turtle-star - nested triple term, subject position"
 	}, {
 	    "@id" :    "#turtle-star-nested-2",
 	    "@type" :  "rdft:TestTurtlePositiveSyntax",
 	    "action" : "turtle-star-syntax-nested-02.ttl",
-	    "name" :   "Turtle* - nested triple term, object position"
+	    "name" :   "Turtle-star - nested triple term, object position"
 	}
     ]
 }

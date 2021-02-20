@@ -587,25 +587,16 @@ SELECT ?claimer WHERE {
             <a data-cite="SPARQL11-QUERY#rTriplesNode">TriplesNode</a>
             <a data-cite="SPARQL11-QUERY#rPropertyList">PropertyList</a>
         </td>
-        <tr id="rObjectList">
-          <td>[79]</td>
-          <td>`ObjectList`</td>
-          <td>::=</td>
-          <td>
-            <a href="#rObject">Object</a> <a href="#rAnnotationPattern">AnnotationPattern</a>`?`
-            `(`
-              <code class="token">','</code>
-              <a href="#rObject">Object</a> <a href="#rAnnotationPattern">AnnotationPattern</a>`?`
-            `)*`
-          </td>
-        </tr>
         <tr id="rObject">
           <td>[80]</td>
           <td>`Object`</td>
           <td>::=</td>
           <td>
-            <a data-cite="SPARQL11-QUERY#rGraphNode">GraphNode</a> `|`
-            <a href="#rEmbTP">EmbTP</a>
+            `(`
+              <a data-cite="SPARQL11-QUERY#rGraphNode">GraphNode</a> `|`
+              <a href="#rEmbTP">EmbTP</a>
+            `)`
+            <a href="#rAnnotationPattern">AnnotationPattern</a>`?`
           </td>
         </tr>
         <tr id="rTriplesSameSubjectPath">
@@ -620,16 +611,13 @@ SELECT ?claimer WHERE {
             <a data-cite="SPARQL11-QUERY#rPropertyListPath">PropertyListPath</a>
           </td>
         </tr>
-        <tr id="rObjectListPath">
-          <td>[86]</td>
-          <td>`ObjectListPath`</td>
+        <tr id="rObjectPath">
+          <td>[87]</td>
+          <td>`ObjectPath`</td>
           <td>::=</td>
           <td>
-            <a data-cite="SPARQL11-QUERY#rObjectPath">ObjectPath</a> <a href="#rAnnotationPatternPath">AnnotationPatternPath</a>`?`
-            `(`
-              <code class="token">','</code>
-              <a data-cite="SPARQL11-QUERY#rObjectPath">ObjectPath</a> <a href="#rAnnotationPatternPath">AnnotationPatternPath</a>`?`
-            `)*`
+            <a href="#rGraphNodePath">GraphNodePath</a>
+            <a href="#rAnnotationPatternPath">AnnotationPatternPath</a>`?`
           </td>
         </tr>
         <tr id="rGraphNodePath">
@@ -714,7 +702,7 @@ SELECT ?claimer WHERE {
       </p>
 
       <p>
-        Additionally, both the <a href="#rObjectList">ObjectList</a> and the <a href="#rObjectListPath">ObjectListPath</a> productions now accept an optional <dfn>annotation pattern</dfn> after each object.
+        Additionally, both the <a href="#rObject">Object</a> and the <a href="#rObjectPath">ObjectPath</a> productions now accept an optional <dfn>annotation pattern</dfn> after each object.
       </p>
 
       <div class="issue" data-number="6"></div>

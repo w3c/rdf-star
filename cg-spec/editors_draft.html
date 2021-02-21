@@ -721,6 +721,21 @@ SELECT ?claimer WHERE {
         -->
       </pre>
 
+      <p>
+        While annotation patterns must not be added to property path patterns other than the ones permitted by the restriction above, it is possible, on the other hand, to use property path expressions within annotation patterns (but without violating the restriction in the case of nested annotation patterns). For instance, the following query is valid.
+      </p>
+
+      <pre data-transform="updateExample"
+           data-content-type="application/x-sparql-star-query"
+           class="nohighlight example"
+      >
+        <!--
+        SELECT * WHERE {
+            ?s ?p ?o {| :p/:q ?oo |}.
+        }
+        -->
+      </pre>
+
       <div class="issue" data-number="6"></div>
 
     </section>
@@ -761,6 +776,8 @@ SELECT ?claimer WHERE {
                 ?x :p :o1 {| :ap1 ?y;
                              :ap2 ?z |} ,
                       :o2 {| :ap3 ?z |} .
+
+                ?x :p :o3 {| :ap4/:ap5 ?w } .
                 -->
               </pre>
               must be replaced by
@@ -773,6 +790,9 @@ SELECT ?claimer WHERE {
                 <<?x :p :o1>> :ap1 ?y ;
                               :ap2 ?z .
                 <<?x :p :o2>> :ap3 ?z .
+
+                ?x :p :o3 .
+                <<?x :p :o3>> :ap4/:ap5 ?w .
                 -->
               </pre>
             </div>

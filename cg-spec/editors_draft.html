@@ -703,8 +703,23 @@ SELECT ?claimer WHERE {
       </p>
 
       <p>
-        Additionally, both the <a href="#rObject">Object</a> and the <a href="#rObjectPath">ObjectPath</a> productions now accept an optional <dfn>annotation pattern</dfn> after each object.
+        Additionally, both the <a href="#rObject">Object</a> and the <a href="#rObjectPath">ObjectPath</a> productions now accept an optional <dfn>annotation pattern</dfn> after each object. The purpose of this feature is to enable users to use the same kind of annotation syntax that is supported in Turtle-star. As in the case of Turtle-star, the annotation syntax in SPARQL-star is purely syntactic sugar that has to be processed in accordance to the first expansion rule in <a href="#expand-syntax-forms"></a>.
       </p>
+
+      <p>
+        A <strong>restriction</strong> to the use of the annotation syntax in SPARQL-star exists that is not captured by the grammar as defined above: An <a href="#rAnnotationPatternPath">AnnotationPatternPath</a> may be added only to <a>SPARQL-star property path patterns</a> in which the <a>property path expression</a> is a <a data-cite="SPARQL11-QUERY#pp-language">PredicatePath</a> (i.e., a single IRI) or the keyword <code>a</code> (as a <a data-cite="SPARQL11-QUERY#abbrevRdfType">short form for the IRI <code>rdf:type</code></a>). Hence, a query such as the following violates this restriction and, thus, is <em>invalid</em>.
+      </p>
+
+      <pre data-transform="updateExample"
+           data-content-type="application/x-sparql-star-query"
+           class="nohighlight example"
+      >
+        <!--
+        SELECT * WHERE {
+            ?s :p/:q ?o {| ?pp ?oo |}.
+        }
+        -->
+      </pre>
 
       <div class="issue" data-number="6"></div>
 
@@ -727,7 +742,7 @@ SELECT ?claimer WHERE {
         </ul>
       </section>
 
-      <section>
+      <section id="expand-syntax-forms">
         <h2>Expand Syntax Forms</h2>
 
         <p>The translation process starts with expanding <q>abbreviations for IRIs and triple patterns</q> [<a data-cite="SPARQL11-QUERY#sparqlExpandForms">SPARQL11-QUERY, Section 18.2.2.1</a>]. This step MUST be extended in three ways:</p>

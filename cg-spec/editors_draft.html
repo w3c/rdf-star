@@ -408,13 +408,56 @@ SELECT ?claimer WHERE {
       </ul>
       <p>Additionally, the <a data-cite="TURTLE#curSubject">|curSubject|</a> can be bound to any <a>RDF-star term</a> (including an <a>embedded triple</a>).</p>
 
-      <p>A Turtle-star document defines an <a>RDF-star graph</a> composed of a set of <a>RDF-star triples</a>. The <a href="#grammar-production-subject">`subject`</a> and <a href="#grammar-production-embSubject">`embSubject`</a> productions set the |curSubject|. The <a data-cite="TURTLE#grammar-production-verb">`verb`</a> production sets the <a data-cite="TURTLE#curPredicate">|curPredicate|</a>. The <a href="#grammar-production-object">`object`</a> and <a href="#grammar-production-embObject">`embObject`</a> productions set the |curObject|. Finishing the <a href="#grammar-production-object">`object`</a> production, an <a>RDF-star triple</a> |curSubject| |curPredicate| |curObject| is generated and added to the <a>RDF-star graph</a>.</p>
+    <p>A Turtle-star document defines an <a>RDF-star graph</a> composed of a set of <a>RDF-star triples</a>. The <a href="#grammar-production-subject">`subject`</a> and <a href="#grammar-production-embSubject">`embSubject`</a> productions set the |curSubject|. The <a data-cite="TURTLE#grammar-production-verb">`verb`</a> production sets the <a data-cite="TURTLE#curPredicate">|curPredicate|</a>. The <a href="#grammar-production-object">`object`</a> and <a href="#grammar-production-embObject">`embObject`</a> productions set the |curObject|. Finishing the <a href="#grammar-production-object">`object`</a> production, an <a>RDF-star triple</a> |curSubject| |curPredicate| |curObject| is generated and added to the <a>RDF-star graph</a>.</p>
 
-      <p>Beginning the <a href="#grammar-production-embTriple">`embTriple`</a> production records the |curSubject| and |curPredicate|. Finishing the <a href="#grammar-production-embTriple">`embTriple`</a> production yields the <a>RDF-star triple</a> |curSubject| |curPredicate| |curObject| and restores the recorded values of |curSubject| and |curPredicate|.</p>
+    <p>Beginning the <a href="#grammar-production-embTriple">`embTriple`</a> production records the |curSubject| and |curPredicate|. Finishing the <a href="#grammar-production-embTriple">`embTriple`</a> production yields the <a>RDF-star triple</a> |curSubject| |curPredicate| |curObject| and restores the recorded values of |curSubject| and |curPredicate|.</p>
 
-      <p>Beginning the <a href="#grammar-production-annotation">`annotation`</a> production records the |curSubject| and |curPredicate|, and sets the |curSubject| to the <a>RDF-star triple</a> |curSubject| |curPredicate| |curObject|. Finishing the <a href="#grammar-production-annotation">`annotation`</a> production restores the recorded values of |curSubject| and |curPredicate|.</p>
+    <p>Beginning the <a href="#grammar-production-annotation">`annotation`</a> production records the |curSubject| and |curPredicate|, and sets the |curSubject| to the <a>RDF-star triple</a> |curSubject| |curPredicate| |curObject|. Finishing the <a href="#grammar-production-annotation">`annotation`</a> production restores the recorded values of |curSubject| and |curPredicate|.</p>
 
-      <p>All other productions MUST be handled as specified by <a data-cite="TURTLE#h2_sec-parsing">Section 7 of the Turtle specification</a> [[TURTLE]], while still applying the changes above recursively.</p>
+    <p>All other productions MUST be handled as specified by <a data-cite="TURTLE#h2_sec-parsing">Section 7 of the Turtle specification</a> [[TURTLE]], while still applying the changes above recursively.</p>
+
+      <section class="informative">
+      <h2>Discussion</h2>
+
+      <p>This section describes parser behavior when parsing a Turtle-star document that contains <a>embedded triples</a> and <a href="#grammar-production-annotation">annotations</a>.</p>
+
+      <p>Consider a Turtle-star document that describes an RDF triple, and also uses that triple as an <a>embedded triple</a> as the subject of another RDF-star triple:</p>
+
+      <pre class="example" title="Turtle-star embedded triples"
+           data-transform="updateExample"
+           data-content-type="text/turtle">
+      <!--
+        @base <http://example.org/> .
+        @prefix : <#> .
+
+        _:a :name "Alice" .
+        << _:a :name "Alice" >> :statedBy :bob .
+      -->
+      </pre>
+
+      <p>The usual process of parsing a Turtle document applies with the addition of matching the embedded triple `&lt;&lt; _:a :name "Alice" >>` as part of the <a href="#grammar-production-subject">`subject`</a> production. The resulting RDF-star graph consists of two RDF-star triples:</p>
+
+      <ol>
+        <li>(|b|, `http://example.org/#name`, `"Alice"`), where |b| is a blank node</li>
+        <li>((|b|, `http://example.org/#name`, `"Alice"`), `http://example.org/#statedBy`, `http://example.org/#bob/`), where |b| is the same blank node</li>
+      </ol>
+
+      <p>Because the above example includes the triple (|b|, `http://example.org/#name`, `"Alice"`) as an asserted triple, the same RDF-star graph may also be represented by using the Turtle-star annotation syntax as follows:</p>
+
+      <pre class="example"
+           data-transform="updateExample"
+           data-content-type="text/turtle"
+           title="Turtle-star annotated triples">
+      <!--
+        @base <http://example.org/> .
+        @prefix : <#> .
+
+        _:a :name "Alice" {| :statedBy :bob |} .
+      -->
+      </pre>
+
+      <p>In this case, the <a href="#grammar-production-objectList">`objectList`</a> production matches the <a href="#grammar-production-annotation">`annotation`</a> production on `{| :source :bob |}` after parsing the <a href="#grammar-production-object">`object`</a> production on `"Alice"`. At this point, the |curSubject|, |curPredicate|, and |curObject| are saved, and a new RDF-star triple `_:a :name "Alice"` is created and used as |curSubject| while processing the <a href="#grammar-production-annotation">`annotation`</a> production.</p>
+      </section>
     </section>
   </section>
 
@@ -701,11 +744,12 @@ SELECT ?claimer WHERE {
           <li><div>
             <p>Abbreviations for <a>triple patterns</a> with <a>embedded triple patterns</a> MUST be expanded as if each <a>embedded triple pattern</a> was a <a>variable</a> (or an <a>RDF term</a>).
 
-            <div class="example">
+            <aside class="example"
+              title="Expanding annotations to embedded triple patterns">
               For instance, the following syntax expression:
               <pre data-transform="updateExample"
                 data-content-type="application/x-sparql-star-query"
-                class="nohighlight example"
+                class="nohighlight"
               >
                 <!--
                 <<?c a owl:Class>> dct:source ?src ;
@@ -715,23 +759,24 @@ SELECT ?claimer WHERE {
               must be expanded to
               <pre data-transform="updateExample"
                 data-content-type="application/x-sparql-star-query"
-                class="nohighlight example"
+                class="nohighlight"
               >
                 <!--
                 <<?c a owl:Class>> dct:source ?src .
                 <<?c a owl:Class>> :entailing <<?c a rdfs:Class>> .
                 -->
               </pre>
-            </div>
+            </aside>
           </div></li>
           <li><div>
             <p>Abbreviations for IRIs in all <a>embedded triple patterns</a> MUST be expanded.</p>
 
-            <div class="example">
+            <aside class="example"
+              title="Expanding IRI abbreviations">
               For instance, the embedded triple pattern
               <pre data-transform="updateExample"
                 data-content-type="application/x-sparql-star-query"
-                class="nohighlight example"
+                class="nohighlight"
               >
                 <!--
                 <<?c a rdfs:Class>>
@@ -740,13 +785,13 @@ SELECT ?claimer WHERE {
               must be expanded to
               <pre data-transform="updateExample"
                 data-content-type="application/x-sparql-star-query"
-                class="nohighlight example"
+                class="nohighlight"
               >
                 <!--
                 <<?c <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2000/01/rdf-schema#Class>>>
                 -->
               </pre>
-            </div>
+            </aside>
           </div></li>
         </ol>
       </section>
@@ -842,18 +887,18 @@ SELECT ?claimer WHERE {
               where `S`, `P` and `O` are encoded using the same format, recursively.
             </dd>
           </dl>
-        <div class="example">
+        <aside class="example">
             Consider the following RDF term, an <a>embedded</a> triple in Turtle-star syntax:
           <pre data-transform="updateExample"
             data-content-type="text/x-turtle-star"
-            class="nohighlight example"
+            class="nohighlight"
           >
             <!--
             << <http://example.org/alice> <http://example.org/name> "Alice" >>
             -->
           </pre>
           This term is represented in JSON as follows:
-          <pre class="example">
+          <pre>
                 {
                   "type": "triple",
                   "value": {
@@ -873,7 +918,7 @@ SELECT ?claimer WHERE {
                   }
                 }
           </pre>
-        </div>
+        </aside>
       <!-- <div class="issue" data-number="13"></div> -->
       </section>
 
@@ -902,18 +947,18 @@ SELECT ?claimer WHERE {
             where `S`, `P` and `O` are encoded recursively, using the same format, without the enclosing `&lt;binding&gt;` tag.
           </dd>
         </dl>
-        <div class="example">
+        <aside class="example">
             Consider the following RDF term, an <a>embedded</a> triple in Turtle-star syntax:
           <pre data-transform="updateExample"
             data-content-type="text/x-turtle-star"
-            class="nohighlight example"
+            class="nohighlight"
           >
             <!--
             << <http://example.org/alice> <http://example.org/name> "Alice" >>
             -->
           </pre>
           This term is represented in XML as follows:
-          <pre data-transform="updateExample" class="xml example">
+          <pre data-transform="updateExample" class="xml">
             <!--
             <triple>
                 <subject>
@@ -928,7 +973,7 @@ SELECT ?claimer WHERE {
             </triple>
             -->
           </pre>
-        </div>
+        </aside>
 
         <!-- <div class="issue" data-number="12"></div> -->
 

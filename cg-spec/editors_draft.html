@@ -419,11 +419,9 @@ SELECT ?claimer WHERE {
       <section class="informative">
       <h2>Discussion</h2>
 
-      <p class="note">This section describes parser behavior when parsing <a>embedded triples</a> and <a href="#grammar-production-annotation">annotations</a> in a Turtle-star document.</p>
+      <p>This section describes parser behavior when parsing a Turtle-star document that contains <a>embedded triples</a> and <a href="#grammar-production-annotation">annotations</a>.</p>
 
-      <p>Turtle-star document using the <a href="#grammar-production-embTriple">`embTriple`</a> syntax results in an RDF-star graph that can be expressed using <a href="#n-triples-star">N-Triples-star</a>, as a representation of the RDF-star <a href="#concepts">abstract syntax</a>.</p>
-
-      <p>Consider a Turtle-star document that describes a single RDF triple, and also uses that triple as an <a>embedded triple</a> as the subject of another RDF-star triple:</p>
+      <p>Consider a Turtle-star document that describes an RDF triple, and also uses that triple as an <a>embedded triple</a> as the subject of another RDF-star triple:</p>
 
       <pre class="example" title="Turtle-star embedded triples"
            data-transform="updateExample"
@@ -437,20 +435,14 @@ SELECT ?claimer WHERE {
       -->
       </pre>
 
-      <p>The usual process of parsing a Turtle document applies with the addition of matching the embedded triple `&lt;&lt; _:a :name "Alice" >>` as part of the <a href="#grammar-production-subject">`subject`</a> production. The resulting RDF-star graph can be represented in its fully expanded form in N-Triples-star:</p>
+      <p>The usual process of parsing a Turtle document applies with the addition of matching the embedded triple `&lt;&lt; _:a :name "Alice" >>` as part of the <a href="#grammar-production-subject">`subject`</a> production. The resulting RDF-star graph consists of two RDF-star triples:</p>
 
-      <pre class="example" title="N-Triples-star embedded triples"
-           data-transform="updateExample"
-           data-content-type="text/turtle">
-      <!--
-        _:a <http://example.org/#name> "Alice" .
+      <ol>
+        <li>(|b|, `http://example.org/#name`, `"Alice"`), where |b| is a blank node</li>
+        <li>((|b|, `http://example.org/#name`, `"Alice"`), `http://example.org/#statedBy`, `http://example.org/#bob/`), where |b| is the same blank node</li>
+      </ol>
 
-        << _:a <http://example.org/#name> "Alice" >>
-          <http://example.org/#statedBy> <http://example.org/#bob/> .
-      -->
-      </pre>
-
-      <p>Because the above example includes the triple `&lt;&lt; _:a :name "Alice" >>` as an RDF triple, the Turtle-star annotation syntax may also be used to represent the same RDF-star graph:</p>
+      <p>Because the above example includes the triple (|b|, `http://example.org/#name`, `"Alice"`) as an asserted triple, the same RDF-star graph may also be represented by using the Turtle-star annotation syntax as follows:</p>
 
       <pre class="example"
            data-transform="updateExample"

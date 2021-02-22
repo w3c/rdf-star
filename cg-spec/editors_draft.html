@@ -408,13 +408,64 @@ SELECT ?claimer WHERE {
       </ul>
       <p>Additionally, the <a data-cite="TURTLE#curSubject">|curSubject|</a> can be bound to any <a>RDF-star term</a> (including an <a>embedded triple</a>).</p>
 
-      <p>A Turtle-star document defines an <a>RDF-star graph</a> composed of a set of <a>RDF-star triples</a>. The <a href="#grammar-production-subject">`subject`</a> and <a href="#grammar-production-embSubject">`embSubject`</a> productions set the |curSubject|. The <a data-cite="TURTLE#grammar-production-verb">`verb`</a> production sets the <a data-cite="TURTLE#curPredicate">|curPredicate|</a>. The <a href="#grammar-production-object">`object`</a> and <a href="#grammar-production-embObject">`embObject`</a> productions set the |curObject|. Finishing the <a href="#grammar-production-object">`object`</a> production, an <a>RDF-star triple</a> |curSubject| |curPredicate| |curObject| is generated and added to the <a>RDF-star graph</a>.</p>
+    <p>A Turtle-star document defines an <a>RDF-star graph</a> composed of a set of <a>RDF-star triples</a>. The <a href="#grammar-production-subject">`subject`</a> and <a href="#grammar-production-embSubject">`embSubject`</a> productions set the |curSubject|. The <a data-cite="TURTLE#grammar-production-verb">`verb`</a> production sets the <a data-cite="TURTLE#curPredicate">|curPredicate|</a>. The <a href="#grammar-production-object">`object`</a> and <a href="#grammar-production-embObject">`embObject`</a> productions set the |curObject|. Finishing the <a href="#grammar-production-object">`object`</a> production, an <a>RDF-star triple</a> |curSubject| |curPredicate| |curObject| is generated and added to the <a>RDF-star graph</a>.</p>
 
-      <p>Beginning the <a href="#grammar-production-embTriple">`embTriple`</a> production records the |curSubject| and |curPredicate|. Finishing the <a href="#grammar-production-embTriple">`embTriple`</a> production yields the <a>RDF-star triple</a> |curSubject| |curPredicate| |curObject| and restores the recorded values of |curSubject| and |curPredicate|.</p>
+    <p>Beginning the <a href="#grammar-production-embTriple">`embTriple`</a> production records the |curSubject| and |curPredicate|. Finishing the <a href="#grammar-production-embTriple">`embTriple`</a> production yields the <a>RDF-star triple</a> |curSubject| |curPredicate| |curObject| and restores the recorded values of |curSubject| and |curPredicate|.</p>
 
-      <p>Beginning the <a href="#grammar-production-annotation">`annotation`</a> production records the |curSubject| and |curPredicate|, and sets the |curSubject| to the <a>RDF-star triple</a> |curSubject| |curPredicate| |curObject|. Finishing the <a href="#grammar-production-annotation">`annotation`</a> production restores the recorded values of |curSubject| and |curPredicate|.</p>
+    <p>Beginning the <a href="#grammar-production-annotation">`annotation`</a> production records the |curSubject| and |curPredicate|, and sets the |curSubject| to the <a>RDF-star triple</a> |curSubject| |curPredicate| |curObject|. Finishing the <a href="#grammar-production-annotation">`annotation`</a> production restores the recorded values of |curSubject| and |curPredicate|.</p>
 
-      <p>All other productions MUST be handled as specified by <a data-cite="TURTLE#h2_sec-parsing">Section 7 of the Turtle specification</a> [[TURTLE]], while still applying the changes above recursively.</p>
+    <p>All other productions MUST be handled as specified by <a data-cite="TURTLE#h2_sec-parsing">Section 7 of the Turtle specification</a> [[TURTLE]], while still applying the changes above recursively.</p>
+
+      <section class="informative">
+      <h2>Discussion</h2>
+
+      <p class="note">This section describes parser behavior when parsing <a>embedded triples</a> and <a href="#grammar-production-annotation">annotations</a> in a Turtle-star document.</p>
+
+      <p>Turtle-star document using the <a href="#grammar-production-embTriple">`embTriple`</a> syntax results in an RDF-star graph that can be expressed using <a href="#n-triples-star">N-Triples-star</a>, as a representation of the RDF-star <a href="#concepts">abstract syntax</a>.</p>
+
+      <p>Consider a Turtle-star document that describes a single RDF triple, and also uses that triple as an <a>embedded triple</a> as the subject of another RDF-star triple:</p>
+
+      <pre class="example" title="Turtle-star embedded triples"
+           data-transform="updateExample"
+           data-content-type="text/turtle">
+      <!--
+        @base <http://example.org/> .
+        @prefix : <#> .
+
+        _:a :name "Alice" .
+        << _:a :name "Alice" >> :statedBy :bob .
+      -->
+      </pre>
+
+      <p>The usual process of parsing a Turtle document applies with the addition of matching the embedded triple `&lt;&lt; _:a :name "Alice" >>` as part of the <a href="#grammar-production-subject">`subject`</a> production. The resulting RDF-star graph can be represented in its fully expanded form in N-Triples-star:</p>
+
+      <pre class="example" title="N-Triples-star embedded triples"
+           data-transform="updateExample"
+           data-content-type="text/turtle">
+      <!--
+        _:a <http://example.org/#name> "Alice" .
+
+        << _:a <http://example.org/#name> "Alice" >>
+          <http://example.org/#statedBy> <http://example.org/#bob/> .
+      -->
+      </pre>
+
+      <p>Because the above example includes the triple `&lt;&lt; _:a :name "Alice" >>` as an RDF triple, the Turtle-star annotation syntax may also be used to represent the same RDF-star graph:</p>
+
+      <pre class="example"
+           data-transform="updateExample"
+           data-content-type="text/turtle"
+           title="Turtle-star annotated triples">
+      <!--
+        @base <http://example.org/> .
+        @prefix : <#> .
+
+        _:a :name "Alice" {| :statedBy :bob |} .
+      -->
+      </pre>
+
+      <p>In this case, the <a href="#grammar-production-objectList">`objectList`</a> production matches the <a href="#grammar-production-annotation">`annotation`</a> production on `{| :source :bob |}` after parsing the <a href="#grammar-production-object">`object`</a> production on `"Alice"`. At this point, the |curSubject|, |curPredicate|, and |curObject| are saved, and a new RDF-star triple `_:a :name "Alice"` is created and used as |curSubject| while processing the <a href="#grammar-production-annotation">`annotation`</a> production.</p>
+      </section>
     </section>
   </section>
 

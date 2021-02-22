@@ -752,11 +752,12 @@ SELECT ?claimer WHERE {
           <li><div>
             <p>Abbreviations for <a>triple patterns</a> with <a>embedded triple patterns</a> MUST be expanded as if each <a>embedded triple pattern</a> was a <a>variable</a> (or an <a>RDF term</a>).
 
-            <div class="example">
+            <aside class="example"
+              title="Expanding annotations to embedded triple patterns">
               For instance, the following syntax expression:
               <pre data-transform="updateExample"
                 data-content-type="application/x-sparql-star-query"
-                class="nohighlight example"
+                class="nohighlight"
               >
                 <!--
                 <<?c a owl:Class>> dct:source ?src ;
@@ -766,23 +767,24 @@ SELECT ?claimer WHERE {
               must be expanded to
               <pre data-transform="updateExample"
                 data-content-type="application/x-sparql-star-query"
-                class="nohighlight example"
+                class="nohighlight"
               >
                 <!--
                 <<?c a owl:Class>> dct:source ?src .
                 <<?c a owl:Class>> :entailing <<?c a rdfs:Class>> .
                 -->
               </pre>
-            </div>
+            </aside>
           </div></li>
           <li><div>
             <p>Abbreviations for IRIs in all <a>embedded triple patterns</a> MUST be expanded.</p>
 
-            <div class="example">
+            <aside class="example"
+              title="Expanding IRI abbreviations">
               For instance, the embedded triple pattern
               <pre data-transform="updateExample"
                 data-content-type="application/x-sparql-star-query"
-                class="nohighlight example"
+                class="nohighlight"
               >
                 <!--
                 <<?c a rdfs:Class>>
@@ -791,13 +793,13 @@ SELECT ?claimer WHERE {
               must be expanded to
               <pre data-transform="updateExample"
                 data-content-type="application/x-sparql-star-query"
-                class="nohighlight example"
+                class="nohighlight"
               >
                 <!--
                 <<?c <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2000/01/rdf-schema#Class>>>
                 -->
               </pre>
-            </div>
+            </aside>
           </div></li>
         </ol>
       </section>
@@ -893,18 +895,18 @@ SELECT ?claimer WHERE {
               where `S`, `P` and `O` are encoded using the same format, recursively.
             </dd>
           </dl>
-        <div class="example">
+        <aside class="example">
             Consider the following RDF term, an <a>embedded</a> triple in Turtle-star syntax:
           <pre data-transform="updateExample"
             data-content-type="text/x-turtle-star"
-            class="nohighlight example"
+            class="nohighlight"
           >
             <!--
             << <http://example.org/alice> <http://example.org/name> "Alice" >>
             -->
           </pre>
           This term is represented in JSON as follows:
-          <pre class="example">
+          <pre>
                 {
                   "type": "triple",
                   "value": {
@@ -924,7 +926,7 @@ SELECT ?claimer WHERE {
                   }
                 }
           </pre>
-        </div>
+        </aside>
       <!-- <div class="issue" data-number="13"></div> -->
       </section>
 
@@ -953,18 +955,18 @@ SELECT ?claimer WHERE {
             where `S`, `P` and `O` are encoded recursively, using the same format, without the enclosing `&lt;binding&gt;` tag.
           </dd>
         </dl>
-        <div class="example">
+        <aside class="example">
             Consider the following RDF term, an <a>embedded</a> triple in Turtle-star syntax:
           <pre data-transform="updateExample"
             data-content-type="text/x-turtle-star"
-            class="nohighlight example"
+            class="nohighlight"
           >
             <!--
             << <http://example.org/alice> <http://example.org/name> "Alice" >>
             -->
           </pre>
           This term is represented in XML as follows:
-          <pre data-transform="updateExample" class="xml example">
+          <pre data-transform="updateExample" class="xml">
             <!--
             <triple>
                 <subject>
@@ -979,7 +981,7 @@ SELECT ?claimer WHERE {
             </triple>
             -->
           </pre>
-        </div>
+        </aside>
 
         <!-- <div class="issue" data-number="12"></div> -->
 

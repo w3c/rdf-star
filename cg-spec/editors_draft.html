@@ -88,7 +88,6 @@
         repoURL: "w3c/rdf-star",
         branch: "main",
       },
-      wgPublicList: "public-rdf-star",
       shortName: "rdf-star",
       group: "rdf-dev",
       xref: ["RDF11-CONCEPTS", "SPARQL11-QUERY", "RDF11-MT"],
@@ -409,56 +408,13 @@ SELECT ?claimer WHERE {
       </ul>
       <p>Additionally, the <a data-cite="TURTLE#curSubject">|curSubject|</a> can be bound to any <a>RDF-star term</a> (including an <a>embedded triple</a>).</p>
 
-    <p>A Turtle-star document defines an <a>RDF-star graph</a> composed of a set of <a>RDF-star triples</a>. The <a href="#grammar-production-subject">`subject`</a> and <a href="#grammar-production-embSubject">`embSubject`</a> productions set the |curSubject|. The <a data-cite="TURTLE#grammar-production-verb">`verb`</a> production sets the <a data-cite="TURTLE#curPredicate">|curPredicate|</a>. The <a href="#grammar-production-object">`object`</a> and <a href="#grammar-production-embObject">`embObject`</a> productions set the |curObject|. Finishing the <a href="#grammar-production-object">`object`</a> production, an <a>RDF-star triple</a> |curSubject| |curPredicate| |curObject| is generated and added to the <a>RDF-star graph</a>.</p>
+      <p>A Turtle-star document defines an <a>RDF-star graph</a> composed of a set of <a>RDF-star triples</a>. The <a href="#grammar-production-subject">`subject`</a> and <a href="#grammar-production-embSubject">`embSubject`</a> productions set the |curSubject|. The <a data-cite="TURTLE#grammar-production-verb">`verb`</a> production sets the <a data-cite="TURTLE#curPredicate">|curPredicate|</a>. The <a href="#grammar-production-object">`object`</a> and <a href="#grammar-production-embObject">`embObject`</a> productions set the |curObject|. Finishing the <a href="#grammar-production-object">`object`</a> production, an <a>RDF-star triple</a> |curSubject| |curPredicate| |curObject| is generated and added to the <a>RDF-star graph</a>.</p>
 
-    <p>Beginning the <a href="#grammar-production-embTriple">`embTriple`</a> production records the |curSubject| and |curPredicate|. Finishing the <a href="#grammar-production-embTriple">`embTriple`</a> production yields the <a>RDF-star triple</a> |curSubject| |curPredicate| |curObject| and restores the recorded values of |curSubject| and |curPredicate|.</p>
+      <p>Beginning the <a href="#grammar-production-embTriple">`embTriple`</a> production records the |curSubject| and |curPredicate|. Finishing the <a href="#grammar-production-embTriple">`embTriple`</a> production yields the <a>RDF-star triple</a> |curSubject| |curPredicate| |curObject| and restores the recorded values of |curSubject| and |curPredicate|.</p>
 
-    <p>Beginning the <a href="#grammar-production-annotation">`annotation`</a> production records the |curSubject| and |curPredicate|, and sets the |curSubject| to the <a>RDF-star triple</a> |curSubject| |curPredicate| |curObject|. Finishing the <a href="#grammar-production-annotation">`annotation`</a> production restores the recorded values of |curSubject| and |curPredicate|.</p>
+      <p>Beginning the <a href="#grammar-production-annotation">`annotation`</a> production records the |curSubject| and |curPredicate|, and sets the |curSubject| to the <a>RDF-star triple</a> |curSubject| |curPredicate| |curObject|. Finishing the <a href="#grammar-production-annotation">`annotation`</a> production restores the recorded values of |curSubject| and |curPredicate|.</p>
 
-    <p>All other productions MUST be handled as specified by <a data-cite="TURTLE#h2_sec-parsing">Section 7 of the Turtle specification</a> [[TURTLE]], while still applying the changes above recursively.</p>
-
-      <section class="informative">
-      <h2>Discussion</h2>
-
-      <p>This section describes parser behavior when parsing a Turtle-star document that contains <a>embedded triples</a> and <a href="#grammar-production-annotation">annotations</a>.</p>
-
-      <p>Consider a Turtle-star document that describes an RDF triple, and also uses that triple as an <a>embedded triple</a> as the subject of another RDF-star triple:</p>
-
-      <pre class="example" title="Turtle-star embedded triples"
-           data-transform="updateExample"
-           data-content-type="text/turtle">
-      <!--
-        @base <http://example.org/> .
-        @prefix : <#> .
-
-        _:a :name "Alice" .
-        << _:a :name "Alice" >> :statedBy :bob .
-      -->
-      </pre>
-
-      <p>The usual process of parsing a Turtle document applies with the addition of matching the embedded triple `&lt;&lt; _:a :name "Alice" >>` as part of the <a href="#grammar-production-subject">`subject`</a> production. The resulting RDF-star graph consists of two RDF-star triples:</p>
-
-      <ol>
-        <li>(|b|, `http://example.org/#name`, `"Alice"`), where |b| is a blank node</li>
-        <li>((|b|, `http://example.org/#name`, `"Alice"`), `http://example.org/#statedBy`, `http://example.org/#bob/`), where |b| is the same blank node</li>
-      </ol>
-
-      <p>Because the above example includes the triple (|b|, `http://example.org/#name`, `"Alice"`) as an asserted triple, the same RDF-star graph may also be represented by using the Turtle-star annotation syntax as follows:</p>
-
-      <pre class="example"
-           data-transform="updateExample"
-           data-content-type="text/turtle"
-           title="Turtle-star annotated triples">
-      <!--
-        @base <http://example.org/> .
-        @prefix : <#> .
-
-        _:a :name "Alice" {| :statedBy :bob |} .
-      -->
-      </pre>
-
-      <p>In this case, the <a href="#grammar-production-objectList">`objectList`</a> production matches the <a href="#grammar-production-annotation">`annotation`</a> production on `{| :source :bob |}` after parsing the <a href="#grammar-production-object">`object`</a> production on `"Alice"`. At this point, the |curSubject|, |curPredicate|, and |curObject| are saved, and a new RDF-star triple `_:a :name "Alice"` is created and used as |curSubject| while processing the <a href="#grammar-production-annotation">`annotation`</a> production.</p>
-      </section>
+      <p>All other productions MUST be handled as specified by <a data-cite="TURTLE#h2_sec-parsing">Section 7 of the Turtle specification</a> [[TURTLE]], while still applying the changes above recursively.</p>
     </section>
   </section>
 
@@ -601,25 +557,9 @@ SELECT ?claimer WHERE {
     <section id="sparql-star-grammar">
       <h2>Grammar</h2>
 
-      <p>SPARQL-star is defined to follow the <a data-cite="SPARQL11-QUERY#sparqlGrammar">same grammar</a> as SPARQL 1.1, <em>except</em> for the <a data-cite="XML#sec-notation"><abbr title="Extended Backus-Naur Form">EBNF</abbr> productions</a> specified below, which replace the productions having the same number (if any) in the original grammar. Productions <a href="#rEmbTP">[174]</a> and following have been added and have no counterpart in the original grammar.</p>
+      <p>SPARQL-star is defined to follow the <a data-cite="SPARQL11-QUERY#sparqlGrammar">same grammar</a> as SPARQL, <em>except</em> for the <a data-cite="XML#sec-notation"><abbr title="Extended Backus-Naur Form">EBNF</abbr> productions</a> specified below, which replace the productions having the same number (if any) in the original grammar. Productions <a href="#rEmbTP">[174]</a> and following have been added and have no counterpart in the original grammar.</p>
 
       <table class="grammar">
-        <tr id="rBind">
-          <td>[60]</td>
-          <td>`Bind`</td>
-          <td>::=</td>
-          <td>
-            <code class="token">'BIND'</code>
-            <code class="token">'('</code>
-            `(`
-              <a data-cite="SPARQL11-QUERY#rExpression">Expression</a> `|`
-              <a href="#rEmbTP">EmbTP</a>
-            `)`
-            <code class="token">'AS'</code>
-            <a data-cite="SPARQL11-QUERY#rVar">Var</a>
-            <code class="token">')'</code>
-          </td>
-        </tr>
           <tr id="rTriplesSameSubject">
           <td>[75]</td>
           <td>`TriplesSameSubject`</td>
@@ -743,7 +683,7 @@ SELECT ?claimer WHERE {
         which is similar to the one defined for <a>embedded triples</a> in <a href="#turtle-star"></a>,
         but accepting also <a>variables</a>.
         These embedded triple patterns are allowed in both the subject position (<a href="#rTriplesSameSubject">[75]</a>, <a href="#rTriplesSameSubjectPath">[81]</a>) and the object position (<a href="#rObject">[80]</a>, <a href="#rObjectPath">[87]</a>)
-        of <a>SPARQL-star triple patterns</a>, as well as in BIND statements (<a href="#rBind">[60]</a>) and in <a data-cite="SPARQL11-QUERY#collections">the short-hand notation for querying collections</a> (<a data-cite="SPARQL11-QUERY#rCollection">[102]</a>, <a data-cite="SPARQL11-QUERY#rCollectionPath">[103]</a>).
+        of <a>SPARQL-star triple patterns</a>, as well as in <a data-cite="SPARQL11-QUERY#collections">the short-hand notation for querying collections</a> (<a data-cite="SPARQL11-QUERY#rCollection">[102]</a>, <a data-cite="SPARQL11-QUERY#rCollectionPath">[103]</a>).
       </p>
 
       <p>
@@ -756,7 +696,7 @@ SELECT ?claimer WHERE {
 
       <pre data-transform="updateExample"
            data-content-type="application/x-sparql-star-query"
-           class="nohighlight illegal-example"
+           class="nohighlight example"
       >
         <!--
         SELECT * WHERE {
@@ -766,7 +706,7 @@ SELECT ?claimer WHERE {
       </pre>
 
       <p>
-        While annotation patterns must not be added to property path patterns other than the ones permitted by the restriction above, it is possible to use property path expressions within annotation patterns (but without violating the restriction in the case of nested annotation patterns). For instance, the following query is valid:
+        While annotation patterns must not be added to property path patterns other than the ones permitted by the restriction above, it is possible, on the other hand, to use property path expressions within annotation patterns (but without violating the restriction in the case of nested annotation patterns). For instance, the following query is valid.
       </p>
 
       <pre data-transform="updateExample"
@@ -779,8 +719,6 @@ SELECT ?claimer WHERE {
         }
         -->
       </pre>
-
-      <div class="issue" data-number="6"></div>
 
     </section>
 
@@ -797,7 +735,6 @@ SELECT ?claimer WHERE {
         <ul>
           <li>A <a>variable</a> is in-scope of a <a>BGP-star</a> |B| if the <a>variable</a> occurs in |B|, which includes an occurrence in any <a>embedded triple pattern</a> in |B| (independent of the level of nesting).</li>
           <li>A <a>variable</a> is in-scope of a <a>property path pattern</a> if the variable occurs in that pattern, which includes an occurrence in any embedded triple pattern in the pattern (independent of the level of nesting).</li>
-          <li>A <a>variable</a> is in-scope of a BIND clause of the form `BIND ( T AS v )` (where |T| is an <a>embedded triple pattern</a>) if the variable is variable |v| or the variable occurs in the <a>embedded triple pattern</a> |T|. As for standard BIND clauses with expressions, variable |v| must <q>not [be] in-scope from the preceding elements in the group graph pattern in which [the BIND clause] is used</q> [<a data-cite="SPARQL11-QUERY#variableScope">SPARQL11-QUERY, Section 18.2.1]</a>].</li>
         </ul>
       </section>
 
@@ -845,12 +782,11 @@ SELECT ?claimer WHERE {
           <li><div>
             <p>Abbreviations for <a>triple patterns</a> with <a>embedded triple patterns</a> MUST be expanded as if each <a>embedded triple pattern</a> was a <a>variable</a> (or an <a>RDF term</a>).</p>
 
-            <aside class="example"
-              title="Expanding annotations to embedded triple patterns">
+            <div class="example">
               For instance, the following syntax expression:
               <pre data-transform="updateExample"
                 data-content-type="application/x-sparql-star-query"
-                class="nohighlight"
+                class="nohighlight example"
               >
                 <!--
                 <<?c a owl:Class>> dct:source ?src ;
@@ -860,24 +796,23 @@ SELECT ?claimer WHERE {
               must be expanded to
               <pre data-transform="updateExample"
                 data-content-type="application/x-sparql-star-query"
-                class="nohighlight"
+                class="nohighlight example"
               >
                 <!--
                 <<?c a owl:Class>> dct:source ?src .
                 <<?c a owl:Class>> :entailing <<?c a rdfs:Class>> .
                 -->
               </pre>
-            </aside>
+            </div>
           </div></li>
           <li><div>
             <p>Abbreviations for IRIs in all <a>embedded triple patterns</a> MUST be expanded.</p>
 
-            <aside class="example"
-              title="Expanding IRI abbreviations">
+            <div class="example">
               For instance, the embedded triple pattern
               <pre data-transform="updateExample"
                 data-content-type="application/x-sparql-star-query"
-                class="nohighlight"
+                class="nohighlight example"
               >
                 <!--
                 <<?c a rdfs:Class>>
@@ -886,13 +821,13 @@ SELECT ?claimer WHERE {
               must be expanded to
               <pre data-transform="updateExample"
                 data-content-type="application/x-sparql-star-query"
-                class="nohighlight"
+                class="nohighlight example"
               >
                 <!--
                 <<?c <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2000/01/rdf-schema#Class>>>
                 -->
               </pre>
-            </aside>
+            </div>
           </div></li>
         </ol>
       </section>
@@ -922,38 +857,16 @@ SELECT ?claimer WHERE {
         <p>After translating <a>property path patterns</a>, the translation process collects <q>any adjacent triple patterns [...] to form a basic graph pattern</q> [<a data-cite="SPARQL11-QUERY#sparqlTranslateBasicGraphPatterns">SPARQL11-QUERY, Section 18.2.2.5</a>]. This step has to be adjusted because <a>triple patterns</a> in the extended syntax may have an <a>embedded triple pattern</a> in their subject position or in their object position (or in both). To ensure that every result of this step is a <a>BGP-star</a>, before adding a <a>triple pattern</a> to its corresponding collection, its subject and object MUST be replaced by the result of calling <a href="#lift">function `Lift`</a> for the subject and the object, respectively.</p>
       </section>
 
-      <section id="translate-bind">
-        <h2>Translate BIND Clauses with an Embedded Triple Pattern</h2>
-
-        <p>The extended grammar in <a href="#sparql-star-grammar"></a> allows for BIND clauses with an <a>embedded triple pattern</a>. The translation of such a BIND clause to a SPARQL algebra expression requires a new algebra symbol:</p>
-
-        <ul>
-          <li>TR( <a>SPARQL-star triple pattern</a>, <a>variable</a> )</li>
-        </ul>
-
-        <p>Then, any string of the form `BIND( T AS v )` with |T| being an <a>embedded triple pattern</a> (i.e., not a standard BIND expression) is translated to the algebra expression `TR`(<var>T’</var>, |v|) where <var>T’</var> is the result of the <a href="#lift">function `Lift`</a> for |T|.</p>
-
-        <p>Notice, the translation of BIND clauses with an <a>embedded triple pattern</a> as defined in this section is used during <a data-cite="SPARQL11-QUERY#sparqlTranslateGraphPatterns">the translation of group graph patterns</a>. The case of BIND clauses with an <a>embedded triple pattern</a> is covered in this translation of group graph patterns by the last, “catch all other” `IF` statement (i.e., the `IF` statement with the condition `E is any other form`) and not by the `IF` statement for BIND clauses with an expression.</p>
-      </section>
     </section>
 
     <section id="evaluation-semantics">
       <h2>Evaluation Semantics</h2>
 
-      <p>The SPARQL specification defines a function <q>eval(|D|(|G|), algebra expression) as the evaluation of an algebra expression with respect to a dataset |D| having active graph |G|</q> [<a data-cite="SPARQL11-QUERY#sparqlAlgebraEval">SPARQL11-QUERY, Section 18.6</a>]. Recall that the dataset |D| in the context of SPARQL-star is an <a>RDF-star dataset</a> and, thus, the active graph |G| is an <a>RDF-star graph</a>, and so is any other graph in dataset |D|. The definition of the <a data-cite="SPARQL11-QUERY#sparqlAlgebraEval">eval</a> function is recursive; the two base cases of this definition for SPARQL-star are given as follows:</p>
+      <p>The SPARQL specification defines a function <q>eval(|D|(|G|), algebra expression) as the evaluation of an algebra expression with respect to a dataset |D| having active graph |G|</q> [<a data-cite="SPARQL11-QUERY#sparqlAlgebraEval">SPARQL11-QUERY, Section 18.6</a>]. Recall that the dataset |D| in the context of SPARQL-star is an <a>RDF-star dataset</a> and, thus, the active graph |G| is an <a>RDF-star graph</a>, and so is any other graph in dataset |D|. The definition of the <a data-cite="SPARQL11-QUERY#sparqlAlgebraEval">eval</a> function is recursive; the base case of this definition for SPARQL-star are given as follows:</p>
 
-      <ol>
+      <ul>
         <li>For every <a>BGP-star</a> |B|, eval(|D|(|G|), |B|) is a multiset Ω that consists of all <a>SPARQL-star solution mappings</a> that are a <a>solution for the BGP-star</a>&nbsp;|B| over&nbsp;|G|. For every such mapping&nbsp;μ, card[Ω](μ) is the number of distinct <a>RDF-star instance mappings</a>&nbsp;σ such that dom(σ) is equivalent to the set of blank nodes in&nbsp;|B| and μ(σ(|B|)) is a subgraph of |G|. (For any SPARQL-star solution mapping&nbsp;μ' that is <em>not</em> a solution for&nbsp;|B| over&nbsp;|G|, we have that card[Ω](μ')=0; i.e., μ' is not in Ω.)</li>
-
-        <li>For any algebra expression |E| of the form TR(|tp|, <var>?v</var>) where |tp| is a <a>SPARQL-star triple pattern</a> and <var>?v</var> is a <a>variable</a> (as introduced in <a href="#translate-bind"></a>), eval(|D|(|G|), |E|) is a multiset Ω that consists of as many <a>SPARQL-star solution mappings</a> as there are solution mappings in Ω', where Ω'=eval(|D|(|G|),{|tp|}), such that for every μ' in Ω' there exists a μ in Ω that has the following four properties:
-          <ol type="i">
-            <li>dom(μ) = dom(μ') ∪ {<var>?v</var>}</li>
-            <li>μ and μ' are compatible</li>
-            <li>μ(<var>?v</var>) = μ'(|tp|)</li>
-            <li>card[Ω](μ) = card[Ω'](μ')</li>
-          </ol>
-        </li>
-      </ol>
+      </ul>
 
       <p>For any other algebra expression, the SPARQL specification defines algebra operators [[SPARQL11-QUERY]]. These definitions can be extended naturally to operate over multisets of <a>SPARQL-star solution mappings</a> (instead of ordinary <a>solution mappings</a>). Given this extension, the recursive steps of the definition of the <a data-cite="SPARQL11-QUERY#sparqlAlgebraEval">eval</a> function for SPARQL-star are the same as in the SPARQL specification.</p>
     </section>
@@ -988,18 +901,18 @@ SELECT ?claimer WHERE {
               where `S`, `P` and `O` are encoded using the same format, recursively.
             </dd>
           </dl>
-        <aside class="example">
+        <div class="example">
             Consider the following RDF term, an <a>embedded</a> triple in Turtle-star syntax:
           <pre data-transform="updateExample"
             data-content-type="text/x-turtle-star"
-            class="nohighlight"
+            class="nohighlight example"
           >
             <!--
             << <http://example.org/alice> <http://example.org/name> "Alice" >>
             -->
           </pre>
           This term is represented in JSON as follows:
-          <pre>
+          <pre class="example">
                 {
                   "type": "triple",
                   "value": {
@@ -1019,7 +932,7 @@ SELECT ?claimer WHERE {
                   }
                 }
           </pre>
-        </aside>
+        </div>
       <!-- <div class="issue" data-number="13"></div> -->
       </section>
 
@@ -1048,18 +961,18 @@ SELECT ?claimer WHERE {
             where `S`, `P` and `O` are encoded recursively, using the same format, without the enclosing `&lt;binding&gt;` tag.
           </dd>
         </dl>
-        <aside class="example">
+        <div class="example">
             Consider the following RDF term, an <a>embedded</a> triple in Turtle-star syntax:
           <pre data-transform="updateExample"
             data-content-type="text/x-turtle-star"
-            class="nohighlight"
+            class="nohighlight example"
           >
             <!--
             << <http://example.org/alice> <http://example.org/name> "Alice" >>
             -->
           </pre>
           This term is represented in XML as follows:
-          <pre data-transform="updateExample" class="xml">
+          <pre data-transform="updateExample" class="xml example">
             <!--
             <triple>
                 <subject>
@@ -1074,7 +987,7 @@ SELECT ?claimer WHERE {
             </triple>
             -->
           </pre>
-        </aside>
+        </div>
 
         <!-- <div class="issue" data-number="12"></div> -->
 

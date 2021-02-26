@@ -601,7 +601,7 @@ SELECT ?claimer WHERE {
     <section id="sparql-star-grammar">
       <h2>Grammar</h2>
 
-      <p>SPARQL-star is defined to follow the <a data-cite="SPARQL11-QUERY#sparqlGrammar">same grammar</a> as SPARQL, <em>except</em> for the <a data-cite="XML#sec-notation"><abbr title="Extended Backus-Naur Form">EBNF</abbr> productions</a> specified below, which replace the productions having the same number (if any) in the original grammar.</p>
+      <p>SPARQL-star is defined to follow the <a data-cite="SPARQL11-QUERY#sparqlGrammar">same grammar</a> as SPARQL 1.1, <em>except</em> for the <a data-cite="XML#sec-notation"><abbr title="Extended Backus-Naur Form">EBNF</abbr> productions</a> specified below, which replace the productions having the same number (if any) in the original grammar. Productions <a href="#rEmbTP">[174]</a> and following have been added and have no counterpart in the original grammar.</p>
 
       <table class="grammar">
         <tr id="rBind">
@@ -611,10 +611,10 @@ SELECT ?claimer WHERE {
           <td>
             <code class="token">'BIND'</code>
             <code class="token">'('</code>
-            (
+            `(`
               <a data-cite="SPARQL11-QUERY#rExpression">Expression</a> `|`
               <a href="#rEmbTP">EmbTP</a>
-            )
+            `)`
             <code class="token">'AS'</code>
             <a data-cite="SPARQL11-QUERY#rVar">Var</a>
             <code class="token">')'</code>
@@ -636,8 +636,8 @@ SELECT ?claimer WHERE {
           <td>`Object`</td>
           <td>::=</td>
           <td>
-            <a data-cite="SPARQL11-QUERY#rGraphNode">GraphNode</a> `|`
-            <a href="#rEmbTP">EmbTP</a>
+            <a data-cite="SPARQL11-QUERY#rGraphNode">GraphNode</a>
+            <a href="#rAnnotationPattern">AnnotationPattern</a>`?`
           </td>
         </tr>
         <tr id="rTriplesSameSubjectPath">
@@ -650,6 +650,24 @@ SELECT ?claimer WHERE {
             `|`
             <a data-cite="SPARQL11-QUERY#rTriplesNode">TriplesNode</a>
             <a data-cite="SPARQL11-QUERY#rPropertyListPath">PropertyListPath</a>
+          </td>
+        </tr>
+        <tr id="rObjectPath">
+          <td>[87]</td>
+          <td>`ObjectPath`</td>
+          <td>::=</td>
+          <td>
+            <a href="#rGraphNodePath">GraphNodePath</a>
+            <a href="#rAnnotationPatternPath">AnnotationPatternPath</a>`?`
+          </td>
+        </tr>
+        <tr id="rGraphNode">
+          <td>[104]</td>
+          <td>`GraphNode`</td>
+          <td>::=</td>
+          <td>
+            <a href="#rVarOrTermOrEmbTP">VarOrTermOrEmbTP</a> `|`
+            <a data-cite="SPARQL11-QUERY#rTriplesNodePath">TriplesNode</a>
           </td>
         </tr>
         <tr id="rGraphNodePath">
@@ -697,6 +715,26 @@ SELECT ?claimer WHERE {
             <a href="#rEmbTP">EmbTP</a>
           </td>
         </tr>
+        <tr id="rAnnotationPattern">
+          <td>[177]</td>
+          <td>`AnnotationPattern`</td>
+          <td>::=</td>
+          <td>
+            <code class="token">'{|'</code>
+            <a data-cite="SPARQL11-QUERY#rPropertyListNotEmpty">PropertyListNotEmpty</a>
+            <code class="token">'|}'</code>
+          </td>
+        </tr>
+        <tr id="rAnnotationPatternPath">
+          <td>[178]</td>
+          <td>`AnnotationPatternPath`</td>
+          <td>::=</td>
+          <td>
+            <code class="token">'{|'</code>
+            <a data-cite="SPARQL11-QUERY#rPropertyListPathNotEmpty">PropertyListPathNotEmpty</a>
+            <code class="token">'|}'</code>
+          </td>
+        </tr>
       </table>
 
       <p>
@@ -704,18 +742,45 @@ SELECT ?claimer WHERE {
         (productions <a href="#rEmbTP">[174]</a> and following),
         which is similar to the one defined for <a>embedded triples</a> in <a href="#turtle-star"></a>,
         but accepting also <a>variables</a>.
-        These <a>embedded triple patterns</a> are allowed in the subject
-        (<a href="#rTriplesSameSubject">[75]</a>, <a href="#rTriplesSameSubjectPath">[81]</a>)
-        and object
-        (<a href="#rObject">[80]</a>, <a href="#rGraphNodePath">[105]</a>)
-        positions of <a>SPARQL-star triple patterns</a>,
-        as well as in BIND statements
-        (<a href="#rBind">[60]</a>).
+        These embedded triple patterns are allowed in both the subject position (<a href="#rTriplesSameSubject">[75]</a>, <a href="#rTriplesSameSubjectPath">[81]</a>) and the object position (<a href="#rObject">[80]</a>, <a href="#rObjectPath">[87]</a>)
+        of <a>SPARQL-star triple patterns</a>, as well as in BIND statements (<a href="#rBind">[60]</a>) and in <a data-cite="SPARQL11-QUERY#collections">the short-hand notation for querying collections</a> (<a data-cite="SPARQL11-QUERY#rCollection">[102]</a>, <a data-cite="SPARQL11-QUERY#rCollectionPath">[103]</a>).
       </p>
 
-      <div class="issue" data-number="6"></div>
+      <p>
+        Additionally, both the <a href="#rObject">Object</a> and the <a href="#rObjectPath">ObjectPath</a> productions now accept an optional <dfn>annotation pattern</dfn> after each object. The purpose of this feature is to enable users to use the same kind of annotation syntax that is supported in Turtle-star. As in the case of Turtle-star, the annotation syntax in SPARQL-star is purely syntactic sugar that has to be processed in accordance to the first expansion rule in <a href="#expand-syntax-forms"></a>.
+      </p>
 
-      <div class="issue" data-number="9"></div>
+      <p>
+        A <strong>restriction</strong> to the use of the annotation syntax in SPARQL-star exists that is not captured by the grammar as defined above: An <a href="#rAnnotationPatternPath">AnnotationPatternPath</a> may be added only to <a>SPARQL-star property path patterns</a> in which the <a>property path expression</a> is a <a data-cite="SPARQL11-QUERY#pp-language">PredicatePath</a> (i.e., a single IRI) or the keyword <code>a</code> (as a <a data-cite="SPARQL11-QUERY#abbrevRdfType">short form for the IRI <code>rdf:type</code></a>). Hence, a query such as the following violates this restriction and, thus, is <em>invalid</em>.
+      </p>
+
+      <pre data-transform="updateExample"
+           data-content-type="application/x-sparql-star-query"
+           class="nohighlight illegal-example"
+      >
+        <!--
+        SELECT * WHERE {
+            ?s :p/:q ?o {| ?pp ?oo |}.
+        }
+        -->
+      </pre>
+
+      <p>
+        While annotation patterns must not be added to property path patterns other than the ones permitted by the restriction above, it is possible to use property path expressions within annotation patterns (but without violating the restriction in the case of nested annotation patterns). For instance, the following query is valid:
+      </p>
+
+      <pre data-transform="updateExample"
+           data-content-type="application/x-sparql-star-query"
+           class="nohighlight example"
+      >
+        <!--
+        SELECT * WHERE {
+            ?s ?p ?o {| :p/:q ?oo |}.
+        }
+        -->
+      </pre>
+
+      <div class="issue" data-number="6"></div>
 
     </section>
 
@@ -736,14 +801,49 @@ SELECT ?claimer WHERE {
         </ul>
       </section>
 
-      <section>
+      <section id="expand-syntax-forms">
         <h2>Expand Syntax Forms</h2>
 
-        <p>The translation process starts with expanding <q>abbreviations for IRIs and triple patterns</q> [<a data-cite="SPARQL11-QUERY#sparqlExpandForms">SPARQL11-QUERY, Section 18.2.2.1</a>]. This step MUST be extended in two ways:</p>
+        <p>The translation process starts with expanding <q>abbreviations for IRIs and triple patterns</q> [<a data-cite="SPARQL11-QUERY#sparqlExpandForms">SPARQL11-QUERY, Section 18.2.2.1</a>]. This step MUST be extended in three ways:</p>
 
         <ol>
           <li><div>
-            <p>Abbreviations for <a>triple patterns</a> with <a>embedded triple patterns</a> MUST be expanded as if each <a>embedded triple pattern</a> was a <a>variable</a> (or an <a>RDF term</a>).
+            <p><a>Annotation patterns</a> MUST be replaced by additional <a>SPARQL-star triple patterns</a> that have the annotated triple pattern as an <a>embedded triple pattern</a> in their subject position.</p>
+
+            <div class="example">
+              For instance, the following syntax expression:
+              <pre data-transform="updateExample"
+                data-content-type="application/x-sparql-star-query"
+                class="nohighlight example"
+              >
+                <!--
+                ?x :p :o1 {| :ap1 ?y;
+                             :ap2 ?z |} ,
+                      :o2 {| :ap3 ?z |} .
+
+                ?x :p :o3 {| :ap4/:ap5 ?w } .
+                -->
+              </pre>
+              must be replaced by
+              <pre data-transform="updateExample"
+                data-content-type="application/x-sparql-star-query"
+                class="nohighlight example"
+              >
+                <!--
+                ?x :p :o1, o2 .
+                <<?x :p :o1>> :ap1 ?y ;
+                              :ap2 ?z .
+                <<?x :p :o2>> :ap3 ?z .
+
+                ?x :p :o3 .
+                <<?x :p :o3>> :ap4/:ap5 ?w .
+                -->
+              </pre>
+            </div>
+
+          </div></li>
+          <li><div>
+            <p>Abbreviations for <a>triple patterns</a> with <a>embedded triple patterns</a> MUST be expanded as if each <a>embedded triple pattern</a> was a <a>variable</a> (or an <a>RDF term</a>).</p>
 
             <aside class="example"
               title="Expanding annotations to embedded triple patterns">

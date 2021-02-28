@@ -6,7 +6,7 @@ PREFIX xsd:    <http://www.w3.org/2001/XMLSchema#>
 PREFIX :       <#>
 
 <> a mf:Manifest;
-  rdfs:comment "RDF* Semantics tests";
+  rdfs:comment "RDF-star Semantics tests";
   rdfs:seeAlso <README>;
   mf:entries (
     :triple-in-subject
@@ -43,7 +43,7 @@ PREFIX :       <#>
   ) .
 
 :all-identical-embedded-triples-are-the-same a mf:PositiveEntailmentTest;
-  rdfs:comment "Multiple occurences of the same embedded triples are undistinguishable in the abstract model (EVENTUALLY, this should be a Turtle* test rather than a semantics test).";
+  rdfs:comment "Multiple occurences of the same embedded triples are undistinguishable in the abstract model (EVENTUALLY, this should be a Turtle-star test rather than a semantics test).";
   mf:action <test001a.ttl>;
   mf:entailmentRegime "simple";
   mf:name "all-identical-embedded-triples-are-the-same";
@@ -243,7 +243,7 @@ PREFIX :       <#>
   test:approval test:Proposed .
 
 :malformed-literal-control a mf:PositiveEntailmentTest;
-  rdfs:comment "Checks that xsd:integer is indeed recognized, to ensure that malformed-literal* tests do not pass spuriously.";
+  rdfs:comment "Checks that xsd:integer is indeed recognized, to ensure that malformed-literal-star tests do not pass spuriously.";
   mf:action <malformed-literal-control.ttl>;
   mf:entailmentRegime "RDF";
   mf:name "malformed-literal-control";
@@ -333,7 +333,7 @@ PREFIX :       <#>
   test:approval test:Proposed .
 
 :triple-in-object a mf:PositiveEntailmentTest;
-  rdfs:comment "Embedded triples can appear in object position (EVENTUALLY, this should be a Turtle* test rather than a semantics test).";
+  rdfs:comment "Embedded triples can appear in object position (EVENTUALLY, this should be a Turtle-star test rather than a semantics test).";
   mf:action <test000o.ttl>;
   mf:entailmentRegime "simple";
   mf:name "triple-in-object";
@@ -343,7 +343,7 @@ PREFIX :       <#>
   test:approval test:Approved .
 
 :triple-in-subject a mf:PositiveEntailmentTest;
-  rdfs:comment "Embedded triples can appear in subject position (EVENTUALLY, this should be a Turtle* test rather than a semantics test).";
+  rdfs:comment "Embedded triples can appear in subject position (EVENTUALLY, this should be a Turtle-star test rather than a semantics test).";
   mf:action <test000s.ttl>;
   mf:entailmentRegime "simple";
   mf:name "triple-in-subject";

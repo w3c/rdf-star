@@ -416,6 +416,47 @@ SELECT ?claimer WHERE {
       <p>Beginning the <a href="#grammar-production-annotation">`annotation`</a> production records the |curSubject| and |curPredicate|, and sets the |curSubject| to the <a>RDF-star triple</a> |curSubject| |curPredicate| |curObject|. Finishing the <a href="#grammar-production-annotation">`annotation`</a> production restores the recorded values of |curSubject| and |curPredicate|.</p>
 
       <p>All other productions MUST be handled as specified by <a data-cite="TURTLE#h2_sec-parsing">Section 7 of the Turtle specification</a> [[TURTLE]], while still applying the changes above recursively.</p>
+
+      <section class="informative">
+      <h2>Discussion</h2>
+
+      <p>This section describes parser behavior when parsing a Turtle-star document that contains <a>embedded triples</a> and <a href="#grammar-production-annotation">annotations</a>.</p>
+
+      <p>Consider a Turtle-star document that describes an RDF triple, and also uses that triple as an <a>embedded triple</a> as the subject of another RDF-star triple:</p>
+
+      <pre class="example" title="Turtle-star embedded triples"
+           data-transform="updateExample"
+           data-content-type="text/turtle">
+      <!--
+        @base <http://example.org/> .
+        @prefix : <#> .
+        _:a :name "Alice" .
+        << _:a :name "Alice" >> :statedBy :bob .
+      -->
+      </pre>
+
+      <p>The usual process of parsing a Turtle document applies with the addition of matching the embedded triple `&lt;&lt; _:a :name "Alice" >>` as part of the <a href="#grammar-production-subject">`subject`</a> production. The resulting RDF-star graph consists of two RDF-star triples:</p>
+
+      <ol>
+        <li>(|b|, `http://example.org/#name`, `"Alice"`), where |b| is a blank node</li>
+        <li>((|b|, `http://example.org/#name`, `"Alice"`), `http://example.org/#statedBy`, `http://example.org/#bob/`), where |b| is the same blank node</li>
+      </ol>
+
+      <p>Because the above example includes the triple (|b|, `http://example.org/#name`, `"Alice"`) as an asserted triple, the same RDF-star graph may also be represented by using the Turtle-star annotation syntax as follows:</p>
+
+      <pre class="example"
+           data-transform="updateExample"
+           data-content-type="text/turtle"
+           title="Turtle-star annotated triples">
+      <!--
+        @base <http://example.org/> .
+        @prefix : <#> .
+        _:a :name "Alice" {| :statedBy :bob |} .
+      -->
+      </pre>
+
+      <p>In this case, the <a href="#grammar-production-objectList">`objectList`</a> production matches the <a href="#grammar-production-annotation">`annotation`</a> production on `{| :source :bob |}` after parsing the <a href="#grammar-production-object">`object`</a> production on `"Alice"`. At this point, the |curSubject|, |curPredicate|, and |curObject| are saved, and a new RDF-star triple `_:a :name "Alice"` is created and used as |curSubject| while processing the <a href="#grammar-production-annotation">`annotation`</a> production.</p>
+      </section>
     </section>
   </section>
 

@@ -697,7 +697,7 @@ SELECT ?claimer WHERE {
 
       <pre data-transform="updateExample"
            data-content-type="application/x-sparql-star-query"
-           class="nohighlight example"
+           class="nohighlight illegal-example"
       >
         <!--
         SELECT * WHERE {
@@ -707,7 +707,7 @@ SELECT ?claimer WHERE {
       </pre>
 
       <p>
-        While annotation patterns must not be added to property path patterns other than the ones permitted by the restriction above, it is possible, on the other hand, to use property path expressions within annotation patterns (but without violating the restriction in the case of nested annotation patterns). For instance, the following query is valid.
+        While annotation patterns must not be added to property path patterns other than the ones permitted by the restriction above, it is possible to use property path expressions within annotation patterns (but without violating the restriction in the case of nested annotation patterns). For instance, the following query is valid.
       </p>
 
       <pre data-transform="updateExample"
@@ -748,11 +748,11 @@ SELECT ?claimer WHERE {
           <li><div>
             <p><a>Annotation patterns</a> MUST be replaced by additional <a>SPARQL-star triple patterns</a> that have the annotated triple pattern as an <a>embedded triple pattern</a> in their subject position.</p>
 
-            <div class="example">
+            <aside class="example" title="Expanding annotations to embedded triple patterns">
               For instance, the following syntax expression:
               <pre data-transform="updateExample"
                 data-content-type="application/x-sparql-star-query"
-                class="nohighlight example"
+                class="nohighlight"
               >
                 <!--
                 ?x :p :o1 {| :ap1 ?y;
@@ -765,7 +765,7 @@ SELECT ?claimer WHERE {
               must be replaced by
               <pre data-transform="updateExample"
                 data-content-type="application/x-sparql-star-query"
-                class="nohighlight example"
+                class="nohighlight"
               >
                 <!--
                 ?x :p :o1, o2 .
@@ -777,17 +777,17 @@ SELECT ?claimer WHERE {
                 <<?x :p :o3>> :ap4/:ap5 ?w .
                 -->
               </pre>
-            </div>
+            </aside>
 
           </div></li>
           <li><div>
             <p>Abbreviations for <a>triple patterns</a> with <a>embedded triple patterns</a> MUST be expanded as if each <a>embedded triple pattern</a> was a <a>variable</a> (or an <a>RDF term</a>).</p>
 
-            <div class="example">
+            <aside class="example" title="Expanding abbreviations for triple patterns with embedded triple patterns">
               For instance, the following syntax expression:
               <pre data-transform="updateExample"
                 data-content-type="application/x-sparql-star-query"
-                class="nohighlight example"
+                class="nohighlight"
               >
                 <!--
                 <<?c a owl:Class>> dct:source ?src ;
@@ -797,23 +797,23 @@ SELECT ?claimer WHERE {
               must be expanded to
               <pre data-transform="updateExample"
                 data-content-type="application/x-sparql-star-query"
-                class="nohighlight example"
+                class="nohighlight"
               >
                 <!--
                 <<?c a owl:Class>> dct:source ?src .
                 <<?c a owl:Class>> :entailing <<?c a rdfs:Class>> .
                 -->
               </pre>
-            </div>
+            </aside>
           </div></li>
           <li><div>
             <p>Abbreviations for IRIs in all <a>embedded triple patterns</a> MUST be expanded.</p>
 
-            <div class="example">
+            <aside class="example" title="Expanding IRI abbreviations">
               For instance, the embedded triple pattern
               <pre data-transform="updateExample"
                 data-content-type="application/x-sparql-star-query"
-                class="nohighlight example"
+                class="nohighlight"
               >
                 <!--
                 <<?c a rdfs:Class>>
@@ -822,13 +822,13 @@ SELECT ?claimer WHERE {
               must be expanded to
               <pre data-transform="updateExample"
                 data-content-type="application/x-sparql-star-query"
-                class="nohighlight example"
+                class="nohighlight"
               >
                 <!--
                 <<?c <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2000/01/rdf-schema#Class>>>
                 -->
               </pre>
-            </div>
+            </aside>
           </div></li>
         </ol>
       </section>
@@ -902,18 +902,18 @@ SELECT ?claimer WHERE {
               where `S`, `P` and `O` are encoded using the same format, recursively.
             </dd>
           </dl>
-        <div class="example">
+        <aside class="example">
             Consider the following RDF term, an <a>embedded</a> triple in Turtle-star syntax:
           <pre data-transform="updateExample"
             data-content-type="text/x-turtle-star"
-            class="nohighlight example"
+            class="nohighlight"
           >
             <!--
             << <http://example.org/alice> <http://example.org/name> "Alice" >>
             -->
           </pre>
           This term is represented in JSON as follows:
-          <pre class="example">
+          <pre>
                 {
                   "type": "triple",
                   "value": {
@@ -933,7 +933,7 @@ SELECT ?claimer WHERE {
                   }
                 }
           </pre>
-        </div>
+        </aside>
       <!-- <div class="issue" data-number="13"></div> -->
       </section>
 
@@ -962,18 +962,18 @@ SELECT ?claimer WHERE {
             where `S`, `P` and `O` are encoded recursively, using the same format, without the enclosing `&lt;binding&gt;` tag.
           </dd>
         </dl>
-        <div class="example">
+        <aside class="example">
             Consider the following RDF term, an <a>embedded</a> triple in Turtle-star syntax:
           <pre data-transform="updateExample"
             data-content-type="text/x-turtle-star"
-            class="nohighlight example"
+            class="nohighlight"
           >
             <!--
             << <http://example.org/alice> <http://example.org/name> "Alice" >>
             -->
           </pre>
           This term is represented in XML as follows:
-          <pre data-transform="updateExample" class="xml example">
+          <pre data-transform="updateExample" class="xml">
             <!--
             <triple>
                 <subject>
@@ -988,7 +988,7 @@ SELECT ?claimer WHERE {
             </triple>
             -->
           </pre>
-        </div>
+        </aside>
 
         <!-- <div class="issue" data-number="12"></div> -->
 

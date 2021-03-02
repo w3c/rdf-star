@@ -1151,7 +1151,7 @@ SELECT ?claimer WHERE {
       </p>
 
       <p>
-        Additionally, the set of available built-in functions is extended with the five functions TRIPLE, SUBJECT, PREDICATE, OBJECT, and isTRIPLE (<a href="#rBuiltInCall">[121]</a>).
+        Additionally, the set of available built-in functions is extended with the five functions TRIPLE, SUBJECT, PREDICATE, OBJECT, and isTRIPLE (<a href="#rBuiltInCall">[121]</a>) that are defined in <a href="#builtin-functions"></a>.
       </p>
 
       <p>
@@ -1323,6 +1323,99 @@ SELECT ?claimer WHERE {
         <h2>Translate Basic Graph Patterns</h2>
 
         <p>After translating <a>property path patterns</a>, the translation process collects <q>any adjacent triple patterns [...] to form a basic graph pattern</q> [<a data-cite="SPARQL11-QUERY#sparqlTranslateBasicGraphPatterns">SPARQL11-QUERY, Section 18.2.2.5</a>]. This step has to be adjusted because <a>triple patterns</a> in the extended syntax may have an <a>embedded triple pattern</a> in their subject position or in their object position (or in both). To ensure that every result of this step is a <a>BGP-star</a>, before adding a <a>triple pattern</a> to its corresponding collection, its subject and object MUST be replaced by the result of calling <a href="#lift">function `Lift`</a> for the subject and the object, respectively.</p>
+      </section>
+
+    </section>
+
+    <section id="builtin-functions">
+      <h2>Function Definitions</h2>
+
+      <p>SPARQL introduces operators and functions that can be used in an expression of a FILTER clause, a BIND clause, or a SELECT clause (see <a data-cite="SPARQL11-QUERY#OperatorMapping">Section&nbsp;17.3</a> and <a data-cite="SPARQL11-QUERY#SparqlOps">Section&nbsp;17.4</a> in [[SPARQL11-QUERY]]). While these operators and functions are defined to operate on <a>RDF terms</a> and <a>query variables</a>, to use them also for SPARQL-star they have to be defined to operate on <a>RDF-star terms</a> and <a>query variables</a>. To this end, when using these operators and functions in the context of SPARQL-star, their definitions as given in <a data-cite="SPARQL11-QUERY#SparqlOps">Section&nbsp;17.4</a> of [[SPARQL11-QUERY]] are extended by assuming that any mention of <code>RDF term</code> as a data type for operands is understood to be the type of all <a>RDF-star terms</a>.</p>
+
+      <p>In addition to carrying over the operators and functions of SPARQL, SPARQL-star introduces five new functions that are defined as follows (where the data types <code>RDF-star term</code> and <code>RDF-star triple</code> capture all <a>RDF-star terms</a> and all <a>RDF-star triples</a>, respectively).</p>
+
+      <section>
+        <h2>TRIPLE</h2>
+
+        <p>
+          <code>RDF-star triple</code> &nbsp;
+          <code style="color:black;font-weight:bold">TRIPLE</code>
+          (
+            <code>RDF-star term </code>
+            <code style="color:black">term1</code>,
+            <code>RDF-star term </code>
+            <code style="color:black">term2</code>,
+            <code>RDF-star term </code>
+            <code style="color:black">term3</code>
+          )
+        </p>
+
+        <p>If the 3-tuple (<code style="color:black">term1</code>, <code style="color:black">term2</code>, <code style="color:black">term3</code>) is an <a>RDF-star triple</a>, the function returns this triple. If the 3-tuple is not an RDF-star triple, then the function raises an error.</p>
+
+      </section>
+
+      <section>
+        <h2>SUBJECT</h2>
+
+        <p>
+          <code>RDF-star term</code> &nbsp;
+          <code style="color:black;font-weight:bold">SUBJECT</code>
+          (
+            <code>RDF-star triple </code>
+            <code style="color:black">triple</code>
+          )
+        </p>
+
+        <p>If <code style="color:black">triple</code> is an <a>RDF-star triple</a>, the function returns the subject of this triple. Passing anything other than an RDF-star triple is an error.</p>
+
+      </section>
+
+      <section>
+        <h2>PREDICATE</h2>
+
+        <p>
+          <code>RDF-star term</code> &nbsp;
+          <code style="color:black;font-weight:bold">PREDICATE</code>
+          (
+            <code>RDF-star triple </code>
+            <code style="color:black">triple</code>
+          )
+        </p>
+
+        <p>If <code style="color:black">triple</code> is an <a>RDF-star triple</a>, the function returns the predicate of this triple. Passing anything other than an RDF-star triple is an error.</p>
+
+      </section>
+
+      <section>
+        <h2>OBJECT</h2>
+
+        <p>
+          <code>RDF-star term</code> &nbsp;
+          <code style="color:black;font-weight:bold">OBJECT</code>
+          (
+            <code>RDF-star triple </code>
+            <code style="color:black">triple</code>
+          )
+        </p>
+
+        <p>If <code style="color:black">triple</code> is an <a>RDF-star triple</a>, the function returns the object of this triple. Passing anything other than an RDF-star triple is an error.</p>
+
+      </section>
+
+      <section>
+        <h2>isTRIPLE</h2>
+
+        <p>
+          <code>xsd:boolean</code> &nbsp;
+          <code style="color:black;font-weight:bold">isTRIPLE</code>
+          (
+            <code>RDF-star term </code>
+            <code style="color:black">term</code>
+          )
+        </p>
+
+        <p>Returns <code>true</code> if <code style="color:black">term</code> is an <a>RDF-star triple</a>. Returns <code>false</code> otherwise.</p>
+
       </section>
 
     </section>

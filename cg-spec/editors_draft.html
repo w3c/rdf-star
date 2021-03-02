@@ -599,7 +599,7 @@ SELECT ?claimer WHERE {
     <section id="sparql-star-grammar">
       <h2>Grammar</h2>
 
-      <p>SPARQL-star is defined to follow the <a data-cite="SPARQL11-QUERY#sparqlGrammar">same grammar</a> as SPARQL&nbsp;1.1, <em>except</em> for the <a data-cite="XML#sec-notation"><abbr title="Extended Backus-Naur Form">EBNF</abbr> productions</a> specified below, which replace the productions having the same number (if any) in the original grammar. Productions <a href="#rEmbTP">[174]</a> and following have been added and have no counterpart in the original grammar.</p>
+      <p>SPARQL-star is defined to follow the <a data-cite="SPARQL11-QUERY#sparqlGrammar">same grammar</a> as SPARQL&nbsp;1.1, <em>except</em> for the <a data-cite="XML#sec-notation"><abbr title="Extended Backus-Naur Form">EBNF</abbr> productions</a> specified below, which replace the productions having the same number (if any) in the original grammar. The parts in which these productions differ from the corresponding productions in the original grammar are marked in bold font. Productions <a href="#rEmbTP">[174]</a> and following have been added and have no counterpart in the original grammar.</p>
 
       <table class="grammar">
           <tr id="rTriplesSameSubject">
@@ -607,7 +607,7 @@ SELECT ?claimer WHERE {
           <td>`TriplesSameSubject`</td>
           <td>::=</td>
           <td>
-            <a href="#rVarOrTermOrEmbTP">VarOrTermOrEmbTP</a>
+            <a href="#rVarOrTermOrEmbTP" style="font-weight: bold">VarOrTermOrEmbTP</a>
             <a data-cite="SPARQL11-QUERY#rPropertyListNotEmpty">PropertyListNotEmpty</a>
             `|`
             <a data-cite="SPARQL11-QUERY#rTriplesNode">TriplesNode</a>
@@ -619,7 +619,7 @@ SELECT ?claimer WHERE {
           <td>::=</td>
           <td>
             <a data-cite="SPARQL11-QUERY#rGraphNode">GraphNode</a>
-            <a href="#rAnnotationPattern">AnnotationPattern</a>`?`
+            <span style="font-weight: bold"><a href="#rAnnotationPattern">AnnotationPattern</a>`?`</span>
           </td>
         </tr>
         <tr id="rTriplesSameSubjectPath">
@@ -627,7 +627,7 @@ SELECT ?claimer WHERE {
           <td>`TriplesSameSubjectPath`</td>
           <td>::=</td>
           <td>
-            <a href="#rVarOrTermOrEmbTP">VarOrTermOrEmbTP</a>
+            <a href="#rVarOrTermOrEmbTP" style="font-weight: bold">VarOrTermOrEmbTP</a>
             <a data-cite="SPARQL11-QUERY#rPropertyListPathNotEmpty">PropertyListPathNotEmpty</a>
             `|`
             <a data-cite="SPARQL11-QUERY#rTriplesNode">TriplesNode</a>
@@ -640,7 +640,7 @@ SELECT ?claimer WHERE {
           <td>::=</td>
           <td>
             <a href="#rGraphNodePath">GraphNodePath</a>
-            <a href="#rAnnotationPatternPath">AnnotationPatternPath</a>`?`
+            <span style="font-weight: bold"><a href="#rAnnotationPatternPath">AnnotationPatternPath</a>`?`</span>
           </td>
         </tr>
         <tr id="rGraphNode">
@@ -648,7 +648,7 @@ SELECT ?claimer WHERE {
           <td>`GraphNode`</td>
           <td>::=</td>
           <td>
-            <a href="#rVarOrTermOrEmbTP">VarOrTermOrEmbTP</a> `|`
+            <a href="#rVarOrTermOrEmbTP" style="font-weight: bold">VarOrTermOrEmbTP</a> `|`
             <a data-cite="SPARQL11-QUERY#rTriplesNodePath">TriplesNode</a>
           </td>
         </tr>
@@ -657,7 +657,7 @@ SELECT ?claimer WHERE {
           <td>`GraphNodePath`</td>
           <td>::=</td>
           <td>
-            <a href="#rVarOrTermOrEmbTP">VarOrTermOrEmbTP</a> `|`
+            <a href="#rVarOrTermOrEmbTP" style="font-weight: bold">VarOrTermOrEmbTP</a> `|`
             <a data-cite="SPARQL11-QUERY#rTriplesNodePath">TriplesNodePath</a>
           </td>
         </tr>
@@ -1042,7 +1042,7 @@ SELECT ?claimer WHERE {
               `|`
               <a data-cite="SPARQL11-QUERY#rNotExistsFunc">NotExistsFunc</a>
             </div>
-            <div>
+            <div style="font-weight: bold">
               `|`
               <code class="token">'TRIPLE'</code>
               <code class="token">'('</code>
@@ -1053,28 +1053,28 @@ SELECT ?claimer WHERE {
               <a data-cite="SPARQL11-QUERY#rExpression">Expression</a>
               <code class="token">')'</code>
             </div>
-            <div>
+            <div style="font-weight: bold">
               `|`
               <code class="token">'SUBJECT'</code>
               <code class="token">'('</code>
               <a data-cite="SPARQL11-QUERY#rExpression">Expression</a>
               <code class="token">')'</code>
             </div>
-            <div>
+            <div style="font-weight: bold">
               `|`
               <code class="token">'PREDICATE'</code>
               <code class="token">'('</code>
               <a data-cite="SPARQL11-QUERY#rExpression">Expression</a>
               <code class="token">')'</code>
             </div>
-            <div>
+            <div style="font-weight: bold">
               `|`
               <code class="token">'OBJECT'</code>
               <code class="token">'('</code>
               <a data-cite="SPARQL11-QUERY#rExpression">Expression</a>
               <code class="token">')'</code>
             </div>
-            <div>
+            <div style="font-weight: bold">
               `|`
               <code class="token">'isTRIPLE'</code>
               <code class="token">'('</code>
@@ -1085,9 +1085,9 @@ SELECT ?claimer WHERE {
         </tr>
         <tr id="rEmbTP">
           <td>[174]</td>
-          <td>`EmbTP`</td>
-          <td>::=</td>
-          <td>
+          <td style="font-weight: bold">`EmbTP`</td>
+          <td style="font-weight: bold">::=</td>
+          <td style="font-weight: bold">
             <code class="token">'&lt;&lt;'</code>
             <a href="#rEmbSubjectOrObject">EmbSubjectOrObject</a>
             <a data-cite="SPARQL11-QUERY#rVerb">Verb</a>
@@ -1097,9 +1097,9 @@ SELECT ?claimer WHERE {
         </tr>
         <tr id="rEmbSubjectOrObject">
           <td>[175]</td>
-          <td>`EmbSubjectOrObject`</td>
-          <td>::=</td>
-          <td>
+          <td style="font-weight: bold">`EmbSubjectOrObject`</td>
+          <td style="font-weight: bold">::=</td>
+          <td style="font-weight: bold">
             <a data-cite="SPARQL11-QUERY#rVar">Var</a> `|`
             <a data-cite="SPARQL11-QUERY#rBlankNode">BlankNode</a> `|`
             <a data-cite="SPARQL11-QUERY#riri">iri</a> `|`
@@ -1111,9 +1111,9 @@ SELECT ?claimer WHERE {
         </tr>
         <tr id="rVarOrTermOrEmbTP">
           <td>[176]</td>
-          <td>`VarOrTermOrEmbTP`</td>
-          <td>::=</td>
-          <td>
+          <td style="font-weight: bold">`VarOrTermOrEmbTP`</td>
+          <td style="font-weight: bold">::=</td>
+          <td style="font-weight: bold">
             <a data-cite="SPARQL11-QUERY#rVar">Var</a> `|`
             <a data-cite="SPARQL11-QUERY#rGraphTerm">GraphTerm</a> `|`
             <a href="#rEmbTP">EmbTP</a>
@@ -1121,9 +1121,9 @@ SELECT ?claimer WHERE {
         </tr>
         <tr id="rAnnotationPattern">
           <td>[177]</td>
-          <td>`AnnotationPattern`</td>
-          <td>::=</td>
-          <td>
+          <td style="font-weight: bold">`AnnotationPattern`</td>
+          <td style="font-weight: bold">::=</td>
+          <td style="font-weight: bold">
             <code class="token">'{|'</code>
             <a data-cite="SPARQL11-QUERY#rPropertyListNotEmpty">PropertyListNotEmpty</a>
             <code class="token">'|}'</code>
@@ -1131,9 +1131,9 @@ SELECT ?claimer WHERE {
         </tr>
         <tr id="rAnnotationPatternPath">
           <td>[178]</td>
-          <td>`AnnotationPatternPath`</td>
-          <td>::=</td>
-          <td>
+          <td style="font-weight: bold">`AnnotationPatternPath`</td>
+          <td style="font-weight: bold">::=</td>
+          <td style="font-weight: bold">
             <code class="token">'{|'</code>
             <a data-cite="SPARQL11-QUERY#rPropertyListPathNotEmpty">PropertyListPathNotEmpty</a>
             <code class="token">'|}'</code>

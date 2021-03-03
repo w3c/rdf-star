@@ -1154,6 +1154,8 @@ SELECT ?claimer WHERE {
         Additionally, the set of available built-in functions is extended with the five functions TRIPLE, SUBJECT, PREDICATE, OBJECT, and isTRIPLE (<a href="#rBuiltInCall">[121]</a>) that are defined in <a href="#builtin-functions"></a>.
       </p>
 
+      <p class="note"><a data-cite="SPARQL11-QUERY#sparqlGrammar">As defined for all keywords in SPARQL</a>, the names of the five new built-in functions added by SPARQL-star are matched in a case-insensitive manner.</p>
+
       <p>
         Yet another extension is that both the <a href="#rObject">Object</a> and the <a href="#rObjectPath">ObjectPath</a> productions now accept an optional <dfn>annotation pattern</dfn> after each object. The purpose of this feature is to enable users to use the same kind of annotation syntax that is supported in Turtle-star. As in the case of Turtle-star, the annotation syntax in SPARQL-star is purely syntactic sugar that has to be processed in accordance to the first expansion rule in <a href="#expand-syntax-forms"></a>.
       </p>

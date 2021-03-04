@@ -39,14 +39,11 @@ PREFIX :       <#>
         :sparql-star-construct-4
         :sparql-star-construct-5
 
-## CONSTRUCT
-
-## UNION, OPTIONAL.
+        :sparql-star-graphs-1
+        :sparql-star-graphs-2
 
 ## Same var - basic
 ## Nesting
-
-## Annotation
 
 ## Update
 ) .
@@ -114,7 +111,7 @@ PREFIX :       <#>
    mf:result  <sparql-star-basic-6.srj>
    .
 
-:sparql-star-pattern-1
+:sparql-star-pattern-1 rdf:type mf:QueryEvaluationTest ;
     mf:name    "SPARQL-star - Asserted and embedded triple" ;
     mf:action
         [ qt:query  <sparql-star-pattern-01.rq> ;
@@ -122,7 +119,7 @@ PREFIX :       <#>
     mf:result  <sparql-star-pattern-01.srj>
 .
 
-:sparql-star-pattern-2
+:sparql-star-pattern-2 rdf:type mf:QueryEvaluationTest ;
     mf:name    "SPARQL-star -  Asserted and embedded triple" ;
     mf:action
         [ qt:query  <sparql-star-pattern-02.rq> ;
@@ -130,7 +127,7 @@ PREFIX :       <#>
     mf:result  <sparql-star-pattern-02.srj>
 .
 
-:sparql-star-pattern-3
+:sparql-star-pattern-3 rdf:type mf:QueryEvaluationTest ;
     mf:name    "SPARQL-star - Pattern - Variable for embedded triple" ;
     mf:action
         [ qt:query  <sparql-star-pattern-03.rq> ;
@@ -138,7 +135,7 @@ PREFIX :       <#>
     mf:result  <sparql-star-pattern-03.srj>
 .
 
-:sparql-star-pattern-4
+:sparql-star-pattern-4 rdf:type mf:QueryEvaluationTest ;
     mf:name    "SPARQL-star - Pattern - No match" ;
     mf:action
         [ qt:query  <sparql-star-pattern-04.rq> ;
@@ -146,7 +143,7 @@ PREFIX :       <#>
     mf:result  <sparql-star-pattern-04.srj>
 .
 
-:sparql-star-pattern-5
+:sparql-star-pattern-5 rdf:type mf:QueryEvaluationTest ;
     mf:name    "SPARQL-star - Pattern - match variables in triple terms" ;
     mf:action
         [ qt:query  <sparql-star-pattern-05.rq> ;
@@ -154,7 +151,7 @@ PREFIX :       <#>
     mf:result  <sparql-star-pattern-05.srj>
 .
 
-:sparql-star-pattern-6
+:sparql-star-pattern-6 rdf:type mf:QueryEvaluationTest ;
     mf:name    "SPARQL-star - Pattern - Nesting 1" ;
     mf:action
         [ qt:query  <sparql-star-pattern-06.rq> ;
@@ -162,7 +159,7 @@ PREFIX :       <#>
     mf:result  <sparql-star-pattern-06.srj>
 .
 
-:sparql-star-pattern-7
+:sparql-star-pattern-7 rdf:type mf:QueryEvaluationTest ;
     mf:name    "SPARQL-star - Pattern - Nesting - 2" ;
     mf:action
         [ qt:query  <sparql-star-pattern-07.rq> ;
@@ -170,7 +167,7 @@ PREFIX :       <#>
     mf:result  <sparql-star-pattern-07.srj>
 .
 
-:sparql-star-pattern-8
+:sparql-star-pattern-8 rdf:type mf:QueryEvaluationTest ;
     mf:name    "SPARQL-star - Pattern - Match and nesting" ;
     mf:action
         [ qt:query  <sparql-star-pattern-08.rq> ;
@@ -180,7 +177,7 @@ PREFIX :       <#>
 
 ## CONSTRUCT
 
-:sparql-star-construct-1
+:sparql-star-construct-1 rdf:type mf:QueryEvaluationTest ;
     mf:name    "SPARQL-star - CONSTRUCT with constant template" ;
     mf:action
         [ qt:query  <sparql-star-construct-1.rq> ;
@@ -188,7 +185,7 @@ PREFIX :       <#>
     mf:result  <sparql-star-construct-1.ttl> ;
 .
 
-:sparql-star-construct-2
+:sparql-star-construct-2 rdf:type mf:QueryEvaluationTest ;
     mf:name    "SPARQL-star - CONSTRUCT WHERE with constant template" ;
     mf:action
         [ qt:query  <sparql-star-construct-2.rq> ;
@@ -196,7 +193,7 @@ PREFIX :       <#>
     mf:result  <sparql-star-construct-2.ttl> ;
 .
 
-:sparql-star-construct-3
+:sparql-star-construct-3 rdf:type mf:QueryEvaluationTest ;
     mf:name    "SPARQL-star - CONSTRUCT - about every triple" ;
     mf:action
         [ qt:query  <sparql-star-construct-3.rq> ;
@@ -204,7 +201,7 @@ PREFIX :       <#>
     mf:result  <sparql-star-construct-3.ttl> ;
 .
 
-:sparql-star-construct-4
+:sparql-star-construct-4 rdf:type mf:QueryEvaluationTest ;
     mf:name    "SPARQL-star - CONSTRUCT with annotation syntax" ;
     mf:action
         [ qt:query  <sparql-star-construct-4.rq> ;
@@ -212,13 +209,30 @@ PREFIX :       <#>
     mf:result  <sparql-star-construct-4.ttl> ;
 .
 
-:sparql-star-construct-5
+:sparql-star-construct-5 rdf:type mf:QueryEvaluationTest ;
     mf:name    "SPARQL-star - CONSTRUCT WHERE with annotation syntax" ;
     mf:action
         [ qt:query  <sparql-star-construct-5.rq> ;
           qt:data   <data-3.ttl> ] ;
     mf:result  <sparql-star-construct-5.ttl> ;
 .
+
+:sparql-star-graphs-1 rdf:type mf:QueryEvaluationTest ;
+    mf:name    "SPARQL-star - GRAPH" ;
+    mf:action
+        [ qt:query  <sparql-star-graphs-1.rq> ;
+          qt:data   <data-4.trig> ] ;
+    mf:result  <sparql-star-graphs-1.srj> ;
+.
+
+:sparql-star-graphs-2 rdf:type mf:QueryEvaluationTest ;
+    mf:name    "SPARQL-star - GRAPHs with blank node" ;
+    mf:action
+        [ qt:query  <sparql-star-graphs-2.rq> ;
+          qt:data   <data-4.trig> ] ;
+    mf:result  <sparql-star-graphs-2.srj> ;
+.
+
 
 ## Update
 ## :sparql-star-update-basic-1 rdf:type mf:UpdateEvaluationTest ;

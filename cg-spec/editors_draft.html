@@ -599,7 +599,7 @@ SELECT ?claimer WHERE {
     <section id="sparql-star-grammar">
       <h2>Grammar</h2>
 
-      <p>SPARQL-star is defined to follow the <a data-cite="SPARQL11-QUERY#sparqlGrammar">same grammar</a> as SPARQL&nbsp;1.1, <em>except</em> for the <a data-cite="XML#sec-notation"><abbr title="Extended Backus-Naur Form">EBNF</abbr> productions</a> specified below, which replace the productions having the same number (if any) in the original grammar. Productions <a href="#rEmbTP">[174]</a> and following have been added and have no counterpart in the original grammar.</p>
+      <p>SPARQL-star is defined to follow the <a data-cite="SPARQL11-QUERY#sparqlGrammar">same grammar</a> as SPARQL&nbsp;1.1, <em>except</em> for the <a data-cite="XML#sec-notation"><abbr title="Extended Backus-Naur Form">EBNF</abbr> productions</a> specified below, which replace the productions having the same number (if any) in the original grammar. The parts in which these productions differ from the corresponding productions in the original grammar are marked in bold font. Productions <a href="#rEmbTP">[174]</a> and following have been added and have no counterpart in the original grammar.</p>
 
       <table class="grammar">
           <tr id="rTriplesSameSubject">
@@ -607,7 +607,7 @@ SELECT ?claimer WHERE {
           <td>`TriplesSameSubject`</td>
           <td>::=</td>
           <td>
-            <a href="#rVarOrTermOrEmbTP">VarOrTermOrEmbTP</a>
+            <a href="#rVarOrTermOrEmbTP" style="font-weight: bold">VarOrTermOrEmbTP</a>
             <a data-cite="SPARQL11-QUERY#rPropertyListNotEmpty">PropertyListNotEmpty</a>
             `|`
             <a data-cite="SPARQL11-QUERY#rTriplesNode">TriplesNode</a>
@@ -619,7 +619,7 @@ SELECT ?claimer WHERE {
           <td>::=</td>
           <td>
             <a data-cite="SPARQL11-QUERY#rGraphNode">GraphNode</a>
-            <a href="#rAnnotationPattern">AnnotationPattern</a>`?`
+            <span style="font-weight: bold"><a href="#rAnnotationPattern">AnnotationPattern</a>`?`</span>
           </td>
         </tr>
         <tr id="rTriplesSameSubjectPath">
@@ -627,7 +627,7 @@ SELECT ?claimer WHERE {
           <td>`TriplesSameSubjectPath`</td>
           <td>::=</td>
           <td>
-            <a href="#rVarOrTermOrEmbTP">VarOrTermOrEmbTP</a>
+            <a href="#rVarOrTermOrEmbTP" style="font-weight: bold">VarOrTermOrEmbTP</a>
             <a data-cite="SPARQL11-QUERY#rPropertyListPathNotEmpty">PropertyListPathNotEmpty</a>
             `|`
             <a data-cite="SPARQL11-QUERY#rTriplesNode">TriplesNode</a>
@@ -640,7 +640,7 @@ SELECT ?claimer WHERE {
           <td>::=</td>
           <td>
             <a href="#rGraphNodePath">GraphNodePath</a>
-            <a href="#rAnnotationPatternPath">AnnotationPatternPath</a>`?`
+            <span style="font-weight: bold"><a href="#rAnnotationPatternPath">AnnotationPatternPath</a>`?`</span>
           </td>
         </tr>
         <tr id="rGraphNode">
@@ -648,7 +648,7 @@ SELECT ?claimer WHERE {
           <td>`GraphNode`</td>
           <td>::=</td>
           <td>
-            <a href="#rVarOrTermOrEmbTP">VarOrTermOrEmbTP</a> `|`
+            <a href="#rVarOrTermOrEmbTP" style="font-weight: bold">VarOrTermOrEmbTP</a> `|`
             <a data-cite="SPARQL11-QUERY#rTriplesNodePath">TriplesNode</a>
           </td>
         </tr>
@@ -657,15 +657,437 @@ SELECT ?claimer WHERE {
           <td>`GraphNodePath`</td>
           <td>::=</td>
           <td>
-            <a href="#rVarOrTermOrEmbTP">VarOrTermOrEmbTP</a> `|`
+            <a href="#rVarOrTermOrEmbTP" style="font-weight: bold">VarOrTermOrEmbTP</a> `|`
             <a data-cite="SPARQL11-QUERY#rTriplesNodePath">TriplesNodePath</a>
+          </td>
+        </tr>
+        <tr id="rBuiltInCall">
+          <td>[121]</td>
+          <td>`BuiltInCall`</td>
+          <td>::=</td>
+          <td>
+            <div>&nbsp;&nbsp;&nbsp;<a data-cite="SPARQL11-QUERY#rAggregate">Aggregate</a></div>
+            <div>
+              `|`
+              <code class="token">'STR'</code>
+              <code class="token">'('</code>
+              <a data-cite="SPARQL11-QUERY#rExpression">Expression</a>
+              <code class="token">')'</code>
+            </div>
+            <div>
+              `|`
+              <code class="token">'LANG'</code>
+              <code class="token">'('</code>
+              <a data-cite="SPARQL11-QUERY#rExpression">Expression</a>
+              <code class="token">')'</code>
+            </div>
+            <div>
+              `|`
+              <code class="token">'LANGMATCHES'</code>
+              <code class="token">'('</code>
+              <a data-cite="SPARQL11-QUERY#rExpression">Expression</a>
+              <code class="token">')'</code>
+            </div>
+            <div>
+              `|`
+              <code class="token">'DATATYPE'</code>
+              <code class="token">'('</code>
+              <a data-cite="SPARQL11-QUERY#rExpression">Expression</a>
+              <code class="token">')'</code>
+            </div>
+            <div>
+              `|`
+              <code class="token">'BOUND'</code>
+              <code class="token">'('</code>
+              <a data-cite="SPARQL11-QUERY#rVar">Var</a>
+              <code class="token">')'</code>
+            </div>
+            <div>
+              `|`
+              <code class="token">'IRI'</code>
+              <code class="token">'('</code>
+              <a data-cite="SPARQL11-QUERY#rExpression">Expression</a>
+              <code class="token">')'</code>
+            </div>
+            <div>
+              `|`
+              <code class="token">'URI'</code>
+              <code class="token">'('</code>
+              <a data-cite="SPARQL11-QUERY#rExpression">Expression</a>
+              <code class="token">')'</code>
+            </div>
+            <div>
+              `|`
+              <code class="token">'BNODE'</code>
+              `(`
+              <code class="token">'('</code>
+              <a data-cite="SPARQL11-QUERY#rExpression">Expression</a>
+              <code class="token">')'</code>
+              `|`
+              <a data-cite="SPARQL11-QUERY#rNIL">NIL</a>
+              `)`
+            </div>
+            <div>
+              `|`
+              <code class="token">'RAND'</code>
+              <a data-cite="SPARQL11-QUERY#rNIL">NIL</a>
+            </div>
+            <div>
+              `|`
+              <code class="token">'ABS'</code>
+              <code class="token">'('</code>
+              <a data-cite="SPARQL11-QUERY#rExpression">Expression</a>
+              <code class="token">')'</code>
+            </div>
+            <div>
+              `|`
+              <code class="token">'CEIL'</code>
+              <code class="token">'('</code>
+              <a data-cite="SPARQL11-QUERY#rExpression">Expression</a>
+              <code class="token">')'</code>
+            </div>
+            <div>
+              `|`
+              <code class="token">'FLOOR'</code>
+              <code class="token">'('</code>
+              <a data-cite="SPARQL11-QUERY#rExpression">Expression</a>
+              <code class="token">')'</code>
+            </div>
+            <div>
+              `|`
+              <code class="token">'ROUND'</code>
+              <code class="token">'('</code>
+              <a data-cite="SPARQL11-QUERY#rExpression">Expression</a>
+              <code class="token">')'</code>
+            </div>
+            <div>
+              `|`
+              <code class="token">'CONCAT'</code>
+              <a data-cite="SPARQL11-QUERY#rExpressionList">ExpressionList</a>
+            </div>
+            <div>
+              `|`
+              <a data-cite="SPARQL11-QUERY#rSubstringExpression">SubstringExpression</a>
+            </div>
+            <div>
+              `|`
+              <code class="token">'STRLEN'</code>
+              <code class="token">'('</code>
+              <a data-cite="SPARQL11-QUERY#rExpression">Expression</a>
+              <code class="token">')'</code>
+            </div>
+            <div>
+              `|`
+              <a data-cite="SPARQL11-QUERY#rStrReplaceExpression">StrReplaceExpression</a>
+            </div>
+            <div>
+              `|`
+              <code class="token">'UCASE'</code>
+              <code class="token">'('</code>
+              <a data-cite="SPARQL11-QUERY#rExpression">Expression</a>
+              <code class="token">')'</code>
+            </div>
+            <div>
+              `|`
+              <code class="token">'LCASE'</code>
+              <code class="token">'('</code>
+              <a data-cite="SPARQL11-QUERY#rExpression">Expression</a>
+              <code class="token">')'</code>
+            </div>
+            <div>
+              `|`
+              <code class="token">'ENCODE_FOR_URI'</code>
+              <code class="token">'('</code>
+              <a data-cite="SPARQL11-QUERY#rExpression">Expression</a>
+              <code class="token">')'</code>
+            </div>
+            <div>
+              `|`
+              <code class="token">'CONTAINS'</code>
+              <code class="token">'('</code>
+              <a data-cite="SPARQL11-QUERY#rExpression">Expression</a>
+              <code class="token">','</code>
+              <a data-cite="SPARQL11-QUERY#rExpression">Expression</a>
+              <code class="token">')'</code>
+            </div>
+            <div>
+              `|`
+              <code class="token">'STRSTARTS'</code>
+              <code class="token">'('</code>
+              <a data-cite="SPARQL11-QUERY#rExpression">Expression</a>
+              <code class="token">','</code>
+              <a data-cite="SPARQL11-QUERY#rExpression">Expression</a>
+              <code class="token">')'</code>
+            </div>
+            <div>
+              `|`
+              <code class="token">'STRENDS'</code>
+              <code class="token">'('</code>
+              <a data-cite="SPARQL11-QUERY#rExpression">Expression</a>
+              <code class="token">','</code>
+              <a data-cite="SPARQL11-QUERY#rExpression">Expression</a>
+              <code class="token">')'</code>
+            </div>
+            <div>
+              `|`
+              <code class="token">'STRBEFORE'</code>
+              <code class="token">'('</code>
+              <a data-cite="SPARQL11-QUERY#rExpression">Expression</a>
+              <code class="token">','</code>
+              <a data-cite="SPARQL11-QUERY#rExpression">Expression</a>
+              <code class="token">')'</code>
+            </div>
+            <div>
+              `|`
+              <code class="token">'STRAFTER'</code>
+              <code class="token">'('</code>
+              <a data-cite="SPARQL11-QUERY#rExpression">Expression</a>
+              <code class="token">','</code>
+              <a data-cite="SPARQL11-QUERY#rExpression">Expression</a>
+              <code class="token">')'</code>
+            </div>
+            <div>
+              `|`
+              <code class="token">'YEAR'</code>
+              <code class="token">'('</code>
+              <a data-cite="SPARQL11-QUERY#rExpression">Expression</a>
+              <code class="token">')'</code>
+            </div>
+            <div>
+              `|`
+              <code class="token">'MONTH'</code>
+              <code class="token">'('</code>
+              <a data-cite="SPARQL11-QUERY#rExpression">Expression</a>
+              <code class="token">')'</code>
+            </div>
+            <div>
+              `|`
+              <code class="token">'DAY'</code>
+              <code class="token">'('</code>
+              <a data-cite="SPARQL11-QUERY#rExpression">Expression</a>
+              <code class="token">')'</code>
+            </div>
+            <div>
+              `|`
+              <code class="token">'HOURS'</code>
+              <code class="token">'('</code>
+              <a data-cite="SPARQL11-QUERY#rExpression">Expression</a>
+              <code class="token">')'</code>
+            </div>
+            <div>
+              `|`
+              <code class="token">'MINUTES'</code>
+              <code class="token">'('</code>
+              <a data-cite="SPARQL11-QUERY#rExpression">Expression</a>
+              <code class="token">')'</code>
+            </div>
+            <div>
+              `|`
+              <code class="token">'SECONDS'</code>
+              <code class="token">'('</code>
+              <a data-cite="SPARQL11-QUERY#rExpression">Expression</a>
+              <code class="token">')'</code>
+            </div>
+            <div>
+              `|`
+              <code class="token">'TIMEZONE'</code>
+              <code class="token">'('</code>
+              <a data-cite="SPARQL11-QUERY#rExpression">Expression</a>
+              <code class="token">')'</code>
+            </div>
+            <div>
+              `|`
+              <code class="token">'TZ'</code>
+              <code class="token">'('</code>
+              <a data-cite="SPARQL11-QUERY#rExpression">Expression</a>
+              <code class="token">')'</code>
+            </div>
+            <div>
+              `|`
+              <code class="token">'NOW'</code>
+              <a data-cite="SPARQL11-QUERY#rNIL">NIL</a>
+            </div>
+            <div>
+              `|`
+              <code class="token">'UUID'</code>
+              <a data-cite="SPARQL11-QUERY#rNIL">NIL</a>
+            </div>
+            <div>
+              `|`
+              <code class="token">'STRUUID'</code>
+              <a data-cite="SPARQL11-QUERY#rNIL">NIL</a>
+            </div>
+            <div>
+              `|`
+              <code class="token">'MD5'</code>
+              <code class="token">'('</code>
+              <a data-cite="SPARQL11-QUERY#rExpression">Expression</a>
+              <code class="token">')'</code>
+            </div>
+            <div>
+              `|`
+              <code class="token">'SHA1'</code>
+              <code class="token">'('</code>
+              <a data-cite="SPARQL11-QUERY#rExpression">Expression</a>
+              <code class="token">')'</code>
+            </div>
+            <div>
+              `|`
+              <code class="token">'SHA256'</code>
+              <code class="token">'('</code>
+              <a data-cite="SPARQL11-QUERY#rExpression">Expression</a>
+              <code class="token">')'</code>
+            </div>
+            <div>
+              `|`
+              <code class="token">'SHA384'</code>
+              <code class="token">'('</code>
+              <a data-cite="SPARQL11-QUERY#rExpression">Expression</a>
+              <code class="token">')'</code>
+            </div>
+            <div>
+              `|`
+              <code class="token">'SHA512'</code>
+              <code class="token">'('</code>
+              <a data-cite="SPARQL11-QUERY#rExpression">Expression</a>
+              <code class="token">')'</code>
+            </div>
+            <div>
+              `|`
+              <code class="token">'COALESCE'</code>
+              <a data-cite="SPARQL11-QUERY#rExpressionList">ExpressionList</a>
+            </div>
+            <div>
+              `|`
+              <code class="token">'IF'</code>
+              <code class="token">'('</code>
+              <a data-cite="SPARQL11-QUERY#rExpression">Expression</a>
+              <code class="token">','</code>
+              <a data-cite="SPARQL11-QUERY#rExpression">Expression</a>
+              <code class="token">','</code>
+              <a data-cite="SPARQL11-QUERY#rExpression">Expression</a>
+              <code class="token">')'</code>
+            </div>
+            <div>
+              `|`
+              <code class="token">'STRLANG'</code>
+              <code class="token">'('</code>
+              <a data-cite="SPARQL11-QUERY#rExpression">Expression</a>
+              <code class="token">','</code>
+              <a data-cite="SPARQL11-QUERY#rExpression">Expression</a>
+              <code class="token">')'</code>
+            </div>
+            <div>
+              `|`
+              <code class="token">'STRDT'</code>
+              <code class="token">'('</code>
+              <a data-cite="SPARQL11-QUERY#rExpression">Expression</a>
+              <code class="token">','</code>
+              <a data-cite="SPARQL11-QUERY#rExpression">Expression</a>
+              <code class="token">')'</code>
+            </div>
+            <div>
+              `|`
+              <code class="token">'sameTerm'</code>
+              <code class="token">'('</code>
+              <a data-cite="SPARQL11-QUERY#rExpression">Expression</a>
+              <code class="token">','</code>
+              <a data-cite="SPARQL11-QUERY#rExpression">Expression</a>
+              <code class="token">')'</code>
+            </div>
+            <div>
+              `|`
+              <code class="token">'isIRI'</code>
+              <code class="token">'('</code>
+              <a data-cite="SPARQL11-QUERY#rExpression">Expression</a>
+              <code class="token">')'</code>
+            </div>
+            <div>
+              `|`
+              <code class="token">'isURI'</code>
+              <code class="token">'('</code>
+              <a data-cite="SPARQL11-QUERY#rExpression">Expression</a>
+              <code class="token">')'</code>
+            </div>
+            <div>
+              `|`
+              <code class="token">'isBLANK'</code>
+              <code class="token">'('</code>
+              <a data-cite="SPARQL11-QUERY#rExpression">Expression</a>
+              <code class="token">')'</code>
+            </div>
+            <div>
+              `|`
+              <code class="token">'isLITERAL'</code>
+              <code class="token">'('</code>
+              <a data-cite="SPARQL11-QUERY#rExpression">Expression</a>
+              <code class="token">')'</code>
+            </div>
+            <div>
+              `|`
+              <code class="token">'isNUMERIC'</code>
+              <code class="token">'('</code>
+              <a data-cite="SPARQL11-QUERY#rExpression">Expression</a>
+              <code class="token">')'</code>
+            </div>
+            <div>
+              `|`
+              <a data-cite="SPARQL11-QUERY#rRegexExpression">RegexExpression</a>
+            </div>
+            <div>
+              `|`
+              <a data-cite="SPARQL11-QUERY#rExistsFunc">ExistsFunc</a>
+            </div>
+            <div>
+              `|`
+              <a data-cite="SPARQL11-QUERY#rNotExistsFunc">NotExistsFunc</a>
+            </div>
+            <div style="font-weight: bold">
+              `|`
+              <code class="token">'TRIPLE'</code>
+              <code class="token">'('</code>
+              <a data-cite="SPARQL11-QUERY#rExpression">Expression</a>
+              <code class="token">','</code>
+              <a data-cite="SPARQL11-QUERY#rExpression">Expression</a>
+              <code class="token">','</code>
+              <a data-cite="SPARQL11-QUERY#rExpression">Expression</a>
+              <code class="token">')'</code>
+            </div>
+            <div style="font-weight: bold">
+              `|`
+              <code class="token">'SUBJECT'</code>
+              <code class="token">'('</code>
+              <a data-cite="SPARQL11-QUERY#rExpression">Expression</a>
+              <code class="token">')'</code>
+            </div>
+            <div style="font-weight: bold">
+              `|`
+              <code class="token">'PREDICATE'</code>
+              <code class="token">'('</code>
+              <a data-cite="SPARQL11-QUERY#rExpression">Expression</a>
+              <code class="token">')'</code>
+            </div>
+            <div style="font-weight: bold">
+              `|`
+              <code class="token">'OBJECT'</code>
+              <code class="token">'('</code>
+              <a data-cite="SPARQL11-QUERY#rExpression">Expression</a>
+              <code class="token">')'</code>
+            </div>
+            <div style="font-weight: bold">
+              `|`
+              <code class="token">'isTRIPLE'</code>
+              <code class="token">'('</code>
+              <a data-cite="SPARQL11-QUERY#rExpression">Expression</a>
+              <code class="token">')'</code>
+            </div>
           </td>
         </tr>
         <tr id="rEmbTP">
           <td>[174]</td>
-          <td>`EmbTP`</td>
-          <td>::=</td>
-          <td>
+          <td style="font-weight: bold">`EmbTP`</td>
+          <td style="font-weight: bold">::=</td>
+          <td style="font-weight: bold">
             <code class="token">'&lt;&lt;'</code>
             <a href="#rEmbSubjectOrObject">EmbSubjectOrObject</a>
             <a data-cite="SPARQL11-QUERY#rVerb">Verb</a>
@@ -675,9 +1097,9 @@ SELECT ?claimer WHERE {
         </tr>
         <tr id="rEmbSubjectOrObject">
           <td>[175]</td>
-          <td>`EmbSubjectOrObject`</td>
-          <td>::=</td>
-          <td>
+          <td style="font-weight: bold">`EmbSubjectOrObject`</td>
+          <td style="font-weight: bold">::=</td>
+          <td style="font-weight: bold">
             <a data-cite="SPARQL11-QUERY#rVar">Var</a> `|`
             <a data-cite="SPARQL11-QUERY#rBlankNode">BlankNode</a> `|`
             <a data-cite="SPARQL11-QUERY#riri">iri</a> `|`
@@ -689,9 +1111,9 @@ SELECT ?claimer WHERE {
         </tr>
         <tr id="rVarOrTermOrEmbTP">
           <td>[176]</td>
-          <td>`VarOrTermOrEmbTP`</td>
-          <td>::=</td>
-          <td>
+          <td style="font-weight: bold">`VarOrTermOrEmbTP`</td>
+          <td style="font-weight: bold">::=</td>
+          <td style="font-weight: bold">
             <a data-cite="SPARQL11-QUERY#rVar">Var</a> `|`
             <a data-cite="SPARQL11-QUERY#rGraphTerm">GraphTerm</a> `|`
             <a href="#rEmbTP">EmbTP</a>
@@ -699,9 +1121,9 @@ SELECT ?claimer WHERE {
         </tr>
         <tr id="rAnnotationPattern">
           <td>[177]</td>
-          <td>`AnnotationPattern`</td>
-          <td>::=</td>
-          <td>
+          <td style="font-weight: bold">`AnnotationPattern`</td>
+          <td style="font-weight: bold">::=</td>
+          <td style="font-weight: bold">
             <code class="token">'{|'</code>
             <a data-cite="SPARQL11-QUERY#rPropertyListNotEmpty">PropertyListNotEmpty</a>
             <code class="token">'|}'</code>
@@ -709,9 +1131,9 @@ SELECT ?claimer WHERE {
         </tr>
         <tr id="rAnnotationPatternPath">
           <td>[178]</td>
-          <td>`AnnotationPatternPath`</td>
-          <td>::=</td>
-          <td>
+          <td style="font-weight: bold">`AnnotationPatternPath`</td>
+          <td style="font-weight: bold">::=</td>
+          <td style="font-weight: bold">
             <code class="token">'{|'</code>
             <a data-cite="SPARQL11-QUERY#rPropertyListPathNotEmpty">PropertyListPathNotEmpty</a>
             <code class="token">'|}'</code>
@@ -729,7 +1151,13 @@ SELECT ?claimer WHERE {
       </p>
 
       <p>
-        Additionally, both the <a href="#rObject">Object</a> and the <a href="#rObjectPath">ObjectPath</a> productions now accept an optional <dfn>annotation pattern</dfn> after each object. The purpose of this feature is to enable users to use the same kind of annotation syntax that is supported in Turtle-star. As in the case of Turtle-star, the annotation syntax in SPARQL-star is purely syntactic sugar that has to be processed in accordance to the first expansion rule in <a href="#expand-syntax-forms"></a>.
+        Additionally, the set of available built-in functions is extended with the five functions TRIPLE, SUBJECT, PREDICATE, OBJECT, and isTRIPLE (<a href="#rBuiltInCall">[121]</a>) that are defined in <a href="#builtin-functions"></a>.
+      </p>
+
+      <p class="note"><a data-cite="SPARQL11-QUERY#sparqlGrammar">As defined for all keywords in SPARQL</a>, the names of the five new built-in functions added by SPARQL-star are matched in a case-insensitive manner.</p>
+
+      <p>
+        Yet another extension is that both the <a href="#rObject">Object</a> and the <a href="#rObjectPath">ObjectPath</a> productions now accept an optional <dfn>annotation pattern</dfn> after each object. The purpose of this feature is to enable users to use the same kind of annotation syntax that is supported in Turtle-star. As in the case of Turtle-star, the annotation syntax in SPARQL-star is purely syntactic sugar that has to be processed in accordance to the first expansion rule in <a href="#expand-syntax-forms"></a>.
       </p>
 
       <p>
@@ -897,6 +1325,99 @@ SELECT ?claimer WHERE {
         <h2>Translate Basic Graph Patterns</h2>
 
         <p>After translating <a>property path patterns</a>, the translation process collects <q>any adjacent triple patterns [...] to form a basic graph pattern</q> [<a data-cite="SPARQL11-QUERY#sparqlTranslateBasicGraphPatterns">SPARQL11-QUERY, Section 18.2.2.5</a>]. This step has to be adjusted because <a>triple patterns</a> in the extended syntax may have an <a>embedded triple pattern</a> in their subject position or in their object position (or in both). To ensure that every result of this step is a <a>BGP-star</a>, before adding a <a>triple pattern</a> to its corresponding collection, its subject and object MUST be replaced by the result of calling <a href="#lift">function `Lift`</a> for the subject and the object, respectively.</p>
+      </section>
+
+    </section>
+
+    <section id="builtin-functions">
+      <h2>Function Definitions</h2>
+
+      <p>SPARQL introduces operators and functions that can be used in an expression of a FILTER clause, a BIND clause, or a SELECT clause (see <a data-cite="SPARQL11-QUERY#OperatorMapping">Section&nbsp;17.3</a> and <a data-cite="SPARQL11-QUERY#SparqlOps">Section&nbsp;17.4</a> in [[SPARQL11-QUERY]]). While these operators and functions are defined to operate on <a>RDF terms</a> and <a>query variables</a>, for SPARQL-star they have to be defined to operate on <a>RDF-star terms</a> and <a>query variables</a>. To this end, when using these operators and functions in the context of SPARQL-star, their definitions as given in <a data-cite="SPARQL11-QUERY#SparqlOps">Section&nbsp;17.4</a> of [[SPARQL11-QUERY]] are extended by assuming that any mention of <code>RDF term</code> as a data type for operands is understood to be the type of all <a>RDF-star terms</a>.</p>
+
+      <p>In addition to carrying over the operators and functions of SPARQL, SPARQL-star introduces five new functions that are defined as follows (where the data types <code>RDF-star term</code> and <code>RDF-star triple</code> capture all <a>RDF-star terms</a> and all <a>RDF-star triples</a>, respectively).</p>
+
+      <section>
+        <h2>TRIPLE</h2>
+
+        <p>
+          <code>RDF-star triple</code> &nbsp;
+          <code style="color:black;font-weight:bold">TRIPLE</code>
+          (
+            <code>RDF-star term </code>
+            <code style="color:black">term1</code>,
+            <code>RDF-star term </code>
+            <code style="color:black">term2</code>,
+            <code>RDF-star term </code>
+            <code style="color:black">term3</code>
+          )
+        </p>
+
+        <p>If the 3-tuple (<code style="color:black">term1</code>, <code style="color:black">term2</code>, <code style="color:black">term3</code>) is an <a>RDF-star triple</a>, the function returns this triple. If the 3-tuple is not an RDF-star triple, then the function raises an error.</p>
+
+      </section>
+
+      <section>
+        <h2>SUBJECT</h2>
+
+        <p>
+          <code>RDF-star term</code> &nbsp;
+          <code style="color:black;font-weight:bold">SUBJECT</code>
+          (
+            <code>RDF-star triple </code>
+            <code style="color:black">triple</code>
+          )
+        </p>
+
+        <p>If <code style="color:black">triple</code> is an <a>RDF-star triple</a>, the function returns the subject of this triple. Passing anything other than an RDF-star triple is an error.</p>
+
+      </section>
+
+      <section>
+        <h2>PREDICATE</h2>
+
+        <p>
+          <code>RDF-star term</code> &nbsp;
+          <code style="color:black;font-weight:bold">PREDICATE</code>
+          (
+            <code>RDF-star triple </code>
+            <code style="color:black">triple</code>
+          )
+        </p>
+
+        <p>If <code style="color:black">triple</code> is an <a>RDF-star triple</a>, the function returns the predicate of this triple. Passing anything other than an RDF-star triple is an error.</p>
+
+      </section>
+
+      <section>
+        <h2>OBJECT</h2>
+
+        <p>
+          <code>RDF-star term</code> &nbsp;
+          <code style="color:black;font-weight:bold">OBJECT</code>
+          (
+            <code>RDF-star triple </code>
+            <code style="color:black">triple</code>
+          )
+        </p>
+
+        <p>If <code style="color:black">triple</code> is an <a>RDF-star triple</a>, the function returns the object of this triple. Passing anything other than an RDF-star triple is an error.</p>
+
+      </section>
+
+      <section>
+        <h2>isTRIPLE</h2>
+
+        <p>
+          <code>xsd:boolean</code> &nbsp;
+          <code style="color:black;font-weight:bold">isTRIPLE</code>
+          (
+            <code>RDF-star term </code>
+            <code style="color:black">term</code>
+          )
+        </p>
+
+        <p>Returns <code>true</code> if <code style="color:black">term</code> is an <a>RDF-star triple</a>. Returns <code>false</code> otherwise.</p>
+
       </section>
 
     </section>

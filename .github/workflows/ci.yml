@@ -16,7 +16,7 @@ jobs:
     # Validate via ReSpec
     # See https://github.com/w3c/spec-prod/blob/main/docs/examples.md
     - name: ReSpec Checker
-      uses: w3c/spec-prod@v1
+      uses: w3c/spec-prod@v2
       with:
         TOOLCHAIN: respec
         SOURCE: cg-spec/editors_draft.html

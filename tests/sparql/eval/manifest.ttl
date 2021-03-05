@@ -32,6 +32,7 @@ PREFIX :       <#>
         :sparql-star-pattern-6
         :sparql-star-pattern-7
         :sparql-star-pattern-8
+        :sparql-star-pattern-9
 
         :sparql-star-construct-1
         :sparql-star-construct-2
@@ -173,6 +174,14 @@ PREFIX :       <#>
         [ qt:query  <sparql-star-pattern-08.rq> ;
           qt:data   <data-2.ttl> ] ;
     mf:result  <sparql-star-pattern-08.srj>
+.
+
+:sparql-star-pattern-9 rdf:type mf:QueryEvaluationTest ;
+    mf:name    "SPARQL-star - Pattern - Same variable" ;
+    mf:action
+        [ qt:query  <sparql-star-pattern-09.rq> ;
+          qt:data   <data-5.ttl> ] ;
+    mf:result  <sparql-star-pattern-09.srj>
 .
 
 ## CONSTRUCT

@@ -1779,87 +1779,80 @@ SELECT ?claimer WHERE {
       <dfn data-cite="RDF11-MT#dfn-merging" data-lt="merge">merging</dfn>,
       <dfn data-cite="RDF11-MT#dfn-satisfiable" data-lt="satisfiable">satisfiability</dfn>,
       <dfn data-cite="RDF11-MT#dfn-unsatisfiable" data-lt="unsatisfiable">unsatisfiability</dfn>,
-      <dfn data-cite="RDF11-MT#dfn-entail" data-lt="entail|entailed">entailment</dfn>,
+      <dfn data-cite="RDF11-MT#dfn-entail" data-lt="entail|entailed|entailing">entailment</dfn>,
       and <dfn data-cite="RDF11-MT#dfn-equivalent" data-lt="equivalent">equivalence</dfn>.
     </p>
 
     <section id="mapping">
       <h2>Mapping RDF-star abstract syntax to RDF</h2>
 
-      <p>We consider six <a>IRIs</a> |ST:subject term|, |PT:predicate term|, |OT:object term|, |SS:subject string|, |PS:predicate string| and |OS:object string| that will have a special meaning in our mapping.</p>
-
-      <p>We define a mapping |L| that maps any <a>IRI</a> or <a>literal</a> |t| to a literal with <ul>
+      <p>In the following, we use the notation convention of the Turtle syntax [[TURTLE]] to represent IRIs in a compact form, using the namespace prefix `rdf:` to map to the namespace IRI `http://www.w3.org/1999/02/22-rdf-syntax-ns#`, and `xsd:` to map to `http://www.w3.org/2001/XMLSchema#`.</p>
+      
+      <p>We define a mapping |L| that maps any <a>IRI</a> or <a>literal</a> |t| to a literal with</p>
+      <ul>
         <li>`xsd:string` as its <a>datatype</a>, and</li>
         <li>the <a data-cite="N-TRIPLES#canonical-ntriples">canonical N-Triples</a> representation of |t| as its <a>lexical form</a> [[N-TRIPLES]]. If |t| is itself a literal with the `xsd:string` <a>datatype</a>, the representation MUST be a <a>simple literal</a>.</li>
       </ul>
-      </p>
 
-      <p>Given an <a>RDF-star graph</a> |G|, the following steps transform it into an <a>RDF graph</a> that we call |unstar|(|G|).</p>
+      <p>We define a mapping |unstar| that maps any <a>RDF-star graph</a> |G| to a pair of <a>RDF graphs</a> (|G1|, |G2|), and is defined by applying the following steps.</p>
 
-      <ol>
-        <li>Pick an <a>RDF-star triple</a> (|s|, |p|, |o|) in the <a>constituents</a> of |G| such that neither |s| nor |o| is an <a>embedded triple</a>.</li>
-        <li>Mint a fresh blank node |b|, and replace by |b| all occurrences of (|s|, |p|, |o|) in the subject or object position of an <a>asserted</a> or <a>embedded triple</a> of |G|.</li>
-        <li>Add the following <a>asserted triples</a> to |G|:<ul>
-          <li>(|b|, |ST|, |s|)</li>
-          <li>(|b|, |PT|, |p|)</li>
-          <li>(|b|, |OT|, |o|) unless |o| is an <a>ill-typed</a> literal</li>
-          <li>(|b|, |SS|, |L|(|s|)) unless |s| is <a>blank node</a></li>
-          <li>(|b|, |PS|, |L|(|p|))</li>
-          <li>(|b|, |OS|, |L|(|o|)) unless |o| is <a>blank node</a></li>
-        </ul></li>
-        <li>Repeat the steps above until there are no embedded triples left in |G|.</li>
+      <ol class="algorithm">
+        <li>Initialize |G1| to |G|, and |G2| to the empty graph.</li>
+        <li>Repeat the steps below until there are no <a>embedded triples</a> left in |G1|.
+          <ol>
+            <li>Pick an <a>RDF-star triple</a> (|s|, |p|, |o|) in the <a>constituents</a> of |G1| such that neither |s| nor |o| is an <a>embedded triple</a>.</li>
+            <li>Mint a fresh blank node |b|, and replace by |b| all occurrences of (|s|, |p|, |o|) in the subject or object position of an <a>asserted</a> or <a>embedded triple</a> of |G1|.</li>
+            <li>Add the following <a>RDF triples</a> to |G2|:<ul>
+              <li>(|b|, `rdf:subject`, |s|)</li>
+              <li>(|b|, `rdf:predicate`, |p|)</li>
+              <li>(|b|, `rdf:object`, |o|) unless |o| is an <a>ill-typed</a> literal</li>
+              <li>(|b|, `rdf:quotedSubject`, |L|(|s|)) unless |s| is <a>blank node</a></li>
+              <li>(|b|, `rdf:quotedPredicate`, |L|(|p|))</li>
+              <li>(|b|, `rdf:quotedObject`, |L|(|o|)) unless |o| is <a>blank node</a></li>
+            </ul></li>
+          </ol>
+        </li>
       </ol>
-      <p>After these steps, |unstar|(|G|) is an <a>RDF graph</a>, as it contains no embedded triples. Note that if |G| was already an <a>RDF graph</a>, then |unstar|(|G|) = |G|.</p>
+      <p>After these steps, |G1| is an <a>RDF graph</a>, as it contains no <a>embedded triple</a>. |G2| is also obviously an <a>RDF graph</a>, as only <a>RDF triples</a> have been added to it. Note finally that if |G| was already an <a>RDF graph</a>, then |unstar|(|G|) = (|G|, ∅).</p>
 
     </section>
 
     <section>
       <h2>Entailment of <a>RDF-star graphs</a></h2>
 
-      <p>Following [[[RDF11-MT]]], we extend the notions of <a>satisfiability</a> and <a>entailment</a> for <a>RDF-star graphs</a>. Given two <a>RDF-star graphs</a> |G| and |H|:<p>
+      <p>In this section, we extend the notion of simple <a>entailment</a>, defined in [[[RDF11-MT]]], to <a>RDF-star graphs</a>. For this purpose, we start by defining a new intermediate kind of <a>entailment</a>, which we call star-<a>entailment</a>. Given two <a>RDF-star graphs</a> |G| and |H|:</p>
       <ul>
-        <li>We say that |G| is (simply) <a>satisfiable</a> (resp. <a>unsatisfiable</a>) if and only if |unstar|(|G|) is (simply) <a>satisfiable</a> (resp. <a>unsatisfiable</a>).</li>
-        <li>We say that |H| is (simply) <a>entailed</a> by (resp. <a>equivalent</a> to) |G| if and only if |unstar|(|H|) is (simply) <a>entailed</a> by (resp. <a>equivalent</a> to) |unstar|(|G|).</li>
-        <li>Other notions of <a>satisfiability</a> and <a>entailment</a>, such as <a data-cite="RDF11-MT#rdf-entailment">RDF entailment</a> or <a data-cite="RDF11-MT#rdfs-entailment">RDFS entailment</a>, can be extended in the same way for <a>RDF-star graphs</a>.</li>
+        <li>Let (|G1|, |G2|) = |unstar|(|G|), (|H1|, |H2|) = |unstar|(|H|), |G3| = |G1| ∪ |G2|, and |H3| = |H1| ∪ |H2|.</li>
+        <li>We say that |G| is star-<a>satisfiable</a> if and only if |G1| and |G3| are both simply <a>satisfiable</a>. Otherwise, |G| is said to be star-<a>unsatisfiable</a>.</li>
+        <li>We say that |G| star-<a>entails</a> |H| if and only if |G1| simply <a>entails</a> |H1|, and |G3| simply <a>entails</a> |H3|.</li>
+        <li>We say that |G| is star-<a>equivalent</a> to |H| if and only if |G| and |H|simply entail one another.</li>
       </ul>
+
+      <p>We now notice that, in the special case where |G| and |H| are <a>RDF graphs</a>, star-<a>entailment</a> and simple <a>entailment</a> are identical, since |unstar|(|G|) = (|G|, ∅) and |unstar|(|H|) = (|H|, ∅). More precisely, in that special case: </p>
+      <ul>
+        <li>|G| is star-<a>satisfiable</a> if and only if |G| is simply <a>satisfiable</a>.</li>
+        <li>|G| is star-<a>unsatisfiable</a> if and only if |G| is simply <a>unsatisfiable</a>.</li>
+        <li>|G| star-<a>entails</a> |H| if and only if |G| simply <a>entails</a> |H|.</li>
+        <li>|G| is star-<a>equivalent</a> to |H| if and only if |G| is simply <a>equivalent</a> to |H|.</li>
+      </ul>
+
+      <p>Therefore, instead of considering star-<a>entailment</a> as a separate entailment regime, we define it to be the extension of simple <a>entailment</a> to <a>RDF-star graphs</a>. Other notions of <a>satisfiability</a> and <a>entailment</a>, such as <a data-cite="RDF11-MT#rdf-entailment">RDF entailment</a> or <a data-cite="RDF11-MT#rdfs-entailment">RDFS entailment</a>, can be extended in the same way</a>.</p>
+
     </section>
 
     <section class="informative">
       <h2>Remarks</h2>
 
-      <section>
-        <h2>Combining RDF-star graphs</h2>
+      <p> Considering an <a>RDF-star graph</a> |G| and (|G1|, |G2|) = |unstar|(|G|), the following properties hold:</p>
+        
+      <ul>
+        <li>|G1| is <a>entailed</a> by |G|, which is <a>entailed</a> by |G1| ∪ |G2|.</li>
+        <li>Unless |G| is an <a>RDF graph</a>, |G1| does not <a>entail</a> |G|, which does not <a>entail</a> |G1| ∪ |G2|.</li>
+        <li>|G1| is the biggest <a>RDF graph</a> <a>entailed</a> by |G|.</li>
+        <li>|G1| ∪ |G2| is the smallest <a>RDF graph</a> <a>entailing</a> |G|.</li>
+      </ul>
 
-        <p>Care must be taken when <a>RDF graphs</a> that result from <a>RDF-star graphs</a> are combined through union or <a>merging</a>. Given two <a>RDF-star graphs</a> |G| and |H|, it may be the case that |unstar|(|G| ∪ |H|) ≠ |unstar|(|G|) ∪ |unstar|(|H|). More precisely, if |G| and |H| contain the same <a>embedded triple</a>, this triple will be mapped to a single blank node in |unstar|(|G| ∪ |H|), but in two potentially different blank nodes in |unstar|(|G|) ∪ |unstar|(|H|). These blank nodes will need to be unified in order to get the correct entailments.</p>
-
-      </section>
-      <section>
-        <h2>Considerations on interoperability</h2>
-
-        <p>The special properties (|ST|, |PT|, etc.), used in the mapping for representing <a>embedded triples</a> in plain RDF, are deliberately not specified. As a consequence, although any <a>RDF-star graph</a> |G| is semantically equivalent to an <a>RDF graph</a> |unstar|(|G|), that latter graph is implementation dependent, as different systems will use a different concrete <a>IRI</a> for each special property.</p>
-
-        <p>This makes it impossible for RDF-star-aware systems to reliably exchange <a>RDF-star graphs</a> in their mapped form using non-RDF-star concrete syntaxes (unless of course the <a>RDF-star graph</a> contains no <a>embedded triple</a>). However, such systems can always use <a href="#turtle-star">Turtle-star</a> or other extended concrete syntaxes, so that does not limit interoperability among them. On the other hand, it prevents the unrestricted use of the special properties, because that may lead to surprising corner cases, as illustrated in <a href="#unrestricted-use-of-ST-and-SS"></a>. Supporting these corner cases would be a significant burden on RDF-star implementations, for a very limited utility.</p>
-
-        <p>Furthermore, it is expected that some implementations will not rely on the mapping, but represent and work directly with the <a href="#concepts">abstract syntax</a> of RDF-star. For these implementations, having to handle both the native and the mapped representation of <a>embedded triples</a> would be even more challenging.</p>
-
-        <pre id="unrestricted-use-of-ST-and-SS"
-        data-transform="updateExample"
-        data-content-type="text/x-turtle-star"
-        class="nohighlight example"
-        >
-          <!--
-          :alice :says << :bob :age 42 >>.
-          << :bob :age 42 >> :ST :charlie;
-                             :SS "<http://example.org/charlie>".
-
-          # assuming that :ST and :SS stand for the corresponding special IRIs,
-          # the graph above entails the graph below
-
-          :alice :says << :charlie :age 42 >>.
-          -->
-        </pre>
-
-        <p>The exchange of a mapped graph |unstar|(|G|) using standard RDF concrete syntaxes, with non-standard <a>IRIs</a> in place of the special properties, is however possible and useful when communicating with legacy RDF systems. For those systems, the special properties have no special meaning, so using non-standard <a>IRIs</a> makes no difference to them.</p>
+      <p>Informally, |G1| and |G1| ∪ |G2| can be thought of as the ``RDF lower and upper bounds'' of the <a>RDF-star graph</a> |G|. They can be used to handle <a>RDF-star graph</a> in legacy RDF systems. More specifically, representing |G| as |G1| will yield correct, but incomplete, reasoning; representing |G| as |G1| ∪ |G2| will yield complete reasoning, but producing spurious inferences (making it incorrect, although these spurious inferences would generally be considered harmless).</p>
 
       </section>
 

@@ -1,0 +1,402 @@
+{
+  "@context": {
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "mf": "http://www.w3.org/2001/sw/DataAccess/tests/test-manifest#",
+    "rdft": "http://www.w3.org/ns/rdftest#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "@vocab": "http://www.w3.org/2001/sw/DataAccess/tests/test-manifest#",
+    "include": {
+      "@type": "@id",
+      "@container": "@list"
+    },
+    "entries": {
+      "@type": "@id",
+      "@container": "@list"
+    },
+    "recognizedDatatypes": {
+      "@type": "@id",
+      "@container": "@list"
+    },
+    "unrecognizedDatatypes": {
+      "@type": "@id",
+      "@container": "@list"
+    },
+    "action": {
+      "@type": "@id"
+    },
+    "result": {
+      "@type": "@id"
+    },
+    "label": "rdfs:label",
+    "comment": "rdfs:comment",
+    "seeAlso": {
+      "@id": "rdfs:seeAlso",
+      "@type": "@id"
+    },
+    "approval": {
+      "@id": "rdft:approval",
+      "@type": "@id"
+    },
+    "Approved": "rdft:Approved",
+    "Proposed": "rdft:Proposed",
+    "Rejected": "rdft:Rejected",
+    "TestTurtlePositiveSyntax": "rdft:TestTurtlePositiveSyntax",
+    "TestTurtleNegativeSyntax": "rdft:TestTurtleNegativeSyntax"
+  },
+  "@id": "eval",
+  "@type": "Manifest",
+  "label": "SPARQL-star Evaluation Tests",
+  "entries": [
+    {
+      "@id": "#sparql-star-results-1j",
+      "@type": "QueryEvaluationTest",
+      "name": "SPARQL-star - all graph triples (JSON results)",
+      "result": "sparql-star-results-1.srj",
+      "action": {
+        "http://www.w3.org/2001/sw/DataAccess/tests/test-query#query": {
+          "@id": "sparql-star-results-1.rq"
+        },
+        "http://www.w3.org/2001/sw/DataAccess/tests/test-query#data": {
+          "@id": "data-0.ttl"
+        }
+      }
+    },
+    {
+      "@id": "#sparql-star-results-1x",
+      "@type": "QueryEvaluationTest",
+      "name": "SPARQL-star - all graph triples (XML results)",
+      "result": "sparql-star-results-1.srx",
+      "action": {
+        "http://www.w3.org/2001/sw/DataAccess/tests/test-query#query": {
+          "@id": "sparql-star-results-1.rq"
+        },
+        "http://www.w3.org/2001/sw/DataAccess/tests/test-query#data": {
+          "@id": "data-0.ttl"
+        }
+      }
+    },
+    {
+      "@id": "#sparql-star-basic-2",
+      "@type": "QueryEvaluationTest",
+      "name": "SPARQL-star - match constant embedded triple",
+      "result": "sparql-star-basic-2.srj",
+      "action": {
+        "http://www.w3.org/2001/sw/DataAccess/tests/test-query#query": {
+          "@id": "sparql-star-basic-2.rq"
+        },
+        "http://www.w3.org/2001/sw/DataAccess/tests/test-query#data": {
+          "@id": "data-1.ttl"
+        }
+      }
+    },
+    {
+      "@id": "#sparql-star-basic-3",
+      "@type": "QueryEvaluationTest",
+      "name": "SPARQL-star - match embedded triple, var subject",
+      "result": "sparql-star-basic-3.srj",
+      "action": {
+        "http://www.w3.org/2001/sw/DataAccess/tests/test-query#query": {
+          "@id": "sparql-star-basic-3.rq"
+        },
+        "http://www.w3.org/2001/sw/DataAccess/tests/test-query#data": {
+          "@id": "data-1.ttl"
+        }
+      }
+    },
+    {
+      "@id": "#sparql-star-basic-4",
+      "@type": "QueryEvaluationTest",
+      "name": "SPARQL-star - match embedded triple, var predicate",
+      "result": "sparql-star-basic-4.srj",
+      "action": {
+        "http://www.w3.org/2001/sw/DataAccess/tests/test-query#query": {
+          "@id": "sparql-star-basic-4.rq"
+        },
+        "http://www.w3.org/2001/sw/DataAccess/tests/test-query#data": {
+          "@id": "data-1.ttl"
+        }
+      }
+    },
+    {
+      "@id": "#sparql-star-basic-5",
+      "@type": "QueryEvaluationTest",
+      "name": "SPARQL-star - match embedded triple, var object",
+      "result": "sparql-star-basic-5.srj",
+      "action": {
+        "http://www.w3.org/2001/sw/DataAccess/tests/test-query#query": {
+          "@id": "sparql-star-basic-5.rq"
+        },
+        "http://www.w3.org/2001/sw/DataAccess/tests/test-query#data": {
+          "@id": "data-1.ttl"
+        }
+      }
+    },
+    {
+      "@id": "#sparql-star-basic-6",
+      "@type": "QueryEvaluationTest",
+      "name": "SPARQL-star - no match of embedded triple",
+      "result": "sparql-star-basic-6.srj",
+      "action": {
+        "http://www.w3.org/2001/sw/DataAccess/tests/test-query#query": {
+          "@id": "sparql-star-basic-6.rq"
+        },
+        "http://www.w3.org/2001/sw/DataAccess/tests/test-query#data": {
+          "@id": "data-1.ttl"
+        }
+      }
+    },
+    {
+      "@id": "#sparql-star-pattern-1",
+      "@type": "QueryEvaluationTest",
+      "name": "SPARQL-star - Asserted and embedded triple",
+      "result": "sparql-star-pattern-01.srj",
+      "action": {
+        "http://www.w3.org/2001/sw/DataAccess/tests/test-query#query": {
+          "@id": "sparql-star-pattern-01.rq"
+        },
+        "http://www.w3.org/2001/sw/DataAccess/tests/test-query#data": {
+          "@id": "data-2.ttl"
+        }
+      }
+    },
+    {
+      "@id": "#sparql-star-pattern-2",
+      "@type": "QueryEvaluationTest",
+      "name": "SPARQL-star -  Asserted and embedded triple",
+      "result": "sparql-star-pattern-02.srj",
+      "action": {
+        "http://www.w3.org/2001/sw/DataAccess/tests/test-query#query": {
+          "@id": "sparql-star-pattern-02.rq"
+        },
+        "http://www.w3.org/2001/sw/DataAccess/tests/test-query#data": {
+          "@id": "data-2.ttl"
+        }
+      }
+    },
+    {
+      "@id": "#sparql-star-pattern-3",
+      "@type": "QueryEvaluationTest",
+      "name": "SPARQL-star - Pattern - Variable for embedded triple",
+      "result": "sparql-star-pattern-03.srj",
+      "action": {
+        "http://www.w3.org/2001/sw/DataAccess/tests/test-query#query": {
+          "@id": "sparql-star-pattern-03.rq"
+        },
+        "http://www.w3.org/2001/sw/DataAccess/tests/test-query#data": {
+          "@id": "data-2.ttl"
+        }
+      }
+    },
+    {
+      "@id": "#sparql-star-pattern-4",
+      "@type": "QueryEvaluationTest",
+      "name": "SPARQL-star - Pattern - No match",
+      "result": "sparql-star-pattern-04.srj",
+      "action": {
+        "http://www.w3.org/2001/sw/DataAccess/tests/test-query#query": {
+          "@id": "sparql-star-pattern-04.rq"
+        },
+        "http://www.w3.org/2001/sw/DataAccess/tests/test-query#data": {
+          "@id": "data-2.ttl"
+        }
+      }
+    },
+    {
+      "@id": "#sparql-star-pattern-5",
+      "@type": "QueryEvaluationTest",
+      "name": "SPARQL-star - Pattern - match variables in triple terms",
+      "result": "sparql-star-pattern-05.srj",
+      "action": {
+        "http://www.w3.org/2001/sw/DataAccess/tests/test-query#query": {
+          "@id": "sparql-star-pattern-05.rq"
+        },
+        "http://www.w3.org/2001/sw/DataAccess/tests/test-query#data": {
+          "@id": "data-2.ttl"
+        }
+      }
+    },
+    {
+      "@id": "#sparql-star-pattern-6",
+      "@type": "QueryEvaluationTest",
+      "name": "SPARQL-star - Pattern - Nesting 1",
+      "result": "sparql-star-pattern-06.srj",
+      "action": {
+        "http://www.w3.org/2001/sw/DataAccess/tests/test-query#query": {
+          "@id": "sparql-star-pattern-06.rq"
+        },
+        "http://www.w3.org/2001/sw/DataAccess/tests/test-query#data": {
+          "@id": "data-2.ttl"
+        }
+      }
+    },
+    {
+      "@id": "#sparql-star-pattern-7",
+      "@type": "QueryEvaluationTest",
+      "name": "SPARQL-star - Pattern - Nesting - 2",
+      "result": "sparql-star-pattern-07.srj",
+      "action": {
+        "http://www.w3.org/2001/sw/DataAccess/tests/test-query#query": {
+          "@id": "sparql-star-pattern-07.rq"
+        },
+        "http://www.w3.org/2001/sw/DataAccess/tests/test-query#data": {
+          "@id": "data-2.ttl"
+        }
+      }
+    },
+    {
+      "@id": "#sparql-star-pattern-8",
+      "@type": "QueryEvaluationTest",
+      "name": "SPARQL-star - Pattern - Match and nesting",
+      "result": "sparql-star-pattern-08.srj",
+      "action": {
+        "http://www.w3.org/2001/sw/DataAccess/tests/test-query#query": {
+          "@id": "sparql-star-pattern-08.rq"
+        },
+        "http://www.w3.org/2001/sw/DataAccess/tests/test-query#data": {
+          "@id": "data-2.ttl"
+        }
+      }
+    },
+    {
+      "@id": "#sparql-star-pattern-9",
+      "@type": "QueryEvaluationTest",
+      "name": "SPARQL-star - Pattern - Same variable",
+      "result": "sparql-star-pattern-09.srj",
+      "action": {
+        "http://www.w3.org/2001/sw/DataAccess/tests/test-query#query": {
+          "@id": "sparql-star-pattern-09.rq"
+        },
+        "http://www.w3.org/2001/sw/DataAccess/tests/test-query#data": {
+          "@id": "data-5.ttl"
+        }
+      }
+    },
+    {
+      "@id": "#sparql-star-construct-1",
+      "@type": "QueryEvaluationTest",
+      "name": "SPARQL-star - CONSTRUCT with constant template",
+      "result": "sparql-star-construct-1.ttl",
+      "action": {
+        "http://www.w3.org/2001/sw/DataAccess/tests/test-query#query": {
+          "@id": "sparql-star-construct-1.rq"
+        },
+        "http://www.w3.org/2001/sw/DataAccess/tests/test-query#data": {
+          "@id": "data-3.ttl"
+        }
+      }
+    },
+    {
+      "@id": "#sparql-star-construct-2",
+      "@type": "QueryEvaluationTest",
+      "name": "SPARQL-star - CONSTRUCT WHERE with constant template",
+      "result": "sparql-star-construct-2.ttl",
+      "action": {
+        "http://www.w3.org/2001/sw/DataAccess/tests/test-query#query": {
+          "@id": "sparql-star-construct-2.rq"
+        },
+        "http://www.w3.org/2001/sw/DataAccess/tests/test-query#data": {
+          "@id": "data-3.ttl"
+        }
+      }
+    },
+    {
+      "@id": "#sparql-star-construct-3",
+      "@type": "QueryEvaluationTest",
+      "name": "SPARQL-star - CONSTRUCT - about every triple",
+      "result": "sparql-star-construct-3.ttl",
+      "action": {
+        "http://www.w3.org/2001/sw/DataAccess/tests/test-query#query": {
+          "@id": "sparql-star-construct-3.rq"
+        },
+        "http://www.w3.org/2001/sw/DataAccess/tests/test-query#data": {
+          "@id": "data-3.ttl"
+        }
+      }
+    },
+    {
+      "@id": "#sparql-star-construct-4",
+      "@type": "QueryEvaluationTest",
+      "name": "SPARQL-star - CONSTRUCT with annotation syntax",
+      "result": "sparql-star-construct-4.ttl",
+      "action": {
+        "http://www.w3.org/2001/sw/DataAccess/tests/test-query#query": {
+          "@id": "sparql-star-construct-4.rq"
+        },
+        "http://www.w3.org/2001/sw/DataAccess/tests/test-query#data": {
+          "@id": "data-3.ttl"
+        }
+      }
+    },
+    {
+      "@id": "#sparql-star-construct-5",
+      "@type": "QueryEvaluationTest",
+      "name": "SPARQL-star - CONSTRUCT WHERE with annotation syntax",
+      "result": "sparql-star-construct-5.ttl",
+      "action": {
+        "http://www.w3.org/2001/sw/DataAccess/tests/test-query#query": {
+          "@id": "sparql-star-construct-5.rq"
+        },
+        "http://www.w3.org/2001/sw/DataAccess/tests/test-query#data": {
+          "@id": "data-3.ttl"
+        }
+      }
+    },
+    {
+      "@id": "#sparql-star-graphs-1",
+      "@type": "QueryEvaluationTest",
+      "name": "SPARQL-star - GRAPH",
+      "result": "sparql-star-graphs-1.srj",
+      "action": {
+        "http://www.w3.org/2001/sw/DataAccess/tests/test-query#query": {
+          "@id": "sparql-star-graphs-1.rq"
+        },
+        "http://www.w3.org/2001/sw/DataAccess/tests/test-query#data": {
+          "@id": "data-4.trig"
+        }
+      }
+    },
+    {
+      "@id": "#sparql-star-graphs-2",
+      "@type": "QueryEvaluationTest",
+      "name": "SPARQL-star - GRAPHs with blank node",
+      "result": "sparql-star-graphs-2.srj",
+      "action": {
+        "http://www.w3.org/2001/sw/DataAccess/tests/test-query#query": {
+          "@id": "sparql-star-graphs-2.rq"
+        },
+        "http://www.w3.org/2001/sw/DataAccess/tests/test-query#data": {
+          "@id": "data-4.trig"
+        }
+      }
+    },
+    {
+      "@id": "#sparql-star-expr-1",
+      "@type": "QueryEvaluationTest",
+      "name": "SPARQL-star - Embedded triple - BIND - CONSTRUCT",
+      "result": "sparql-star-expr-01.ttl",
+      "action": {
+        "http://www.w3.org/2001/sw/DataAccess/tests/test-query#query": {
+          "@id": "sparql-star-expr-01.rq"
+        },
+        "http://www.w3.org/2001/sw/DataAccess/tests/test-query#data": {
+          "@id": "data-4.trig"
+        }
+      }
+    },
+    {
+      "@id": "#sparql-star-expr-2",
+      "@type": "QueryEvaluationTest",
+      "name": "SPARQL-star - Embedded triple - Functions",
+      "result": "sparql-star-expr-02.srj",
+      "action": {
+        "http://www.w3.org/2001/sw/DataAccess/tests/test-query#query": {
+          "@id": "sparql-star-expr-02.rq"
+        },
+        "http://www.w3.org/2001/sw/DataAccess/tests/test-query#data": {
+          "@id": "empty.nq"
+        }
+      }
+    }
+  ]
+}

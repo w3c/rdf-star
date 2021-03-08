@@ -1686,7 +1686,7 @@ SELECT ?claimer WHERE {
           -->
         </pre>
 
-        <p>While the triples that the previous example queries bind to variable&nbsp;<code>?t</code> occur in the queried data, the <a href="#triple-function">TRIPLE function</a> can also be used to construct triples that may not be in the data. For instance, for every <a>asserted triple</a> in the <a>default graph</a> of the queried <a>RDF-star dataset</a>, the following query uses the subject of this triple to construct another triple and bind it to the variable&nbsp;<code>?t</code>. Notice that the result of this query contains as many <a>SPARQL-star solution mappings</a> as there are asserted triples in the queried graph, and there may be duplicates in the result if multiple asserted triples have the same subject.</p>
+        <p>While the triples that the previous example queries bind to variable&nbsp;<code>?t</code> occur in the queried data, the <a href="#triple-function">TRIPLE function</a> can be used to construct triples that may not be in the data. For instance, the following query uses the subject of every <a>asserted triple</a> in the <a>default graph</a> of the queried <a>RDF-star dataset</a>, to construct another triple and bind it to the variable&nbsp;<code>?t</code>. Notice that the result of this query contains as many <a>SPARQL-star solution mappings</a> as there are asserted triples in the queried graph, and there may be duplicates in the result if multiple asserted triples have the same subject.</p>
 
         <pre data-transform="updateExample"
              data-content-type="application/x-sparql-star-query"

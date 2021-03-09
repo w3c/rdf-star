@@ -7,7 +7,8 @@ PREFIX rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs:   <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX mf:     <http://www.w3.org/2001/sw/DataAccess/tests/test-manifest#>
 PREFIX qt:     <http://www.w3.org/2001/sw/DataAccess/tests/test-query#>
-PREFIX dawgt:   <http://www.w3.org/2001/sw/DataAccess/tests/test-dawg#>
+PREFIX ut:     <http://www.w3.org/2009/sparql/tests/test-update#>
+PREFIX dawgt:  <http://www.w3.org/2001/sw/DataAccess/tests/test-dawg#>
 
 PREFIX :       <#>
 
@@ -53,6 +54,11 @@ PREFIX :       <#>
 ## Nesting
 
 ## Update
+
+     :sparql-star-update-1
+     :sparql-star-update-2
+     :sparql-star-update-3
+
 ) .
 
 :sparql-star-results-1j rdf:type mf:QueryEvaluationTest ;
@@ -266,14 +272,31 @@ PREFIX :       <#>
     mf:result  <sparql-star-expr-02.srj> ;
     .
 
-
 ## Update
-## :sparql-star-update-basic-1 rdf:type mf:UpdateEvaluationTest ;
-##     mf:name    "SPARQL-star - update" ;
-##     mf:action [ ut:request <delete-data-02.ru> ; 
-##                 ut:graphData [ ut:graph <delete-pre-01.ttl> ;
-##                                rdfs:label "http://example.org/g1" ]
-##               ] ;
-##     mf:result [ ut:graphData [ ut:graph <delete-post-01s.ttl> ;
-##                                rdfs:label "http://example.org/g1" ]
-##               ] .
+
+:sparql-star-update-1 rdf:type mf:UpdateEvaluationTest ;
+    mf:name    "SPARQL-star - Update" ;
+    mf:action [ ut:request <sparql-star-update-1.ru> ; 
+                ut:data <data-6.trig>
+              ] ;
+    mf:result [ ut:data <update-result-1.trig> 
+              ] ;
+    .
+
+:sparql-star-update-2 rdf:type mf:UpdateEvaluationTest ;
+    mf:name    "SPARQL-star - Update - annotation" ;
+    mf:action [ ut:request <sparql-star-update-2.ru> ; 
+                ut:data <data-6.trig>
+              ] ;
+    mf:result [ ut:data <update-result-2.trig> 
+              ] ;
+    .
+
+:sparql-star-update-3 rdf:type mf:UpdateEvaluationTest ;
+    mf:name    "SPARQL-star - Update - data" ;
+    mf:action [ ut:request <sparql-star-update-3.ru> ; 
+                ut:data <empty.nq>
+              ] ;
+    mf:result [ ut:data <update-result-3.trig> 
+              ] ;
+    .

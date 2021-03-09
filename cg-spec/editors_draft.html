@@ -602,6 +602,19 @@ SELECT ?claimer WHERE {
       <p>SPARQL-star is defined to follow the <a data-cite="SPARQL11-QUERY#sparqlGrammar">same grammar</a> as SPARQL&nbsp;1.1, <em>except</em> for the <a data-cite="XML#sec-notation"><abbr title="Extended Backus-Naur Form">EBNF</abbr> productions</a> specified below, which replace the productions having the same number (if any) in the original grammar. The parts in which these productions differ from the corresponding productions in the original grammar are marked in bold font. Productions <a href="#rEmbTP">[174]</a> and following have been added and have no counterpart in the original grammar.</p>
 
       <table class="grammar">
+        <tr id="rDataBlockValue">
+          <td>[65]</td>
+          <td>`DataBlockValue`</td>
+          <td>::=</td>
+          <td>
+            <span style="font-weight: bold"><a href="#rEmbTriple">EmbTriple</a> `|`</span>
+            <a data-cite="SPARQL11-QUERY#riri">iri</a> `|`
+            <a data-cite="SPARQL11-QUERY#rRDFLiteral">RDFLiteral</a> `|`
+            <a data-cite="SPARQL11-QUERY#rNumericLiteral">NumericLiteral</a> `|`
+            <a data-cite="SPARQL11-QUERY#rBooleanLiteral">BooleanLiteral</a> `|`
+            <code class="token">'UNDEF'</code>
+          </td>
+        </tr>
           <tr id="rTriplesSameSubject">
           <td>[75]</td>
           <td>`TriplesSameSubject`</td>
@@ -1095,8 +1108,24 @@ SELECT ?claimer WHERE {
             <code class="token">'&gt;&gt;'</code>
           </td>
         </tr>
-        <tr id="rEmbSubjectOrObject">
+        <tr id="rEmbTriple">
           <td>[175]</td>
+          <td style="font-weight: bold">`EmbTriple`</td>
+          <td style="font-weight: bold">::=</td>
+          <td style="font-weight: bold">
+            <code class="token">'&lt;&lt;'</code>
+            <a href="#rDataValueTerm">DataValueTerm</a>
+            `(`
+              <a data-cite="SPARQL11-QUERY#riri">iri</a>
+            `|`
+              <code class="token">'a'</code>
+            `)`
+            <a href="#rDataValueTerm">DataValueTerm</a>
+            <code class="token">'&gt;&gt;'</code>
+          </td>
+        </tr>
+        <tr id="rEmbSubjectOrObject">
+          <td>[176]</td>
           <td style="font-weight: bold">`EmbSubjectOrObject`</td>
           <td style="font-weight: bold">::=</td>
           <td style="font-weight: bold">
@@ -1109,8 +1138,20 @@ SELECT ?claimer WHERE {
             <a href="#rEmbTP">EmbTP</a>
           </td>
         </tr>
+        <tr id="rDataValueTerm">
+          <td>[177]</td>
+          <td style="font-weight: bold">`DataValueTerm`</td>
+          <td style="font-weight: bold">::=</td>
+          <td style="font-weight: bold">
+            <a data-cite="SPARQL11-QUERY#riri">iri</a> `|`
+            <a data-cite="SPARQL11-QUERY#rRDFLiteral">RDFLiteral</a> `|`
+            <a data-cite="SPARQL11-QUERY#rNumericLiteral">NumericLiteral</a> `|`
+            <a data-cite="SPARQL11-QUERY#rBooleanLiteral">BooleanLiteral</a> `|`
+            <a href="#rEmbTriple">EmbTriple</a>
+          </td>
+        </tr>
         <tr id="rVarOrTermOrEmbTP">
-          <td>[176]</td>
+          <td>[178]</td>
           <td style="font-weight: bold">`VarOrTermOrEmbTP`</td>
           <td style="font-weight: bold">::=</td>
           <td style="font-weight: bold">
@@ -1120,7 +1161,7 @@ SELECT ?claimer WHERE {
           </td>
         </tr>
         <tr id="rAnnotationPattern">
-          <td>[177]</td>
+          <td>[179]</td>
           <td style="font-weight: bold">`AnnotationPattern`</td>
           <td style="font-weight: bold">::=</td>
           <td style="font-weight: bold">
@@ -1130,7 +1171,7 @@ SELECT ?claimer WHERE {
           </td>
         </tr>
         <tr id="rAnnotationPatternPath">
-          <td>[178]</td>
+          <td>[180]</td>
           <td style="font-weight: bold">`AnnotationPatternPath`</td>
           <td style="font-weight: bold">::=</td>
           <td style="font-weight: bold">
@@ -1143,7 +1184,7 @@ SELECT ?claimer WHERE {
 
       <p>
         This introduces a notation for <dfn>embedded triple patterns</dfn>
-        (productions <a href="#rEmbTP">[174]</a> and following),
+        (production <a href="#rEmbTP">[174]</a>),
         which is similar to the one defined for <a>embedded triples</a> in <a href="#turtle-star"></a>,
         but accepting also <a>variables</a>.
         These embedded triple patterns are allowed in both the subject position (<a href="#rTriplesSameSubject">[75]</a>, <a href="#rTriplesSameSubjectPath">[81]</a>) and the object position (<a href="#rObject">[80]</a>, <a href="#rObjectPath">[87]</a>)
@@ -1151,7 +1192,7 @@ SELECT ?claimer WHERE {
       </p>
 
       <p>
-        Additionally, the set of available built-in functions is extended with the five functions TRIPLE, SUBJECT, PREDICATE, OBJECT, and isTRIPLE (<a href="#rBuiltInCall">[121]</a>) that are defined in <a href="#builtin-functions"></a>.
+        Additionally, production <a href="#rDataBlockValue">[65]</a> for values that can be used in the <a data-cite="SPARQL11-QUERY#inline-data">VALUES clause</a> is extended to permit <a>RDF-star triples</a> as possible values, and the set of available built-in functions is extended with the five functions TRIPLE, SUBJECT, PREDICATE, OBJECT, and isTRIPLE (<a href="#rBuiltInCall">[121]</a>) that are defined in <a href="#builtin-functions"></a>.
       </p>
 
       <p class="note"><a data-cite="SPARQL11-QUERY#sparqlGrammar">As defined for all keywords in SPARQL</a>, the names of the five new built-in functions added by SPARQL-star are matched in a case-insensitive manner.</p>

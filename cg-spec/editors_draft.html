@@ -1666,7 +1666,7 @@ SELECT ?claimer WHERE {
           SELECT ?t WHERE {
             ?s ?p ?o .
             BIND( TRIPLE(?s,?p,?o) AS ?t )
-            FILTER( isTRIPLE(SUBJECT(?)) )
+            FILTER( isTRIPLE(SUBJECT(?t)) )
           }
           -->
         </pre>

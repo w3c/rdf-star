@@ -81,6 +81,7 @@
 <li class="proposed"><a href="#sparql-star-graphs-2">SPARQL-star - GRAPHs with blank node</a>
 <li class="proposed"><a href="#sparql-star-expr-1">SPARQL-star - Embedded triple - BIND - CONSTRUCT</a>
 <li class="proposed"><a href="#sparql-star-expr-2">SPARQL-star - Embedded triple - Functions</a>
+<li class="proposed"><a href="#sparql-star-order-1">SPARQL-star - Embedded triple ORDER BY</a>
 <li class="proposed"><a href="#sparql-star-update-1">SPARQL-star - Update</a>
 <li class="proposed"><a href="#sparql-star-update-2">SPARQL-star - Update - annotation</a>
 <li class="proposed"><a href="#sparql-star-update-3">SPARQL-star - Update - data</a>
@@ -1436,6 +1437,72 @@ SELECT * {
     "bindings": [
       { 
         "t": {
+          "type": "triple" , 
+          "value": {
+            "subject":  { "type": "uri" , "value": "http://example/s" } ,
+            "predicate": { "type": "uri" , "value": "http://example/p" } ,
+            "object":   { "type": "uri" , "value": "http://example/o" }
+          }
+        }
+      }
+    ]
+  }
+}
+</pre>
+</section><section id="sparql-star-order-1" class="entry proposed QueryEvaluationTest">
+<h2>SPARQL-star - Embedded triple ORDER BY <a href="#sparql-star-order-1">🔗</a></h2>
+<table class="properties">
+<tr class="status"><th>status:</th><td>proposed</td>
+<tr class="type"><th>type:</th><td>QueryEvaluationTest</td>
+</table>
+<div>Query: <code><a href="sparql-star-order-1.rq">sparql-star-order-1.rq</a></code></div>
+<pre>
+PREFIX : &lt;http://example/&gt;
+
+SELECT * {
+   :item :p ?v .
+} ORDER BY ?v
+</pre>
+<div>Data: <code><a href="data-7.ttl">data-7.ttl</a></code></div>
+<pre>
+PREFIX : &lt;http://example/&gt;
+
+# One each of each collection class.
+# (Not in collation order).
+
+:item :p :x .
+
+:item :p &lt;&lt; :s :p :o &gt;&gt; .
+
+:item :p "abc" .
+
+:item :p _:b .
+
+##     (Lowest) no value assigned to the variable or expression in this solution.
+##     Blank nodes
+##     IRIs
+##     RDF literals
+##     RDF-star embedded triple terms
+</pre>
+<div>MUST result into</div>
+<div><code><a href="sparql-star-order-1.srj">sparql-star-order-1.srj</a></code></div>
+<pre class="result">
+{ "head": {
+    "vars": [ "v" ]
+  } ,
+  "results": {
+    "bindings": [
+      { 
+        "v": { "type": "bnode" , "value": "b0" }
+      } ,
+      { 
+        "v": { "type": "uri" , "value": "http://example/x" }
+      } ,
+      { 
+        "v": { "type": "literal" , "value": "abc" }
+      } ,
+      { 
+        "v": {
           "type": "triple" , 
           "value": {
             "subject":  { "type": "uri" , "value": "http://example/s" } ,

@@ -44,21 +44,14 @@ PREFIX :       <#>
         :sparql-star-graphs-1
         :sparql-star-graphs-2
 
-## Expressions and Functions
-
         :sparql-star-expr-1
         :sparql-star-expr-2
 
-## ORDER BY
+        :sparql-star-order-1
 
-## Nesting
-
-## Update
-
-     :sparql-star-update-1
-     :sparql-star-update-2
-     :sparql-star-update-3
-
+        :sparql-star-update-1
+        :sparql-star-update-2
+        :sparql-star-update-3
 ) .
 
 :sparql-star-results-1j rdf:type mf:QueryEvaluationTest ;
@@ -272,7 +265,18 @@ PREFIX :       <#>
     mf:result  <sparql-star-expr-02.srj> ;
     .
 
+## ORDER BY
+
+:sparql-star-order-1  rdf:type mf:QueryEvaluationTest ;
+    mf:name    "SPARQL-star - Embedded triple ORDER BY" ;
+    mf:action
+        [ qt:query  <sparql-star-order-1.rq> ;
+          qt:data   <data-7.ttl> ] ;
+    mf:result  <sparql-star-order-1.srj> ;
+    .
+
 ## Update
+
 
 :sparql-star-update-1 rdf:type mf:UpdateEvaluationTest ;
     mf:name    "SPARQL-star - Update" ;

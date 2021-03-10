@@ -1786,7 +1786,7 @@ SELECT ?claimer WHERE {
     <section id="mapping">
       <h2>Mapping RDF-star abstract syntax to RDF</h2>
 
-      <p>In the following, we use the notation convention of the Turtle syntax [[TURTLE]] to represent IRIs in a compact form, using the namespace prefix `rdf:` to map to the namespace IRI `http://www.w3.org/1999/02/22-rdf-syntax-ns#`, and `xsd:` to map to `http://www.w3.org/2001/XMLSchema#`.</p>
+      <p>In the following, we use the notation convention of the Turtle syntax [[TURTLE]] to represent IRIs in a compact form, using the namespace prefix `rdf:` to map to the namespace IRI `http://www.w3.org/1999/02/22-rdf-syntax-ns#`, `xsd:` to map to `http://www.w3.org/2001/XMLSchema#`, and `x:` to map to an unspecified napespace IRI.</p>
       
       <p>We define a mapping |L| that maps any <a>IRI</a> or <a>literal</a> |t| to a literal with</p>
       <ul>
@@ -1803,6 +1803,7 @@ SELECT ?claimer WHERE {
             <li>Pick an <a>RDF-star triple</a> (|s|, |p|, |o|) in the <a>constituents</a> of |G1| such that neither |s| nor |o| is an <a>embedded triple</a>.</li>
             <li>Mint a fresh blank node |b|, and replace by |b| all occurrences of (|s|, |p|, |o|) in the subject or object position of an <a>asserted</a> or <a>embedded triple</a> of |G1|.</li>
             <li>Add the following <a>RDF triples</a> to |G2|:<ul>
+              <li>(|b|, `rdf:type`, `x:EmbeddedTriple`)</li>
               <li>(|b|, `rdf:subject`, |s|)</li>
               <li>(|b|, `rdf:predicate`, |p|)</li>
               <li>(|b|, `rdf:object`, |o|) unless |o| is an <a>ill-typed</a> literal</li>
@@ -1825,7 +1826,7 @@ SELECT ?claimer WHERE {
         <li>Let (|G1|, |G2|) = |unstar|(|G|), (|H1|, |H2|) = |unstar|(|H|), |G3| = |G1| ∪ |G2|, and |H3| = |H1| ∪ |H2|.</li>
         <li>We say that |G| is star-<a>satisfiable</a> if and only if |G1| and |G3| are both simply <a>satisfiable</a>. Otherwise, |G| is said to be star-<a>unsatisfiable</a>.</li>
         <li>We say that |G| star-<a>entails</a> |H| if and only if |G1| simply <a>entails</a> |H1|, and |G3| simply <a>entails</a> |H3|.</li>
-        <li>We say that |G| is star-<a>equivalent</a> to |H| if and only if |G| and |H|simply entail one another.</li>
+        <li>We say that |G| is star-<a>equivalent</a> to |H| if and only if |G| and |H| simply entail one another.</li>
       </ul>
 
       <p>We now notice that, in the special case where |G| and |H| are <a>RDF graphs</a>, star-<a>entailment</a> and simple <a>entailment</a> are identical, since |unstar|(|G|) = (|G|, ∅) and |unstar|(|H|) = (|H|, ∅). More precisely, in that special case: </p>
@@ -1841,18 +1842,22 @@ SELECT ?claimer WHERE {
     </section>
 
     <section class="informative">
-      <h2>Remarks</h2>
+      <h2>Relationship between RDF and RDF-star</h2>
 
       <p> Considering an <a>RDF-star graph</a> |G| and (|G1|, |G2|) = |unstar|(|G|), the following properties hold:</p>
         
       <ul>
         <li>|G1| is <a>entailed</a> by |G|, which is <a>entailed</a> by |G1| ∪ |G2|.</li>
         <li>Unless |G| is an <a>RDF graph</a>, |G1| does not <a>entail</a> |G|, which does not <a>entail</a> |G1| ∪ |G2|.</li>
-        <li>|G1| is the biggest <a>RDF graph</a> <a>entailed</a> by |G|.</li>
-        <li>|G1| ∪ |G2| is the smallest <a>RDF graph</a> <a>entailing</a> |G|.</li>
+        <li>Any <a>RDF graph</a> <a>entailed</a> by |G| is also <a>entailed</a> by |G1|.</li>
+        <li>Any <a>RDF graph</a> <a>entailing</a> |G| also <a>entails</a> |G1| ∪ |G2|.</li>
       </ul>
 
-      <p>Informally, |G1| and |G1| ∪ |G2| can be thought of as the "RDF lower and upper bounds" of the <a>RDF-star graph</a> |G|. They can be used to handle <a>RDF-star graphs</a> in legacy RDF systems. More specifically, representing |G| as |G1| will yield correct, but incomplete, reasoning; representing |G| as |G1| ∪ |G2| will yield complete reasoning, but include spurious inferences (making it incorrect, although these spurious inferences would generally be considered harmless).</p>
+      <p>|G1| and |G1| ∪ |G2| can be thought of as the "RDF lower and upper bounds" of the <a>RDF-star graph</a> |G|. They can be used to handle <a>RDF-star graphs</a> in legacy RDF systems. More specifically, representing |G| as |G1| will yield correct, but incomplete, reasoning; representing |G| as |G1| ∪ |G2| will yield complete reasoning, but include spurious inferences (making it incorrect, although these spurious inferences would generally be considered harmless).</p>
+
+      <p>Note however that the IRI `x:EmbeddedTriple` is not specified by this document, which means that there is no <em>standard</em> way to entirely serialize a non-empty |G2|. In other words, there is no standard way to convey an <a>RDF graph</a> <a>entailing</a> a strict <a>RDF-star graph</a> (i.e. one that contains at least one <a>embedded triple</a>). RDF-star aware systems are therefore not required by this specification to inspect <a>RDF triples</a> in order to reconstruct the <a>embedded triples</a> that would have been entailed, which avoids them the trouble of handling pathological corner cases. For example, what should be done if `rdf:subject` is missing? If two `rdf:subject`s are provided? If `rdf:subject` and `rdf:quotedSubject` are not consistent with each other?</p>
+
+      <p>The exchange of a mapped graph |G1| ∪ |G2| using non RDF-star concrete syntaxes is however possible and useful when communicating with legacy RDF systems. The unspecified `x:EmbeddedTriple` can be replaced by a non-standard <a>IRI</a>, or triples containing it can simply be skipped. For those systems, the special properties have no special meaning, so using non-standard <a>IRIs</a> makes no difference to them.</p>
 
       </section>
 

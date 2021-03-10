@@ -41,6 +41,8 @@
         border: thin solid black;
         background-color: lightYellow;
         padding: .6em 1em;
+        max-height: 25em;
+        overflow-y: scroll;
     }
 
     .TestTurtleNegativeSyntax pre,
@@ -78,6 +80,12 @@
 <li class="proposed"><a href="#sparql-star-ann-07">SPARQL-star - Annotation with nested path</a>
 <li class="proposed"><a href="#sparql-star-ann-08">SPARQL-star - Annotation in CONSTRUCT </a>
 <li class="proposed"><a href="#sparql-star-ann-09">SPARQL-star - Annotation in CONSTRUCT WHERE</a>
+<li class="proposed"><a href="#sparql-star-expr-1">SPARQL-star - Expressions - Embedded triple</a>
+<li class="proposed"><a href="#sparql-star-expr-2">SPARQL-star - Expressions - Embedded triple</a>
+<li class="proposed"><a href="#sparql-star-expr-3">SPARQL-star - Expressions - Functions</a>
+<li class="proposed"><a href="#sparql-star-expr-4">SPARQL-star - Expressions - TRIPLE</a>
+<li class="proposed"><a href="#sparql-star-expr-5">SPARQL-star - Expressions - Functions</a>
+<li class="proposed"><a href="#sparql-star-expr-6">SPARQL-star - Expressions - BIND - CONSTRUCT</a>
 <li class="proposed"><a href="#sparql-star-bad-1">SPARQL-star - bad - embedded triple as predicate</a>
 <li class="proposed"><a href="#sparql-star-bad-2">SPARQL-star - bad - embedded triple outside triple</a>
 <li class="proposed"><a href="#sparql-star-bad-3">SPARQL-star - bad - collection list in embedded triple</a>
@@ -485,6 +493,109 @@ PREFIX : &lt;http://example.com/ns#&gt;
 
 CONSTRUCT WHERE {
   ?s :p ?o {| :q1 ?z |} 
+}
+</pre>
+<div>MUST be accepted</div>
+</section><section id="sparql-star-expr-1" class="entry proposed PositiveSyntaxTest11">
+<h2>SPARQL-star - Expressions - Embedded triple <a href="#sparql-star-expr-1">🔗</a></h2>
+<table class="properties">
+<tr class="status"><th>status:</th><td>proposed</td>
+<tr class="type"><th>type:</th><td>PositiveSyntaxTest11</td>
+</table>
+<div><code><a href="sparql-star-syntax-expr-01.rq">sparql-star-syntax-expr-01.rq</a></code></div>
+<pre>
+PREFIX : &lt;http://example.com/ns#&gt;
+
+SELECT * {
+  ?s ?p ?o .
+  BIND(&lt;&lt;?s ?p ?o&gt;&gt; AS ?t)
+}
+</pre>
+<div>MUST be accepted</div>
+</section><section id="sparql-star-expr-2" class="entry proposed PositiveSyntaxTest11">
+<h2>SPARQL-star - Expressions - Embedded triple <a href="#sparql-star-expr-2">🔗</a></h2>
+<table class="properties">
+<tr class="status"><th>status:</th><td>proposed</td>
+<tr class="type"><th>type:</th><td>PositiveSyntaxTest11</td>
+</table>
+<div><code><a href="sparql-star-syntax-expr-02.rq">sparql-star-syntax-expr-02.rq</a></code></div>
+<pre>
+PREFIX : &lt;http://example.com/ns#&gt;
+
+SELECT * {
+  ?s ?p ?o .
+  BIND(&lt;&lt; &lt;&lt;?s ?p ?o&gt;&gt; :q :z &gt;&gt; AS ?t)
+}
+</pre>
+<div>MUST be accepted</div>
+</section><section id="sparql-star-expr-3" class="entry proposed PositiveSyntaxTest11">
+<h2>SPARQL-star - Expressions - Functions <a href="#sparql-star-expr-3">🔗</a></h2>
+<table class="properties">
+<tr class="status"><th>status:</th><td>proposed</td>
+<tr class="type"><th>type:</th><td>PositiveSyntaxTest11</td>
+</table>
+<div><code><a href="sparql-star-syntax-expr-03.rq">sparql-star-syntax-expr-03.rq</a></code></div>
+<pre>
+PREFIX : &lt;http://example.com/ns#&gt;
+
+SELECT * {
+  ?s ?p ?o .
+  BIND(TRIPLE(?s, ?p, ?o) AS ?t1)
+}
+</pre>
+<div>MUST be accepted</div>
+</section><section id="sparql-star-expr-4" class="entry proposed PositiveSyntaxTest11">
+<h2>SPARQL-star - Expressions - TRIPLE <a href="#sparql-star-expr-4">🔗</a></h2>
+<table class="properties">
+<tr class="status"><th>status:</th><td>proposed</td>
+<tr class="type"><th>type:</th><td>PositiveSyntaxTest11</td>
+</table>
+<div><code><a href="sparql-star-syntax-expr-04.rq">sparql-star-syntax-expr-04.rq</a></code></div>
+<pre>
+PREFIX : &lt;http://example.com/ns#&gt;
+
+SELECT * {
+  ?s ?p ?o .
+  BIND(TRIPLE(?s, ?p, str(?o)) AS ?t2)
+}
+</pre>
+<div>MUST be accepted</div>
+</section><section id="sparql-star-expr-5" class="entry proposed PositiveSyntaxTest11">
+<h2>SPARQL-star - Expressions - Functions <a href="#sparql-star-expr-5">🔗</a></h2>
+<table class="properties">
+<tr class="status"><th>status:</th><td>proposed</td>
+<tr class="type"><th>type:</th><td>PositiveSyntaxTest11</td>
+</table>
+<div><code><a href="sparql-star-syntax-expr-05.rq">sparql-star-syntax-expr-05.rq</a></code></div>
+<pre>
+PREFIX : &lt;http://example.com/ns#&gt;
+
+SELECT * {
+  ?t :source :g
+  FILTER(isTriple(?t))
+  FILTER(SUBJECT(?t) = :s)
+  FILTER(PREDICATE(?t) = :p)
+  FILTER(OBJECT(?t) = :o)
+}
+</pre>
+<div>MUST be accepted</div>
+</section><section id="sparql-star-expr-6" class="entry proposed PositiveSyntaxTest11">
+<h2>SPARQL-star - Expressions - BIND - CONSTRUCT <a href="#sparql-star-expr-6">🔗</a></h2>
+<table class="properties">
+<tr class="status"><th>status:</th><td>proposed</td>
+<tr class="type"><th>type:</th><td>PositiveSyntaxTest11</td>
+</table>
+<div><code><a href="sparql-star-syntax-expr-06.rq">sparql-star-syntax-expr-06.rq</a></code></div>
+<pre>
+PREFIX : &lt;http://example.com/ns#&gt;
+
+CONSTRUCT {
+  ?t :graph ?g .
+} WHERE {
+  GRAPH ?g {
+    ?s ?p ?o .
+    BIND(&lt;&lt;?s ?p  ?o&gt;&gt; AS ?t)
+  }
 }
 </pre>
 <div>MUST be accepted</div>

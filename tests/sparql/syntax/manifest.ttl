@@ -43,6 +43,13 @@ PREFIX :       <#>
         :sparql-star-ann-08
         :sparql-star-ann-09
 
+        :sparql-star-expr-1
+        :sparql-star-expr-2
+        :sparql-star-expr-3
+        :sparql-star-expr-4
+        :sparql-star-expr-5
+        :sparql-star-expr-6
+
         :sparql-star-bad-1
         :sparql-star-bad-2
         :sparql-star-bad-3
@@ -83,24 +90,24 @@ PREFIX :       <#>
 ## Good Syntax
 
 :sparql-star-1 rdf:type mf:PositiveSyntaxTest11 ;
-   mf:name      "SPARQL-star - subject embedded triple" ;
-   mf:action    <sparql-star-syntax-basic-01.rq> ;
-   .
+    mf:name      "SPARQL-star - subject embedded triple" ;
+    mf:action    <sparql-star-syntax-basic-01.rq> ;
+    .
 
 :sparql-star-2 rdf:type mf:PositiveSyntaxTest11 ;
-   mf:name      "SPARQL-star - object embedded triple" ;
-   mf:action    <sparql-star-syntax-basic-02.rq> ;
-   .
+    mf:name      "SPARQL-star - object embedded triple" ;
+    mf:action    <sparql-star-syntax-basic-02.rq> ;
+    .
 
 :sparql-star-3 rdf:type mf:PositiveSyntaxTest11 ;
-   mf:name      "SPARQL-star - subject embedded triple - vars" ;
-   mf:action    <sparql-star-syntax-basic-03.rq> ;
-   .
+    mf:name      "SPARQL-star - subject embedded triple - vars" ;
+    mf:action    <sparql-star-syntax-basic-03.rq> ;
+    .
 
 :sparql-star-4 rdf:type mf:PositiveSyntaxTest11 ;
-   mf:name      "SPARQL-star - object embedded triple - vars" ;
-   mf:action    <sparql-star-syntax-basic-04.rq> ;
-   .
+    mf:name      "SPARQL-star - object embedded triple - vars" ;
+    mf:action    <sparql-star-syntax-basic-04.rq> ;
+    .
 
 :sparql-star-5 rdf:type mf:PositiveSyntaxTest11 ;
     mf:name      "SPARQL-star - Embedded triple in VALUES" ;
@@ -119,44 +126,76 @@ PREFIX :       <#>
 
 
 :sparql-star-inside-1 rdf:type mf:PositiveSyntaxTest11 ;
-   mf:name      "SPARQL-star - embedded triple inside blankNodePropertyList" ;
-   mf:action    <sparql-star-syntax-inside-01.rq> ;
-   .
+    mf:name      "SPARQL-star - embedded triple inside blankNodePropertyList" ;
+    mf:action    <sparql-star-syntax-inside-01.rq> ;
+    .
 
 :sparql-star-inside-2 rdf:type mf:PositiveSyntaxTest11 ;
-   mf:name      "SPARQL-star - embedded triple inside collection" ;
-   mf:action    <sparql-star-syntax-inside-02.rq> ;
-   .
+    mf:name      "SPARQL-star - embedded triple inside collection" ;
+    mf:action    <sparql-star-syntax-inside-02.rq> ;
+    .
 
 :sparql-star-nested-1 rdf:type mf:PositiveSyntaxTest11 ;
-   mf:name      "SPARQL-star - nested embedded triple, subject position" ;
-   mf:action    <sparql-star-syntax-nested-01.rq> ;
-   .
+    mf:name      "SPARQL-star - nested embedded triple, subject position" ;
+    mf:action    <sparql-star-syntax-nested-01.rq> ;
+    .
 
 :sparql-star-nested-2 rdf:type mf:PositiveSyntaxTest11 ;
-   mf:name      "SPARQL-star - nested embedded triple, object position" ;
-   mf:action     <sparql-star-syntax-nested-02.rq> ;
-   .
+    mf:name      "SPARQL-star - nested embedded triple, object position" ;
+    mf:action     <sparql-star-syntax-nested-02.rq> ;
+    .
 
 :sparql-star-compound-1 rdf:type mf:PositiveSyntaxTest11 ;
-   mf:name      "SPARQL-star - compound forms" ;
-   mf:action    <sparql-star-syntax-compound.rq> ;
-   .
+    mf:name      "SPARQL-star - compound forms" ;
+    mf:action    <sparql-star-syntax-compound.rq> ;
+    .
 
 :sparql-star-bnode-1 rdf:type mf:PositiveSyntaxTest11 ;
-   mf:name      "SPARQL-star - blank node subject" ;
-   mf:action    <sparql-star-syntax-bnode-01.rq> ;
-   .
+    mf:name      "SPARQL-star - blank node subject" ;
+    mf:action    <sparql-star-syntax-bnode-01.rq> ;
+    .
 
 :sparql-star-bnode-2 rdf:type mf:PositiveSyntaxTest11 ;
-   mf:name      "SPARQL-star - blank node object" ;
-   mf:action    <sparql-star-syntax-bnode-02.rq> ;
-   .
+    mf:name      "SPARQL-star - blank node object" ;
+    mf:action    <sparql-star-syntax-bnode-02.rq> ;
+    .
 
 :sparql-star-bnode-3 rdf:type mf:PositiveSyntaxTest11 ;
-   mf:name      "SPARQL-star - blank node" ;
-   mf:action    <sparql-star-syntax-bnode-03.rq> ;
-   .
+    mf:name      "SPARQL-star - blank node" ;
+    mf:action    <sparql-star-syntax-bnode-03.rq> ;
+    .
+
+## Expressions
+
+:sparql-star-expr-1 rdf:type mf:PositiveSyntaxTest11 ;
+    mf:name      "SPARQL-star - Expressions - Embedded triple" ;
+    mf:action    <sparql-star-syntax-expr-01.rq> ;
+    .
+
+:sparql-star-expr-2 rdf:type mf:PositiveSyntaxTest11 ;
+    mf:name      "SPARQL-star - Expressions - Embedded triple" ;
+    mf:action    <sparql-star-syntax-expr-02.rq> ;
+    .
+
+:sparql-star-expr-3 rdf:type mf:PositiveSyntaxTest11 ;
+    mf:name      "SPARQL-star - Expressions - Functions" ;
+    mf:action    <sparql-star-syntax-expr-03.rq> ;
+    .
+
+:sparql-star-expr-4 rdf:type mf:PositiveSyntaxTest11 ;
+    mf:name      "SPARQL-star - Expressions - TRIPLE" ;
+    mf:action    <sparql-star-syntax-expr-04.rq> ;
+    .
+
+:sparql-star-expr-5 rdf:type mf:PositiveSyntaxTest11 ;
+    mf:name      "SPARQL-star - Expressions - Functions" ;
+    mf:action    <sparql-star-syntax-expr-05.rq> ;
+    .
+
+:sparql-star-expr-6 rdf:type mf:PositiveSyntaxTest11 ;
+    mf:name      "SPARQL-star - Expressions - BIND - CONSTRUCT" ;
+    mf:action    <sparql-star-syntax-expr-06.rq> ;
+    .
 
 ## Bad Syntax
 
@@ -172,7 +211,9 @@ PREFIX :       <#>
 
 :sparql-star-bad-3 rdf:type mf:NegativeSyntaxTest11 ;
     mf:name      "SPARQL-star - bad - collection list in embedded triple" ;
-    mf:action    <sparql-star-syntax-bad-03.rq> ;
+
+
+mf:action    <sparql-star-syntax-bad-03.rq> ;
     .
 
 :sparql-star-bad-4 rdf:type mf:NegativeSyntaxTest11 ;

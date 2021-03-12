@@ -6,7 +6,6 @@
     "seeAlso": "https://w3c.github.io/rdf-tests/sparql11/",
     "include": [
         "syntax/manifest.jsonld",
-        "manifest-query.jsonld",
-        "manifest-update.jsonld"
+        "eval/manifest.ttl"
    ]
 }

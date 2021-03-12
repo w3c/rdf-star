@@ -14,7 +14,7 @@ def main():
         ["turtle", "eval", "manifest.ttl"],
         ["nt", "syntax", "manifest.ttl"],
         ["sparql", "syntax", "manifest.ttl"],
-#        ["sparql", "eval", "manifest.ttl"]
+        ["sparql", "eval", "manifest.ttl"]
     ]:
         make_html(DIR.joinpath(*i))
 
@@ -54,6 +54,8 @@ def make_html(path: Path):
                 eid = entry.get('@id', f"#{path.name}_entry{i}")
                 name = entry.get('name', eid[1:])
                 approval = entry.get('approval', 'proposed').lower()
+                if approval == "notclassified":
+                    approval = "proposed"
                 out.write(f'<li class="{approval}"><a href="{eid}">{name}</a>\n')
                 # store computed values for the next loop
                 entry['@id'] = eid
@@ -77,6 +79,8 @@ def make_html(path: Path):
             typ = entry['@type']
             name = entry['name']
             approval = entry.get('approval', 'proposed').lower()
+            if approval == "notclassified":
+                approval = "proposed"
             out.write(f'<section id="{eid[1:]}" class="entry {approval} {typ}">\n')
             out.write(f'<h2>{name} <a href="{eid}">🔗</a></h2>\n')
             out.write('<table class="properties">\n')
@@ -92,13 +96,15 @@ def make_html(path: Path):
                 out.write(f'<tr class="unrecognized"><th>ignoring:</th><td>{" ".join(unrecognized)}</td>\n')
             out.write("</table>\n")
 
-            write_file(out, entry['action'], dir)
+            write_action(out, entry['action'], dir)
             out.write(f"<div>{result_message(entry)}</div>\n")
             result = entry.get('result')
+            if isinstance(result, dict):
+                result = next(iter(result.values()))
             if result is False:
                 out.write("<div>a contradiction</div>")
             elif result:
-                write_file(out, entry['result'], dir, cls="result")
+                write_file(out, result, dir, cls="result")
             if 'comment' in entry:
                 out.write(f"<p>{entry['comment']}</p>\n")
             out.write("</section>")
@@ -111,8 +117,12 @@ def readable_type(entry: dict) -> str:
         'NegativeEntailmentTest': 'negative entailment test',
     }.get(typ, typ)
 
-def write_file(out, relative_url, current_dir, cls=None):
-    out.write(f'<div><code><a href="{relative_url}">{relative_url}</a></code></div>\n')
+def write_file(out, relative_url, current_dir, *, title=None, cls=None):
+    if title is None:
+        title = ""
+    else:
+        title  = f"{title}: "
+    out.write(f'<div>{title}<code><a href="{relative_url}">{relative_url}</a></code></div>\n')
     try:
         with current_dir.joinpath(*relative_url.split('/')).open() as f:
             out.write("<pre")
@@ -127,6 +137,21 @@ def write_file(out, relative_url, current_dir, cls=None):
         print(f"{relative_url}:", msg)
     finally:
         out.write("</pre>\n")
+
+def write_action(out, action, current_dir, *, cls=None):
+    if isinstance(action, str):
+        write_file(out, action, current_dir, cls=cls)
+        return
+    assert isinstance(action, dict)
+    assert 'qt:query' in action and 'qt:data' in action \
+        or 'ut:request' in action and 'ut:data' in action, action
+    if "qt:query" in action:
+        write_file(out, action['qt:query'], current_dir, title="Query", cls=cls)
+    else:
+        write_file(out, action['ut:request'], current_dir, title="Request", cls=cls)
+    data = action.get("qt:data") or action.get("ut:data")
+    write_file(out, data, current_dir, title="Data", cls=cls)
+
 
 def result_message(entry: dict) -> str:
     typ = entry['@type']
@@ -225,6 +250,8 @@ STYLE = '''
         border: thin solid black;
         background-color: lightYellow;
         padding: .6em 1em;
+        max-height: 25em;
+        overflow-y: scroll;
     }
 
     .TestTurtleNegativeSyntax pre,

@@ -1,0 +1,11 @@
+{
+    "@context": "../manifest-context.jsonld",
+    "@id" :"",
+    "@type": "Manifest",
+    "comment": "RDF* Turtle tests",
+    "seeAlso": "https://w3c.github.io/rdf-tests/sparql11/",
+    "include": [
+        "syntax/manifest.jsonld",
+        "eval/manifest.jsonld"
+   ]
+}

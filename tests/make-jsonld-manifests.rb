@@ -7,6 +7,7 @@ man_dir = File.expand_path("")
   nt/syntax
   semantics
   sparql/syntax
+  sparql/eval
   turtle/syntax
   turtle/eval
 }.map {|p| File.expand_path(p)}.

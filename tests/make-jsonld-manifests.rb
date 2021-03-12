@@ -3,6 +3,7 @@ require 'json/ld'
 require 'rdf/turtle'
 
 man_dir = File.expand_path("")
+local_ctx = JSON.parse(File.read("#{man_dir}/manifest-context.jsonld"))
 %w{
   nt/syntax
   semantics
@@ -13,14 +14,15 @@ man_dir = File.expand_path("")
 }.map {|p| File.expand_path(p)}.
   each do |dir|
   Dir.chdir(dir) do |path|
-    RDF::Turtle::Reader.open('manifest.ttl', base_uri: path) do |ttl_reader|
-      JSON::LD::Writer.open('manifest.jsonld',
-                            frame: "#{man_dir}/manifest-context.jsonld",
-                            context: "#{man_dir}/manifest-context.jsonld",
-                            base_uri: path
-      ) do |jsonld_writer|
+    RDF::Turtle::Reader.open('manifest.ttl', base_uri: "#{path}/manifest") do |ttl_reader|
+      local_ctx['@context']['@base'] = "#{path}/manifest"
+      JSON::LD::API.fromRdf(ttl_reader) do |expanded|
+        framed = JSON::LD::API.frame(expanded, local_ctx, expanded: true)
+        framed['@context']['@base'] = 'manifest' # no file-extension
         puts "Create #{path}/manifest.jsonld"
-        jsonld_writer << ttl_reader
+        File.open('manifest.jsonld', "w") do |file|
+          file.write(framed.to_json(JSON::LD::JSON_STATE))
+        end
       end
     end
   end

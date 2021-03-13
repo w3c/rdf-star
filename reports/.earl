@@ -1,0 +1,5 @@
+---
+:format: :json
+:manifest: manifests.nt
+:bibRef: ! '[[rdf-star]]'
+:name: RDF-star

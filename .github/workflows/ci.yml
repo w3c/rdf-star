@@ -9,10 +9,27 @@ on:
 
 jobs:
   tests:
-    name: Build and Validate
+    name: Build and Validate Spec
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+
+   # Setup python environment
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+
+    # Setup Ruby environment  
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+         ruby-version: 3.0
+      run: bundle install --jobs 4 --retry 3
+
+    - name: Build test manifests
+      run: (cd tests; make)
+
     # Validate via ReSpec
     # See https://github.com/w3c/spec-prod/blob/main/docs/examples.md
     - name: ReSpec Checker
@@ -22,3 +39,4 @@ jobs:
         SOURCE: cg-spec/editors_draft.html
         VALIDATE_LINKS: true
         VALIDATE_MARKUP: true
+    

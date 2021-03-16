@@ -67,7 +67,7 @@
   },
   "@id": "manifest",
   "@type": "Manifest",
-  "comment": "RDF-star Semantics tests",
+  "label": "RDF-star Semantics tests",
   "seeAlso": "README",
   "entries": [
     {

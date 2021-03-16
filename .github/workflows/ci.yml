@@ -25,6 +25,8 @@ jobs:
       uses: ruby/setup-ruby@v1
       with:
          ruby-version: 3.0
+
+    - name: Install Gemfile bundles
       run: bundle install --jobs 4 --retry 3
 
     - name: Build test manifests

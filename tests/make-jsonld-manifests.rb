@@ -12,19 +12,18 @@ local_ctx = JSON.parse(File.read("#{man_dir}/manifest-context.jsonld"))
   sparql/eval
   turtle/syntax
   turtle/eval
-}.map {|p| File.expand_path(p)}.
-  each do |dir|
-  Dir.chdir(dir) do |path|
-    RDF::Turtle::Reader.open('manifest.ttl', base_uri: "#{path}/manifest") do |ttl_reader|
-      local_ctx['@context']['@base'] = "#{path}/manifest"
-      JSON::LD::API.fromRdf(ttl_reader) do |expanded|
-        framed = JSON::LD::API.frame(expanded, local_ctx, expanded: true)
-        framed['@context']['@base'] = 'manifest' # no file-extension
-        puts "Create #{path}/manifest.jsonld"
-        File.open('manifest.jsonld', "w") do |file|
-          file.write(framed.to_json(JSON::LD::JSON_STATE))
-        end
-      end
+}.each do |path|
+  dir = File.expand_path(path)
+  base = "https://w3c.github.io/rdf-star/tests/#{path}/manifest"
+  RDF::Turtle::Reader.open("#{dir}/manifest.ttl") do |ttl_reader|
+    local_ctx['@context']['@base'] = base
+    JSON::LD::Writer.open("#{dir}/manifest.jsonld",
+                          frame: local_ctx,
+                          context: local_ctx,
+                          base_uri: base
+    ) do |jsonld_writer|
+      puts "#{dir}/manifest.jsonld"
+      jsonld_writer << ttl_reader
     end
   end
 end

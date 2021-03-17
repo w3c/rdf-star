@@ -63,11 +63,10 @@
     },
     "TestTurtlePositiveSyntax": "rdft:TestTurtlePositiveSyntax",
     "TestTurtleNegativeSyntax": "rdft:TestTurtleNegativeSyntax",
-    "@base": "manifest"
+    "@base": "https://w3c.github.io/rdf-star/tests/turtle/syntax/manifest"
   },
   "@id": "manifest",
   "@type": "Manifest",
-  "label": "Turtle-star Syntax Tests",
   "entries": [
     {
       "@id": "#turtle-star-1",
@@ -201,5 +200,6 @@
       "name": "Turtle-star - bad - triple as annotation",
       "action": "turtle-star-syntax-bad-ann-2.ttl"
     }
-  ]
+  ],
+  "label": "Turtle-star Syntax Tests"
 }

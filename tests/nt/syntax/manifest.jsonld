@@ -63,11 +63,10 @@
     },
     "TestTurtlePositiveSyntax": "rdft:TestTurtlePositiveSyntax",
     "TestTurtleNegativeSyntax": "rdft:TestTurtleNegativeSyntax",
-    "@base": "manifest"
+    "@base": "https://w3c.github.io/rdf-star/tests/nt/syntax/manifest"
   },
   "@id": "manifest",
   "@type": "Manifest",
-  "label": "N-Triples-star Syntax Tests",
   "entries": [
     {
       "@id": "#ntriples-star-1",
@@ -213,5 +212,6 @@
       "name": "N-Triples-star as Turtle-star - Bad - embedded triple, literal predicate",
       "action": "nt-ttl-star-bad-syntax-3.ttl"
     }
-  ]
+  ],
+  "label": "N-Triples-star Syntax Tests"
 }

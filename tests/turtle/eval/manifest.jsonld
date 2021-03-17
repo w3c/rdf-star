@@ -63,11 +63,10 @@
     },
     "TestTurtlePositiveSyntax": "rdft:TestTurtlePositiveSyntax",
     "TestTurtleNegativeSyntax": "rdft:TestTurtleNegativeSyntax",
-    "@base": "manifest"
+    "@base": "https://w3c.github.io/rdf-star/tests/turtle/eval/manifest"
   },
   "@id": "manifest",
   "@type": "Manifest",
-  "label": "Turtle-star Evaluation Tests",
   "entries": [
     {
       "@id": "#turtle-star-1",
@@ -153,5 +152,6 @@
       "action": "turtle-star-eval-embed-annotation-3.ttl",
       "result": "turtle-star-eval-embed-annotation-3.nt"
     }
-  ]
+  ],
+  "label": "Turtle-star Evaluation Tests"
 }

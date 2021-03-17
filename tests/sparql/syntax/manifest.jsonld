@@ -63,11 +63,10 @@
     },
     "TestTurtlePositiveSyntax": "rdft:TestTurtlePositiveSyntax",
     "TestTurtleNegativeSyntax": "rdft:TestTurtleNegativeSyntax",
-    "@base": "manifest"
+    "@base": "https://w3c.github.io/rdf-star/tests/sparql/syntax/manifest"
   },
   "@id": "manifest",
   "@type": "Manifest",
-  "label": "SPARQL-star Syntax Tests",
   "entries": [
     {
       "@id": "#sparql-star-1",
@@ -435,5 +434,6 @@
       "name": "SPARQL-star - update - bad syntax",
       "action": "sparql-star-syntax-bad-update-4.ru"
     }
-  ]
+  ],
+  "label": "SPARQL-star Syntax Tests"
 }

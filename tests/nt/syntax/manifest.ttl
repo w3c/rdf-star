@@ -3,7 +3,7 @@
 ## [1] https://www.w3.org/Consortium/Legal/2008/04-testsuite-license
 ## [2] https://www.w3.org/Consortium/Legal/2008/03-bsd-license
 
-BASE           <manifest>
+BASE           <https://w3c.github.io/rdf-star/tests/nt/syntax/manifest>
 PREFIX rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs:   <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX mf:     <http://www.w3.org/2001/sw/DataAccess/tests/test-manifest#>

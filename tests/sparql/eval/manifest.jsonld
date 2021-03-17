@@ -63,19 +63,18 @@
     },
     "TestTurtlePositiveSyntax": "rdft:TestTurtlePositiveSyntax",
     "TestTurtleNegativeSyntax": "rdft:TestTurtleNegativeSyntax",
-    "@base": "manifest"
+    "@base": "https://w3c.github.io/rdf-star/tests/sparql/eval/manifest"
   },
   "@id": "manifest",
   "@type": "Manifest",
-  "label": "SPARQL-star Evaluation Tests",
   "entries": [
     {
       "@id": "#sparql-star-results-1j",
       "@type": "QueryEvaluationTest",
       "name": "SPARQL-star - all graph triples (JSON results)",
       "action": {
-        "qt:query": "sparql-star-results-1.rq",
-        "qt:data": "data-0.ttl"
+        "qt:data": "data-0.ttl",
+        "qt:query": "sparql-star-results-1.rq"
       },
       "result": "sparql-star-results-1.srj"
     },
@@ -84,8 +83,8 @@
       "@type": "QueryEvaluationTest",
       "name": "SPARQL-star - all graph triples (XML results)",
       "action": {
-        "qt:query": "sparql-star-results-1.rq",
-        "qt:data": "data-0.ttl"
+        "qt:data": "data-0.ttl",
+        "qt:query": "sparql-star-results-1.rq"
       },
       "result": "sparql-star-results-1.srx"
     },
@@ -94,8 +93,8 @@
       "@type": "QueryEvaluationTest",
       "name": "SPARQL-star - match constant embedded triple",
       "action": {
-        "qt:query": "sparql-star-basic-2.rq",
-        "qt:data": "data-1.ttl"
+        "qt:data": "data-1.ttl",
+        "qt:query": "sparql-star-basic-2.rq"
       },
       "result": "sparql-star-basic-2.srj"
     },
@@ -104,8 +103,8 @@
       "@type": "QueryEvaluationTest",
       "name": "SPARQL-star - match embedded triple, var subject",
       "action": {
-        "qt:query": "sparql-star-basic-3.rq",
-        "qt:data": "data-1.ttl"
+        "qt:data": "data-1.ttl",
+        "qt:query": "sparql-star-basic-3.rq"
       },
       "result": "sparql-star-basic-3.srj"
     },
@@ -114,8 +113,8 @@
       "@type": "QueryEvaluationTest",
       "name": "SPARQL-star - match embedded triple, var predicate",
       "action": {
-        "qt:query": "sparql-star-basic-4.rq",
-        "qt:data": "data-1.ttl"
+        "qt:data": "data-1.ttl",
+        "qt:query": "sparql-star-basic-4.rq"
       },
       "result": "sparql-star-basic-4.srj"
     },
@@ -124,8 +123,8 @@
       "@type": "QueryEvaluationTest",
       "name": "SPARQL-star - match embedded triple, var object",
       "action": {
-        "qt:query": "sparql-star-basic-5.rq",
-        "qt:data": "data-1.ttl"
+        "qt:data": "data-1.ttl",
+        "qt:query": "sparql-star-basic-5.rq"
       },
       "result": "sparql-star-basic-5.srj"
     },
@@ -134,8 +133,8 @@
       "@type": "QueryEvaluationTest",
       "name": "SPARQL-star - no match of embedded triple",
       "action": {
-        "qt:query": "sparql-star-basic-6.rq",
-        "qt:data": "data-1.ttl"
+        "qt:data": "data-1.ttl",
+        "qt:query": "sparql-star-basic-6.rq"
       },
       "result": "sparql-star-basic-6.srj"
     },
@@ -144,8 +143,8 @@
       "@type": "QueryEvaluationTest",
       "name": "SPARQL-star - Asserted and embedded triple",
       "action": {
-        "qt:query": "sparql-star-pattern-01.rq",
-        "qt:data": "data-2.ttl"
+        "qt:data": "data-2.ttl",
+        "qt:query": "sparql-star-pattern-01.rq"
       },
       "result": "sparql-star-pattern-01.srj"
     },
@@ -154,8 +153,8 @@
       "@type": "QueryEvaluationTest",
       "name": "SPARQL-star -  Asserted and embedded triple",
       "action": {
-        "qt:query": "sparql-star-pattern-02.rq",
-        "qt:data": "data-2.ttl"
+        "qt:data": "data-2.ttl",
+        "qt:query": "sparql-star-pattern-02.rq"
       },
       "result": "sparql-star-pattern-02.srj"
     },
@@ -164,8 +163,8 @@
       "@type": "QueryEvaluationTest",
       "name": "SPARQL-star - Pattern - Variable for embedded triple",
       "action": {
-        "qt:query": "sparql-star-pattern-03.rq",
-        "qt:data": "data-2.ttl"
+        "qt:data": "data-2.ttl",
+        "qt:query": "sparql-star-pattern-03.rq"
       },
       "result": "sparql-star-pattern-03.srj"
     },
@@ -174,8 +173,8 @@
       "@type": "QueryEvaluationTest",
       "name": "SPARQL-star - Pattern - No match",
       "action": {
-        "qt:query": "sparql-star-pattern-04.rq",
-        "qt:data": "data-2.ttl"
+        "qt:data": "data-2.ttl",
+        "qt:query": "sparql-star-pattern-04.rq"
       },
       "result": "sparql-star-pattern-04.srj"
     },
@@ -184,8 +183,8 @@
       "@type": "QueryEvaluationTest",
       "name": "SPARQL-star - Pattern - match variables in triple terms",
       "action": {
-        "qt:query": "sparql-star-pattern-05.rq",
-        "qt:data": "data-2.ttl"
+        "qt:data": "data-2.ttl",
+        "qt:query": "sparql-star-pattern-05.rq"
       },
       "result": "sparql-star-pattern-05.srj"
     },
@@ -194,8 +193,8 @@
       "@type": "QueryEvaluationTest",
       "name": "SPARQL-star - Pattern - Nesting 1",
       "action": {
-        "qt:query": "sparql-star-pattern-06.rq",
-        "qt:data": "data-2.ttl"
+        "qt:data": "data-2.ttl",
+        "qt:query": "sparql-star-pattern-06.rq"
       },
       "result": "sparql-star-pattern-06.srj"
     },
@@ -204,8 +203,8 @@
       "@type": "QueryEvaluationTest",
       "name": "SPARQL-star - Pattern - Nesting - 2",
       "action": {
-        "qt:query": "sparql-star-pattern-07.rq",
-        "qt:data": "data-2.ttl"
+        "qt:data": "data-2.ttl",
+        "qt:query": "sparql-star-pattern-07.rq"
       },
       "result": "sparql-star-pattern-07.srj"
     },
@@ -214,8 +213,8 @@
       "@type": "QueryEvaluationTest",
       "name": "SPARQL-star - Pattern - Match and nesting",
       "action": {
-        "qt:query": "sparql-star-pattern-08.rq",
-        "qt:data": "data-2.ttl"
+        "qt:data": "data-2.ttl",
+        "qt:query": "sparql-star-pattern-08.rq"
       },
       "result": "sparql-star-pattern-08.srj"
     },
@@ -224,8 +223,8 @@
       "@type": "QueryEvaluationTest",
       "name": "SPARQL-star - Pattern - Same variable",
       "action": {
-        "qt:query": "sparql-star-pattern-09.rq",
-        "qt:data": "data-5.ttl"
+        "qt:data": "data-5.ttl",
+        "qt:query": "sparql-star-pattern-09.rq"
       },
       "result": "sparql-star-pattern-09.srj"
     },
@@ -234,8 +233,8 @@
       "@type": "QueryEvaluationTest",
       "name": "SPARQL-star - CONSTRUCT with constant template",
       "action": {
-        "qt:query": "sparql-star-construct-1.rq",
-        "qt:data": "data-3.ttl"
+        "qt:data": "data-3.ttl",
+        "qt:query": "sparql-star-construct-1.rq"
       },
       "result": "sparql-star-construct-1.ttl"
     },
@@ -244,8 +243,8 @@
       "@type": "QueryEvaluationTest",
       "name": "SPARQL-star - CONSTRUCT WHERE with constant template",
       "action": {
-        "qt:query": "sparql-star-construct-2.rq",
-        "qt:data": "data-3.ttl"
+        "qt:data": "data-3.ttl",
+        "qt:query": "sparql-star-construct-2.rq"
       },
       "result": "sparql-star-construct-2.ttl"
     },
@@ -254,8 +253,8 @@
       "@type": "QueryEvaluationTest",
       "name": "SPARQL-star - CONSTRUCT - about every triple",
       "action": {
-        "qt:query": "sparql-star-construct-3.rq",
-        "qt:data": "data-3.ttl"
+        "qt:data": "data-3.ttl",
+        "qt:query": "sparql-star-construct-3.rq"
       },
       "result": "sparql-star-construct-3.ttl"
     },
@@ -264,8 +263,8 @@
       "@type": "QueryEvaluationTest",
       "name": "SPARQL-star - CONSTRUCT with annotation syntax",
       "action": {
-        "qt:query": "sparql-star-construct-4.rq",
-        "qt:data": "data-3.ttl"
+        "qt:data": "data-3.ttl",
+        "qt:query": "sparql-star-construct-4.rq"
       },
       "result": "sparql-star-construct-4.ttl"
     },
@@ -274,8 +273,8 @@
       "@type": "QueryEvaluationTest",
       "name": "SPARQL-star - CONSTRUCT WHERE with annotation syntax",
       "action": {
-        "qt:query": "sparql-star-construct-5.rq",
-        "qt:data": "data-3.ttl"
+        "qt:data": "data-3.ttl",
+        "qt:query": "sparql-star-construct-5.rq"
       },
       "result": "sparql-star-construct-5.ttl"
     },
@@ -284,8 +283,8 @@
       "@type": "QueryEvaluationTest",
       "name": "SPARQL-star - GRAPH",
       "action": {
-        "qt:query": "sparql-star-graphs-1.rq",
-        "qt:data": "data-4.trig"
+        "qt:data": "data-4.trig",
+        "qt:query": "sparql-star-graphs-1.rq"
       },
       "result": "sparql-star-graphs-1.srj"
     },
@@ -294,8 +293,8 @@
       "@type": "QueryEvaluationTest",
       "name": "SPARQL-star - GRAPHs with blank node",
       "action": {
-        "qt:query": "sparql-star-graphs-2.rq",
-        "qt:data": "data-4.trig"
+        "qt:data": "data-4.trig",
+        "qt:query": "sparql-star-graphs-2.rq"
       },
       "result": "sparql-star-graphs-2.srj"
     },
@@ -304,8 +303,8 @@
       "@type": "QueryEvaluationTest",
       "name": "SPARQL-star - Embedded triple - BIND - CONSTRUCT",
       "action": {
-        "qt:query": "sparql-star-expr-01.rq",
-        "qt:data": "data-4.trig"
+        "qt:data": "data-4.trig",
+        "qt:query": "sparql-star-expr-01.rq"
       },
       "result": "sparql-star-expr-01.ttl"
     },
@@ -314,8 +313,8 @@
       "@type": "QueryEvaluationTest",
       "name": "SPARQL-star - Embedded triple - Functions",
       "action": {
-        "qt:query": "sparql-star-expr-02.rq",
-        "qt:data": "empty.nq"
+        "qt:data": "empty.nq",
+        "qt:query": "sparql-star-expr-02.rq"
       },
       "result": "sparql-star-expr-02.srj"
     },
@@ -324,8 +323,8 @@
       "@type": "QueryEvaluationTest",
       "name": "SPARQL-star - Embedded triple ORDER BY",
       "action": {
-        "qt:query": "sparql-star-order-1.rq",
-        "qt:data": "data-7.ttl"
+        "qt:data": "data-7.ttl",
+        "qt:query": "sparql-star-order-1.rq"
       },
       "result": "sparql-star-order-1.srj"
     },
@@ -365,5 +364,6 @@
         "ut:data": "update-result-3.trig"
       }
     }
-  ]
+  ],
+  "label": "SPARQL-star Evaluation Tests"
 }

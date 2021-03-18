@@ -1,5 +1,11 @@
 ---
 :format: :json
-:manifest: manifests.nt
+:manifest:
+  - ../tests/nt/syntax/manifest.ttl
+  - ../tests/semantics/manifest.ttl
+  - ../tests/sparql/syntax/manifest.ttl
+  - ../tests/sparql/eval/manifest.ttl
+  - ../tests/turtle/syntax/manifest.ttl
+  - ../tests/turtle/eval/manifest.ttl
 :bibRef: ! '[[rdf-star]]'
 :name: RDF-star

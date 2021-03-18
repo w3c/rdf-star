@@ -9,8 +9,6 @@ which saves it to `index.html`.
 Run it as follows:
 
 ```sh
-$ gem install earl-report rdf-turtle json-ld rdf-ordered-repo
-$ rm -f manifests.nt && (cd ..; rake reports/manifests.nt)
-$ earl-report --format json -o earl.jsonld *.ttl
-$ earl-report --json --format html --template template.haml -o index.html earl.jsonld
+$ bundle install
+$ bundle exec rake
 ```

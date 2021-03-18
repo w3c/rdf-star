@@ -1,36 +1,12 @@
 desc "Default build all files"
-task default: [ "manifests.nt", "earl.jsonld", "earl.ttl", "index.html" ]
+task default: [ "earl.jsonld", "earl.ttl", "index.html" ]
 
 desc "Remove generated files"
 task :clean do
-  %x(rm manifests.nt earl.jsonld earl.ttl index.html)
+  %x(rm earl.jsonld earl.ttl index.html)
 end
 
-desc "Create concatenated test manifests"
-file "manifests.nt" do
-  require 'rdf'
-  require 'rdf/ordered_repo'
-  require 'json/ld'
-  require 'rdf/turtle'
-  require 'rdf/ntriples'
-  graph = RDF::OrderedRepo.new do |g|
-    %w( https://w3c.github.io/rdf-star/tests/nt/syntax/manifest.ttl
-        https://w3c.github.io/rdf-star/tests/semantics/manifest.ttl
-        https://w3c.github.io/rdf-star/tests/sparql/syntax/manifest.ttl
-        https://w3c.github.io/rdf-star/tests/sparql/eval/manifest.ttl
-        https://w3c.github.io/rdf-star/tests/turtle/syntax/manifest.ttl
-        https://w3c.github.io/rdf-star/tests/turtle/eval/manifest.ttl
-    ).each do |man|
-      puts "load #{man}"
-      file = man.sub('https://w3c.github.io/rdf-star/', File.expand_path("../..", __FILE__) + '/')
-      g.load(man, unique_bnodes: true, base: man)
-    end
-  end
-  puts "write manifests.nt"
-  RDF::NTriples::Writer.open("manifests.nt", unique_bnodes: true, validate: false) {|w| w << graph}
-end
-
-file "earl.jsonld" => %w(manifests.nt) do
+file "earl.jsonld" => (Dir.glob('*.ttl') - %w(earl.ttl)) do
   puts "write earl.jsonld"
   %x(earl-report --format json -o earl.jsonld *.ttl)
 end

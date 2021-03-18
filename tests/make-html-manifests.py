@@ -9,12 +9,12 @@ DIR = Path(__file__).parent
 
 def main():
     for i in [
-        ["semantics", "manifest.ttl"],
-        ["turtle", "syntax", "manifest.ttl"],
-        ["turtle", "eval", "manifest.ttl"],
-        ["nt", "syntax", "manifest.ttl"],
-        ["sparql", "syntax", "manifest.ttl"],
-        ["sparql", "eval", "manifest.ttl"]
+        ["semantics", "manifest.jsonld"],
+        ["turtle", "syntax", "manifest.jsonld"],
+        ["turtle", "eval", "manifest.jsonld"],
+        ["nt", "syntax", "manifest.jsonld"],
+        ["sparql", "syntax", "manifest.jsonld"],
+        ["sparql", "eval", "manifest.jsonld"]
     ]:
         make_html(DIR.joinpath(*i))
 
@@ -172,37 +172,8 @@ def result_message(entry: dict) -> str:
     return msg
 
 def open_manifest(path: Path) -> dict:
-    if path.suffix == ".jsonld":
-        with path.open() as f:
-            return json.load(f)
-    if path.suffix == ".ttl":
-        return rdf_to_json("turtle", path)
-
-def rdf_to_json(format, path: Path) -> dict:
-    try:
-        import rdflib
-        from pyld import jsonld
-    except ImportError:
-        eprint("In order to process TTL manifests, you need RDFlib and PyLD:") 
-        eprint("  python -m pip install rdflib PyLD") 
-        return None
-    g = rdflib.Graph()
     with path.open() as f:
-        g.load(f, format=format)
-    nq = g.serialize(format="ntriples").decode("utf-8")
-
-    extended = jsonld.from_rdf(nq)
-    with DIR.joinpath("manifest-context.jsonld").open() as f:
-        frame = json.load(f)
-    manifest = jsonld.frame(extended, frame)
-
-    # ugly hack to "relativize" IRIs
-    manifest = json.dumps(manifest)
-    manifest = manifest.replace(f'file://{path.absolute()}#', "#")
-    manifest = manifest.replace(f'file://{path.parent.absolute()}/', "")
-    manifest = json.loads(manifest)
-
-    return manifest
+        return json.load(f)
 
 def eprint(*args, **kw):
     kw.setdefault('file', sys.stderr)

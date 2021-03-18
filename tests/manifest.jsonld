@@ -1,0 +1,15 @@
+{
+    "@context": "manifest-context.jsonld",
+    "@id" : "manifest",
+    "@type": "Manifest",
+    "label": "RDF-star test suite",
+    "seeAlso": "https://w3c.github.io/rdf-tests/",
+    "include": [
+      "nt/syntax/manifest.jsonld",
+      "semantics/manifest.jsonld",
+      "sparql/eval/manifest.jsonld",
+      "sparql/syntax/manifest.jsonld",
+      "turtle/eval/manifest.jsonld",
+      "turtle/syntax/manifest.jsonld"
+   ]
+}

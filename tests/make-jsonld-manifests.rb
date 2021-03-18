@@ -1,8 +1,10 @@
 #!/usr/bin/env ruby
+require "bundler/setup"
 require 'json/ld'
 require 'rdf/turtle'
 
 man_dir = File.expand_path("")
+local_ctx = JSON.parse(File.read("#{man_dir}/manifest-context.jsonld"))
 %w{
   nt/syntax
   semantics
@@ -10,18 +12,18 @@ man_dir = File.expand_path("")
   sparql/eval
   turtle/syntax
   turtle/eval
-}.map {|p| File.expand_path(p)}.
-  each do |dir|
-  Dir.chdir(dir) do |path|
-    RDF::Turtle::Reader.open('manifest.ttl', base_uri: path) do |ttl_reader|
-      JSON::LD::Writer.open('manifest.jsonld',
-                            frame: "#{man_dir}/manifest-context.jsonld",
-                            context: "#{man_dir}/manifest-context.jsonld",
-                            base_uri: path
-      ) do |jsonld_writer|
-        puts "Create #{path}/manifest.jsonld"
-        jsonld_writer << ttl_reader
-      end
+}.each do |path|
+  dir = File.expand_path(path)
+  base = "https://w3c.github.io/rdf-star/tests/#{path}/manifest"
+  RDF::Turtle::Reader.open("#{dir}/manifest.ttl") do |ttl_reader|
+    local_ctx['@context']['@base'] = base
+    JSON::LD::Writer.open("#{dir}/manifest.jsonld",
+                          frame: local_ctx,
+                          context: local_ctx,
+                          base_uri: base
+    ) do |jsonld_writer|
+      puts "#{dir}/manifest.jsonld"
+      jsonld_writer << ttl_reader
     end
   end
 end

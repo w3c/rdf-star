@@ -1,3 +1,4 @@
+BASE           <https://w3c.github.io/rdf-star/tests/semantics/manifest>
 PREFIX rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs:   <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX mf:     <http://www.w3.org/2001/sw/DataAccess/tests/test-manifest#>
@@ -6,7 +7,7 @@ PREFIX xsd:    <http://www.w3.org/2001/XMLSchema#>
 PREFIX :       <#>
 
 <> a mf:Manifest;
-  rdfs:comment "RDF-star Semantics tests";
+  rdfs:label "RDF-star Semantics tests";
   rdfs:seeAlso <README>;
   mf:entries (
     :triple-in-subject

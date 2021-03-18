@@ -1,49 +1,48 @@
-BASE           <https://w3c.github.io/rdf-star/tests/semantics/manifest>
 PREFIX rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs:   <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX mf:     <http://www.w3.org/2001/sw/DataAccess/tests/test-manifest#>
 PREFIX test:   <http://www.w3.org/2001/sw/DataAccess/tests/test-dawg#>
 PREFIX xsd:    <http://www.w3.org/2001/XMLSchema#>
-PREFIX :       <#>
+PREFIX trs:    <https://w3c.github.io/rdf-star/tests/semantics#>
 
-<> a mf:Manifest;
+trs:manifest a mf:Manifest;
   rdfs:label "RDF-star Semantics tests";
   rdfs:seeAlso <README>;
   mf:entries (
-    :triple-in-subject
-    :triple-in-object
-    :all-identical-embedded-triples-are-the-same
-    :embedded-triples-no-spurious
-    :bnodes-in-embedded-subject
-    :bnodes-in-embedded-object
-    :bnodes-in-embedded-subject-and-object
-    :bnodes-in-embedded-subject-and-object-fail
-    :same-bnode-same-embedded-term
-    :different-bnodes-same-embedded-term
-    :constrained-bnodes-in-embedded-subject
-    :constrained-bnodes-in-embedded-object
-    :constrained-bnodes-in-embedded-fail
-    :constrained-bnodes-on-literal
-    :malformed-literal-control
-    :malformed-literal
-    :malformed-literal-accepted
-    :malformed-literal-no-spurious
-    :malformed-literal-bnode
-    :malformed-literal-bnode-2
-    :malformed-literal-bnode-3
-    :opaque-literal-control
-    :opaque-literal
-    :opaque-language-string-control
-    :opaque-language-string
-    :opaque-iri-control
-    :opaque-iri
-    :embedded-not-asserted
-    :annotated-asserted
-    :annotation
-    :annotation-unfolded
+    trs:triple-in-subject
+    trs:triple-in-object
+    trs:all-identical-embedded-triples-are-the-same
+    trs:embedded-triples-no-spurious
+    trs:bnodes-in-embedded-subject
+    trs:bnodes-in-embedded-object
+    trs:bnodes-in-embedded-subject-and-object
+    trs:bnodes-in-embedded-subject-and-object-fail
+    trs:same-bnode-same-embedded-term
+    trs:different-bnodes-same-embedded-term
+    trs:constrained-bnodes-in-embedded-subject
+    trs:constrained-bnodes-in-embedded-object
+    trs:constrained-bnodes-in-embedded-fail
+    trs:constrained-bnodes-on-literal
+    trs:malformed-literal-control
+    trs:malformed-literal
+    trs:malformed-literal-accepted
+    trs:malformed-literal-no-spurious
+    trs:malformed-literal-bnode
+    trs:malformed-literal-bnode-2
+    trs:malformed-literal-bnode-3
+    trs:opaque-literal-control
+    trs:opaque-literal
+    trs:opaque-language-string-control
+    trs:opaque-language-string
+    trs:opaque-iri-control
+    trs:opaque-iri
+    trs:embedded-not-asserted
+    trs:annotated-asserted
+    trs:annotation
+    trs:annotation-unfolded
   ) .
 
-:all-identical-embedded-triples-are-the-same a mf:PositiveEntailmentTest;
+trs:all-identical-embedded-triples-are-the-same a mf:PositiveEntailmentTest;
   rdfs:comment "Multiple occurences of the same embedded triples are undistinguishable in the abstract model (EVENTUALLY, this should be a Turtle-star test rather than a semantics test).";
   mf:action <test001a.ttl>;
   mf:entailmentRegime "simple";
@@ -53,7 +52,7 @@ PREFIX :       <#>
   mf:unrecognizedDatatypes ();
   test:approval test:NotClassified .
 
-:annotated-asserted a mf:PositiveEntailmentTest;
+trs:annotated-asserted a mf:PositiveEntailmentTest;
   rdfs:comment "Annotated triples are asserted.";
   mf:action <test007a.ttl>;
   mf:entailmentRegime "simple";
@@ -63,7 +62,7 @@ PREFIX :       <#>
   mf:unrecognizedDatatypes ();
   test:approval test:NotClassified .
 
-:annotation a mf:PositiveEntailmentTest;
+trs:annotation a mf:PositiveEntailmentTest;
   rdfs:comment "Annotation are about the annotated triple.";
   mf:action <test007a.ttl>;
   mf:entailmentRegime "simple";
@@ -73,7 +72,7 @@ PREFIX :       <#>
   mf:unrecognizedDatatypes ();
   test:approval test:NotClassified .
 
-:annotation-unfolded a mf:PositiveEntailmentTest;
+trs::annotation-unfolded a mf:PositiveEntailmentTest;
   rdfs:comment "Annotation is the same as separate assertions.";
   mf:action <test007a2.ttl>;
   mf:entailmentRegime "simple";
@@ -83,7 +82,7 @@ PREFIX :       <#>
   mf:unrecognizedDatatypes ();
   test:approval test:NotClassified .
 
-:bnodes-in-embedded-object a mf:PositiveEntailmentTest;
+trs:bnodes-in-embedded-object a mf:PositiveEntailmentTest;
   rdfs:comment "Terms in embedded triples can be replaced by fresh bnodes.";
   mf:action <test002a.ttl>;
   mf:entailmentRegime "simple";
@@ -93,7 +92,7 @@ PREFIX :       <#>
   mf:unrecognizedDatatypes ();
   test:approval test:NotClassified .
 
-:bnodes-in-embedded-subject a mf:PositiveEntailmentTest;
+trs:bnodes-in-embedded-subject a mf:PositiveEntailmentTest;
   rdfs:comment "Terms in embedded triples can be replaced by fresh bnodes.";
   mf:action <test002a.ttl>;
   mf:entailmentRegime "simple";
@@ -103,7 +102,7 @@ PREFIX :       <#>
   mf:unrecognizedDatatypes ();
   test:approval test:NotClassified .
 
-:bnodes-in-embedded-subject-and-object a mf:PositiveEntailmentTest;
+trs:bnodes-in-embedded-subject-and-object a mf:PositiveEntailmentTest;
   rdfs:comment "Terms in embedded triples can be replaced by fresh bnodes.";
   mf:action <test002a.ttl>;
   mf:entailmentRegime "simple";
@@ -113,7 +112,7 @@ PREFIX :       <#>
   mf:unrecognizedDatatypes ();
   test:approval test:NotClassified .
 
-:bnodes-in-embedded-subject-and-object-fail a mf:NegativeEntailmentTest;
+trs:bnodes-in-embedded-subject-and-object-fail a mf:NegativeEntailmentTest;
   rdfs:comment "The same bnode can not match different embedded terms.";
   mf:action <test002a.ttl>;
   mf:entailmentRegime "simple";
@@ -123,7 +122,7 @@ PREFIX :       <#>
   mf:unrecognizedDatatypes ();
   test:approval test:NotClassified .
 
-:constrained-bnodes-in-embedded-fail a mf:NegativeEntailmentTest;
+trs:constrained-bnodes-in-embedded-fail a mf:NegativeEntailmentTest;
   rdfs:comment "Embedded bnode identifiers share the same scope as non-embedded ones. A bnode occuring both in embedded triples and in asserted triples must statisfy them all at the same time.";
   mf:action <test004a.ttl>;
   mf:entailmentRegime "simple";
@@ -133,7 +132,7 @@ PREFIX :       <#>
   mf:unrecognizedDatatypes ();
   test:approval test:NotClassified .
 
-:constrained-bnodes-in-embedded-object a mf:PositiveEntailmentTest;
+trs:constrained-bnodes-in-embedded-object a mf:PositiveEntailmentTest;
   rdfs:comment "Terms in embedded triples and outside can be replaced by fresh bnodes.";
   mf:action <test004a.ttl>;
   mf:entailmentRegime "simple";
@@ -143,7 +142,7 @@ PREFIX :       <#>
   mf:unrecognizedDatatypes ();
   test:approval test:NotClassified .
 
-:constrained-bnodes-in-embedded-subject a mf:PositiveEntailmentTest;
+trs:constrained-bnodes-in-embedded-subject a mf:PositiveEntailmentTest;
   rdfs:comment "Terms in embedded triples and outside can be replaced by fresh bnodes";
   mf:action <test004a.ttl>;
   mf:entailmentRegime "simple";
@@ -153,7 +152,7 @@ PREFIX :       <#>
   mf:unrecognizedDatatypes ();
   test:approval test:NotClassified .
 
-:constrained-bnodes-on-literal a mf:PositiveEntailmentTest;
+trs:constrained-bnodes-on-literal a mf:PositiveEntailmentTest;
   rdfs:comment "Literals in embedded triples and outside can be replaced by fresh bnodes.";
   mf:action <test006a.ttl>;
   mf:entailmentRegime "simple";
@@ -163,7 +162,7 @@ PREFIX :       <#>
   mf:unrecognizedDatatypes ();
   test:approval test:NotClassified .
 
-:different-bnodes-same-embedded-term a mf:PositiveEntailmentTest;
+trs:different-bnodes-same-embedded-term a mf:PositiveEntailmentTest;
   rdfs:comment "Different bnodes can match identical embedded terms.";
   mf:action <test003a.ttl>;
   mf:entailmentRegime "simple";
@@ -173,7 +172,7 @@ PREFIX :       <#>
   mf:unrecognizedDatatypes ();
   test:approval test:NotClassified .
 
-:embedded-not-asserted a mf:NegativeEntailmentTest;
+trs:embedded-not-asserted a mf:NegativeEntailmentTest;
   rdfs:comment "Embedded triples are not asserted.";
   mf:action <test002a.ttl>;
   mf:entailmentRegime "simple";
@@ -183,7 +182,7 @@ PREFIX :       <#>
   mf:unrecognizedDatatypes ();
   test:approval test:NotClassified .
 
-:embedded-triples-no-spurious a mf:NegativeEntailmentTest;
+trs:embedded-triples-no-spurious a mf:NegativeEntailmentTest;
   rdfs:comment "This test ensures that other entailments are not spurious.";
   mf:action <test002a.ttl>;
   mf:entailmentRegime "simple";
@@ -193,7 +192,7 @@ PREFIX :       <#>
   mf:unrecognizedDatatypes ();
   test:approval test:NotClassified .
 
-:malformed-literal a mf:NegativeEntailmentTest;
+trs:malformed-literal a mf:NegativeEntailmentTest;
   rdfs:comment "Malformed literals are allowed when embedded.";
   mf:action <malformed-literal.ttl>;
   mf:entailmentRegime "RDF";
@@ -203,7 +202,7 @@ PREFIX :       <#>
   mf:unrecognizedDatatypes ();
   test:approval test:NotClassified .
 
-:malformed-literal-accepted a mf:PositiveEntailmentTest;
+trs:malformed-literal-accepted a mf:PositiveEntailmentTest;
   rdfs:comment "Malformed literals are allowed when embedded.";
   mf:action <malformed-literal.ttl>;
   mf:entailmentRegime "RDF";
@@ -213,7 +212,7 @@ PREFIX :       <#>
   mf:unrecognizedDatatypes ();
   test:approval test:NotClassified .
 
-:malformed-literal-bnode a mf:PositiveEntailmentTest;
+trs:malformed-literal-bnode a mf:PositiveEntailmentTest;
   rdfs:comment "Malformed literals can be replaced by blank nodes.";
   mf:action <malformed-literal.ttl>;
   mf:entailmentRegime "RDF";
@@ -223,7 +222,7 @@ PREFIX :       <#>
   mf:unrecognizedDatatypes ();
   test:approval test:NotClassified .
 
-:malformed-literal-bnode-2 a mf:PositiveEntailmentTest;
+trs:malformed-literal-bnode-2 a mf:PositiveEntailmentTest;
   rdfs:comment "Identical malformed literals can be replaced with the same blank node.";
   mf:action <malformed-literal-2a.ttl>;
   mf:entailmentRegime "RDF";
@@ -233,7 +232,7 @@ PREFIX :       <#>
   mf:unrecognizedDatatypes ();
   test:approval test:NotClassified .
 
-:malformed-literal-bnode-3 a mf:NegativeEntailmentTest;
+trs:malformed-literal-bnode-3 a mf:NegativeEntailmentTest;
   rdfs:comment "Identical malformed literals can not be replaced with the same blank node.";
   mf:action <malformed-literal-3a.ttl>;
   mf:entailmentRegime "RDF";
@@ -243,7 +242,7 @@ PREFIX :       <#>
   mf:unrecognizedDatatypes ();
   test:approval test:NotClassified .
 
-:malformed-literal-control a mf:PositiveEntailmentTest;
+trs:malformed-literal-control a mf:PositiveEntailmentTest;
   rdfs:comment "Checks that xsd:integer is indeed recognized, to ensure that malformed-literal-star tests do not pass spuriously.";
   mf:action <malformed-literal-control.ttl>;
   mf:entailmentRegime "RDF";
@@ -253,7 +252,7 @@ PREFIX :       <#>
   mf:unrecognizedDatatypes ();
   test:approval test:NotClassified .
 
-:malformed-literal-no-spurious a mf:NegativeEntailmentTest;
+trs:malformed-literal-no-spurious a mf:NegativeEntailmentTest;
   rdfs:comment "Embedded malformed literals do not lead to spurious entailment.";
   mf:action <malformed-literal.ttl>;
   mf:entailmentRegime "RDF";
@@ -263,7 +262,7 @@ PREFIX :       <#>
   mf:unrecognizedDatatypes ();
   test:approval test:NotClassified .
 
-:opaque-iri a mf:NegativeEntailmentTest;
+trs:opaque-iri a mf:NegativeEntailmentTest;
   rdfs:comment "Embedded IRIs are opaque.";
   mf:action <superman.ttl>;
   mf:entailmentRegime "RDFS-Plus";
@@ -273,7 +272,7 @@ PREFIX :       <#>
   mf:unrecognizedDatatypes ();
   test:approval test:NotClassified .
 
-:opaque-iri-control a mf:PositiveEntailmentTest;
+trs:opaque-iri-control a mf:PositiveEntailmentTest;
   rdfs:comment "Check that owl:sameAs works as expected, to ensure that opaque-iri does not pass spuriously.";
   mf:action <control-sameas-a.ttl>;
   mf:entailmentRegime "RDFS-Plus";
@@ -283,7 +282,7 @@ PREFIX :       <#>
   mf:unrecognizedDatatypes ();
   test:approval test:NotClassified .
 
-:opaque-language-string a mf:NegativeEntailmentTest;
+trs:opaque-language-string a mf:NegativeEntailmentTest;
   rdfs:comment "Embedded literals (including language strings) are opaque, even when their datatype is recognized.";
   mf:action <lowercase-language-string.ttl>;
   mf:entailmentRegime "RDF";
@@ -293,7 +292,7 @@ PREFIX :       <#>
   mf:unrecognizedDatatypes ();
   test:approval test:NotClassified .
 
-:opaque-language-string-control a mf:PositiveEntailmentTest;
+trs:opaque-language-string-control a mf:PositiveEntailmentTest;
   rdfs:comment "Checks that language strings are indeed recognized, to ensure that opaque-language-string does not pass spuriously.";
   mf:action <lowercase-language-string-control.ttl>;
   mf:entailmentRegime "RDF";
@@ -303,7 +302,7 @@ PREFIX :       <#>
   mf:unrecognizedDatatypes ();
   test:approval test:NotClassified .
 
-:opaque-literal a mf:NegativeEntailmentTest;
+trs:opaque-literal a mf:NegativeEntailmentTest;
   rdfs:comment "Embedded literals are opaque, even when their datatype is recognized.";
   mf:action <non-canonical-literal.ttl>;
   mf:entailmentRegime "RDF";
@@ -313,7 +312,7 @@ PREFIX :       <#>
   mf:unrecognizedDatatypes ();
   test:approval test:NotClassified .
 
-:opaque-literal-control a mf:PositiveEntailmentTest;
+trs:opaque-literal-control a mf:PositiveEntailmentTest;
   rdfs:comment "Checks that xsd:integer is indeed recognized, to ensure that opaque-literal does not pass spuriously.";
   mf:action <non-canonical-literal-control.ttl>;
   mf:entailmentRegime "RDF";
@@ -323,7 +322,7 @@ PREFIX :       <#>
   mf:unrecognizedDatatypes ();
   test:approval test:NotClassified .
 
-:same-bnode-same-embedded-term a mf:PositiveEntailmentTest;
+trs:same-bnode-same-embedded-term a mf:PositiveEntailmentTest;
   rdfs:comment "Identical embedde term can be replaced by the same fresh bnode multiple times.";
   mf:action <test003a.ttl>;
   mf:entailmentRegime "simple";
@@ -333,7 +332,7 @@ PREFIX :       <#>
   mf:unrecognizedDatatypes ();
   test:approval test:NotClassified .
 
-:triple-in-object a mf:PositiveEntailmentTest;
+trs:triple-in-object a mf:PositiveEntailmentTest;
   rdfs:comment "Embedded triples can appear in object position (EVENTUALLY, this should be a Turtle-star test rather than a semantics test).";
   mf:action <test000o.ttl>;
   mf:entailmentRegime "simple";
@@ -343,7 +342,7 @@ PREFIX :       <#>
   mf:unrecognizedDatatypes ();
   test:approval test:Approved .
 
-:triple-in-subject a mf:PositiveEntailmentTest;
+trs:triple-in-subject a mf:PositiveEntailmentTest;
   rdfs:comment "Embedded triples can appear in subject position (EVENTUALLY, this should be a Turtle-star test rather than a semantics test).";
   mf:action <test000s.ttl>;
   mf:entailmentRegime "simple";

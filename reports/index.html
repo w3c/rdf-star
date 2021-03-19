@@ -92,8 +92,8 @@ RDF-star Processor Conformance
 EARL results from the RDF-star Test Suite
 </h2>
 <h2 id='w3c-document-28-october-2015'>
-<time class='dt-published' datetime='2021-03-18' property='dc:issued'>
-18 March 2021
+<time class='dt-published' datetime='2021-03-19' property='dc:issued'>
+19 March 2021
 </time>
 </h2>
 <dl>
@@ -301,7 +301,7 @@ each supports.</p></li>
   homepage and developer(s) of the software (see <a href="https://github.com/edumbill/doap/wiki">DOAP</a>). Optionally, including the
   project description and programming language. An example test subject description is the following:</p>
 
-<pre><code>  &lt;&gt; foaf:primaryTopic &lt;--your-software-identifier--&gt; ;&#x000A;    dc:issued &quot;2016-12-26T10:18:04-08:00&quot;^^xsd:dateTime ;&#x000A;    foaf:maker &lt;--your-developer-identifier--&gt; .&#x000A;&#x000A;  &lt;--your-software-identifier--&gt; a doap:Project, earl:TestSubject, earl:Software ;&#x000A;    doap:name          &quot;My Cool JSON-LD Parser&quot; ;&#x000A;    doap:release [&#x000A;      doap:name     &quot;--short name wih version number--&quot;;&#x000A;      doap:revision &quot;--Software version number--&quot; ;&#x000A;      doap:created  &quot;2020-02-19&quot;^^xsd:date;&#x000A;    ] ;&#x000A;    doap:developer     &lt;--your-developer-identifier--&gt; ;&#x000A;    doap:homepage      &lt;--your-software-homepace--&gt; ;&#x000A;    doap:description   &quot;--your-project-description--&quot;@en ;&#x000A;    doap:programming-language &quot;--your-implementation-language--&quot; .&#x000A;</code></pre>
+<pre><code>  &lt;&gt; foaf:primaryTopic &lt;--your-software-identifier--&gt; ;&#x000A;    dc:issued &quot;2016-12-26T10:18:04-08:00&quot;^^xsd:dateTime ;&#x000A;    foaf:maker &lt;--your-developer-identifier--&gt; .&#x000A;&#x000A;  &lt;--your-software-identifier--&gt; a doap:Project, earl:TestSubject, earl:Software ;&#x000A;    doap:name          &quot;My Cool RDF-star Parser&quot; ;&#x000A;    doap:release [&#x000A;      doap:name     &quot;--short name wih version number--&quot;;&#x000A;      doap:revision &quot;--Software version number--&quot; ;&#x000A;      doap:created  &quot;2020-02-19&quot;^^xsd:date;&#x000A;    ] ;&#x000A;    doap:developer     &lt;--your-developer-identifier--&gt; ;&#x000A;    doap:homepage      &lt;--your-software-homepace--&gt; ;&#x000A;    doap:description   &quot;--your-project-description--&quot;@en ;&#x000A;    doap:programming-language &quot;--your-implementation-language--&quot; .&#x000A;</code></pre>
 
 <p>The software developer, either an organization or one or more individuals SHOULD be
   referenced from <code>doap:developer</code> using <a href="http://xmlns.com/foaf/spec">FOAF</a>. For example:</p>

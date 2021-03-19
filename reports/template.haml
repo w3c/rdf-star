@@ -260,7 +260,7 @@
                 foaf:maker <--your-developer-identifier--> .
 
               <--your-software-identifier--> a doap:Project, earl:TestSubject, earl:Software ;
-                doap:name          "My Cool JSON-LD Parser" ;
+                doap:name          "My Cool RDF-star Parser" ;
                 doap:release [
                   doap:name     "--short name wih version number--";
                   doap:revision "--Software version number--" ;
@@ -311,9 +311,7 @@
             - test_cases.each do |test|
               - test['title'] ||= test['rdfs:label']
               - test['title'] = Array(test['title']).first
-              - option = test.fetch('https://w3c.github.io/json-ld-api/tests/vocab#option', {})
-              - normative = option.fetch('https://w3c.github.io/json-ld-api/tests/vocab#normative', {"@value" => "true"})['@value'] == 'true'
-              %tr{class: normative ? 'normative' : 'non-normative'}
+              %tr{class: 'normative'}
                 %td
                   %a{href: test['@id']}<
                     = "Test #{test['@id'].split("#").last}: #{CGI.escapeHTML test['title'].to_s}"

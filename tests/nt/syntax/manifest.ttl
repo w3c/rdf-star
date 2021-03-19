@@ -28,6 +28,7 @@ trs:manifest  rdf:type mf:Manifest ;
         trs:ntriples-star-bad-1
         trs:ntriples-star-bad-2
         trs:ntriples-star-bad-3
+        trs:ntriples-star-bad-4
 
 # The same data, except in file *.ttl and "TestTurtle"
 
@@ -46,6 +47,7 @@ trs:manifest  rdf:type mf:Manifest ;
         trs:nt-ttl-star-bad-1
         trs:nt-ttl-star-bad-2
         trs:nt-ttl-star-bad-3
+        trs:nt-ttl-star-bad-4
     ) .
 
 trs:ntriples-star-1 rdf:type rdft:TestNTriplesPositiveSyntax ;

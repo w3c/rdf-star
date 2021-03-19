@@ -72,7 +72,7 @@ trs:annotation a mf:PositiveEntailmentTest;
   mf:unrecognizedDatatypes ();
   test:approval test:NotClassified .
 
-trs::annotation-unfolded a mf:PositiveEntailmentTest;
+trs:annotation-unfolded a mf:PositiveEntailmentTest;
   rdfs:comment "Annotation is the same as separate assertions.";
   mf:action <test007a2.ttl>;
   mf:entailmentRegime "simple";

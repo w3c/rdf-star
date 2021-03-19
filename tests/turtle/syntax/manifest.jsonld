@@ -8,7 +8,9 @@
     "qt": "http://www.w3.org/2001/sw/DataAccess/tests/test-query#",
     "ut": "http://www.w3.org/2009/sparql/tests/test-update#",
     "test": "http://www.w3.org/2001/sw/DataAccess/tests/test-dawg#",
+    "trs": "https://w3c.github.io/rdf-star/tests/turtle/syntax#",
     "@vocab": "http://www.w3.org/2001/sw/DataAccess/tests/test-manifest#",
+    "@base": "https://w3c.github.io/rdf-star/tests/turtle/syntax/",
     "include": {
       "@type": "@id",
       "@container": "@list"
@@ -62,144 +64,143 @@
       }
     },
     "TestTurtlePositiveSyntax": "rdft:TestTurtlePositiveSyntax",
-    "TestTurtleNegativeSyntax": "rdft:TestTurtleNegativeSyntax",
-    "@base": "https://w3c.github.io/rdf-star/tests/turtle/syntax/manifest"
+    "TestTurtleNegativeSyntax": "rdft:TestTurtleNegativeSyntax"
   },
-  "@id": "manifest",
+  "@id": "trs:manifest",
   "@type": "Manifest",
+  "label": "Turtle-star Syntax Tests",
   "entries": [
     {
-      "@id": "#turtle-star-1",
+      "@id": "trs:turtle-star-1",
       "@type": "TestTurtlePositiveSyntax",
       "name": "Turtle-star - subject embedded triple",
       "action": "turtle-star-syntax-basic-01.ttl"
     },
     {
-      "@id": "#turtle-star-2",
+      "@id": "trs:turtle-star-2",
       "@type": "TestTurtlePositiveSyntax",
       "name": "Turtle-star - object embedded triple",
       "action": "turtle-star-syntax-basic-02.ttl"
     },
     {
-      "@id": "#turtle-star-inside-1",
+      "@id": "trs:turtle-star-inside-1",
       "@type": "TestTurtlePositiveSyntax",
       "name": "Turtle-star - embedded triple inside blankNodePropertyList",
       "action": "turtle-star-syntax-inside-01.ttl"
     },
     {
-      "@id": "#turtle-star-inside-2",
+      "@id": "trs:turtle-star-inside-2",
       "@type": "TestTurtlePositiveSyntax",
       "name": "Turtle-star - embedded triple inside collection",
       "action": "turtle-star-syntax-inside-02.ttl"
     },
     {
-      "@id": "#turtle-star-nested-1",
+      "@id": "trs:turtle-star-nested-1",
       "@type": "TestTurtlePositiveSyntax",
       "name": "Turtle-star - nested embedded triple, subject position",
       "action": "turtle-star-syntax-nested-01.ttl"
     },
     {
-      "@id": "#turtle-star-nested-2",
+      "@id": "trs:turtle-star-nested-2",
       "@type": "TestTurtlePositiveSyntax",
       "name": "Turtle-star - nested embedded triple, object position",
       "action": "turtle-star-syntax-nested-02.ttl"
     },
     {
-      "@id": "#turtle-star-compound-1",
+      "@id": "trs:turtle-star-compound-1",
       "@type": "TestTurtlePositiveSyntax",
       "name": "Turtle-star - compound forms",
       "action": "turtle-star-syntax-compound.ttl"
     },
     {
-      "@id": "#turtle-star-bnode-1",
+      "@id": "trs:turtle-star-bnode-1",
       "@type": "TestTurtlePositiveSyntax",
       "name": "Turtle-star - blank node subject",
       "action": "turtle-star-syntax-bnode-01.ttl"
     },
     {
-      "@id": "#turtle-star-bnode-2",
+      "@id": "trs:turtle-star-bnode-2",
       "@type": "TestTurtlePositiveSyntax",
       "name": "Turtle-star - blank node object",
       "action": "turtle-star-syntax-bnode-02.ttl"
     },
     {
-      "@id": "#turtle-star-bnode-3",
+      "@id": "trs:turtle-star-bnode-3",
       "@type": "TestTurtlePositiveSyntax",
       "name": "Turtle-star - blank node",
       "action": "turtle-star-syntax-bnode-03.ttl"
     },
     {
-      "@id": "#turtle-star-bad-1",
+      "@id": "trs:turtle-star-bad-1",
       "@type": "TestTurtleNegativeSyntax",
       "name": "Turtle-star - bad - embedded triple as predicate",
       "action": "turtle-star-syntax-bad-01.ttl"
     },
     {
-      "@id": "#turtle-star-bad-2",
+      "@id": "trs:turtle-star-bad-2",
       "@type": "TestTurtleNegativeSyntax",
       "name": "Turtle-star - bad - embedded triple outside triple",
       "action": "turtle-star-syntax-bad-02.ttl"
     },
     {
-      "@id": "#turtle-star-bad-3",
+      "@id": "trs:turtle-star-bad-3",
       "@type": "TestTurtleNegativeSyntax",
       "name": "Turtle-star - bad - collection list in embedded triple",
       "action": "turtle-star-syntax-bad-03.ttl"
     },
     {
-      "@id": "#turtle-star-bad-4",
+      "@id": "trs:turtle-star-bad-4",
       "@type": "TestTurtleNegativeSyntax",
       "name": "Turtle-star - bad - literal in subject position of embedded triple",
       "action": "turtle-star-syntax-bad-04.ttl"
     },
     {
-      "@id": "#turtle-star-bad-5",
+      "@id": "trs:turtle-star-bad-5",
       "@type": "TestTurtleNegativeSyntax",
       "name": "Turtle-star - bad - blank node  as predicate in embedded triple",
       "action": "turtle-star-syntax-bad-05.ttl"
     },
     {
-      "@id": "#turtle-star-bad-6",
+      "@id": "trs:turtle-star-bad-6",
       "@type": "TestTurtleNegativeSyntax",
       "name": "Turtle-star - bad - compound blank node expression",
       "action": "turtle-star-syntax-bad-06.ttl"
     },
     {
-      "@id": "#turtle-star-bad-7",
+      "@id": "trs:turtle-star-bad-7",
       "@type": "TestTurtleNegativeSyntax",
       "name": "Turtle-star - bad - incomplete embedded triple",
       "action": "turtle-star-syntax-bad-07.ttl"
     },
     {
-      "@id": "#turtle-star-bad-8",
+      "@id": "trs:turtle-star-bad-8",
       "@type": "TestTurtleNegativeSyntax",
       "name": "Turtle-star - bad - over-long embedded triple",
       "action": "turtle-star-syntax-bad-08.ttl"
     },
     {
-      "@id": "#turtle-star-ann-1",
+      "@id": "trs:turtle-star-ann-1",
       "@type": "TestTurtlePositiveSyntax",
       "name": "Turtle-star - Annotation form",
       "action": "turtle-star-annotation-1.ttl"
     },
     {
-      "@id": "#turtle-star-ann-2",
+      "@id": "trs:turtle-star-ann-2",
       "@type": "TestTurtlePositiveSyntax",
       "name": "Turtle-star - Annotation example",
       "action": "turtle-star-annotation-2.ttl"
     },
     {
-      "@id": "#turtle-star-bad-ann-1",
+      "@id": "trs:turtle-star-bad-ann-1",
       "@type": "TestTurtleNegativeSyntax",
       "name": "Turtle-star - bad - empty annotation",
       "action": "turtle-star-syntax-bad-ann-1.ttl"
     },
     {
-      "@id": "#turtle-star-bad-ann-2",
+      "@id": "trs:turtle-star-bad-ann-2",
       "@type": "TestTurtleNegativeSyntax",
       "name": "Turtle-star - bad - triple as annotation",
       "action": "turtle-star-syntax-bad-ann-2.ttl"
     }
-  ],
-  "label": "Turtle-star Syntax Tests"
+  ]
 }

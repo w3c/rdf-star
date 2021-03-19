@@ -8,7 +8,9 @@
     "qt": "http://www.w3.org/2001/sw/DataAccess/tests/test-query#",
     "ut": "http://www.w3.org/2009/sparql/tests/test-update#",
     "test": "http://www.w3.org/2001/sw/DataAccess/tests/test-dawg#",
+    "trs": "https://w3c.github.io/rdf-star/tests/semantics#",
     "@vocab": "http://www.w3.org/2001/sw/DataAccess/tests/test-manifest#",
+    "@base": "https://w3c.github.io/rdf-star/tests/semantics/",
     "include": {
       "@type": "@id",
       "@container": "@list"
@@ -62,515 +64,514 @@
       }
     },
     "TestTurtlePositiveSyntax": "rdft:TestTurtlePositiveSyntax",
-    "TestTurtleNegativeSyntax": "rdft:TestTurtleNegativeSyntax",
-    "@base": "https://w3c.github.io/rdf-star/tests/semantics/manifest"
+    "TestTurtleNegativeSyntax": "rdft:TestTurtleNegativeSyntax"
   },
-  "@id": "manifest",
+  "@id": "trs:manifest",
   "@type": "Manifest",
+  "label": "RDF-star Semantics tests",
+  "seeAlso": "README",
   "entries": [
     {
-      "@id": "#triple-in-subject",
+      "@id": "trs:triple-in-subject",
       "@type": "PositiveEntailmentTest",
-      "approval": "Approved",
       "entailmentRegime": "simple",
+      "approval": "Approved",
       "name": "triple-in-subject",
+      "unrecognizedDatatypes": [
+
+      ],
       "action": "test000s.ttl",
-      "recognizedDatatypes": [
-
-      ],
+      "result": "test000s.ttl",
       "comment": "Embedded triples can appear in subject position (EVENTUALLY, this should be a Turtle-star test rather than a semantics test).",
-      "unrecognizedDatatypes": [
+      "recognizedDatatypes": [
 
-      ],
-      "result": "test000s.ttl"
+      ]
     },
     {
-      "@id": "#triple-in-object",
+      "@id": "trs:triple-in-object",
       "@type": "PositiveEntailmentTest",
+      "entailmentRegime": "simple",
       "approval": "Approved",
-      "entailmentRegime": "simple",
       "name": "triple-in-object",
+      "unrecognizedDatatypes": [
+
+      ],
       "action": "test000o.ttl",
-      "recognizedDatatypes": [
-
-      ],
+      "result": "test000o.ttl",
       "comment": "Embedded triples can appear in object position (EVENTUALLY, this should be a Turtle-star test rather than a semantics test).",
-      "unrecognizedDatatypes": [
+      "recognizedDatatypes": [
 
-      ],
-      "result": "test000o.ttl"
+      ]
     },
     {
-      "@id": "#all-identical-embedded-triples-are-the-same",
+      "@id": "trs:all-identical-embedded-triples-are-the-same",
       "@type": "PositiveEntailmentTest",
-      "approval": "Proposed",
       "entailmentRegime": "simple",
+      "approval": "Proposed",
       "name": "all-identical-embedded-triples-are-the-same",
+      "unrecognizedDatatypes": [
+
+      ],
       "action": "test001a.ttl",
-      "recognizedDatatypes": [
-
-      ],
+      "result": "test001r.ttl",
       "comment": "Multiple occurences of the same embedded triples are undistinguishable in the abstract model (EVENTUALLY, this should be a Turtle-star test rather than a semantics test).",
-      "unrecognizedDatatypes": [
+      "recognizedDatatypes": [
 
-      ],
-      "result": "test001r.ttl"
+      ]
     },
     {
-      "@id": "#embedded-triples-no-spurious",
+      "@id": "trs:embedded-triples-no-spurious",
       "@type": "NegativeEntailmentTest",
-      "approval": "Proposed",
       "entailmentRegime": "simple",
+      "approval": "Proposed",
       "name": "embedded-triples-no-spurious",
-      "action": "test002a.ttl",
-      "recognizedDatatypes": [
+      "unrecognizedDatatypes": [
 
       ],
+      "action": "test002a.ttl",
+      "result": "test005.ttl",
       "comment": "This test ensures that other entailments are not spurious.",
-      "unrecognizedDatatypes": [
+      "recognizedDatatypes": [
 
-      ],
-      "result": "test005.ttl"
+      ]
     },
     {
-      "@id": "#bnodes-in-embedded-subject",
+      "@id": "trs:bnodes-in-embedded-subject",
       "@type": "PositiveEntailmentTest",
-      "approval": "Proposed",
       "entailmentRegime": "simple",
+      "approval": "Proposed",
       "name": "bnodes-in-embedded-subject",
-      "action": "test002a.ttl",
-      "recognizedDatatypes": [
-
-      ],
-      "comment": "Terms in embedded triples can be replaced by fresh bnodes.",
       "unrecognizedDatatypes": [
 
       ],
-      "result": "test002sr.ttl"
+      "action": "test002a.ttl",
+      "result": "test002sr.ttl",
+      "comment": "Terms in embedded triples can be replaced by fresh bnodes.",
+      "recognizedDatatypes": [
+
+      ]
     },
     {
-      "@id": "#bnodes-in-embedded-object",
+      "@id": "trs:bnodes-in-embedded-object",
       "@type": "PositiveEntailmentTest",
-      "approval": "Proposed",
       "entailmentRegime": "simple",
+      "approval": "Proposed",
       "name": "bnodes-in-embedded-object",
-      "action": "test002a.ttl",
-      "recognizedDatatypes": [
-
-      ],
-      "comment": "Terms in embedded triples can be replaced by fresh bnodes.",
       "unrecognizedDatatypes": [
 
       ],
-      "result": "test002or.ttl"
+      "action": "test002a.ttl",
+      "result": "test002or.ttl",
+      "comment": "Terms in embedded triples can be replaced by fresh bnodes.",
+      "recognizedDatatypes": [
+
+      ]
     },
     {
-      "@id": "#bnodes-in-embedded-subject-and-object",
+      "@id": "trs:bnodes-in-embedded-subject-and-object",
       "@type": "PositiveEntailmentTest",
-      "approval": "Proposed",
       "entailmentRegime": "simple",
+      "approval": "Proposed",
       "name": "bnodes-in-embedded-subject-and-object",
-      "action": "test002a.ttl",
-      "recognizedDatatypes": [
+      "unrecognizedDatatypes": [
 
       ],
+      "action": "test002a.ttl",
+      "result": "test002sor.ttl",
       "comment": "Terms in embedded triples can be replaced by fresh bnodes.",
-      "unrecognizedDatatypes": [
+      "recognizedDatatypes": [
 
-      ],
-      "result": "test002sor.ttl"
+      ]
     },
     {
-      "@id": "#bnodes-in-embedded-subject-and-object-fail",
+      "@id": "trs:bnodes-in-embedded-subject-and-object-fail",
       "@type": "NegativeEntailmentTest",
-      "approval": "Proposed",
       "entailmentRegime": "simple",
+      "approval": "Proposed",
       "name": "bnodes-in-embedded-subject-and-object-fail",
-      "action": "test002a.ttl",
-      "recognizedDatatypes": [
+      "unrecognizedDatatypes": [
 
       ],
+      "action": "test002a.ttl",
+      "result": "test002sbr.ttl",
       "comment": "The same bnode can not match different embedded terms.",
-      "unrecognizedDatatypes": [
+      "recognizedDatatypes": [
 
-      ],
-      "result": "test002sbr.ttl"
+      ]
     },
     {
-      "@id": "#same-bnode-same-embedded-term",
+      "@id": "trs:same-bnode-same-embedded-term",
       "@type": "PositiveEntailmentTest",
-      "approval": "Proposed",
       "entailmentRegime": "simple",
+      "approval": "Proposed",
       "name": "same-bnode-same-embedded-term",
-      "action": "test003a.ttl",
-      "recognizedDatatypes": [
+      "unrecognizedDatatypes": [
 
       ],
+      "action": "test003a.ttl",
+      "result": "test002sbr.ttl",
       "comment": "Identical embedde term can be replaced by the same fresh bnode multiple times.",
-      "unrecognizedDatatypes": [
+      "recognizedDatatypes": [
 
-      ],
-      "result": "test002sbr.ttl"
+      ]
     },
     {
-      "@id": "#different-bnodes-same-embedded-term",
+      "@id": "trs:different-bnodes-same-embedded-term",
       "@type": "PositiveEntailmentTest",
-      "approval": "Proposed",
       "entailmentRegime": "simple",
+      "approval": "Proposed",
       "name": "different-bnodes-same-embedded-term",
+      "unrecognizedDatatypes": [
+
+      ],
       "action": "test003a.ttl",
-      "recognizedDatatypes": [
-
-      ],
+      "result": "test002sor.ttl",
       "comment": "Different bnodes can match identical embedded terms.",
-      "unrecognizedDatatypes": [
+      "recognizedDatatypes": [
 
-      ],
-      "result": "test002sor.ttl"
+      ]
     },
     {
-      "@id": "#constrained-bnodes-in-embedded-subject",
+      "@id": "trs:constrained-bnodes-in-embedded-subject",
       "@type": "PositiveEntailmentTest",
-      "approval": "Proposed",
       "entailmentRegime": "simple",
+      "approval": "Proposed",
       "name": "constrained-bnodes-in-embedded-subject",
-      "action": "test004a.ttl",
-      "recognizedDatatypes": [
+      "unrecognizedDatatypes": [
 
       ],
+      "action": "test004a.ttl",
+      "result": "test004sr.ttl",
       "comment": "Terms in embedded triples and outside can be replaced by fresh bnodes",
-      "unrecognizedDatatypes": [
+      "recognizedDatatypes": [
 
-      ],
-      "result": "test004sr.ttl"
+      ]
     },
     {
-      "@id": "#constrained-bnodes-in-embedded-object",
+      "@id": "trs:constrained-bnodes-in-embedded-object",
       "@type": "PositiveEntailmentTest",
-      "approval": "Proposed",
       "entailmentRegime": "simple",
+      "approval": "Proposed",
       "name": "constrained-bnodes-in-embedded-object",
-      "action": "test004a.ttl",
-      "recognizedDatatypes": [
+      "unrecognizedDatatypes": [
 
       ],
+      "action": "test004a.ttl",
+      "result": "test004or.ttl",
       "comment": "Terms in embedded triples and outside can be replaced by fresh bnodes.",
-      "unrecognizedDatatypes": [
+      "recognizedDatatypes": [
 
-      ],
-      "result": "test004or.ttl"
+      ]
     },
     {
-      "@id": "#constrained-bnodes-in-embedded-fail",
+      "@id": "trs:constrained-bnodes-in-embedded-fail",
       "@type": "NegativeEntailmentTest",
-      "approval": "Proposed",
       "entailmentRegime": "simple",
+      "approval": "Proposed",
       "name": "constrained-bnodes-in-embedded-fail",
+      "unrecognizedDatatypes": [
+
+      ],
       "action": "test004a.ttl",
-      "recognizedDatatypes": [
-
-      ],
+      "result": "test004fr.ttl",
       "comment": "Embedded bnode identifiers share the same scope as non-embedded ones. A bnode occuring both in embedded triples and in asserted triples must statisfy them all at the same time.",
-      "unrecognizedDatatypes": [
+      "recognizedDatatypes": [
 
-      ],
-      "result": "test004fr.ttl"
+      ]
     },
     {
-      "@id": "#constrained-bnodes-on-literal",
+      "@id": "trs:constrained-bnodes-on-literal",
       "@type": "PositiveEntailmentTest",
-      "approval": "Proposed",
       "entailmentRegime": "simple",
+      "approval": "Proposed",
       "name": "constrained-bnodes-on-literal",
+      "unrecognizedDatatypes": [
+
+      ],
       "action": "test006a.ttl",
-      "recognizedDatatypes": [
-
-      ],
+      "result": "test006r.ttl",
       "comment": "Literals in embedded triples and outside can be replaced by fresh bnodes.",
-      "unrecognizedDatatypes": [
+      "recognizedDatatypes": [
 
-      ],
-      "result": "test006r.ttl"
+      ]
     },
     {
-      "@id": "#malformed-literal-control",
+      "@id": "trs:malformed-literal-control",
       "@type": "PositiveEntailmentTest",
-      "approval": "Proposed",
       "entailmentRegime": "RDF",
+      "approval": "Proposed",
       "name": "malformed-literal-control",
+      "unrecognizedDatatypes": [
+
+      ],
       "action": "malformed-literal-control.ttl",
-      "recognizedDatatypes": [
-        "xsd:integer"
-      ],
+      "mf:result": {
+        "@type": "xsd:boolean",
+        "@value": "false"
+      },
       "comment": "Checks that xsd:integer is indeed recognized, to ensure that malformed-literal-star tests do not pass spuriously.",
-      "unrecognizedDatatypes": [
-
-      ],
-      "mf:result": {
-        "@type": "xsd:boolean",
-        "@value": "false"
-      }
+      "recognizedDatatypes": [
+        "xsd:integer"
+      ]
     },
     {
-      "@id": "#malformed-literal",
+      "@id": "trs:malformed-literal",
       "@type": "NegativeEntailmentTest",
-      "approval": "Proposed",
       "entailmentRegime": "RDF",
+      "approval": "Proposed",
       "name": "malformed-literal",
-      "action": "malformed-literal.ttl",
-      "recognizedDatatypes": [
-        "xsd:integer"
-      ],
-      "comment": "Malformed literals are allowed when embedded.",
       "unrecognizedDatatypes": [
 
       ],
+      "action": "malformed-literal.ttl",
       "mf:result": {
         "@type": "xsd:boolean",
         "@value": "false"
-      }
-    },
-    {
-      "@id": "#malformed-literal-accepted",
-      "@type": "PositiveEntailmentTest",
-      "approval": "Proposed",
-      "entailmentRegime": "RDF",
-      "name": "malformed-literal-accepted",
-      "action": "malformed-literal.ttl",
-      "recognizedDatatypes": [
-        "xsd:integer"
-      ],
+      },
       "comment": "Malformed literals are allowed when embedded.",
+      "recognizedDatatypes": [
+        "xsd:integer"
+      ]
+    },
+    {
+      "@id": "trs:malformed-literal-accepted",
+      "@type": "PositiveEntailmentTest",
+      "entailmentRegime": "RDF",
+      "approval": "Proposed",
+      "name": "malformed-literal-accepted",
       "unrecognizedDatatypes": [
 
       ],
-      "result": "malformed-literal.ttl"
+      "action": "malformed-literal.ttl",
+      "result": "malformed-literal.ttl",
+      "comment": "Malformed literals are allowed when embedded.",
+      "recognizedDatatypes": [
+        "xsd:integer"
+      ]
     },
     {
-      "@id": "#malformed-literal-no-spurious",
+      "@id": "trs:malformed-literal-no-spurious",
       "@type": "NegativeEntailmentTest",
-      "approval": "Proposed",
       "entailmentRegime": "RDF",
+      "approval": "Proposed",
       "name": "malformed-literal-no-spurious",
-      "action": "malformed-literal.ttl",
-      "recognizedDatatypes": [
-        "xsd:integer"
+      "unrecognizedDatatypes": [
+
       ],
+      "action": "malformed-literal.ttl",
+      "result": "malformed-literal-other.ttl",
       "comment": "Embedded malformed literals do not lead to spurious entailment.",
-      "unrecognizedDatatypes": [
-
-      ],
-      "result": "malformed-literal-other.ttl"
+      "recognizedDatatypes": [
+        "xsd:integer"
+      ]
     },
     {
-      "@id": "#malformed-literal-bnode",
+      "@id": "trs:malformed-literal-bnode",
       "@type": "PositiveEntailmentTest",
-      "approval": "Proposed",
       "entailmentRegime": "RDF",
+      "approval": "Proposed",
       "name": "malformed-literal-bnode",
+      "unrecognizedDatatypes": [
+
+      ],
       "action": "malformed-literal.ttl",
-      "recognizedDatatypes": [
-        "xsd:integer"
-      ],
+      "result": "test002or.ttl",
       "comment": "Malformed literals can be replaced by blank nodes.",
-      "unrecognizedDatatypes": [
-
-      ],
-      "result": "test002or.ttl"
+      "recognizedDatatypes": [
+        "xsd:integer"
+      ]
     },
     {
-      "@id": "#malformed-literal-bnode-2",
+      "@id": "trs:malformed-literal-bnode-2",
       "@type": "PositiveEntailmentTest",
-      "approval": "Proposed",
       "entailmentRegime": "RDF",
+      "approval": "Proposed",
       "name": "malformed-literal-bnode-2",
+      "unrecognizedDatatypes": [
+
+      ],
       "action": "malformed-literal-2a.ttl",
-      "recognizedDatatypes": [
-        "xsd:integer"
-      ],
+      "result": "malformed-literal-2r.ttl",
       "comment": "Identical malformed literals can be replaced with the same blank node.",
-      "unrecognizedDatatypes": [
-
-      ],
-      "result": "malformed-literal-2r.ttl"
+      "recognizedDatatypes": [
+        "xsd:integer"
+      ]
     },
     {
-      "@id": "#malformed-literal-bnode-3",
+      "@id": "trs:malformed-literal-bnode-3",
       "@type": "NegativeEntailmentTest",
-      "approval": "Proposed",
       "entailmentRegime": "RDF",
+      "approval": "Proposed",
       "name": "malformed-literal-bnode-3",
+      "unrecognizedDatatypes": [
+
+      ],
       "action": "malformed-literal-3a.ttl",
-      "recognizedDatatypes": [
-        "xsd:integer"
-      ],
+      "result": "malformed-literal-3r.ttl",
       "comment": "Identical malformed literals can not be replaced with the same blank node.",
-      "unrecognizedDatatypes": [
-
-      ],
-      "result": "malformed-literal-3r.ttl"
+      "recognizedDatatypes": [
+        "xsd:integer"
+      ]
     },
     {
-      "@id": "#opaque-literal-control",
+      "@id": "trs:opaque-literal-control",
       "@type": "PositiveEntailmentTest",
-      "approval": "Proposed",
       "entailmentRegime": "RDF",
+      "approval": "Proposed",
       "name": "opaque-literal-control",
+      "unrecognizedDatatypes": [
+
+      ],
       "action": "non-canonical-literal-control.ttl",
-      "recognizedDatatypes": [
-        "xsd:integer"
-      ],
+      "result": "canonical-literal-control.ttl",
       "comment": "Checks that xsd:integer is indeed recognized, to ensure that opaque-literal does not pass spuriously.",
-      "unrecognizedDatatypes": [
-
-      ],
-      "result": "canonical-literal-control.ttl"
-    },
-    {
-      "@id": "#opaque-literal",
-      "@type": "NegativeEntailmentTest",
-      "approval": "Proposed",
-      "entailmentRegime": "RDF",
-      "name": "opaque-literal",
-      "action": "non-canonical-literal.ttl",
       "recognizedDatatypes": [
         "xsd:integer"
+      ]
+    },
+    {
+      "@id": "trs:opaque-literal",
+      "@type": "NegativeEntailmentTest",
+      "entailmentRegime": "RDF",
+      "approval": "Proposed",
+      "name": "opaque-literal",
+      "unrecognizedDatatypes": [
+
       ],
+      "action": "non-canonical-literal.ttl",
+      "result": "canonical-literal.ttl",
       "comment": "Embedded literals are opaque, even when their datatype is recognized.",
-      "unrecognizedDatatypes": [
-
-      ],
-      "result": "canonical-literal.ttl"
+      "recognizedDatatypes": [
+        "xsd:integer"
+      ]
     },
     {
-      "@id": "#opaque-language-string-control",
+      "@id": "trs:opaque-language-string-control",
       "@type": "PositiveEntailmentTest",
-      "approval": "Proposed",
       "entailmentRegime": "RDF",
+      "approval": "Proposed",
       "name": "opaque-language-string-control",
+      "unrecognizedDatatypes": [
+
+      ],
       "action": "lowercase-language-string-control.ttl",
-      "recognizedDatatypes": [
-
-      ],
+      "result": "upercase-language-string-control.ttl",
       "comment": "Checks that language strings are indeed recognized, to ensure that opaque-language-string does not pass spuriously.",
-      "unrecognizedDatatypes": [
+      "recognizedDatatypes": [
 
-      ],
-      "result": "upercase-language-string-control.ttl"
+      ]
     },
     {
-      "@id": "#opaque-language-string",
+      "@id": "trs:opaque-language-string",
       "@type": "NegativeEntailmentTest",
-      "approval": "Proposed",
       "entailmentRegime": "RDF",
+      "approval": "Proposed",
       "name": "opaque-language-string",
+      "unrecognizedDatatypes": [
+
+      ],
       "action": "lowercase-language-string.ttl",
-      "recognizedDatatypes": [
-
-      ],
+      "result": "upercase-language-string.ttl",
       "comment": "Embedded literals (including language strings) are opaque, even when their datatype is recognized.",
-      "unrecognizedDatatypes": [
+      "recognizedDatatypes": [
 
-      ],
-      "result": "upercase-language-string.ttl"
+      ]
     },
     {
-      "@id": "#opaque-iri-control",
+      "@id": "trs:opaque-iri-control",
       "@type": "PositiveEntailmentTest",
-      "approval": "Proposed",
       "entailmentRegime": "RDFS-Plus",
+      "approval": "Proposed",
       "name": "opaque-iri-control",
+      "unrecognizedDatatypes": [
+
+      ],
       "action": "control-sameas-a.ttl",
-      "recognizedDatatypes": [
-
-      ],
+      "result": "control-sameas-r.ttl",
       "comment": "Check that owl:sameAs works as expected, to ensure that opaque-iri does not pass spuriously.",
-      "unrecognizedDatatypes": [
+      "recognizedDatatypes": [
 
-      ],
-      "result": "control-sameas-r.ttl"
+      ]
     },
     {
-      "@id": "#opaque-iri",
+      "@id": "trs:opaque-iri",
       "@type": "NegativeEntailmentTest",
-      "approval": "Proposed",
       "entailmentRegime": "RDFS-Plus",
+      "approval": "Proposed",
       "name": "opaque-iri",
+      "unrecognizedDatatypes": [
+
+      ],
       "action": "superman.ttl",
-      "recognizedDatatypes": [
-
-      ],
+      "result": "superman_undesired_entailment.ttl",
       "comment": "Embedded IRIs are opaque.",
-      "unrecognizedDatatypes": [
+      "recognizedDatatypes": [
 
-      ],
-      "result": "superman_undesired_entailment.ttl"
+      ]
     },
     {
-      "@id": "#embedded-not-asserted",
+      "@id": "trs:embedded-not-asserted",
       "@type": "NegativeEntailmentTest",
-      "approval": "Proposed",
       "entailmentRegime": "simple",
+      "approval": "Proposed",
       "name": "embedded-not-asserted",
+      "unrecognizedDatatypes": [
+
+      ],
       "action": "test002a.ttl",
-      "recognizedDatatypes": [
-
-      ],
+      "result": "test002pgr.ttl",
       "comment": "Embedded triples are not asserted.",
-      "unrecognizedDatatypes": [
+      "recognizedDatatypes": [
 
-      ],
-      "result": "test002pgr.ttl"
+      ]
     },
     {
-      "@id": "#annotated-asserted",
+      "@id": "trs:annotated-asserted",
       "@type": "PositiveEntailmentTest",
-      "approval": "Proposed",
       "entailmentRegime": "simple",
+      "approval": "Proposed",
       "name": "annotated-asserted",
-      "action": "test007a.ttl",
-      "recognizedDatatypes": [
+      "unrecognizedDatatypes": [
 
       ],
+      "action": "test007a.ttl",
+      "result": "test007r1.ttl",
       "comment": "Annotated triples are asserted.",
-      "unrecognizedDatatypes": [
+      "recognizedDatatypes": [
 
-      ],
-      "result": "test007r1.ttl"
+      ]
     },
     {
-      "@id": "#annotation",
+      "@id": "trs:annotation",
       "@type": "PositiveEntailmentTest",
-      "approval": "Proposed",
       "entailmentRegime": "simple",
+      "approval": "Proposed",
       "name": "annotation",
-      "action": "test007a.ttl",
-      "recognizedDatatypes": [
-
-      ],
-      "comment": "Annotation are about the annotated triple.",
       "unrecognizedDatatypes": [
 
       ],
-      "result": "test007r2.ttl"
+      "action": "test007a.ttl",
+      "result": "test007r2.ttl",
+      "comment": "Annotation are about the annotated triple.",
+      "recognizedDatatypes": [
+
+      ]
     },
     {
-      "@id": "#annotation-unfolded",
+      "@id": "trs:annotation-unfolded",
       "@type": "PositiveEntailmentTest",
-      "approval": "Proposed",
       "entailmentRegime": "simple",
+      "approval": "Proposed",
       "name": "annotation-unfolded",
-      "action": "test007a2.ttl",
-      "recognizedDatatypes": [
-
-      ],
-      "comment": "Annotation is the same as separate assertions.",
       "unrecognizedDatatypes": [
 
       ],
-      "result": "test007a.ttl"
+      "action": "test007a2.ttl",
+      "result": "test007a.ttl",
+      "comment": "Annotation is the same as separate assertions.",
+      "recognizedDatatypes": [
+
+      ]
     }
-  ],
-  "seeAlso": "README",
-  "label": "RDF-star Semantics tests"
+  ]
 }

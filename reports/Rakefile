@@ -1,0 +1,22 @@
+desc "Default build all files"
+task default: [ "earl.jsonld", "earl.ttl", "index.html" ]
+
+desc "Remove generated files"
+task :clean do
+  %x(rm -f earl.jsonld earl.ttl index.html)
+end
+
+file "earl.jsonld" => (Dir.glob('*.ttl') - %w(earl.ttl)) do
+  puts "write earl.jsonld"
+  system("earl-report --format json --strict -o earl.jsonld *.ttl") || abort("Error processing files")
+end
+
+file "earl.ttl" => %w(earl.jsonld) do
+  puts "write earl.ttl"
+  system("earl-report --json --format ttl -o earl.ttl earl.jsonld") || abort("Error writing Turtle")
+end
+
+file "index.html" => %w(template.haml earl.jsonld) do
+  puts "write index.html"
+  system("earl-report --json --format html --template template.haml -o index.html earl.jsonld") || abort("Error writing HTML")
+end

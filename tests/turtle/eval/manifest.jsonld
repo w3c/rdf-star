@@ -8,7 +8,9 @@
     "qt": "http://www.w3.org/2001/sw/DataAccess/tests/test-query#",
     "ut": "http://www.w3.org/2009/sparql/tests/test-update#",
     "test": "http://www.w3.org/2001/sw/DataAccess/tests/test-dawg#",
+    "trs": "https://w3c.github.io/rdf-star/tests/turtle/eval#",
     "@vocab": "http://www.w3.org/2001/sw/DataAccess/tests/test-manifest#",
+    "@base": "https://w3c.github.io/rdf-star/tests/turtle/eval/",
     "include": {
       "@type": "@id",
       "@container": "@list"
@@ -62,96 +64,95 @@
       }
     },
     "TestTurtlePositiveSyntax": "rdft:TestTurtlePositiveSyntax",
-    "TestTurtleNegativeSyntax": "rdft:TestTurtleNegativeSyntax",
-    "@base": "https://w3c.github.io/rdf-star/tests/turtle/eval/manifest"
+    "TestTurtleNegativeSyntax": "rdft:TestTurtleNegativeSyntax"
   },
-  "@id": "manifest",
+  "@id": "trs:manifest",
   "@type": "Manifest",
+  "label": "Turtle-star Evaluation Tests",
   "entries": [
     {
-      "@id": "#turtle-star-1",
+      "@id": "trs:turtle-star-1",
       "@type": "rdft:TestTurtleEval",
       "name": "Turtle-star - subject embedded triple",
       "action": "turtle-star-eval-01.ttl",
       "result": "turtle-star-eval-01.nt"
     },
     {
-      "@id": "#turtle-star-2",
+      "@id": "trs:turtle-star-2",
       "@type": "rdft:TestTurtleEval",
       "name": "Turtle-star - object embedded triple",
       "action": "turtle-star-eval-02.ttl",
       "result": "turtle-star-eval-02.nt"
     },
     {
-      "@id": "#turtle-star-bnode-1",
+      "@id": "trs:turtle-star-bnode-1",
       "@type": "rdft:TestTurtleEval",
       "name": "Turtle-star - blank node label",
       "action": "turtle-star-eval-bnode-1.ttl",
       "result": "turtle-star-eval-bnode-1.nt"
     },
     {
-      "@id": "#turtle-star-bnode-2",
+      "@id": "trs:turtle-star-bnode-2",
       "@type": "rdft:TestTurtleEval",
       "name": "Turtle-star - blank node labels",
       "action": "turtle-star-eval-bnode-2.ttl",
       "result": "turtle-star-eval-bnode-2.nt"
     },
     {
-      "@id": "#turtle-star-annotation-1",
+      "@id": "trs:turtle-star-annotation-1",
       "@type": "rdft:TestTurtleEval",
       "name": "Turtle-star - Annotation form",
       "action": "turtle-star-eval-annotation-1.ttl",
       "result": "turtle-star-eval-annotation-1.nt"
     },
     {
-      "@id": "#turtle-star-annotation-2",
+      "@id": "trs:turtle-star-annotation-2",
       "@type": "rdft:TestTurtleEval",
       "name": "Turtle-star - Annotation example",
       "action": "turtle-star-eval-annotation-2.ttl",
       "result": "turtle-star-eval-annotation-2.nt"
     },
     {
-      "@id": "#turtle-star-annotation-3",
+      "@id": "trs:turtle-star-annotation-3",
       "@type": "rdft:TestTurtleEval",
       "name": "Turtle-star - Annotation - predicate and object lists",
       "action": "turtle-star-eval-annotation-3.ttl",
       "result": "turtle-star-eval-annotation-3.nt"
     },
     {
-      "@id": "#turtle-star-annotation-4",
+      "@id": "trs:turtle-star-annotation-4",
       "@type": "rdft:TestTurtleEval",
       "name": "Turtle-star - Annotation - nested",
       "action": "turtle-star-eval-annotation-4.ttl",
       "result": "turtle-star-eval-annotation-4.nt"
     },
     {
-      "@id": "#turtle-star-annotation-5",
+      "@id": "trs:turtle-star-annotation-5",
       "@type": "rdft:TestTurtleEval",
       "name": "Turtle-star - Annotation object list",
       "action": "turtle-star-eval-annotation-5.ttl",
       "result": "turtle-star-eval-annotation-5.nt"
     },
     {
-      "@id": "#turtle-star-embed-annotation-1",
+      "@id": "trs:turtle-star-embed-annotation-1",
       "@type": "rdft:TestTurtleEval",
       "name": "Turtle-star - Annotation with embedding",
       "action": "turtle-star-eval-embed-annotation-1.ttl",
       "result": "turtle-star-eval-embed-annotation-1.nt"
     },
     {
-      "@id": "#turtle-star-embed-annotation-2",
+      "@id": "trs:turtle-star-embed-annotation-2",
       "@type": "rdft:TestTurtleEval",
       "name": "Turtle-star - Annotation on triple with embedded subject",
       "action": "turtle-star-eval-embed-annotation-2.ttl",
       "result": "turtle-star-eval-embed-annotation-2.nt"
     },
     {
-      "@id": "#turtle-star-embed-annotation-3",
+      "@id": "trs:turtle-star-embed-annotation-3",
       "@type": "rdft:TestTurtleEval",
       "name": "Turtle-star - Annotation on triple with embedded object",
       "action": "turtle-star-eval-embed-annotation-3.ttl",
       "result": "turtle-star-eval-embed-annotation-3.nt"
     }
-  ],
-  "label": "Turtle-star Evaluation Tests"
+  ]
 }

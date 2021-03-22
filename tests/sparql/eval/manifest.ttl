@@ -3,59 +3,58 @@
 ## [1] https://www.w3.org/Consortium/Legal/2008/04-testsuite-license
 ## [2] https://www.w3.org/Consortium/Legal/2008/03-bsd-license
 
-BASE           <https://w3c.github.io/rdf-star/tests/sparql/eval/manifest>
 PREFIX rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs:   <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX mf:     <http://www.w3.org/2001/sw/DataAccess/tests/test-manifest#>
 PREFIX qt:     <http://www.w3.org/2001/sw/DataAccess/tests/test-query#>
 PREFIX ut:     <http://www.w3.org/2009/sparql/tests/test-update#>
 PREFIX dawgt:  <http://www.w3.org/2001/sw/DataAccess/tests/test-dawg#>
+PREFIX test:   <http://www.w3.org/2001/sw/DataAccess/tests/>
+PREFIX trs:    <https://w3c.github.io/rdf-star/tests/sparql/eval#>
 
-PREFIX :       <#>
-
-<>  rdf:type mf:Manifest ;
+trs:manifest  rdf:type mf:Manifest ;
     rdfs:label "SPARQL-star Evaluation Tests" ;
     mf:entries
     (
-        :sparql-star-results-1j
-        :sparql-star-results-1x
+        trs:sparql-star-results-1j
+        trs:sparql-star-results-1x
         
-        :sparql-star-basic-2
-        :sparql-star-basic-3
-        :sparql-star-basic-4
-        :sparql-star-basic-5
-        :sparql-star-basic-6
+        trs:sparql-star-basic-2
+        trs:sparql-star-basic-3
+        trs:sparql-star-basic-4
+        trs:sparql-star-basic-5
+        trs:sparql-star-basic-6
 
-        :sparql-star-pattern-1
-        :sparql-star-pattern-2
-        :sparql-star-pattern-3
-        :sparql-star-pattern-4
-        :sparql-star-pattern-5
-        :sparql-star-pattern-6
-        :sparql-star-pattern-7
-        :sparql-star-pattern-8
-        :sparql-star-pattern-9
+        trs:sparql-star-pattern-1
+        trs:sparql-star-pattern-2
+        trs:sparql-star-pattern-3
+        trs:sparql-star-pattern-4
+        trs:sparql-star-pattern-5
+        trs:sparql-star-pattern-6
+        trs:sparql-star-pattern-7
+        trs:sparql-star-pattern-8
+        trs:sparql-star-pattern-9
 
-        :sparql-star-construct-1
-        :sparql-star-construct-2
-        :sparql-star-construct-3
-        :sparql-star-construct-4
-        :sparql-star-construct-5
+        trs:sparql-star-construct-1
+        trs:sparql-star-construct-2
+        trs:sparql-star-construct-3
+        trs:sparql-star-construct-4
+        trs:sparql-star-construct-5
 
-        :sparql-star-graphs-1
-        :sparql-star-graphs-2
+        trs:sparql-star-graphs-1
+        trs:sparql-star-graphs-2
 
-        :sparql-star-expr-1
-        :sparql-star-expr-2
+        trs:sparql-star-expr-1
+        trs:sparql-star-expr-2
 
-        :sparql-star-order-1
+        trs:sparql-star-order-1
 
-        :sparql-star-update-1
-        :sparql-star-update-2
-        :sparql-star-update-3
+        trs:sparql-star-update-1
+        trs:sparql-star-update-2
+        trs:sparql-star-update-3
 ) .
 
-:sparql-star-results-1j rdf:type mf:QueryEvaluationTest ;
+trs:sparql-star-results-1j rdf:type mf:QueryEvaluationTest ;
     mf:name      "SPARQL-star - all graph triples (JSON results)" ;
     mf:action [
        qt:query  <sparql-star-results-1.rq> ;
@@ -64,7 +63,7 @@ PREFIX :       <#>
     mf:result  <sparql-star-results-1.srj>
     .
 
-:sparql-star-results-1x rdf:type mf:QueryEvaluationTest ;
+trs:sparql-star-results-1x rdf:type mf:QueryEvaluationTest ;
     mf:name      "SPARQL-star - all graph triples (XML results)" ;
     mf:action [
        qt:query  <sparql-star-results-1.rq> ;
@@ -73,7 +72,7 @@ PREFIX :       <#>
     mf:result  <sparql-star-results-1.srx>
     .
 
-:sparql-star-basic-2 rdf:type mf:QueryEvaluationTest ;
+trs:sparql-star-basic-2 rdf:type mf:QueryEvaluationTest ;
     mf:name      "SPARQL-star - match constant embedded triple" ;
     mf:action [
        qt:query  <sparql-star-basic-2.rq> ;
@@ -82,7 +81,7 @@ PREFIX :       <#>
     mf:result  <sparql-star-basic-2.srj>
     .
 
-:sparql-star-basic-3 rdf:type mf:QueryEvaluationTest ;
+trs:sparql-star-basic-3 rdf:type mf:QueryEvaluationTest ;
     mf:name      "SPARQL-star - match embedded triple, var subject" ;
     mf:action [
        qt:query  <sparql-star-basic-3.rq> ;
@@ -91,7 +90,7 @@ PREFIX :       <#>
     mf:result  <sparql-star-basic-3.srj>
     .
 
-:sparql-star-basic-4 rdf:type mf:QueryEvaluationTest ;
+trs:sparql-star-basic-4 rdf:type mf:QueryEvaluationTest ;
     mf:name      "SPARQL-star - match embedded triple, var predicate" ;
     mf:action [
        qt:query  <sparql-star-basic-4.rq> ;
@@ -100,7 +99,7 @@ PREFIX :       <#>
     mf:result  <sparql-star-basic-4.srj>
     .
 
-:sparql-star-basic-5 rdf:type mf:QueryEvaluationTest ;
+trs:sparql-star-basic-5 rdf:type mf:QueryEvaluationTest ;
     mf:name      "SPARQL-star - match embedded triple, var object" ;
     mf:action [
        qt:query  <sparql-star-basic-5.rq> ;
@@ -109,7 +108,7 @@ PREFIX :       <#>
     mf:result  <sparql-star-basic-5.srj>
     .
 
-:sparql-star-basic-6 rdf:type mf:QueryEvaluationTest ;
+trs:sparql-star-basic-6 rdf:type mf:QueryEvaluationTest ;
     mf:name      "SPARQL-star - no match of embedded triple" ;
     mf:action [
        qt:query  <sparql-star-basic-6.rq> ;
@@ -118,7 +117,7 @@ PREFIX :       <#>
     mf:result  <sparql-star-basic-6.srj>
     .
 
-:sparql-star-pattern-1 rdf:type mf:QueryEvaluationTest ;
+trs:sparql-star-pattern-1 rdf:type mf:QueryEvaluationTest ;
     mf:name    "SPARQL-star - Asserted and embedded triple" ;
     mf:action
         [ qt:query  <sparql-star-pattern-01.rq> ;
@@ -126,7 +125,7 @@ PREFIX :       <#>
     mf:result  <sparql-star-pattern-01.srj>
     .
 
-:sparql-star-pattern-2 rdf:type mf:QueryEvaluationTest ;
+trs:sparql-star-pattern-2 rdf:type mf:QueryEvaluationTest ;
     mf:name    "SPARQL-star -  Asserted and embedded triple" ;
     mf:action
         [ qt:query  <sparql-star-pattern-02.rq> ;
@@ -134,7 +133,7 @@ PREFIX :       <#>
     mf:result  <sparql-star-pattern-02.srj>
     .
 
-:sparql-star-pattern-3 rdf:type mf:QueryEvaluationTest ;
+trs:sparql-star-pattern-3 rdf:type mf:QueryEvaluationTest ;
     mf:name    "SPARQL-star - Pattern - Variable for embedded triple" ;
     mf:action
         [ qt:query  <sparql-star-pattern-03.rq> ;
@@ -142,7 +141,7 @@ PREFIX :       <#>
     mf:result  <sparql-star-pattern-03.srj>
     .
 
-:sparql-star-pattern-4 rdf:type mf:QueryEvaluationTest ;
+trs:sparql-star-pattern-4 rdf:type mf:QueryEvaluationTest ;
     mf:name    "SPARQL-star - Pattern - No match" ;
     mf:action
         [ qt:query  <sparql-star-pattern-04.rq> ;
@@ -150,7 +149,7 @@ PREFIX :       <#>
     mf:result  <sparql-star-pattern-04.srj>
     .
 
-:sparql-star-pattern-5 rdf:type mf:QueryEvaluationTest ;
+trs:sparql-star-pattern-5 rdf:type mf:QueryEvaluationTest ;
     mf:name    "SPARQL-star - Pattern - match variables in triple terms" ;
     mf:action
         [ qt:query  <sparql-star-pattern-05.rq> ;
@@ -158,7 +157,7 @@ PREFIX :       <#>
     mf:result  <sparql-star-pattern-05.srj>
     .
 
-:sparql-star-pattern-6 rdf:type mf:QueryEvaluationTest ;
+trs:sparql-star-pattern-6 rdf:type mf:QueryEvaluationTest ;
     mf:name    "SPARQL-star - Pattern - Nesting 1" ;
     mf:action
         [ qt:query  <sparql-star-pattern-06.rq> ;
@@ -166,7 +165,7 @@ PREFIX :       <#>
     mf:result  <sparql-star-pattern-06.srj>
     .
 
-:sparql-star-pattern-7 rdf:type mf:QueryEvaluationTest ;
+trs:sparql-star-pattern-7 rdf:type mf:QueryEvaluationTest ;
     mf:name    "SPARQL-star - Pattern - Nesting - 2" ;
     mf:action
         [ qt:query  <sparql-star-pattern-07.rq> ;
@@ -174,7 +173,7 @@ PREFIX :       <#>
     mf:result  <sparql-star-pattern-07.srj>
     .
 
-:sparql-star-pattern-8 rdf:type mf:QueryEvaluationTest ;
+trs:sparql-star-pattern-8 rdf:type mf:QueryEvaluationTest ;
     mf:name    "SPARQL-star - Pattern - Match and nesting" ;
     mf:action
         [ qt:query  <sparql-star-pattern-08.rq> ;
@@ -182,7 +181,7 @@ PREFIX :       <#>
     mf:result  <sparql-star-pattern-08.srj>
     .
 
-:sparql-star-pattern-9 rdf:type mf:QueryEvaluationTest ;
+trs:sparql-star-pattern-9 rdf:type mf:QueryEvaluationTest ;
     mf:name    "SPARQL-star - Pattern - Same variable" ;
     mf:action
         [ qt:query  <sparql-star-pattern-09.rq> ;
@@ -192,7 +191,7 @@ PREFIX :       <#>
 
 ## CONSTRUCT
 
-:sparql-star-construct-1 rdf:type mf:QueryEvaluationTest ;
+trs:sparql-star-construct-1 rdf:type mf:QueryEvaluationTest ;
     mf:name    "SPARQL-star - CONSTRUCT with constant template" ;
     mf:action
         [ qt:query  <sparql-star-construct-1.rq> ;
@@ -200,7 +199,7 @@ PREFIX :       <#>
     mf:result  <sparql-star-construct-1.ttl> ;
 .
 
-:sparql-star-construct-2 rdf:type mf:QueryEvaluationTest ;
+trs:sparql-star-construct-2 rdf:type mf:QueryEvaluationTest ;
     mf:name    "SPARQL-star - CONSTRUCT WHERE with constant template" ;
     mf:action
         [ qt:query  <sparql-star-construct-2.rq> ;
@@ -208,7 +207,7 @@ PREFIX :       <#>
     mf:result  <sparql-star-construct-2.ttl> ;
 .
 
-:sparql-star-construct-3 rdf:type mf:QueryEvaluationTest ;
+trs:sparql-star-construct-3 rdf:type mf:QueryEvaluationTest ;
     mf:name    "SPARQL-star - CONSTRUCT - about every triple" ;
     mf:action
         [ qt:query  <sparql-star-construct-3.rq> ;
@@ -216,7 +215,7 @@ PREFIX :       <#>
     mf:result  <sparql-star-construct-3.ttl> ;
 .
 
-:sparql-star-construct-4 rdf:type mf:QueryEvaluationTest ;
+trs:sparql-star-construct-4 rdf:type mf:QueryEvaluationTest ;
     mf:name    "SPARQL-star - CONSTRUCT with annotation syntax" ;
     mf:action
         [ qt:query  <sparql-star-construct-4.rq> ;
@@ -224,7 +223,7 @@ PREFIX :       <#>
     mf:result  <sparql-star-construct-4.ttl> ;
 .
 
-:sparql-star-construct-5 rdf:type mf:QueryEvaluationTest ;
+trs:sparql-star-construct-5 rdf:type mf:QueryEvaluationTest ;
     mf:name    "SPARQL-star - CONSTRUCT WHERE with annotation syntax" ;
     mf:action
         [ qt:query  <sparql-star-construct-5.rq> ;
@@ -232,7 +231,7 @@ PREFIX :       <#>
     mf:result  <sparql-star-construct-5.ttl> ;
     .
 
-:sparql-star-graphs-1 rdf:type mf:QueryEvaluationTest ;
+trs:sparql-star-graphs-1 rdf:type mf:QueryEvaluationTest ;
     mf:name    "SPARQL-star - GRAPH" ;
     mf:action
         [ qt:query  <sparql-star-graphs-1.rq> ;
@@ -240,7 +239,7 @@ PREFIX :       <#>
     mf:result  <sparql-star-graphs-1.srj> ;
     .
 
-:sparql-star-graphs-2 rdf:type mf:QueryEvaluationTest ;
+trs:sparql-star-graphs-2 rdf:type mf:QueryEvaluationTest ;
     mf:name    "SPARQL-star - GRAPHs with blank node" ;
     mf:action
         [ qt:query  <sparql-star-graphs-2.rq> ;
@@ -250,7 +249,7 @@ PREFIX :       <#>
 
 ## Expressions
 
-:sparql-star-expr-1  rdf:type mf:QueryEvaluationTest ;
+trs:sparql-star-expr-1  rdf:type mf:QueryEvaluationTest ;
     mf:name    "SPARQL-star - Embedded triple - BIND - CONSTRUCT" ;
     mf:action
         [ qt:query  <sparql-star-expr-01.rq> ;
@@ -258,7 +257,7 @@ PREFIX :       <#>
     mf:result  <sparql-star-expr-01.ttl> ;
     .
 
-:sparql-star-expr-2  rdf:type mf:QueryEvaluationTest ;
+trs:sparql-star-expr-2  rdf:type mf:QueryEvaluationTest ;
     mf:name    "SPARQL-star - Embedded triple - Functions" ;
     mf:action
         [ qt:query  <sparql-star-expr-02.rq> ;
@@ -268,7 +267,7 @@ PREFIX :       <#>
 
 ## ORDER BY
 
-:sparql-star-order-1  rdf:type mf:QueryEvaluationTest ;
+trs:sparql-star-order-1  rdf:type mf:QueryEvaluationTest ;
     mf:name    "SPARQL-star - Embedded triple ORDER BY" ;
     mf:action
         [ qt:query  <sparql-star-order-1.rq> ;
@@ -279,7 +278,7 @@ PREFIX :       <#>
 ## Update
 
 
-:sparql-star-update-1 rdf:type mf:UpdateEvaluationTest ;
+trs:sparql-star-update-1 rdf:type mf:UpdateEvaluationTest ;
     mf:name    "SPARQL-star - Update" ;
     mf:action [ ut:request <sparql-star-update-1.ru> ; 
                 ut:data <data-6.trig>
@@ -288,7 +287,7 @@ PREFIX :       <#>
               ] ;
     .
 
-:sparql-star-update-2 rdf:type mf:UpdateEvaluationTest ;
+trs:sparql-star-update-2 rdf:type mf:UpdateEvaluationTest ;
     mf:name    "SPARQL-star - Update - annotation" ;
     mf:action [ ut:request <sparql-star-update-2.ru> ; 
                 ut:data <data-6.trig>
@@ -297,7 +296,7 @@ PREFIX :       <#>
               ] ;
     .
 
-:sparql-star-update-3 rdf:type mf:UpdateEvaluationTest ;
+trs:sparql-star-update-3 rdf:type mf:UpdateEvaluationTest ;
     mf:name    "SPARQL-star - Update - data" ;
     mf:action [ ut:request <sparql-star-update-3.ru> ; 
                 ut:data <empty.nq>

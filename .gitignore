@@ -4,3 +4,4 @@
 *.backup
 .*.swp
 \#*#
+reports/manifests.nt

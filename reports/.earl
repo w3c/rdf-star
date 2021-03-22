@@ -1,11 +1,6 @@
 ---
 :format: :json
-:manifest:
-  - ../tests/nt/syntax/manifest.ttl
-  - ../tests/semantics/manifest.ttl
-  - ../tests/sparql/syntax/manifest.ttl
-  - ../tests/sparql/eval/manifest.ttl
-  - ../tests/turtle/syntax/manifest.ttl
-  - ../tests/turtle/eval/manifest.ttl
+:base: https://w3c.github.io/rdf-star/tests/
+:manifest: manifests.nt
 :bibRef: ! '[[rdf-star]]'
 :name: RDF-star

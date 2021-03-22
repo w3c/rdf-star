@@ -5,9 +5,9 @@
 <link href='earl.ttl' rel='alternate' type='text/turtle' />
 <link href='earl.jsonld' rel='alternate' type='application/ld+json' />
 <link href='https://www.w3.org/StyleSheets/TR/base' rel='stylesheet' />
+<link href='ruby-turtle.ttl' rel='related' />
 <link href='eye-earl.ttl' rel='related' />
 <link href='ruby-sparql.ttl' rel='related' />
-<link href='ruby-turtle.ttl' rel='related' />
 <title>
 RDF-star Processor Conformance
 </title>
@@ -683,16 +683,16 @@ PASS
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/semantics#malformed-literal-control'>Test malformed-literal-control: malformed-literal-control</a>
 </td>
-<td class='UNTESTED'>
-UNTESTED
+<td class='PASS'>
+PASS
 </td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/semantics#malformed-literal'>Test malformed-literal: malformed-literal</a>
 </td>
-<td class='UNTESTED'>
-UNTESTED
+<td class='FAIL'>
+FAIL
 </td>
 </tr>
 <tr class='normative'>
@@ -820,7 +820,7 @@ PASS
 Percentage passed out of 31 Tests
 </td>
 <td class='passed-some'>
-77.4%
+80.6%
 </td>
 </tr>
 </table>
@@ -2041,7 +2041,7 @@ https://josd.github.io/eye/index.html
 <a href='https://josd.github.io/'>
 <span property='foaf:name'>Jos De Roo</span>
 </a>
-<a href-@id='https://josd.github.io/' href-@type='[&quot;foaf:Person&quot;, &quot;Assertor&quot;]' href-foaf:homepage='https://josd.github.io/' href-foaf:name='Jos De Roo' property='foaf:homepage'>
+<a href-@id='https://josd.github.io/' href-@type='[&quot;Assertor&quot;, &quot;foaf:Person&quot;]' href-foaf:homepage='https://josd.github.io/' href-foaf:name='Jos De Roo' property='foaf:homepage'>
 https://josd.github.io/
 </a>
 </div>
@@ -2057,7 +2057,7 @@ Test Suite Compliance
 RDF-star Semantics tests
 </td>
 <td class='passed-some'>
-24/31 (77.4%)
+25/31 (80.6%)
 </td>
 </tr>
 <tr>
@@ -2209,13 +2209,13 @@ Individual test results used to construct this report are available here:
 </p>
 <ul>
 <li>
+<a class='source' href='ruby-turtle.ttl'>ruby-turtle.ttl</a>
+</li>
+<li>
 <a class='source' href='eye-earl.ttl'>eye-earl.ttl</a>
 </li>
 <li>
 <a class='source' href='ruby-sparql.ttl'>ruby-sparql.ttl</a>
-</li>
-<li>
-<a class='source' href='ruby-turtle.ttl'>ruby-turtle.ttl</a>
 </li>
 </ul>
 </section>

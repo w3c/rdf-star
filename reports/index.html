@@ -6,8 +6,8 @@
 <link href='earl.jsonld' rel='alternate' type='application/ld+json' />
 <link href='https://www.w3.org/StyleSheets/TR/base' rel='stylesheet' />
 <link href='ruby-turtle.ttl' rel='related' />
-<link href='eye-earl.ttl' rel='related' />
 <link href='ruby-sparql.ttl' rel='related' />
+<link href='eye-earl.ttl' rel='related' />
 <title>
 RDF-star Processor Conformance
 </title>
@@ -1612,6 +1612,13 @@ Percentage passed out of 61 Tests
 Test
 </th>
 <th>
+<a href='#subj_EYE_Prolog'>
+EYE
+<br />
+(Prolog)
+</a>
+</th>
+<th>
 <a href='#subj_Ruby_RDF_Turtle_Ruby'>
 Ruby RDF::Turtle
 <br />
@@ -1626,10 +1633,16 @@ Ruby RDF::Turtle
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/turtle/eval#turtle-star-2'>Test turtle-star-2: Turtle-star - object embedded triple</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -1642,10 +1655,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/turtle/eval#turtle-star-bnode-2'>Test turtle-star-bnode-2: Turtle-star - blank node labels</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -1658,10 +1677,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/turtle/eval#turtle-star-annotation-2'>Test turtle-star-annotation-2: Turtle-star - Annotation example</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -1674,10 +1699,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/turtle/eval#turtle-star-annotation-4'>Test turtle-star-annotation-4: Turtle-star - Annotation - nested</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -1690,10 +1721,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/turtle/eval#turtle-star-embed-annotation-1'>Test turtle-star-embed-annotation-1: Turtle-star - Annotation with embedding</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -1706,6 +1743,9 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
@@ -1714,10 +1754,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='summary'>
 <td>
 Percentage passed out of 12 Tests
+</td>
+<td class='passed-all'>
+100.0%
 </td>
 <td class='passed-all'>
 100.0%
@@ -2041,7 +2087,7 @@ https://josd.github.io/eye/index.html
 <a href='https://josd.github.io/'>
 <span property='foaf:name'>Jos De Roo</span>
 </a>
-<a href-@id='https://josd.github.io/' href-@type='[&quot;Assertor&quot;, &quot;foaf:Person&quot;]' href-foaf:homepage='https://josd.github.io/' href-foaf:name='Jos De Roo' property='foaf:homepage'>
+<a href-@id='https://josd.github.io/' href-@type='[&quot;foaf:Person&quot;, &quot;Assertor&quot;]' href-foaf:homepage='https://josd.github.io/' href-foaf:name='Jos De Roo' property='foaf:homepage'>
 https://josd.github.io/
 </a>
 </div>
@@ -2058,6 +2104,14 @@ RDF-star Semantics tests
 </td>
 <td class='passed-some'>
 25/31 (80.6%)
+</td>
+</tr>
+<tr>
+<td>
+Turtle-star Evaluation Tests
+</td>
+<td class='passed-all'>
+12/12 (100.0%)
 </td>
 </tr>
 <tr>
@@ -2212,14 +2266,14 @@ Individual test results used to construct this report are available here:
 <a class='source' href='ruby-turtle.ttl'>ruby-turtle.ttl</a>
 </li>
 <li>
-<a class='source' href='eye-earl.ttl'>eye-earl.ttl</a>
+<a class='source' href='ruby-sparql.ttl'>ruby-sparql.ttl</a>
 </li>
 <li>
-<a class='source' href='ruby-sparql.ttl'>ruby-sparql.ttl</a>
+<a class='source' href='eye-earl.ttl'>eye-earl.ttl</a>
 </li>
 </ul>
 </section>
-<section class='appendix' id='report-generation-software' property='earl:generatedBy' resource='https://rubygems.org/gems/earl-report' typeof='doap:Project Software'>
+<section class='appendix' id='report-generation-software' property='earl:generatedBy' resource='https://rubygems.org/gems/earl-report' typeof='Software doap:Project'>
 <h2>
 <span class='secno'>C.</span>
 Report Generation Software

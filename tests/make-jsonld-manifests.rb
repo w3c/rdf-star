@@ -25,6 +25,7 @@ local_ctx = JSON.parse(File.read("#{man_dir}/manifest-context.jsonld"))
     format: :jsonld, 
     frame: local_ctx,
     context: local_ctx,
+    useNativeTypes: true,
     base_uri: base) {|writer| writer << ttl_graph}
 
   # Validate that the two graphs say the same thing.

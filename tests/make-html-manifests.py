@@ -51,7 +51,7 @@ def make_html(path: Path):
         if entries:
             out.write('<p><strong>Entries:</strong></p>\n<ul class="entries">\n')
             for (i, entry) in enumerate(entries):
-                eid = entry.get('@id', f"#{path.name}_entry{i}")
+                eid = get_entry_id(entry, f"#{path.name}_entry{i}")
                 name = entry.get('name', eid[1:])
                 approval = entry.get('approval', 'proposed').lower()
                 if approval == "notclassified":
@@ -98,7 +98,7 @@ def make_html(path: Path):
 
             write_action(out, entry['action'], dir)
             out.write(f"<div>{result_message(entry)}</div>\n")
-            result = entry.get('result')
+            result = entry.get('result') or entry.get('mf:result')
             if isinstance(result, dict):
                 result = next(iter(result.values()))
             if result is False:
@@ -109,6 +109,14 @@ def make_html(path: Path):
                 out.write(f"<p>{entry['comment']}</p>\n")
             out.write("</section>")
 
+def get_entry_id(entry: dict, default: str) -> str:
+    eid = entry.get('@id', '')
+    if not eid.startswith('#'):
+        if eid.startswith('trs:'):
+            eid = f"#{eid[4:]}"
+        else:
+            eid = ''
+    return eid or default
 
 def readable_type(entry: dict) -> str:
     typ = entry['@type']
@@ -155,21 +163,18 @@ def write_action(out, action, current_dir, *, cls=None):
 
 def result_message(entry: dict) -> str:
     typ = entry['@type']
-    msg = {
-        'PositiveEntailmentTest': 'MUST entail',
-        'NegativeEntailmentTest': 'MUST NOT entail',
-        'PositiveSyntaxTest11': 'MUST be accepted',
-        'NegativeSyntaxTest11': 'MUST be rejected',
-        
-        'TestTurtlePositiveSyntax': 'MUST be accepted',
-        'TestTurtleNegativeSyntax': 'MUST be rejected',
-    }.get(typ)
-    if msg is None:
-        if typ.startswith('Netagitve'):
-            msg = 'MUST NOT result into'
-        else:
-            msg = 'MUST result into'
-    return msg
+
+    if "PositiveEntailment" in typ:
+        return "MUST entail"
+    elif "NegativeEntailment" in typ:
+        return "MUST NOT entail"
+    elif "PositiveSyntax" in typ:
+        return "MUST be accepted"
+    elif "NegativeSyntax" in typ:
+        return "MUST be rejected"
+    elif "Negative" in typ:
+        return "MUST NOT result into"
+    return "MUST result into"
 
 def open_manifest(path: Path) -> dict:
     with path.open() as f:

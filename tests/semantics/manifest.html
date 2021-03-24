@@ -56,8 +56,6 @@
 <h1>manifest</h1>
 <p>Generated from <a href="manifest.jsonld">manifest.jsonld</a></p><p><strong>Entries:</strong></p>
 <ul class="entries">
-<li class="approved"><a href="#triple-in-subject">triple-in-subject</a>
-<li class="approved"><a href="#triple-in-object">triple-in-object</a>
 <li class="proposed"><a href="#all-identical-embedded-triples-are-the-same">all-identical-embedded-triples-are-the-same</a>
 <li class="proposed"><a href="#embedded-triples-no-spurious">embedded-triples-no-spurious</a>
 <li class="proposed"><a href="#bnodes-in-embedded-subject">bnodes-in-embedded-subject</a>
@@ -74,9 +72,7 @@
 <li class="proposed"><a href="#malformed-literal">malformed-literal</a>
 <li class="proposed"><a href="#malformed-literal-accepted">malformed-literal-accepted</a>
 <li class="proposed"><a href="#malformed-literal-no-spurious">malformed-literal-no-spurious</a>
-<li class="proposed"><a href="#malformed-literal-bnode">malformed-literal-bnode</a>
-<li class="proposed"><a href="#malformed-literal-bnode-2">malformed-literal-bnode-2</a>
-<li class="proposed"><a href="#malformed-literal-bnode-3">malformed-literal-bnode-3</a>
+<li class="proposed"><a href="#malformed-literal-bnode-neg">malformed-literal-bnode</a>
 <li class="proposed"><a href="#opaque-literal-control">opaque-literal-control</a>
 <li class="proposed"><a href="#opaque-literal">opaque-literal</a>
 <li class="proposed"><a href="#opaque-language-string-control">opaque-language-string-control</a>
@@ -139,49 +135,7 @@ A document on the results of the testing will eventually be at
 http://w3c.github.io/rdf-star/tests/reports.html .
 This document will have more information on submitting reports, including examples
 of what the reports should contain.</pre>
-<section id="triple-in-subject" class="entry approved PositiveEntailmentTest">
-<h2>triple-in-subject <a href="#triple-in-subject">🔗</a></h2>
-<table class="properties">
-<tr class="status"><th>status:</th><td>approved</td>
-<tr class="type"><th>type:</th><td>positive entailment test</td>
-<tr class="regime"><th>regime:</th><td>simple</td>
-</table>
-<div><code><a href="test000s.ttl">test000s.ttl</a></code></div>
-<pre>
-prefix : &lt;http://example.com/ns#&gt;
-
-&lt;&lt; :a :b :c &gt;&gt; :p1 :o1.
-</pre>
-<div>MUST entail</div>
-<div><code><a href="test000s.ttl">test000s.ttl</a></code></div>
-<pre class="result">
-prefix : &lt;http://example.com/ns#&gt;
-
-&lt;&lt; :a :b :c &gt;&gt; :p1 :o1.
-</pre>
-<p>Embedded triples can appear in subject position (EVENTUALLY, this should be a Turtle-star test rather than a semantics test).</p>
-</section><section id="triple-in-object" class="entry approved PositiveEntailmentTest">
-<h2>triple-in-object <a href="#triple-in-object">🔗</a></h2>
-<table class="properties">
-<tr class="status"><th>status:</th><td>approved</td>
-<tr class="type"><th>type:</th><td>positive entailment test</td>
-<tr class="regime"><th>regime:</th><td>simple</td>
-</table>
-<div><code><a href="test000o.ttl">test000o.ttl</a></code></div>
-<pre>
-prefix : &lt;http://example.com/ns#&gt;
-
-:s1 :p1 &lt;&lt; :x :y :z &gt;&gt;.
-</pre>
-<div>MUST entail</div>
-<div><code><a href="test000o.ttl">test000o.ttl</a></code></div>
-<pre class="result">
-prefix : &lt;http://example.com/ns#&gt;
-
-:s1 :p1 &lt;&lt; :x :y :z &gt;&gt;.
-</pre>
-<p>Embedded triples can appear in object position (EVENTUALLY, this should be a Turtle-star test rather than a semantics test).</p>
-</section><section id="all-identical-embedded-triples-are-the-same" class="entry proposed PositiveEntailmentTest">
+<section id="all-identical-embedded-triples-are-the-same" class="entry proposed PositiveEntailmentTest">
 <h2>all-identical-embedded-triples-are-the-same <a href="#all-identical-embedded-triples-are-the-same">🔗</a></h2>
 <table class="properties">
 <tr class="status"><th>status:</th><td>proposed</td>
@@ -202,7 +156,7 @@ prefix : &lt;http://example.com/ns#&gt;
 
 &lt;&lt; :a :b :c &gt;&gt; :p1 :o1; :p2 :o2.
 </pre>
-<p>Multiple occurences of the same embedded triples are undistinguishable in the abstract model (EVENTUALLY, this should be a Turtle-star test rather than a semantics test).</p>
+<p>Multiple occurences of the same embedded triples are undistinguishable in the abstract model.</p>
 </section><section id="embedded-triples-no-spurious" class="entry proposed NegativeEntailmentTest">
 <h2>embedded-triples-no-spurious <a href="#embedded-triples-no-spurious">🔗</a></h2>
 <table class="properties">
@@ -328,7 +282,7 @@ prefix : &lt;http://example.com/ns#&gt;
 
 &lt;&lt; _:x :b _:x &gt;&gt; :p1 :o1.
 </pre>
-<p>Identical embedde term can be replaced by the same fresh bnode multiple times.</p>
+<p>Identical embedded term can be replaced by the same fresh bnode multiple times.</p>
 </section><section id="different-bnodes-same-embedded-term" class="entry proposed PositiveEntailmentTest">
 <h2>different-bnodes-same-embedded-term <a href="#different-bnodes-same-embedded-term">🔗</a></h2>
 <table class="properties">
@@ -457,7 +411,7 @@ prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt;
 
 :a :b "c"^^xsd:integer.</pre>
 <div>MUST entail</div>
-<div>a contradiction</div><p>Checks that xsd:integer is indeed recognized, to ensure that malformed-literal-star tests do not pass spuriously.</p>
+<div>a contradiction</div><p>Checks that xsd:integer is indeed recognized, to ensure that malformed-literal-* tests do not pass spuriously.</p>
 </section><section id="malformed-literal" class="entry proposed NegativeEntailmentTest">
 <h2>malformed-literal <a href="#malformed-literal">🔗</a></h2>
 <table class="properties">
@@ -518,11 +472,11 @@ prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt;
 
 &lt;&lt; :a :b "d"^^xsd:integer &gt;&gt; :p1 :o1.</pre>
 <p>Embedded malformed literals do not lead to spurious entailment.</p>
-</section><section id="malformed-literal-bnode" class="entry proposed PositiveEntailmentTest">
-<h2>malformed-literal-bnode <a href="#malformed-literal-bnode">🔗</a></h2>
+</section><section id="malformed-literal-bnode-neg" class="entry proposed NegativeEntailmentTest">
+<h2>malformed-literal-bnode <a href="#malformed-literal-bnode-neg">🔗</a></h2>
 <table class="properties">
 <tr class="status"><th>status:</th><td>proposed</td>
-<tr class="type"><th>type:</th><td>positive entailment test</td>
+<tr class="type"><th>type:</th><td>negative entailment test</td>
 <tr class="regime"><th>regime:</th><td>RDF</td>
 <tr class="recognized"><th>recognizing:</th><td>xsd:integer</td>
 </table>
@@ -532,62 +486,14 @@ prefix : &lt;http://example.com/ns#&gt;
 prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt;
 
 &lt;&lt; :a :b "c"^^xsd:integer &gt;&gt; :p1 :o1.</pre>
-<div>MUST entail</div>
+<div>MUST NOT entail</div>
 <div><code><a href="test002or.ttl">test002or.ttl</a></code></div>
 <pre class="result">
 prefix : &lt;http://example.com/ns#&gt;
 
 &lt;&lt; :a :b _:x &gt;&gt; :p1 :o1.
 </pre>
-<p>Malformed literals can be replaced by blank nodes.</p>
-</section><section id="malformed-literal-bnode-2" class="entry proposed PositiveEntailmentTest">
-<h2>malformed-literal-bnode-2 <a href="#malformed-literal-bnode-2">🔗</a></h2>
-<table class="properties">
-<tr class="status"><th>status:</th><td>proposed</td>
-<tr class="type"><th>type:</th><td>positive entailment test</td>
-<tr class="regime"><th>regime:</th><td>RDF</td>
-<tr class="recognized"><th>recognizing:</th><td>xsd:integer</td>
-</table>
-<div><code><a href="malformed-literal-2a.ttl">malformed-literal-2a.ttl</a></code></div>
-<pre>
-prefix : &lt;http://example.com/ns#&gt;
-prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt;
-
-&lt;&lt; :a :b "c"^^xsd:integer &gt;&gt; :p1 :o1.
-&lt;&lt; :d :b "c"^^xsd:integer &gt;&gt; :p2 :o2.</pre>
-<div>MUST entail</div>
-<div><code><a href="malformed-literal-2r.ttl">malformed-literal-2r.ttl</a></code></div>
-<pre class="result">
-prefix : &lt;http://example.com/ns#&gt;
-prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt;
-
-&lt;&lt; :a :b _:x &gt;&gt; :p1 :o1.
-&lt;&lt; :d :b _:x &gt;&gt; :p2 :o2.</pre>
-<p>Identical malformed literals can be replaced with the same blank node.</p>
-</section><section id="malformed-literal-bnode-3" class="entry proposed NegativeEntailmentTest">
-<h2>malformed-literal-bnode-3 <a href="#malformed-literal-bnode-3">🔗</a></h2>
-<table class="properties">
-<tr class="status"><th>status:</th><td>proposed</td>
-<tr class="type"><th>type:</th><td>negative entailment test</td>
-<tr class="regime"><th>regime:</th><td>RDF</td>
-<tr class="recognized"><th>recognizing:</th><td>xsd:integer</td>
-</table>
-<div><code><a href="malformed-literal-3a.ttl">malformed-literal-3a.ttl</a></code></div>
-<pre>
-prefix : &lt;http://example.com/ns#&gt;
-prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt;
-
-&lt;&lt; :a :b "c"^^xsd:integer &gt;&gt; :p1 :o1.
-&lt;&lt; :d :b "d"^^xsd:integer &gt;&gt; :p2 :o2.</pre>
-<div>MUST NOT entail</div>
-<div><code><a href="malformed-literal-3r.ttl">malformed-literal-3r.ttl</a></code></div>
-<pre class="result">
-prefix : &lt;http://example.com/ns#&gt;
-prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt;
-
-&lt;&lt; :a :b _:x &gt;&gt; :p1 :o1.
-&lt;&lt; :d :b _:x &gt;&gt; :p2 :o2.</pre>
-<p>Identical malformed literals can not be replaced with the same blank node.</p>
+<p>Malformed literals can not be replaced by blank nodes.</p>
 </section><section id="opaque-literal-control" class="entry proposed PositiveEntailmentTest">
 <h2>opaque-literal-control <a href="#opaque-literal-control">🔗</a></h2>
 <table class="properties">

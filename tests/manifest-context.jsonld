@@ -60,14 +60,24 @@
                 "NotClassified": "test:NotClassified",
                 "Rejected": "test:Rejected",
                 "Obsoleted": "test:Obsoleted",
-                "Withdrawn": "test:RejectedWithdrawn"
+                "Withdrawn": "test:Withdrawn"
             }
         },
         "TestTurtlePositiveSyntax": "rdft:TestTurtlePositiveSyntax",
-        "TestTurtleNegativeSyntax": "rdft:TestTurtleNegativeSyntax"
+        "TestTurtleNegativeSyntax": "rdft:TestTurtleNegativeSyntax",
+        "statusOf": {
+            "@reverse": "test:approval"
+        }
     },
     "@type": "mf:Manifest",
     "entries": {
         "@embed": true
-    }
+    },
+    "@included": [
+        {
+            "approval": {
+                "@id": ["test:Rejected", "test:Obsoleted", "test:Withdrawn"]
+            }
+        }
+    ]
 }

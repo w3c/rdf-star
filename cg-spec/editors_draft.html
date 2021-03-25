@@ -2051,6 +2051,39 @@ SELECT ?claimer WHERE {
       </ul>
     </section>
 
+    <section id="merging">
+      <h2>Merging RDF-star graphs</h2>
+
+      <p>[[[RDF11-MT]]] [[RDF11-MT]] defines the <a>merging</a> of two or more <a>RDF graphs</a> as "[taking their] union after forcing any shared blank nodes, which occur in more than one graph, to be distinct in each graph." It is worth precising that, in the case of <a>RDF-star graphs</a>, any <a>blank node</a> in the <a>constituent terms</a> of that graph is concerned by the definition above, <em>not</em> only those in the subject or object position of some <a>asserted triple</a>.</p>
+
+      <pre id="merging-example"
+        data-transform="updateExample"
+        data-content-type="text/x-turtle-star"
+        class="nohighlight example"
+      >
+        <!--
+        #### graph #1
+        :alice :says
+          << _:x :name "bob" >>,
+          << _:x :likes :alice >>.
+
+        #### graph #2
+        :bob :says
+          << :alice :hates _:x >>.
+
+        #### Merge of graphs #1 and #2 →
+        :alice :says
+          << _:y :name "bob" >>,
+          << _:y :likes :alice >>.
+        :bob :says
+          << :alice :hates _:z >>.
+
+        -->
+      </pre>
+
+      </section>
+
+
     <section class="informative">
       <h2>Remarks</h2>
 

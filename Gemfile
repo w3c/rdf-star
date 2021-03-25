@@ -1,6 +1,7 @@
 source "https://rubygems.org"
 
 gem 'rdf-turtle'
+gem 'rdf-ordered-repo'
 gem 'json-ld'
 gem 'earl-report'
 gem 'colorize'

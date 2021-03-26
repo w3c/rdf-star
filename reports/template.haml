@@ -402,7 +402,7 @@
                         %td{class: (pct == 100.0 ? 'passed-all' : (pct >= 85.0 ? 'passed-most' : 'passed-some'))}
                           = "#{passed}/#{total} (#{'%.1f' % pct}%)"
     - unless tests['assertions'].empty?
-      %section.appendix#individual-test-results{rel: "xhv:related earl:assertions"}
+      %section.appendix#individual-test-results{rel: "xhv:related mf:report"}
         %h2
           %span.secno="B."
           Individual Test Results

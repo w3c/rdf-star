@@ -403,7 +403,7 @@ SELECT ?claimer WHERE {
       <p class="note">The changes are that <a href="#grammar-production-subject">`subject`</a> and <a href="#grammar-production-object">`object`</a> productions have been extended to accept <a>embedded triples</a>, which are described by the new productions <a href="#grammar-production-embTriple">27</a> to <a href="#grammar-production-embObject">29</a>. Note that <a>embedded triples</a> accept a more restricted range of <a>subject</a> and <a>object</a> expressions than <a>asserted triples</a>. Additionally, the <a href="#grammar-production-objectList">`objectList`</a> production now accepts an optional <a href="#grammar-production-annotation">annotation</a> after each object.</p>
     </section>
 
-    <section>
+    <section id="turtle-star-parsing">
       <h2>Parsing</h2>
       <p>A Turtle-star parser is similar to a Turtle parser as defined in <a data-cite="TURTLE#h2_sec-parsing">Section 7 of the Turtle specification</a> [[TURTLE]], with an additional item in its state :</p>
       <ul>
@@ -411,7 +411,7 @@ SELECT ?claimer WHERE {
       </ul>
       <p>Additionally, the <a data-cite="TURTLE#curSubject">|curSubject|</a> can be bound to any <a>RDF-star term</a> (including an <a>embedded triple</a>).</p>
 
-      <p>A Turtle-star document defines an <a>RDF-star graph</a> composed of a set of <a>RDF-star triples</a>. The <a href="#grammar-production-subject">`subject`</a> and <a href="#grammar-production-embSubject">`embSubject`</a> productions set the |curSubject|. The <a data-cite="TURTLE#grammar-production-verb">`verb`</a> production sets the <a data-cite="TURTLE#curPredicate">|curPredicate|</a>. The <a href="#grammar-production-object">`object`</a> and <a href="#grammar-production-embObject">`embObject`</a> productions set the |curObject|. Finishing the <a href="#grammar-production-object">`object`</a> production, an <a>RDF-star triple</a> |curSubject| |curPredicate| |curObject| is generated and added to the <a>RDF-star graph</a>.</p>
+      <p>A <dfn>Turtle-star document</dfn> defines an <a>RDF-star graph</a> composed of a set of <a>RDF-star triples</a>. The <a href="#grammar-production-subject">`subject`</a> and <a href="#grammar-production-embSubject">`embSubject`</a> productions set the |curSubject|. The <a data-cite="TURTLE#grammar-production-verb">`verb`</a> production sets the <a data-cite="TURTLE#curPredicate">|curPredicate|</a>. The <a href="#grammar-production-object">`object`</a> and <a href="#grammar-production-embObject">`embObject`</a> productions set the |curObject|. Finishing the <a href="#grammar-production-object">`object`</a> production, an <a>RDF-star triple</a> |curSubject| |curPredicate| |curObject| is generated and added to the <a>RDF-star graph</a>.</p>
 
       <p>Beginning the <a href="#grammar-production-embTriple">`embTriple`</a> production records the |curSubject| and |curPredicate|. Finishing the <a href="#grammar-production-embTriple">`embTriple`</a> production yields the <a>RDF-star triple</a> |curSubject| |curPredicate| |curObject| and restores the recorded values of |curSubject| and |curPredicate|.</p>
 
@@ -419,10 +419,10 @@ SELECT ?claimer WHERE {
 
       <p>All other productions MUST be handled as specified by <a data-cite="TURTLE#h2_sec-parsing">Section 7 of the Turtle specification</a> [[TURTLE]], while still applying the changes above recursively.</p>
 
-      <section class="informative">
+      <section id="turtle-star-parsing-discussion" class="informative">
       <h2>Discussion</h2>
 
-      <p>This section describes parser behavior when parsing a Turtle-star document that contains <a>embedded triples</a> and <a href="#grammar-production-annotation">annotations</a>.</p>
+      <p>This section describes parser behavior when parsing a <a>Turtle-star document</a> that contains <a>embedded triples</a> and <a href="#grammar-production-annotation">annotations</a>.</p>
 
       <p>Consider a Turtle-star document that describes an RDF triple, and also uses that triple as an <a>embedded triple</a> as the subject of another RDF-star triple:</p>
 
@@ -462,7 +462,52 @@ SELECT ?claimer WHERE {
     </section>
   </section>
 
-    <section id="n-triples-star">
+  <section id="trig-star">
+    <h2>TriG-star</h2>
+
+    <p>This section describes TriG-star,
+      a minimal extension of the TriG format [[TRIG]]
+      using the same production updates described in <a href="#turtle-star" class="sectionRef"></a>.</p>
+
+    <p class="note">As RDF-star describes <a>embedded triples</a>,
+      which are not necessarily described within any specific graph,
+      either named or default.</p>
+
+    <p>A <dfn>TriG-star document</dfn> defines an <a>RDF-star dataset</a> composed of
+      a single <a>default graph</a>, and zero or more <a>named graphs</a>,
+      all of which are <a>RDF-star graphs</a>.</p>
+
+    <p>The TriG-star grammar contains exactly the same productions updates
+      described in <a href="#turtle-star-grammar" class="sectionRef"></a>.</p>
+
+    <p>TriG-star parsing uses the same updates described in <a href="#turtle-star-parsing" class="sectionRef"></a> as applied to the <a data-cite="TRIG#sec-parsing">TriG Parsing</a>.</p>
+
+    <p>A conforming TriG-star parser MUST parse any
+      valid <strong>TriG document</strong> and any
+      valid <a>Turtle-star document</a> in addition
+      to the <a href="#turtle-star-grammar">Turtle-star grammar</a> productions contained within a <a>named graph</a>.</p>
+
+    <section id="trig-star-discussion" class="informative">
+      <h3>Discussion</h3>
+
+      <p>TriG-star allows the same expresivity of Turtle-star with the addition of allowing <a>embedded triples</a> and <a href="#grammar-production-annotation">annotations</a> within named graphs.</p>
+
+      <pre class="example"
+           data-transform="updateExample"
+           data-content-type="text/turtle"
+           title="TriG-star annotated triples">
+      <!--
+        @base <http://example.org/> .
+        @prefix : <#> .
+        :G {
+          _:a :name "Alice" {| :statedBy :bob |} .
+        }
+      -->
+      </pre>
+    </section>
+  </section>
+
+  <section id="n-triples-star">
     <h2>N-Triples-star</h2>
 
     <p>This section describes N-Triples-star, a minimal extension of the N-Triples format [[N-TRIPLES]] allowing a <a>subject</a> or an <a>object</a> of an <a>RDF-star triple</a> to be an <a>embedded triple</a>.</p>
@@ -501,22 +546,22 @@ SELECT ?claimer WHERE {
       <h2>Parsing</h2>
       <p>In contrast to [[N-TRIPLES]], N-Triples-star allows recursion on the <a href="#grammar-production-nt-subject">`subject`</a> and <a href="#grammar-production-nt-object">`object`</a> productions.</p>
 
-      <p>An N-Triples-star document defines an <a>RDF-star graph</a> composed of a set of <a>RDF-star triples</a>. The <a href="N-TRIPLES#grammar-production-triple">`triple`</a> production produces an <a>RDF-star triple</a> composed of a <a href="#grammar-production-nt-subject">`subject`</a>, <a data-cite="N-TRIPLES#grammar-production-predicate">`predicate`</a> and <a href="#grammar-production-nt-object">`object`</a>.</p>
+      <p>An <dfn>N-Triples-star document</dfn> defines an <a>RDF-star graph</a> composed of a set of <a>RDF-star triples</a>. The <a href="N-TRIPLES#grammar-production-triple">`triple`</a> production produces an <a>RDF-star triple</a> composed of a <a href="#grammar-production-nt-subject">`subject`</a>, <a data-cite="N-TRIPLES#grammar-production-predicate">`predicate`</a> and <a href="#grammar-production-nt-object">`object`</a>.</p>
 
       <p>In addition to the <a data-cite="N-TRIPLES#sec-parsing-terms">Term Constructors</a> defined in [[N-TRIPLES]], an additional constructor is defined for <a href="#grammar-production-nt-embTriple">`embTriple`</a> of type <a>RDF-star triple</a> defined by the terms constructed for <a href="#grammar-production-nt-subject">`subject`</a>, <a data-cite="N-TRIPLES#grammar-production-predicate">`predicate`</a> and <a href="#grammar-production-nt-object">`object`</a>.</p>
 
     <p>All other productions MUST be handled as specified by <a data-cite="N-TRIPLES#sec-parsing-terms">Section 8.1 of the N-Triples specification</a> [[N-TRIPLES]], while still applying the changes above recursively.</p>
     </section>
-    </section>
+  </section>
 
-    <section id="n-quads-star">
+  <section id="n-quads-star">
     <h2>N-Quads-star</h2>
 
     <p>The [[N-QUADS]] format is extended to describe the N-Quads-star format using the same production updates described in the <a href="#n-triples-star-grammar">N-Triples-star Grammar</a>.</p>
 
     <p class="note">As RDF-star describes <a>embedded triples</a> and not embedded quads, the <a data-cite="N-QUADS#grammar-production-graphLabel">`graphLabel`</a> component of an N-Quads <a data-cite="N-QUADS#grammar-production-statement">`statement`</a> does not apply to the <a href="#grammar-production-nt-embTriple">`embTriple`</a> component.</p>
 
-    <p>An N-Quads-star document defines an <a>RDF-star dataset</a> composed of
+    <p>An <dfn>N-Quads-star document</dfn> defines an <a>RDF-star dataset</a> composed of
       a single <a>default graph</a>, and zero or more <a>named graphs</a>,
       all of which are <a>RDF-star graphs</a>.</p>
 

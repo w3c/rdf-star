@@ -1831,11 +1831,11 @@ SELECT ?claimer WHERE {
 
       <p>We consider six <a>IRIs</a> |ST:subject term|, |PT:predicate term|, |OT:object term|, |SS:subject string|, |PS:predicate string| and |OS:object string| that will have a special meaning in our mapping.</p>
 
-      <p>We define a mapping |L| that maps any <a>IRI</a> or <a>literal</a> |t| to a literal with <ul>
+      <p>We define a mapping |L| that maps any <a>IRI</a> or <a>literal</a> |t| to a literal with:</p>
+      <ul>
         <li>`xsd:string` as its <a>datatype</a>, and</li>
         <li>the <a data-cite="N-TRIPLES#canonical-ntriples">canonical N-Triples</a> representation of |t| as its <a>lexical form</a> [[N-TRIPLES]]. If |t| is itself a literal with the `xsd:string` <a>datatype</a>, the representation MUST be a <a>simple literal</a>.</li>
       </ul>
-      </p>
 
       <p>Given an <a>RDF-star graph</a> |G|, the following steps transform it into an <a>RDF graph</a> that we call |unstar|(|G|).</p>
 

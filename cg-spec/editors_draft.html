@@ -469,9 +469,9 @@ SELECT ?claimer WHERE {
       a minimal extension of the TriG format [[TRIG]]
       using the same production updates described in <a href="#turtle-star" class="sectionRef"></a>.</p>
 
-    <p class="note">As RDF-star describes <a>embedded triples</a>,
-      which are not necessarily described within any specific graph,
-      either named or default.</p>
+    <p class="note">RDF-star describes <a>embedded triples</a>,
+      which are not necessarily present in any <a>named graph</a>,
+      or within the <a>default graph</a>.</p>
 
     <p>A <dfn>TriG-star document</dfn> defines an <a>RDF-star dataset</a>, composed of
       a single <a>default graph</a> and zero or more <a>named graphs</a>,
@@ -482,7 +482,14 @@ SELECT ?claimer WHERE {
 
     <p>TriG-star parsing uses the same updates described in <a href="#turtle-star-parsing" class="sectionRef"></a> as applied to <a data-cite="TRIG#sec-parsing">Section 5 of the TriG specification</a> [[TRIG]].</p>
 
-    <p class="note">As with Turtle-star, the <a href="#grammar-production-embTriple">`embTriple`</a> and <a href="#grammar-production-annotation">`annotation`</a> yield <a>RDF-star triples</a> which are not directly added to `curGraph`.</p>
+    <p class="note">As with Turtle-star,
+      the <a href="#grammar-production-embTriple">`embTriple`</a>
+      and <a href="#grammar-production-annotation">`annotation`</a>
+      are used to set either the |curSubject| or |curObject|,
+      and do not directly add the associated <a>embedded triple</a> to |curGraph|.
+      Subsequent productions which use either |curSubject| or |curObject|
+      may result in adding triples |curGraph|.</p>
+
     <p>A conforming TriG-star parser MUST parse any
       valid <strong>TriG document</strong> and any
       valid <a>Turtle-star document</a> in addition

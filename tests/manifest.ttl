@@ -17,6 +17,8 @@ trs:manifest  rdf:type mf:Manifest ;
       <semantics/manifest.ttl>
       <sparql/eval/manifest.ttl>
       <sparql/syntax/manifest.ttl>
+      <trig/eval/manifest.ttl>
+      <trig/syntax/manifest.ttl>
       <turtle/eval/manifest.ttl>
       <turtle/syntax/manifest.ttl>
     ) .

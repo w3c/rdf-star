@@ -69,89 +69,89 @@
       "@reverse": "test:approval"
     }
   },
-  "@id": "../../turtle/eval#manifest",
+  "@id": "trs:manifest",
   "@type": "Manifest",
   "label": "TriG-star Evaluation Tests",
   "entries": [
     {
-      "@id": "../../turtle/eval#trig-star-1",
+      "@id": "trs:trig-star-1",
       "@type": "rdft:TestTrigEval",
       "action": "trig-star-eval-01.trig",
       "name": "TriG-star - subject embedded triple",
       "result": "trig-star-eval-01.nq"
     },
     {
-      "@id": "../../turtle/eval#trig-star-2",
+      "@id": "trs:trig-star-2",
       "@type": "rdft:TestTrigEval",
       "action": "trig-star-eval-02.trig",
       "name": "TriG-star - object embedded triple",
       "result": "trig-star-eval-02.nq"
     },
     {
-      "@id": "../../turtle/eval#trig-star-bnode-1",
+      "@id": "trs:trig-star-bnode-1",
       "@type": "rdft:TestTrigEval",
       "action": "trig-star-eval-bnode-1.trig",
       "name": "TriG-star - blank node label",
       "result": "trig-star-eval-bnode-1.nq"
     },
     {
-      "@id": "../../turtle/eval#trig-star-bnode-2",
+      "@id": "trs:trig-star-bnode-2",
       "@type": "rdft:TestTrigEval",
       "action": "trig-star-eval-bnode-2.trig",
       "name": "TriG-star - blank node labels",
       "result": "trig-star-eval-bnode-2.nq"
     },
     {
-      "@id": "../../turtle/eval#trig-star-annotation-1",
+      "@id": "trs:trig-star-annotation-1",
       "@type": "rdft:TestTrigEval",
       "action": "trig-star-eval-annotation-1.trig",
       "name": "TriG-star - Annotation form",
       "result": "trig-star-eval-annotation-1.nq"
     },
     {
-      "@id": "../../turtle/eval#trig-star-annotation-2",
+      "@id": "trs:trig-star-annotation-2",
       "@type": "rdft:TestTrigEval",
       "action": "trig-star-eval-annotation-2.trig",
       "name": "TriG-star - Annotation example",
       "result": "trig-star-eval-annotation-2.nq"
     },
     {
-      "@id": "../../turtle/eval#trig-star-annotation-3",
+      "@id": "trs:trig-star-annotation-3",
       "@type": "rdft:TestTrigEval",
       "action": "trig-star-eval-annotation-3.trig",
       "name": "TriG-star - Annotation - predicate and object lists",
       "result": "trig-star-eval-annotation-3.nq"
     },
     {
-      "@id": "../../turtle/eval#trig-star-annotation-4",
+      "@id": "trs:trig-star-annotation-4",
       "@type": "rdft:TestTrigEval",
       "action": "trig-star-eval-annotation-4.trig",
       "name": "TriG-star - Annotation - nested",
       "result": "trig-star-eval-annotation-4.nq"
     },
     {
-      "@id": "../../turtle/eval#trig-star-annotation-5",
+      "@id": "trs:trig-star-annotation-5",
       "@type": "rdft:TestTrigEval",
       "action": "trig-star-eval-annotation-5.trig",
       "name": "TriG-star - Annotation object list",
       "result": "trig-star-eval-annotation-5.nq"
     },
     {
-      "@id": "../../turtle/eval#trig-star-embed-annotation-1",
+      "@id": "trs:trig-star-embed-annotation-1",
       "@type": "rdft:TestTrigEval",
       "action": "trig-star-eval-embed-annotation-1.trig",
       "name": "TriG-star - Annotation with embedding",
       "result": "trig-star-eval-embed-annotation-1.nq"
     },
     {
-      "@id": "../../turtle/eval#trig-star-embed-annotation-2",
+      "@id": "trs:trig-star-embed-annotation-2",
       "@type": "rdft:TestTrigEval",
       "action": "trig-star-eval-embed-annotation-2.trig",
       "name": "TriG-star - Annotation on triple with embedded subject",
       "result": "trig-star-eval-embed-annotation-2.nq"
     },
     {
-      "@id": "../../turtle/eval#trig-star-embed-annotation-3",
+      "@id": "trs:trig-star-embed-annotation-3",
       "@type": "rdft:TestTrigEval",
       "action": "trig-star-eval-embed-annotation-3.trig",
       "name": "TriG-star - Annotation on triple with embedded object",

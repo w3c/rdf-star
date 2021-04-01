@@ -5,9 +5,9 @@
 <link href='earl.ttl' rel='alternate' type='text/turtle' />
 <link href='earl.jsonld' rel='alternate' type='application/ld+json' />
 <link href='https://www.w3.org/StyleSheets/TR/base' rel='stylesheet' />
-<link href='ruby-turtle.ttl' rel='related' />
-<link href='ruby-sparql.ttl' rel='related' />
 <link href='eye-earl.ttl' rel='related' />
+<link href='ruby-sparql.ttl' rel='related' />
+<link href='ruby-turtle.ttl' rel='related' />
 <title>
 RDF-star Processor Conformance
 </title>
@@ -92,8 +92,8 @@ RDF-star Processor Conformance
 EARL results from the RDF-star Test Suite
 </h2>
 <h2 id='w3c-document-28-october-2015'>
-<time class='dt-published' datetime='2021-03-26' property='dc:issued'>
-26 March 2021
+<time class='dt-published' datetime='2021-03-31' property='dc:issued'>
+31 March 2021
 </time>
 </h2>
 <dl>
@@ -208,12 +208,24 @@ SPARQL-star Syntax Tests
 </li>
 <li class='tocline'>
 <span class='secno'>3.5</span>
+<a class='tocxref' href='#TriG-star-Evaluation-Tests'>
+TriG-star Evaluation Tests
+</a>
+</li>
+<li class='tocline'>
+<span class='secno'>3.6</span>
+<a class='tocxref' href='#TriG-star-Syntax-Tests'>
+TriG-star Syntax Tests
+</a>
+</li>
+<li class='tocline'>
+<span class='secno'>3.7</span>
 <a class='tocxref' href='#Turtle-star-Evaluation-Tests'>
 Turtle-star Evaluation Tests
 </a>
 </li>
 <li class='tocline'>
-<span class='secno'>3.6</span>
+<span class='secno'>3.8</span>
 <a class='tocxref' href='#Turtle-star-Syntax-Tests'>
 Turtle-star Syntax Tests
 </a>
@@ -1572,9 +1584,215 @@ Percentage passed out of 61 Tests
 </tr>
 </table>
 </section>
-<section id='Turtle-star-Evaluation-Tests'>
+<section id='TriG-star-Evaluation-Tests'>
 <h2>
 <span class='secno'>3.5</span>
+<span>TriG-star Evaluation Tests</span>
+</h2>
+<table class='report'>
+<tr>
+<th>
+Test
+</th>
+</tr>
+<tr class='normative'>
+<td>
+<a href='https://w3c.github.io/rdf-star/tests/trig/eval#trig-star-1'>Test trig-star-1: TriG-star - subject embedded triple</a>
+</td>
+</tr>
+<tr class='normative'>
+<td>
+<a href='https://w3c.github.io/rdf-star/tests/trig/eval#trig-star-2'>Test trig-star-2: TriG-star - object embedded triple</a>
+</td>
+</tr>
+<tr class='normative'>
+<td>
+<a href='https://w3c.github.io/rdf-star/tests/trig/eval#trig-star-bnode-1'>Test trig-star-bnode-1: TriG-star - blank node label</a>
+</td>
+</tr>
+<tr class='normative'>
+<td>
+<a href='https://w3c.github.io/rdf-star/tests/trig/eval#trig-star-bnode-2'>Test trig-star-bnode-2: TriG-star - blank node labels</a>
+</td>
+</tr>
+<tr class='normative'>
+<td>
+<a href='https://w3c.github.io/rdf-star/tests/trig/eval#trig-star-annotation-1'>Test trig-star-annotation-1: TriG-star - Annotation form</a>
+</td>
+</tr>
+<tr class='normative'>
+<td>
+<a href='https://w3c.github.io/rdf-star/tests/trig/eval#trig-star-annotation-2'>Test trig-star-annotation-2: TriG-star - Annotation example</a>
+</td>
+</tr>
+<tr class='normative'>
+<td>
+<a href='https://w3c.github.io/rdf-star/tests/trig/eval#trig-star-annotation-3'>Test trig-star-annotation-3: TriG-star - Annotation - predicate and object lists</a>
+</td>
+</tr>
+<tr class='normative'>
+<td>
+<a href='https://w3c.github.io/rdf-star/tests/trig/eval#trig-star-annotation-4'>Test trig-star-annotation-4: TriG-star - Annotation - nested</a>
+</td>
+</tr>
+<tr class='normative'>
+<td>
+<a href='https://w3c.github.io/rdf-star/tests/trig/eval#trig-star-annotation-5'>Test trig-star-annotation-5: TriG-star - Annotation object list</a>
+</td>
+</tr>
+<tr class='normative'>
+<td>
+<a href='https://w3c.github.io/rdf-star/tests/trig/eval#trig-star-embed-annotation-1'>Test trig-star-embed-annotation-1: TriG-star - Annotation with embedding</a>
+</td>
+</tr>
+<tr class='normative'>
+<td>
+<a href='https://w3c.github.io/rdf-star/tests/trig/eval#trig-star-embed-annotation-2'>Test trig-star-embed-annotation-2: TriG-star - Annotation on triple with embedded subject</a>
+</td>
+</tr>
+<tr class='normative'>
+<td>
+<a href='https://w3c.github.io/rdf-star/tests/trig/eval#trig-star-embed-annotation-3'>Test trig-star-embed-annotation-3: TriG-star - Annotation on triple with embedded object</a>
+</td>
+</tr>
+<tr class='summary'>
+<td>
+Percentage passed out of 12 Tests
+</td>
+</tr>
+</table>
+</section>
+<section id='TriG-star-Syntax-Tests'>
+<h2>
+<span class='secno'>3.6</span>
+<span>TriG-star Syntax Tests</span>
+</h2>
+<table class='report'>
+<tr>
+<th>
+Test
+</th>
+</tr>
+<tr class='normative'>
+<td>
+<a href='https://w3c.github.io/rdf-star/tests/trig/syntax#trig-star-1'>Test trig-star-1: TriG-star - subject embedded triple</a>
+</td>
+</tr>
+<tr class='normative'>
+<td>
+<a href='https://w3c.github.io/rdf-star/tests/trig/syntax#trig-star-2'>Test trig-star-2: TriG-star - object embedded triple</a>
+</td>
+</tr>
+<tr class='normative'>
+<td>
+<a href='https://w3c.github.io/rdf-star/tests/trig/syntax#trig-star-inside-1'>Test trig-star-inside-1: TriG-star - embedded triple inside blankNodePropertyList</a>
+</td>
+</tr>
+<tr class='normative'>
+<td>
+<a href='https://w3c.github.io/rdf-star/tests/trig/syntax#trig-star-inside-2'>Test trig-star-inside-2: TriG-star - embedded triple inside collection</a>
+</td>
+</tr>
+<tr class='normative'>
+<td>
+<a href='https://w3c.github.io/rdf-star/tests/trig/syntax#trig-star-nested-1'>Test trig-star-nested-1: TriG-star - nested embedded triple, subject position</a>
+</td>
+</tr>
+<tr class='normative'>
+<td>
+<a href='https://w3c.github.io/rdf-star/tests/trig/syntax#trig-star-nested-2'>Test trig-star-nested-2: TriG-star - nested embedded triple, object position</a>
+</td>
+</tr>
+<tr class='normative'>
+<td>
+<a href='https://w3c.github.io/rdf-star/tests/trig/syntax#trig-star-compound-1'>Test trig-star-compound-1: TriG-star - compound forms</a>
+</td>
+</tr>
+<tr class='normative'>
+<td>
+<a href='https://w3c.github.io/rdf-star/tests/trig/syntax#trig-star-bnode-1'>Test trig-star-bnode-1: TriG-star - blank node subject</a>
+</td>
+</tr>
+<tr class='normative'>
+<td>
+<a href='https://w3c.github.io/rdf-star/tests/trig/syntax#trig-star-bnode-2'>Test trig-star-bnode-2: TriG-star - blank node object</a>
+</td>
+</tr>
+<tr class='normative'>
+<td>
+<a href='https://w3c.github.io/rdf-star/tests/trig/syntax#trig-star-bnode-3'>Test trig-star-bnode-3: TriG-star - blank node</a>
+</td>
+</tr>
+<tr class='normative'>
+<td>
+<a href='https://w3c.github.io/rdf-star/tests/trig/syntax#trig-star-bad-1'>Test trig-star-bad-1: TriG-star - bad - embedded triple as predicate</a>
+</td>
+</tr>
+<tr class='normative'>
+<td>
+<a href='https://w3c.github.io/rdf-star/tests/trig/syntax#trig-star-bad-2'>Test trig-star-bad-2: TriG-star - bad - embedded triple outside triple</a>
+</td>
+</tr>
+<tr class='normative'>
+<td>
+<a href='https://w3c.github.io/rdf-star/tests/trig/syntax#trig-star-bad-3'>Test trig-star-bad-3: TriG-star - bad - collection list in embedded triple</a>
+</td>
+</tr>
+<tr class='normative'>
+<td>
+<a href='https://w3c.github.io/rdf-star/tests/trig/syntax#trig-star-bad-4'>Test trig-star-bad-4: TriG-star - bad - literal in subject position of embedded triple</a>
+</td>
+</tr>
+<tr class='normative'>
+<td>
+<a href='https://w3c.github.io/rdf-star/tests/trig/syntax#trig-star-bad-5'>Test trig-star-bad-5: TriG-star - bad - blank node  as predicate in embedded triple</a>
+</td>
+</tr>
+<tr class='normative'>
+<td>
+<a href='https://w3c.github.io/rdf-star/tests/trig/syntax#trig-star-bad-6'>Test trig-star-bad-6: TriG-star - bad - compound blank node expression</a>
+</td>
+</tr>
+<tr class='normative'>
+<td>
+<a href='https://w3c.github.io/rdf-star/tests/trig/syntax#trig-star-bad-7'>Test trig-star-bad-7: TriG-star - bad - incomplete embedded triple</a>
+</td>
+</tr>
+<tr class='normative'>
+<td>
+<a href='https://w3c.github.io/rdf-star/tests/trig/syntax#trig-star-bad-8'>Test trig-star-bad-8: TriG-star - bad - over-long embedded triple</a>
+</td>
+</tr>
+<tr class='normative'>
+<td>
+<a href='https://w3c.github.io/rdf-star/tests/trig/syntax#trig-star-ann-1'>Test trig-star-ann-1: TriG-star - Annotation form</a>
+</td>
+</tr>
+<tr class='normative'>
+<td>
+<a href='https://w3c.github.io/rdf-star/tests/trig/syntax#trig-star-ann-2'>Test trig-star-ann-2: TriG-star - Annotation example</a>
+</td>
+</tr>
+<tr class='normative'>
+<td>
+<a href='https://w3c.github.io/rdf-star/tests/trig/syntax#trig-star-bad-ann-1'>Test trig-star-bad-ann-1: TriG-star - bad - empty annotation</a>
+</td>
+</tr>
+<tr class='normative'>
+<td>
+<a href='https://w3c.github.io/rdf-star/tests/trig/syntax#trig-star-bad-ann-2'>Test trig-star-bad-ann-2: TriG-star - bad - triple as annotation</a>
+</td>
+</tr>
+<tr class='summary'>
+<td>
+Percentage passed out of 22 Tests
+</td>
+</tr>
+</table>
+</section>
+<section id='Turtle-star-Evaluation-Tests'>
+<h2>
+<span class='secno'>3.7</span>
 <span>Turtle-star Evaluation Tests</span>
 </h2>
 <table class='report'>
@@ -1744,7 +1962,7 @@ Percentage passed out of 12 Tests
 </section>
 <section id='Turtle-star-Syntax-Tests'>
 <h2>
-<span class='secno'>3.6</span>
+<span class='secno'>3.8</span>
 <span>Turtle-star Syntax Tests</span>
 </h2>
 <table class='report'>
@@ -2058,7 +2276,7 @@ https://josd.github.io/eye/index.html
 <a href='https://josd.github.io/'>
 <span property='foaf:name'>Jos De Roo</span>
 </a>
-<a href-@id='https://josd.github.io/' href-@type='[&quot;foaf:Person&quot;, &quot;Assertor&quot;]' href-foaf:homepage='https://josd.github.io/' href-foaf:name='Jos De Roo' property='foaf:homepage'>
+<a href-@id='https://josd.github.io/' href-@type='[&quot;Assertor&quot;, &quot;foaf:Person&quot;]' href-foaf:homepage='https://josd.github.io/' href-foaf:name='Jos De Roo' property='foaf:homepage'>
 https://josd.github.io/
 </a>
 </div>
@@ -2234,17 +2452,17 @@ Individual test results used to construct this report are available here:
 </p>
 <ul>
 <li>
-<a class='source' href='ruby-turtle.ttl'>ruby-turtle.ttl</a>
+<a class='source' href='eye-earl.ttl'>eye-earl.ttl</a>
 </li>
 <li>
 <a class='source' href='ruby-sparql.ttl'>ruby-sparql.ttl</a>
 </li>
 <li>
-<a class='source' href='eye-earl.ttl'>eye-earl.ttl</a>
+<a class='source' href='ruby-turtle.ttl'>ruby-turtle.ttl</a>
 </li>
 </ul>
 </section>
-<section class='appendix' id='report-generation-software' property='earl:generatedBy' resource='https://rubygems.org/gems/earl-report' typeof='Software doap:Project'>
+<section class='appendix' id='report-generation-software' property='earl:generatedBy' resource='https://rubygems.org/gems/earl-report' typeof='doap:Project Software'>
 <h2>
 <span class='secno'>C.</span>
 Report Generation Software

@@ -13,6 +13,8 @@ local_ctx = JSON.parse(File.read("#{man_dir}/manifest-context.jsonld"))
   semantics
   sparql/syntax
   sparql/eval
+  trig/syntax
+  trig/eval
   turtle/syntax
   turtle/eval
 }.each do |path|

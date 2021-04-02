@@ -695,6 +695,15 @@ SELECT ?claimer WHERE {
         }
       -->
       </pre>
+
+      The resulting RDF-star dataset consists of
+      an empty default graph, and a graph named `http://example.org/#G`
+      with a single RDF-star triple:</p>
+
+      <ol>
+        <li>((|b|, `http://example.org/#name`, `"Alice"`), `http://example.org/#statedBy`, `http://example.org/#bob/`),
+          where |b| is a blank node</li>
+      </ol>
     </section>
   </section>
 

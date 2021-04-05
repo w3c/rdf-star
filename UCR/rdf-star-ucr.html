@@ -381,7 +381,7 @@ and
         </ul>
       </section>
 
-       <section>
+      <section>
         <h4>Uncertainty representation</h4>
         <p><a href="https://github.com/w3c/rdf-star/issues/132">Submitted Use Case</a></p>
         <p>As a Ph.D. student working on uncertainty,<br/>
@@ -391,18 +391,69 @@ and
         </p>
         <p>
           See <a href="https://ns.inria.fr/munc/">mUnc (Metadata with UNCertainty) OWL
-          ontology </a>for describing uncertainty information.
+            ontology </a>for describing uncertainty information.
         </p>
-       </section>
+      </section>
 
-    <section>
+      <section>
+        <h4>Compact Serialization of OWL Graphs</h4>
+        <p><a href="https://github.com/w3c/rdf-star/issues/148">Submitted Use Case</a></p>
+        <p>
+          As an OWL ontology provider who is responsible for providing multiple large
+          biomedical ontologies, many including rich graph structures (partonomies,
+          lineage hierarchies),
+        </p>
+        <p>
+          I want a compact OWL serialization that avoids generating 4 triples for each
+          existential axiom, whilst retaining semantic rigor.
+        </p>
+        <p>
+          So that users of my ontologies can naturally traverse ontology graphs using
+          simple triples, and optionally look up the OWL semantics of each triple.
+        </p>
+        <p>
+          This use case is outlined in more detail in my blog post: 
+          <a href="https://douroucouli.wordpress.com/2019/07/11/proposed-strategy-for-semantics-in-rdf-and-property-graphs"/
+             >Proposed strategy for semantics in RDF* and Property Graphs</a>.
+        </p>
+        <p>
+          The core idea is that instead of 4 triples for a TBox graph edge, as we have
+          now:
+        </p>
+<pre>Finger owl:subClassOf [
+  a owl:Restriction ;
+  owl:onProperty :part_of
+  owl:someValuesFrom :Hand
+]
+</pre>
+        <p>
+          we would have a triple linking finger to hand, with the OWL semantics of the
+          triple specified as triples on the core triple:
+        </p>
+<pre>
+<<:finger :part-of :hand>> owlstar:hasInterpretation
+owlstar:SubClassOfSomeValuesFrom .
+</pre>
+        <p>
+          The proposed vocabulary is here <a href="https://github.com/cmungall/owlstar">https://github.com/cmungall/owlstar</a>.
+        </p>
+        <p>
+          Note I have phrased this use case as a provider of biomedical ontologies (I
+          provide some of the major ones, including GO, Uberon, Mondo, and am part of the
+          Open Bio Ontologies team), but I believe this would be broadly useful. In
+          particular I think this would be useful in Wikidata, which already provides
+          existential axioms as simple triples.
+        </p>
+      </section>
+      
+      <section>
         <h2>Previous Material</h2>
-      <p>
-        From <a 
-href="https://github.com/w3c/EasierRDF/blob/master/RDFstar/RDFStarUCandRequirements.html">
-          EasierRDF-RDFstar/RDFStarUCandRequirements.html
-        </a>.
-      </p>
+        <p>
+          From <a 
+                 href="https://github.com/w3c/EasierRDF/blob/master/RDFstar/RDFStarUCandRequirements.html">
+            EasierRDF-RDFstar/RDFStarUCandRequirements.html
+          </a>.
+        </p>
 
       <section id="annotationsNotInGraph">
         <h3>Annotations of triples that are not in the graph</h3>

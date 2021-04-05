@@ -422,8 +422,7 @@ and
         </p>
 <pre>Finger owl:subClassOf [
   a owl:Restriction ;
-  owl:onProperty :part_of
-  owl:someValuesFrom :Hand
+  owl:onProperty :part_of owl:someValuesFrom :Hand
 ]
 </pre>
         <p>
@@ -431,8 +430,7 @@ and
           triple specified as triples on the core triple:
         </p>
 <pre>
-<<:finger :part-of :hand>> owlstar:hasInterpretation
-owlstar:SubClassOfSomeValuesFrom .
+<<:finger :part-of :hand>> owlstar:hasInterpretation owlstar:SubClassOfSomeValuesFrom .
 </pre>
         <p>
           The proposed vocabulary is here <a href="https://github.com/cmungall/owlstar">https://github.com/cmungall/owlstar</a>.

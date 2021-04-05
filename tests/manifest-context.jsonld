@@ -49,7 +49,7 @@
         "comment": "rdfs:comment",
         "seeAlso": {
             "@id": "rdfs:seeAlso",
-            "@type": "@id"
+            "@type": "@vocab"
         },
         "approval": {
             "@id": "test:approval",

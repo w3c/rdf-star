@@ -668,7 +668,7 @@ SELECT ?claimer WHERE {
       are used to set either the |curSubject| or |curObject|,
       and do not directly add the associated <a>embedded triple</a> to |curGraph|.
       Subsequent productions which use either |curSubject| or |curObject|
-      may result in adding triples |curGraph|.</p>
+      may result in adding triples to |curGraph|.</p>
 
     <p>A conforming TriG-star parser MUST parse any
       valid <strong>TriG document</strong> and any
@@ -678,7 +678,7 @@ SELECT ?claimer WHERE {
     <section id="trig-star-discussion" class="informative">
       <h3>Discussion</h3>
 
-      <p>TriG-star allows the same expressivity of Turtle-star
+      <p>TriG-star allows the same expressivity as Turtle-star
         with the addition of allowing <a>embedded triples</a>
         and <a href="#grammar-production-annotation">annotations</a>
         within named graphs.</p>

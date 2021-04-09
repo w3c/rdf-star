@@ -316,10 +316,10 @@ SELECT ?claimer WHERE {
 
   <p>This section defines the following concrete syntaxes:</p>
   <ul>
-    <li><a href="#n-triples-star" class="sectionRef"></a></li>
-    <li><a href="#n-quads-star" class="sectionRef"></a></li>
     <li><a href="#turtle-star" class="sectionRef"></a></li>
     <li><a href="#trig-star" class="sectionRef"></a></li>
+    <li><a href="#n-triples-star" class="sectionRef"></a></li>
+    <li><a href="#n-quads-star" class="sectionRef"></a></li>
     <li><a href="#other-concrete-syntaxes" class="sectionRef"></a></li>
   </ul>
 
@@ -328,106 +328,6 @@ SELECT ?claimer WHERE {
     <a href="#sparql-star-grammar" class="sectionRef"></a>
     and the changes for the result set formats in
     <a href="#query-result-formats" class="sectionRef"></a>.</p>
-  <section id="n-triples-star">
-    <h2>N-Triples-star</h2>
-
-    <p>This section describes N-Triples-star,
-      a minimal extension of the N-Triples format [[N-TRIPLES]]
-      allowing a <a>subject</a> or an <a>object</a>
-      of an <a>RDF-star triple</a> to be an <a>embedded triple</a>.</p>
-
-    <section id="n-triples-star-grammar">
-      <h2>Grammar</h2>
-      <p>N-Triples-star is defined to follow the same grammar as
-        the <a data-cite="N-TRIPLES#n-triples-grammar">N-Triples Grammar</a>,
-        except for the <a data-cite="XML#sec-notation"><abbr title="Extended Backus-Naur Form">EBNF</abbr> productions</a> specified below,
-        which replace the productions having the same number
-        (if any) in the original grammar.</p>
-
-      <table class="n-triples-star-ebnf">
-        <tbody id="grammar-productions" class="ebnf">
-          <tr id="grammar-production-nt-subject">
-            <td>[3]</td>
-            <td>`subject`</td>
-            <td>::=</td>
-            <td><a data-cite="N-TRIPLES#grammar-production-IRIREF">IRIREF</a> <code>|</code> <a data-cite="N-TRIPLES#grammar-production-BLANK_NODE_LABEL">BLANK_NODE_LABEL</a> <code>|</code> <a href="#grammar-production-nt-embTriple">embTriple</a></td>
-          </tr>
-          <tr id="grammar-production-nt-object">
-            <td>[5]</td>
-            <td>`object`</td>
-            <td>::=</td>
-            <td><a data-cite="N-TRIPLES#grammar-production-IRIREF">IRIREF</a> <code>|</code> <a data-cite="N-TRIPLES#grammar-production-BLANK_NODE_LABEL">BLANK_NODE_LABEL</a> <code>|</code> <a data-cite="N-TRIPLES#grammar-production-literal">literal</a> <code>|</code> <a href="#grammar-production-nt-embTriple">embTriple</a></td>
-          </tr>
-          <tr id="grammar-production-nt-embTriple">
-            <td>[7t]</td>
-            <td>`embTriple`</td>
-            <td>::=</td>
-            <td>&quot;&lt;&lt;&quot; <a href="#grammar-production-nt-subject">subject</a> <a data-cite="N-TRIPLES#grammar-production-predicate">predicate</a> <a href="#grammar-production-nt-object">object</a> &quot;&gt;&gt;&quot;</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <p class="note">The changes are
-        <a href="#grammar-production-nt-subject">`subject`</a>
-        and <a href="#grammar-production-nt-object">`object`</a> productions
-        have been extended to accept <a>embedded triples</a>,
-        which are described by the new production
-        <a href="#grammar-production-nt-embTriple">7</a>.</p>
-    </section>
-
-    <section id="n-triples-star-parsing">
-      <h2>Parsing</h2>
-      <p>In contrast to [[N-TRIPLES]],
-        N-Triples-star allows recursion on the
-        <a href="#grammar-production-nt-subject">`subject`</a>
-        and <a href="#grammar-production-nt-object">`object`</a> productions.</p>
-
-      <p>An <dfn>N-Triples-star document</dfn> defines an <a>RDF-star graph</a>
-        composed of a set of <a>RDF-star triples</a>.
-        The <a href="N-TRIPLES#grammar-production-triple">`triple`</a> production
-        produces an <a>RDF-star triple</a>
-        composed of a <a href="#grammar-production-nt-subject">`subject`</a>,
-        <a data-cite="N-TRIPLES#grammar-production-predicate">`predicate`</a>,
-        and <a href="#grammar-production-nt-object">`object`</a>.</p>
-
-      <p>In addition to the <a data-cite="N-TRIPLES#sec-parsing-terms">Term Constructors</a> defined in [[N-TRIPLES]],
-        an additional constructor is defined for <a href="#grammar-production-nt-embTriple">`embTriple`</a>
-        of type <a>RDF-star triple</a>
-        defined by the terms constructed
-        for <a href="#grammar-production-nt-subject">`subject`</a>,
-        <a data-cite="N-TRIPLES#grammar-production-predicate">`predicate`</a>,
-        and <a href="#grammar-production-nt-object">`object`</a>.</p>
-
-    <p>All other productions MUST be handled as specified by
-      <a data-cite="N-TRIPLES#sec-parsing-terms">Section 8.1 of the N-Triples specification</a> [[N-TRIPLES]],
-      while still applying the changes above recursively.</p>
-    </section>
-  </section>
-
-  <section id="n-quads-star">
-    <h2>N-Quads-star</h2>
-
-    <p>The [[N-QUADS]] format is extended to describe the
-      N-Quads-star format using the same production updates described in the <a href="#n-triples-star-grammar">N-Triples-star Grammar</a>.</p>
-
-    <p class="note">As RDF-star describes <a>embedded triples</a> and not embedded quads,
-      the <a data-cite="N-QUADS#grammar-production-graphLabel">`graphLabel`</a>
-      component of an N-Quads <a data-cite="N-QUADS#grammar-production-statement">`statement`</a>
-      does not apply to the <a href="#grammar-production-nt-embTriple">`embTriple`</a> component.</p>
-
-    <p>An <dfn>N-Quads-star document</dfn> defines an <a>RDF-star dataset</a>,
-      composed of a single <a>default graph</a>
-      and zero or more <a>named graphs</a>,
-      all of which are <a>RDF-star graphs</a>.</p>
-
-    <p>A conforming N-Quads-star parser MUST parse any valid
-      <strong>N-Quads document</strong> and additionally parse the 
-      <a href="#grammar-production-nt-subject"><code>subject</code></a> and 
-      <a href="#grammar-production-nt-object"><code>object</code></a> productions
-      from N-Triples-star to generate <a>RDF-star triples</a> which are
-      added to either the <a>default graph</a> or associated
-      <a>named graph</a>, as appropriate.</p>
-  </section>
 
   <section id="turtle-star">
     <h2>Turtle-star</h2>
@@ -712,6 +612,107 @@ SELECT ?claimer WHERE {
           where |b| is the same blank node</li>
       </ol>
     </section>
+  </section>
+
+  <section id="n-triples-star">
+    <h2>N-Triples-star</h2>
+
+    <p>This section describes N-Triples-star,
+      a minimal extension of the N-Triples format [[N-TRIPLES]]
+      allowing a <a>subject</a> or an <a>object</a>
+      of an <a>RDF-star triple</a> to be an <a>embedded triple</a>.</p>
+
+    <section id="n-triples-star-grammar">
+      <h2>Grammar</h2>
+      <p>N-Triples-star is defined to follow the same grammar as
+        the <a data-cite="N-TRIPLES#n-triples-grammar">N-Triples Grammar</a>,
+        except for the <a data-cite="XML#sec-notation"><abbr title="Extended Backus-Naur Form">EBNF</abbr> productions</a> specified below,
+        which replace the productions having the same number
+        (if any) in the original grammar.</p>
+
+      <table class="n-triples-star-ebnf">
+        <tbody id="grammar-productions" class="ebnf">
+          <tr id="grammar-production-nt-subject">
+            <td>[3]</td>
+            <td>`subject`</td>
+            <td>::=</td>
+            <td><a data-cite="N-TRIPLES#grammar-production-IRIREF">IRIREF</a> <code>|</code> <a data-cite="N-TRIPLES#grammar-production-BLANK_NODE_LABEL">BLANK_NODE_LABEL</a> <code>|</code> <a href="#grammar-production-nt-embTriple">embTriple</a></td>
+          </tr>
+          <tr id="grammar-production-nt-object">
+            <td>[5]</td>
+            <td>`object`</td>
+            <td>::=</td>
+            <td><a data-cite="N-TRIPLES#grammar-production-IRIREF">IRIREF</a> <code>|</code> <a data-cite="N-TRIPLES#grammar-production-BLANK_NODE_LABEL">BLANK_NODE_LABEL</a> <code>|</code> <a data-cite="N-TRIPLES#grammar-production-literal">literal</a> <code>|</code> <a href="#grammar-production-nt-embTriple">embTriple</a></td>
+          </tr>
+          <tr id="grammar-production-nt-embTriple">
+            <td>[7t]</td>
+            <td>`embTriple`</td>
+            <td>::=</td>
+            <td>&quot;&lt;&lt;&quot; <a href="#grammar-production-nt-subject">subject</a> <a data-cite="N-TRIPLES#grammar-production-predicate">predicate</a> <a href="#grammar-production-nt-object">object</a> &quot;&gt;&gt;&quot;</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="note">The changes are
+        <a href="#grammar-production-nt-subject">`subject`</a>
+        and <a href="#grammar-production-nt-object">`object`</a> productions
+        have been extended to accept <a>embedded triples</a>,
+        which are described by the new production
+        <a href="#grammar-production-nt-embTriple">7</a>.</p>
+    </section>
+
+    <section id="n-triples-star-parsing">
+      <h2>Parsing</h2>
+      <p>In contrast to [[N-TRIPLES]],
+        N-Triples-star allows recursion on the
+        <a href="#grammar-production-nt-subject">`subject`</a>
+        and <a href="#grammar-production-nt-object">`object`</a> productions.</p>
+
+      <p>An <dfn>N-Triples-star document</dfn> defines an <a>RDF-star graph</a>
+        composed of a set of <a>RDF-star triples</a>.
+        The <a href="N-TRIPLES#grammar-production-triple">`triple`</a> production
+        produces an <a>RDF-star triple</a>
+        composed of a <a href="#grammar-production-nt-subject">`subject`</a>,
+        <a data-cite="N-TRIPLES#grammar-production-predicate">`predicate`</a>,
+        and <a href="#grammar-production-nt-object">`object`</a>.</p>
+
+      <p>In addition to the <a data-cite="N-TRIPLES#sec-parsing-terms">Term Constructors</a> defined in [[N-TRIPLES]],
+        an additional constructor is defined for <a href="#grammar-production-nt-embTriple">`embTriple`</a>
+        of type <a>RDF-star triple</a>
+        defined by the terms constructed
+        for <a href="#grammar-production-nt-subject">`subject`</a>,
+        <a data-cite="N-TRIPLES#grammar-production-predicate">`predicate`</a>,
+        and <a href="#grammar-production-nt-object">`object`</a>.</p>
+
+    <p>All other productions MUST be handled as specified by
+      <a data-cite="N-TRIPLES#sec-parsing-terms">Section 8.1 of the N-Triples specification</a> [[N-TRIPLES]],
+      while still applying the changes above recursively.</p>
+    </section>
+  </section>
+
+  <section id="n-quads-star">
+    <h2>N-Quads-star</h2>
+
+    <p>The [[N-QUADS]] format is extended to describe the
+      N-Quads-star format using the same production updates described in the <a href="#n-triples-star-grammar">N-Triples-star Grammar</a>.</p>
+
+    <p class="note">As RDF-star describes <a>embedded triples</a> and not embedded quads,
+      the <a data-cite="N-QUADS#grammar-production-graphLabel">`graphLabel`</a>
+      component of an N-Quads <a data-cite="N-QUADS#grammar-production-statement">`statement`</a>
+      does not apply to the <a href="#grammar-production-nt-embTriple">`embTriple`</a> component.</p>
+
+    <p>An <dfn>N-Quads-star document</dfn> defines an <a>RDF-star dataset</a>,
+      composed of a single <a>default graph</a>
+      and zero or more <a>named graphs</a>,
+      all of which are <a>RDF-star graphs</a>.</p>
+
+    <p>A conforming N-Quads-star parser MUST parse any valid
+      <strong>N-Quads document</strong> and additionally parse the 
+      <a href="#grammar-production-nt-subject"><code>subject</code></a> and 
+      <a href="#grammar-production-nt-object"><code>object</code></a> productions
+      from N-Triples-star to generate <a>RDF-star triples</a> which are
+      added to either the <a>default graph</a> or associated
+      <a>named graph</a>, as appropriate.</p>
   </section>
 
   <section id="other-concrete-syntaxes" class="informative">

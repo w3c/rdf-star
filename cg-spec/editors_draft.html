@@ -170,7 +170,7 @@
 
 <p>The RDF data model lets you state facts in three-part subject-predicate-object statements known as triples. For example, with a single RDF triple you can say that employee38 has a familyName of "Smith". A triple's predicate is a property specified with an IRI (an Internationalized version of a URI), identifying that property in a globally unambiguous way. A triple's subject and object can each be an IRI referencing any entity, and the object can also be a literal value such as "Smith" or data of other types such as dates, numbers, or Boolean values.</p>
 
-<p>Sometimes, we want the subject or object of a triple to refer to another triple. For example, in the statement "employee22 claims that employee38 has a jobTitle of 'Assistant Designer'", the object of the triple that has employee22 as its subject references the statement "employee38 has a jobTitle of 'Assistant Designer'". This use of a triple as the subject or object resource of another triple so that we can say things about that triple is known as <a href='https://www.w3.org/TR/rdf11-mt/#reification'>reification</a>.
+<p>Sometimes, we want the subject or object of a triple to refer to another triple. For example, the statement "according to employee22, employee38 has a jobTitle of 'Assistant Designer'" can be modeled as a triple with "according to" as its predicate, employee22 as its object, and another triple as its subject, namely the triple "employee38 has a jobTitle of 'Assistant Designer'". This use of a triple as the subject or object resource of another triple so that we can say things about that triple is known as <a href='https://www.w3.org/TR/rdf11-mt/#reification'>reification</a>.
 The concept of reification has always been part of RDF, but expressing it in RDF concrete syntaxes such as Turtle, N-Triples, and RDF/XML, as well as processing or querying it with SPARQL, has been verbose and cumbersome.</p>
 
 <p>This specification describes RDF-star, an extension of RDF's conceptual data model and concrete syntaxes, providing a more compact form of reification. This model and syntaxes enable the creation of concise triples that reference other triples as subject and object resources.
@@ -184,13 +184,36 @@ Triples that include a triple as a subject or an object are known as RDF-star tr
 @prefix :    <http://www.example.org/> .
 
 :employee38 :familyName "Smith" .
-:employee22 :claims << :employee38 :jobTitle "Assistant Designer" >> .
+<< :employee38 :jobTitle "Assistant Designer" >> :accordingTo :employee22 .
         -->
       </pre>
 
 <p>After declaring a prefix so that IRIs can be abbreviated, the first triple in this example asserts that employee38 has a familyName of "Smith". Note that this dataset does not assert that employee38 has a jobTitle of "Assistant Designer"; it says that employee22 has made that claim. In other words, the triple "employee38 has a jobTitle of 'Assistant Designer'" is not what we call an asserted triple, like "employee38 has a familyName of 'Smith'" above; rather, it is known as an <em>embedded triple</em>.</p>
 
-<p>If we added the triple `:employee38 :jobTitle "Assistant Designer"` below the triple about employee22's claim in the example above, then this triple about employee38's jobTitle would be both an embedded triple and an asserted one.</p>
+<p>If we added the triple `:employee38 :jobTitle "Assistant Designer"` below the triple about employee22's claim in the example above, then this triple about employee38's jobTitle would be both an embedded triple and an asserted one.
+This pattern is quite common, so Turtle-star offers a dedicated syntax for it, called the annotation syntax, illustrated in <a href="#example-annotation"></a> below. Note that this construct is purely syntactic sugar, as it can be expanded using only the double angle brackets.</p>
+
+<pre data-transform="updateExample"
+     data-content-type="text/x-turtle-star"
+     class="nohighlight example"
+     id="example-annotation"
+>
+  <!--
+  @prefix :    <http://www.example.org/> .
+
+  :employee38
+      :familyName "Smith" ;
+      :jobTitle "Assistant Designer" {| :accordingTo :employee22 |} .
+
+  # this is equivalent to:
+  #
+  # :employee38
+  #     :familyName "Smith" ;
+  #     :jobTitle "Assistant Designer" .
+  # << :employee38 :jobTitle "Assistant Designer" >> :accordingTo :employee22 .
+  -->
+</pre>
+
 
 <p>This specification also describes an extension to the SPARQL Protocol and Query Language known as SPARQL-star for the querying of RDF-star triples. For example, the following SPARQL-star query asks "who has made any claims about employee38?"</p>
 

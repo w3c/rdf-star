@@ -377,7 +377,7 @@
                 - subject['developer'].each do |dev|
                   %dd{rel: "doap:developer"}
                     %div
-                      - if dev.has_key?('@id')
+                      - if dev.has_key?('@id') && dev['@id'].to_s.start_with?('_:')
                         %a{href: dev['@id']}
                           %span{property: "foaf:name"}<
                             ~ CGI.escapeHTML dev['foaf:name'].to_s

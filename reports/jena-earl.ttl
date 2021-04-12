@@ -2053,7 +2053,7 @@ PREFIX dc:     <http://purl.org/dc/elements/1.1/>
         doap:release      [ rdf:type       doap:Version ;
                             doap:created   "2021-04-01+01:00"^^xsd:date ;
                             doap:homepage  <http://jena.apache.org/> ;
-                            doap:revision  "4.0.0-SNAPSHOT"
+                            doap:revision  "4.0.0"
                           ] ;
         doap:shortdesc    "RDF and SPARQL triple store"@en .
 

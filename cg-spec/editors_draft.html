@@ -174,7 +174,7 @@
 The concept of reification has always been part of RDF, but expressing it in RDF concrete syntaxes such as Turtle, N-Triples, and RDF/XML, as well as processing or querying it with SPARQL, has been verbose and cumbersome.</p>
 
 <p>This specification describes RDF-star, an extension of RDF's conceptual data model and concrete syntaxes, providing a more compact form of reification. This model and syntaxes enable the creation of concise triples that reference other triples as subject and object resources.
-Triples that include a triple as a subject or an object are known as RDF-star triples. The following dataset shows the example RDF-star triples from above using the Turtle-star syntax, which uses double angle brackets to enclose a triple serving as a subject or object resource:</p>
+Triples that include a triple as a subject or an object are known as <a>RDF-star triples</a>. The following dataset shows the example RDF-star triples from above using the Turtle-star syntax, which uses double angle brackets to enclose a triple serving as a subject or object resource:</p>
 
       <pre data-transform="updateExample"
         data-content-type="text/x-turtle-star"
@@ -188,7 +188,7 @@ Triples that include a triple as a subject or an object are known as RDF-star tr
         -->
       </pre>
 
-<p>After declaring a prefix so that IRIs can be abbreviated, the first triple in this example asserts that employee38 has a familyName of "Smith". Note that this dataset does not assert that employee38 has a jobTitle of "Assistant Designer"; it says that employee22 has made that claim. In other words, the triple "employee38 has a jobTitle of 'Assistant Designer'" is not what we call an asserted triple, like "employee38 has a familyName of 'Smith'" above; rather, it is known as an <em>embedded triple</em>.</p>
+<p>After declaring a prefix so that IRIs can be abbreviated, the first triple in this example asserts that employee38 has a familyName of "Smith". Note that this dataset does not assert that employee38 has a jobTitle of "Assistant Designer"; it says that employee22 has made that claim. In other words, the triple "employee38 has a jobTitle of 'Assistant Designer'" is not what we call an <a>asserted triple</a>, like "employee38 has a familyName of 'Smith'" above; rather, it is known as an <a>embedded triple</a>.</p>
 
 <p>If we added the triple `:employee38 :jobTitle "Assistant Designer"` below the triple about employee22's claim in the example above, then this triple about employee38's jobTitle would be both an embedded triple and an asserted one.
 This pattern is quite common, so Turtle-star offers a dedicated syntax for it, called the annotation syntax, illustrated in <a href="#example-annotation"></a> below. Note that this construct is purely syntactic sugar, as it can be expanded using only the double angle brackets.</p>

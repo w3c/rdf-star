@@ -4,13 +4,13 @@
 <!-- JS-based redirect to preserve URL fragment -->
 <script>
     let hash = window.location.hash;
-    let url = new URL("2021-02-18.html" + hash, window.location);
+    let url = new URL("2021-04-13.html" + hash, window.location);
     window.location = url.href;
 </script>
 <!-- HTTP-equiv redirect in case JS is disabled -- this will lose the URL fragment -->
-<meta http-equiv="Refresh" content="3; url=rdf-star-cg-spec.html" />
+<meta http-equiv="Refresh" content="3; url=2021-04-13.html" />
 <!-- Explicit link in case both redirects above fail -->
 <p>The latest RDF-star CG-draft is
-    <a href="2021-02-18.html">2021-02-18.html</a>.
+    <a href="2021-04-13.html">2021-04-13.html</a>.
     You should be redirected soon.
 </p>

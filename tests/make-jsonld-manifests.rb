@@ -10,14 +10,12 @@ MAN_DIR = File.expand_path("")
 LOCAL_CTX = JSON.parse(File.read("#{MAN_DIR}/manifest-context.jsonld"))
 
 %w{
-  manifest-lang.ttl
-  manifest-sparql.ttl
-  nt/syntax/manifest.ttl
   semantics/manifest.ttl
-  sparql/syntax/manifest.ttl
-  sparql/eval/manifest.ttl
+  nt/syntax/manifest.ttl
   turtle/syntax/manifest.ttl
   turtle/eval/manifest.ttl
+  sparql/syntax/manifest.ttl
+  sparql/eval/manifest.ttl
 }.each do |src|
   dst = src.sub('.ttl', '.jsonld')
   file_src = File.expand_path(src)

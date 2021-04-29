@@ -1807,14 +1807,14 @@ SELECT ?claimer WHERE {
 
       <p>In SPARQL, queries can take four forms: <em>SELECT</em>, <em>CONSTRUCT</em>, <em>DESCRIBE</em>, and <em>ASK</em> - see <a data-cite="SPARQL11-QUERY#QueryForms">SPARQL1.1 Query, Section 16</a> [[SPARQL11-QUERY]]. The first of these returns a <a data-cite="SPARQL11-QUERY#defn_sparqlSolutionSequence">sequence of solution mappings</a> that contain variable bindings. The second and third both return an RDF graph, and the last returns a boolean value.
       </p>
-      <p>The result of the <em>ASK</em> query form is not changed by the introduction of RDF-star, and the result of the <em>CONSTRUCT</em> and <em>DESCRIBE</em> forms can be represented by <a href="#turtle-star">Turtle-star</a>. However, since the <em>SELECT</em> form deals with returning individual RDF terms, the specific serialization formats for representing such query results need to be extended so that the new <a>embedded</a> triple RDF term can be represented. In this section, we propose extensions for the two most common formats for this purpose: [[[sparql11-results-json]]], and [[[rdf-sparql-XMLres]]].</p>
+      <p>The result of the <em>ASK</em> query form is not changed by the introduction of RDF-star, and the result of the <em>CONSTRUCT</em> and <em>DESCRIBE</em> forms can be represented by <a href="#turtle-star">Turtle-star</a>. However, since the <em>SELECT</em> form deals with returning individual RDF terms, the specific serialization formats for representing such query results need to be extended so that the new <a>embedded</a> triple RDF term can be represented. In this section, we propose extensions for the two most common formats for this purpose: [[[SPARQL11-RESULTS-JSON]]], and [[[RDF-SPARQL-XMLRES]]].</p>
 
       <div class="issue" data-number="43"></div>
 
       <section>
         <h2>SPARQL-star Query Results JSON Format</h2>
         <p>
-        The result of a SPARQL SELECT query is serialized in JSON as defined in [[[sparql11-results-json]]], which specifies a JSON representation of variable bindings to RDF terms (see [<a data-cite="sparql11-results-json#select-results">sparql11-results-json, Section 3.2</a>]). To accommodate the new RDF term for <a>embedded</a> triples that RDF-star introduces, the table of RDF term JSON representations in  <a data-cite="sparql11-results-json#select-encode-terms">sparql11-results-json, Section 3.2.2</a> is extended with the following entry:
+        The result of a SPARQL SELECT query is serialized in JSON as defined in [[[SPARQL11-RESULTS-JSON]]], which specifies a JSON representation of variable bindings to RDF terms (see [<a data-cite="sparql11-results-json#select-results">sparql11-results-json, Section 3.2</a>]). To accommodate the new RDF term for <a>embedded</a> triples that RDF-star introduces, the table of RDF term JSON representations in  <a data-cite="sparql11-results-json#select-encode-terms">sparql11-results-json, Section 3.2.2</a> is extended with the following entry:
         </p>
         <dl>
             <dt>An <a>embedded</a> triple with subject RDF term `S`, predicate RDF term `P` and object RDF term `O`</dt>
@@ -1870,7 +1870,7 @@ SELECT ?claimer WHERE {
       <section>
         <h2>SPARQL-star Query Results XML Format</h2>
        <p>
-        The result of a SPARQL SELECT query is serialized in XML as defined in [[[rdf-sparql-XMLres]]]. This format proposes an XML representation of variable bindings to RDF terms.
+        The result of a SPARQL SELECT query is serialized in XML as defined in [[[RDF-SPARQL-XMLRES]]]. This format proposes an XML representation of variable bindings to RDF terms.
        </p>
        <p>To accommodate the new RDF term for <a>embedded</a> triples that RDF-star introduces, the list of RDF terms and their XML representations in [<a href="rdf-sparql-XMLres#results">rdf-sparql-XMLres, Section 2.3.1</a>] is extended as follows:
         </p>
@@ -2273,7 +2273,7 @@ SELECT ?claimer WHERE {
   <section class="appendix informative">
     <h2>IANA Considerations</h2>
 
-    <p>In <a href="#concrete-syntaxes"></a>, we have proposed extensions to four existing media types, namely `text/turtle` [[TURTLE]], `application/trig` [[TRIG]], `application/n-triples` [[N-TRIPLES]] and `application/n-quads` [[N-QUADS]]. While the <a href="https://www.w3.org/community/rdf-dev/">RDF-DEV Community Group</a> has no authority to officially update these media-types, we hope that a future working group with such authority will consider doing so, and include extensions proposed in this report.</p>
+    <p>In <a href="#concrete-syntaxes"></a>, we have proposed extensions to four existing media types, namely `text/turtle` [[TURTLE]], `application/trig` [[TRIG]], `application/n-triples` [[N-TRIPLES]] and `application/n-quads` [[N-QUADS]]. In <a href="#sparql-star-query-language"></a>, we have proposed extensions to three more existing media types, namely `application/sparql-query` [[SPARQL11-QUERY]], `application/sparql-results+json` [[SPARQL11-RESULTS-JSON]], and `application/sparql-result+xml` [[RDF-SPARQL-XMLRES]]. While the <a href="https://www.w3.org/community/rdf-dev/">RDF-DEV Community Group</a> has no authority to officially update these media-types, we hope that a future working group with such authority will consider doing so, and include extensions proposed in this report.</p>
 
     <p>In the meantime, implementers of RDF-star are faced with a dilemma: using the standard media-types as if they had been already updated (optimistic approach), or making it explicit that they are using an extension (pessimistic approach), for example by using a different temporary media-type from the unregistered `x.` tree [[RFC6838]].</p>
 

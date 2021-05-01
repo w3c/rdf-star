@@ -60,6 +60,8 @@ trs:manifest  rdf:type mf:Manifest ;
         trs:sparql-star-bad-8
         trs:sparql-star-bad-9
         trs:sparql-star-bad-10
+        trs:sparql-star-bad-11
+        trs:sparql-star-bad-12
 
         trs:sparql-star-bad-ann-1
         trs:sparql-star-bad-ann-2
@@ -249,6 +251,16 @@ trs:sparql-star-bad-9 rdf:type mf:NegativeSyntaxTest11 ;
 trs:sparql-star-bad-10 rdf:type mf:NegativeSyntaxTest11 ;
     mf:name      "SPARQL-star - bad - blank node in embedded triple in VALUES ";
     mf:action    <sparql-star-syntax-bad-10.rq> ;
+    .
+
+trs:sparql-star-bad-11 rdf:type mf:NegativeSyntaxTest11 ;
+    mf:name      "SPARQL-star - bad - blank node in embedded triple in FILTER";
+    mf:action    <sparql-star-syntax-bad-11.rq> ;
+    .
+
+trs:sparql-star-bad-12 rdf:type mf:NegativeSyntaxTest11 ;
+    mf:name      "SPARQL-star - bad - blank node in embedded triple in BIND";
+    mf:action    <sparql-star-syntax-bad-12.rq> ;
     .
 
 ## Annotation syntax

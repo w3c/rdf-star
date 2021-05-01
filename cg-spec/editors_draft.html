@@ -895,6 +895,23 @@ SELECT ?claimer WHERE {
             <a data-cite="SPARQL11-QUERY#rTriplesNodePath">TriplesNodePath</a>
           </td>
         </tr>
+        <tr id="rPrimaryExpression">
+          <td>[119]</td>
+          <td>`PrimaryExpression`</td>
+          <td>::=</td>
+          <td>
+            <a data-cite="SPARQL11-QUERY#rBrackettedExpression">BrackettedExpression</a> `|` 
+            <a data-cite="SPARQL11-QUERY#rBuiltInCall">BuiltInCall</a> `|` 
+            <a data-cite="SPARQL11-QUERY#ririOrFunction">iriOrFunction</a> `|` 
+            <a data-cite="SPARQL11-QUERY#rRDFLiteral">RDFLiteral</a> `|` 
+            <a data-cite="SPARQL11-QUERY#rNumericLiteral">NumericLiteral</a> `|`
+            <a data-cite="SPARQL11-QUERY#rBooleanLiteral">BooleanLiteral</a> `|`
+            <a data-cite="SPARQL11-QUERY#rVar">Var</a>
+            <div style="font-weight: bold">
+            `|` <a href="#rExprEmbTP" style="font-weight: bold">ExprEmbTP</a>
+            </div>
+          </td>
+        </tr>
         <tr id="rBuiltInCall">
           <td>[121]</td>
           <td>`BuiltInCall`</td>
@@ -1401,6 +1418,31 @@ SELECT ?claimer WHERE {
             <code class="token">'|}'</code>
           </td>
         </tr>
+        <tr id="rExprEmbTP">
+          <td>[181]</td>
+          <td style="font-weight: bold">`ExprEmbTP`</td>
+          <td style="font-weight: bold">::=</td>
+          <td style="font-weight: bold">
+            <code class="token">'&lt;&lt;'</code>
+            <a href="#rExprVarOrTerm">ExprVarOrTerm</a>
+            <a data-cite="SPARQL11-QUERY#rVerb">Verb</a>
+            <a href="#rExprVarOrTerm">ExprVarOrTerm</a>
+            <code class="token">'&gt;&gt;'</code>
+          </td>
+        </tr>
+        <tr id="rExprVarOrTerm">
+          <td>[182]</td>
+          <td style="font-weight: bold">`ExprVarOrTerm`</td>
+          <td style="font-weight: bold">::=</td>
+          <td style="font-weight: bold">
+            <a data-cite="SPARQL11-QUERY#riri">iri</a> `|` 
+            <a data-cite="SPARQL11-QUERY#rRDFLiteral">RDFLiteral</a> `|` 
+            <a data-cite="SPARQL11-QUERY#rNumericLiteral">NumericLiteral</a> `|`
+            <a data-cite="SPARQL11-QUERY#rBooleanLiteral">BooleanLiteral</a> `|`
+            <a data-cite="SPARQL11-QUERY#rVar">Var</a> `|`
+	          <a href="#rExprEmbTP">ExprEmbTP</a>
+          </td>
+        </tr>
       </table>
 
       <p>
@@ -1680,6 +1722,25 @@ SELECT ?claimer WHERE {
 
         <p>Returns <code>true</code> if <code style="color:black">term</code> is an <a>RDF-star triple</a>. Returns <code>false</code> otherwise.</p>
 
+      </section>
+
+      <section>
+        <h2>Embedded Triple Expression</h2>
+        <p>
+          <code>RDF-star triple</code> &nbsp;
+          <code style="color:black;font-weight:bold">&lt;&lt;</code>
+          <code>RDF-star term</code> <code style="color:black">term1</code>,
+          <code>RDF-star term</code> <code style="color:black">term2</code>,
+          <code>RDF-star term</code> <code style="color:black">term3</code>
+          <code style="color:black;font-weight:bold">&gt;&gt;</code>
+        </p>
+        <p>
+          An <a href="#rExprEmbTP">Embedded Triple Expression</a>
+          <code>&lt;&lt;S P O&gt;&gt;</code>, where <code>S</code>, 
+          <code>P</code> and <code>O</code> conform to
+          <a href="#rExprVarOrTerm">ExprVarOrTerm</a>,
+          evaluates function <code>TRIPLE(S, P, O)</code>.
+        </p>
       </section>
 
       <section class="informative">

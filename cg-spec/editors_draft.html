@@ -2235,12 +2235,12 @@ SELECT ?claimer WHERE {
           <li>Mint a fresh blank node |b| (i.e., such that |b| is not in the <a>constituents</a> of |G|).</li>
           <li>Replace with |b| all occurrences of (|s|, |p|, |o|) in the <a>subject</a> or <a>object</a> position of an <a>asserted</a> or <a>embedded triple</a> of |G|.</li>
           <li>Add the following <a>asserted triples</a> to |G|:<ul>
-            <li>(|b|, `unstar:sTerm`, |s|)</li>
-            <li>(|b|, `unstar:pTerm`, |p|)</li>
-            <li>(|b|, `unstar:oTerm`, |o|) unless |o| is an <a>ill-typed</a> literal</li>
-            <li>(|b|, `unstar:sString`, |L|(|s|)) unless |s| is <a>blank node</a></li>
-            <li>(|b|, `unstar:pString`, |L|(|p|))</li>
-            <li>(|b|, `unstar:oString`, |L|(|o|)) unless |o| is <a>blank node</a></li>
+            <li>(|b|, `unstar:subject`,`   `|s|)</li>
+            <li>(|b|, `unstar:predicate`,` `|p|)</li>
+            <li>(|b|, `unstar:object`,`    `|o|) unless |o| is an <a>ill-typed</a> literal</li>
+            <li>(|b|, `unstar:subjectLexical`,`   `|L|(|s|)) unless |s| is <a>blank node</a></li>
+            <li>(|b|, `unstar:predicateLexical`,` `|L|(|p|))</li>
+            <li>(|b|, `unstar:objectLexical`,`    `|L|(|o|)) unless |o| is <a>blank node</a></li>
           </ul></li>
         </ol></li>
       </ol>

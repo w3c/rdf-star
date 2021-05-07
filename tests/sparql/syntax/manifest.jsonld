@@ -314,6 +314,18 @@
       "name": "SPARQL-star - bad - blank node in embedded triple in VALUES "
     },
     {
+      "@id": "trs:sparql-star-bad-11",
+      "@type": "NegativeSyntaxTest11",
+      "action": "sparql-star-syntax-bad-11.rq",
+      "name": "SPARQL-star - bad - blank node in embedded triple in FILTER"
+    },
+    {
+      "@id": "trs:sparql-star-bad-12",
+      "@type": "NegativeSyntaxTest11",
+      "action": "sparql-star-syntax-bad-12.rq",
+      "name": "SPARQL-star - bad - blank node in embedded triple in BIND"
+    },
+    {
       "@id": "trs:sparql-star-bad-ann-1",
       "@type": "NegativeSyntaxTest11",
       "action": "sparql-star-syntax-bad-ann-1.rq",

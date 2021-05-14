@@ -235,8 +235,6 @@ SELECT ?claimer WHERE {
 
 <p> SPARQL query triple patterns that include a triple pattern as a subject or object are known as SPARQL-star triple patterns. </p>
 
-<div class="issue" data-number="93"></div>
-
 <div class="issue" data-number="94"></div>
 
 <p>For the remainder of this document, examples will assume that the following prefixes have been declared to represent the IRIs shown with them here: </p>
@@ -785,8 +783,6 @@ SELECT ?claimer WHERE {
         <li>|p| is a <a>property path expression</a>, and
         <li>|o| is either an <a>RDF term</a>, a <a>query variable</a>, or a <a>SPARQL-star triple pattern</a>.
       </ul>
-
-      <div class="issue" data-number="7"></div>
 
       <p>A <dfn data-lt="solution-star-mapping">SPARQL-star solution mapping</dfn> μ is a partial function from the set of all <a>query variables</a> to the set of all <a>RDF-star terms</a>.
       The domain of μ, denoted by dom(μ), is the set of <a>query variables</a> for which μ is defined.</p>
@@ -1636,6 +1632,8 @@ SELECT ?claimer WHERE {
     <section id="builtin-functions">
       <h2>Function Definitions</h2>
 
+      <div class="issue" data-number="121"></div>
+
       <p>SPARQL introduces operators and functions that can be used in an expression of a FILTER clause, a BIND clause, or a SELECT clause (see <a data-cite="SPARQL11-QUERY#OperatorMapping">Section&nbsp;17.3</a> and <a data-cite="SPARQL11-QUERY#SparqlOps">Section&nbsp;17.4</a> in [[SPARQL11-QUERY]]). While these operators and functions are defined to operate on <a>RDF terms</a> and <a>query variables</a>, for SPARQL-star they have to be defined to operate on <a>RDF-star terms</a> and <a>query variables</a>. To this end, when using these operators and functions in the context of SPARQL-star, their definitions as given in <a data-cite="SPARQL11-QUERY#SparqlOps">Section&nbsp;17.4</a> of [[SPARQL11-QUERY]] are extended by assuming that any mention of <code>RDF term</code> as a data type for operands is understood to be the type of all <a>RDF-star terms</a>.</p>
 
       <p>In addition to carrying over the operators and functions of SPARQL, SPARQL-star introduces five new functions that are defined as follows (where the data types <code>RDF-star term</code> and <code>RDF-star triple</code> capture all <a>RDF-star terms</a> and all <a>RDF-star triples</a>, respectively).</p>
@@ -1869,8 +1867,6 @@ SELECT ?claimer WHERE {
       <p>In SPARQL, queries can take four forms: <em>SELECT</em>, <em>CONSTRUCT</em>, <em>DESCRIBE</em>, and <em>ASK</em> - see <a data-cite="SPARQL11-QUERY#QueryForms">SPARQL1.1 Query, Section 16</a> [[SPARQL11-QUERY]]. The first of these returns a <a data-cite="SPARQL11-QUERY#defn_sparqlSolutionSequence">sequence of solution mappings</a> that contain variable bindings. The second and third both return an RDF graph, and the last returns a boolean value.
       </p>
       <p>The result of the <em>ASK</em> query form is not changed by the introduction of RDF-star, and the result of the <em>CONSTRUCT</em> and <em>DESCRIBE</em> forms can be represented by <a href="#turtle-star">Turtle-star</a>. However, since the <em>SELECT</em> form deals with returning individual RDF terms, the specific serialization formats for representing such query results need to be extended so that the new <a>embedded</a> triple RDF term can be represented. In this section, we propose extensions for the two most common formats for this purpose: [[[SPARQL11-RESULTS-JSON]]], and [[[RDF-SPARQL-XMLRES]]].</p>
-
-      <div class="issue" data-number="43"></div>
 
       <section>
         <h2>SPARQL-star Query Results JSON Format</h2>
@@ -2347,6 +2343,8 @@ SELECT ?claimer WHERE {
     <p>Another problem with the pessimistic approach is that "temporary" media-types are known to actually become permanent. Old applications keep using them long after their intended expiration date. This a burden on all other implementations, which must handle the "temporary" media-types along the permanent one, as aliases, in order to maintain backward compatibility.</p>
 
     <p class="issue">Although the examples in this document, and the tests in <a href="../tests/">the test suite</a>, adopt the optimistic approach, it should be noted that no clear consensus emerged from the group on which approach is the best.</p>
+
+    <div class="issue" data-number="43"></div>
 
   </section>
 

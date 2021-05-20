@@ -128,6 +128,46 @@
       counter-increment: numsection;
       content: counters(numsection, ".") ") ";
     }
+
+    /* SPARQL modification section */
+        .box {   
+        border: solid;
+        border-width: 1px;
+        border-color: #888;
+        padding-left: 10px;
+        padding-right: 10px;
+        margin-left: 5%;
+        margin-right: 10%;
+    }
+    .operator {
+        border: solid;
+        border-width: 1px;
+        border-color: #888;
+        width: 100%;
+        margin: 0px;
+    }
+
+    .operator tr {
+        border: solid;
+        border-color: #888;
+        border-width: 1px;
+    }
+    
+    .operator th {
+        border: solid;
+        border-color: #888;
+        border-width: 1px;
+    }
+
+    .operator td {
+        border: solid;
+        border-color: #888;
+        border-width: 1px;
+    }
+    
+    .heavy { color:black; font-weight:bold }
+    .small { font-size: smaller; }
+
   </style>
   <script>
     /* copied from JSON-LD specs */
@@ -1620,7 +1660,7 @@ INSERT {
                 class="nohighlight"
               >
                 <!--
-                <<?c <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2000/01/rdf-schema#Class>>>
+                << ?c <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2000/01/rdf-schema#Class>>>
                 -->
               </pre>
             </aside>
@@ -1656,13 +1696,36 @@ INSERT {
     </section>
 
     <section id="builtin-functions">
-      <h2>Function Definitions</h2>
-
-      <div class="issue" data-number="121"></div>
+      <h2>Function and Operator Definitions</h2>
 
       <p>SPARQL introduces operators and functions that can be used in an expression of a FILTER clause, a BIND clause, or a SELECT clause (see <a data-cite="SPARQL11-QUERY#OperatorMapping">Section&nbsp;17.3</a> and <a data-cite="SPARQL11-QUERY#SparqlOps">Section&nbsp;17.4</a> in [[SPARQL11-QUERY]]). While these operators and functions are defined to operate on <a>RDF terms</a> and <a>query variables</a>, for SPARQL-star they have to be defined to operate on <a>RDF-star terms</a> and <a>query variables</a>. To this end, when using these operators and functions in the context of SPARQL-star, their definitions as given in <a data-cite="SPARQL11-QUERY#SparqlOps">Section&nbsp;17.4</a> of [[SPARQL11-QUERY]] are extended by assuming that any mention of <code>RDF term</code> as a data type for operands is understood to be the type of all <a>RDF-star terms</a>.</p>
 
-      <p>In addition to carrying over the operators and functions of SPARQL, SPARQL-star introduces five new functions that are defined as follows (where the data types <code>RDF-star term</code> and <code>RDF-star triple</code> capture all <a>RDF-star terms</a> and all <a>RDF-star triples</a>, respectively).</p>
+      <p>SPARQL-star introduces five new functions that are defined as follows (where the data types <code>RDF-star term</code> and <code>RDF-star triple</code> capture all <a>RDF-star terms</a> and all <a>RDF-star triples</a>,
+respectively).</p>
+
+      <p>The modification to functions and operators for triple terms. are:</p>
+      <ul>
+        <li><a href="#rdf-star-func-sameTerm">Modifed <code>sameTerm</code>
+            function</a>
+          (SPARQL 1.1 <a 
+                        href="https://www.w3.org/TR/sparql11-query/#func-sameTerm"
+                        >Section 17.4.1.8</a>)</li>
+        <li><a href="#sparql-compare">New function <code>RDFstar-compare</code></a> for the 
+          <code>=</code> operator and other comparison mappings</li>
+        <li><a href="#rdf-star-termEquals">Modified <code>RDFterm-equals</code></a>
+          (SPARQL 1.1 <a 
+                        href="https://www.w3.org/TR/sparql11-query/#func-RDFterm-equal"
+                        >Section 17.4.1.7</a>)</li>
+        <li><a href="#rdf-star-operator-mapping">Operator mapping for <code>=</code> and other
+            operators</a>
+          (SPARQL 1.1 <a 
+                        href="https://www.w3.org/TR/sparql11-query/#OperatorMapping"
+                        >Section 17.3</a>)</li>
+        <li><a href="#triple-term-comparison">Modified <code>ORDER BY</code></a>
+          (SPARQL 1.1 <a 
+                        href="https://www.w3.org/TR/sparql11-query/#modOrderBy"
+                        >Section 15.1</a>)</li>
+      </ul>
 
       <section id="triple-function">
         <h2>TRIPLE</h2>
@@ -1685,7 +1748,7 @@ INSERT {
       </section>
 
       <section>
-        <h2>SUBJECT</h2>
+        <h3>SUBJECT</h3>
 
         <p>
           <code>RDF-star term</code> &nbsp;
@@ -1701,7 +1764,7 @@ INSERT {
       </section>
 
       <section>
-        <h2>PREDICATE</h2>
+        <h3>PREDICATE</h3>
 
         <p>
           <code>RDF-star term</code> &nbsp;
@@ -1717,7 +1780,7 @@ INSERT {
       </section>
 
       <section>
-        <h2>OBJECT</h2>
+        <h3>OBJECT</h3>
 
         <p>
           <code>RDF-star term</code> &nbsp;
@@ -1733,7 +1796,7 @@ INSERT {
       </section>
 
       <section>
-        <h2>isTRIPLE</h2>
+        <h3>isTRIPLE</h3>
 
         <p>
           <code>xsd:boolean</code> &nbsp;
@@ -1749,7 +1812,7 @@ INSERT {
       </section>
 
       <section>
-        <h2>Embedded Triple Expression</h2>
+        <h3>Embedded Triple Expression</h3>
         <p>
           <code>RDF-star triple</code> &nbsp;
           <code style="color:black;font-weight:bold">&lt;&lt;</code>
@@ -1763,115 +1826,353 @@ INSERT {
           <code>&lt;&lt;S P O&gt;&gt;</code>, where <code>S</code>, 
           <code>P</code> and <code>O</code> conform to
           <a href="#rExprVarOrTerm">ExprVarOrTerm</a>,
-          evaluates function <code>TRIPLE(S, P, O)</code>.
+          is evaluated as <code>TRIPLE(S, P, O)</code>.
         </p>
       </section>
 
-      <section class="informative">
-        <h2>Examples and Discussion</h2>
-
-        <p>By the evaluation semantics of SPARQL-star as defined in <a href="#evaluation-semantics"></a>, the five new built-in functions defined above can be used in exactly the same manner as <a data-cite="SPARQL11-QUERY#SparqlOps">the functions defined in the SPARQL 1.1 spec</a><!--, which includes using them within GRAPH clauses that focus on querying named graphs with a queried dataset-->. For instance, the following SPARQL-star query retrieves every <a>asserted triple</a> that is both contained in the <a>default graph</a> of the queried <a>RDF-star dataset</a> and has an <a>embedded triple</a> as its <a>subject</a>.</p>
-
-        <pre data-transform="updateExample"
-             data-content-type="application/sparql-query"
-             class="nohighlight example"
-        >
-          <!--
-          SELECT ?t WHERE {
-            ?s ?p ?o .
-            BIND( TRIPLE(?s,?p,?o) AS ?t )
-            FILTER( isTRIPLE(SUBJECT(?t)) )
-          }
-          -->
-        </pre>
-
-        <p>Instead of accessing the subject of the triples in the FILTER after the BIND clause, as was done in the previous query, a semantically equivalent query may apply the FILTER directly on the variable&nbsp;<code>?s</code>, as follows:</p>
-
-        <pre data-transform="updateExample"
-             data-content-type="application/sparql-query"
-             class="nohighlight example"
-        >
-          <!--
-          SELECT ?t WHERE {
-            ?s ?p ?o .
-            BIND( TRIPLE(?s,?p,?o) AS ?t )
-            FILTER( isTRIPLE(?s) )
-          }
-          -->
-        </pre>
-
-        <p>While the triples that the previous example queries bind to variable&nbsp;<code>?t</code> occur in the queried data, the <a href="#triple-function">TRIPLE function</a> can be used to construct triples that may not be in the data. For instance, the following query uses the subject of each <a>asserted triple</a> in the <a>default graph</a> of the queried <a>RDF-star dataset</a> to construct another triple, and bind it to the variable&nbsp;<code>?t</code>. Notice that the result of this query contains as many <a>SPARQL-star solution mappings</a> as there are asserted triples in the queried graph, and there may be duplicates in the result if multiple asserted triples have the same subject.</p>
-
-        <pre data-transform="updateExample"
-             data-content-type="application/sparql-query"
-             class="nohighlight example"
-        >
-          <!--
-          PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-          PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-
-          SELECT ?t WHERE {
-            ?s ?p ?o .
-            BIND( TRIPLE(?s,rdf:type,rdfs:Resource) AS ?t )
-          }
-          -->
-        </pre>
-
-        <p>There are cases where the effects of using the new TRIPLE function are not immediately obvious just from its definition, particularly when considering the interplay of this function with the <a data-cite="SPARQL11-QUERY#func-bnode">BNODE function</a> when used within <a data-cite="SPARQL11-QUERY#queryDataset">GRAPH clauses</a>. Some of these cases are discussed below.</p>
-
-        <p>Consider the following SPARQL-star query.</p>
-
-        <pre data-transform="updateExample"
-             data-content-type="application/sparql-query"
-             class="nohighlight example"
-        >
-          <!--
-          SELECT ( COUNT(?t1) AS ?t1Count )
-                 ( COUNT(?t2) AS ?t2Count )
-                 ( COUNT(?t3) AS ?t3Count )
-                 ( COUNT(DISTINCT ?t1) AS ?t1DistCount )
-                 ( COUNT(DISTINCT ?t2) AS ?t2DistCount )
-                 ( COUNT(DISTINCT ?t3) AS ?t3DistCount )
-          WHERE {
-            GRAPH ?g {
-              BIND( TRIPLE(BNODE(), :p, :o) AS ?t1 )
-              BIND( TRIPLE(BNODE("id"), :p, :o) AS ?t2 )
-              BIND( TRIPLE(:s, :p, :o) AS ?t3 )
-            }
-          }
-          -->
-        </pre>
-
-        <p>When evaluated over an <a>RDF-star dataset</a> that contains |n| <a>named graphs</a>, where |n|>0, the GRAPH clause results in one <a>SPARQL-star solution mapping</a> per named graph. The SELECT clause collapses these |n| mappings into a single mapping that is defined for the six variables introduced in the SELECT clause. (If |n|=0, the query result is the empty set.) Each of these six variables is mapped to an integer-typed literal with values as follows. For each of <code>?t1Count</code>, <code>?t2Count</code>, and <code>?t3Count</code>, the value is&nbsp;|n|, because the variables <code>?t1</code>, <code>?t2</code>, and <code>?t3</code> are bound in each of the |n| solution mappings produced for the GRAPH clause. For the variable&nbsp;<code>?t1DistCount</code>, the value is also |n|, because the BIND clauses are evaluated |n| times (once for each named graph) and the subexpression BNODE() always creates a different new blank node; thus, the triples created for variable <code>?t1</code> are all different from one another. This is also the case if the BNODE function is used with an argument; i.e., the value of <code>?t2DistCount</code> is |n| too. In contrast, the variable&nbsp;<code>?t3</code> is mapped to the same triple within each evaluation of the third BIND clause; thus, the value for <code>?t3DistCount</code> is&nbsp;1.</p>
-
-        <p>Notice that the BNODE function has to be used to create a blank node; simply writing a blank node directly in an expression <a data-cite="SPARQL11-QUERY#rExpression">is not permitted</a>.</p>
-
-        <p>Notice as well that the preceding query is special in two ways: its GRAPH clause does not actually consider the content of the named graphs; and the expressions in the BIND clauses do not contain variables. In contrast, the GRAPH clause and the BIND clauses in the following query do.</p>
-
-        <pre data-transform="updateExample"
-             data-content-type="application/sparql-query"
-             class="nohighlight example"
-        >
-          <!--
-          PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-          PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-          PREFIX rdfg: <http://www.w3.org/2004/03/trix/rdfg-1/>
-
-          SELECT ( COUNT(?t1) AS ?t1Count )
-                 ( COUNT(?t2) AS ?t2Count )
-          WHERE {
-            GRAPH ?g {
-              ?g rdf:type rdfg:Graph .
-              BIND( TRIPLE(?g, rdf:type, rdfs:Resource) AS ?t1 )
-              BIND( TRIPLE(?x, rdf:type, rdfs:Resource) AS ?t2 )
-            }
-          }
-          -->
-        </pre>
-
-        <p>For every RDF-star dataset with |n|>0 named graphs, the result of this query consists of a single SPARQL-star solution mapping that is defined for the three variables introduced in the SELECT clause. The value of <code>?t1Count</code> is the number of named graphs in the queried dataset that contain a triple of the form (|u|, <code>rdf:type</code>, <code>rdfg:Graph</code>) such that |u| is the name of the named graph in the dataset. The value of <code>?t2Count</code> is always&nbsp;0&nbsp;(zero), because evaluating the expression of the second BIND clause results in an error, because the variable&nbsp;<code>?x</code> is not bound in the scope of this evaluation. As a side note, evaluating the expression of the first BIND clause would also result in an error, if the variable&nbsp;<code>?g</code> was not mentioned inside the GRAPH clause (e.g., if the given triple pattern was not there).</p>
-
+      <section id="rdf-star-func-sameTerm">
+        <h3>sameTerm</h3>
+        <p class="box">
+          <code>xsd:boolean</code>
+          <code style="color:black;font-weight:bold">sameTerm</code>
+          (<code style="color:black">term</code>, <code style="color:black">term</code>)
+        </p>
+        
+        <p>The function <code>sameTerm</code> is extended to support term comparison for
+          RDF-star triple terms by defining:
+        </p>
+        <div class="box">
+          <p>
+            If both arguments are RDF-star triple terms:
+          <p style="margin-left:20px">
+            <code style="color:black;font-weight:bold">sameTerm</code><code>(&lt;&lt;S1 P1 O1&gt;&gt;,
+              &lt;&lt;S2 P2 O2&gt;&gt;)</code>
+          </p>
+          <p>
+            is evaluated as
+          </p>
+          <p style="margin-left:20px">
+            <code>sameTerm(S1, S2) && sameTerm(P1, P2) && sameTerm(O1, O2)</code>
+          </p>
+          <p>This is applied recursively.</p>
+          <p>If one argument is an RDF-star triple term and the other argument is not, 
+            the result is <code>false</code>.
+          </p>
+        </div>
       </section>
+      
+      <section id="sparql-compare">
+        <h3>RDFstar-compare</h3>
+        
+        <p>The function <code>RDFstar-compare</code> is added in support of value-comparison
+          operators such as <code>=</code> and for <code>ORDER BY</code>.
+        </p>
+        <p class="box">
+          <code>xsd:boolean</code> &nbsp;
+          <code style="color:black;font-weight:bold">RDFstar-compare</code>
+          (<code style="color:black">term</code>, <code style="color:black">term</code>)
+        </p>
+        <p>The function <code>RDFstar-compare</code> returns -1,0,1, or throws an error,
+          based on the comparison of the 3 elements of an RDF-star triple term.
+        </p>
+        <div class="box">
+          <p id="defn-sparql-compare">Define:
+            <code>sparql-compare(A, B)</code> as:
+          </p>
+          <ul>
+            <li>If neither of both A and B are RDF-star triple terms,
+              compared by SPARQL 1.1 operators <code>&lt</code>, <code>=</code>, <code>&gt</code>)
+              and return that value (-1, 0, +1).<br/>
+            </li>
+            <li>If one of A and B is not an RDF-star triple terms, then error.</li>
+            <li>If <code>sparql-compare(SUBJECT(A), SUBJECT(B)) != 0</code>,
+              then return this value.</li>
+            <li>If <code>sparql-compare(PREDICATE(A), PREDICATE(B)) != 0</code>,
+              then return this value.</li>
+            <li>Return <code>sparql-compare(OBJECT(A), OBJECT(B))</code></li>
+          </ul>
+          
+          <p>
+            If both arguments are RDF-star triple terms:
+          </p>
+          <p style="margin-left:20px">
+            <code style="color:black;font-weight:bold">RDFstar-compare</code><code>(&lt;&lt;S1 P1 O1&gt;&gt;,
+              &lt;&lt;S2 P2 O2&gt;&gt;)</code>
+          </p>
+          <p>
+            is evaluated as
+          </p>
+          <p style="margin-left:20px">sparql-compare(A, B)</p>
+        </div>
+      </section>
+
+      <section id="rdf-star-termEquals">
+        <h3>RDFterm-equal</h3>
+        <p>
+          The function <code>RDFterm-equal</code> is the default dispatch for the
+          <code>=</code> operator.
+        </p>
+        <p>
+          Extend the function defintion so that it returns <code>true</code> if term1 and term2 are both RDF-star triple
+          terms and <code>RDFterm-equal</code> is <code>true</code> for pairwise for the component RDF terms.
+        </p>
+        <div class="box">
+          <p>
+            If exactly one of the arguments is an RDF-star triple terms, return <code>false</code>.
+          </p>
+          <p>
+            If both arguments are RDF-star triple terms:
+          <p style="margin-left:20px">
+            <code style="color:black;font-weight:bold">RDFterm-equal</code><code>(&lt;&lt;S1 P1 O1&gt;&gt;,
+              &lt;&lt;S2 P2 O2&gt;&gt;)</code>
+          </p>
+          <p>
+            is evaluated as
+          </p>
+          <p style="margin-left:20px">
+            <code>RDFterm-equal(S1, S2) && RDFterm-equal(P1, P2) && RDFterm-equal(O1, O2)</code>
+          </p>
+          <p>This is applied recursively.</p>
+          <p>If one argument is an RDF-star triple term and the other argument is not, 
+            the result is <code>false</code>.
+          </p>
+        </div>
+        <p>
+          It produces an error if matching RDF terms in nested RDF triple terms when 
+          both literals but not the same RDF term. This is the same as the exisiting
+          <code>RDFterm-equal</code>. Operator mapping overides this behavior.
+        </p>
+        <p>
+          The case of two RDF-star triple terms is covered by the operator dispatch mappings
+          and covers cases involving literals.
+        </p>
+      </section>
+
+      <section id="rdf-star-operator-mapping">
+        <h3>Operator Mappings</h3>
+
+        <p>New operator mappings are added for RDF-star triple terms for section 
+          SPARQL 1.1 Query <a href="https://www.w3.org/TR/sparql11-query/#OperatorMapping"
+             rel="nofollow">17.3 Operator Mapping</a>
+        </p>
+        <table class="operator">
+          <caption>SPARQL Binary Operators (SPARQL-star)</caption>
+          <tbody class="small">
+            <tr>
+              <th class="major" scope="col">Operator</th>
+              <th class="major" scope="col">Type(A)</th>
+              <th class="major" scope="col">Type(B)</th>
+              <th class="major" scope="col">Evaluation</th>
+              <th class="major" scope="col">Result type</th>
+            </tr>
+
+            <tr>
+              <th colspan="5" class="subHeading" scope="col">SPARQL-star Tests</th>
+            </tr>
+            <tr>
+              <th>A = B</th>
+              <td><span class="type RDFterm">RDF triple term</span></td>
+              <td><span class="type RDFterm">RDF triple term</span></td>
+              <td>
+                <a href="https://www.w3.org/TR/xpath-functions/#func-numeric-equal"
+                   >op:numeric-equal</a>(<a href="#defn-sparql-compare" 
+                                            class="SPARQLoperator"
+                                            >sparql-compare</a>(A, B), 0)
+              </td>
+              <td>xsd:boolean</td>
+            </tr>
+            <tr>
+              <th>A != B</th>
+              <td><span class="type RDFterm">RDF triple term</span></td>
+              <td><span class="type RDFterm">RDF triple term</span></td>
+
+              <td>
+                <a href="http://www.w3.org/TR/xpath-functions/#func-not"
+                   >fn:not</a>(<a href="https://www.w3.org/TR/xpath-functions/#func-numeric-equal"
+                                  >op:numeric-equal</a>(<a href="#defn-sparql-compare" 
+                                                           class="SPARQLoperator"
+                                                           >sparql-compare</a>(A, B), 0))
+              </td>
+              <td>xsd:boolean</td>
+            </tr>
+            <tr>
+              <th>A &lt B</th>
+              <td><span class="type RDFterm">RDF triple term</span></td>
+              <td><span class="type RDFterm">RDF triple term</span></td>
+              <td>
+                <a href="https://www.w3.org/TR/xpath-functions/#func-numeric-equal"
+                   >op:numeric-equal</a>(<a href="#defn-sparql-compare" 
+                                            class="SPARQLoperator"
+                                            >sparql-compare</a>(A, B), -1)
+              </td>
+              <td>xsd:boolean</td>
+            </tr>
+            <tr>
+              <th>A &lt;= B</th>
+              <td><span class="type RDFterm">RDF triple term</span></td>
+              <td><span class="type RDFterm">RDF triple term</span></td>
+              <td>
+                <a href="http://www.w3.org/TR/xpath-functions/#func-not"
+                   >fn:not</a>(<a href="https://www.w3.org/TR/xpath-functions/#func-numeric-equal"
+                                  >op:numeric-equal</a>(<a href="#defn-sparql-compare" 
+                                                           class="SPARQLoperator"
+                                                           >sparql-compare</a>(A, B), 1))
+              </td>
+              <td>xsd:boolean</td>
+            </tr>
+            <tr>
+              <th>A &gt; B</th>
+              <td><span class="type RDFterm">RDF triple term</span></td>
+              <td><span class="type RDFterm">RDF triple term</span></td>
+              <td>
+                <a href="https://www.w3.org/TR/xpath-functions/#func-numeric-equal"
+                   >op:numeric-equal</a>(<a href="#defn-sparql-compare" 
+                                            class="SPARQLoperator"
+                                            >sparql-compare</a>(A, B), 1)
+              </td>
+
+              <td>xsd:boolean</td>
+            </tr>
+            <tr>
+              <th>A &gt;= B</a>
+              </th>
+              <td><span class="type RDFterm">RDF triple term</span></td>
+              <td><span class="type RDFterm">RDF triple term</span></td>
+              <td>
+                <a href="http://www.w3.org/TR/xpath-functions/#func-not"
+                   >fn:not</a>(<a href="https://www.w3.org/TR/xpath-functions/#func-numeric-equal"
+                                  >op:numeric-equal</a>(<a href="#defn-sparql-compare" 
+                                                           class="SPARQLoperator"
+                                                           >sparql-compare</a>(A, B), -1))
+              </td>
+              <td>xsd:boolean</td>
+            </tr>
+          </tbody>
+        </table>
+        
+      </section>
+
+      <section id="triple-term-comparison">
+        <h3>Triple terms with ORDER BY</h3>
+
+        <p>There is an added item to the ordering terms when they would not 
+          otherwise be ordered. RDF-star triple terms are placed last (highest).</p>
+        <ol>
+          <li>(Lowest) no value assigned to the variable 
+            or expression in this solution.</li>
+          <li>Blank nodes</li>
+          <li>IRIs</li>
+          <li>RDF literals</li>
+          <li><i>RDF-star triple terms</i></li>
+        </ol>
+        <p>RDF-star triple terms are compared using the <code>&lt;</code> operator.
+        </p>
+      </section>
+    </section>
+
+    <section class="informative">
+      <h2>Examples and Discussion</h2>
+
+      <p>By the evaluation semantics of SPARQL-star as defined in <a href="#evaluation-semantics"></a>, the five new built-in functions defined above can be used in exactly the same manner as <a data-cite="SPARQL11-QUERY#SparqlOps">the functions defined in the SPARQL 1.1 spec</a><!--, which includes using them within GRAPH clauses that focus on querying named graphs with a queried dataset-->. For instance, the following SPARQL-star query retrieves every <a>asserted triple</a> that is both contained in the <a>default graph</a> of the queried <a>RDF-star dataset</a> and has an <a>embedded triple</a> as its <a>subject</a>.</p>
+
+      <pre data-transform="updateExample"
+           data-content-type="application/sparql-query"
+           class="nohighlight example"
+      >
+        <!--
+        SELECT ?t WHERE {
+          ?s ?p ?o .
+          BIND( TRIPLE(?s,?p,?o) AS ?t )
+          FILTER( isTRIPLE(SUBJECT(?t)) )
+        }
+        -->
+      </pre>
+
+      <p>Instead of accessing the subject of the triples in the FILTER after the BIND clause, as was done in the previous query, a semantically equivalent query may apply the FILTER directly on the variable&nbsp;<code>?s</code>, as follows:</p>
+
+      <pre data-transform="updateExample"
+           data-content-type="application/sparql-query"
+           class="nohighlight example"
+      >
+        <!--
+        SELECT ?t WHERE {
+          ?s ?p ?o .
+          BIND( TRIPLE(?s,?p,?o) AS ?t )
+          FILTER( isTRIPLE(?s) )
+        }
+        -->
+      </pre>
+
+      <p>While the triples that the previous example queries bind to variable&nbsp;<code>?t</code> occur in the queried data, the <a href="#triple-function">TRIPLE function</a> can be used to construct triples that may not be in the data. For instance, the following query uses the subject of each <a>asserted triple</a> in the <a>default graph</a> of the queried <a>RDF-star dataset</a> to construct another triple, and bind it to the variable&nbsp;<code>?t</code>. Notice that the result of this query contains as many <a>SPARQL-star solution mappings</a> as there are asserted triples in the queried graph, and there may be duplicates in the result if multiple asserted triples have the same subject.</p>
+
+      <pre data-transform="updateExample"
+           data-content-type="application/sparql-query"
+           class="nohighlight example"
+      >
+        <!--
+        PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+        PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+        SELECT ?t WHERE {
+          ?s ?p ?o .
+          BIND( TRIPLE(?s,rdf:type,rdfs:Resource) AS ?t )
+        }
+        -->
+      </pre>
+
+      <p>There are cases where the effects of using the new TRIPLE function are not immediately obvious just from its definition, particularly when considering the interplay of this function with the <a data-cite="SPARQL11-QUERY#func-bnode">BNODE function</a> when used within <a data-cite="SPARQL11-QUERY#queryDataset">GRAPH clauses</a>. Some of these cases are discussed below.</p>
+
+      <p>Consider the following SPARQL-star query.</p>
+
+      <pre data-transform="updateExample"
+           data-content-type="application/sparql-query"
+           class="nohighlight example"
+      >
+        <!--
+        SELECT ( COUNT(?t1) AS ?t1Count )
+               ( COUNT(?t2) AS ?t2Count )
+               ( COUNT(?t3) AS ?t3Count )
+               ( COUNT(DISTINCT ?t1) AS ?t1DistCount )
+               ( COUNT(DISTINCT ?t2) AS ?t2DistCount )
+               ( COUNT(DISTINCT ?t3) AS ?t3DistCount )
+        WHERE {
+          GRAPH ?g {
+            BIND( TRIPLE(BNODE(), :p, :o) AS ?t1 )
+            BIND( TRIPLE(BNODE("id"), :p, :o) AS ?t2 )
+            BIND( TRIPLE(:s, :p, :o) AS ?t3 )
+          }
+        }
+        -->
+      </pre>
+
+      <p>When evaluated over an <a>RDF-star dataset</a> that contains |n| <a>named graphs</a>, where |n|>0, the GRAPH clause results in one <a>SPARQL-star solution mapping</a> per named graph. The SELECT clause collapses these |n| mappings into a single mapping that is defined for the six variables introduced in the SELECT clause. (If |n|=0, the query result is the empty set.) Each of these six variables is mapped to an integer-typed literal with values as follows. For each of <code>?t1Count</code>, <code>?t2Count</code>, and <code>?t3Count</code>, the value is&nbsp;|n|, because the variables <code>?t1</code>, <code>?t2</code>, and <code>?t3</code> are bound in each of the |n| solution mappings produced for the GRAPH clause. For the variable&nbsp;<code>?t1DistCount</code>, the value is also |n|, because the BIND clauses are evaluated |n| times (once for each named graph) and the subexpression BNODE() always creates a different new blank node; thus, the triples created for variable <code>?t1</code> are all different from one another. This is also the case if the BNODE function is used with an argument; i.e., the value of <code>?t2DistCount</code> is |n| too. In contrast, the variable&nbsp;<code>?t3</code> is mapped to the same triple within each evaluation of the third BIND clause; thus, the value for <code>?t3DistCount</code> is&nbsp;1.</p>
+
+      <p>Notice that the BNODE function has to be used to create a blank node; simply writing a blank node directly in an expression <a data-cite="SPARQL11-QUERY#rExpression">is not permitted</a>.</p>
+
+      <p>Notice as well that the preceding query is special in two ways: its GRAPH clause does not actually consider the content of the named graphs; and the expressions in the BIND clauses do not contain variables. In contrast, the GRAPH clause and the BIND clauses in the following query do.</p>
+
+      <pre data-transform="updateExample"
+           data-content-type="application/sparql-query"
+           class="nohighlight example"
+      >
+        <!--
+        PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+        PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+        PREFIX rdfg: <http://www.w3.org/2004/03/trix/rdfg-1/>
+
+        SELECT ( COUNT(?t1) AS ?t1Count )
+               ( COUNT(?t2) AS ?t2Count )
+        WHERE {
+          GRAPH ?g {
+            ?g rdf:type rdfg:Graph .
+            BIND( TRIPLE(?g, rdf:type, rdfs:Resource) AS ?t1 )
+            BIND( TRIPLE(?x, rdf:type, rdfs:Resource) AS ?t2 )
+          }
+        }
+        -->
+      </pre>
+
+      <p>For every RDF-star dataset with |n|>0 named graphs, the result of this query consists of a single SPARQL-star solution mapping that is defined for the three variables introduced in the SELECT clause. The value of <code>?t1Count</code> is the number of named graphs in the queried dataset that contain a triple of the form (|u|, <code>rdf:type</code>, <code>rdfg:Graph</code>) such that |u| is the name of the named graph in the dataset. The value of <code>?t2Count</code> is always&nbsp;0&nbsp;(zero), because evaluating the expression of the second BIND clause results in an error, because the variable&nbsp;<code>?x</code> is not bound in the scope of this evaluation. As a side note, evaluating the expression of the first BIND clause would also result in an error, if the variable&nbsp;<code>?g</code> was not mentioned inside the GRAPH clause (e.g., if the given triple pattern was not there).</p>
 
     </section>
 

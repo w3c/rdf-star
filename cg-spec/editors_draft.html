@@ -2548,7 +2548,7 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
       <p>We define a mapping |L| that maps any <a>IRI</a> or <a>literal</a> |t| to a literal with:</p>
       <ul>
         <li>`xsd:string` as its <a>datatype</a>, and</li>
-        <li>the <a data-cite="N-TRIPLES#canonical-ntriples">canonical N-Triples</a> representation of |t| as its <a>lexical form</a> [[N-TRIPLES]]. If |t| is itself a literal with the `xsd:string` <a>datatype</a>, the representation MUST simply match the <a href="https://www.w3.org/TR/n-triples/#grammar-production-STRING_LITERAL_QUOTE">`STRING_LITERAL_QUOTE`</a> production (i.e., without an explicit datatype IRI).</li>
+        <li>the <a data-cite="N-TRIPLES#canonical-ntriples">canonical N-Triples</a> representation of |t| as its <a>lexical form</a> [[N-TRIPLES]]. If |t| is itself a literal with the `xsd:string` <a>datatype</a>, the representation MUST simply match the <a href="https://www.w3.org/TR/n-triples/#grammar-production-STRING_LITERAL_QUOTE">`STRING_LITERAL_QUOTE`</a> production (i.e., without an explicit <a>datatype</a> <a>IRI</a>).</li>
       </ul>
 
       <p>Given an <a>RDF-star graph</a> |G|, the following steps transform it into an <a>RDF graph</a> that we call |unstar|(|G|).</p>
@@ -2563,13 +2563,13 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
           <li>Pick an <a>RDF-star triple</a> (|s|, |p|, |o|) in the <a>constituents</a> of |G| such that neither |s| nor |o| is an <a>embedded triple</a>.</li>
           <li>Mint a fresh blank node |b| (i.e., such that |b| is not in the <a>constituents</a> of |G|).</li>
           <li>Replace with |b| all occurrences of (|s|, |p|, |o|) in the <a>subject</a> or <a>object</a> position of an <a>asserted</a> or <a>embedded triple</a> of |G|.</li>
-          <li>Add the following <a>asserted triples</a> to |G|:<ul>
+          <li id="unstar-add-triples">Add the following <a>asserted triples</a> to |G|:<ul>
             <li>(|b|, `unstar:subject`,`   `|s|)</li>
             <li>(|b|, `unstar:predicate`,` `|p|)</li>
             <li>(|b|, `unstar:object`,`    `|o|) unless |o| is an <a>ill-typed</a> literal</li>
-            <li>(|b|, `unstar:subjectLexical`,`   `|L|(|s|)) unless |s| is <a>blank node</a></li>
+            <li>(|b|, `unstar:subjectLexical`,`   `|L|(|s|)) unless |s| is a <a>blank node</a></li>
             <li>(|b|, `unstar:predicateLexical`,` `|L|(|p|))</li>
-            <li>(|b|, `unstar:objectLexical`,`    `|L|(|o|)) unless |o| is <a>blank node</a></li>
+            <li>(|b|, `unstar:objectLexical`,`    `|L|(|o|)) unless |o| is a <a>blank node</a></li>
           </ul></li>
         </ol></li>
       </ol>
@@ -2659,9 +2659,118 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
 
       </section>
 
+      <section>
+        <h2>Referential opacity</h2>
+
+        <p>The way the |unstar| mapping is defined, the denotation of an embedded triple does not only depend on the denotation of its component terms, but also on their syntactical form (for IRIs and literals). This behavior is referred to as <a href="https://en.wikipedia.org/wiki/Opaque_context">referential opacity</a>. A consequence is that two different triples, that would be semantically equivalent when asserted, are not automatically considered to denote the same thing when embedded. In the example below, assuming <a data-cite="RDF11-MT#datatype-entailment">D-entailment</a>: while `"42"^^xsd:integer` and `"042"^^xsd:integer` denote the same thing (namely, the number 42), the two embedded triples are allowed to have different denotations, and so the entailment does not hold.</p>
+
+        <pre id="ref-opacity-d-entailment"
+        data-transform="updateExample"
+        data-content-type="text/turtle"
+        class="nohighlight example"
+        >
+        <!--
+        #### under D-entailment
+
+        <h2g2.ttl> :contains << :lue :answer "42"^^xsd::integer >>.
+
+        #### does NOT entail
+
+        <h2g2.ttl> :contains << :lue :answer "042"^^xsd::integer >>.
+        -->
+        </pre>
+
+        <p>Similarly, in the example below and under <a href="https://www.w3.org/TR/owl2-overview/">OWL entailment</a> [[OWL2-Overview]]: while `:superman` and `:clark` are inferred to denote one and the same person (because of the `owl:sameAs` relationship between them), the two embedded triples are not automatically considered to denote the same thing.</p>
+
+        <pre id="ref-opacity-owl-entailment"
+        data-transform="updateExample"
+        data-content-type="text/turtle"
+        class="nohighlight example"
+        >
+        <!--
+        #### under OWL-entailment
+
+        :superman owl:sameAs :clark.
+        << :superman :can :fly >> :reportedBy :clark.
+
+        #### does NOT entail
+
+        << :clark :can :fly >> :reportedBy :clark.
+        -->
+        </pre>
+
+        <p>This is well suited for use-cases where the syntactical form of the annotated statements may be significant (like <a href="../UCR/rdf-star-ucr.html#annotate-statements-from-other-named-graphs-and-datasets">annotating statements from other graphs</a> or <a href="../UCR/rdf-star-ucr.html#annotate-commit-deltas">annotating commit deltas</a>). Other use-cases, on the other hand, would expect some degree of referential transparency. Consider the case of <a href="../UCR/rdf-star-ucr.html#meta-properties-over-properties">attributed/evidenced triples</a>. The annotation is understood to be about the fact asserted by the triple rather than the triple itself. As illustrated in the example below, one might then expect more inferences than provided by the current semantics.</p>
+
+        <pre id="ref-opacity-annotation"
+        data-transform="updateExample"
+        data-content-type="text/turtle"
+        class="nohighlight example"
+        >
+        <!--
+        #### under D-entailment
+
+        :linköping :population "0104232"^^xsd::integer
+            {| :source <https://en.wikipedia.org/wiki/Link%C3%B6ping> |}.
+
+        #### does NOT entail
+
+        :linköping :population "104232"^^xsd::integer
+            {| :source <https://en.wikipedia.org/wiki/Link%C3%B6ping> |}.
+
+        #### more precisely, it DOES entail
+
+        :linköping :population "104232"^^xsd::integer.
+
+        #### but it does NOT entail
+
+        << :linköping :population "104232"^^xsd::integer >>
+            source <https://en.wikipedia.org/wiki/Link%C3%B6ping> .
+        -->
+        </pre>
+
+        <p>Note that the current semantics does not forbid the additional inferences to be drawn. However, they would require additional knowledge and an appropriate <a data-cite="RDF11-MT#dfn-semantic-extension">semantic extension</a>, not specified in this document. This makes RDF-star less readily usable for (but not incompatible with) that latter kind of use-cases.</p>
+
+      </section>
+
+      <section>
+        <h2>Alternatives to referential opacity</h2>
+
+        <p>Given the potential drawbacks, described in the previous section, of the referential opacity provided by the current semantics, the group has considered alternative semantics. No clear consensus was reached, however, to decice whether these altenatives should be used as a replacement, or as a <a data-cite="RDF11-MT#dfn-semantic-extension">semantic extension</a>, of the current semantics.</p>
+
+        <p>A fully referentially transparent semantics can be achieved by changing the <a href="#unstar-add-triples">step 2.4</a> of the |unstar| algorithm as follows:</p>
+
+        <ul>
+          <li> Add the following <a>asserted triples</a> to |G|:
+            <ul>
+              <li>(|b|, `unstar:subject`,`   `|s|)</li>
+              <li>(|b|, `unstar:predicate`,` `|p|)</li>
+              <li>(|b|, `unstar:object`,`    `|o|)</li>
+            </ul>
+          </li>
+        </ul>
+
+        <p>In the examples above (<a href="#ref-opacity-d-entailment"></a>, <a href="#ref-opacity-owl-entailment"></a>, <a href="#ref-opacity-annotation"></a>), all the entailments would now hold automatically. This could be a problem in some use-cases, as such inferences could then not be cancelled, given the <a data-cite="RDF11-MT#dfn-monotonic">monotonic semantics</a> of RDF.</p>
+
+        <p>An intermediate alternative would be to make embedded triples referentially opaque for IRIs only, keeping it transparent for literals (and for blank nodes, as is already the case). This can be achieved by changing the <a href="#unstar-add-triples">step 2.4</a> of the |unstar| algorithm as follows:</p>
+
+        <ul>
+          <li> Add the following <a>asserted triples</a> to |G|:
+            <ul>
+              <li>(|b|, `unstar:subject`,`   `|s|)</li>
+              <li>(|b|, `unstar:predicate`,` `|p|)</li>
+              <li>(|b|, `unstar:object`,`    `|o|)</li>
+              <li>(|b|, `unstar:subjectLexical`,`   `|L|(|s|)) if |s| is an <a>IRI</a></li>
+              <li>(|b|, `unstar:predicateLexical`,` `|L|(|p|))</li>
+              <li>(|b|, `unstar:objectLexical`,`    `|L|(|o|)) if |o| is an <a>IRI</a></li>
+              </ul>
+          </li>
+        </ul>
+
+      </section>
+
     </section>
 
-    <div class=note>Multiple design choices have been discussed by the community group for the semantics, that have been <a href="https://github.com/w3c/rdf-star/issues/95">summarized in a Github issue</a>.</div>
+    <div class=note>Other design choices have also been discussed by the community group for the semantics, that have been <a href="https://github.com/w3c/rdf-star/issues/95">summarized in a Github issue</a>.</div>
 
   </section>
 

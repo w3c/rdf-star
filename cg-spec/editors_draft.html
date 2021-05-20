@@ -232,9 +232,22 @@ SELECT ?claimer WHERE {
 </pre>
 
 
-<p> SPARQL query triple patterns that include a triple pattern as a subject or object are known as SPARQL-star triple patterns. </p>
+<p>SPARQL can also be used to update RDF data, and SPARQL-star also extends that part. For example, the following SPARQL-star adds all the statements made by employee22 about employee38 as asserted triples, annotating them as "confirmed".</p>
 
-<div class="issue" data-number="94"></div>
+<pre data-transform="updateExample"
+     data-content-type="application/sparql-update"
+     class="nohighlight example"
+>
+                <!--
+PREFIX : <http://www.example.org/>
+
+INSERT {
+  :employee38 ?p ?o {| :status "confirmed" |}
+} WHERE {
+   << :employee38 ?p ?o >> :accordingTo :employee22
+}
+-->
+</pre>
 
 <p>For the remainder of this document, examples will assume that the following prefixes have been declared to represent the IRIs shown with them here: </p>
 

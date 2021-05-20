@@ -47,7 +47,13 @@ trs:manifest  rdf:type mf:Manifest ;
         trs:sparql-star-expr-1
         trs:sparql-star-expr-2
 
+        trs:sparql-star-op-1
+        trs:sparql-star-op-2
+        trs:sparql-star-op-3
+        trs:sparql-star-op-4
+
         trs:sparql-star-order-1
+        trs:sparql-star-order-2
 
         trs:sparql-star-update-1
         trs:sparql-star-update-2
@@ -265,14 +271,57 @@ trs:sparql-star-expr-2  rdf:type mf:QueryEvaluationTest ;
     mf:result  <sparql-star-expr-02.srj> ;
     .
 
+## Operators
+
+trs:sparql-star-op-1  rdf:type mf:QueryEvaluationTest ;
+    mf:name    "SPARQL-star - Embedded triple - sameTerm" ;
+    mf:action
+        [ qt:query  <sparql-star-op-1.rq> ;
+          qt:data   <data-7.ttl> ] ;
+    mf:result  <sparql-star-op-1.srj> ;
+    .
+
+trs:sparql-star-op-2  rdf:type mf:QueryEvaluationTest ;
+    mf:name    "SPARQL-star - Embedded triple - value-equality" ;
+    mf:action
+        [ qt:query  <sparql-star-op-2.rq> ;
+          qt:data   <data-7.ttl> ] ;
+    mf:result  <sparql-star-op-2.srj> ;
+    .
+
+trs:sparql-star-op-3  rdf:type mf:QueryEvaluationTest ;
+    mf:name    "SPARQL-star - Embedded triple - value-inequality" ;
+    mf:action
+        [ qt:query  <sparql-star-op-3.rq> ;
+          qt:data   <data-7.ttl> ] ;
+    mf:result  <sparql-star-op-3.srj> ;
+    .
+
+trs:sparql-star-op-4  rdf:type mf:QueryEvaluationTest ;
+    mf:name    "SPARQL-star - Embedded triple - value-inequality" ;
+    mf:action
+        [ qt:query  <sparql-star-op-4.rq> ;
+          qt:data   <data-7.ttl> ] ;
+    mf:result  <sparql-star-op-4.srj> ;
+    .
+
 ## ORDER BY
+## These use the same query on different data.
 
 trs:sparql-star-order-1  rdf:type mf:QueryEvaluationTest ;
-    mf:name    "SPARQL-star - Embedded triple ORDER BY" ;
+    mf:name    "SPARQL-star - Embedded triple - ORDER BY" ;
     mf:action
-        [ qt:query  <sparql-star-order-1.rq> ;
-          qt:data   <data-7.ttl> ] ;
+        [ qt:query  <sparql-star-order-by.rq> ;
+          qt:data   <data-order-kind.ttl> ] ;
     mf:result  <sparql-star-order-1.srj> ;
+    .
+
+trs:sparql-star-order-2  rdf:type mf:QueryEvaluationTest ;
+    mf:name    "SPARQL-star - Embedded triple - ordering" ;
+    mf:action
+        [ qt:query  <sparql-star-order-by.rq> ;
+          qt:data   <data-order.ttl> ] ;
+    mf:result  <sparql-star-order-2.srj> ;
     .
 
 ## Update

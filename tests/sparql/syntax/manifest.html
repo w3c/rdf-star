@@ -96,6 +96,8 @@
 <li class="proposed"><a href="#sparql-star-bad-8">SPARQL-star - bad - quad embedded triple</a>
 <li class="proposed"><a href="#sparql-star-bad-9">SPARQL-star - bad - variable in embedded triple in VALUES </a>
 <li class="proposed"><a href="#sparql-star-bad-10">SPARQL-star - bad - blank node in embedded triple in VALUES </a>
+<li class="proposed"><a href="#sparql-star-bad-11">SPARQL-star - bad - blank node in embedded triple in FILTER</a>
+<li class="proposed"><a href="#sparql-star-bad-12">SPARQL-star - bad - blank node in embedded triple in BIND</a>
 <li class="proposed"><a href="#sparql-star-bad-ann-1">SPARQL-star - bad - empty annotation</a>
 <li class="proposed"><a href="#sparql-star-bad-ann-2">SPARQL-star - bad - triples in annotation</a>
 <li class="proposed"><a href="#sparql-star-bad-ann-path-1">SPARQL-star - bad - path - seq</a>
@@ -744,6 +746,38 @@ PREFIX : &lt;http://example.com/&gt;
 
 SELECT * {
     VALUES ?x { &lt;&lt; :s :p [] &gt;&gt; }
+}
+</pre>
+<div>MUST be rejected</div>
+</section><section id="sparql-star-bad-11" class="entry proposed NegativeSyntaxTest11">
+<h2>SPARQL-star - bad - blank node in embedded triple in FILTER <a href="#sparql-star-bad-11">🔗</a></h2>
+<table class="properties">
+<tr class="status"><th>status:</th><td>proposed</td>
+<tr class="type"><th>type:</th><td>NegativeSyntaxTest11</td>
+</table>
+<div><code><a href="sparql-star-syntax-bad-11.rq">sparql-star-syntax-bad-11.rq</a></code></div>
+<pre>
+PREFIX : &lt;http://example.com/&gt;
+
+SELECT * {
+    ?s ?p ?o .
+    BIND(&lt;&lt; [] ?p ?o &gt;&gt; AS ?t )
+}
+</pre>
+<div>MUST be rejected</div>
+</section><section id="sparql-star-bad-12" class="entry proposed NegativeSyntaxTest11">
+<h2>SPARQL-star - bad - blank node in embedded triple in BIND <a href="#sparql-star-bad-12">🔗</a></h2>
+<table class="properties">
+<tr class="status"><th>status:</th><td>proposed</td>
+<tr class="type"><th>type:</th><td>NegativeSyntaxTest11</td>
+</table>
+<div><code><a href="sparql-star-syntax-bad-12.rq">sparql-star-syntax-bad-12.rq</a></code></div>
+<pre>
+PREFIX : &lt;http://example.com/&gt;
+
+SELECT * {
+    ?s ?p ?o .
+    FILTER ( isTRIPLE(&lt;&lt; ?s ?p [] &gt;&gt;) )
 }
 </pre>
 <div>MUST be rejected</div>

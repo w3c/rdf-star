@@ -114,6 +114,20 @@
     .example .example {
       border-left-width: .15em;
     }
+
+    /* better numbering of algorithm steps */
+    .algorithm ol {
+      counter-reset: numsection;
+      list-style-type: none;
+    }
+    .algorithm ol>li {
+      margin: 0.5em 0;
+    }
+    .algorithm ol>li:before {
+      font-weight: bold;
+      counter-increment: numsection;
+      content: counters(numsection, ".") ") ";
+    }
   </style>
   <script>
     /* copied from JSON-LD specs */
@@ -2221,7 +2235,8 @@ SELECT ?claimer WHERE {
 
       <p>Given an <a>RDF-star graph</a> |G|, the following steps transform it into an <a>RDF graph</a> that we call |unstar|(|G|).</p>
 
-      <ol class="algorithm">
+      <div class="algorithm">
+      <ol>
         <li>For each <a>IRI</a> |i| in the <a>constituents</a> of |G| starting with `https://w3c.github.io/rdf-star/unstar#`: <ol>
           <li>Mint a new <a>IRI</a> |j| by appending an underscore (`_`) to |i|.</li>
           <li>Replace with |j| all occurrences of |i| in the <a>subject</a>, <a>predicate</a>, or <a>object</a> position of an <a>asserted</a> or <a>embedded triple</a> of |G|.</li>
@@ -2240,6 +2255,7 @@ SELECT ?claimer WHERE {
           </ul></li>
         </ol></li>
       </ol>
+      </div>
       <p>After these steps, |unstar|(|G|) is an <a>RDF graph</a>, as it contains no embedded triples. Note that if |G| contains no <a>embedded triple</a> and no <a>IRI</a> in the `unstar:` namespace, then |unstar|(|G|) = |G|.</p>
 
     </section>

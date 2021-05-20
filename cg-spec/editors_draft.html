@@ -2534,7 +2534,6 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
     <p>We also introduce a number of definitions specific to RDF-star, which rely on the following notions, defined in [[[RDF11-CONCEPTS]]] [[RDF11-CONCEPTS]] and [[[RDF11-MT]]] [[RDF11-MT]]:
       <dfn data-cite="RDF11-CONCEPTS#dfn-datatype">datatype</dfn>,
       <dfn data-cite="RDF11-CONCEPTS#dfn-lexical-form">lexical form</dfn>,
-      <dfn data-cite="RDF11-CONCEPTS#dfn-simple-literal">simple literal</dfn>,
       <dfn data-cite="RDF11-MT#dfn-ill-typed">ill-typed</dfn>,
       <dfn data-cite="RDF11-MT#dfn-merging" data-lt="merge">merging</dfn>,
       <dfn data-cite="RDF11-MT#dfn-satisfiable" data-lt="satisfiable">satisfiability</dfn>,
@@ -2549,7 +2548,7 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
       <p>We define a mapping |L| that maps any <a>IRI</a> or <a>literal</a> |t| to a literal with:</p>
       <ul>
         <li>`xsd:string` as its <a>datatype</a>, and</li>
-        <li>the <a data-cite="N-TRIPLES#canonical-ntriples">canonical N-Triples</a> representation of |t| as its <a>lexical form</a> [[N-TRIPLES]]. If |t| is itself a literal with the `xsd:string` <a>datatype</a>, the representation MUST be a <a>simple literal</a>.</li>
+        <li>the <a data-cite="N-TRIPLES#canonical-ntriples">canonical N-Triples</a> representation of |t| as its <a>lexical form</a> [[N-TRIPLES]]. If |t| is itself a literal with the `xsd:string` <a>datatype</a>, the representation MUST simply match the <a href="https://www.w3.org/TR/n-triples/#grammar-production-STRING_LITERAL_QUOTE">`STRING_LITERAL_QUOTE`</a> production (i.e., without an explicit datatype IRI).</li>
       </ul>
 
       <p>Given an <a>RDF-star graph</a> |G|, the following steps transform it into an <a>RDF graph</a> that we call |unstar|(|G|).</p>

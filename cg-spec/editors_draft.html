@@ -1881,7 +1881,7 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
           (<code style="color:black">term</code>, <code style="color:black">term</code>)
         </p>
         <p>The function <code>RDFstar-compare</code> returns `-1`, `0`, `1`, or throws an error,
-          based on the comparison of the 3 elements of an RDF-star triple term.
+          based on the comparison of the three elements of an RDF-star triple term.
         </p>
         <div class="defn">
           <p>
@@ -1890,8 +1890,9 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
                 <code style="color:black;font-weight:bold">sparql-compare</code></dfn></b>
           </p>
           <ul>
-            <li>If both A and B are not RDF-star triple terms,
-              compared by SPARQL 1.1 operators <code>&lt</code>, <code>=</code>, <code>&gt</code>)
+            <li<h4>>If both A and B are not RDF-star triple terms,
+              compare by SPARQL 1.1 operators</h4>
+<code>&lt</code>, <code>=</code>, <code>&gt</code>)
               and return that value (-1, 0, +1).<br/>
             </li>
             <li>If exactly one of A and B is not an RDF-star triple term, then error.</li>
@@ -1923,8 +1924,10 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
           <code>=</code> operator.
         </p>
         <p>
-          Extend the function defintion so that it returns <code>true</code> if term1 and term2 are both RDF-star triple
-          terms and <code>RDFterm-equal</code> is <code>true</code> for pairwise for the component RDF terms.
+          Extend the function definition so that it returns <code>true</code> 
+          if term1 and term2 are both RDF-star triple
+          terms and <code>RDFterm-equal</code> is <code>true</code> 
+          for pairwise comparison of the component RDF terms.
         </p>
         <div class="defn">
           <p>
@@ -1954,7 +1957,7 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
         </div>
         <p>
           It produces an error if matching RDF terms in nested RDF triple terms when 
-          both literals but not the same RDF term. This is the same as the exisiting
+          both are literals but not the same RDF term. This is the same as the existing
           <code>RDFterm-equal</code>. Operator mapping overides this behavior.
         </p>
         <p>
@@ -2070,7 +2073,7 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
       <section id="triple-term-comparison">
         <h3>Triple terms with ORDER BY</h3>
 
-        <p>There is an added item to the ordering terms when they would not 
+        <p>There is an added item to the ordering of terms when they would not 
           otherwise be ordered. RDF-star triple terms are placed last (highest).</p>
         <ol>
           <li>(Lowest) no value assigned to the variable 

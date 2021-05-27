@@ -1870,50 +1870,46 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
       </section>
       
       <section id="sparql-compare">
-        <h3>RDFstar-compare</h3>
+        <h3>sparql-compare</h3>
         
-        <p>The function <code>RDFstar-compare</code> is added in support of value-comparison
-          operators such as <code>=</code> and for <code>ORDER BY</code>.
+        <p>The function <code>sparql-compare</code> is defined to support of value-comparison
+          operators such as <code>=</code>, and for <code>ORDER BY</code>.
         </p>
         <p>
           <code>xsd:boolean</code> &nbsp;
-          <code style="color:black;font-weight:bold">RDFstar-compare</code>
-          (<code style="color:black">term</code>, <code style="color:black">term</code>)
+          <code style="color:black;font-weight:bold">sparql-compare</code>
+          (<code style="color:black">RDF-star term</code>,
+          <code style="color:black">RDF-star term</code>)
         </p>
-        <p>The function <code>RDFstar-compare</code> returns `-1`, `0`, `1`, or throws an error,
-          based on the comparison of the three elements of an RDF-star triple term.
+        <p>
+          The function <code>sparql-compare</code> returns `-1`, `0`, `1`, or throws an
+          error, based on the comparison of two
+          <a href="#dfn-rdf-star-terms">RDF-star terms</a>.
+          When comparing two RDF-star triple terms, comparison is 
+          by pairwise comparison of subject, then predicate, then object.
         </p>
         <div class="defn">
           <p>
             <b>Definition: 
               <dfn id="defn-sparql-compare">
-                <code style="color:black;font-weight:bold">sparql-compare</code></dfn></b>
+                <code style="color:black;font-weight:bold">sparql-compare</code></dfn>
+            </b>
           </p>
           <ul>
-            <li<h4>>If both A and B are not RDF-star triple terms,
-              compare by SPARQL 1.1 operators</h4>
-<code>&lt</code>, <code>=</code>, <code>&gt</code>)
-              and return that value (-1, 0, +1).<br/>
+            <li>If both A and B are not RDF-star triple terms,
+              compare by SPARQL 1.1 operators
+              <code>&lt</code>, <code>=</code>, <code>&gt</code>)
+              and return the comparision value (-1, 0, +1) or throw an error
+              as defined by SPARQL 1.1.<br/>
             </li>
-            <li>If exactly one of A and B is not an RDF-star triple term, then error.</li>
+            <li>If one of A and B, is an RDF-star triple term, and the other is not 
+              an RDF-star triple term then error.</li>
             <li>If <code>sparql-compare(SUBJECT(A), SUBJECT(B)) != 0</code>,
               then return this value.</li>
             <li>If <code>sparql-compare(PREDICATE(A), PREDICATE(B)) != 0</code>,
               then return this value.</li>
             <li>Return <code>sparql-compare(OBJECT(A), OBJECT(B))</code></li>
           </ul>
-          
-          <p>
-            If both arguments are RDF-star triple terms:
-          </p>
-          <p style="margin-left:20px">
-            <code style="color:black;font-weight:bold">RDFstar-compare</code><code>(&lt;&lt;S1 P1 O1&gt;&gt;,
-              &lt;&lt;S2 P2 O2&gt;&gt;)</code>
-          </p>
-          <p>
-            is evaluated as
-          </p>
-          <p style="margin-left:20px">sparql-compare(A, B)</p>
         </div>
       </section>
 
@@ -1924,7 +1920,7 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
           <code>=</code> operator.
         </p>
         <p>
-          Extend the function definition so that it returns <code>true</code> 
+          This is extended to cover RDF-star terms so that it returns <code>true</code> 
           if term1 and term2 are both RDF-star triple
           terms and <code>RDFterm-equal</code> is <code>true</code> 
           for pairwise comparison of the component RDF terms.
@@ -1950,15 +1946,11 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
           <p style="margin-left:20px">
             <code>RDFterm-equal(S1, S2) && RDFterm-equal(P1, P2) && RDFterm-equal(O1, O2)</code>
           </p>
-          <p>This is applied recursively.</p>
-          <p>If one argument is an RDF-star triple term and the other argument is not, 
-            the result is <code>false</code>.
-          </p>
         </div>
         <p>
           It produces an error if matching RDF terms in nested RDF triple terms when 
           both are literals but not the same RDF term. This is the same as the existing
-          <code>RDFterm-equal</code>. Operator mapping overides this behavior.
+          <code>RDFterm-equal</code>. Operator mapping overrides this behavior.
         </p>
         <p>
           The case of two RDF-star triple terms is covered by the operator dispatch mappings
@@ -2067,7 +2059,6 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
             </tr>
           </tbody>
         </table>
-        
       </section>
 
       <section id="triple-term-comparison">
@@ -2083,7 +2074,13 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
           <li>RDF literals</li>
           <li><i>RDF-star triple terms</i></li>
         </ol>
-        <p>RDF-star triple terms are compared using the <code>&lt;</code> operator.
+        <p>
+          RDF-star triple terms are compared using the <code>&lt;</code> operator.
+        </p>
+        <p>
+          While SPARQL-star does not define a total ordering of all possible RDF-star terms,
+          implementations should provide an some ordering for <code>ORDER BY</code>
+          that does not change between queries if the data has not changed.
         </p>
       </section>
     </section>

@@ -2662,7 +2662,7 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
       <section>
         <h2>Referential opacity</h2>
 
-        <p>The way the |unstar| mapping is defined, the denotation of an embedded triple does not only depend on the denotation of its component terms, but also on their syntactical form (for IRIs and literals). This behavior is referred to as <a href="https://en.wikipedia.org/wiki/Opaque_context">referential opacity</a>. A consequence is that two different triples, that would be semantically equivalent when asserted, are not automatically considered to denote the same thing when embedded. In the example below, assuming <a data-cite="RDF11-MT#datatype-entailment">D-entailment</a>: while `"42"^^xsd:integer` and `"042"^^xsd:integer` denote the same thing (namely, the number 42), the two embedded triples are allowed to have different denotations, and so the entailment does not hold.</p>
+        <p>The way the |unstar| mapping is defined, the denotation of an embedded triple does not only depend on the denotation of its component terms, but also on their syntactical form (for IRIs and literals). This behavior is referred to as <a href="https://en.wikipedia.org/wiki/Opaque_context">referential opacity</a>. A consequence is that two different triples, that would be semantically equivalent if asserted, are not automatically considered to denote the same thing when embedded. In the example below, assuming <a data-cite="RDF11-MT#datatype-entailment">D-entailment</a>: while `"42"^^xsd:integer` and `"042"^^xsd:integer` denote the same thing (namely, the number 42), the two embedded triples are allowed to have different denotations, and so the entailment does not hold.</p>
 
         <pre id="ref-opacity-d-entailment"
         data-transform="updateExample"
@@ -2680,7 +2680,7 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
         -->
         </pre>
 
-        <p>Similarly, in the example below and under <a href="https://www.w3.org/TR/owl2-overview/">OWL entailment</a> [[OWL2-Overview]]: while `:superman` and `:clark` are inferred to denote one and the same person (because of the `owl:sameAs` relationship between them), the two embedded triples are not automatically considered to denote the same thing.</p>
+        <p>Similarly, in the example below and under <a href="https://www.w3.org/TR/owl2-overview/">OWL entailment</a> [[OWL2-Overview]], while `:superman` and `:clark` are inferred to denote one and the same person (because of the `owl:sameAs` relationship between them), the two embedded triples are not automatically considered to denote the same thing.</p>
 
         <pre id="ref-opacity-owl-entailment"
         data-transform="updateExample"
@@ -2735,7 +2735,7 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
       <section>
         <h2>Alternatives to referential opacity</h2>
 
-        <p>Given the potential drawbacks, described in the previous section, of the referential opacity provided by the current semantics, the group has considered alternative semantics. No clear consensus was reached, however, to decice whether these altenatives should be used as a replacement, or as a <a data-cite="RDF11-MT#dfn-semantic-extension">semantic extension</a>, of the current semantics.</p>
+        <p>Given the potential drawbacks of the referential opacity provided by the current semantics, as described in the previous section, the group has considered alternative semantics. No clear consensus was reached, however, to decide whether these alternatives should be used as a replacement, or as a <a data-cite="RDF11-MT#dfn-semantic-extension">semantic extension</a>, of the current semantics.</p>
 
         <p>A fully referentially transparent semantics can be achieved by changing the <a href="#unstar-add-triples">step 2.4</a> of the |unstar| algorithm as follows:</p>
 
@@ -2770,7 +2770,7 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
 
     </section>
 
-    <div class=note>Other design choices have also been discussed by the community group for the semantics, that have been <a href="https://github.com/w3c/rdf-star/issues/95">summarized in a Github issue</a>.</div>
+    <div class=note>Other design choices for the semantics have also been discussed by the community group; these have been <a href="https://github.com/w3c/rdf-star/issues/95">summarized in a Github issue</a>.</div>
 
   </section>
 

@@ -23,6 +23,7 @@
 <a href="https://w3c.github.io/rdf-star/Minutes/2021-05-21.html"><img alt="Previous meeting." title="Previous meeting" src="https://www.w3.org/StyleSheets/scribe2/go-previous.png"></a>
 <a href="https://www.w3.org/mid/438dcce8-738c-a690-3327-260ab9277bb9@ercim.eu"><img alt="Agenda." title="Agenda" src="https://www.w3.org/StyleSheets/scribe2/chronometer.png"></a>
 <a href="https://www.w3.org/2021/05/28-rdf-star-irc"><img alt="IRC log." title="IRC log" src="https://www.w3.org/StyleSheets/scribe2/text-plain.png"></a>
+<a href="https://w3c.github.io/rdf-star/Minutes/2021-06-04.html"><img alt="Next meeting." title="Next meeting" src="https://www.w3.org/StyleSheets/scribe2/go-next.png"></a>
 </nav>
 </header>
 
@@ -31,7 +32,7 @@
 <h2>Attendees</h2>
 <dl class=intro>
 <dt>Present</dt><dd>AndyS, gkellogg, james, ora, pchampin, TallTed, thomas</dd>
-<dt>Regrets</dt><dd>olaf</dd>
+<dt>Regrets</dt><dd>olaf, william</dd>
 <dt>Chair</dt><dd>pchampin</dd>
 <dt>Scribe</dt><dd>gkellogg, pchampin</dd>
 </dl>
@@ -141,46 +142,46 @@
 <p id=x160 class=irc><cite>&lt;thomas&gt;</cite> -1 for a few more weeks</p>
 <p id=x161 class=irc><cite>&lt;AndyS&gt;</cite> +0.8</p>
 <p id=x162 class=irc><cite>&lt;thomas&gt;</cite> i could  change my vote to -0.5</p>
-<p id=x163 class=summary>let's postpone that decsion</p>
+<p id=x163 class=irc><cite>&lt;pchampin&gt;</cite> let's postpone that decsion</p>
 </section>
 
 <section>
 <h3 id=t03>Open actions</h3>
-<p id=x166 class=summary><a href="https://github.com/w3c/rdf-star/issues?q=is%3Aopen+is%3Aissue+label%3Aaction">https://<wbr>github.com/<wbr>w3c/<wbr>rdf-star/<wbr>issues?q=is%3Aopen+is%3Aissue+label%3Aaction</a></p>
-<p id=x167 class=summary><a href="https://github.com/w3c/rdf-star/issues/121">https://<wbr>github.com/<wbr>w3c/<wbr>rdf-star/<wbr>issues/<wbr>121</a></p>
-<p id=x168 class="phone s01"><cite>pchampin:</cite> PR #121 has a lot of work done.</p>
-<p id=x171 class="phone s05"><cite>gkellogg:</cite> some wordsmithing issues left, but I'm astisfied with the substance<br>
-<span id=x172>… I have always found SPARQL equality challenging</span><br>
-<span id=x173>… I'm passing all the tests.</span></p>
-<p id=x175 class="phone s02"><cite>AndyS:</cite> There are some more minor changes needed.<br>
-<span id=x176>… It’s important to have a stable ordering.</span></p>
-<p id=x178 class=summary><a href="https://github.com/w3c/rdf-star/issues/164">https://<wbr>github.com/<wbr>w3c/<wbr>rdf-star/<wbr>issues/<wbr>164</a></p>
-<p id=x179 class="phone s01"><cite>pchampin:</cite> Next was #1164 on Sparql Service Description. I’ll reference that in the TBD section.</p>
-<p id=x180 class=summary><a href="https://github.com/w3c/rdf-star/issues/166">https://<wbr>github.com/<wbr>w3c/<wbr>rdf-star/<wbr>issues/<wbr>166</a></p>
-<p id=x181 class="phone s01"><cite>pchampin:</cite> The section on the rationale for transparence/opacity. I noticed that PRs fail on CI, while AndyS’s succeeds.</p>
-<p id=x183 class="phone s02"><cite>AndyS:</cite> I avoided a lot of ReSpec features and just wrote raw HTML. I didn’t have the energy on how to drop in.<br>
-<span id=x184>… In addition to ARIA, there’s an empty-ID warning.</span></p>
-<p id=x188 class="phone s01"><cite>pchampin:</cite> To be clear, the idea is that the different semantics proposed in the document could be seen as layers of semantic extensions on top of the first one.<br>
-<span id=x189>… I didn’t think that would cause too much discussion,</span></p>
-<p id=x192 class="phone s03"><cite>thomas:</cite> I saw this as marketing. I made a mistake in an answer. I had some things mixed up. I still don’t like what we’re doing.<br>
-<span id=x193>… You’re leaving out common-sense entailments.</span><br>
-<span id=x194>… I’m not as concerned about it now, but I’d be much happier if we could point to something about semantic extensions, but we don’t have that now.</span></p>
-<p id=x196 class="phone s01"><cite>pchampin:</cite> I don’t want to have the debate about which is best, because we agreed to say that there was no concensus in the group. You might use this as a semantic extension, or as a replacement, but we couldn’t agree.<br>
-<span id=x197>… The term has a precise definition in the RDF spec. The alternative sematncis work on top of the opaque semantics.</span></p>
-<p id=x198 class="phone s03"><cite>thomas:</cite> I’m refering to my discussions with olaf.</p>
-<p id=x200 class="phone s01"><cite>pchampin:</cite> I’m just try to get to the point where we can merge the PR.<br>
-<span id=x201>… We’ll need to continue on GitHub. The goal was to see if we can make progress.</span></p>
-<p id=x202 class=summary><a href="https://github.com/w3c/rdf-star/issues/168">https://<wbr>github.com/<wbr>w3c/<wbr>rdf-star/<wbr>issues/<wbr>168</a></p>
-<p id=x203 class=summary><a href="https://github.com/w3c/rdf-star/issues/175">https://<wbr>github.com/<wbr>w3c/<wbr>rdf-star/<wbr>issues/<wbr>175</a></p>
-<p id=x206 class="phone s01"><cite>pchampin:</cite> The charter hasn’t progressed.<br>
-<span id=x207>… We haven’t done anything on the media-type or conneg discussions yet.</span><br>
-<span id=x208>… AndyS mentioned that it could break some things.</span></p>
-<p id=x211 class="phone s06"><cite>james:</cite> WRT #175, AndyS requested that it introduce an issue in the sparql-12 group, which I have.</p>
-<p id=x212 class=irc><cite>&lt;AndyS&gt;</cite> james - thx</p>
-<p id=x213 class="phone s03"><cite>thomas:</cite> Any feedback on my proposal?</p>
-<p id=x216 class="phone s01"><cite>pchampin:</cite> I see where you’re going. Having an alternative syntax for transparency is interesting, but until we’ve agreed on the vocabulary, I think it’s too early.<br>
-<span id=x217>… I think the issue raised by pfps on non-obvious ramifications is a bit embarassing,</span><br>
-<span id=x218>… It is dependent on our agreeing on how to add transparency.</span></p>
+<p id=x167 class=summary><a href="https://github.com/w3c/rdf-star/issues?q=is%3Aopen+is%3Aissue+label%3Aaction">https://<wbr>github.com/<wbr>w3c/<wbr>rdf-star/<wbr>issues?q=is%3Aopen+is%3Aissue+label%3Aaction</a></p>
+<p id=x168 class=summary><a href="https://github.com/w3c/rdf-star/issues/121">https://<wbr>github.com/<wbr>w3c/<wbr>rdf-star/<wbr>issues/<wbr>121</a></p>
+<p id=x169 class="phone s01"><cite>pchampin:</cite> PR #121 has a lot of work done.</p>
+<p id=x172 class="phone s05"><cite>gkellogg:</cite> some wordsmithing issues left, but I'm astisfied with the substance<br>
+<span id=x173>… I have always found SPARQL equality challenging</span><br>
+<span id=x174>… I'm passing all the tests.</span></p>
+<p id=x176 class="phone s02"><cite>AndyS:</cite> There are some more minor changes needed.<br>
+<span id=x177>… It’s important to have a stable ordering.</span></p>
+<p id=x179 class=summary><a href="https://github.com/w3c/rdf-star/issues/164">https://<wbr>github.com/<wbr>w3c/<wbr>rdf-star/<wbr>issues/<wbr>164</a></p>
+<p id=x180 class="phone s01"><cite>pchampin:</cite> Next was #1164 on Sparql Service Description. I’ll reference that in the TBD section.</p>
+<p id=x181 class=summary><a href="https://github.com/w3c/rdf-star/issues/166">https://<wbr>github.com/<wbr>w3c/<wbr>rdf-star/<wbr>issues/<wbr>166</a></p>
+<p id=x182 class="phone s01"><cite>pchampin:</cite> The section on the rationale for transparence/opacity. I noticed that PRs fail on CI, while AndyS’s succeeds.</p>
+<p id=x184 class="phone s02"><cite>AndyS:</cite> I avoided a lot of ReSpec features and just wrote raw HTML. I didn’t have the energy on how to drop in.<br>
+<span id=x185>… In addition to ARIA, there’s an empty-ID warning.</span></p>
+<p id=x189 class="phone s01"><cite>pchampin:</cite> To be clear, the idea is that the different semantics proposed in the document could be seen as layers of semantic extensions on top of the first one.<br>
+<span id=x190>… I didn’t think that would cause too much discussion,</span></p>
+<p id=x193 class="phone s03"><cite>thomas:</cite> I saw this as marketing. I made a mistake in an answer. I had some things mixed up. I still don’t like what we’re doing.<br>
+<span id=x194>… You’re leaving out common-sense entailments.</span><br>
+<span id=x195>… I’m not as concerned about it now, but I’d be much happier if we could point to something about semantic extensions, but we don’t have that now.</span></p>
+<p id=x197 class="phone s01"><cite>pchampin:</cite> I don’t want to have the debate about which is best, because we agreed to say that there was no concensus in the group. You might use this as a semantic extension, or as a replacement, but we couldn’t agree.<br>
+<span id=x198>… The term has a precise definition in the RDF spec. The alternative sematncis work on top of the opaque semantics.</span></p>
+<p id=x199 class="phone s03"><cite>thomas:</cite> I’m refering to my discussions with olaf.</p>
+<p id=x201 class="phone s01"><cite>pchampin:</cite> I’m just try to get to the point where we can merge the PR.<br>
+<span id=x202>… We’ll need to continue on GitHub. The goal was to see if we can make progress.</span></p>
+<p id=x203 class=summary><a href="https://github.com/w3c/rdf-star/issues/168">https://<wbr>github.com/<wbr>w3c/<wbr>rdf-star/<wbr>issues/<wbr>168</a></p>
+<p id=x204 class=summary><a href="https://github.com/w3c/rdf-star/issues/175">https://<wbr>github.com/<wbr>w3c/<wbr>rdf-star/<wbr>issues/<wbr>175</a></p>
+<p id=x207 class="phone s01"><cite>pchampin:</cite> The charter hasn’t progressed.<br>
+<span id=x208>… We haven’t done anything on the media-type or conneg discussions yet.</span><br>
+<span id=x209>… AndyS mentioned that it could break some things.</span></p>
+<p id=x212 class="phone s06"><cite>james:</cite> WRT #175, AndyS requested that it introduce an issue in the sparql-12 group, which I have.</p>
+<p id=x213 class=irc><cite>&lt;AndyS&gt;</cite> james - thx</p>
+<p id=x214 class="phone s03"><cite>thomas:</cite> Any feedback on my proposal?</p>
+<p id=x217 class="phone s01"><cite>pchampin:</cite> I see where you’re going. Having an alternative syntax for transparency is interesting, but until we’ve agreed on the vocabulary, I think it’s too early.<br>
+<span id=x218>… I think the issue raised by pfps on non-obvious ramifications is a bit embarassing,</span><br>
+<span id=x219>… It is dependent on our agreeing on how to add transparency.</span></p>
 </section>
 </main>
 

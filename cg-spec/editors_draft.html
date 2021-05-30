@@ -1872,8 +1872,8 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
       <section id="sparql-compare">
         <h3>sparql-compare</h3>
         
-        <p>The function <code>sparql-compare</code> is defined to support of value-comparison
-          operators such as <code>=</code>, and for <code>ORDER BY</code>.
+        <p>The function <code>sparql-compare</code> is defined to support value-comparison
+          operators such as <code>=</code> and <code>ORDER BY</code>.
         </p>
         <p>
           <code>xsd:boolean</code> &nbsp;
@@ -1896,14 +1896,14 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
             </b>
           </p>
           <ul>
-            <li>If both A and B are not RDF-star triple terms,
+            <li>If neither A nor B is an RDF-star triple term,
               compare by SPARQL 1.1 operators
               <code>&lt</code>, <code>=</code>, <code>&gt</code>)
-              and return the comparision value (-1, 0, +1) or throw an error
+              and return the comparison value (`-1`, `0`, `+1`) or throw an error
               as defined by SPARQL 1.1.<br/>
             </li>
-            <li>If one of A and B, is an RDF-star triple term, and the other is not 
-              an RDF-star triple term then error.</li>
+            <li>If either A or B is an RDF-star triple term, and the other is not 
+              an RDF-star triple term, then error.</li>
             <li>If <code>sparql-compare(SUBJECT(A), SUBJECT(B)) != 0</code>,
               then return this value.</li>
             <li>If <code>sparql-compare(PREDICATE(A), PREDICATE(B)) != 0</code>,
@@ -2079,7 +2079,7 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
         </p>
         <p>
           While SPARQL-star does not define a total ordering of all possible RDF-star terms,
-          implementations should provide an some ordering for <code>ORDER BY</code>
+          implementations should provide some ordering for <code>ORDER BY</code>
           that does not change between queries if the data has not changed.
         </p>
       </section>

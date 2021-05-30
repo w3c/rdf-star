@@ -1709,26 +1709,17 @@ respectively).</p>
 
       <p>The modifications to functions and operators for triple terms are:</p>
       <ul>
-        <li><a href="#rdf-star-func-sameTerm">Modifed <code>sameTerm</code>
-            function</a>
-          (SPARQL 1.1 <a 
-                        href="https://www.w3.org/TR/sparql11-query/#func-sameTerm"
-                        >Section 17.4.1.8</a>)</li>
-        <li><a href="#sparql-compare">New function <code>RDFstar-compare</code></a> for the 
+        <li><a href="#rdf-star-func-sameTerm">Modified <code>sameTerm</code> function</a>
+          (SPARQL 1.1 <a data-cite="SPARQL11-QUERY#func-sameTerm">Section 17.4.1.8</a>)</li>
+        <li><a href="#sparql-compare">New function <code>sparql-compare</code></a> for the 
           <code>=</code> operator and other comparison mappings</li>
         <li><a href="#rdf-star-termEqual">Modified <code>RDFterm-equal</code></a>
-          (SPARQL 1.1 <a 
-                        href="https://www.w3.org/TR/sparql11-query/#func-RDFterm-equal"
-                        >Section 17.4.1.7</a>)</li>
-        <li><a href="#rdf-star-operator-mapping">Operator mapping for <code>=</code> and other
-            operators</a>
-          (SPARQL 1.1 <a 
-                        href="https://www.w3.org/TR/sparql11-query/#OperatorMapping"
-                        >Section 17.3</a>)</li>
+          (SPARQL 1.1 <a data-cite="SPARQL11-QUERY#func-RDFterm-equal">Section 17.4.1.7</a>)</li>
+        <li><a href="#rdf-star-operator-mapping">Operator mapping for <code>=</code> 
+            and other operators</a>
+          (SPARQL 1.1 <a data-cite="SPARQL11-QUERY#OperatorMapping">Section 17.3</a>)</li>
         <li><a href="#triple-term-comparison">Modified <code>ORDER BY</code></a>
-          (SPARQL 1.1 <a 
-                        href="https://www.w3.org/TR/sparql11-query/#modOrderBy"
-                        >Section 15.1</a>)</li>
+          (SPARQL 1.1 <a data-cite="SPARQL11-QUERY#modOrderBy">Section 15.1</a>)</li>
       </ul>
 
       <section id="triple-function">
@@ -1962,7 +1953,7 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
         <h3>Operator Mappings</h3>
 
         <p>New operator mappings are added for RDF-star triple terms for section 
-          SPARQL 1.1 Query <a href="https://www.w3.org/TR/sparql11-query/#OperatorMapping"
+          SPARQL 1.1 Query <a data-cite="SPARQL11-QUERY#OperatorMapping"
              rel="nofollow">17.3 Operator Mapping</a>
         </p>
         <table class="operator">
@@ -1984,7 +1975,7 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
               <td><span class="type RDFterm">RDF triple term</span></td>
               <td><span class="type RDFterm">RDF triple term</span></td>
               <td>
-                <a href="https://www.w3.org/TR/xpath-functions/#func-numeric-equal"
+                <a data-cite="XPATH-FUNCTIONS#func-numeric-equal"
                    >op:numeric-equal</a>(<a href="#defn-sparql-compare" 
                                             class="SPARQLoperator"
                                             >sparql-compare</a>(A, B), 0)
@@ -1998,7 +1989,7 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
 
               <td>
                 <a href="http://www.w3.org/TR/xpath-functions/#func-not"
-                   >fn:not</a>(<a href="https://www.w3.org/TR/xpath-functions/#func-numeric-equal"
+                   >fn:not</a>(<a data-cite="XPATH-FUNCTIONS#func-numeric-equal"
                                   >op:numeric-equal</a>(<a href="#defn-sparql-compare" 
                                                            class="SPARQLoperator"
                                                            >sparql-compare</a>(A, B), 0))
@@ -2010,7 +2001,7 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
               <td><span class="type RDFterm">RDF triple term</span></td>
               <td><span class="type RDFterm">RDF triple term</span></td>
               <td>
-                <a href="https://www.w3.org/TR/xpath-functions/#func-numeric-equal"
+                <a data-cite="XPATH-FUNCTIONS#func-numeric-equal"
                    >op:numeric-equal</a>(<a href="#defn-sparql-compare" 
                                             class="SPARQLoperator"
                                             >sparql-compare</a>(A, B), -1)
@@ -2023,7 +2014,7 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
               <td><span class="type RDFterm">RDF triple term</span></td>
               <td>
                 <a href="http://www.w3.org/TR/xpath-functions/#func-not"
-                   >fn:not</a>(<a href="https://www.w3.org/TR/xpath-functions/#func-numeric-equal"
+                   >fn:not</a>(<a data-cite="XPATH-FUNCTIONS#func-numeric-equal"
                                   >op:numeric-equal</a>(<a href="#defn-sparql-compare" 
                                                            class="SPARQLoperator"
                                                            >sparql-compare</a>(A, B), 1))
@@ -2035,7 +2026,7 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
               <td><span class="type RDFterm">RDF triple term</span></td>
               <td><span class="type RDFterm">RDF triple term</span></td>
               <td>
-                <a href="https://www.w3.org/TR/xpath-functions/#func-numeric-equal"
+                <a data-cite="XPATH-FUNCTIONS#func-numeric-equal"
                    >op:numeric-equal</a>(<a href="#defn-sparql-compare" 
                                             class="SPARQLoperator"
                                             >sparql-compare</a>(A, B), 1)
@@ -2050,7 +2041,7 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
               <td><span class="type RDFterm">RDF triple term</span></td>
               <td>
                 <a href="http://www.w3.org/TR/xpath-functions/#func-not"
-                   >fn:not</a>(<a href="https://www.w3.org/TR/xpath-functions/#func-numeric-equal"
+                   >fn:not</a>(<a data-cite="XPATH-FUNCTIONS#func-numeric-equal"
                                   >op:numeric-equal</a>(<a href="#defn-sparql-compare" 
                                                            class="SPARQLoperator"
                                                            >sparql-compare</a>(A, B), -1))

@@ -324,14 +324,64 @@
       "result": "sparql-star-expr-02.srj"
     },
     {
-      "@id": "trs:sparql-star-order-1",
+      "@id": "trs:sparql-star-op-1",
       "@type": "QueryEvaluationTest",
       "action": {
         "qt:data": "data-7.ttl",
-        "qt:query": "sparql-star-order-1.rq"
+        "qt:query": "sparql-star-op-1.rq"
       },
-      "name": "SPARQL-star - Embedded triple ORDER BY",
+      "name": "SPARQL-star - Embedded triple - sameTerm",
+      "result": "sparql-star-op-1.srj"
+    },
+    {
+      "@id": "trs:sparql-star-op-2",
+      "@type": "QueryEvaluationTest",
+      "action": {
+        "qt:data": "data-7.ttl",
+        "qt:query": "sparql-star-op-2.rq"
+      },
+      "name": "SPARQL-star - Embedded triple - value-equality",
+      "result": "sparql-star-op-2.srj"
+    },
+    {
+      "@id": "trs:sparql-star-op-3",
+      "@type": "QueryEvaluationTest",
+      "action": {
+        "qt:data": "data-7.ttl",
+        "qt:query": "sparql-star-op-3.rq"
+      },
+      "name": "SPARQL-star - Embedded triple - value-inequality",
+      "result": "sparql-star-op-3.srj"
+    },
+    {
+      "@id": "trs:sparql-star-op-4",
+      "@type": "QueryEvaluationTest",
+      "action": {
+        "qt:data": "data-7.ttl",
+        "qt:query": "sparql-star-op-4.rq"
+      },
+      "name": "SPARQL-star - Embedded triple - value-inequality",
+      "result": "sparql-star-op-4.srj"
+    },
+    {
+      "@id": "trs:sparql-star-order-1",
+      "@type": "QueryEvaluationTest",
+      "action": {
+        "qt:data": "data-order-kind.ttl",
+        "qt:query": "sparql-star-order-by.rq"
+      },
+      "name": "SPARQL-star - Embedded triple - ORDER BY",
       "result": "sparql-star-order-1.srj"
+    },
+    {
+      "@id": "trs:sparql-star-order-2",
+      "@type": "QueryEvaluationTest",
+      "action": {
+        "qt:data": "data-order.ttl",
+        "qt:query": "sparql-star-order-by.rq"
+      },
+      "name": "SPARQL-star - Embedded triple - ordering",
+      "result": "sparql-star-order-2.srj"
     },
     {
       "@id": "trs:sparql-star-update-1",

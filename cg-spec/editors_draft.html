@@ -2551,7 +2551,7 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
         <li>the <a data-cite="N-TRIPLES#canonical-ntriples">canonical N-Triples</a> representation of |t| as its <a>lexical form</a> [[N-TRIPLES]]. If |t| is itself a literal with the `xsd:string` <a>datatype</a>, the representation MUST simply match the <a href="https://www.w3.org/TR/n-triples/#grammar-production-STRING_LITERAL_QUOTE">`STRING_LITERAL_QUOTE`</a> production (i.e., without an explicit <a>datatype</a> <a>IRI</a>).</li>
       </ul>
 
-      <p>Given an <a>RDF-star graph</a> |G|, the following steps transform it into an <a>RDF graph</a> that we call |unstar|(|G|).</p>
+      <p>Given an <a>RDF-star graph</a> |G|, the following steps define the <dfn data-lt="unstar">unstar mapping</dfn>, which transform |G| into an <a>RDF graph</a> that we call <a>unstar</a>(|G|).</p>
 
       <div class="algorithm">
       <ol>
@@ -2574,7 +2574,7 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
         </ol></li>
       </ol>
       </div>
-      <p>After these steps, |unstar|(|G|) is an <a>RDF graph</a>, as it contains no embedded triples. Note that if |G| contains no <a>embedded triple</a> and no <a>IRI</a> in the `unstar:` namespace, then |unstar|(|G|) = |G|.</p>
+      <p>After these steps, <a>unstar</a>(|G|) is an <a>RDF graph</a>, as it contains no embedded triples. Note that if |G| contains no <a>embedded triple</a> and no <a>IRI</a> in the `unstar:` namespace, then <a>unstar</a>(|G|) = |G|.</p>
 
     </section>
 
@@ -2583,11 +2583,11 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
 
       <p>Following [[[RDF11-MT]]], we define the notions of <a>satisfiability</a> and <a>entailment</a> for <a>RDF-star graphs</a>. Given two <a>RDF-star graphs</a> |G| and |H|:<p>
       <ul>
-        <li>We say that |G| is star-<a>satisfiable</a> (resp. star-<a>unsatisfiable</a>) if and only if |unstar|(|G|) is simply <a>satisfiable</a> (resp. simply <a>unsatisfiable</a>).</li>
-        <li>We say that |H| is star-<a>entailed</a> by (resp. star-<a>equivalent</a> to) |G| if and only if |unstar|(|H|) is simply <a>entailed</a> by (resp. simply <a>equivalent</a> to) |unstar|(|G|).</li>
+        <li>We say that |G| is star-<a>satisfiable</a> (resp. star-<a>unsatisfiable</a>) if and only if <a>unstar</a>(|G|) is simply <a>satisfiable</a> (resp. simply <a>unsatisfiable</a>).</li>
+        <li>We say that |H| is star-<a>entailed</a> by (resp. star-<a>equivalent</a> to) |G| if and only if <a>unstar</a>(|H|) is simply <a>entailed</a> by (resp. simply <a>equivalent</a> to) <a>unstar</a>(|G|).</li>
       </ul>
 
-      <p>It is easy to see that, in the special case of <a>RDF graphs</a> |G| and |H| (i.e. <a>RDF-star graphs</a> containing no <a>embedded triple</a>), |G| is star-<a>satisfiable</a> if and only if |G| is simply <a>satisfiable</a>, and |G| star-<a>entails</a> |H| if and only if |G| simply <a>entails</a> |H|. This is trivially true if |G| and |H| do not contain any `unstar:` <a>IRI</a> (in which case they are left unchanged by |unstar|). But this is also true if they do contain such <a>IRIs</a> (as the renaming performed by |unstar| has no significant impact on the semantic relationships between the two graphs). Star-<a>entailment</a> can therefore be considered as a natural <em>extension</em> of simple <a>entailment</a> to <a>RDF-star graphs</a>.</p>
+      <p>It is easy to see that, in the special case of <a>RDF graphs</a> |G| and |H| (i.e. <a>RDF-star graphs</a> containing no <a>embedded triple</a>), |G| is star-<a>satisfiable</a> if and only if |G| is simply <a>satisfiable</a>, and |G| star-<a>entails</a> |H| if and only if |G| simply <a>entails</a> |H|. This is trivially true if |G| and |H| do not contain any `unstar:` <a>IRI</a> (in which case they are left unchanged by the <a>unstar mapping</a>). But this is also true if they do contain such <a>IRIs</a> (as the renaming performed by the <a>unstar mapping</a> has no significant impact on the semantic relationships between the two graphs). Star-<a>entailment</a> can therefore be considered as a natural <em>extension</em> of simple <a>entailment</a> to <a>RDF-star graphs</a>.</p>
 
       <p class="note">Other notions of <a>satisfiability</a> and <a>entailment</a>, such as <a data-cite="RDF11-MT#rdf-entailment">RDF entailment</a> or <a data-cite="RDF11-MT#rdfs-entailment">RDFS entailment</a>, can be extended in the same way for <a>RDF-star graphs</a>.</p>    
     </section>
@@ -2631,29 +2631,29 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
       <section>
         <h2>Implementing the RDF-star semantics</h2>
 
-        <p>It is important to notice that the definitions given <a href="#entailment-of-rdf-star-graphs">above</a> for <a>satisfiability</a> and <a>entailment</a> of <a>RDF-star graphs</a> do not mandate that implementations actually transform <a>RDF-star graphs</a> using the |unstar| mapping. It should be possible to implement the semantics by directly handling RDF-star's <a href="#concepts">abstract syntax</a>.</p>
+        <p>It is important to notice that the definitions given <a href="#entailment-of-rdf-star-graphs">above</a> for <a>satisfiability</a> and <a>entailment</a> of <a>RDF-star graphs</a> do not mandate that implementations actually transform <a>RDF-star graphs</a> using the <a>unstar mapping</a> defined above. It should be possible to implement the semantics by directly handling RDF-star's <a href="#concepts">abstract syntax</a>.</p>
 
       </section>
 
       <section>
         <h2>Combining RDF-star graphs</h2>
 
-        <p>For implementations that rely on the |unstar| mapping defined <a href="#mapping">above</a>, care must be taken when the resulting <a>RDF graphs</a> are combined through union or <a>merge</a>. Given two <a>RDF-star graphs</a> |G| and |H|, it may be the case that |unstar|(|G| ∪ |H|) ≠ |unstar|(|G|) ∪ |unstar|(|H|).</p>
+        <p>For implementations that rely on the <a>unstar mapping</a>, care must be taken when the resulting <a>RDF graphs</a> are combined through union or <a>merge</a>. Given two <a>RDF-star graphs</a> |G| and |H|, it may be the case that <a>unstar</a>(|G| ∪ |H|) ≠ <a>unstar</a>(|G|) ∪ <a>unstar</a>(|H|).</p>
 
-        <p>In particular, if |G| and |H| contain the same <a>embedded triple</a>, this triple will be mapped to a single blank node in |unstar|(|G| ∪ |H|), but in two potentially different blank nodes in |unstar|(|G|) ∪ |unstar|(|H|). These blank nodes will need to be unified in order to reconstruct |unstar|(|G| ∪ |H|).</p>
+        <p>In particular, if |G| and |H| contain the same <a>embedded triple</a>, this triple will be mapped to a single blank node in <a>unstar</a>(|G| ∪ |H|), but in two potentially different blank nodes in <a>unstar</a>(|G|) ∪ <a>unstar</a>(|H|). These blank nodes will need to be unified in order to reconstruct <a>unstar</a>(|G| ∪ |H|).</p>
 
-        <p>Conversely, nothing in the definition of |unstar| prevents it from generating the same blank node |b| for an <a>embedded triple</a> of |G|, and for a <em>different</em> <a>embedded triple</a> of |H| (provided that |b| is not present in either |G| nor |H|). In that case, not only would |unstar|(|G|) ∪ |unstar|(|H|) be different from |unstar|(|G| ∪ |H|), but it would lose some information by mixing the descriptions of the two <a>embedded triples</a>.</p>
+        <p>Conversely, nothing in the definition of the <a>unstar mapping</a> prevents it from generating the same blank node |b| for an <a>embedded triple</a> of |G|, and for a <em>different</em> <a>embedded triple</a> of |H| (provided that |b| is not present in either |G| nor |H|). In that case, not only would <a>unstar</a>(|G|) ∪ <a>unstar</a>(|H|) be different from <a>unstar</a>(|G| ∪ |H|), but it would lose some information by mixing the descriptions of the two <a>embedded triples</a>.</p>
 
       </section>
 
       <section>
-        <h2>Other uses of the |unstar| mapping</h2>
+        <h2>Other uses of the <a>unstar mapping</a></h2>
 
-        <p>Since the |unstar| mapping defined <a href="#mapping">above</a> transforms any <a>RDF-star graph</a> into a standard ("non-star") <a>RDF graph</a>, it might be tempting to use this mapping for conveying <a>RDF-star graphs</a> to legacy RDF systems. However, this has a number of caveats.</p>
+        <p>Since the <a>unstar mapping</a> transforms any <a>RDF-star graph</a> into a standard ("non-star") <a>RDF graph</a>, it might be tempting to use this mapping for conveying <a>RDF-star graphs</a> to legacy RDF systems. However, this has a number of caveats.</p>
 
-        <p>First, the |unstar| mapping alters the semantics of the graph: in general, a graph |G| is <em>not</em> <a>equivalent</a> to its "unstarred" version |unstar|(|G|), even if |G| is a standard <a>RDF graph</a> containing no <a>embedded triples</a>. (More precisely, they are equivalent only if |G| contains no <a>embedded triples</a> and no IRIs from the `unstar:` namespace.)</p>
+        <p>First, the <a>unstar mapping</a> alters the semantics of the graph: in general, a graph |G| is <em>not</em> <a>equivalent</a> to its "unstarred" version <a>unstar</a>(|G|), even if |G| is a standard <a>RDF graph</a> containing no <a>embedded triples</a>. (More precisely, they are equivalent only if |G| contains no <a>embedded triples</a> and no IRIs from the `unstar:` namespace.)</p>
 
-        <p>Second, when a legacy RDF system communicates an <a>RDF graph</a> to an RDF-star-aware system, there is no means by which the latter can determine with certainty whether the graph is the result of an |unstar| mapping, and thus needs to be transformed back. (The presence of `unstar:` IRIs in the graph can be used as a hint, but such IRIs can also be used independently of the mapping.) Additional metadata should therefore be attached to unstarred graphs, so that RDF-star systems know whether  or not they need to apply the inverse transformation of |unstar|.</p>
+        <p>Second, when a legacy RDF system communicates an <a>RDF graph</a> to an RDF-star-aware system, there is no means by which the latter can determine with certainty whether the graph is the result of applying the <a>unstar mapping</a>, and thus needs to be transformed back. (The presence of `unstar:` IRIs in the graph can be used as a hint, but such IRIs can also be used independently of the mapping.) Additional metadata should therefore be attached to unstarred graphs, so that RDF-star systems know whether or not they need to apply the inverse transformation of <a>unstar</a>.</p>
 
         <p>Finally, legacy RDF systems may alter unstarred graphs in ways that prevent their transformation back to the original <a>RDF-star graph</a>. For example, it has been <a href="combining-rdf-star-graphs">pointed out above</a> how combining several unstarred graphs may not yield the expected result. Another example is the removal of some arcs, such that an <a>embedded triple</a> is not completely described anymore, and can not be reconstructed.</p>
 
@@ -2662,7 +2662,7 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
       <section>
         <h2>Referential opacity</h2>
 
-        <p>The way the |unstar| mapping is defined, the denotation of an embedded triple does not only depend on the denotation of its component terms, but also on their syntactical form (for IRIs and literals). This behavior is referred to as <a href="https://en.wikipedia.org/wiki/Opaque_context">referential opacity</a>. A consequence is that two different triples, that would be semantically equivalent if asserted, are not automatically considered to denote the same thing when embedded. In the example below, assuming <a data-cite="RDF11-MT#datatype-entailment">D-entailment</a>: while `"42"^^xsd:integer` and `"042"^^xsd:integer` denote the same thing (namely, the number 42), the two embedded triples are allowed to have different denotations, and so the entailment does not hold.</p>
+        <p>The way the <a>unstar mapping</a> is defined, the denotation of an embedded triple does not only depend on the denotation of its component terms, but also on their syntactical form (for IRIs and literals). This behavior is referred to as <a href="https://en.wikipedia.org/wiki/Opaque_context">referential opacity</a>. A consequence is that two different triples, that would be semantically equivalent if asserted, are not automatically considered to denote the same thing when embedded. In the example below, assuming <a data-cite="RDF11-MT#datatype-entailment">D-entailment</a>: while `"42"^^xsd:integer` and `"042"^^xsd:integer` denote the same thing (namely, the number 42), the two embedded triples are allowed to have different denotations, and so the entailment does not hold.</p>
 
         <pre id="ref-opacity-d-entailment"
         data-transform="updateExample"
@@ -2737,7 +2737,7 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
 
         <p>Given the potential drawbacks of the referential opacity provided by the current semantics, as described in the previous section, the group has considered alternative semantics. No clear consensus was reached, however, to decide whether these alternatives should be used as a replacement, or as a <a data-cite="RDF11-MT#dfn-semantic-extension">semantic extension</a>, of the current semantics.</p>
 
-        <p>A fully referentially transparent semantics can be achieved by changing the <a href="#unstar-add-triples">step 2.4</a> of the |unstar| algorithm as follows:</p>
+        <p>A fully referentially transparent semantics can be achieved by changing the <a href="#unstar-add-triples">step 2.4</a> of the <a>unstar mapping</a> algorithm as follows:</p>
 
         <ul>
           <li> Add the following <a>asserted triples</a> to |G|:
@@ -2751,7 +2751,7 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
 
         <p>In the examples above (<a href="#ref-opacity-d-entailment"></a>, <a href="#ref-opacity-owl-entailment"></a>, <a href="#ref-opacity-annotation"></a>), all the entailments would now hold automatically. This could be a problem in some use-cases, as such inferences could then not be cancelled, given the <a data-cite="RDF11-MT#dfn-monotonic">monotonic semantics</a> of RDF.</p>
 
-        <p>An intermediate alternative would be to make embedded triples referentially opaque for IRIs only, keeping it transparent for literals (and for blank nodes, as is already the case). This can be achieved by changing the <a href="#unstar-add-triples">step 2.4</a> of the |unstar| algorithm as follows:</p>
+        <p>An intermediate alternative would be to make embedded triples referentially opaque for IRIs only, keeping it transparent for literals (and for blank nodes, as is already the case). This can be achieved by changing the <a href="#unstar-add-triples">step 2.4</a> of the <a>unstar mapping</a> algorithm as follows:</p>
 
         <ul>
           <li> Add the following <a>asserted triples</a> to |G|:

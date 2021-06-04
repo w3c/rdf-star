@@ -29,25 +29,6 @@ trs:manifest  rdf:type mf:Manifest ;
         trs:ntriples-star-bad-2
         trs:ntriples-star-bad-3
         trs:ntriples-star-bad-4
-
-# The same data, except in file *.ttl and "TestTurtle"
-
-        trs:nt-ttl-star-1
-        trs:nt-ttl-star-2
-        trs:nt-ttl-star-3
-        trs:nt-ttl-star-4
-        trs:nt-ttl-star-5
-
-        trs:nt-ttl-star-bnode-1
-        trs:nt-ttl-star-bnode-2
-
-        trs:nt-ttl-star-nested-1
-        trs:nt-ttl-star-nested-2
-
-        trs:nt-ttl-star-bad-1
-        trs:nt-ttl-star-bad-2
-        trs:nt-ttl-star-bad-3
-        trs:nt-ttl-star-bad-4
     ) .
 
 trs:ntriples-star-1 rdf:type rdft:TestNTriplesPositiveSyntax ;
@@ -117,79 +98,4 @@ trs:ntriples-star-bad-3 rdf:type rdft:TestNTriplesNegativeSyntax ;
 trs:ntriples-star-bad-4 rdf:type rdft:TestNTriplesNegativeSyntax ;
     mf:name      "N-Triples-star - Bad - embedded triple, blank node predicate" ;
     mf:action    <ntriples-star-bad-syntax-4.nt> ;
-    .
-
-## --------------------------------------------------
-## Same data, for Turtle.
-## N-Triples is a subset of Turtle, and the same is true for the "star" feature.
-
-## Good Syntax
-
-trs:nt-ttl-star-1 rdf:type rdft:TestTurtlePositiveSyntax ;
-   mf:name      "N-Triples-star as Turtle-star - subject embedded triple" ;
-   mf:action    <nt-ttl-star-syntax-1.ttl> ;
-   .
-
-trs:nt-ttl-star-2 rdf:type rdft:TestTurtlePositiveSyntax ;
-   mf:name      "N-Triples-star as Turtle-star - object embedded triple" ;
-   mf:action    <nt-ttl-star-syntax-2.ttl> ;
-   .
-
-trs:nt-ttl-star-3 rdf:type rdft:TestTurtlePositiveSyntax ;
-   mf:name      "N-Triples-star as Turtle-star - subject and object embedded triples" ;
-   mf:action    <nt-ttl-star-syntax-3.ttl> ;
-   .
-
-trs:nt-ttl-star-4 rdf:type rdft:TestNTriplesPositiveSyntax ;
-   mf:name      "N-Triples-star as Turtle-star - whitespace and terms" ;
-   mf:action    <nt-ttl-star-syntax-4.ttl> ;
-   .
-
-trs:nt-ttl-star-5 rdf:type rdft:TestNTriplesPositiveSyntax ;
-   mf:name      "N-Triples-star as Turtle-star - Nested, no whitespace" ;
-   mf:action    <nt-ttl-star-syntax-5.ttl> ;
-   .
-
-# Blank nodes
-
-trs:nt-ttl-star-bnode-1 rdf:type rdft:TestTurtlePositiveSyntax ;
-   mf:name      "N-Triples-star as Turtle-star - Blank node subject" ;
-   mf:action    <nt-ttl-star-bnode-1.ttl> ;
-   .
-
-trs:nt-ttl-star-bnode-2 rdf:type rdft:TestTurtlePositiveSyntax ;
-   mf:name      "N-Triples-star as Turtle-star - Blank node object" ;
-   mf:action    <nt-ttl-star-bnode-2.ttl> ;
-   .
-   
-trs:nt-ttl-star-nested-1 rdf:type rdft:TestTurtlePositiveSyntax ;
-   mf:name      "N-Triples-star as Turtle-star - Nested subject term" ;
-   mf:action    <nt-ttl-star-nested-1.ttl> ;
-   .
-
-trs:nt-ttl-star-nested-2 rdf:type rdft:TestTurtlePositiveSyntax ;
-   mf:name      "N-Triples-star as Turtle-star - Nested object term" ;
-   mf:action    <nt-ttl-star-nested-2.ttl> ;
-   .
-
-## Bad syntax
- 
-trs:nt-ttl-star-bad-1 rdf:type rdft:TestTurtleNegativeSyntax ;
-    mf:name      "N-Triples-star as Turtle-star - Bad - embedded triple as predicate" ;
-    mf:action    <nt-ttl-star-bad-syntax-1.ttl> ;
-    .
-    
-trs:nt-ttl-star-bad-2 rdf:type rdft:TestTurtleNegativeSyntax ;
-    mf:name      "N-Triples-star as Turtle-star - Bad - embedded triple, literal subject" ;
-    mf:action    <nt-ttl-star-bad-syntax-2.ttl> ;
-    .
-
-trs:nt-ttl-star-bad-3 rdf:type rdft:TestTurtleNegativeSyntax ;
-    mf:name      "N-Triples-star as Turtle-star - Bad - embedded triple, literal predicate" ;
-    mf:action    <nt-ttl-star-bad-syntax-3.ttl> ;
-    .
-
-trs:nt-ttl-star-bad-4 rdf:type rdft:TestTurtleNegativeSyntax ;
-    mf:name      "N-Triples-star as Turtle-star - Bad - embedded triple, blank node predicate" ;
-    mf:action    <nt-ttl-star-bad-syntax-4.ttl> ;
     .

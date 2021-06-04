@@ -2638,7 +2638,7 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
       <section>
         <h2>Combining RDF-star graphs</h2>
 
-        <p>For implementations that rely on the <a>unstar mapping</a>, care must be taken when the resulting <a>RDF graphs</a> are combined through union or <a>merge</a>. Given two <a>RDF-star graphs</a> |G| and |H|, it may be the case that <a>unstar</a>(|G| ∪ |H|) ≠ <a>unstar</a>(|G|) ∪ <a>unstar</a>(|H|).</p>
+        <p>Care must be taken when implementations that rely on the <a>unstar mapping</a> combine the resulting <a>RDF graphs</a> through union or <a>merge</a>. Given two <a>RDF-star graphs</a> |G| and |H|, it may be the case that <a>unstar</a>(|G| ∪ |H|) ≠ <a>unstar</a>(|G|) ∪ <a>unstar</a>(|H|).</p>
 
         <p>In particular, if |G| and |H| contain the same <a>embedded triple</a>, this triple will be mapped to a single blank node in <a>unstar</a>(|G| ∪ |H|), but in two potentially different blank nodes in <a>unstar</a>(|G|) ∪ <a>unstar</a>(|H|). These blank nodes will need to be unified in order to reconstruct <a>unstar</a>(|G| ∪ |H|).</p>
 

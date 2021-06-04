@@ -121,7 +121,7 @@ trs:ntriples-star-bad-4 rdf:type rdft:TestNTriplesNegativeSyntax ;
 
 ## --------------------------------------------------
 ## Same data, for Turtle.
-## N-Triples is a subset of Turtle, and teh same is true for the "star" feature.
+## N-Triples is a subset of Turtle, and the same is true for the "star" feature.
 
 ## Good Syntax
 
@@ -142,12 +142,12 @@ trs:nt-ttl-star-3 rdf:type rdft:TestTurtlePositiveSyntax ;
 
 trs:nt-ttl-star-4 rdf:type rdft:TestNTriplesPositiveSyntax ;
    mf:name      "N-Triples-star as Turtle-star - whitespace and terms" ;
-   mf:action    <ntriples-star-syntax-4.nt> ;
+   mf:action    <nt-ttl-star-syntax-4.ttl> ;
    .
 
 trs:nt-ttl-star-5 rdf:type rdft:TestNTriplesPositiveSyntax ;
    mf:name      "N-Triples-star as Turtle-star - Nested, no whitespace" ;
-   mf:action    <ntriples-star-syntax-5.nt> ;
+   mf:action    <nt-ttl-star-syntax-5.ttl> ;
    .
 
 # Blank nodes

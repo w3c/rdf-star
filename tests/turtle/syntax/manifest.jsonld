@@ -204,6 +204,84 @@
       "@type": "TestTurtleNegativeSyntax",
       "action": "turtle-star-syntax-bad-ann-2.ttl",
       "name": "Turtle-star - bad - triple as annotation"
+    },
+    {
+      "@id": "trs:nt-ttl-star-1",
+      "@type": "TestTurtlePositiveSyntax",
+      "action": "nt-ttl-star-syntax-1.ttl",
+      "name": "N-Triples-star as Turtle-star - subject embedded triple"
+    },
+    {
+      "@id": "trs:nt-ttl-star-2",
+      "@type": "TestTurtlePositiveSyntax",
+      "action": "nt-ttl-star-syntax-2.ttl",
+      "name": "N-Triples-star as Turtle-star - object embedded triple"
+    },
+    {
+      "@id": "trs:nt-ttl-star-3",
+      "@type": "TestTurtlePositiveSyntax",
+      "action": "nt-ttl-star-syntax-3.ttl",
+      "name": "N-Triples-star as Turtle-star - subject and object embedded triples"
+    },
+    {
+      "@id": "trs:nt-ttl-star-4",
+      "@type": "rdft:TestNTriplesPositiveSyntax",
+      "action": "nt-ttl-star-syntax-4.ttl",
+      "name": "N-Triples-star as Turtle-star - whitespace and terms"
+    },
+    {
+      "@id": "trs:nt-ttl-star-5",
+      "@type": "rdft:TestNTriplesPositiveSyntax",
+      "action": "nt-ttl-star-syntax-5.ttl",
+      "name": "N-Triples-star as Turtle-star - Nested, no whitespace"
+    },
+    {
+      "@id": "trs:nt-ttl-star-bnode-1",
+      "@type": "TestTurtlePositiveSyntax",
+      "action": "nt-ttl-star-bnode-1.ttl",
+      "name": "N-Triples-star as Turtle-star - Blank node subject"
+    },
+    {
+      "@id": "trs:nt-ttl-star-bnode-2",
+      "@type": "TestTurtlePositiveSyntax",
+      "action": "nt-ttl-star-bnode-2.ttl",
+      "name": "N-Triples-star as Turtle-star - Blank node object"
+    },
+    {
+      "@id": "trs:nt-ttl-star-nested-1",
+      "@type": "TestTurtlePositiveSyntax",
+      "action": "nt-ttl-star-nested-1.ttl",
+      "name": "N-Triples-star as Turtle-star - Nested subject term"
+    },
+    {
+      "@id": "trs:nt-ttl-star-nested-2",
+      "@type": "TestTurtlePositiveSyntax",
+      "action": "nt-ttl-star-nested-2.ttl",
+      "name": "N-Triples-star as Turtle-star - Nested object term"
+    },
+    {
+      "@id": "trs:nt-ttl-star-bad-1",
+      "@type": "TestTurtleNegativeSyntax",
+      "action": "nt-ttl-star-bad-syntax-1.ttl",
+      "name": "N-Triples-star as Turtle-star - Bad - embedded triple as predicate"
+    },
+    {
+      "@id": "trs:nt-ttl-star-bad-2",
+      "@type": "TestTurtleNegativeSyntax",
+      "action": "nt-ttl-star-bad-syntax-2.ttl",
+      "name": "N-Triples-star as Turtle-star - Bad - embedded triple, literal subject"
+    },
+    {
+      "@id": "trs:nt-ttl-star-bad-3",
+      "@type": "TestTurtleNegativeSyntax",
+      "action": "nt-ttl-star-bad-syntax-3.ttl",
+      "name": "N-Triples-star as Turtle-star - Bad - embedded triple, literal predicate"
+    },
+    {
+      "@id": "trs:nt-ttl-star-bad-4",
+      "@type": "TestTurtleNegativeSyntax",
+      "action": "nt-ttl-star-bad-syntax-4.ttl",
+      "name": "N-Triples-star as Turtle-star - Bad - embedded triple, blank node predicate"
     }
   ]
 }

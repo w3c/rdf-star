@@ -5,8 +5,9 @@
 <link href='earl.ttl' rel='alternate' type='text/turtle' />
 <link href='earl.jsonld' rel='alternate' type='application/ld+json' />
 <link href='https://www.w3.org/StyleSheets/TR/base' rel='stylesheet' />
-<link href='ruby-sparql.ttl' rel='related' />
+<link href='ruby-trig.ttl' rel='related' />
 <link href='eye-earl.ttl' rel='related' />
+<link href='ruby-sparql.ttl' rel='related' />
 <title>
 RDF-star Processor Conformance
 </title>
@@ -240,6 +241,13 @@ EYE
 </li>
 <li class='tocline'>
 <span class='secno'>A.2</span>
+<a class='tocxref' href='#subj_RDF_TriG_Ruby'>
+RDF::TriG
+ (Ruby)
+</a>
+</li>
+<li class='tocline'>
+<span class='secno'>A.3</span>
 <a class='tocxref' href='#subj_Ruby_SPARQL_Ruby'>
 Ruby SPARQL
  (Ruby)
@@ -324,75 +332,124 @@ Test Manifests
 <th>
 Test
 </th>
+<th>
+<a href='#subj_RDF_TriG_Ruby'>
+RDF::TriG
+<br />
+(Ruby)
+</a>
+</th>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/nt/syntax#ntriples-star-1'>Test ntriples-star-1: N-Triples-star - subject embedded triple</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/nt/syntax#ntriples-star-2'>Test ntriples-star-2: N-Triples-star - object embedded triple</a>
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/nt/syntax#ntriples-star-3'>Test ntriples-star-3: N-Triples-star - subject and object embedded triples</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/nt/syntax#ntriples-star-4'>Test ntriples-star-4: N-Triples-star - whitespace and terms</a>
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/nt/syntax#ntriples-star-5'>Test ntriples-star-5: N-Triples-star - Nested, no whitespace</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/nt/syntax#ntriples-star-bnode-1'>Test ntriples-star-bnode-1: N-Triples-star - Blank node subject</a>
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/nt/syntax#ntriples-star-bnode-2'>Test ntriples-star-bnode-2: N-Triples-star - Blank node object</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/nt/syntax#ntriples-star-nested-1'>Test ntriples-star-nested-1: N-Triples-star - Nested subject term</a>
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/nt/syntax#ntriples-star-nested-2'>Test ntriples-star-nested-2: N-Triples-star - Nested object term</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/nt/syntax#ntriples-star-bad-1'>Test ntriples-star-bad-1: N-Triples-star - Bad - embedded triple as predicate</a>
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/nt/syntax#ntriples-star-bad-2'>Test ntriples-star-bad-2: N-Triples-star - Bad - embedded triple, literal subject</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/nt/syntax#ntriples-star-bad-3'>Test ntriples-star-bad-3: N-Triples-star - Bad - embedded triple, literal predicate</a>
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/nt/syntax#ntriples-star-bad-4'>Test ntriples-star-bad-4: N-Triples-star - Bad - embedded triple, blank node predicate</a>
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='summary'>
 <td>
 Percentage passed out of 13 Tests
+</td>
+<td class='passed-all'>
+100.0%
 </td>
 </tr>
 </table>
@@ -863,32 +920,32 @@ PASS
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/sparql/eval#sparql-star-op-1'>Test sparql-star-op-1: SPARQL-star - Embedded triple - sameTerm</a>
 </td>
-<td class='UNTESTED'>
-UNTESTED
+<td class='PASS'>
+PASS
 </td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/sparql/eval#sparql-star-op-2'>Test sparql-star-op-2: SPARQL-star - Embedded triple - value-equality</a>
 </td>
-<td class='UNTESTED'>
-UNTESTED
+<td class='PASS'>
+PASS
 </td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/sparql/eval#sparql-star-op-3'>Test sparql-star-op-3: SPARQL-star - Embedded triple - value-inequality</a>
 </td>
-<td class='UNTESTED'>
-UNTESTED
+<td class='PASS'>
+PASS
 </td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/sparql/eval#sparql-star-op-4'>Test sparql-star-op-4: SPARQL-star - Embedded triple - value-inequality</a>
 </td>
-<td class='UNTESTED'>
-UNTESTED
+<td class='PASS'>
+PASS
 </td>
 </tr>
 <tr class='normative'>
@@ -903,8 +960,8 @@ PASS
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/sparql/eval#sparql-star-order-2'>Test sparql-star-order-2: SPARQL-star - Embedded triple - ordering</a>
 </td>
-<td class='UNTESTED'>
-UNTESTED
+<td class='PASS'>
+PASS
 </td>
 </tr>
 <tr class='normative'>
@@ -935,8 +992,8 @@ PASS
 <td>
 Percentage passed out of 34 Tests
 </td>
-<td class='passed-some'>
-85.3%
+<td class='passed-all'>
+100.0%
 </td>
 </tr>
 </table>
@@ -1283,16 +1340,16 @@ PASS
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/sparql/syntax#sparql-star-bad-11'>Test sparql-star-bad-11: SPARQL-star - bad - blank node in embedded triple in FILTER</a>
 </td>
-<td class='UNTESTED'>
-UNTESTED
+<td class='PASS'>
+PASS
 </td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/sparql/syntax#sparql-star-bad-12'>Test sparql-star-bad-12: SPARQL-star - bad - blank node in embedded triple in BIND</a>
 </td>
-<td class='UNTESTED'>
-UNTESTED
+<td class='PASS'>
+PASS
 </td>
 </tr>
 <tr class='normative'>
@@ -1467,8 +1524,8 @@ PASS
 <td>
 Percentage passed out of 63 Tests
 </td>
-<td class='passed-most'>
-96.8%
+<td class='passed-all'>
+100.0%
 </td>
 </tr>
 </table>
@@ -1483,70 +1540,116 @@ Percentage passed out of 63 Tests
 <th>
 Test
 </th>
+<th>
+<a href='#subj_RDF_TriG_Ruby'>
+RDF::TriG
+<br />
+(Ruby)
+</a>
+</th>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/trig/eval#trig-star-1'>Test trig-star-1: TriG-star - subject embedded triple</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/trig/eval#trig-star-2'>Test trig-star-2: TriG-star - object embedded triple</a>
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/trig/eval#trig-star-bnode-1'>Test trig-star-bnode-1: TriG-star - blank node label</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/trig/eval#trig-star-bnode-2'>Test trig-star-bnode-2: TriG-star - blank node labels</a>
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/trig/eval#trig-star-annotation-1'>Test trig-star-annotation-1: TriG-star - Annotation form</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/trig/eval#trig-star-annotation-2'>Test trig-star-annotation-2: TriG-star - Annotation example</a>
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/trig/eval#trig-star-annotation-3'>Test trig-star-annotation-3: TriG-star - Annotation - predicate and object lists</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/trig/eval#trig-star-annotation-4'>Test trig-star-annotation-4: TriG-star - Annotation - nested</a>
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/trig/eval#trig-star-annotation-5'>Test trig-star-annotation-5: TriG-star - Annotation object list</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/trig/eval#trig-star-embed-annotation-1'>Test trig-star-embed-annotation-1: TriG-star - Annotation with embedding</a>
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/trig/eval#trig-star-embed-annotation-2'>Test trig-star-embed-annotation-2: TriG-star - Annotation on triple with embedded subject</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/trig/eval#trig-star-embed-annotation-3'>Test trig-star-embed-annotation-3: TriG-star - Annotation on triple with embedded object</a>
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='summary'>
 <td>
 Percentage passed out of 12 Tests
+</td>
+<td class='passed-all'>
+100.0%
 </td>
 </tr>
 </table>
@@ -1561,120 +1664,196 @@ Percentage passed out of 12 Tests
 <th>
 Test
 </th>
+<th>
+<a href='#subj_RDF_TriG_Ruby'>
+RDF::TriG
+<br />
+(Ruby)
+</a>
+</th>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/trig/syntax#trig-star-1'>Test trig-star-1: TriG-star - subject embedded triple</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/trig/syntax#trig-star-2'>Test trig-star-2: TriG-star - object embedded triple</a>
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/trig/syntax#trig-star-inside-1'>Test trig-star-inside-1: TriG-star - embedded triple inside blankNodePropertyList</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/trig/syntax#trig-star-inside-2'>Test trig-star-inside-2: TriG-star - embedded triple inside collection</a>
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/trig/syntax#trig-star-nested-1'>Test trig-star-nested-1: TriG-star - nested embedded triple, subject position</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/trig/syntax#trig-star-nested-2'>Test trig-star-nested-2: TriG-star - nested embedded triple, object position</a>
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/trig/syntax#trig-star-compound-1'>Test trig-star-compound-1: TriG-star - compound forms</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/trig/syntax#trig-star-bnode-1'>Test trig-star-bnode-1: TriG-star - blank node subject</a>
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/trig/syntax#trig-star-bnode-2'>Test trig-star-bnode-2: TriG-star - blank node object</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/trig/syntax#trig-star-bnode-3'>Test trig-star-bnode-3: TriG-star - blank node</a>
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/trig/syntax#trig-star-bad-1'>Test trig-star-bad-1: TriG-star - bad - embedded triple as predicate</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/trig/syntax#trig-star-bad-2'>Test trig-star-bad-2: TriG-star - bad - embedded triple outside triple</a>
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/trig/syntax#trig-star-bad-3'>Test trig-star-bad-3: TriG-star - bad - collection list in embedded triple</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/trig/syntax#trig-star-bad-4'>Test trig-star-bad-4: TriG-star - bad - literal in subject position of embedded triple</a>
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/trig/syntax#trig-star-bad-5'>Test trig-star-bad-5: TriG-star - bad - blank node  as predicate in embedded triple</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/trig/syntax#trig-star-bad-6'>Test trig-star-bad-6: TriG-star - bad - compound blank node expression</a>
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/trig/syntax#trig-star-bad-7'>Test trig-star-bad-7: TriG-star - bad - incomplete embedded triple</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/trig/syntax#trig-star-bad-8'>Test trig-star-bad-8: TriG-star - bad - over-long embedded triple</a>
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/trig/syntax#trig-star-ann-1'>Test trig-star-ann-1: TriG-star - Annotation form</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/trig/syntax#trig-star-ann-2'>Test trig-star-ann-2: TriG-star - Annotation example</a>
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/trig/syntax#trig-star-bad-ann-1'>Test trig-star-bad-ann-1: TriG-star - bad - empty annotation</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/trig/syntax#trig-star-bad-ann-2'>Test trig-star-bad-ann-2: TriG-star - bad - triple as annotation</a>
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='summary'>
 <td>
 Percentage passed out of 22 Tests
+</td>
+<td class='passed-all'>
+100.0%
 </td>
 </tr>
 </table>
@@ -1696,10 +1875,20 @@ EYE
 (Prolog)
 </a>
 </th>
+<th>
+<a href='#subj_RDF_TriG_Ruby'>
+RDF::TriG
+<br />
+(Ruby)
+</a>
+</th>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/turtle/eval#turtle-star-1'>Test turtle-star-1: Turtle-star - subject embedded triple</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -1712,10 +1901,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/turtle/eval#turtle-star-bnode-1'>Test turtle-star-bnode-1: Turtle-star - blank node label</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -1728,10 +1923,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/turtle/eval#turtle-star-annotation-1'>Test turtle-star-annotation-1: Turtle-star - Annotation form</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -1744,10 +1945,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/turtle/eval#turtle-star-annotation-3'>Test turtle-star-annotation-3: Turtle-star - Annotation - predicate and object lists</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -1760,10 +1967,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/turtle/eval#turtle-star-annotation-5'>Test turtle-star-annotation-5: Turtle-star - Annotation object list</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -1776,10 +1989,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/turtle/eval#turtle-star-embed-annotation-2'>Test turtle-star-embed-annotation-2: Turtle-star - Annotation on triple with embedded subject</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -1792,10 +2011,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='summary'>
 <td>
 Percentage passed out of 12 Tests
+</td>
+<td class='passed-all'>
+100.0%
 </td>
 <td class='passed-all'>
 100.0%
@@ -1820,10 +2045,20 @@ EYE
 (Prolog)
 </a>
 </th>
+<th>
+<a href='#subj_RDF_TriG_Ruby'>
+RDF::TriG
+<br />
+(Ruby)
+</a>
+</th>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/turtle/syntax#turtle-star-1'>Test turtle-star-1: Turtle-star - subject embedded triple</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -1836,10 +2071,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/turtle/syntax#turtle-star-inside-1'>Test turtle-star-inside-1: Turtle-star - embedded triple inside blankNodePropertyList</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -1852,10 +2093,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/turtle/syntax#turtle-star-nested-1'>Test turtle-star-nested-1: Turtle-star - nested embedded triple, subject position</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -1868,10 +2115,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/turtle/syntax#turtle-star-compound-1'>Test turtle-star-compound-1: Turtle-star - compound forms</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -1884,10 +2137,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/turtle/syntax#turtle-star-bnode-2'>Test turtle-star-bnode-2: Turtle-star - blank node object</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -1900,6 +2159,9 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
@@ -1907,6 +2169,9 @@ PASS
 </td>
 <td class='FAIL'>
 FAIL
+</td>
+<td class='PASS'>
+PASS
 </td>
 </tr>
 <tr class='normative'>
@@ -1916,6 +2181,9 @@ FAIL
 <td class='FAIL'>
 FAIL
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
@@ -1923,6 +2191,9 @@ FAIL
 </td>
 <td class='FAIL'>
 FAIL
+</td>
+<td class='PASS'>
+PASS
 </td>
 </tr>
 <tr class='normative'>
@@ -1932,6 +2203,9 @@ FAIL
 <td class='FAIL'>
 FAIL
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
@@ -1940,10 +2214,16 @@ FAIL
 <td class='FAIL'>
 FAIL
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/turtle/syntax#turtle-star-bad-6'>Test turtle-star-bad-6: Turtle-star - bad - compound blank node expression</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -1956,10 +2236,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/turtle/syntax#turtle-star-bad-8'>Test turtle-star-bad-8: Turtle-star - bad - over-long embedded triple</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -1972,10 +2258,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/turtle/syntax#turtle-star-ann-2'>Test turtle-star-ann-2: Turtle-star - Annotation example</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -1988,10 +2280,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/turtle/syntax#turtle-star-bad-ann-2'>Test turtle-star-bad-ann-2: Turtle-star - bad - triple as annotation</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -2004,10 +2302,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/turtle/syntax#nt-ttl-star-2'>Test nt-ttl-star-2: N-Triples-star as Turtle-star - object embedded triple</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -2020,6 +2324,9 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
@@ -2027,6 +2334,9 @@ PASS
 </td>
 <td class='UNTESTED'>
 UNTESTED
+</td>
+<td class='PASS'>
+PASS
 </td>
 </tr>
 <tr class='normative'>
@@ -2036,10 +2346,16 @@ UNTESTED
 <td class='UNTESTED'>
 UNTESTED
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/turtle/syntax#nt-ttl-star-bnode-1'>Test nt-ttl-star-bnode-1: N-Triples-star as Turtle-star - Blank node subject</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -2052,10 +2368,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/turtle/syntax#nt-ttl-star-nested-1'>Test nt-ttl-star-nested-1: N-Triples-star as Turtle-star - Nested subject term</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -2068,6 +2390,9 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
@@ -2075,6 +2400,9 @@ PASS
 </td>
 <td class='FAIL'>
 FAIL
+</td>
+<td class='PASS'>
+PASS
 </td>
 </tr>
 <tr class='normative'>
@@ -2084,6 +2412,9 @@ FAIL
 <td class='FAIL'>
 FAIL
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
@@ -2091,6 +2422,9 @@ FAIL
 </td>
 <td class='FAIL'>
 FAIL
+</td>
+<td class='PASS'>
+PASS
 </td>
 </tr>
 <tr class='normative'>
@@ -2100,6 +2434,9 @@ FAIL
 <td class='FAIL'>
 FAIL
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='summary'>
 <td>
@@ -2107,6 +2444,9 @@ Percentage passed out of 35 Tests
 </td>
 <td class='passed-some'>
 68.6%
+</td>
+<td class='passed-all'>
+100.0%
 </td>
 </tr>
 </table>
@@ -2187,8 +2527,88 @@ Turtle-star Syntax Tests
 </dd>
 </dl>
 </dd>
-<dt id='subj_Ruby_SPARQL_Ruby'>
+<dt id='subj_RDF_TriG_Ruby'>
 <span class='secno'>A.2</span>
+<a href='https://rubygems.org/gems/rdf-trig'>
+<span about='https://rubygems.org/gems/rdf-trig' property='doap:name'>RDF::TriG</span>
+</a>
+</dt>
+<dd>
+<dl>
+<dt>Release</dt>
+<dd property='doap:release'><span property='doap:revision'>3.1.2</span></dd>
+<dt>Programming Language</dt>
+<dd property='doap:programming-language'>Ruby</dd>
+<dt>Home Page</dt>
+<dd>
+<a href='https://github.com/ruby-rdf/rdf-trig' property='doap:homepage'>
+https://github.com/ruby-rdf/rdf-trig
+</a>
+</dd>
+<dt>Developer</dt>
+<dd rel='doap:developer'>
+<div>
+<a href='https://greggkellogg.net/foaf#me'>
+<span property='foaf:name'>Gregg Kellogg</span>
+</a>
+<a href='https://greggkellogg.net/' property='foaf:homepage'>
+https://greggkellogg.net/
+</a>
+</div>
+</dd>
+<dt>
+Test Suite Compliance
+</dt>
+<dd>
+<table class='report'>
+<tbody>
+<tr>
+<td>
+N-Triples-star Syntax Tests
+</td>
+<td class='passed-all'>
+13/13 (100.0%)
+</td>
+</tr>
+<tr>
+<td>
+TriG-star Evaluation Tests
+</td>
+<td class='passed-all'>
+12/12 (100.0%)
+</td>
+</tr>
+<tr>
+<td>
+TriG-star Syntax Tests
+</td>
+<td class='passed-all'>
+22/22 (100.0%)
+</td>
+</tr>
+<tr>
+<td>
+Turtle-star Evaluation Tests
+</td>
+<td class='passed-all'>
+12/12 (100.0%)
+</td>
+</tr>
+<tr>
+<td>
+Turtle-star Syntax Tests
+</td>
+<td class='passed-all'>
+35/35 (100.0%)
+</td>
+</tr>
+</tbody>
+</table>
+</dd>
+</dl>
+</dd>
+<dt id='subj_Ruby_SPARQL_Ruby'>
+<span class='secno'>A.3</span>
 <a href='https://rubygems.org/gems/sparql'>
 <span about='https://rubygems.org/gems/sparql' property='doap:name'>Ruby SPARQL</span>
 </a>
@@ -2198,7 +2618,7 @@ Turtle-star Syntax Tests
 <dt>Description</dt>
 <dd lang='en' property='doap:description'>SPARQL Implements SPARQL 1.1 Query, Update and result formats for the Ruby RDF.rb library suite.</dd>
 <dt>Release</dt>
-<dd property='doap:release'><span property='doap:revision'>3.1.6</span></dd>
+<dd property='doap:release'><span property='doap:revision'>3.1.7</span></dd>
 <dt>Programming Language</dt>
 <dd property='doap:programming-language'>Ruby</dd>
 <dt>Home Page</dt>
@@ -2228,16 +2648,16 @@ Test Suite Compliance
 <td>
 SPARQL-star Evaluation Tests
 </td>
-<td class='passed-most'>
-29/34 (85.3%)
+<td class='passed-all'>
+34/34 (100.0%)
 </td>
 </tr>
 <tr>
 <td>
 SPARQL-star Syntax Tests
 </td>
-<td class='passed-most'>
-61/63 (96.8%)
+<td class='passed-all'>
+63/63 (100.0%)
 </td>
 </tr>
 </tbody>
@@ -2257,14 +2677,17 @@ Individual test results used to construct this report are available here:
 </p>
 <ul>
 <li>
-<a class='source' href='ruby-sparql.ttl'>ruby-sparql.ttl</a>
+<a class='source' href='ruby-trig.ttl'>ruby-trig.ttl</a>
 </li>
 <li>
 <a class='source' href='eye-earl.ttl'>eye-earl.ttl</a>
 </li>
+<li>
+<a class='source' href='ruby-sparql.ttl'>ruby-sparql.ttl</a>
+</li>
 </ul>
 </section>
-<section class='appendix' id='report-generation-software' property='earl:generatedBy' resource='https://rubygems.org/gems/earl-report' typeof='Software doap:Project'>
+<section class='appendix' id='report-generation-software' property='earl:generatedBy' resource='https://rubygems.org/gems/earl-report' typeof='doap:Project Software'>
 <h2>
 <span class='secno'>C.</span>
 Report Generation Software

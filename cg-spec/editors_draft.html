@@ -2659,7 +2659,7 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
 
       </section>
 
-      <section>
+      <section id="ref-opacity">
         <h2>Referential opacity</h2>
 
         <p>The way the <a>unstar mapping</a> is defined, the denotation of an embedded triple does not only depend on the denotation of its component terms, but also on their syntactical form (for IRIs and literals). This behavior is referred to as <a href="https://en.wikipedia.org/wiki/Opaque_context">referential opacity</a>. A consequence is that two different triples, that would be semantically equivalent if asserted, are not automatically considered to denote the same thing when embedded. In the example below, assuming <a data-cite="RDF11-MT#datatype-entailment">D-entailment</a>: while `"42"^^xsd:integer` and `"042"^^xsd:integer` denote the same thing (namely, the number 42), the two embedded triples are allowed to have different denotations, and so the entailment does not hold.</p>
@@ -2788,6 +2788,10 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
 
     <div class="issue" data-number="164">
       This issue was raised to introduce IRIs to be used with [[SPARQL11-SERVICE-DESCRIPTION]], in order for a SPARQL-star endpoint to advertise its support for RDF-star.
+    </div>
+
+    <div class="issue" data-number="170">
+      This issue proposes to introduce a vocabulary for locally overriding the <a href="#ref-opacity">opaque</a> semantics of embedded triples, making them transparent in some contexts.
     </div>
 
   </section>

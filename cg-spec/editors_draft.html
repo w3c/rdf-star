@@ -657,25 +657,139 @@ INSERT {
       a single <a>default graph</a> and zero or more <a>named graphs</a>,
       all of which are <a>RDF-star graphs</a>.</p>
 
-    <p>The TriG-star grammar contains exactly the same production updates
-      described in <a href="#turtle-star-grammar" class="sectionRef"></a>.</p>
+    <section id="trig-star-grammar">
+      <h2>Grammar</h2>
+      <p>TriG-star is defined to follow the <a data-cite="TRIG#grammar-ebnf">same grammar</a> as TriG,
+        <em>except</em> for the <a data-cite="XML#sec-notation"><abbr title="Extended Backus-Naur Form">EBNF</abbr> productions</a> specified below,
+        which replace the productions having the same number (if any) in the original grammar.</p>
 
-    <p>TriG-star parsing uses the same updates described
-      in <a href="#turtle-star-parsing" class="sectionRef"></a>
-      as applied to <a data-cite="TRIG#sec-parsing">Section 5 of the TriG specification</a> [[TRIG]].</p>
+      <p>The TriG-star grammar contains exactly the same production updates
+        described in <a href="#turtle-star-grammar" class="sectionRef"></a>
+        with an additional change to the <a href="#trig-grammar-production-triplesOrGraph">triplesOrGraph</a> production.</p>
 
-    <p class="note">As with Turtle-star,
-      the <a href="#grammar-production-embTriple">`embTriple`</a>
-      and <a href="#grammar-production-annotation">`annotation`</a>
-      are used to set either the |curSubject| or |curObject|,
-      and do not directly add the associated <a>embedded triple</a> to |curGraph|.
-      Subsequent productions which use either |curSubject| or |curObject|
-      may result in adding triples to |curGraph|.</p>
+      <table class="grammar">
+        <tr id="trig-grammar-production-triplesOrGraph">
+          <td>[3g]</td>
+          <td>`triplesOrGraph`</td>
+          <td>::=</td>
+          <td>
+            <a data-cite="TRIG#grammar-production-labelOrSubject">labelOrSubject</a>
+            `(`
+            <a data-cite="TRIG#grammar-production-wrappedGraph">wrappedGraph</a>
+            `|`
+            <a data-cite="TRIG#grammar-production-predicateObjectList">predicateObjectList</a>
+            `'.' )`
+            <div style="font-weight: bold">
+              `|`
+              <a href="#trig-grammar-production-embTriple">embTriple</a>
+              <a data-cite="TRIG#grammar-production-predicateObjectList">predicateObjectList</a>
+              `'.'`
+            </div>
+          </td>
+        </tr>
+        <tr id="trig-grammar-production-objectList">
+          <td>[8]</td>
+          <td>`objectList`</td>
+          <td>::=</td>
+          <td>
+            <a href="#trig-grammar-production-object">object</a>
+            <a style="font-weight: bold" href="#trig-grammar-production-annotation">annotation</a>`?`
+            `(`
+            <code class="grammar-literal">','</code>
+            <a href="#trig-grammar-production-object">object</a>
+            <a style="font-weight: bold" href="#trig-grammar-production-annotation">annotation</a>`?`
+            `)*`
+          </td>
+        </tr>
+        <tr id="trig-grammar-production-subject">
+          <td>[10]</td>
+          <td>`subject`</td>
+          <td>::=</td>
+          <td>
+            <a data-cite="TRIG#grammar-production-iri">iri</a> `|`
+            <a data-cite="TRIG#grammar-production-BlankNode">BlankNode</a> `|`
+            <a data-cite="TRIG#grammar-production-collection">collection</a> `|`
+            <a style="font-weight: bold" href="#trig-grammar-production-embTriple">embTriple</a>
+          </td>
+        </tr>
+        <tr id="trig-grammar-production-object">
+          <td>[12]</td>
+          <td>`object`</td>
+          <td>::=</td>
+          <td>
+            <a data-cite="TRIG#grammar-production-iri">iri</a> `|`
+            <a  data-cite="TRIG#grammar-production-BlankNode">BlankNode</a> `|`
+            <a  data-cite="TRIG#grammar-production-collection">collection</a> `|`
+            <a data-cite="TRIG#grammar-production-blankNodePropertyList">blankNodePropertyList</a> `|`
+            <a data-cite="TRIG#grammar-production-literal">literal</a> `|`
+            <a style="font-weight: bold" href="#trig-grammar-production-embTriple">embTriple</a>
+          </td>
+        </tr>
+        <tr style="font-weight: bold" id="trig-grammar-production-embTriple">
+          <td>[27t]</td>
+          <td>`embTriple`</td>
+          <td>::=</td>
+          <td>
+            <code class="grammar-literal">'&lt;&lt;'</code>
+            <a href="#trig-grammar-production-embSubject">embSubject</a>
+            <a data-cite="TURTLE#grammar-production-verb">verb</a>
+            <a href="#trig-grammar-production-embObject">embObject</a>
+            <code class="grammar-literal">'&gt;&gt;'</code>
+          </td>
+        </tr>
+        <tr style="font-weight: bold" id="trig-grammar-production-embSubject">
+          <td>[28t]</td>
+          <td>`embSubject`</td>
+          <td>::=</td>
+          <td>
+            <a data-cite="TRIG#grammar-production-iri">iri</a> `|`
+            <a  data-cite="TRIG#grammar-production-BlankNode">BlankNode</a> `|`
+            <a href="#trig-grammar-production-embTriple">embTriple</a>
+          </td>
+        </tr>
+        <tr style="font-weight: bold" id="trig-grammar-production-embObject">
+          <td>[29t]</td>
+          <td>`embObject`</td>
+          <td>::=</td>
+          <td>
+            <a data-cite="TRIG#grammar-production-iri">iri</a> `|`
+            <a  data-cite="TRIG#grammar-production-BlankNode">BlankNode</a> `|`
+            <a data-cite="TRIG#grammar-production-literal">literal</a> `|`
+            <a href="#trig-grammar-production-embTriple">embTriple</a>
+          </td>
+        </tr>
+        <tr style="font-weight: bold" id="trig-grammar-production-annotation">
+          <td>[30t]</td>
+          <td>`annotation`</td>
+          <td>::=</td>
+          <td>
+            <code class="grammar-literal">'{|'</code>
+            <a  data-cite="TRIG#grammar-production-predicateObjectList">predicateObjectList</a>
+            <code class="grammar-literal">'|}'</code>
+          </td>
+        </tr>
+      </table>
+    </section>
 
-    <p>A conforming TriG-star parser MUST parse any
-      valid <strong>TriG document</strong> and any
-      valid <a>Turtle-star document</a> in addition
-      to the <a href="#turtle-star-grammar">Turtle-star grammar</a> productions contained within a <a>named graph</a>.</p>
+    <section id="trig-star-parsing">
+      <h3>Parsing</h3>
+      <p>TriG-star parsing uses the same updates described
+        in <a href="#turtle-star-parsing" class="sectionRef"></a>
+        as applied to <a data-cite="TRIG#sec-parsing">Section 5 of the TriG specification</a> [[TRIG]].</p>
+
+      <p class="note">As with Turtle-star,
+        the <a href="#grammar-production-embTriple">`embTriple`</a>
+        and <a href="#grammar-production-annotation">`annotation`</a>
+        are used to set either the |curSubject| or |curObject|,
+        and do not directly add the associated <a>embedded triple</a> to |curGraph|.
+        Subsequent productions which use either |curSubject| or |curObject|
+        may result in adding triples to |curGraph|.</p>
+
+      <p>A conforming TriG-star parser MUST parse any
+        valid <strong>TriG document</strong> and any
+        valid <a>Turtle-star document</a> in addition
+        to the <a href="#turtle-star-grammar">Turtle-star grammar</a> productions contained within a <a>named graph</a>.</p>
+    </section>
 
     <section id="trig-star-discussion" class="informative">
       <h3>Discussion</h3>

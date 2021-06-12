@@ -881,7 +881,7 @@ INSERT {
 
       <p>An <dfn>N-Triples-star document</dfn> defines an <a>RDF-star graph</a>
         composed of a set of <a>RDF-star triples</a>.
-        The <a href="N-TRIPLES#grammar-production-triple">`triple`</a> production
+        The <a data-cite="N-TRIPLES#grammar-production-triple">`triple`</a> production
         produces an <a>RDF-star triple</a>
         composed of a <a href="#grammar-production-nt-subject">`subject`</a>,
         <a data-cite="N-TRIPLES#grammar-production-predicate">`predicate`</a>,
@@ -2376,7 +2376,7 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
        <p>
         The result of a SPARQL SELECT query is serialized in XML as defined in [[[RDF-SPARQL-XMLRES]]]. This format proposes an XML representation of variable bindings to RDF terms.
        </p>
-       <p>To accommodate the new RDF term for <a>embedded</a> triples that RDF-star introduces, the list of RDF terms and their XML representations in [<a href="rdf-sparql-XMLres#results">rdf-sparql-XMLres, Section 2.3.1</a>] is extended as follows:
+       <p>To accommodate the new RDF term for <a>embedded</a> triples that RDF-star introduces, the list of RDF terms and their XML representations in [<a data-cite="RDF-SPARQL-XMLRES#results">RDF-SPARQL-XMLRES Section 2.3.1</a>] is extended as follows:
         </p>
         <p>
         <dl>
@@ -2769,7 +2769,7 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
 
         <p>Second, when a legacy RDF system communicates an <a>RDF graph</a> to an RDF-star-aware system, there is no means by which the latter can determine with certainty whether the graph is the result of applying the <a>unstar mapping</a>, and thus needs to be transformed back. (The presence of `unstar:` IRIs in the graph can be used as a hint, but such IRIs can also be used independently of the mapping.) Additional metadata should therefore be attached to unstarred graphs, so that RDF-star systems know whether or not they need to apply the inverse transformation of <a>unstar</a>.</p>
 
-        <p>Finally, legacy RDF systems may alter unstarred graphs in ways that prevent their transformation back to the original <a>RDF-star graph</a>. For example, it has been <a href="combining-rdf-star-graphs">pointed out above</a> how combining several unstarred graphs may not yield the expected result. Another example is the removal of some arcs, such that an <a>embedded triple</a> is not completely described anymore, and can not be reconstructed.</p>
+        <p>Finally, legacy RDF systems may alter unstarred graphs in ways that prevent their transformation back to the original <a>RDF-star graph</a>. For example, it has been <a href="#combining-rdf-star-graphs">pointed out above</a> how combining several unstarred graphs may not yield the expected result. Another example is the removal of some arcs, such that an <a>embedded triple</a> is not completely described anymore, and can not be reconstructed.</p>
 
       </section>
 

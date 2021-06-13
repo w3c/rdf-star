@@ -5,10 +5,12 @@
 <link href='earl.ttl' rel='alternate' type='text/turtle' />
 <link href='earl.jsonld' rel='alternate' type='application/ld+json' />
 <link href='https://www.w3.org/StyleSheets/TR/base' rel='stylesheet' />
+<link href='oxigraph-parser.ttl' rel='related' />
 <link href='jena-report-2021-06-06.ttl' rel='related' />
-<link href='ruby-trig.ttl' rel='related' />
 <link href='ruby-sparql.ttl' rel='related' />
 <link href='eye-earl.ttl' rel='related' />
+<link href='ruby-trig.ttl' rel='related' />
+<link href='oxigraph-sparql.ttl' rel='related' />
 <title>
 RDF-star Processor Conformance
 </title>
@@ -95,8 +97,8 @@ RDF-star Processor Conformance
 EARL results from the RDF-star Test Suite
 </h2>
 <h2 id='w3c-document-28-october-2015'>
-<time class='dt-published' datetime='2021-06-06' property='dc:issued'>
-06 June 2021
+<time class='dt-published' datetime='2021-06-13' property='dc:issued'>
+13 June 2021
 </time>
 </h2>
 <dl>
@@ -241,20 +243,34 @@ Apache Jena
 </li>
 <li class='tocline'>
 <span class='secno'>A.2</span>
+<a class='tocxref' href='#subj_Oxigraph_Rust'>
+Oxigraph
+ (Rust)
+</a>
+</li>
+<li class='tocline'>
+<span class='secno'>A.3</span>
+<a class='tocxref' href='#subj_Oxigraph_Rio_Turtle_Rust'>
+Oxigraph Rio Turtle
+ (Rust)
+</a>
+</li>
+<li class='tocline'>
+<span class='secno'>A.4</span>
 <a class='tocxref' href='#subj_EYE_Prolog'>
 EYE
  (Prolog)
 </a>
 </li>
 <li class='tocline'>
-<span class='secno'>A.3</span>
+<span class='secno'>A.5</span>
 <a class='tocxref' href='#subj_RDF_TriG_Ruby'>
 RDF::TriG
  (Ruby)
 </a>
 </li>
 <li class='tocline'>
-<span class='secno'>A.4</span>
+<span class='secno'>A.6</span>
 <a class='tocxref' href='#subj_Ruby_SPARQL_Ruby'>
 Ruby SPARQL
  (Ruby)
@@ -345,6 +361,13 @@ Apache Jena
 </a>
 </th>
 <th>
+<a href='#subj_Oxigraph_Rio_Turtle_Rust'>
+Oxigraph Rio Turtle
+<br />
+(Rust)
+</a>
+</th>
+<th>
 <a href='#subj_RDF_TriG_Ruby'>
 RDF::TriG
 <br />
@@ -355,6 +378,9 @@ RDF::TriG
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/nt/syntax#ntriples-star-1'>Test ntriples-star-1: N-Triples-star - subject embedded triple</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -373,10 +399,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/nt/syntax#ntriples-star-3'>Test ntriples-star-3: N-Triples-star - subject and object embedded triples</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -395,10 +427,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/nt/syntax#ntriples-star-5'>Test ntriples-star-5: N-Triples-star - Nested, no whitespace</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -417,10 +455,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/nt/syntax#ntriples-star-bnode-2'>Test ntriples-star-bnode-2: N-Triples-star - Blank node object</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -439,10 +483,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/nt/syntax#ntriples-star-nested-2'>Test ntriples-star-nested-2: N-Triples-star - Nested object term</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -461,10 +511,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/nt/syntax#ntriples-star-bad-2'>Test ntriples-star-bad-2: N-Triples-star - Bad - embedded triple, literal subject</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -483,6 +539,9 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
@@ -494,10 +553,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='summary'>
 <td>
 Percentage passed out of 13 Tests
+</td>
+<td class='passed-all'>
+100.0%
 </td>
 <td class='passed-all'>
 100.0%
@@ -768,6 +833,13 @@ Apache Jena
 </a>
 </th>
 <th>
+<a href='#subj_Oxigraph_Rust'>
+Oxigraph
+<br />
+(Rust)
+</a>
+</th>
+<th>
 <a href='#subj_Ruby_SPARQL_Ruby'>
 Ruby SPARQL
 <br />
@@ -778,6 +850,9 @@ Ruby SPARQL
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/sparql/eval#sparql-star-results-1j'>Test sparql-star-results-1j: SPARQL-star - all graph triples (JSON results)</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -796,10 +871,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/sparql/eval#sparql-star-basic-2'>Test sparql-star-basic-2: SPARQL-star - match constant embedded triple</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -818,10 +899,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/sparql/eval#sparql-star-basic-4'>Test sparql-star-basic-4: SPARQL-star - match embedded triple, var predicate</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -840,10 +927,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/sparql/eval#sparql-star-basic-6'>Test sparql-star-basic-6: SPARQL-star - no match of embedded triple</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -862,10 +955,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/sparql/eval#sparql-star-pattern-2'>Test sparql-star-pattern-2: SPARQL-star -  Asserted and embedded triple</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -884,10 +983,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/sparql/eval#sparql-star-pattern-4'>Test sparql-star-pattern-4: SPARQL-star - Pattern - No match</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -906,10 +1011,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/sparql/eval#sparql-star-pattern-6'>Test sparql-star-pattern-6: SPARQL-star - Pattern - Nesting 1</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -928,10 +1039,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/sparql/eval#sparql-star-pattern-8'>Test sparql-star-pattern-8: SPARQL-star - Pattern - Match and nesting</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -950,10 +1067,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/sparql/eval#sparql-star-construct-1'>Test sparql-star-construct-1: SPARQL-star - CONSTRUCT with constant template</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -972,10 +1095,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/sparql/eval#sparql-star-construct-3'>Test sparql-star-construct-3: SPARQL-star - CONSTRUCT - about every triple</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -994,10 +1123,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/sparql/eval#sparql-star-construct-5'>Test sparql-star-construct-5: SPARQL-star - CONSTRUCT WHERE with annotation syntax</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -1016,10 +1151,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/sparql/eval#sparql-star-graphs-2'>Test sparql-star-graphs-2: SPARQL-star - GRAPHs with blank node</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -1038,10 +1179,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/sparql/eval#sparql-star-expr-2'>Test sparql-star-expr-2: SPARQL-star - Embedded triple - Functions</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -1060,10 +1207,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/sparql/eval#sparql-star-op-2'>Test sparql-star-op-2: SPARQL-star - Embedded triple - value-equality</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -1082,10 +1235,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/sparql/eval#sparql-star-op-4'>Test sparql-star-op-4: SPARQL-star - Embedded triple - value-inequality</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -1104,10 +1263,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/sparql/eval#sparql-star-order-2'>Test sparql-star-order-2: SPARQL-star - Embedded triple - ordering</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -1126,10 +1291,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/sparql/eval#sparql-star-update-2'>Test sparql-star-update-2: SPARQL-star - Update - annotation</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -1148,10 +1319,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='summary'>
 <td>
 Percentage passed out of 34 Tests
+</td>
+<td class='passed-all'>
+100.0%
 </td>
 <td class='passed-all'>
 100.0%
@@ -1178,6 +1355,13 @@ Apache Jena
 </a>
 </th>
 <th>
+<a href='#subj_Oxigraph_Rust'>
+Oxigraph
+<br />
+(Rust)
+</a>
+</th>
+<th>
 <a href='#subj_Ruby_SPARQL_Ruby'>
 Ruby SPARQL
 <br />
@@ -1188,6 +1372,9 @@ Ruby SPARQL
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/sparql/syntax#sparql-star-1'>Test sparql-star-1: SPARQL-star - subject embedded triple</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -1206,10 +1393,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/sparql/syntax#sparql-star-3'>Test sparql-star-3: SPARQL-star - subject embedded triple - vars</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -1228,10 +1421,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/sparql/syntax#sparql-star-5'>Test sparql-star-5: SPARQL-star - Embedded triple in VALUES</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -1250,10 +1449,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/sparql/syntax#sparql-star-7'>Test sparql-star-7: SPARQL-star - Embedded triples in CONSTRUCT WHERE</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -1272,10 +1477,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/sparql/syntax#sparql-star-inside-2'>Test sparql-star-inside-2: SPARQL-star - embedded triple inside collection</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -1294,10 +1505,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/sparql/syntax#sparql-star-nested-2'>Test sparql-star-nested-2: SPARQL-star - nested embedded triple, object position</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -1316,10 +1533,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/sparql/syntax#sparql-star-bnode-1'>Test sparql-star-bnode-1: SPARQL-star - blank node subject</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -1338,10 +1561,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/sparql/syntax#sparql-star-bnode-3'>Test sparql-star-bnode-3: SPARQL-star - blank node</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -1360,10 +1589,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/sparql/syntax#sparql-star-ann-02'>Test sparql-star-ann-02: SPARQL-star - Annotation example</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -1382,10 +1617,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/sparql/syntax#sparql-star-ann-04'>Test sparql-star-ann-04: SPARQL-star - Annotation with embedding</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -1404,10 +1645,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/sparql/syntax#sparql-star-ann-06'>Test sparql-star-ann-06: SPARQL-star - Annotation with path</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -1426,10 +1673,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/sparql/syntax#sparql-star-ann-08'>Test sparql-star-ann-08: SPARQL-star - Annotation in CONSTRUCT </a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -1448,10 +1701,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/sparql/syntax#sparql-star-expr-1'>Test sparql-star-expr-1: SPARQL-star - Expressions - Embedded triple</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -1470,10 +1729,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/sparql/syntax#sparql-star-expr-3'>Test sparql-star-expr-3: SPARQL-star - Expressions - Functions</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -1492,10 +1757,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/sparql/syntax#sparql-star-expr-5'>Test sparql-star-expr-5: SPARQL-star - Expressions - Functions</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -1514,10 +1785,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/sparql/syntax#sparql-star-bad-1'>Test sparql-star-bad-1: SPARQL-star - bad - embedded triple as predicate</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -1536,10 +1813,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/sparql/syntax#sparql-star-bad-3'>Test sparql-star-bad-3: SPARQL-star - bad - collection list in embedded triple</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -1558,10 +1841,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/sparql/syntax#sparql-star-bad-5'>Test sparql-star-bad-5: SPARQL-star - bad - blank node  as predicate in embedded triple</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -1580,10 +1869,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/sparql/syntax#sparql-star-bad-7'>Test sparql-star-bad-7: SPARQL-star - bad - incomplete embedded triple</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -1602,10 +1897,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/sparql/syntax#sparql-star-bad-9'>Test sparql-star-bad-9: SPARQL-star - bad - variable in embedded triple in VALUES </a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -1624,10 +1925,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/sparql/syntax#sparql-star-bad-11'>Test sparql-star-bad-11: SPARQL-star - bad - blank node in embedded triple in FILTER</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -1646,10 +1953,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/sparql/syntax#sparql-star-bad-ann-1'>Test sparql-star-bad-ann-1: SPARQL-star - bad - empty annotation</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -1668,10 +1981,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/sparql/syntax#sparql-star-bad-ann-path-1'>Test sparql-star-bad-ann-path-1: SPARQL-star - bad - path - seq</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -1690,10 +2009,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/sparql/syntax#sparql-star-bad-ann-path-3'>Test sparql-star-bad-ann-path-3: SPARQL-star - bad - path - p*</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -1712,10 +2037,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/sparql/syntax#sparql-star-bad-ann-path-5'>Test sparql-star-bad-ann-path-5: SPARQL-star - bad - path - p?</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -1734,10 +2065,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/sparql/syntax#sparql-star-bad-ann-path-7'>Test sparql-star-bad-ann-path-7: SPARQL-star - bad - path in CONSTRUCT</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -1756,10 +2093,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/sparql/syntax#sparql-star-update-2'>Test sparql-star-update-2: SPARQL-star - update</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -1778,10 +2121,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/sparql/syntax#sparql-star-update-4'>Test sparql-star-update-4: SPARQL-star - update with embedding</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -1800,10 +2149,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/sparql/syntax#sparql-star-update-6'>Test sparql-star-update-6: SPARQL-star - update with annotation template</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -1822,10 +2177,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/sparql/syntax#sparql-star-update-8'>Test sparql-star-update-8: SPARQL-star - update DATA with annotation</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -1844,10 +2205,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/sparql/syntax#sparql-star-bad-update-2'>Test sparql-star-bad-update-2: SPARQL-star - update - bad syntax</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -1866,6 +2233,9 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
@@ -1877,10 +2247,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='summary'>
 <td>
 Percentage passed out of 63 Tests
+</td>
+<td class='passed-all'>
+100.0%
 </td>
 <td class='passed-all'>
 100.0%
@@ -1907,6 +2283,13 @@ Apache Jena
 </a>
 </th>
 <th>
+<a href='#subj_Oxigraph_Rio_Turtle_Rust'>
+Oxigraph Rio Turtle
+<br />
+(Rust)
+</a>
+</th>
+<th>
 <a href='#subj_RDF_TriG_Ruby'>
 RDF::TriG
 <br />
@@ -1917,6 +2300,9 @@ RDF::TriG
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/trig/eval#trig-star-1'>Test trig-star-1: TriG-star - subject embedded triple</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -1935,10 +2321,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/trig/eval#trig-star-bnode-1'>Test trig-star-bnode-1: TriG-star - blank node label</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -1957,10 +2349,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/trig/eval#trig-star-annotation-1'>Test trig-star-annotation-1: TriG-star - Annotation form</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -1979,10 +2377,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/trig/eval#trig-star-annotation-3'>Test trig-star-annotation-3: TriG-star - Annotation - predicate and object lists</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -2001,10 +2405,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/trig/eval#trig-star-annotation-5'>Test trig-star-annotation-5: TriG-star - Annotation object list</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -2023,10 +2433,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/trig/eval#trig-star-embed-annotation-2'>Test trig-star-embed-annotation-2: TriG-star - Annotation on triple with embedded subject</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -2045,10 +2461,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='summary'>
 <td>
 Percentage passed out of 12 Tests
+</td>
+<td class='passed-all'>
+100.0%
 </td>
 <td class='passed-all'>
 100.0%
@@ -2075,6 +2497,13 @@ Apache Jena
 </a>
 </th>
 <th>
+<a href='#subj_Oxigraph_Rio_Turtle_Rust'>
+Oxigraph Rio Turtle
+<br />
+(Rust)
+</a>
+</th>
+<th>
 <a href='#subj_RDF_TriG_Ruby'>
 RDF::TriG
 <br />
@@ -2085,6 +2514,9 @@ RDF::TriG
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/trig/syntax#trig-star-1'>Test trig-star-1: TriG-star - subject embedded triple</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -2103,10 +2535,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/trig/syntax#trig-star-inside-1'>Test trig-star-inside-1: TriG-star - embedded triple inside blankNodePropertyList</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -2125,10 +2563,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/trig/syntax#trig-star-nested-1'>Test trig-star-nested-1: TriG-star - nested embedded triple, subject position</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -2147,10 +2591,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/trig/syntax#trig-star-compound-1'>Test trig-star-compound-1: TriG-star - compound forms</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -2169,10 +2619,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/trig/syntax#trig-star-bnode-2'>Test trig-star-bnode-2: TriG-star - blank node object</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -2191,10 +2647,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/trig/syntax#trig-star-bad-1'>Test trig-star-bad-1: TriG-star - bad - embedded triple as predicate</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -2213,10 +2675,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/trig/syntax#trig-star-bad-3'>Test trig-star-bad-3: TriG-star - bad - collection list in embedded triple</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -2235,10 +2703,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/trig/syntax#trig-star-bad-5'>Test trig-star-bad-5: TriG-star - bad - blank node  as predicate in embedded triple</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -2257,10 +2731,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/trig/syntax#trig-star-bad-7'>Test trig-star-bad-7: TriG-star - bad - incomplete embedded triple</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -2279,10 +2759,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/trig/syntax#trig-star-ann-1'>Test trig-star-ann-1: TriG-star - Annotation form</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -2301,10 +2787,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/trig/syntax#trig-star-bad-ann-1'>Test trig-star-bad-ann-1: TriG-star - bad - empty annotation</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -2323,10 +2815,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='summary'>
 <td>
 Percentage passed out of 22 Tests
+</td>
+<td class='passed-all'>
+100.0%
 </td>
 <td class='passed-all'>
 100.0%
@@ -2350,6 +2848,13 @@ Test
 <th>
 <a href='#subj_Apache_Jena_'>
 Apache Jena
+</a>
+</th>
+<th>
+<a href='#subj_Oxigraph_Rio_Turtle_Rust'>
+Oxigraph Rio Turtle
+<br />
+(Rust)
 </a>
 </th>
 <th>
@@ -2380,10 +2885,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/turtle/eval#turtle-star-2'>Test turtle-star-2: Turtle-star - object embedded triple</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -2408,10 +2919,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/turtle/eval#turtle-star-bnode-2'>Test turtle-star-bnode-2: Turtle-star - blank node labels</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -2436,10 +2953,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/turtle/eval#turtle-star-annotation-2'>Test turtle-star-annotation-2: Turtle-star - Annotation example</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -2464,10 +2987,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/turtle/eval#turtle-star-annotation-4'>Test turtle-star-annotation-4: Turtle-star - Annotation - nested</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -2492,10 +3021,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/turtle/eval#turtle-star-embed-annotation-1'>Test turtle-star-embed-annotation-1: Turtle-star - Annotation with embedding</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -2520,6 +3055,9 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
@@ -2534,10 +3072,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='summary'>
 <td>
 Percentage passed out of 12 Tests
+</td>
+<td class='passed-all'>
+100.0%
 </td>
 <td class='passed-all'>
 100.0%
@@ -2564,6 +3108,13 @@ Test
 <th>
 <a href='#subj_Apache_Jena_'>
 Apache Jena
+</a>
+</th>
+<th>
+<a href='#subj_Oxigraph_Rio_Turtle_Rust'>
+Oxigraph Rio Turtle
+<br />
+(Rust)
 </a>
 </th>
 <th>
@@ -2594,10 +3145,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/turtle/syntax#turtle-star-2'>Test turtle-star-2: Turtle-star - object embedded triple</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -2622,10 +3179,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/turtle/syntax#turtle-star-inside-2'>Test turtle-star-inside-2: Turtle-star - embedded triple inside collection</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -2650,10 +3213,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/turtle/syntax#turtle-star-nested-2'>Test turtle-star-nested-2: Turtle-star - nested embedded triple, object position</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -2678,10 +3247,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/turtle/syntax#turtle-star-bnode-1'>Test turtle-star-bnode-1: Turtle-star - blank node subject</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -2706,10 +3281,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/turtle/syntax#turtle-star-bnode-3'>Test turtle-star-bnode-3: Turtle-star - blank node</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -2728,6 +3309,9 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 <td class='FAIL'>
 FAIL
 </td>
@@ -2738,6 +3322,9 @@ PASS
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/turtle/syntax#turtle-star-bad-2'>Test turtle-star-bad-2: Turtle-star - bad - embedded triple outside triple</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -2756,6 +3343,9 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 <td class='FAIL'>
 FAIL
 </td>
@@ -2770,6 +3360,9 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 <td class='FAIL'>
 FAIL
 </td>
@@ -2780,6 +3373,9 @@ PASS
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/turtle/syntax#turtle-star-bad-5'>Test turtle-star-bad-5: Turtle-star - bad - blank node  as predicate in embedded triple</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -2804,10 +3400,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/turtle/syntax#turtle-star-bad-7'>Test turtle-star-bad-7: Turtle-star - bad - incomplete embedded triple</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -2832,10 +3434,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/turtle/syntax#turtle-star-ann-1'>Test turtle-star-ann-1: Turtle-star - Annotation form</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -2860,10 +3468,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/turtle/syntax#turtle-star-bad-ann-1'>Test turtle-star-bad-ann-1: Turtle-star - bad - empty annotation</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -2888,10 +3502,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/turtle/syntax#nt-ttl-star-1'>Test nt-ttl-star-1: N-Triples-star as Turtle-star - subject embedded triple</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -2916,10 +3536,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/turtle/syntax#nt-ttl-star-3'>Test nt-ttl-star-3: N-Triples-star as Turtle-star - subject and object embedded triples</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -2938,6 +3564,9 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 <td class='UNTESTED'>
 UNTESTED
 </td>
@@ -2948,6 +3577,9 @@ PASS
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/turtle/syntax#nt-ttl-star-5'>Test nt-ttl-star-5: N-Triples-star as Turtle-star - Nested, no whitespace</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -2972,10 +3604,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/turtle/syntax#nt-ttl-star-bnode-2'>Test nt-ttl-star-bnode-2: N-Triples-star as Turtle-star - Blank node object</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -3000,10 +3638,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/turtle/syntax#nt-ttl-star-nested-2'>Test nt-ttl-star-nested-2: N-Triples-star as Turtle-star - Nested object term</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -3022,6 +3666,9 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 <td class='FAIL'>
 FAIL
 </td>
@@ -3032,6 +3679,9 @@ PASS
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/rdf-star/tests/turtle/syntax#nt-ttl-star-bad-2'>Test nt-ttl-star-bad-2: N-Triples-star as Turtle-star - Bad - embedded triple, literal subject</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -3050,6 +3700,9 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 <td class='FAIL'>
 FAIL
 </td>
@@ -3064,6 +3717,9 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 <td class='FAIL'>
 FAIL
 </td>
@@ -3074,6 +3730,9 @@ PASS
 <tr class='summary'>
 <td>
 Percentage passed out of 35 Tests
+</td>
+<td class='passed-all'>
+100.0%
 </td>
 <td class='passed-all'>
 100.0%
@@ -3191,8 +3850,158 @@ Turtle-star Syntax Tests
 </dd>
 </dl>
 </dd>
-<dt id='subj_EYE_Prolog'>
+<dt id='subj_Oxigraph_Rust'>
 <span class='secno'>A.2</span>
+<a href='http://oxigraph.org/'>
+<span about='http://oxigraph.org/' property='doap:name'>Oxigraph</span>
+</a>
+</dt>
+<dd>
+<dl>
+<dt>Description</dt>
+<dd lang='en' property='doap:description'>Oxigraph is an embedded triple store.</dd>
+<dt>Release</dt>
+<dd property='doap:release'><span property='doap:revision'>0.3.0-dev</span></dd>
+<dt>Programming Language</dt>
+<dd property='doap:programming-language'>Rust</dd>
+<dt>Home Page</dt>
+<dd>
+<a href='https://oxigraph.org/' property='doap:homepage'>
+https://oxigraph.org/
+</a>
+</dd>
+<dt>Developer</dt>
+<dd rel='doap:developer'>
+<div>
+<a href='https://thomas.pellissier-tanon.fr/#me'>
+<span property='foaf:name'>Thomas Pellissier Tanon</span>
+</a>
+<a href='https://thomas.pellissier-tanon.fr/' property='foaf:homepage'>
+https://thomas.pellissier-tanon.fr/
+</a>
+</div>
+</dd>
+<dt>
+Test Suite Compliance
+</dt>
+<dd>
+<table class='report'>
+<tbody>
+<tr>
+<td>
+SPARQL-star Evaluation Tests
+</td>
+<td class='passed-all'>
+34/34 (100.0%)
+</td>
+</tr>
+<tr>
+<td>
+SPARQL-star Syntax Tests
+</td>
+<td class='passed-all'>
+63/63 (100.0%)
+</td>
+</tr>
+</tbody>
+</table>
+</dd>
+</dl>
+</dd>
+<dt id='subj_Oxigraph_Rio_Turtle_Rust'>
+<span class='secno'>A.3</span>
+<a href='https://crates.io/crates/rio_turtle'>
+<span about='https://crates.io/crates/rio_turtle' property='doap:name'>Oxigraph Rio Turtle</span>
+</a>
+</dt>
+<dd>
+<dl>
+<dt>Description</dt>
+<dd lang='en' property='doap:description'>Rio Turtle is a Turtle, TriQ, NTriples and NeQuads parser library written in Rust.</dd>
+<dt>Release</dt>
+<dd property='doap:release'><span property='doap:revision'>0.6.0-dev</span></dd>
+<dt>Programming Language</dt>
+<dd property='doap:programming-language'>Rust</dd>
+<dt>Home Page</dt>
+<dd>
+<a href='https://crates.io/crates/rio_turtle' property='doap:homepage'>
+https://crates.io/crates/rio_turtle
+</a>
+</dd>
+<dt>Developer</dt>
+<dd rel='doap:developer'>
+<div>
+<a href='https://thomas.pellissier-tanon.fr/#me'>
+<span property='foaf:name'>Thomas Pellissier Tanon</span>
+</a>
+<a href='https://thomas.pellissier-tanon.fr/' property='foaf:homepage'>
+https://thomas.pellissier-tanon.fr/
+</a>
+</div>
+</dd>
+<dd rel='doap:developer'>
+<div>
+<a href='http://champin.net/#pa'>
+<span property='foaf:name'>Pierre-Antoine Champin</span>
+</a>
+<a href='http://champin.net/' property='foaf:homepage'>
+http://champin.net/
+</a>
+</div>
+</dd>
+<dt>
+Test Suite Compliance
+</dt>
+<dd>
+<table class='report'>
+<tbody>
+<tr>
+<td>
+N-Triples-star Syntax Tests
+</td>
+<td class='passed-all'>
+13/13 (100.0%)
+</td>
+</tr>
+<tr>
+<td>
+TriG-star Evaluation Tests
+</td>
+<td class='passed-all'>
+12/12 (100.0%)
+</td>
+</tr>
+<tr>
+<td>
+TriG-star Syntax Tests
+</td>
+<td class='passed-all'>
+22/22 (100.0%)
+</td>
+</tr>
+<tr>
+<td>
+Turtle-star Evaluation Tests
+</td>
+<td class='passed-all'>
+12/12 (100.0%)
+</td>
+</tr>
+<tr>
+<td>
+Turtle-star Syntax Tests
+</td>
+<td class='passed-all'>
+35/35 (100.0%)
+</td>
+</tr>
+</tbody>
+</table>
+</dd>
+</dl>
+</dd>
+<dt id='subj_EYE_Prolog'>
+<span class='secno'>A.4</span>
 <a href='https://josd.github.io/eye/'>
 <span about='https://josd.github.io/eye/' property='doap:name'>EYE</span>
 </a>
@@ -3217,7 +4026,7 @@ https://josd.github.io/eye/index.html
 <a href='https://josd.github.io/'>
 <span property='foaf:name'>Jos De Roo</span>
 </a>
-<a href-@id='https://josd.github.io/' href-@type='[&quot;foaf:Person&quot;, &quot;Assertor&quot;]' href-foaf:homepage='https://josd.github.io/' href-foaf:name='Jos De Roo' property='foaf:homepage'>
+<a href-@id='https://josd.github.io/' href-@type='[&quot;Assertor&quot;, &quot;foaf:Person&quot;]' href-foaf:homepage='https://josd.github.io/' href-foaf:name='Jos De Roo' property='foaf:homepage'>
 https://josd.github.io/
 </a>
 </div>
@@ -3258,7 +4067,7 @@ Turtle-star Syntax Tests
 </dl>
 </dd>
 <dt id='subj_RDF_TriG_Ruby'>
-<span class='secno'>A.3</span>
+<span class='secno'>A.5</span>
 <a href='https://rubygems.org/gems/rdf-trig'>
 <span about='https://rubygems.org/gems/rdf-trig' property='doap:name'>RDF::TriG</span>
 </a>
@@ -3338,7 +4147,7 @@ Turtle-star Syntax Tests
 </dl>
 </dd>
 <dt id='subj_Ruby_SPARQL_Ruby'>
-<span class='secno'>A.4</span>
+<span class='secno'>A.6</span>
 <a href='https://rubygems.org/gems/sparql'>
 <span about='https://rubygems.org/gems/sparql' property='doap:name'>Ruby SPARQL</span>
 </a>
@@ -3407,10 +4216,10 @@ Individual test results used to construct this report are available here:
 </p>
 <ul>
 <li>
-<a class='source' href='jena-report-2021-06-06.ttl'>jena-report-2021-06-06.ttl</a>
+<a class='source' href='oxigraph-parser.ttl'>oxigraph-parser.ttl</a>
 </li>
 <li>
-<a class='source' href='ruby-trig.ttl'>ruby-trig.ttl</a>
+<a class='source' href='jena-report-2021-06-06.ttl'>jena-report-2021-06-06.ttl</a>
 </li>
 <li>
 <a class='source' href='ruby-sparql.ttl'>ruby-sparql.ttl</a>
@@ -3418,9 +4227,15 @@ Individual test results used to construct this report are available here:
 <li>
 <a class='source' href='eye-earl.ttl'>eye-earl.ttl</a>
 </li>
+<li>
+<a class='source' href='ruby-trig.ttl'>ruby-trig.ttl</a>
+</li>
+<li>
+<a class='source' href='oxigraph-sparql.ttl'>oxigraph-sparql.ttl</a>
+</li>
 </ul>
 </section>
-<section class='appendix' id='report-generation-software' property='earl:generatedBy' resource='https://rubygems.org/gems/earl-report' typeof='doap:Project Software'>
+<section class='appendix' id='report-generation-software' property='earl:generatedBy' resource='https://rubygems.org/gems/earl-report' typeof='Software doap:Project'>
 <h2>
 <span class='secno'>C.</span>
 Report Generation Software

@@ -52,6 +52,9 @@
           "company": "CCRi",
         },
         {
+          "name": "Thomas Lörtsch",
+        },
+        {
           "name": "Peter F. Patel-Schneider",
           "company": "PARC",
         },
@@ -131,15 +134,15 @@
 
     /* SPARQL modification section */
 
-    .defn	{ 
-        margin-left:5% ; margin-right: 7%; 
+    .defn	{
+        margin-left:5% ; margin-right: 7%;
         margin-top: 0.1ex ; margin-bottom: 0.1ex ;
         border: thin solid #888888;
         padding: 1ex 2ex 0.5ex 2ex ;
         page-break-inside: avoid ;
         background-color: #F0F8F8 ;
     }
-    
+
     div.defn p	{ margin-top: 1ex ; margin-bottom: 1.5ex ;}
     div.defn ul	{ margin-top: 1ex ; margin-bottom: 1.5ex ; }
 
@@ -156,7 +159,7 @@
         border-color: #888;
         border-width: 1px;
     }
-    
+
     .operator th {
         border: solid;
         border-color: #888;
@@ -168,7 +171,7 @@
         border-color: #888;
         border-width: 1px;
     }
-    
+
     .heavy { color:black; font-weight:bold }
     .small { font-size: smaller; }
 
@@ -224,16 +227,18 @@
 
       <p>The RDF data model lets you state facts in three-part subject-predicate-object statements known as triples. For example, with a single RDF triple, you can say that employee38 has a familyName of "Smith". A triple's predicate is a property specified with an IRI (an Internationalized version of a URI), identifying that property in a globally unambiguous way. A triple's subject and object can each be an IRI referencing any entity, and the object can also be a literal value such as "Smith" or data of other types such as dates, numbers, or Boolean values.</p>
 
-      <p>Sometimes, we want the subject or object of a triple to refer to another triple. For example, the statement "according to employee22, employee38 has a jobTitle of 'Assistant Designer'" can be modeled as a triple with "according to" as its predicate, employee22 as its object, and another triple as its subject, namely the triple "employee38 has a jobTitle of 'Assistant Designer'". This use of a triple as the subject or object resource of another triple so that we can say things about that triple is known as <a href='https://www.w3.org/TR/rdf11-mt/#reification'>reification</a>.
-      The concept of reification has always been part of RDF, but expressing it in most RDF concrete syntaxes such as Turtle and N-Triples, as well as processing or querying it with SPARQL, has been verbose and cumbersome [[RDF-STAR-FOUNDATION]].</p>
+    <p>Sometimes, we want the subject or object of a triple to refer to another triple. For example, the statement "according to employee22, employee38 has a jobTitle of 'Assistant Designer'" can be modeled as a triple with "according to" as its predicate, employee22 as its object, and another triple as its subject, namely the triple "employee38 has a jobTitle of 'Assistant Designer'". This use of a triple as the subject or object resource of another triple so that we can say things about that triple is known as <a href='https://www.w3.org/TR/rdf11-mt/#reification'>reification</a>. 
+      The concept of reification has always been part of RDF, but expressing it in most RDF concrete syntaxes such as Turtle and N-Triples, as well as processing or querying it with SPARQL, has been verbose and cumbersome [[RDF-STAR-FOUNDATION]]. A notable exception is RDF/XML which provides the <a href="https://www.w3.org/TR/rdf-syntax-grammar/#section-Syntax-reifying">ID</a> attribute as syntactic sugar for the standard reification quadlet <span class=""heavy">[Note: see my <a href="https://github.com/w3c/rdf-star/pull/171#issuecomment-854648532">comment on issue #171</a> for why I think this sentence is important].</span></p>
+
+    <p>RDF-star however deviates from RDF standard reification in fundamental ways concerning both <a href="#occurrences">abstract syntax</a> and <a href="#referential-opacity">semantics</a>. It thereby enables new use cases like Explainable AI but requires extra effort when used to model common idioms like provenance annotations, n-ary relations and Property Graph-style attributed relations.</p>
 
     </section>
 
     <section class="informative">
       <h2>Overview</h2>
 
-<p>This specification describes RDF-star, an extension of RDF's conceptual data model and concrete syntaxes, providing a more compact form of reification. This model and syntaxes enable the creation of concise triples that reference other triples as subject and object resources.
-Triples that include a triple as a subject or an object are known as <a>RDF-star triples</a>. The following dataset shows the example RDF-star triples from above using the <a href="#turtle-star">Turtle-star</a> syntax, which uses double angle brackets to enclose a triple serving as a subject or object resource:</p>
+    <p>This specification describes RDF-star, an extension of RDF's conceptual data model and concrete syntaxes, providing a more compact form of reification. This model and syntaxes enable the creation of concise triples that reference the syntactic representation of other triples as subject and object resources. 
+    Triples that include a triple as a subject or an object are known as <a>RDF-star triples</a>. The following dataset shows the example RDF-star triples from above using the <a href="#turtle-star">Turtle-star</a> syntax, which uses double angle brackets to enclose a triple serving as a subject or object resource:</p>
 
       <pre data-transform="updateExample"
         data-content-type="text/turtle"
@@ -281,7 +286,7 @@ This pattern is quite common, so Turtle-star offers a dedicated syntax for it, c
      class="nohighlight example"
 >
                 <!--
-PREFIX : <http://www.example.org/> 
+PREFIX : <http://www.example.org/>
 
 SELECT ?claimer WHERE {
    ?claimer :claims << :employee38 ?property ?value >>
@@ -388,7 +393,7 @@ INSERT {
 
       <p>According to the definitions above, an <a>RDF-star triple</a> is an abstract entity whose identity is entirely defined by its subject, predicate, and object. Conversely, given three <a>RDF-star terms</a> |s|, |p|, and |o|, there is exactly and only one <a>RDF-star triple</a> with subject |s|, predicate |p|, and object |o|. This unique triple (|s|, |p|, |o|) can be <a>embedded</a> as the subject or object of multiple other triples, but must be assumed to represent the <em>same thing</em> everywhere it occurs, just like the same <a>IRI</a> |p| is assumed to represent the same thing everywhere it occurs.</p>
 
-      <p>In some situations, however, it might be necessary to distinguish the <em>occurrences</em> of a triple in different graphs. Consider the following sentence: "The triple `&lt;http://example.org/s&gt; &lt;http://example.org/p&gt; &lt;http://example.org/o&gt;` in (the graph represented by) file1.ttl was added by Alice, and the same triple in file2.ttl was added by Bob." Note that the words "same triple" in this sentence may be confusing, because although the triple (as an abstract entity) is the same, its respective occurrences are different things, each within a different file and with a different author (this is known, in philosophy and linguistics, as the <a href="https://en.wikipedia.org/wiki/Type%E2%80%93token_distinction">type-token distinction</a>). As the embedded triple represents a unique thing, adequately conveying the meaning of the sentence above requires additional nodes for representing the two distinct occurrences. One possible solution is illustrated in the following example (using the Turtle-star concrete syntax described in <a href="#turtle-star">the next section</a>).</p>
+      <p>In many situations, however, it is necessary to distinguish the <em>occurrences</em> of a triple in different graphs. Consider the following sentence: "The triple `&lt;http://example.org/s&gt; &lt;http://example.org/p&gt; &lt;http://example.org/o&gt;` in (the graph represented by) file1.ttl was added by Alice, and the same triple in file2.ttl was added by Bob." Note that the words "same triple" in this sentence may be confusing, because although the triple (as an abstract entity) is the same, its respective occurrences are different things, each within a different file and with a different author (this is known, in philosophy and linguistics, as the <a href="https://en.wikipedia.org/wiki/Type%E2%80%93token_distinction">type-token distinction</a>). As the embedded triple represents a unique thing, adequately conveying the meaning of the sentence above requires additional nodes for representing the two distinct occurrences. One possible solution is illustrated in the following example (using the Turtle-star concrete syntax described <a href="#turtle-star">below</a>).</p>
 
       <pre data-transform="updateExample" id="occurrences-example"
         data-content-type="text/turtle"
@@ -404,11 +409,23 @@ INSERT {
         -->
       </pre>
 
-    </section>
+      <p>With this solution RDF-star takes three statements to annotate an occurrence. In contrast to RDF-star's approach RDF standard reification is defined as referring to occurrences. It is however underspecified insofar as it doesn't provide a way to denote the location - some graph, document or other source of a set of triples - in which a statement occurs, as the ":in" property in the example above does. RDF standard reification needs three statements to describe a triple and would need a forth statement to specify its location. Only then a fifth statement would be able to annotate such an occurrence. Note that the ":occurrenceOf" and ":in" properties in the example above serve only illustrative purposes as standardizing a proper vocabulary to denote occurrences is still an <a href="#rdf-star-vocabulary">open issue</a>. By comparison RDF/XML's <a href="https://www.w3.org/TR/rdf-syntax-grammar/#section-Syntax-reifying">ID</a> attribute implements reification without any deviation from RDF's abstract syntax and semantics and enables statement annotation without the need for any extra statements.</p>
+
+      <p>Referring to a specific occurrence, not to the triple as an abstract entity, is a common use case: provenance annotations on occurrences have until recently been the go-to example for RDF-star, as witnessed by the so-called <a href="#the-seminal-example">seminal example</a>. Attributed relations as in <a href="https://w3c.github.io/rdf-star/UCR/rdf-star-ucr.html#support-wikidata-wikibase-data-model">WikiData</a> or Property Graphs and also n-ary relations commonly refer to occurrences. It is important to be aware that when using RDF-star embedded triples such statement annotations have to provide references to both the occurrence and its containing set or graph or source as extra statements to be correct and complete, thereby putting a certain limit to the perceived simplicity and elegance of the RDF-star approach. Querying in SPARQL consequently also becomes more involved.</p>
+
+    <p class="issue" data-number="">The section <a href="#the-seminal-example">The seminal example</a> should be moved here as this is the context in which it is relevant and can be best understood.</br>
+      I'm leaving it below for now to make it easier to follow the changes that I made to that section in DIFF view.</p>
 
   </section>
 
-  <section>
+</section>
+
+<section>
+  <p class="issue" data-number="">The section <a href="#rdf-star-#semantics">RDF-star Semantics</a> should be moved here, after "Concepts and Abstract Syntax" and before "Concrete Syntaxes ". This better reflects the importance of the consequences that the proposed extension of RDF semantics may have. It also fits better into the flow of the report as right now we have 1. Introduction, 2. RDF, 3. RDF, 4. SPARQL, 5. SPARQL, 6. RDF. It also concentrates the controversial topics in the first 3 sections, making it easier for the reader to follow the discussion. Putting Semantics last risks to hide the important issues involved.</br>
+    I'm leaving it below for now to make it easier to follow the changes that I made to that section in DIFF view.</p>
+</section>
+
+<section>
   <h2>Concrete Syntaxes</h2>
 
   <p>This section defines the following concrete syntaxes:</p>
@@ -918,8 +935,8 @@ INSERT {
       all of which are <a>RDF-star graphs</a>.</p>
 
     <p>A conforming N-Quads-star parser MUST parse any valid
-      <strong>N-Quads document</strong> and additionally parse the 
-      <a href="#grammar-production-nt-subject"><code>subject</code></a> and 
+      <strong>N-Quads document</strong> and additionally parse the
+      <a href="#grammar-production-nt-subject"><code>subject</code></a> and
       <a href="#grammar-production-nt-object"><code>object</code></a> productions
       from N-Triples-star to generate <a>RDF-star triples</a> which are
       added to either the <a>default graph</a> or associated
@@ -1080,10 +1097,10 @@ INSERT {
           <td>`PrimaryExpression`</td>
           <td>::=</td>
           <td>
-            <a data-cite="SPARQL11-QUERY#rBrackettedExpression">BrackettedExpression</a> `|` 
-            <a data-cite="SPARQL11-QUERY#rBuiltInCall">BuiltInCall</a> `|` 
-            <a data-cite="SPARQL11-QUERY#ririOrFunction">iriOrFunction</a> `|` 
-            <a data-cite="SPARQL11-QUERY#rRDFLiteral">RDFLiteral</a> `|` 
+            <a data-cite="SPARQL11-QUERY#rBrackettedExpression">BrackettedExpression</a> `|`
+            <a data-cite="SPARQL11-QUERY#rBuiltInCall">BuiltInCall</a> `|`
+            <a data-cite="SPARQL11-QUERY#ririOrFunction">iriOrFunction</a> `|`
+            <a data-cite="SPARQL11-QUERY#rRDFLiteral">RDFLiteral</a> `|`
             <a data-cite="SPARQL11-QUERY#rNumericLiteral">NumericLiteral</a> `|`
             <a data-cite="SPARQL11-QUERY#rBooleanLiteral">BooleanLiteral</a> `|`
             <a data-cite="SPARQL11-QUERY#rVar">Var</a>
@@ -1615,8 +1632,8 @@ INSERT {
           <td style="font-weight: bold">`ExprVarOrTerm`</td>
           <td style="font-weight: bold">::=</td>
           <td style="font-weight: bold">
-            <a data-cite="SPARQL11-QUERY#riri">iri</a> `|` 
-            <a data-cite="SPARQL11-QUERY#rRDFLiteral">RDFLiteral</a> `|` 
+            <a data-cite="SPARQL11-QUERY#riri">iri</a> `|`
+            <a data-cite="SPARQL11-QUERY#rRDFLiteral">RDFLiteral</a> `|`
             <a data-cite="SPARQL11-QUERY#rNumericLiteral">NumericLiteral</a> `|`
             <a data-cite="SPARQL11-QUERY#rBooleanLiteral">BooleanLiteral</a> `|`
             <a data-cite="SPARQL11-QUERY#rVar">Var</a> `|`
@@ -1825,11 +1842,11 @@ respectively).</p>
       <ul>
         <li><a href="#rdf-star-func-sameTerm">Modified <code>sameTerm</code> function</a>
           (SPARQL 1.1 <a data-cite="SPARQL11-QUERY#func-sameTerm">Section 17.4.1.8</a>)</li>
-        <li><a href="#sparql-compare">New function <code>sparql-compare</code></a> for the 
+        <li><a href="#sparql-compare">New function <code>sparql-compare</code></a> for the
           <code>=</code> operator and other comparison mappings</li>
         <li><a href="#rdf-star-termEqual">Modified <code>RDFterm-equal</code></a>
           (SPARQL 1.1 <a data-cite="SPARQL11-QUERY#func-RDFterm-equal">Section 17.4.1.7</a>)</li>
-        <li><a href="#rdf-star-operator-mapping">Operator mapping for <code>=</code> 
+        <li><a href="#rdf-star-operator-mapping">Operator mapping for <code>=</code>
             and other operators</a>
           (SPARQL 1.1 <a data-cite="SPARQL11-QUERY#OperatorMapping">Section 17.3</a>)</li>
         <li><a href="#triple-term-comparison">Modified <code>ORDER BY</code></a>
@@ -1932,7 +1949,7 @@ respectively).</p>
         </p>
         <p>
           An <a href="#rExprEmbTP">Embedded Triple Expression</a>
-          <code>&lt;&lt;S P O&gt;&gt;</code>, where <code>S</code>, 
+          <code>&lt;&lt;S P O&gt;&gt;</code>, where <code>S</code>,
           <code>P</code> and <code>O</code> conform to
           <a href="#rExprVarOrTerm">ExprVarOrTerm</a>,
           is evaluated as <code>TRIPLE(S, P, O)</code>.
@@ -1946,7 +1963,7 @@ respectively).</p>
           <code style="color:black;font-weight:bold">sameTerm</code>
           (<code style="color:black">term</code>, <code style="color:black">term</code>)
         </p>
-        
+
         <p>The function <code>sameTerm</code> is extended to support term comparison for
           RDF-star triple terms by defining:
         </p>
@@ -1968,15 +1985,15 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
             <code>sameTerm(S1, S2) && sameTerm(P1, P2) && sameTerm(O1, O2)</code>
           </p>
           <p>This is applied recursively.</p>
-          <p>If one argument is an RDF-star triple term and the other argument is not, 
+          <p>If one argument is an RDF-star triple term and the other argument is not,
             the result is <code>false</code>.
           </p>
         </div>
       </section>
-      
+
       <section id="sparql-compare">
         <h3>sparql-compare</h3>
-        
+
         <p>The function <code>sparql-compare</code> is defined to support value-comparison
           operators such as <code>=</code> and <code>ORDER BY</code>.
         </p>
@@ -1990,12 +2007,12 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
           The function <code>sparql-compare</code> returns `-1`, `0`, `1`, or throws an
           error, based on the comparison of two
           <a href="#dfn-rdf-star-terms">RDF-star terms</a>.
-          When comparing two RDF-star triple terms, comparison is 
+          When comparing two RDF-star triple terms, comparison is
           by pairwise comparison of subject, then predicate, then object.
         </p>
         <div class="defn">
           <p>
-            <b>Definition: 
+            <b>Definition:
               <dfn id="defn-sparql-compare">
                 <code style="color:black;font-weight:bold">sparql-compare</code></dfn>
             </b>
@@ -2007,7 +2024,7 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
               and return the comparison value (`-1`, `0`, `+1`) or throw an error
               as defined by SPARQL 1.1.<br/>
             </li>
-            <li>If either A or B is an RDF-star triple term, and the other is not 
+            <li>If either A or B is an RDF-star triple term, and the other is not
               an RDF-star triple term, then error.</li>
             <li>If <code>sparql-compare(SUBJECT(A), SUBJECT(B)) != 0</code>,
               then return this value.</li>
@@ -2025,9 +2042,9 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
           <code>=</code> operator.
         </p>
         <p>
-          This is extended to cover RDF-star terms so that it returns <code>true</code> 
+          This is extended to cover RDF-star terms so that it returns <code>true</code>
           if term1 and term2 are both RDF-star triple
-          terms and <code>RDFterm-equal</code> is <code>true</code> 
+          terms and <code>RDFterm-equal</code> is <code>true</code>
           for pairwise comparison of the component RDF terms.
         </p>
         <div class="defn">
@@ -2053,7 +2070,7 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
           </p>
         </div>
         <p>
-          It produces an error if matching RDF terms in nested RDF triple terms when 
+          It produces an error if matching RDF terms in nested RDF triple terms when
           both are literals but not the same RDF term. This is the same as the existing
           <code>RDFterm-equal</code>. Operator mapping overrides this behavior.
         </p>
@@ -2066,7 +2083,7 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
       <section id="rdf-star-operator-mapping">
         <h3>Operator Mappings</h3>
 
-        <p>New operator mappings are added for RDF-star triple terms for section 
+        <p>New operator mappings are added for RDF-star triple terms for section
           SPARQL 1.1 Query <a data-cite="SPARQL11-QUERY#OperatorMapping"
              rel="nofollow">17.3 Operator Mapping</a>
         </p>
@@ -2090,7 +2107,7 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
               <td><span class="type RDFterm">RDF triple term</span></td>
               <td>
                 <a data-cite="XPATH-FUNCTIONS#func-numeric-equal"
-                   >op:numeric-equal</a>(<a href="#defn-sparql-compare" 
+                   >op:numeric-equal</a>(<a href="#defn-sparql-compare"
                                             class="SPARQLoperator"
                                             >sparql-compare</a>(A, B), 0)
               </td>
@@ -2104,7 +2121,7 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
               <td>
                 <a href="http://www.w3.org/TR/xpath-functions/#func-not"
                    >fn:not</a>(<a data-cite="XPATH-FUNCTIONS#func-numeric-equal"
-                                  >op:numeric-equal</a>(<a href="#defn-sparql-compare" 
+                                  >op:numeric-equal</a>(<a href="#defn-sparql-compare"
                                                            class="SPARQLoperator"
                                                            >sparql-compare</a>(A, B), 0))
               </td>
@@ -2116,7 +2133,7 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
               <td><span class="type RDFterm">RDF triple term</span></td>
               <td>
                 <a data-cite="XPATH-FUNCTIONS#func-numeric-equal"
-                   >op:numeric-equal</a>(<a href="#defn-sparql-compare" 
+                   >op:numeric-equal</a>(<a href="#defn-sparql-compare"
                                             class="SPARQLoperator"
                                             >sparql-compare</a>(A, B), -1)
               </td>
@@ -2129,7 +2146,7 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
               <td>
                 <a href="http://www.w3.org/TR/xpath-functions/#func-not"
                    >fn:not</a>(<a data-cite="XPATH-FUNCTIONS#func-numeric-equal"
-                                  >op:numeric-equal</a>(<a href="#defn-sparql-compare" 
+                                  >op:numeric-equal</a>(<a href="#defn-sparql-compare"
                                                            class="SPARQLoperator"
                                                            >sparql-compare</a>(A, B), 1))
               </td>
@@ -2141,7 +2158,7 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
               <td><span class="type RDFterm">RDF triple term</span></td>
               <td>
                 <a data-cite="XPATH-FUNCTIONS#func-numeric-equal"
-                   >op:numeric-equal</a>(<a href="#defn-sparql-compare" 
+                   >op:numeric-equal</a>(<a href="#defn-sparql-compare"
                                             class="SPARQLoperator"
                                             >sparql-compare</a>(A, B), 1)
               </td>
@@ -2156,7 +2173,7 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
               <td>
                 <a href="http://www.w3.org/TR/xpath-functions/#func-not"
                    >fn:not</a>(<a data-cite="XPATH-FUNCTIONS#func-numeric-equal"
-                                  >op:numeric-equal</a>(<a href="#defn-sparql-compare" 
+                                  >op:numeric-equal</a>(<a href="#defn-sparql-compare"
                                                            class="SPARQLoperator"
                                                            >sparql-compare</a>(A, B), -1))
               </td>
@@ -2169,10 +2186,10 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
       <section id="triple-term-comparison">
         <h3>Triple terms with ORDER BY</h3>
 
-        <p>There is an added item to the ordering of terms when they would not 
+        <p>There is an added item to the ordering of terms when they would not
           otherwise be ordered. RDF-star triple terms are placed last (highest).</p>
         <ol>
-          <li>(Lowest) no value assigned to the variable 
+          <li>(Lowest) no value assigned to the variable
             or expression in this solution.</li>
           <li>Blank nodes</li>
           <li>IRIs</li>
@@ -2656,6 +2673,16 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
       and <dfn data-cite="RDF11-MT#dfn-equivalent" data-lt="equivalent">equivalence</dfn>.
     </p>
 
+    <section id="motivation-and-caveats">
+      <h2>Motivation and Caveats</h2>
+
+      <p>The RDF-star semantics makes a very unusual design decision: embedded triples are referentially opaque. Therefore IRIs in embedded triples do denote their syntactic representation but not their interpretation like they do everywhere else in RDF. The purpose of this design is to represent statements with the utmost precision, almost as if they were literals (except blank nodes which co-denoten as usual). This supports application-centric use cases like Explainable AI or <a href="https://w3c.github.io/rdf-star/UCR/rdf-star-ucr.html#annotate-commit-deltas">Commit History</a> that would otherwise be much harder or impossible to implement in RDF.</p>
+
+      <p>The downside of this design is that IRIs in embedded triples don't co-denote like they do in the statement that the embedded triple represents. This can have unexpected effects and impairs the ability of embedded triples to reliably model common constructs like attributed relations in property graph style, reification or n-ary relations. It is common on the semantic web that data integration processes replace IRIs by co-denoting terms from other vocabularies, and this ability is indeed essential to the conception of the semantic web as a shared knowledge space without centralized vocabularies. Statements so modified still have the same meaning as only co-denoting terms are exchanged. Embedded triples however, although in most use cases supposed to present the hinge between a statement and its annotations, won't follow suit as they are fixed to their syntactic form. Annotations therefore may loose their connection with the statement they were meant to annotate.</p>
+
+      <p>This approach has been controversial in the Community Group and criticised as being rather unbalanced w.r.t. to actual use cases and indeed risky as it may be too surprising and unintuitive to be followed. Choosing opaque semantics as the default is substantiated by the monotonic nature of the RDF semantics, in which entailments once made can never be taken back by further semantic instructions. The RDF-star semantics consequently starts from an entailment-suppressing syntactic representation, arguing that it's always possible later to derive the entailments on embedded triples that the referentially opaque semantics initially suppresses, thereby re-instantiating e.g. co-denotation, sub-classing and other derived knowledge. The counter argument to this concept is that it is still quite unclear how to initiate such entailments in practice in an efficient and principled way. Proposals brought forward <a href="https://github.com/w3c/rdf-star/issues/170">so far</a> either introduce referential transparency in ad hoc ways per annotating property or annotated triple or rather sweepingly per graph or dataset. The former solution doesn't scale well in situations where the need for referential opacity is not the norm but the exception and isn't constrained to a small set f properties or triples, which is arguably the vast majority of operations on the semantic web. For this reason the latter solution would seem more sensible with per default referentially transparent semantics, switching to referential opacity on demand - per application or per graph or dataset. What is indeed not possible is to switch per property or statement from a default state of referential transparency to a more restricted opaque state as that would require the - non-monotonic and therefore unavailable - ability to take back entailments.</p>
+    </section>
+
     <section id="mapping">
       <h2>Mapping RDF-star abstract syntax to RDF</h2>
 
@@ -2703,7 +2730,7 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
 
       <p>It is easy to see that, in the special case of <a>RDF graphs</a> |G| and |H| (i.e. <a>RDF-star graphs</a> containing no <a>embedded triple</a>), |G| is star-<a>satisfiable</a> if and only if |G| is simply <a>satisfiable</a>, and |G| star-<a>entails</a> |H| if and only if |G| simply <a>entails</a> |H|. This is trivially true if |G| and |H| do not contain any `unstar:` <a>IRI</a> (in which case they are left unchanged by the <a>unstar mapping</a>). But this is also true if they do contain such <a>IRIs</a> (as the renaming performed by the <a>unstar mapping</a> has no significant impact on the semantic relationships between the two graphs). Star-<a>entailment</a> can therefore be considered as a natural <em>extension</em> of simple <a>entailment</a> to <a>RDF-star graphs</a>.</p>
 
-      <p class="note">Other notions of <a>satisfiability</a> and <a>entailment</a>, such as <a data-cite="RDF11-MT#rdf-entailment">RDF entailment</a> or <a data-cite="RDF11-MT#rdfs-entailment">RDFS entailment</a>, can be extended in the same way for <a>RDF-star graphs</a>.</p>    
+      <p class="note">Other notions of <a>satisfiability</a> and <a>entailment</a>, such as <a data-cite="RDF11-MT#rdf-entailment">RDF entailment</a> or <a data-cite="RDF11-MT#rdfs-entailment">RDFS entailment</a>, can be extended in the same way for <a>RDF-star graphs</a>.</p>
     </section>
 
     <section id="merging">
@@ -2794,7 +2821,7 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
         -->
         </pre>
 
-        <p>Similarly, in the example below and under <a href="https://www.w3.org/TR/owl2-overview/">OWL entailment</a> [[OWL2-Overview]], while `:superman` and `:clark` are inferred to denote one and the same person (because of the `owl:sameAs` relationship between them), the two embedded triples are not automatically considered to denote the same thing.</p>
+      <p>Similarly, in the example below and under <a href="https://www.w3.org/TR/owl2-overview/">OWL entailment</a> [[OWL2-Overview]], while `:superman` and `:clarkKent` are inferred to denote one and the same person (because of the `owl:sameAs` relationship between them), the two embedded triples are not automatically considered to denote the same thing.</p>
 
         <pre id="ref-opacity-owl-entailment"
         data-transform="updateExample"
@@ -2804,16 +2831,20 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
         <!--
         #### under OWL-entailment
 
-        :superman owl:sameAs :clark.
-        << :superman :can :fly >> :reportedBy :clark.
+        :superman owl:sameAs :clarkKent.
+        << :superman :can :fly >> :reportedBy :loisLane.
 
         #### does NOT entail
 
-        << :clark :can :fly >> :reportedBy :clark.
+        << :clarkKent :can :fly >> :reportedBy :loisLane.
         -->
         </pre>
 
-        <p>This is well suited for use-cases where the syntactical form of the annotated statements may be significant (like <a href="../UCR/rdf-star-ucr.html#annotate-statements-from-other-named-graphs-and-datasets">annotating statements from other graphs</a> or <a href="../UCR/rdf-star-ucr.html#annotate-commit-deltas">annotating commit deltas</a>). On the other hand, other use-cases would expect some degree of referential transparency. Consider the case of <a href="../UCR/rdf-star-ucr.html#meta-properties-over-properties">attributed/evidenced triples</a>. The annotation is understood to be about the fact asserted by the triple rather than the triple itself. As illustrated in the example below, one might then expect more inferences than provided by the current semantics.</p>
+      <p>This is well suited for use-cases where the syntactical form of the annotated statements may be significant, like <a href="../UCR/rdf-star-ucr.html#annotate-commit-deltas">annotating commit deltas</a> or differentiating the intended usage of terms from what they actually mean (like when documenting different world views or contexts of limited knowledge).</p>
+
+      <p class="issue" data-number="">In the Lotico presentation Pierre-Antoine explained the virtues of referential opacity by a more involved example, also using the Superman problem but extending it to an Explainable AI usecase (<a href="http://www.lotico.com/index.php/Metadata_for_RDF_Statements:_The_RDF-star_Approach">video at 1:08:12</a>, <a href="https://w3c.github.io/rdf-star/presentations/RDF-star_Lotico.pdf">slide 45</a>). I would find it advantageous if that example would also be added to this report as it seems to illustrate nicely what really drives the proposed semantics. It is another question if one thinks this works out as intended - obviously, I don't - but it gives people a much better base to understand and evaluate this proposal than the rather obscure Superman problem alone. Also, the Lotico example resorts to a hack, implementing surrogate N3 formulas via RDF lists of embedded statements, that IMO quite tellingly shows both the direction and the limitation of the proposed semantics. Again, obviously I don't believe in this design but I think readers should be enabled to form their own opinion.</p>
+
+      <p>The majority of <a href="https://w3c.github.io/rdf-star/UCR/rdf-star-ucr.html">use cases</a> reported for RDF-star however either <a href="https://w3c.github.io/rdf-star/UCR/rdf-star-ucr.html#uniprot-attributed-evidenced-triples">explicitly</a> or <a href="https://lists.w3.org/Archives/Public/public-rdf-star/2021May/0040.html">implicitly</a> rely on referentially transparent denotation semantics. Consider the case of <a href="../UCR/rdf-star-ucr.html#meta-properties-over-properties">attributed/evidenced triples</a>. The annotation is understood to be about the fact asserted by the triple rather than the triple itself. As illustrated in the example below, one might then expect more inferences than provided by the current semantics.</p>
 
         <pre id="ref-opacity-annotation"
         data-transform="updateExample"
@@ -2824,12 +2855,12 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
         #### under D-entailment
 
         :linköping :population "0104232"^^xsd::integer
-            {| :source <https://en.wikipedia.org/wiki/Link%C3%B6ping> |}.
+            {| :source <https://en.wikipedia.org/wiki/Linköping> |}.
 
         #### does NOT entail
 
         :linköping :population "104232"^^xsd::integer
-            {| :source <https://en.wikipedia.org/wiki/Link%C3%B6ping> |}.
+            {| :source <https://en.wikipedia.org/wiki/Linköping> |}.
 
         #### more precisely, it DOES entail
 
@@ -2838,18 +2869,49 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
         #### but it does NOT entail
 
         << :linköping :population "104232"^^xsd::integer >>
-            source <https://en.wikipedia.org/wiki/Link%C3%B6ping> .
+            source <https://en.wikipedia.org/wiki/Linköping> .
         -->
         </pre>
 
-        <p>Note that the current semantics does not forbid the additional inferences to be drawn. However, they would require additional knowledge and an appropriate <a data-cite="RDF11-MT#dfn-semantic-extension">semantic extension</a>, not specified in this document. This makes RDF-star less readily usable for (but not incompatible with) that latter kind of use-cases.</p>
+
+      <p>Referentially opaque semantics of embedded triples has unfortunate effects on common data integration procedures. As the following example illustrates it puts annotated statements at risk of fragmentation.</p>
+
+      <pre id="ref-opacity-owl-entailment-2"
+           data-transform="updateExample"
+           data-content-type="text/turtle"
+           class="nohighlight example"
+      >
+        <!--
+        #### under OWL-entailment
+
+        :car owl:sameAs https://www.wikidata.org/wiki/Q1420.
+        << :alice :buys :car >> :documentedBy :ellen.
+
+        #### does NOT entail
+
+        << :alice :buys https://www.wikidata.org/wiki/Q1420 >> :documentedBy :ellen.
+
+        #### Therefore an annotated statement construct
+
+        :alice :buys :car.
+        << :alice :buys :car >> :documentedBy :ellen.
+
+        #### after a standard data integration procedure may fall apart
+
+        :alice :buys https://www.wikidata.org/wiki/Q1420.
+        << :alice :buys :car >> :documentedBy :ellen.
+        -->
+        </pre>
+
+      <p>Note that the current semantics does not forbid the additional inferences to be drawn. However, they would require additional knowledge and an appropriate <a data-cite="RDF11-MT#dfn-semantic-extension">semantic extension</a>, not specified in this document. How such a semantic extension might be defined is a topic of ongoing <a href="https://github.com/w3c/rdf-star/issues/170">discussion</a>. So far no convincing solution has been presented. This makes RDF-star not readily usable for (but not incompatible with) the majority of use-cases.</p>
+        <p>These side effects of referentially opaque semantics will have to be clearly and pro-actively communicated to prevent unpleasant surprises from "missing" entailments and broken annotations.</p>
 
       </section>
 
       <section>
         <h2>Alternatives to referential opacity</h2>
 
-        <p>Given the potential drawbacks of the referential opacity provided by the current semantics, as described in the previous section, the group has considered alternative semantics. No clear consensus was reached, however, to decide whether these alternatives should be used as a replacement, or as a <a data-cite="RDF11-MT#dfn-semantic-extension">semantic extension</a>, of the current semantics.</p>
+      <p>Given the potential drawbacks of the referential opacity provided by the current semantics, as described in the previous section, the group has considered to provide embedded triples with RDF's standard referentially transparent semantics. No clear consensus was reached, however, to decide whether this alternative should be used as a replacement, or as a yet to be defined <a data-cite="RDF11-MT#dfn-semantic-extension">semantic extension</a>, of the current semantics.</p>
 
         <p>A fully referentially transparent semantics can be achieved by changing the <a href="#unstar-add-triples">step 2.4</a> of the <a>unstar mapping</a> algorithm as follows:</p>
 
@@ -2880,7 +2942,11 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
           </li>
         </ul>
 
-      </section>
+      <p>Another alternative would be to make embedded triples referentially opaque for certain graphs or datasets only, reflecting the application centric character of the use cases they cover. The default semantics would then be referentially transparent while additional inferences on embedded triples could be suppressed for specific sets of triples.</p>
+
+      <p>A further option would be to tackle both controversial design choices at once by letting the shorthand syntax default to the main stream use case of <a href="https://github.com/w3c/rdf-star/issues/174">referentially transparent occurrences</a>. Possibly unexpected and complex behaviours would such be limited to the more involved and un-abbreviated syntax for the expert user.</p>
+
+    </section>
 
     </section>
 
@@ -2921,13 +2987,13 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
 
     <p>Another problem with the pessimistic approach is that "temporary" media-types are known to actually become permanent. Old applications keep using them long after their intended expiration date. This a burden on all other implementations, which must handle the "temporary" media-types along the permanent one, as aliases, in order to maintain backward compatibility.</p>
 
-    <p>The W3C Recommendation 
+    <p>The W3C Recommendation
       <a data-cite="DX-PROF-CONNEG#introduction">Content Negotiation by Profile</a>
       [[DX-PROF-CONNEG]] describes a mechanism that separates content-type
       negotiation from requesting a response conforming to a specific information model,
       whether that model is a specific standard, specification or profile.
       The <a data-cite="DX-PROF-CONNEG#requestsandresonses"
-             >operations of the abstract model</a> 
+             >operations of the abstract model</a>
       are "list profiles" and "get resource by profile".
       The "get resource" operation can provide the profile requests with HTTP
       header <code>Accept-Profile</code> and responses use <code>Content-Profile</code>, or
@@ -2984,7 +3050,10 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
 
       <p>This example was further debated on the <a href="https://lists.w3.org/Archives/Public/public-rdf-star/">RDF-star mailing list</a>, as it appears to have set wrong expectations about what embedded triples represent. More precisely, from this example, one may wrongly assume that `&lt;&lt;:bob foaf:age 23>>` represents the <em>occurrence</em> of the given triple at the address `http://example.net/listing.html` (see <a href="#occurrences"></a>). This impression may be reinforced by the use of `dct:creator`: arguably, a triple (as a unique abstract entity) is not "created" by anyone, while an occurrence thereof can be said to be created or authored.</p>
 
-      <p>The problem with this interpretation is that it will break as soon as other creators and sources are added for the triple: one could not tell which source corresponds to which creator. Correctly capturing this information would require additional nodes to explicitly represent triple occurrences, as in <a href="#occurrences-example"></a>. In summary, although RDF-star can be used for provenance, the seminal example does not work as stated and can lead to the fundamentally incorrect interpretation that RDF-star can represent multiple distinct embedded triples with the same subject, predicate, and object.</p>
+      <p>The problem with this interpretation is that it will break as soon as other creators and sources are added for the triple: one could not tell which source corresponds to which creator. Although RDF-star can be used for provenance, the seminal example does not work as stated and can lead to the fundamentally incorrect interpretation that RDF-star as is can represent multiple distinct embedded triples with the same subject, predicate, and object.</p>
+
+      <p>Correctly capturing this information would at least require additional nodes to explicitly represent triple occurrences, as in <a href="#occurrences-example"></a>. Another possible way forward would be an extension to the syntax of embedded triples to discriminate occurrences of the same triple within one set.<heavy>[NOTE This statement certainly is a bit controversial. I made this proposal in late January without much resonance. What is important to me is that there are ways to solve this problem without throwing the baby out with the bathwater. They just haven't been pursued by this CG. The way this paragraph was worded was too pessimistic.</heavy>.
+      </p>
 
     </section>
 

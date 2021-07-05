@@ -138,7 +138,7 @@
     .grammar-literal, .token { color: gray;}
     .grammar_comment { color: #A52A2A; font-style: italic; }
 
-    /* better looking embedded examples */
+    /* better looking quoted examples */
     .example .example {
       border-left-width: .15em;
     }
@@ -279,9 +279,9 @@ Triples that include a triple as a subject or an object are known as <a>RDF-star
         -->
       </pre>
 
-<p>After declaring a prefix so that IRIs can be abbreviated, the first triple in this example asserts that employee38 has a familyName of "Smith". Note that this dataset does not assert that employee38 has a jobTitle of "Assistant Designer"; it says that employee22 has made that claim. In other words, the triple "employee38 has a jobTitle of 'Assistant Designer'" is not what we call an <a>asserted triple</a>, like "employee38 has a familyName of 'Smith'" above; rather, it is known as an <a>embedded triple</a>.</p>
+<p>After declaring a prefix so that IRIs can be abbreviated, the first triple in this example asserts that employee38 has a familyName of "Smith". Note that this dataset does not assert that employee38 has a jobTitle of "Assistant Designer"; it says that employee22 has made that claim. In other words, the triple "employee38 has a jobTitle of 'Assistant Designer'" is not what we call an <a>asserted triple</a>, like "employee38 has a familyName of 'Smith'" above; rather, it is known as a <a>quoted triple</a>.</p>
 
-<p>If we added the triple `:employee38 :jobTitle "Assistant Designer"` below the triple about employee22's claim in the example above, then this triple about employee38's jobTitle would be both an embedded triple and an asserted one.
+<p>If we added the triple `:employee38 :jobTitle "Assistant Designer"` below the triple about employee22's claim in the example above, then this triple about employee38's jobTitle would be both a <a>quoted</a> and an <a>asserted</a> triple.
 This pattern is quite common, so Turtle-star offers a dedicated syntax for it, called the annotation syntax, illustrated in <a href="#example-annotation"></a> below. Note that this construct is purely syntactic sugar, as it can be expanded using only the double angle brackets.</p>
 
 <pre data-transform="updateExample"
@@ -322,7 +322,7 @@ SELECT ?claimer WHERE {
 </pre>
 
 
-<p>SPARQL can also be used to update RDF data, and SPARQL-star also extends that part. For example, the following SPARQL-star adds all the statements made by employee22 about employee38 as asserted triples, annotating them as "confirmed".</p>
+<p>SPARQL can also be used to update RDF data, and SPARQL-star also extends that part. For example, the following SPARQL-star adds all the statements made by employee22 about employee38 as <a>asserted triples</a>, annotating them as "confirmed".</p>
 
 <pre data-transform="updateExample"
      data-content-type="application/sparql-update"
@@ -404,7 +404,7 @@ INSERT {
       Its set of <a>constituent terms</a> comprises the <a>IRIs</a> `:name`, `:statedBy`, `:bob`, the <a>blank node</a> `_:a`, the <a>literal</a> `"Alice"`, and the <a>triple</a> `&lt;&lt; _:a :name "Alice" >>`.
     </div>
 
-    <p>An <a>RDF-star triple</a> used as the <a>subject</a> or <a>object</a> of another <a>RDF-star triple</a> is called an <dfn data-lt="embedded">embedded triple</dfn>. An <a>RDF-star triple</a> that is an element of an <a>RDF-star graph</a> is called an <dfn data-lt="asserted">asserted triple</dfn>. Note that, in a given <a>RDF-star graph</a>, the same <a>triple</a> MAY be both <a>embedded</a> and <a>asserted</a>.</p>
+    <p>An <a>RDF-star triple</a> used as the <a>subject</a> or <a>object</a> of another <a>RDF-star triple</a> is called a <dfn data-lt="quoted">quoted triple</dfn>. An <a>RDF-star triple</a> that is an element of an <a>RDF-star graph</a> is called an <dfn data-lt="asserted">asserted triple</dfn>. Note that, in a given <a>RDF-star graph</a>, the same <a>triple</a> MAY be both <a>quoted</a> and <a>asserted</a>.</p>
 
     <p>An <dfn data-lt="dataset">RDF-star dataset</dfn> is a collection of <a>RDF-star graphs</a>, and comprises:</p>
 
@@ -418,9 +418,9 @@ INSERT {
     <section class="informative" id="occurrences">
       <h2>Triples and occurrences</h2>
 
-      <p>According to the definitions above, an <a>RDF-star triple</a> is an abstract entity whose identity is entirely defined by its subject, predicate, and object. Conversely, given three <a>RDF-star terms</a> |s|, |p|, and |o|, there is exactly and only one <a>RDF-star triple</a> with subject |s|, predicate |p|, and object |o|. This unique triple (|s|, |p|, |o|) can be <a>embedded</a> as the subject or object of multiple other triples, but must be assumed to represent the <em>same thing</em> everywhere it occurs, just like the same <a>IRI</a> |p| is assumed to represent the same thing everywhere it occurs.</p>
+      <p>According to the definitions above, an <a>RDF-star triple</a> is an abstract entity whose identity is entirely defined by its subject, predicate, and object. Conversely, given three <a>RDF-star terms</a> |s|, |p|, and |o|, there is exactly and only one <a>RDF-star triple</a> with subject |s|, predicate |p|, and object |o|. This unique triple (|s|, |p|, |o|) can be <a>quoted</a> as the subject or object of multiple other triples, but must be assumed to represent the <em>same thing</em> everywhere it occurs, just like the same <a>IRI</a> |p| is assumed to represent the same thing everywhere it occurs.</p>
 
-      <p>In some situations, however, it might be necessary to distinguish the <em>occurrences</em> of a triple in different graphs. Consider the following sentence: "The triple `&lt;http://example.org/s&gt; &lt;http://example.org/p&gt; &lt;http://example.org/o&gt;` in (the graph represented by) file1.ttl was added by Alice, and the same triple in file2.ttl was added by Bob." Note that the words "same triple" in this sentence may be confusing, because although the triple (as an abstract entity) is the same, its respective occurrences are different things, each within a different file and with a different author (this is known, in philosophy and linguistics, as the <a href="https://en.wikipedia.org/wiki/Type%E2%80%93token_distinction">type-token distinction</a>). As the embedded triple represents a unique thing, adequately conveying the meaning of the sentence above requires additional nodes for representing the two distinct occurrences. One possible solution is illustrated in the following example (using the Turtle-star concrete syntax described in <a href="#turtle-star">the next section</a>).</p>
+      <p>In some situations, however, it might be necessary to distinguish the <em>occurrences</em> of a triple in different graphs. Consider the following sentence: "The triple `&lt;http://example.org/s&gt; &lt;http://example.org/p&gt; &lt;http://example.org/o&gt;` in (the graph represented by) file1.ttl was added by Alice, and the same triple in file2.ttl was added by Bob." Note that the words "same triple" in this sentence may be confusing, because although the triple (as an abstract entity) is the same, its respective occurrences are different things, each within a different file and with a different author (this is known, in philosophy and linguistics, as the <a href="https://en.wikipedia.org/wiki/Type%E2%80%93token_distinction">type-token distinction</a>). As the <a>quoted triple</a> represents a unique thing, adequately conveying the meaning of the sentence above requires additional nodes for representing the two distinct occurrences. One possible solution is illustrated in the following example (using the Turtle-star concrete syntax described in <a href="#turtle-star">the next section</a>).</p>
 
       <pre data-transform="updateExample" id="occurrences-example"
         data-content-type="text/turtle"
@@ -559,10 +559,10 @@ INSERT {
       <p class="note">As with N-Triples-star,
         the changes are that <a href="#grammar-production-subject">`subject`</a>
         and <a href="#grammar-production-object">`object`</a> productions
-        have been extended to accept <a>embedded triples</a>,
+        have been extended to accept <a>quoted triples</a>,
         which are described by the new productions <a href="#grammar-production-embTriple">27t</a>
         to <a href="#grammar-production-embObject">30t</a>.
-        Note that <a>embedded triples</a> accept a more restricted range of
+        Note that <a>quoted triples</a> accept a more restricted range of
         <a>subject</a> and <a>object</a> expressions
         than <a>asserted triples</a>.
         Additionally, the <a href="#grammar-production-objectList">`objectList`</a> production
@@ -581,7 +581,7 @@ INSERT {
       </ul>
       <p>Additionally, the <a data-cite="TURTLE#curSubject">|curSubject|</a>
         can be bound to any <a>RDF-star term</a>
-        (including an <a>embedded triple</a>).</p>
+        (including a <a>quoted triple</a>).</p>
 
       <p>A <dfn>Turtle-star document</dfn> defines an <a>RDF-star graph</a>
         composed of a set of <a>RDF-star triples</a>.
@@ -616,14 +616,14 @@ INSERT {
       <h2>Discussion</h2>
 
       <p>This section describes parser behavior when parsing
-        a <a>Turtle-star document</a> that contains <a>embedded triples</a>
+        a <a>Turtle-star document</a> that contains <a>quoted triples</a>
         and <a href="#grammar-production-annotation">annotations</a>.</p>
 
       <p>Consider a Turtle-star document that describes an RDF triple,
-        and also uses that triple as an <a>embedded triple</a>
+        and also uses that triple as a <a>quoted triple</a>
         as the subject of another RDF-star triple:</p>
 
-      <pre class="example" title="Turtle-star embedded triples"
+      <pre class="example" title="Turtle-star quoted triples"
            data-transform="updateExample"
            data-content-type="text/turtle">
       <!--
@@ -635,7 +635,7 @@ INSERT {
       </pre>
 
       <p>The usual process of parsing a Turtle document
-        applies with the addition of matching the embedded triple
+        applies with the addition of matching the <a>quoted triple</a>
         `&lt;&lt; _:a :name "Alice" >>`
         as part of the <a href="#grammar-production-subject">`subject`</a> production.
         The resulting RDF-star graph consists of two RDF-star triples:</p>
@@ -648,7 +648,7 @@ INSERT {
       </ol>
 
       <p>Because the above example includes the triple (|b|, `http://example.org/#name`, `"Alice"`)
-        as an asserted triple,
+        as an <a>asserted triple</a>,
         the same RDF-star graph may also be represented
         by using the Turtle-star annotation syntax as follows:</p>
 
@@ -681,7 +681,7 @@ INSERT {
       a minimal extension of the TriG format [[TRIG]]
       using the same production updates described in <a href="#turtle-star" class="sectionRef"></a>.</p>
 
-    <p class="note">RDF-star describes <a>embedded triples</a>,
+    <p class="note">RDF-star describes <a>quoted triples</a>,
       which are not necessarily present in any <a>named graph</a>,
       or within the <a>default graph</a>.</p>
 
@@ -813,7 +813,7 @@ INSERT {
         the <a href="#grammar-production-embTriple">`embTriple`</a>
         and <a href="#grammar-production-annotation">`annotation`</a>
         are used to set either the |curSubject| or |curObject|,
-        and do not directly add the associated <a>embedded triple</a> to |curGraph|.
+        and do not directly add the associated <a>quoted triple</a> to |curGraph|.
         Subsequent productions which use either |curSubject| or |curObject|
         may result in adding triples to |curGraph|.</p>
 
@@ -827,7 +827,7 @@ INSERT {
       <h3>Discussion</h3>
 
       <p>TriG-star allows the same expressivity as Turtle-star
-        with the addition of allowing <a>embedded triples</a>
+        with the addition of allowing <a>quoted triples</a>
         and <a href="#grammar-production-annotation">annotations</a>
         within named graphs.</p>
 
@@ -863,7 +863,7 @@ INSERT {
     <p>This section describes N-Triples-star,
       a minimal extension of the N-Triples format [[N-TRIPLES]]
       allowing a <a>subject</a> or an <a>object</a>
-      of an <a>RDF-star triple</a> to be an <a>embedded triple</a>.</p>
+      of an <a>RDF-star triple</a> to be a <a>quoted triple</a>.</p>
 
     <section id="n-triples-star-grammar">
       <h2>Grammar</h2>
@@ -899,7 +899,7 @@ INSERT {
       <p class="note">The changes are
         <a href="#grammar-production-nt-subject">`subject`</a>
         and <a href="#grammar-production-nt-object">`object`</a> productions
-        have been extended to accept <a>embedded triples</a>,
+        have been extended to accept <a>quoted triples</a>,
         which are described by the new production
         <a href="#grammar-production-nt-embTriple">7</a>.</p>
     </section>
@@ -939,7 +939,7 @@ INSERT {
     <p>The [[N-QUADS]] format is extended to describe the
       N-Quads-star format using the same production updates described in the <a href="#n-triples-star-grammar">N-Triples-star Grammar</a>.</p>
 
-    <p class="note">As RDF-star describes <a>embedded triples</a> and not embedded quads,
+    <p class="note">As RDF-star describes <a>quoted triples</a> and not quoted quads,
       the <a data-cite="N-QUADS#grammar-production-graphLabel">`graphLabel`</a>
       component of an N-Quads <a data-cite="N-QUADS#grammar-production-statement">`statement`</a>
       does not apply to the <a href="#grammar-production-nt-embTriple">`embTriple`</a> component.</p>
@@ -1658,11 +1658,11 @@ INSERT {
       </table>
 
       <p>
-        This introduces a notation for <dfn>embedded triple patterns</dfn>
+        This introduces a notation for <dfn>quoted triple patterns</dfn>
         (production <a href="#rEmbTP">[174]</a>),
-        which is similar to the one defined for <a>embedded triples</a> in <a href="#turtle-star"></a>,
+        which is similar to the one defined for <a>quoted triples</a> in <a href="#turtle-star"></a>,
         but accepting also <a>variables</a>.
-        These embedded triple patterns are allowed in both the subject position (<a href="#rTriplesSameSubject">[75]</a>, <a href="#rTriplesSameSubjectPath">[81]</a>) and the object position (<a href="#rObject">[80]</a>, <a href="#rObjectPath">[87]</a>)
+        These quoted triple patterns are allowed in both the subject position (<a href="#rTriplesSameSubject">[75]</a>, <a href="#rTriplesSameSubjectPath">[81]</a>) and the object position (<a href="#rObject">[80]</a>, <a href="#rObjectPath">[87]</a>)
         of <a>SPARQL-star triple patterns</a>, as well as in <a data-cite="SPARQL11-QUERY#collections">the short-hand notation for querying collections</a> (<a data-cite="SPARQL11-QUERY#rCollection">[102]</a>, <a data-cite="SPARQL11-QUERY#rCollectionPath">[103]</a>).
       </p>
 
@@ -1719,8 +1719,8 @@ INSERT {
         <p>As a basis of the translation, the SPARQL specification introduces a notion of <a data-cite="SPARQL11-QUERY#variableScope">in-scope variables</a>. To cover the new syntax elements introduced in <a href="#sparql-star-grammar"></a> this notion MUST be extended as follows.</p>
 
         <ul>
-          <li>A <a>variable</a> is in-scope of a <a>BGP-star</a> |B| if the <a>variable</a> occurs in |B|, which includes an occurrence in any <a>embedded triple pattern</a> in |B| (independent of the level of nesting).</li>
-          <li>A <a>variable</a> is in-scope of a <a>property path pattern</a> if the variable occurs in that pattern, which includes an occurrence in any embedded triple pattern in the pattern (independent of the level of nesting).</li>
+          <li>A <a>variable</a> is in-scope of a <a>BGP-star</a> |B| if the <a>variable</a> occurs in |B|, which includes an occurrence in any <a>quoted triple pattern</a> in |B| (independent of the level of nesting).</li>
+          <li>A <a>variable</a> is in-scope of a <a>property path pattern</a> if the variable occurs in that pattern, which includes an occurrence in any quoted triple pattern in the pattern (independent of the level of nesting).</li>
         </ul>
       </section>
 
@@ -1731,9 +1731,9 @@ INSERT {
 
         <ol>
           <li><div>
-            <p><a>Annotation patterns</a> MUST be replaced by additional <a>SPARQL-star triple patterns</a> that have the annotated triple pattern as an <a>embedded triple pattern</a> in their subject position.</p>
+            <p><a>Annotation patterns</a> MUST be replaced by additional <a>SPARQL-star triple patterns</a> that have the annotated triple pattern as a <a>quoted triple pattern</a> in their subject position.</p>
 
-            <aside class="example" title="Expanding annotations to embedded triple patterns">
+            <aside class="example" title="Expanding annotations to quoted triple patterns">
               For instance, the following syntax expression:
               <pre data-transform="updateExample"
                 data-content-type="application/sparql-query"
@@ -1766,9 +1766,9 @@ INSERT {
 
           </div></li>
           <li><div>
-            <p>Abbreviations for <a>triple patterns</a> with <a>embedded triple patterns</a> MUST be expanded as if each <a>embedded triple pattern</a> was a <a>variable</a> (or an <a>RDF term</a>).</p>
+            <p>Abbreviations for <a>triple patterns</a> with <a>quoted triple patterns</a> MUST be expanded as if each <a>quoted triple pattern</a> was a <a>variable</a> (or an <a>RDF term</a>).</p>
 
-            <aside class="example" title="Expanding abbreviations for triple patterns with embedded triple patterns">
+            <aside class="example" title="Expanding abbreviations for triple patterns with quoted triple patterns">
               For instance, the following syntax expression:
               <pre data-transform="updateExample"
                 data-content-type="application/sparql-query"
@@ -1792,10 +1792,10 @@ INSERT {
             </aside>
           </div></li>
           <li><div>
-            <p>Abbreviations for IRIs in all <a>embedded triple patterns</a> MUST be expanded.</p>
+            <p>Abbreviations for IRIs in all <a>quoted triple patterns</a> MUST be expanded.</p>
 
             <aside class="example" title="Expanding IRI abbreviations">
-              For instance, the embedded triple pattern
+              For instance, the quoted triple pattern
               <pre data-transform="updateExample"
                 data-content-type="application/sparql-query"
                 class="nohighlight"
@@ -1825,22 +1825,22 @@ INSERT {
 
         <p>The translation as specified in the W3C specification distinguishes four cases. The first three of these cases do not require adjustment because they are taken care of either by recursion or by the adjusted translation of basic graph patterns (as defined in <a href="#translate-bgp"></a> below). However, the fourth case MUST be adjusted as follows.</p>
 
-        <p>Let |X| |P| |Y| be a string that corresponds to the fourth case in [<a data-cite="SPARQL11-QUERY#sparqlTranslatePathPatterns">SPARQL11-QUERY, Section 18.2.2.4</a>]. Given the grammar introduced in <a href="#sparql-star-grammar"></a>, |X| and |Y| may be an <a>RDF term</a>, a <a>variable</a>, or an <a>embedded triple pattern</a>, respectively (and |P| is a <a>property path expression</a>). The string |X| |P| |Y| is translated to the algebra expression `Path`(<var>X’</var>,|P|,<var>Y’</var>) where <var>X’</var> and <var>Y’</var> are the result of calling a function named `Lift` for |X| and |Y|, respectively. For some input string |Z| (such as |X| or |Y|) that can be an <a>RDF term</a>, a <a>variable</a>, or an <a>embedded triple pattern</a>, the function `Lift` is defined recursively as follows:</p>
+        <p>Let |X| |P| |Y| be a string that corresponds to the fourth case in [<a data-cite="SPARQL11-QUERY#sparqlTranslatePathPatterns">SPARQL11-QUERY, Section 18.2.2.4</a>]. Given the grammar introduced in <a href="#sparql-star-grammar"></a>, |X| and |Y| may be an <a>RDF term</a>, a <a>variable</a>, or a <a>quoted triple pattern</a>, respectively (and |P| is a <a>property path expression</a>). The string |X| |P| |Y| is translated to the algebra expression `Path`(<var>X’</var>,|P|,<var>Y’</var>) where <var>X’</var> and <var>Y’</var> are the result of calling a function named `Lift` for |X| and |Y|, respectively. For some input string |Z| (such as |X| or |Y|) that can be an <a>RDF term</a>, a <a>variable</a>, or a <a>quoted triple pattern</a>, the function `Lift` is defined recursively as follows:</p>
 
         <ol id="lift">
-          <li>If |Z| is an <a>embedded triple pattern</a> &lt;&lt;|S|,|P|,|O|&gt;&gt; then return the <a>SPARQL-star triple pattern</a> (`Lift`(|S|), |P|, `Lift`(|O|));</li>
+          <li>If |Z| is a <a>quoted triple pattern</a> &lt;&lt;|S|,|P|,|O|&gt;&gt; then return the <a>SPARQL-star triple pattern</a> (`Lift`(|S|), |P|, `Lift`(|O|));</li>
           <li>Otherwise, return |Z|.</li>
         </ol>
 
         <div class="note">
-          The purpose of this translation step is to convert any property path pattern as can be written based on the extended grammar for SPARQL-star (cf. <a href="#sparql-star-grammar"></a>) into a <a>SPARQL-star property path pattern</a> as considered in the algebra. To this end, the function `Lift` translates every <a>embedded triple pattern</a> as can be written in the SPARQL-star syntax into a <a>SPARQL-star triple pattern</a>.
+          The purpose of this translation step is to convert any property path pattern as can be written based on the extended grammar for SPARQL-star (cf. <a href="#sparql-star-grammar"></a>) into a <a>SPARQL-star property path pattern</a> as considered in the algebra. To this end, the function `Lift` translates every <a>quoted triple pattern</a> as can be written in the SPARQL-star syntax into a <a>SPARQL-star triple pattern</a>.
         </div>
       </section>
 
       <section id="translate-bgp">
         <h2>Translate Basic Graph Patterns</h2>
 
-        <p>After translating <a>property path patterns</a>, the translation process collects <q>any adjacent triple patterns [...] to form a basic graph pattern</q> [<a data-cite="SPARQL11-QUERY#sparqlTranslateBasicGraphPatterns">SPARQL11-QUERY, Section 18.2.2.5</a>]. This step has to be adjusted because <a>triple patterns</a> in the extended syntax may have an <a>embedded triple pattern</a> in their subject position or in their object position (or in both). To ensure that every result of this step is a <a>BGP-star</a>, before adding a <a>triple pattern</a> to its corresponding collection, its subject and object MUST be replaced by the result of calling <a href="#lift">function `Lift`</a> for the subject and the object, respectively.</p>
+        <p>After translating <a>property path patterns</a>, the translation process collects <q>any adjacent triple patterns [...] to form a basic graph pattern</q> [<a data-cite="SPARQL11-QUERY#sparqlTranslateBasicGraphPatterns">SPARQL11-QUERY, Section 18.2.2.5</a>]. This step has to be adjusted because <a>triple patterns</a> in the extended syntax may have a <a>quoted triple pattern</a> in their subject position or in their object position (or in both). To ensure that every result of this step is a <a>BGP-star</a>, before adding a <a>triple pattern</a> to its corresponding collection, its subject and object MUST be replaced by the result of calling <a href="#lift">function `Lift`</a> for the subject and the object, respectively.</p>
       </section>
 
     </section>
@@ -1953,7 +1953,7 @@ respectively).</p>
       </section>
 
       <section>
-        <h3>Embedded Triple Expression</h3>
+        <h3>Quoted Triple Expression</h3>
         <p>
           <code>RDF-star triple</code> &nbsp;
           <code style="color:black;font-weight:bold">&lt;&lt;</code>
@@ -1963,7 +1963,7 @@ respectively).</p>
           <code style="color:black;font-weight:bold">&gt;&gt;</code>
         </p>
         <p>
-          An <a href="#rExprEmbTP">Embedded Triple Expression</a>
+          A <a href="#rExprEmbTP">Quoted Triple Expression</a>
           <code>&lt;&lt;S P O&gt;&gt;</code>, where <code>S</code>, 
           <code>P</code> and <code>O</code> conform to
           <a href="#rExprVarOrTerm">ExprVarOrTerm</a>,
@@ -2224,7 +2224,7 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
     <section class="informative">
       <h2>Examples and Discussion</h2>
 
-      <p>By the evaluation semantics of SPARQL-star as defined in <a href="#evaluation-semantics"></a>, the five new built-in functions defined above can be used in exactly the same manner as <a data-cite="SPARQL11-QUERY#SparqlOps">the functions defined in the SPARQL 1.1 spec</a><!--, which includes using them within GRAPH clauses that focus on querying named graphs with a queried dataset-->. For instance, the following SPARQL-star query retrieves every <a>asserted triple</a> that is both contained in the <a>default graph</a> of the queried <a>RDF-star dataset</a> and has an <a>embedded triple</a> as its <a>subject</a>.</p>
+      <p>By the evaluation semantics of SPARQL-star as defined in <a href="#evaluation-semantics"></a>, the five new built-in functions defined above can be used in exactly the same manner as <a data-cite="SPARQL11-QUERY#SparqlOps">the functions defined in the SPARQL 1.1 spec</a><!--, which includes using them within GRAPH clauses that focus on querying named graphs with a queried dataset-->. For instance, the following SPARQL-star query retrieves every <a>asserted triple</a> that is both contained in the <a>default graph</a> of the queried <a>RDF-star dataset</a> and has a <a>quoted triple</a> as its <a>subject</a>.</p>
 
       <pre data-transform="updateExample"
            data-content-type="application/sparql-query"
@@ -2254,7 +2254,7 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
         -->
       </pre>
 
-      <p>While the triples that the previous example queries bind to variable&nbsp;<code>?t</code> occur in the queried data, the <a href="#triple-function">TRIPLE function</a> can be used to construct triples that may not be in the data. For instance, the following query uses the subject of each <a>asserted triple</a> in the <a>default graph</a> of the queried <a>RDF-star dataset</a> to construct another triple, and bind it to the variable&nbsp;<code>?t</code>. Notice that the result of this query contains as many <a>SPARQL-star solution mappings</a> as there are asserted triples in the queried graph, and there may be duplicates in the result if multiple asserted triples have the same subject.</p>
+      <p>While the triples that the previous example queries bind to variable&nbsp;<code>?t</code> occur in the queried data, the <a href="#triple-function">TRIPLE function</a> can be used to construct triples that may not be in the data. For instance, the following query uses the subject of each <a>asserted triple</a> in the <a>default graph</a> of the queried <a>RDF-star dataset</a> to construct another triple, and bind it to the variable&nbsp;<code>?t</code>. Notice that the result of this query contains as many <a>SPARQL-star solution mappings</a> as there are <a>asserted triples</a> in the queried graph, and there may be duplicates in the result if multiple <a>asserted triples</a> have the same subject.</p>
 
       <pre data-transform="updateExample"
            data-content-type="application/sparql-query"
@@ -2344,15 +2344,15 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
 
       <p>In SPARQL, queries can take four forms: <em>SELECT</em>, <em>CONSTRUCT</em>, <em>DESCRIBE</em>, and <em>ASK</em> - see <a data-cite="SPARQL11-QUERY#QueryForms">SPARQL1.1 Query, Section 16</a> [[SPARQL11-QUERY]]. The first of these returns a <a data-cite="SPARQL11-QUERY#defn_sparqlSolutionSequence">sequence of solution mappings</a> that contain variable bindings. The second and third both return an RDF graph, and the last returns a boolean value.
       </p>
-      <p>The result of the <em>ASK</em> query form is not changed by the introduction of RDF-star, and the result of the <em>CONSTRUCT</em> and <em>DESCRIBE</em> forms can be represented by <a href="#turtle-star">Turtle-star</a>. However, since the <em>SELECT</em> form deals with returning individual RDF terms, the specific serialization formats for representing such query results need to be extended so that the new <a>embedded</a> triple RDF term can be represented. In this section, we propose extensions for the two most common formats for this purpose: [[[SPARQL11-RESULTS-JSON]]], and [[[RDF-SPARQL-XMLRES]]].</p>
+      <p>The result of the <em>ASK</em> query form is not changed by the introduction of RDF-star, and the result of the <em>CONSTRUCT</em> and <em>DESCRIBE</em> forms can be represented by <a href="#turtle-star">Turtle-star</a>. However, since the <em>SELECT</em> form deals with returning individual RDF terms, the specific serialization formats for representing such query results need to be extended so that the new <a>quoted triple</a> RDF term can be represented. In this section, we propose extensions for the two most common formats for this purpose: [[[SPARQL11-RESULTS-JSON]]], and [[[RDF-SPARQL-XMLRES]]].</p>
 
       <section>
         <h2>SPARQL-star Query Results JSON Format</h2>
         <p>
-        The result of a SPARQL SELECT query is serialized in JSON as defined in [[[SPARQL11-RESULTS-JSON]]], which specifies a JSON representation of variable bindings to RDF terms (see [<a data-cite="sparql11-results-json#select-results">sparql11-results-json, Section 3.2</a>]). To accommodate the new RDF term for <a>embedded</a> triples that RDF-star introduces, the table of RDF term JSON representations in  <a data-cite="sparql11-results-json#select-encode-terms">sparql11-results-json, Section 3.2.2</a> is extended with the following entry:
+        The result of a SPARQL SELECT query is serialized in JSON as defined in [[[SPARQL11-RESULTS-JSON]]], which specifies a JSON representation of variable bindings to RDF terms (see [<a data-cite="sparql11-results-json#select-results">sparql11-results-json, Section 3.2</a>]). To accommodate the new RDF term for <a>quoted triples</a> that RDF-star introduces, the table of RDF term JSON representations in  <a data-cite="sparql11-results-json#select-encode-terms">sparql11-results-json, Section 3.2.2</a> is extended with the following entry:
         </p>
         <dl>
-            <dt>An <a>embedded</a> triple with subject RDF term `S`, predicate RDF term `P` and object RDF term `O`</dt>
+            <dt>A <a>quoted triple</a> with subject RDF term `S`, predicate RDF term `P` and object RDF term `O`</dt>
             <dd>
               <pre>
                 {
@@ -2368,7 +2368,7 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
             </dd>
           </dl>
         <aside class="example">
-            Consider the following RDF term, an <a>embedded</a> triple in Turtle-star syntax:
+            Consider the following RDF term, a <a>quoted triple</a> in Turtle-star syntax:
           <pre data-transform="updateExample"
             data-content-type="text/turtle"
             class="nohighlight"
@@ -2407,11 +2407,11 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
        <p>
         The result of a SPARQL SELECT query is serialized in XML as defined in [[[RDF-SPARQL-XMLRES]]]. This format proposes an XML representation of variable bindings to RDF terms.
        </p>
-       <p>To accommodate the new RDF term for <a>embedded</a> triples that RDF-star introduces, the list of RDF terms and their XML representations in [<a data-cite="RDF-SPARQL-XMLRES#results">RDF-SPARQL-XMLRES Section 2.3.1</a>] is extended as follows:
+       <p>To accommodate the new RDF term for <a>quoted triples</a> that RDF-star introduces, the list of RDF terms and their XML representations in [<a data-cite="RDF-SPARQL-XMLRES#results">RDF-SPARQL-XMLRES Section 2.3.1</a>] is extended as follows:
         </p>
         <p>
         <dl>
-            <dt>An <a>embedded</a> triple with subject term `S`, predicate term `P`, and object term `O`</dt>
+            <dt>A <a>quoted triple</a> with subject term `S`, predicate term `P`, and object term `O`</dt>
           <dd>
             <pre data-transform="updateExample" class="xml">
               <!--
@@ -2428,7 +2428,7 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
           </dd>
         </dl>
         <aside class="example">
-            Consider the following RDF term, an <a>embedded</a> triple in Turtle-star syntax:
+            Consider the following RDF term, a <a>quoted triple</a> in Turtle-star syntax:
           <pre data-transform="updateExample"
             data-content-type="text/turtle"
             class="nohighlight"
@@ -2508,7 +2508,7 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
           -->
         </pre>
 
-        <p>Notice that inserting a nested triple does not automatically also insert its embedded triple(s) as asserted triple(s) into the graph. Hence, in the previous example, after executing the given INSERT DATA operation, the default graph does <em>not</em> contain the triple <code>:bob :age 23</code>. In other words, a query such as the following would have an empty result.</p>
+        <p>Notice that inserting a nested triple does not automatically also insert its <a>quoted</a> triple(s) as <a>asserted</a> triple(s) into the graph. Hence, in the previous example, after executing the given INSERT DATA operation, the default graph does <em>not</em> contain the triple <code>:bob :age 23</code>. In other words, a query such as the following would have an empty result.</p>
 
         <pre data-transform="updateExample"
              data-content-type="application/sparql-query"
@@ -2523,7 +2523,7 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
           -->
         </pre>
 
-        <p>For an embedded triple to be present in the graph as an asserted triple, it needs to be inserted as such. For instance, the INSERT DATA operation in the example above may be modified as follows in order to insert not only the nested triple but also the triple <code>:bob :age 23</code>.</p>
+        <p>For a <a>quoted triple</a> to be present in the graph as an <a>asserted triple</a>, it needs to be inserted as such. For instance, the INSERT DATA operation in the example above may be modified as follows in order to insert not only the nested triple but also the triple <code>:bob :age 23</code>.</p>
 
         <pre data-transform="updateExample"
              data-content-type="application/sparql-query"
@@ -2561,7 +2561,7 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
 
         <p>After executing this DELETE DATA operation over a graph store with a default graph that contains the given nested triple, the graph will not contain this triple any longer. If the graph did not contain that nested triple in the first place, the graph will remain unchanged by the given DELETE DATA operation.</p>
 
-        <p>Notice that deleting triples by using the DELETE DATA operation does not affect any other triples in the corresponding graphs. For instance, for a default graph that contains the triple <code>:bob :age 23</code> as an asserted triple, the DELETE DATA operation given above does <em>not</em> delete this asserted triple. In contrast, the following operation would delete this asserted triple but it would <em>not</em> delete any nested triple that contains the given triple as an embedded triple.</p>
+        <p>Notice that deleting triples by using the DELETE DATA operation does not affect any other triples in the corresponding graphs. For instance, for a default graph that contains the triple <code>:bob :age 23</code> as an <a>asserted triple</a>, the DELETE DATA operation given above does <em>not</em> delete this <a>asserted triple</a>. In contrast, the following operation would delete this <a>asserted triple</a> but it would <em>not</em> delete any nested triple that contains the given triple as a <a>quoted triple</a>.</p>
 
         <pre data-transform="updateExample"
              data-content-type="application/sparql-query"
@@ -2598,7 +2598,7 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
 
         <p>As in SPARQL Update, in SPARQL-star Update it is possible to use variations of the DELETE/INSERT operations in which either the DELETE clause or the INSERT clause are omitted.</p>
 
-        <p>When removing triples via the DELETE clause (irrespective of whether the INSERT clause is omitted or not), the effects with respect to nested triples must be the same as described above for the DELETE DATA operation; i.e., only the triples that are explicitly identified to be deleted are deleted. Similarly, inserting triples via the INSERT clause has the same effects as described above for the INSERT DATA operation; i.e., inserting nested triples does not automatically also insert their embedded triples as asserted triples into the graph. Of course, it is possible to request such inserts explicitly as demonstrated in the following example.</p>
+        <p>When removing triples via the DELETE clause (irrespective of whether the INSERT clause is omitted or not), the effects with respect to nested triples must be the same as described above for the DELETE DATA operation; i.e., only the triples that are explicitly identified to be deleted are deleted. Similarly, inserting triples via the INSERT clause has the same effects as described above for the INSERT DATA operation; i.e., inserting nested triples does not automatically also insert their <a>quoted triples</a> as <a>asserted triples</a> into the graph. Of course, it is possible to request such inserts explicitly as demonstrated in the following example.</p>
 
         <pre data-transform="updateExample"
              data-content-type="application/sparql-query"
@@ -2613,7 +2613,7 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
           -->
         </pre>
 
-        <p>While all SPARQL-star Update examples above focus only on the default graph of a graph store, SPARQL-star Update can also be used to update the named graphs of a graph store, which works in exactly the same way as in SPARQL Update. As a possible example consider the following INSERT operation which retrieves all embedded triples found in nested triples in the default graph and inserts them as asserted triples into the named graph with IRI&nbsp;<code>:graph2</code>.</p>
+        <p>While all SPARQL-star Update examples above focus only on the default graph of a graph store, SPARQL-star Update can also be used to update the named graphs of a graph store, which works in exactly the same way as in SPARQL Update. As a possible example consider the following INSERT operation which retrieves all <a>quoted triples</a> found in nested triples in the default graph and inserts them as <a>asserted triples</a> into the named graph with IRI&nbsp;<code>:graph2</code>.</p>
 
         <pre data-transform="updateExample"
              data-content-type="application/sparql-query"
@@ -2702,12 +2702,12 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
       <ol>
         <li>For each <a>IRI</a> |i| in the <a>constituents</a> of |G| starting with `https://w3c.github.io/rdf-star/unstar#`: <ol>
           <li>Mint a new <a>IRI</a> |j| by appending an underscore (`_`) to |i|.</li>
-          <li>Replace with |j| all occurrences of |i| in the <a>subject</a>, <a>predicate</a>, or <a>object</a> position of an <a>asserted</a> or <a>embedded triple</a> of |G|.</li>
+          <li>Replace with |j| all occurrences of |i| in the <a>subject</a>, <a>predicate</a>, or <a>object</a> position of an <a>asserted</a> or <a>quoted</a> triple of |G|.</li>
         </ol></li>
-        <li>While |G| contains <a>embedded triples</a>:<ol>
-          <li>Pick an <a>RDF-star triple</a> (|s|, |p|, |o|) in the <a>constituents</a> of |G| such that neither |s| nor |o| is an <a>embedded triple</a>.</li>
+        <li>While |G| contains <a>quoted triples</a>:<ol>
+          <li>Pick an <a>RDF-star triple</a> (|s|, |p|, |o|) in the <a>constituents</a> of |G| such that neither |s| nor |o| is a <a>quoted triple</a>.</li>
           <li>Mint a fresh blank node |b| (i.e., such that |b| is not in the <a>constituents</a> of |G|).</li>
-          <li>Replace with |b| all occurrences of (|s|, |p|, |o|) in the <a>subject</a> or <a>object</a> position of an <a>asserted</a> or <a>embedded triple</a> of |G|.</li>
+          <li>Replace with |b| all occurrences of (|s|, |p|, |o|) in the <a>subject</a> or <a>object</a> position of an <a>asserted</a> or <a>quoted</a> triple of |G|.</li>
           <li id="unstar-add-triples">Add the following <a>asserted triples</a> to |G|:<ul>
             <li>(|b|, `unstar:subject`,`   `|s|)</li>
             <li>(|b|, `unstar:predicate`,` `|p|)</li>
@@ -2719,7 +2719,7 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
         </ol></li>
       </ol>
       </div>
-      <p>After these steps, <a>unstar</a>(|G|) is an <a>RDF graph</a>, as it contains no embedded triples. Note that if |G| contains no <a>embedded triple</a> and no <a>IRI</a> in the `unstar:` namespace, then <a>unstar</a>(|G|) = |G|.</p>
+      <p>After these steps, <a>unstar</a>(|G|) is an <a>RDF graph</a>, as it contains no <a>quoted triples</a>. Note that if |G| contains no <a>quoted triple</a> and no <a>IRI</a> in the `unstar:` namespace, then <a>unstar</a>(|G|) = |G|.</p>
 
     </section>
 
@@ -2732,7 +2732,7 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
         <li>We say that |H| is star-<a>entailed</a> by (resp. star-<a>equivalent</a> to) |G| if and only if <a>unstar</a>(|H|) is simply <a>entailed</a> by (resp. simply <a>equivalent</a> to) <a>unstar</a>(|G|).</li>
       </ul>
 
-      <p>It is easy to see that, in the special case of <a>RDF graphs</a> |G| and |H| (i.e. <a>RDF-star graphs</a> containing no <a>embedded triple</a>), |G| is star-<a>satisfiable</a> if and only if |G| is simply <a>satisfiable</a>, and |G| star-<a>entails</a> |H| if and only if |G| simply <a>entails</a> |H|. This is trivially true if |G| and |H| do not contain any `unstar:` <a>IRI</a> (in which case they are left unchanged by the <a>unstar mapping</a>). But this is also true if they do contain such <a>IRIs</a> (as the renaming performed by the <a>unstar mapping</a> has no significant impact on the semantic relationships between the two graphs). Star-<a>entailment</a> can therefore be considered as a natural <em>extension</em> of simple <a>entailment</a> to <a>RDF-star graphs</a>.</p>
+      <p>It is easy to see that, in the special case of <a>RDF graphs</a> |G| and |H| (i.e. <a>RDF-star graphs</a> containing no <a>quoted triple</a>), |G| is star-<a>satisfiable</a> if and only if |G| is simply <a>satisfiable</a>, and |G| star-<a>entails</a> |H| if and only if |G| simply <a>entails</a> |H|. This is trivially true if |G| and |H| do not contain any `unstar:` <a>IRI</a> (in which case they are left unchanged by the <a>unstar mapping</a>). But this is also true if they do contain such <a>IRIs</a> (as the renaming performed by the <a>unstar mapping</a> has no significant impact on the semantic relationships between the two graphs). Star-<a>entailment</a> can therefore be considered as a natural <em>extension</em> of simple <a>entailment</a> to <a>RDF-star graphs</a>.</p>
 
       <p class="note">Other notions of <a>satisfiability</a> and <a>entailment</a>, such as <a data-cite="RDF11-MT#rdf-entailment">RDF entailment</a> or <a data-cite="RDF11-MT#rdfs-entailment">RDFS entailment</a>, can be extended in the same way for <a>RDF-star graphs</a>.</p>    
     </section>
@@ -2785,9 +2785,9 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
 
         <p>Care must be taken when implementations that rely on the <a>unstar mapping</a> combine the resulting <a>RDF graphs</a> through union or <a>merge</a>. Given two <a>RDF-star graphs</a> |G| and |H|, it may be the case that <a>unstar</a>(|G| ∪ |H|) ≠ <a>unstar</a>(|G|) ∪ <a>unstar</a>(|H|).</p>
 
-        <p>In particular, if |G| and |H| contain the same <a>embedded triple</a>, this triple will be mapped to a single blank node in <a>unstar</a>(|G| ∪ |H|), but in two potentially different blank nodes in <a>unstar</a>(|G|) ∪ <a>unstar</a>(|H|). These blank nodes will need to be unified in order to reconstruct <a>unstar</a>(|G| ∪ |H|).</p>
+        <p>In particular, if |G| and |H| contain the same <a>quoted triple</a>, this triple will be mapped to a single blank node in <a>unstar</a>(|G| ∪ |H|), but in two potentially different blank nodes in <a>unstar</a>(|G|) ∪ <a>unstar</a>(|H|). These blank nodes will need to be unified in order to reconstruct <a>unstar</a>(|G| ∪ |H|).</p>
 
-        <p>Conversely, nothing in the definition of the <a>unstar mapping</a> prevents it from generating the same blank node |b| for an <a>embedded triple</a> of |G|, and for a <em>different</em> <a>embedded triple</a> of |H| (provided that |b| is not present in either |G| nor |H|). In that case, not only would <a>unstar</a>(|G|) ∪ <a>unstar</a>(|H|) be different from <a>unstar</a>(|G| ∪ |H|), but it would lose some information by mixing the descriptions of the two <a>embedded triples</a>.</p>
+        <p>Conversely, nothing in the definition of the <a>unstar mapping</a> prevents it from generating the same blank node |b| for a <a>quoted triple</a> of |G|, and for a <em>different</em> <a>quoted triple</a> of |H| (provided that |b| is not present in either |G| nor |H|). In that case, not only would <a>unstar</a>(|G|) ∪ <a>unstar</a>(|H|) be different from <a>unstar</a>(|G| ∪ |H|), but it would lose some information by mixing the descriptions of the two <a>quoted triples</a>.</p>
 
       </section>
 
@@ -2796,18 +2796,18 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
 
         <p>Since the <a>unstar mapping</a> transforms any <a>RDF-star graph</a> into a standard ("non-star") <a>RDF graph</a>, it might be tempting to use this mapping for conveying <a>RDF-star graphs</a> to legacy RDF systems. However, this has a number of caveats.</p>
 
-        <p>First, the <a>unstar mapping</a> alters the semantics of the graph: in general, a graph |G| is <em>not</em> <a>equivalent</a> to its "unstarred" version <a>unstar</a>(|G|), even if |G| is a standard <a>RDF graph</a> containing no <a>embedded triples</a>. (More precisely, they are equivalent only if |G| contains no <a>embedded triples</a> and no IRIs from the `unstar:` namespace.)</p>
+        <p>First, the <a>unstar mapping</a> alters the semantics of the graph: in general, a graph |G| is <em>not</em> <a>equivalent</a> to its "unstarred" version <a>unstar</a>(|G|), even if |G| is a standard <a>RDF graph</a> containing no <a>quoted triples</a>. (More precisely, they are equivalent only if |G| contains no <a>quoted triples</a> and no IRIs from the `unstar:` namespace.)</p>
 
         <p>Second, when a legacy RDF system communicates an <a>RDF graph</a> to an RDF-star-aware system, there is no means by which the latter can determine with certainty whether the graph is the result of applying the <a>unstar mapping</a>, and thus needs to be transformed back. (The presence of `unstar:` IRIs in the graph can be used as a hint, but such IRIs can also be used independently of the mapping.) Additional metadata should therefore be attached to unstarred graphs, so that RDF-star systems know whether or not they need to apply the inverse transformation of <a>unstar</a>.</p>
 
-        <p>Finally, legacy RDF systems may alter unstarred graphs in ways that prevent their transformation back to the original <a>RDF-star graph</a>. For example, it has been <a href="#combining-rdf-star-graphs">pointed out above</a> how combining several unstarred graphs may not yield the expected result. Another example is the removal of some arcs, such that an <a>embedded triple</a> is not completely described anymore, and can not be reconstructed.</p>
+        <p>Finally, legacy RDF systems may alter unstarred graphs in ways that prevent their transformation back to the original <a>RDF-star graph</a>. For example, it has been <a href="#combining-rdf-star-graphs">pointed out above</a> how combining several unstarred graphs may not yield the expected result. Another example is the removal of some arcs, such that a <a>quoted triple</a> is not completely described anymore, and can not be reconstructed.</p>
 
       </section>
 
       <section id="ref-opacity">
         <h2>Referential opacity</h2>
 
-        <p>The way the <a>unstar mapping</a> is defined, the denotation of an embedded triple does not only depend on the denotation of its component terms, but also on their syntactical form (for IRIs and literals). This behavior is referred to as <a href="https://en.wikipedia.org/wiki/Opaque_context">referential opacity</a>. A consequence is that two different triples, that would be semantically equivalent if asserted, are not automatically considered to denote the same thing when embedded. In the example below, assuming <a data-cite="RDF11-MT#datatype-entailment">D-entailment</a>: while `"42"^^xsd:integer` and `"042"^^xsd:integer` denote the same thing (namely, the number 42), the two embedded triples are allowed to have different denotations, and so the entailment does not hold.</p>
+        <p>The way the <a>unstar mapping</a> is defined, the denotation of a <a>quoted triple</a> does not only depend on the denotation of its component terms, but also on their syntactical form (for IRIs and literals). This behavior is referred to as <a href="https://en.wikipedia.org/wiki/Opaque_context">referential opacity</a>. A consequence is that two different triples, that would be semantically equivalent if asserted, are not automatically considered to denote the same thing when <a>quoted</a>. In the example below, assuming <a data-cite="RDF11-MT#datatype-entailment">D-entailment</a>: while `"42"^^xsd:integer` and `"042"^^xsd:integer` denote the same thing (namely, the number 42), the two <a>quoted triples</a> are allowed to have different denotations, and so the entailment does not hold.</p>
 
         <pre id="ref-opacity-d-entailment"
         data-transform="updateExample"
@@ -2825,7 +2825,7 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
         -->
         </pre>
 
-        <p>Similarly, in the example below and under <a href="https://www.w3.org/TR/owl2-overview/">OWL entailment</a> [[OWL2-Overview]], while `:superman` and `:clark` are inferred to denote one and the same person (because of the `owl:sameAs` relationship between them), the two embedded triples are not automatically considered to denote the same thing.</p>
+        <p>Similarly, in the example below and under <a href="https://www.w3.org/TR/owl2-overview/">OWL entailment</a> [[OWL2-Overview]], while `:superman` and `:clark` are inferred to denote one and the same person (because of the `owl:sameAs` relationship between them), the two <a>quoted triples</a> are not automatically considered to denote the same thing.</p>
 
         <pre id="ref-opacity-owl-entailment"
         data-transform="updateExample"
@@ -2896,7 +2896,7 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
 
         <p>In the examples above (<a href="#ref-opacity-d-entailment"></a>, <a href="#ref-opacity-owl-entailment"></a>, <a href="#ref-opacity-annotation"></a>), all the entailments would now hold automatically. This could be a problem in some use-cases, as such inferences could then not be cancelled, given the <a data-cite="RDF11-MT#dfn-monotonic">monotonic semantics</a> of RDF.</p>
 
-        <p>An intermediate alternative would be to make embedded triples referentially opaque for IRIs only, keeping it transparent for literals (and for blank nodes, as is already the case). This can be achieved by changing the <a href="#unstar-add-triples">step 2.4</a> of the <a>unstar mapping</a> algorithm as follows:</p>
+        <p>An intermediate alternative would be to make <a>quoted triples</a> referentially opaque for IRIs only, keeping it transparent for literals (and for blank nodes, as is already the case). This can be achieved by changing the <a href="#unstar-add-triples">step 2.4</a> of the <a>unstar mapping</a> algorithm as follows:</p>
 
         <ul>
           <li> Add the following <a>asserted triples</a> to |G|:
@@ -2928,7 +2928,7 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
     </div>
 
     <div class="issue" data-number="169">
-      This issue discusses the relevance of introducing a standard property to link an embedded triple to its occurrences (as illustrated in <a href="#occurrences-example"></a>), as well as other related properties and classes.
+      This issue discusses the relevance of introducing a standard property to link a <a>quoted triple</a> to its occurrences (as illustrated in <a href="#occurrences-example"></a>), as well as other related properties and classes.
     </div>
 
     <div class="issue" data-number="164">
@@ -2936,7 +2936,7 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
     </div>
 
     <div class="issue" data-number="170">
-      This issue proposes to introduce a vocabulary for locally overriding the <a href="#ref-opacity">opaque</a> semantics of embedded triples, making them transparent in some contexts.
+      This issue proposes to introduce a vocabulary for locally overriding the <a href="#ref-opacity">opaque</a> semantics of <a>quoted triples</a>, making them transparent in some contexts.
     </div>
 
   </section>
@@ -2946,9 +2946,9 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
 
     <p>In <a href="#concrete-syntaxes"></a>, we have proposed extensions to four existing media types, namely `text/turtle` [[TURTLE]], `application/trig` [[TRIG]], `application/n-triples` [[N-TRIPLES]] and `application/n-quads` [[N-QUADS]]. In <a href="#sparql-star"></a>, we have proposed extensions to three more existing media types, namely `application/sparql-query` [[SPARQL11-QUERY]], `application/sparql-results+json` [[SPARQL11-RESULTS-JSON]], and `application/sparql-result+xml` [[RDF-SPARQL-XMLRES]]. While the <a href="https://www.w3.org/community/rdf-dev/">RDF-DEV Community Group</a> has no authority to officially update these media-types, we hope that a future working group with such authority will consider doing so, and include extensions proposed in this report.</p>
 
-    <p>In the meantime, implementers of RDF-star are faced with a dilemma: use the standard media-type identifiers as if their definition had been already updated (optimistic approach); or make it explicit that they are prone to produce or consume embedded triples (pessimistic approach), perhaps by using a different temporary media-type, or custom HTTP headers.</p>
+    <p>In the meantime, implementers of RDF-star are faced with a dilemma: use the standard media-type identifiers as if their definition had been already updated (optimistic approach); or make it explicit that they are prone to produce or consume <a>quoted triples</a> (pessimistic approach), perhaps by using a different temporary media-type, or custom HTTP headers.</p>
 
-    <p>The optimistic approach raises the risk of breaking the expectations of other applications that are not RDF-star-aware. For example, if a SPARQL-star endpoint responds to a CONSTRUCT query with the `text/turtle` media-type, and includes an <a>embedded triple</a> in the response, a legacy client will fail to parse that response. On the other hand, if the same server applies the pessimistic approach, it may simply reject any query requiring `text/turtle`, <em>just in case</em> the result contain <a>embedded triples</a>. Note that it is not always feasible for the server to decide beforehand whether the result is plain Turtle or Turtle-star, because the result is often produced in a streamed manner, after the headers containing the media-type have been sent to the client.</p>
+    <p>The optimistic approach raises the risk of breaking the expectations of other applications that are not RDF-star-aware. For example, if a SPARQL-star endpoint responds to a CONSTRUCT query with the `text/turtle` media-type, and includes a <a>quoted triple</a> in the response, a legacy client will fail to parse that response. On the other hand, if the same server applies the pessimistic approach, it may simply reject any query requiring `text/turtle`, <em>just in case</em> the result contain <a>quoted triples</a>. Note that it is not always feasible for the server to decide beforehand whether the result is plain Turtle or Turtle-star, because the result is often produced in a streamed manner, after the headers containing the media-type have been sent to the client.</p>
 
     <p>Another problem with the pessimistic approach is that "temporary" media-types are known to actually become permanent. Old applications keep using them long after their intended expiration date. This a burden on all other implementations, which must handle the "temporary" media-types along the permanent one, as aliases, in order to maintain backward compatibility.</p>
 
@@ -2986,13 +2986,13 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
     <section>
       <h2>SA-mode and PG-mode</h2>
 
-      <p>A lot of discussions on the <a href="https://lists.w3.org/Archives/Public/public-rdf-star/">RDF-star mailing list</a> and <a href="https://github.com/w3c/rdf-star">GitHub repository</a> refer to SA-mode and PG-mode. Those abbreviations stand for "Separate Assertion mode" and "Property Graph mode". They originate in the fact that different versions of RDF-star have been published over the years, with different designs. In PG-mode, any <a>embedded triple</a> was also considered <a>asserted</a>. SA-mode, on the other hand, allowed the use of <a>embedded triples</a> without those triples being automatically <a>asserted</a>, requiring that they be <a>asserted</a> separately when that was intended. SA-mode was more flexible, but induced redundancy in the use-cases that PG-mode was designed to address.</p>
+      <p>A lot of discussions on the <a href="https://lists.w3.org/Archives/Public/public-rdf-star/">RDF-star mailing list</a> and <a href="https://github.com/w3c/rdf-star">GitHub repository</a> refer to SA-mode and PG-mode. Those abbreviations stand for "Separate Assertion mode" and "Property Graph mode". They originate in the fact that different versions of RDF-star have been published over the years, with different designs. In PG-mode, any <a>quoted triple</a> was also considered <a>asserted</a>. SA-mode, on the other hand, allowed the use of <a>quoted triples</a> without those triples being automatically <a>asserted</a>, requiring that they be <a>asserted</a> separately when that was intended. SA-mode was more flexible, but induced redundancy in the use-cases that PG-mode was designed to address.</p>
 
       <p>The notion of <a href="#grammar-production-annotation">annotations</a> in the <a href="#turtle-star">Turtle-star</a> syntax was introduced to remove the need for different modes. Rather than interpret the same syntax differently in each mode, which would have caused interoperability problems and required a switch for those modes, it was decided to provide a different syntax for each use case.</p>
 
       <ul>
-        <li>The <code>&lt;&lt; ... &gt;&gt;</code> syntax represents a triple that is <a>embedded</a> without being <a>asserted</a>, satisfying the need formerly filled by SA-mode.</li>
-        <li>The <code>:a :b :c {| :p :o ... |}</code> annotation syntax creates triples where the subject is an <a>embedded</a> version of the triple <a>asserted</a> just before the annotation (here, <code>:a :b :c</code>), without the need to repeat it, satisfying the need formerly filled by PG-mode.</li>
+        <li>The <code>&lt;&lt; ... &gt;&gt;</code> syntax represents a triple that is <a>quoted</a> without being <a>asserted</a>, satisfying the need formerly filled by SA-mode.</li>
+        <li>The <code>:a :b :c {| :p :o ... |}</code> annotation syntax creates triples where the subject is a <a>quoted</a> version of the triple <a>asserted</a> just before the annotation (here, <code>:a :b :c</code>), without the need to repeat it, satisfying the need formerly filled by PG-mode.</li>
       </ul>
     </section>
 
@@ -3013,9 +3013,9 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
         -->
       </pre>
 
-      <p>This example was further debated on the <a href="https://lists.w3.org/Archives/Public/public-rdf-star/">RDF-star mailing list</a>, as it appears to have set wrong expectations about what embedded triples represent. More precisely, from this example, one may wrongly assume that `&lt;&lt;:bob foaf:age 23>>` represents the <em>occurrence</em> of the given triple at the address `http://example.net/listing.html` (see <a href="#occurrences"></a>). This impression may be reinforced by the use of `dct:creator`: arguably, a triple (as a unique abstract entity) is not "created" by anyone, while an occurrence thereof can be said to be created or authored.</p>
+      <p>This example was further debated on the <a href="https://lists.w3.org/Archives/Public/public-rdf-star/">RDF-star mailing list</a>, as it appears to have set wrong expectations about what <a>quoted triples</a> represent. More precisely, from this example, one may wrongly assume that `&lt;&lt;:bob foaf:age 23>>` represents the <em>occurrence</em> of the given triple at the address `http://example.net/listing.html` (see <a href="#occurrences"></a>). This impression may be reinforced by the use of `dct:creator`: arguably, a triple (as a unique abstract entity) is not "created" by anyone, while an occurrence thereof can be said to be created or authored.</p>
 
-      <p>The problem with this interpretation is that it will break as soon as other creators and sources are added for the triple: one could not tell which source corresponds to which creator. Correctly capturing this information would require additional nodes to explicitly represent triple occurrences, as in <a href="#occurrences-example"></a>. In summary, although RDF-star can be used for provenance, the seminal example does not work as stated and can lead to the fundamentally incorrect interpretation that RDF-star can represent multiple distinct embedded triples with the same subject, predicate, and object.</p>
+      <p>The problem with this interpretation is that it will break as soon as other creators and sources are added for the triple: one could not tell which source corresponds to which creator. Correctly capturing this information would require additional nodes to explicitly represent triple occurrences, as in <a href="#occurrences-example"></a>. In summary, although RDF-star can be used for provenance, the seminal example does not work as stated and can lead to the fundamentally incorrect interpretation that RDF-star can represent multiple distinct <a>quoted triples</a> with the same subject, predicate, and object.</p>
 
     </section>
 

@@ -495,7 +495,7 @@ INSERT {
             <a data-cite="TURTLE#grammar-production-iri">iri</a> `|`
             <a data-cite="TURTLE#grammar-production-BlankNode">BlankNode</a> `|`
             <a data-cite="TURTLE#grammar-production-collection">collection</a> `|`
-            <a style="font-weight: bold" href="#grammar-production-embTriple">embTriple</a>
+            <a style="font-weight: bold" href="#grammar-production-quotedTriple">quotedTriple</a>
           </td>
         </tr>
         <tr id="grammar-production-object">
@@ -508,40 +508,40 @@ INSERT {
             <a  data-cite="TURTLE#grammar-production-collection">collection</a> `|`
             <a data-cite="TURTLE#grammar-production-blankNodePropertyList">blankNodePropertyList</a> `|`
             <a data-cite="TURTLE#grammar-production-literal">literal</a> `|`
-            <a style="font-weight: bold" href="#grammar-production-embTriple">embTriple</a>
+            <a style="font-weight: bold" href="#grammar-production-quotedTriple">quotedTriple</a>
           </td>
         </tr>
-        <tr style="font-weight: bold" id="grammar-production-embTriple">
+        <tr style="font-weight: bold" id="grammar-production-quotedTriple">
           <td>[27t]</td>
-          <td>`embTriple`</td>
+          <td>`quotedTriple`</td>
           <td>::=</td>
           <td>
             <code class="grammar-literal">'&lt;&lt;'</code>
-            <a href="#grammar-production-embSubject">embSubject</a>
+            <a href="#grammar-production-qTSubject">qTSubject</a>
             <a data-cite="TURTLE#grammar-production-verb">verb</a>
-            <a href="#grammar-production-embObject">embObject</a>
+            <a href="#grammar-production-qTObject">qTObject</a>
             <code class="grammar-literal">'&gt;&gt;'</code>
           </td>
         </tr>
-        <tr style="font-weight: bold" id="grammar-production-embSubject">
+        <tr style="font-weight: bold" id="grammar-production-qTSubject">
           <td>[28t]</td>
-          <td>`embSubject`</td>
+          <td>`qTSubject`</td>
           <td>::=</td>
           <td>
             <a data-cite="TURTLE#grammar-production-iri">iri</a> `|`
             <a  data-cite="TURTLE#grammar-production-BlankNode">BlankNode</a> `|`
-            <a href="#grammar-production-embTriple">embTriple</a>
+            <a href="#grammar-production-quotedTriple">quotedTriple</a>
           </td>
         </tr>
-        <tr style="font-weight: bold" id="grammar-production-embObject">
+        <tr style="font-weight: bold" id="grammar-production-qTObject">
           <td>[29t]</td>
-          <td>`embObject`</td>
+          <td>`qTObject`</td>
           <td>::=</td>
           <td>
             <a data-cite="TURTLE#grammar-production-iri">iri</a> `|`
             <a  data-cite="TURTLE#grammar-production-BlankNode">BlankNode</a> `|`
             <a data-cite="TURTLE#grammar-production-literal">literal</a> `|`
-            <a href="#grammar-production-embTriple">embTriple</a>
+            <a href="#grammar-production-quotedTriple">quotedTriple</a>
           </td>
         </tr>
         <tr style="font-weight: bold" id="grammar-production-annotation">
@@ -560,8 +560,8 @@ INSERT {
         the changes are that <a href="#grammar-production-subject">`subject`</a>
         and <a href="#grammar-production-object">`object`</a> productions
         have been extended to accept <a>quoted triples</a>,
-        which are described by the new productions <a href="#grammar-production-embTriple">27t</a>
-        to <a href="#grammar-production-embObject">30t</a>.
+        which are described by the new productions <a href="#grammar-production-quotedTriple">27t</a>
+        to <a href="#grammar-production-qTObject">30t</a>.
         Note that <a>quoted triples</a> accept a more restricted range of
         <a>subject</a> and <a>object</a> expressions
         than <a>asserted triples</a>.
@@ -577,7 +577,7 @@ INSERT {
       <ul>
         <li id="curObject">
           <a>RDF-star Term</a> |curObject| —
-          The |curObject| is bound to the <a href="#grammar-production-embObject">`embObject`</a> production.</li>
+          The |curObject| is bound to the <a href="#grammar-production-qTObject">`qTObject`</a> production.</li>
       </ul>
       <p>Additionally, the <a data-cite="TURTLE#curSubject">|curSubject|</a>
         can be bound to any <a>RDF-star term</a>
@@ -586,19 +586,19 @@ INSERT {
       <p>A <dfn>Turtle-star document</dfn> defines an <a>RDF-star graph</a>
         composed of a set of <a>RDF-star triples</a>.
         The <a href="#grammar-production-subject">`subject`</a>
-        and <a href="#grammar-production-embSubject">`embSubject`</a> productions set the |curSubject|.
+        and <a href="#grammar-production-qTSubject">`qTSubject`</a> productions set the |curSubject|.
         The <a data-cite="TURTLE#grammar-production-verb">`verb`</a> production
         sets the <a data-cite="TURTLE#curPredicate">|curPredicate|</a>.
         The <a href="#grammar-production-object">`object`</a>
-        and <a href="#grammar-production-embObject">`embObject`</a> productions
+        and <a href="#grammar-production-qTObject">`qTObject`</a> productions
         set the |curObject|.
         Finishing the <a href="#grammar-production-object">`object`</a> production,
         an <a>RDF-star triple</a> |curSubject| |curPredicate| |curObject| is produced
         (added to the <a>RDF-star graph</a>).</p>
 
-      <p>Beginning the <a href="#grammar-production-embTriple">`embTriple`</a> production
+      <p>Beginning the <a href="#grammar-production-quotedTriple">`quotedTriple`</a> production
         records the |curSubject| and |curPredicate|.
-        Finishing the <a href="#grammar-production-embTriple">`embTriple`</a> production
+        Finishing the <a href="#grammar-production-quotedTriple">`quotedTriple`</a> production
         yields the <a>RDF-star triple</a> |curSubject| |curPredicate| |curObject|
         and restores the recorded values of |curSubject| and |curPredicate|.</p>
 
@@ -713,7 +713,7 @@ INSERT {
             `'.' )`
             <div style="font-weight: bold">
               `|`
-              <a href="#trig-grammar-production-embTriple">embTriple</a>
+              <a href="#trig-grammar-production-quotedTriple">quotedTriple</a>
               <a data-cite="TRIG#grammar-production-predicateObjectList">predicateObjectList</a>
               `'.'`
             </div>
@@ -741,7 +741,7 @@ INSERT {
             <a data-cite="TRIG#grammar-production-iri">iri</a> `|`
             <a data-cite="TRIG#grammar-production-BlankNode">BlankNode</a> `|`
             <a data-cite="TRIG#grammar-production-collection">collection</a> `|`
-            <a style="font-weight: bold" href="#trig-grammar-production-embTriple">embTriple</a>
+            <a style="font-weight: bold" href="#trig-grammar-production-quotedTriple">quotedTriple</a>
           </td>
         </tr>
         <tr id="trig-grammar-production-object">
@@ -754,40 +754,40 @@ INSERT {
             <a  data-cite="TRIG#grammar-production-collection">collection</a> `|`
             <a data-cite="TRIG#grammar-production-blankNodePropertyList">blankNodePropertyList</a> `|`
             <a data-cite="TRIG#grammar-production-literal">literal</a> `|`
-            <a style="font-weight: bold" href="#trig-grammar-production-embTriple">embTriple</a>
+            <a style="font-weight: bold" href="#trig-grammar-production-quotedTriple">quotedTriple</a>
           </td>
         </tr>
-        <tr style="font-weight: bold" id="trig-grammar-production-embTriple">
+        <tr style="font-weight: bold" id="trig-grammar-production-quotedTriple">
           <td>[27t]</td>
-          <td>`embTriple`</td>
+          <td>`quotedTriple`</td>
           <td>::=</td>
           <td>
             <code class="grammar-literal">'&lt;&lt;'</code>
-            <a href="#trig-grammar-production-embSubject">embSubject</a>
+            <a href="#trig-grammar-production-qTSubject">qTSubject</a>
             <a data-cite="TURTLE#grammar-production-verb">verb</a>
-            <a href="#trig-grammar-production-embObject">embObject</a>
+            <a href="#trig-grammar-production-qTObject">qTObject</a>
             <code class="grammar-literal">'&gt;&gt;'</code>
           </td>
         </tr>
-        <tr style="font-weight: bold" id="trig-grammar-production-embSubject">
+        <tr style="font-weight: bold" id="trig-grammar-production-qTSubject">
           <td>[28t]</td>
-          <td>`embSubject`</td>
+          <td>`qTSubject`</td>
           <td>::=</td>
           <td>
             <a data-cite="TRIG#grammar-production-iri">iri</a> `|`
             <a  data-cite="TRIG#grammar-production-BlankNode">BlankNode</a> `|`
-            <a href="#trig-grammar-production-embTriple">embTriple</a>
+            <a href="#trig-grammar-production-quotedTriple">quotedTriple</a>
           </td>
         </tr>
-        <tr style="font-weight: bold" id="trig-grammar-production-embObject">
+        <tr style="font-weight: bold" id="trig-grammar-production-qTObject">
           <td>[29t]</td>
-          <td>`embObject`</td>
+          <td>`qTObject`</td>
           <td>::=</td>
           <td>
             <a data-cite="TRIG#grammar-production-iri">iri</a> `|`
             <a  data-cite="TRIG#grammar-production-BlankNode">BlankNode</a> `|`
             <a data-cite="TRIG#grammar-production-literal">literal</a> `|`
-            <a href="#trig-grammar-production-embTriple">embTriple</a>
+            <a href="#trig-grammar-production-quotedTriple">quotedTriple</a>
           </td>
         </tr>
         <tr style="font-weight: bold" id="trig-grammar-production-annotation">
@@ -810,7 +810,7 @@ INSERT {
         as applied to <a data-cite="TRIG#sec-parsing">Section 5 of the TriG specification</a> [[TRIG]].</p>
 
       <p class="note">As with Turtle-star,
-        the <a href="#grammar-production-embTriple">`embTriple`</a>
+        the <a href="#grammar-production-quotedTriple">`quotedTriple`</a>
         and <a href="#grammar-production-annotation">`annotation`</a>
         are used to set either the |curSubject| or |curObject|,
         and do not directly add the associated <a>quoted triple</a> to |curGraph|.
@@ -879,17 +879,17 @@ INSERT {
             <td>[3]</td>
             <td>`subject`</td>
             <td>::=</td>
-            <td><a data-cite="N-TRIPLES#grammar-production-IRIREF">IRIREF</a> <code>|</code> <a data-cite="N-TRIPLES#grammar-production-BLANK_NODE_LABEL">BLANK_NODE_LABEL</a> <code>|</code> <a style="font-weight: bold" href="#grammar-production-nt-embTriple">embTriple</a></td>
+            <td><a data-cite="N-TRIPLES#grammar-production-IRIREF">IRIREF</a> <code>|</code> <a data-cite="N-TRIPLES#grammar-production-BLANK_NODE_LABEL">BLANK_NODE_LABEL</a> <code>|</code> <a style="font-weight: bold" href="#grammar-production-nt-quotedTriple">quotedTriple</a></td>
           </tr>
           <tr id="grammar-production-nt-object">
             <td>[5]</td>
             <td>`object`</td>
             <td>::=</td>
-            <td><a data-cite="N-TRIPLES#grammar-production-IRIREF">IRIREF</a> <code>|</code> <a data-cite="N-TRIPLES#grammar-production-BLANK_NODE_LABEL">BLANK_NODE_LABEL</a> <code>|</code> <a data-cite="N-TRIPLES#grammar-production-literal">literal</a> <code>|</code> <a style="font-weight: bold" href="#grammar-production-nt-embTriple">embTriple</a></td>
+            <td><a data-cite="N-TRIPLES#grammar-production-IRIREF">IRIREF</a> <code>|</code> <a data-cite="N-TRIPLES#grammar-production-BLANK_NODE_LABEL">BLANK_NODE_LABEL</a> <code>|</code> <a data-cite="N-TRIPLES#grammar-production-literal">literal</a> <code>|</code> <a style="font-weight: bold" href="#grammar-production-nt-quotedTriple">quotedTriple</a></td>
           </tr>
-          <tr style="font-weight: bold" id="grammar-production-nt-embTriple">
+          <tr style="font-weight: bold" id="grammar-production-nt-quotedTriple">
             <td>[7t]</td>
-            <td>`embTriple`</td>
+            <td>`quotedTriple`</td>
             <td>::=</td>
             <td>&quot;&lt;&lt;&quot; <a href="#grammar-production-nt-subject">subject</a> <a data-cite="N-TRIPLES#grammar-production-predicate">predicate</a> <a href="#grammar-production-nt-object">object</a> &quot;&gt;&gt;&quot;</td>
           </tr>
@@ -901,7 +901,7 @@ INSERT {
         and <a href="#grammar-production-nt-object">`object`</a> productions
         have been extended to accept <a>quoted triples</a>,
         which are described by the new production
-        <a href="#grammar-production-nt-embTriple">7</a>.</p>
+        <a href="#grammar-production-nt-quotedTriple">7</a>.</p>
     </section>
 
     <section id="n-triples-star-parsing">
@@ -920,7 +920,7 @@ INSERT {
         and <a href="#grammar-production-nt-object">`object`</a>.</p>
 
       <p>In addition to the <a data-cite="N-TRIPLES#sec-parsing-terms">Term Constructors</a> defined in [[N-TRIPLES]],
-        an additional constructor is defined for <a href="#grammar-production-nt-embTriple">`embTriple`</a>
+        an additional constructor is defined for <a href="#grammar-production-nt-quotedTriple">`quotedTriple`</a>
         of type <a>RDF-star triple</a>
         defined by the terms constructed
         for <a href="#grammar-production-nt-subject">`subject`</a>,
@@ -942,7 +942,7 @@ INSERT {
     <p class="note">As RDF-star describes <a>quoted triples</a> and not quoted quads,
       the <a data-cite="N-QUADS#grammar-production-graphLabel">`graphLabel`</a>
       component of an N-Quads <a data-cite="N-QUADS#grammar-production-statement">`statement`</a>
-      does not apply to the <a href="#grammar-production-nt-embTriple">`embTriple`</a> component.</p>
+      does not apply to the <a href="#grammar-production-nt-quotedTriple">`quotedTriple`</a> component.</p>
 
     <p>An <dfn>N-Quads-star document</dfn> defines an <a>RDF-star dataset</a>,
       composed of a single <a>default graph</a>

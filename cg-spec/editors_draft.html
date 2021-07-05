@@ -1032,7 +1032,7 @@ INSERT {
     <section id="sparql-star-grammar">
       <h2>Grammar</h2>
 
-      <p>SPARQL-star is defined to follow the <a data-cite="SPARQL11-QUERY#sparqlGrammar">same grammar</a> as SPARQL&nbsp;1.1, <em>except</em> for the <a data-cite="XML#sec-notation"><abbr title="Extended Backus-Naur Form">EBNF</abbr> productions</a> specified below, which replace the productions having the same number (if any) in the original grammar. The parts in which these productions differ from the corresponding productions in the original grammar are marked in bold font. Productions <a href="#rEmbTP">[174]</a> and following have been added and have no counterpart in the original grammar.</p>
+      <p>SPARQL-star is defined to follow the <a data-cite="SPARQL11-QUERY#sparqlGrammar">same grammar</a> as SPARQL&nbsp;1.1, <em>except</em> for the <a data-cite="XML#sec-notation"><abbr title="Extended Backus-Naur Form">EBNF</abbr> productions</a> specified below, which replace the productions having the same number (if any) in the original grammar. The parts in which these productions differ from the corresponding productions in the original grammar are marked in bold font. Productions <a href="#rQuotedTP">[174]</a> and following have been added and have no counterpart in the original grammar.</p>
 
       <table class="grammar">
         <tr id="rDataBlockValue">
@@ -1040,7 +1040,7 @@ INSERT {
           <td>`DataBlockValue`</td>
           <td>::=</td>
           <td>
-            <span style="font-weight: bold"><a href="#rEmbTriple">EmbTriple</a> `|`</span>
+            <span style="font-weight: bold"><a href="#rQuotedTriple">QuotedTriple</a> `|`</span>
             <a data-cite="SPARQL11-QUERY#riri">iri</a> `|`
             <a data-cite="SPARQL11-QUERY#rRDFLiteral">RDFLiteral</a> `|`
             <a data-cite="SPARQL11-QUERY#rNumericLiteral">NumericLiteral</a> `|`
@@ -1053,7 +1053,7 @@ INSERT {
           <td>`TriplesSameSubject`</td>
           <td>::=</td>
           <td>
-            <a href="#rVarOrTermOrEmbTP" style="font-weight: bold">VarOrTermOrEmbTP</a>
+            <a href="#rVarOrTermOrQuotedTP" style="font-weight: bold">VarOrTermOrQuotedTP</a>
             <a data-cite="SPARQL11-QUERY#rPropertyListNotEmpty">PropertyListNotEmpty</a>
             `|`
             <a data-cite="SPARQL11-QUERY#rTriplesNode">TriplesNode</a>
@@ -1073,7 +1073,7 @@ INSERT {
           <td>`TriplesSameSubjectPath`</td>
           <td>::=</td>
           <td>
-            <a href="#rVarOrTermOrEmbTP" style="font-weight: bold">VarOrTermOrEmbTP</a>
+            <a href="#rVarOrTermOrQuotedTP" style="font-weight: bold">VarOrTermOrQuotedTP</a>
             <a data-cite="SPARQL11-QUERY#rPropertyListPathNotEmpty">PropertyListPathNotEmpty</a>
             `|`
             <a data-cite="SPARQL11-QUERY#rTriplesNode">TriplesNode</a>
@@ -1094,7 +1094,7 @@ INSERT {
           <td>`GraphNode`</td>
           <td>::=</td>
           <td>
-            <a href="#rVarOrTermOrEmbTP" style="font-weight: bold">VarOrTermOrEmbTP</a> `|`
+            <a href="#rVarOrTermOrQuotedTP" style="font-weight: bold">VarOrTermOrQuotedTP</a> `|`
             <a data-cite="SPARQL11-QUERY#rTriplesNodePath">TriplesNode</a>
           </td>
         </tr>
@@ -1103,7 +1103,7 @@ INSERT {
           <td>`GraphNodePath`</td>
           <td>::=</td>
           <td>
-            <a href="#rVarOrTermOrEmbTP" style="font-weight: bold">VarOrTermOrEmbTP</a> `|`
+            <a href="#rVarOrTermOrQuotedTP" style="font-weight: bold">VarOrTermOrQuotedTP</a> `|`
             <a data-cite="SPARQL11-QUERY#rTriplesNodePath">TriplesNodePath</a>
           </td>
         </tr>
@@ -1120,7 +1120,7 @@ INSERT {
             <a data-cite="SPARQL11-QUERY#rBooleanLiteral">BooleanLiteral</a> `|`
             <a data-cite="SPARQL11-QUERY#rVar">Var</a>
             <div style="font-weight: bold">
-            `|` <a href="#rExprEmbTP" style="font-weight: bold">ExprEmbTP</a>
+            `|` <a href="#rExprQuotedTP" style="font-weight: bold">ExprQuotedTP</a>
             </div>
           </td>
         </tr>
@@ -1546,21 +1546,21 @@ INSERT {
             </div>
           </td>
         </tr>
-        <tr id="rEmbTP">
+        <tr id="rQuotedTP">
           <td>[174]</td>
-          <td style="font-weight: bold">`EmbTP`</td>
+          <td style="font-weight: bold">`QuotedTP`</td>
           <td style="font-weight: bold">::=</td>
           <td style="font-weight: bold">
             <code class="token">'&lt;&lt;'</code>
-            <a href="#rEmbSubjectOrObject">EmbSubjectOrObject</a>
+            <a href="#rQTSubjectOrObject">QTSubjectOrObject</a>
             <a data-cite="SPARQL11-QUERY#rVerb">Verb</a>
-            <a href="#rEmbSubjectOrObject">EmbSubjectOrObject</a>
+            <a href="#rQTSubjectOrObject">QTSubjectOrObject</a>
             <code class="token">'&gt;&gt;'</code>
           </td>
         </tr>
-        <tr id="rEmbTriple">
+        <tr id="rQuotedTriple">
           <td>[175]</td>
-          <td style="font-weight: bold">`EmbTriple`</td>
+          <td style="font-weight: bold">`QuotedTriple`</td>
           <td style="font-weight: bold">::=</td>
           <td style="font-weight: bold">
             <code class="token">'&lt;&lt;'</code>
@@ -1574,9 +1574,9 @@ INSERT {
             <code class="token">'&gt;&gt;'</code>
           </td>
         </tr>
-        <tr id="rEmbSubjectOrObject">
+        <tr id="rQTSubjectOrObject">
           <td>[176]</td>
-          <td style="font-weight: bold">`EmbSubjectOrObject`</td>
+          <td style="font-weight: bold">`QTSubjectOrObject`</td>
           <td style="font-weight: bold">::=</td>
           <td style="font-weight: bold">
             <a data-cite="SPARQL11-QUERY#rVar">Var</a> `|`
@@ -1585,7 +1585,7 @@ INSERT {
             <a data-cite="SPARQL11-QUERY#rRDFLiteral">RDFLiteral</a> `|`
             <a data-cite="SPARQL11-QUERY#rNumericLiteral">NumericLiteral</a> `|`
             <a data-cite="SPARQL11-QUERY#rBooleanLiteral">BooleanLiteral</a> `|`
-            <a href="#rEmbTP">EmbTP</a>
+            <a href="#rQuotedTP">QuotedTP</a>
           </td>
         </tr>
         <tr id="rDataValueTerm">
@@ -1597,17 +1597,17 @@ INSERT {
             <a data-cite="SPARQL11-QUERY#rRDFLiteral">RDFLiteral</a> `|`
             <a data-cite="SPARQL11-QUERY#rNumericLiteral">NumericLiteral</a> `|`
             <a data-cite="SPARQL11-QUERY#rBooleanLiteral">BooleanLiteral</a> `|`
-            <a href="#rEmbTriple">EmbTriple</a>
+            <a href="#rQuotedTriple">QuotedTriple</a>
           </td>
         </tr>
-        <tr id="rVarOrTermOrEmbTP">
+        <tr id="rVarOrTermOrQuotedTP">
           <td>[178]</td>
-          <td style="font-weight: bold">`VarOrTermOrEmbTP`</td>
+          <td style="font-weight: bold">`VarOrTermOrQuotedTP`</td>
           <td style="font-weight: bold">::=</td>
           <td style="font-weight: bold">
             <a data-cite="SPARQL11-QUERY#rVar">Var</a> `|`
             <a data-cite="SPARQL11-QUERY#rGraphTerm">GraphTerm</a> `|`
-            <a href="#rEmbTP">EmbTP</a>
+            <a href="#rQuotedTP">QuotedTP</a>
           </td>
         </tr>
         <tr id="rAnnotationPattern">
@@ -1630,9 +1630,9 @@ INSERT {
             <code class="token">'|}'</code>
           </td>
         </tr>
-        <tr id="rExprEmbTP">
+        <tr id="rExprQuotedTP">
           <td>[181]</td>
-          <td style="font-weight: bold">`ExprEmbTP`</td>
+          <td style="font-weight: bold">`ExprQuotedTP`</td>
           <td style="font-weight: bold">::=</td>
           <td style="font-weight: bold">
             <code class="token">'&lt;&lt;'</code>
@@ -1652,14 +1652,14 @@ INSERT {
             <a data-cite="SPARQL11-QUERY#rNumericLiteral">NumericLiteral</a> `|`
             <a data-cite="SPARQL11-QUERY#rBooleanLiteral">BooleanLiteral</a> `|`
             <a data-cite="SPARQL11-QUERY#rVar">Var</a> `|`
-	          <a href="#rExprEmbTP">ExprEmbTP</a>
+	          <a href="#rExprQuotedTP">ExprQuotedTP</a>
           </td>
         </tr>
       </table>
 
       <p>
         This introduces a notation for <dfn>quoted triple patterns</dfn>
-        (production <a href="#rEmbTP">[174]</a>),
+        (production <a href="#rQuotedTP">[174]</a>),
         which is similar to the one defined for <a>quoted triples</a> in <a href="#turtle-star"></a>,
         but accepting also <a>variables</a>.
         These quoted triple patterns are allowed in both the subject position (<a href="#rTriplesSameSubject">[75]</a>, <a href="#rTriplesSameSubjectPath">[81]</a>) and the object position (<a href="#rObject">[80]</a>, <a href="#rObjectPath">[87]</a>)
@@ -1963,7 +1963,7 @@ respectively).</p>
           <code style="color:black;font-weight:bold">&gt;&gt;</code>
         </p>
         <p>
-          A <a href="#rExprEmbTP">Quoted Triple Expression</a>
+          A <a href="#rExprQuotedTP">Quoted Triple Expression</a>
           <code>&lt;&lt;S P O&gt;&gt;</code>, where <code>S</code>, 
           <code>P</code> and <code>O</code> conform to
           <a href="#rExprVarOrTerm">ExprVarOrTerm</a>,

@@ -77,19 +77,19 @@
       "@id": "trs:ntriples-star-1",
       "@type": "rdft:TestNTriplesPositiveSyntax",
       "action": "ntriples-star-syntax-1.nt",
-      "name": "N-Triples-star - subject embedded triple"
+      "name": "N-Triples-star - subject quoted triple"
     },
     {
       "@id": "trs:ntriples-star-2",
       "@type": "rdft:TestNTriplesPositiveSyntax",
       "action": "ntriples-star-syntax-2.nt",
-      "name": "N-Triples-star - object embedded triple"
+      "name": "N-Triples-star - object quoted triple"
     },
     {
       "@id": "trs:ntriples-star-3",
       "@type": "rdft:TestNTriplesPositiveSyntax",
       "action": "ntriples-star-syntax-3.nt",
-      "name": "N-Triples-star - subject and object embedded triples"
+      "name": "N-Triples-star - subject and object quoted triples"
     },
     {
       "@id": "trs:ntriples-star-4",
@@ -131,25 +131,25 @@
       "@id": "trs:ntriples-star-bad-1",
       "@type": "rdft:TestNTriplesNegativeSyntax",
       "action": "ntriples-star-bad-syntax-1.nt",
-      "name": "N-Triples-star - Bad - embedded triple as predicate"
+      "name": "N-Triples-star - Bad - quoted triple as predicate"
     },
     {
       "@id": "trs:ntriples-star-bad-2",
       "@type": "rdft:TestNTriplesNegativeSyntax",
       "action": "ntriples-star-bad-syntax-2.nt",
-      "name": "N-Triples-star - Bad - embedded triple, literal subject"
+      "name": "N-Triples-star - Bad - quoted triple, literal subject"
     },
     {
       "@id": "trs:ntriples-star-bad-3",
       "@type": "rdft:TestNTriplesNegativeSyntax",
       "action": "ntriples-star-bad-syntax-3.nt",
-      "name": "N-Triples-star - Bad - embedded triple, literal predicate"
+      "name": "N-Triples-star - Bad - quoted triple, literal predicate"
     },
     {
       "@id": "trs:ntriples-star-bad-4",
       "@type": "rdft:TestNTriplesNegativeSyntax",
       "action": "ntriples-star-bad-syntax-4.nt",
-      "name": "N-Triples-star - Bad - embedded triple, blank node predicate"
+      "name": "N-Triples-star - Bad - quoted triple, blank node predicate"
     }
   ]
 }

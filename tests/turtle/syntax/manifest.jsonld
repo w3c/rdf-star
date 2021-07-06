@@ -77,37 +77,37 @@
       "@id": "trs:turtle-star-1",
       "@type": "TestTurtlePositiveSyntax",
       "action": "turtle-star-syntax-basic-01.ttl",
-      "name": "Turtle-star - subject embedded triple"
+      "name": "Turtle-star - subject quoted triple"
     },
     {
       "@id": "trs:turtle-star-2",
       "@type": "TestTurtlePositiveSyntax",
       "action": "turtle-star-syntax-basic-02.ttl",
-      "name": "Turtle-star - object embedded triple"
+      "name": "Turtle-star - object quoted triple"
     },
     {
       "@id": "trs:turtle-star-inside-1",
       "@type": "TestTurtlePositiveSyntax",
       "action": "turtle-star-syntax-inside-01.ttl",
-      "name": "Turtle-star - embedded triple inside blankNodePropertyList"
+      "name": "Turtle-star - quoted triple inside blankNodePropertyList"
     },
     {
       "@id": "trs:turtle-star-inside-2",
       "@type": "TestTurtlePositiveSyntax",
       "action": "turtle-star-syntax-inside-02.ttl",
-      "name": "Turtle-star - embedded triple inside collection"
+      "name": "Turtle-star - quoted triple inside collection"
     },
     {
       "@id": "trs:turtle-star-nested-1",
       "@type": "TestTurtlePositiveSyntax",
       "action": "turtle-star-syntax-nested-01.ttl",
-      "name": "Turtle-star - nested embedded triple, subject position"
+      "name": "Turtle-star - nested quoted triple, subject position"
     },
     {
       "@id": "trs:turtle-star-nested-2",
       "@type": "TestTurtlePositiveSyntax",
       "action": "turtle-star-syntax-nested-02.ttl",
-      "name": "Turtle-star - nested embedded triple, object position"
+      "name": "Turtle-star - nested quoted triple, object position"
     },
     {
       "@id": "trs:turtle-star-compound-1",
@@ -137,31 +137,31 @@
       "@id": "trs:turtle-star-bad-1",
       "@type": "TestTurtleNegativeSyntax",
       "action": "turtle-star-syntax-bad-01.ttl",
-      "name": "Turtle-star - bad - embedded triple as predicate"
+      "name": "Turtle-star - bad - quoted triple as predicate"
     },
     {
       "@id": "trs:turtle-star-bad-2",
       "@type": "TestTurtleNegativeSyntax",
       "action": "turtle-star-syntax-bad-02.ttl",
-      "name": "Turtle-star - bad - embedded triple outside triple"
+      "name": "Turtle-star - bad - quoted triple outside triple"
     },
     {
       "@id": "trs:turtle-star-bad-3",
       "@type": "TestTurtleNegativeSyntax",
       "action": "turtle-star-syntax-bad-03.ttl",
-      "name": "Turtle-star - bad - collection list in embedded triple"
+      "name": "Turtle-star - bad - collection list in quoted triple"
     },
     {
       "@id": "trs:turtle-star-bad-4",
       "@type": "TestTurtleNegativeSyntax",
       "action": "turtle-star-syntax-bad-04.ttl",
-      "name": "Turtle-star - bad - literal in subject position of embedded triple"
+      "name": "Turtle-star - bad - literal in subject position of quoted triple"
     },
     {
       "@id": "trs:turtle-star-bad-5",
       "@type": "TestTurtleNegativeSyntax",
       "action": "turtle-star-syntax-bad-05.ttl",
-      "name": "Turtle-star - bad - blank node  as predicate in embedded triple"
+      "name": "Turtle-star - bad - blank node  as predicate in quoted triple"
     },
     {
       "@id": "trs:turtle-star-bad-6",
@@ -173,13 +173,13 @@
       "@id": "trs:turtle-star-bad-7",
       "@type": "TestTurtleNegativeSyntax",
       "action": "turtle-star-syntax-bad-07.ttl",
-      "name": "Turtle-star - bad - incomplete embedded triple"
+      "name": "Turtle-star - bad - incomplete quoted triple"
     },
     {
       "@id": "trs:turtle-star-bad-8",
       "@type": "TestTurtleNegativeSyntax",
       "action": "turtle-star-syntax-bad-08.ttl",
-      "name": "Turtle-star - bad - over-long embedded triple"
+      "name": "Turtle-star - bad - over-long quoted triple"
     },
     {
       "@id": "trs:turtle-star-ann-1",
@@ -209,19 +209,19 @@
       "@id": "trs:nt-ttl-star-1",
       "@type": "TestTurtlePositiveSyntax",
       "action": "nt-ttl-star-syntax-1.ttl",
-      "name": "N-Triples-star as Turtle-star - subject embedded triple"
+      "name": "N-Triples-star as Turtle-star - subject quoted triple"
     },
     {
       "@id": "trs:nt-ttl-star-2",
       "@type": "TestTurtlePositiveSyntax",
       "action": "nt-ttl-star-syntax-2.ttl",
-      "name": "N-Triples-star as Turtle-star - object embedded triple"
+      "name": "N-Triples-star as Turtle-star - object quoted triple"
     },
     {
       "@id": "trs:nt-ttl-star-3",
       "@type": "TestTurtlePositiveSyntax",
       "action": "nt-ttl-star-syntax-3.ttl",
-      "name": "N-Triples-star as Turtle-star - subject and object embedded triples"
+      "name": "N-Triples-star as Turtle-star - subject and object quoted triples"
     },
     {
       "@id": "trs:nt-ttl-star-4",
@@ -263,25 +263,25 @@
       "@id": "trs:nt-ttl-star-bad-1",
       "@type": "TestTurtleNegativeSyntax",
       "action": "nt-ttl-star-bad-syntax-1.ttl",
-      "name": "N-Triples-star as Turtle-star - Bad - embedded triple as predicate"
+      "name": "N-Triples-star as Turtle-star - Bad - quoted triple as predicate"
     },
     {
       "@id": "trs:nt-ttl-star-bad-2",
       "@type": "TestTurtleNegativeSyntax",
       "action": "nt-ttl-star-bad-syntax-2.ttl",
-      "name": "N-Triples-star as Turtle-star - Bad - embedded triple, literal subject"
+      "name": "N-Triples-star as Turtle-star - Bad - quoted triple, literal subject"
     },
     {
       "@id": "trs:nt-ttl-star-bad-3",
       "@type": "TestTurtleNegativeSyntax",
       "action": "nt-ttl-star-bad-syntax-3.ttl",
-      "name": "N-Triples-star as Turtle-star - Bad - embedded triple, literal predicate"
+      "name": "N-Triples-star as Turtle-star - Bad - quoted triple, literal predicate"
     },
     {
       "@id": "trs:nt-ttl-star-bad-4",
       "@type": "TestTurtleNegativeSyntax",
       "action": "nt-ttl-star-bad-syntax-4.ttl",
-      "name": "N-Triples-star as Turtle-star - Bad - embedded triple, blank node predicate"
+      "name": "N-Triples-star as Turtle-star - Bad - quoted triple, blank node predicate"
     }
   ]
 }

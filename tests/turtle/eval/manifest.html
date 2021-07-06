@@ -56,8 +56,8 @@
 <h1>manifest</h1>
 <p>Generated from <a href="manifest.jsonld">manifest.jsonld</a></p><p><strong>Entries:</strong></p>
 <ul class="entries">
-<li class="proposed"><a href="#turtle-star-1">Turtle-star - subject embedded triple</a>
-<li class="proposed"><a href="#turtle-star-2">Turtle-star - object embedded triple</a>
+<li class="proposed"><a href="#turtle-star-1">Turtle-star - subject quoted triple</a>
+<li class="proposed"><a href="#turtle-star-2">Turtle-star - object quoted triple</a>
 <li class="proposed"><a href="#turtle-star-bnode-1">Turtle-star - blank node label</a>
 <li class="proposed"><a href="#turtle-star-bnode-2">Turtle-star - blank node labels</a>
 <li class="proposed"><a href="#turtle-star-annotation-1">Turtle-star - Annotation form</a>
@@ -65,12 +65,12 @@
 <li class="proposed"><a href="#turtle-star-annotation-3">Turtle-star - Annotation - predicate and object lists</a>
 <li class="proposed"><a href="#turtle-star-annotation-4">Turtle-star - Annotation - nested</a>
 <li class="proposed"><a href="#turtle-star-annotation-5">Turtle-star - Annotation object list</a>
-<li class="proposed"><a href="#turtle-star-embed-annotation-1">Turtle-star - Annotation with embedding</a>
-<li class="proposed"><a href="#turtle-star-embed-annotation-2">Turtle-star - Annotation on triple with embedded subject</a>
-<li class="proposed"><a href="#turtle-star-embed-annotation-3">Turtle-star - Annotation on triple with embedded object</a>
+<li class="proposed"><a href="#turtle-star-quoted-annotation-1">Turtle-star - Annotation with quoting</a>
+<li class="proposed"><a href="#turtle-star-quoted-annotation-2">Turtle-star - Annotation on triple with quoted subject</a>
+<li class="proposed"><a href="#turtle-star-quoted-annotation-3">Turtle-star - Annotation on triple with quoted object</a>
 </ul>
 <section id="turtle-star-1" class="entry proposed rdft:TestTurtleEval">
-<h2>Turtle-star - subject embedded triple <a href="#turtle-star-1">🔗</a></h2>
+<h2>Turtle-star - subject quoted triple <a href="#turtle-star-1">🔗</a></h2>
 <table class="properties">
 <tr class="status"><th>status:</th><td>proposed</td>
 <tr class="type"><th>type:</th><td>rdft:TestTurtleEval</td>
@@ -87,7 +87,7 @@ PREFIX : &lt;http://example/&gt;
 &lt;&lt; &lt;http://example/s&gt; &lt;http://example/p&gt; &lt;http://example/o&gt; &gt;&gt; &lt;http://example/q&gt; &lt;http://example/z&gt; .
 </pre>
 </section><section id="turtle-star-2" class="entry proposed rdft:TestTurtleEval">
-<h2>Turtle-star - object embedded triple <a href="#turtle-star-2">🔗</a></h2>
+<h2>Turtle-star - object quoted triple <a href="#turtle-star-2">🔗</a></h2>
 <table class="properties">
 <tr class="status"><th>status:</th><td>proposed</td>
 <tr class="type"><th>type:</th><td>rdft:TestTurtleEval</td>
@@ -252,56 +252,56 @@ PREFIX : &lt;http://example/&gt;
 &lt;http://example/s&gt; &lt;http://example/p&gt; &lt;http://example/o2&gt; .
 &lt;&lt; &lt;http://example/s&gt; &lt;http://example/p&gt; &lt;http://example/o2&gt; &gt;&gt; &lt;http://example/a&gt; &lt;http://example/b&gt; .
 </pre>
-</section><section id="turtle-star-embed-annotation-1" class="entry proposed rdft:TestTurtleEval">
-<h2>Turtle-star - Annotation with embedding <a href="#turtle-star-embed-annotation-1">🔗</a></h2>
+</section><section id="turtle-star-quoted-annotation-1" class="entry proposed rdft:TestTurtleEval">
+<h2>Turtle-star - Annotation with quoting <a href="#turtle-star-quoted-annotation-1">🔗</a></h2>
 <table class="properties">
 <tr class="status"><th>status:</th><td>proposed</td>
 <tr class="type"><th>type:</th><td>rdft:TestTurtleEval</td>
 </table>
-<div><code><a href="turtle-star-eval-embed-annotation-1.ttl">turtle-star-eval-embed-annotation-1.ttl</a></code></div>
+<div><code><a href="turtle-star-eval-quoted-annotation-1.ttl">turtle-star-eval-quoted-annotation-1.ttl</a></code></div>
 <pre>
 PREFIX : &lt;http://example/&gt;
 
 :s :p :o {| :r &lt;&lt;:s1 :p1 :o1&gt;&gt; |} .
 </pre>
 <div>MUST result into</div>
-<div><code><a href="turtle-star-eval-embed-annotation-1.nt">turtle-star-eval-embed-annotation-1.nt</a></code></div>
+<div><code><a href="turtle-star-eval-quoted-annotation-1.nt">turtle-star-eval-quoted-annotation-1.nt</a></code></div>
 <pre class="result">
 &lt;http://example/s&gt; &lt;http://example/p&gt; &lt;http://example/o&gt; .
 &lt;&lt;&lt;http://example/s&gt; &lt;http://example/p&gt; &lt;http://example/o&gt;&gt;&gt; &lt;http://example/r&gt; &lt;&lt;&lt;http://example/s1&gt; &lt;http://example/p1&gt; &lt;http://example/o1&gt;&gt;&gt; .
 </pre>
-</section><section id="turtle-star-embed-annotation-2" class="entry proposed rdft:TestTurtleEval">
-<h2>Turtle-star - Annotation on triple with embedded subject <a href="#turtle-star-embed-annotation-2">🔗</a></h2>
+</section><section id="turtle-star-quoted-annotation-2" class="entry proposed rdft:TestTurtleEval">
+<h2>Turtle-star - Annotation on triple with quoted subject <a href="#turtle-star-quoted-annotation-2">🔗</a></h2>
 <table class="properties">
 <tr class="status"><th>status:</th><td>proposed</td>
 <tr class="type"><th>type:</th><td>rdft:TestTurtleEval</td>
 </table>
-<div><code><a href="turtle-star-eval-embed-annotation-2.ttl">turtle-star-eval-embed-annotation-2.ttl</a></code></div>
+<div><code><a href="turtle-star-eval-quoted-annotation-2.ttl">turtle-star-eval-quoted-annotation-2.ttl</a></code></div>
 <pre>
 PREFIX : &lt;http://example/&gt;
 
 &lt;&lt;:s1 :p1 :o1&gt;&gt; :p :o {| :r :z |} .
 </pre>
 <div>MUST result into</div>
-<div><code><a href="turtle-star-eval-embed-annotation-2.nt">turtle-star-eval-embed-annotation-2.nt</a></code></div>
+<div><code><a href="turtle-star-eval-quoted-annotation-2.nt">turtle-star-eval-quoted-annotation-2.nt</a></code></div>
 <pre class="result">
 &lt;&lt;&lt;http://example/s1&gt; &lt;http://example/p1&gt; &lt;http://example/o1&gt;&gt;&gt; &lt;http://example/p&gt; &lt;http://example/o&gt; .
 &lt;&lt;&lt;&lt;&lt;http://example/s1&gt; &lt;http://example/p1&gt; &lt;http://example/o1&gt;&gt;&gt; &lt;http://example/p&gt; &lt;http://example/o&gt;&gt;&gt; &lt;http://example/r&gt; &lt;http://example/z&gt; .
 </pre>
-</section><section id="turtle-star-embed-annotation-3" class="entry proposed rdft:TestTurtleEval">
-<h2>Turtle-star - Annotation on triple with embedded object <a href="#turtle-star-embed-annotation-3">🔗</a></h2>
+</section><section id="turtle-star-quoted-annotation-3" class="entry proposed rdft:TestTurtleEval">
+<h2>Turtle-star - Annotation on triple with quoted object <a href="#turtle-star-quoted-annotation-3">🔗</a></h2>
 <table class="properties">
 <tr class="status"><th>status:</th><td>proposed</td>
 <tr class="type"><th>type:</th><td>rdft:TestTurtleEval</td>
 </table>
-<div><code><a href="turtle-star-eval-embed-annotation-3.ttl">turtle-star-eval-embed-annotation-3.ttl</a></code></div>
+<div><code><a href="turtle-star-eval-quoted-annotation-3.ttl">turtle-star-eval-quoted-annotation-3.ttl</a></code></div>
 <pre>
 PREFIX : &lt;http://example/&gt;
 
 :s :p &lt;&lt;:s2 :p2 :o2&gt;&gt; {| :r :z |} .
 </pre>
 <div>MUST result into</div>
-<div><code><a href="turtle-star-eval-embed-annotation-3.nt">turtle-star-eval-embed-annotation-3.nt</a></code></div>
+<div><code><a href="turtle-star-eval-quoted-annotation-3.nt">turtle-star-eval-quoted-annotation-3.nt</a></code></div>
 <pre class="result">
 &lt;http://example/s&gt; &lt;http://example/p&gt; &lt;&lt;&lt;http://example/s2&gt; &lt;http://example/p2&gt; &lt;http://example/o2&gt;&gt;&gt; .
 &lt;&lt;&lt;http://example/s&gt; &lt;http://example/p&gt; &lt;&lt;&lt;http://example/s2&gt; &lt;http://example/p2&gt; &lt;http://example/o2&gt;&gt;&gt;&gt;&gt; &lt;http://example/r&gt; &lt;http://example/z&gt; .

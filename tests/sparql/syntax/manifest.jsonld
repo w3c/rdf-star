@@ -77,25 +77,25 @@
       "@id": "trs:sparql-star-1",
       "@type": "PositiveSyntaxTest11",
       "action": "sparql-star-syntax-basic-01.rq",
-      "name": "SPARQL-star - subject embedded triple"
+      "name": "SPARQL-star - subject quoted triple"
     },
     {
       "@id": "trs:sparql-star-2",
       "@type": "PositiveSyntaxTest11",
       "action": "sparql-star-syntax-basic-02.rq",
-      "name": "SPARQL-star - object embedded triple"
+      "name": "SPARQL-star - object quoted triple"
     },
     {
       "@id": "trs:sparql-star-3",
       "@type": "PositiveSyntaxTest11",
       "action": "sparql-star-syntax-basic-03.rq",
-      "name": "SPARQL-star - subject embedded triple - vars"
+      "name": "SPARQL-star - subject quoted triple - vars"
     },
     {
       "@id": "trs:sparql-star-4",
       "@type": "PositiveSyntaxTest11",
       "action": "sparql-star-syntax-basic-04.rq",
-      "name": "SPARQL-star - object embedded triple - vars"
+      "name": "SPARQL-star - object quoted triple - vars"
     },
     {
       "@id": "trs:sparql-star-5",
@@ -119,25 +119,25 @@
       "@id": "trs:sparql-star-inside-1",
       "@type": "PositiveSyntaxTest11",
       "action": "sparql-star-syntax-inside-01.rq",
-      "name": "SPARQL-star - embedded triple inside blankNodePropertyList"
+      "name": "SPARQL-star - quoted triple inside blankNodePropertyList"
     },
     {
       "@id": "trs:sparql-star-inside-2",
       "@type": "PositiveSyntaxTest11",
       "action": "sparql-star-syntax-inside-02.rq",
-      "name": "SPARQL-star - embedded triple inside collection"
+      "name": "SPARQL-star - quoted triple inside collection"
     },
     {
       "@id": "trs:sparql-star-nested-1",
       "@type": "PositiveSyntaxTest11",
       "action": "sparql-star-syntax-nested-01.rq",
-      "name": "SPARQL-star - nested embedded triple, subject position"
+      "name": "SPARQL-star - nested quoted triple, subject position"
     },
     {
       "@id": "trs:sparql-star-nested-2",
       "@type": "PositiveSyntaxTest11",
       "action": "sparql-star-syntax-nested-02.rq",
-      "name": "SPARQL-star - nested embedded triple, object position"
+      "name": "SPARQL-star - nested quoted triple, object position"
     },
     {
       "@id": "trs:sparql-star-compound-1",
@@ -185,13 +185,13 @@
       "@id": "trs:sparql-star-ann-04",
       "@type": "PositiveSyntaxTest11",
       "action": "sparql-star-annotation-04.rq",
-      "name": "SPARQL-star - Annotation with embedding"
+      "name": "SPARQL-star - Annotation with quoting"
     },
     {
       "@id": "trs:sparql-star-ann-05",
       "@type": "PositiveSyntaxTest11",
       "action": "sparql-star-annotation-05.rq",
-      "name": "SPARQL-star - Annotation on triple with embedded object"
+      "name": "SPARQL-star - Annotation on triple with quoted object"
     },
     {
       "@id": "trs:sparql-star-ann-06",
@@ -257,31 +257,31 @@
       "@id": "trs:sparql-star-bad-1",
       "@type": "NegativeSyntaxTest11",
       "action": "sparql-star-syntax-bad-01.rq",
-      "name": "SPARQL-star - bad - embedded triple as predicate"
+      "name": "SPARQL-star - bad - quoted triple as predicate"
     },
     {
       "@id": "trs:sparql-star-bad-2",
       "@type": "NegativeSyntaxTest11",
       "action": "sparql-star-syntax-bad-02.rq",
-      "name": "SPARQL-star - bad - embedded triple outside triple"
+      "name": "SPARQL-star - bad - quoted triple outside triple"
     },
     {
       "@id": "trs:sparql-star-bad-3",
       "@type": "NegativeSyntaxTest11",
       "action": "sparql-star-syntax-bad-03.rq",
-      "name": "SPARQL-star - bad - collection list in embedded triple"
+      "name": "SPARQL-star - bad - collection list in quoted triple"
     },
     {
       "@id": "trs:sparql-star-bad-4",
       "@type": "NegativeSyntaxTest11",
       "action": "sparql-star-syntax-bad-04.rq",
-      "name": "SPARQL-star - bad - literal in subject position of embedded triple"
+      "name": "SPARQL-star - bad - literal in subject position of quoted triple"
     },
     {
       "@id": "trs:sparql-star-bad-5",
       "@type": "NegativeSyntaxTest11",
       "action": "sparql-star-syntax-bad-05.rq",
-      "name": "SPARQL-star - bad - blank node  as predicate in embedded triple"
+      "name": "SPARQL-star - bad - blank node  as predicate in quoted triple"
     },
     {
       "@id": "trs:sparql-star-bad-6",
@@ -293,37 +293,37 @@
       "@id": "trs:sparql-star-bad-7",
       "@type": "NegativeSyntaxTest11",
       "action": "sparql-star-syntax-bad-07.rq",
-      "name": "SPARQL-star - bad - incomplete embedded triple"
+      "name": "SPARQL-star - bad - incomplete quoted triple"
     },
     {
       "@id": "trs:sparql-star-bad-8",
       "@type": "NegativeSyntaxTest11",
       "action": "sparql-star-syntax-bad-08.rq",
-      "name": "SPARQL-star - bad - quad embedded triple"
+      "name": "SPARQL-star - bad - quad quoted triple"
     },
     {
       "@id": "trs:sparql-star-bad-9",
       "@type": "NegativeSyntaxTest11",
       "action": "sparql-star-syntax-bad-09.rq",
-      "name": "SPARQL-star - bad - variable in embedded triple in VALUES "
+      "name": "SPARQL-star - bad - variable in quoted triple in VALUES "
     },
     {
       "@id": "trs:sparql-star-bad-10",
       "@type": "NegativeSyntaxTest11",
       "action": "sparql-star-syntax-bad-10.rq",
-      "name": "SPARQL-star - bad - blank node in embedded triple in VALUES "
+      "name": "SPARQL-star - bad - blank node in quoted triple in VALUES "
     },
     {
       "@id": "trs:sparql-star-bad-11",
       "@type": "NegativeSyntaxTest11",
       "action": "sparql-star-syntax-bad-11.rq",
-      "name": "SPARQL-star - bad - blank node in embedded triple in FILTER"
+      "name": "SPARQL-star - bad - blank node in quoted triple in FILTER"
     },
     {
       "@id": "trs:sparql-star-bad-12",
       "@type": "NegativeSyntaxTest11",
       "action": "sparql-star-syntax-bad-12.rq",
-      "name": "SPARQL-star - bad - blank node in embedded triple in BIND"
+      "name": "SPARQL-star - bad - blank node in quoted triple in BIND"
     },
     {
       "@id": "trs:sparql-star-bad-ann-1",
@@ -401,13 +401,13 @@
       "@id": "trs:sparql-star-update-4",
       "@type": "PositiveUpdateSyntaxTest11",
       "action": "sparql-star-syntax-update-4.ru",
-      "name": "SPARQL-star - update with embedding"
+      "name": "SPARQL-star - update with quoting"
     },
     {
       "@id": "trs:sparql-star-update-5",
       "@type": "PositiveUpdateSyntaxTest11",
       "action": "sparql-star-syntax-update-5.ru",
-      "name": "SPARQL-star - update with embedded object"
+      "name": "SPARQL-star - update with quoted object"
     },
     {
       "@id": "trs:sparql-star-update-6",

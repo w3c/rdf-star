@@ -9,17 +9,17 @@ trs:manifest a mf:Manifest;
   rdfs:label "RDF-star Semantics tests";
   rdfs:seeAlso <README>;
   mf:entries (
-    trs:all-identical-embedded-triples-are-the-same
-    trs:embedded-triples-no-spurious
-    trs:bnodes-in-embedded-subject
-    trs:bnodes-in-embedded-object
-    trs:bnodes-in-embedded-subject-and-object
-    trs:bnodes-in-embedded-subject-and-object-fail
-    trs:same-bnode-same-embedded-term
-    trs:different-bnodes-same-embedded-term
-    trs:constrained-bnodes-in-embedded-subject
-    trs:constrained-bnodes-in-embedded-object
-    trs:constrained-bnodes-in-embedded-fail
+    trs:all-identical-quoted-triples-are-the-same
+    trs:quoted-triples-no-spurious
+    trs:bnodes-in-quoted-subject
+    trs:bnodes-in-quoted-object
+    trs:bnodes-in-quoted-subject-and-object
+    trs:bnodes-in-quoted-subject-and-object-fail
+    trs:same-bnode-same-quoted-term
+    trs:different-bnodes-same-quoted-term
+    trs:constrained-bnodes-in-quoted-subject
+    trs:constrained-bnodes-in-quoted-object
+    trs:constrained-bnodes-in-quoted-fail
     trs:constrained-bnodes-on-literal
     trs:malformed-literal-control
     trs:malformed-literal
@@ -32,17 +32,17 @@ trs:manifest a mf:Manifest;
     trs:opaque-language-string
     trs:opaque-iri-control
     trs:opaque-iri
-    trs:embedded-not-asserted
+    trs:quoted-not-asserted
     trs:annotated-asserted
     trs:annotation
     trs:annotation-unfolded
   ) .
 
-trs:all-identical-embedded-triples-are-the-same a mf:PositiveEntailmentTest;
-  rdfs:comment "Multiple occurences of the same embedded triples are undistinguishable in the abstract model.";
+trs:all-identical-quoted-triples-are-the-same a mf:PositiveEntailmentTest;
+  rdfs:comment "Multiple occurences of the same quoted triples are undistinguishable in the abstract model.";
   mf:action <test001a.ttl>;
   mf:entailmentRegime "simple";
-  mf:name "all-identical-embedded-triples-are-the-same";
+  mf:name "all-identical-quoted-triples-are-the-same";
   mf:recognizedDatatypes ();
   mf:result <test001r.ttl>;
   mf:unrecognizedDatatypes ();
@@ -78,78 +78,78 @@ trs:annotation-unfolded a mf:PositiveEntailmentTest;
   mf:unrecognizedDatatypes ();
   test:approval test:NotClassified .
 
-trs:bnodes-in-embedded-object a mf:PositiveEntailmentTest;
-  rdfs:comment "Terms in embedded triples can be replaced by fresh bnodes.";
+trs:bnodes-in-quoted-object a mf:PositiveEntailmentTest;
+  rdfs:comment "Terms in quoted triples can be replaced by fresh bnodes.";
   mf:action <test002a.ttl>;
   mf:entailmentRegime "simple";
-  mf:name "bnodes-in-embedded-object";
+  mf:name "bnodes-in-quoted-object";
   mf:recognizedDatatypes ();
   mf:result <test002or.ttl>;
   mf:unrecognizedDatatypes ();
   test:approval test:NotClassified .
 
-trs:bnodes-in-embedded-subject a mf:PositiveEntailmentTest;
-  rdfs:comment "Terms in embedded triples can be replaced by fresh bnodes.";
+trs:bnodes-in-quoted-subject a mf:PositiveEntailmentTest;
+  rdfs:comment "Terms in quoted triples can be replaced by fresh bnodes.";
   mf:action <test002a.ttl>;
   mf:entailmentRegime "simple";
-  mf:name "bnodes-in-embedded-subject";
+  mf:name "bnodes-in-quoted-subject";
   mf:recognizedDatatypes ();
   mf:result <test002sr.ttl>;
   mf:unrecognizedDatatypes ();
   test:approval test:NotClassified .
 
-trs:bnodes-in-embedded-subject-and-object a mf:PositiveEntailmentTest;
-  rdfs:comment "Terms in embedded triples can be replaced by fresh bnodes.";
+trs:bnodes-in-quoted-subject-and-object a mf:PositiveEntailmentTest;
+  rdfs:comment "Terms in quoted triples can be replaced by fresh bnodes.";
   mf:action <test002a.ttl>;
   mf:entailmentRegime "simple";
-  mf:name "bnodes-in-embedded-subject-and-object";
+  mf:name "bnodes-in-quoted-subject-and-object";
   mf:recognizedDatatypes ();
   mf:result <test002sor.ttl>;
   mf:unrecognizedDatatypes ();
   test:approval test:NotClassified .
 
-trs:bnodes-in-embedded-subject-and-object-fail a mf:NegativeEntailmentTest;
-  rdfs:comment "The same bnode can not match different embedded terms.";
+trs:bnodes-in-quoted-subject-and-object-fail a mf:NegativeEntailmentTest;
+  rdfs:comment "The same bnode can not match different quoted terms.";
   mf:action <test002a.ttl>;
   mf:entailmentRegime "simple";
-  mf:name "bnodes-in-embedded-subject-and-object-fail";
+  mf:name "bnodes-in-quoted-subject-and-object-fail";
   mf:recognizedDatatypes ();
   mf:result <test002sbr.ttl>;
   mf:unrecognizedDatatypes ();
   test:approval test:NotClassified .
 
-trs:constrained-bnodes-in-embedded-fail a mf:NegativeEntailmentTest;
-  rdfs:comment "Embedded bnode identifiers share the same scope as non-embedded ones. A bnode occuring both in embedded triples and in asserted triples must statisfy them all at the same time.";
+trs:constrained-bnodes-in-quoted-fail a mf:NegativeEntailmentTest;
+  rdfs:comment "Embedded bnode identifiers share the same scope as non-quoted ones. A bnode occuring both in quoted triples and in asserted triples must statisfy them all at the same time.";
   mf:action <test004a.ttl>;
   mf:entailmentRegime "simple";
-  mf:name "constrained-bnodes-in-embedded-fail";
+  mf:name "constrained-bnodes-in-quoted-fail";
   mf:recognizedDatatypes ();
   mf:result <test004fr.ttl>;
   mf:unrecognizedDatatypes ();
   test:approval test:NotClassified .
 
-trs:constrained-bnodes-in-embedded-object a mf:PositiveEntailmentTest;
-  rdfs:comment "Terms in embedded triples and outside can be replaced by fresh bnodes.";
+trs:constrained-bnodes-in-quoted-object a mf:PositiveEntailmentTest;
+  rdfs:comment "Terms in quoted triples and outside can be replaced by fresh bnodes.";
   mf:action <test004a.ttl>;
   mf:entailmentRegime "simple";
-  mf:name "constrained-bnodes-in-embedded-object";
+  mf:name "constrained-bnodes-in-quoted-object";
   mf:recognizedDatatypes ();
   mf:result <test004or.ttl>;
   mf:unrecognizedDatatypes ();
   test:approval test:NotClassified .
 
-trs:constrained-bnodes-in-embedded-subject a mf:PositiveEntailmentTest;
-  rdfs:comment "Terms in embedded triples and outside can be replaced by fresh bnodes";
+trs:constrained-bnodes-in-quoted-subject a mf:PositiveEntailmentTest;
+  rdfs:comment "Terms in quoted triples and outside can be replaced by fresh bnodes";
   mf:action <test004a.ttl>;
   mf:entailmentRegime "simple";
-  mf:name "constrained-bnodes-in-embedded-subject";
+  mf:name "constrained-bnodes-in-quoted-subject";
   mf:recognizedDatatypes ();
   mf:result <test004sr.ttl>;
   mf:unrecognizedDatatypes ();
   test:approval test:NotClassified .
 
 trs:constrained-bnodes-on-literal a mf:PositiveEntailmentTest;
-  rdfs:comment "Literals in embedded triples and outside can be replaced by fresh bnodes.";
+  rdfs:comment "Literals in quoted triples and outside can be replaced by fresh bnodes.";
   mf:action <test006a.ttl>;
   mf:entailmentRegime "simple";
   mf:name "constrained-bnodes-on-literal";
@@ -158,38 +158,38 @@ trs:constrained-bnodes-on-literal a mf:PositiveEntailmentTest;
   mf:unrecognizedDatatypes ();
   test:approval test:NotClassified .
 
-trs:different-bnodes-same-embedded-term a mf:PositiveEntailmentTest;
-  rdfs:comment "Different bnodes can match identical embedded terms.";
+trs:different-bnodes-same-quoted-term a mf:PositiveEntailmentTest;
+  rdfs:comment "Different bnodes can match identical quoted terms.";
   mf:action <test003a.ttl>;
   mf:entailmentRegime "simple";
-  mf:name "different-bnodes-same-embedded-term";
+  mf:name "different-bnodes-same-quoted-term";
   mf:recognizedDatatypes ();
   mf:result <test002sor.ttl>;
   mf:unrecognizedDatatypes ();
   test:approval test:NotClassified .
 
-trs:embedded-not-asserted a mf:NegativeEntailmentTest;
+trs:quoted-not-asserted a mf:NegativeEntailmentTest;
   rdfs:comment "Embedded triples are not asserted.";
   mf:action <test002a.ttl>;
   mf:entailmentRegime "simple";
-  mf:name "embedded-not-asserted";
+  mf:name "quoted-not-asserted";
   mf:recognizedDatatypes ();
   mf:result <test002pgr.ttl>;
   mf:unrecognizedDatatypes ();
   test:approval test:NotClassified .
 
-trs:embedded-triples-no-spurious a mf:NegativeEntailmentTest;
+trs:quoted-triples-no-spurious a mf:NegativeEntailmentTest;
   rdfs:comment "This test ensures that other entailments are not spurious.";
   mf:action <test002a.ttl>;
   mf:entailmentRegime "simple";
-  mf:name "embedded-triples-no-spurious";
+  mf:name "quoted-triples-no-spurious";
   mf:recognizedDatatypes ();
   mf:result <test005.ttl>;
   mf:unrecognizedDatatypes ();
   test:approval test:NotClassified .
 
 trs:malformed-literal a mf:NegativeEntailmentTest;
-  rdfs:comment "Malformed literals are allowed when embedded.";
+  rdfs:comment "Malformed literals are allowed when quoted.";
   mf:action <malformed-literal.ttl>;
   mf:entailmentRegime "RDF";
   mf:name "malformed-literal";
@@ -199,7 +199,7 @@ trs:malformed-literal a mf:NegativeEntailmentTest;
   test:approval test:NotClassified .
 
 trs:malformed-literal-accepted a mf:PositiveEntailmentTest;
-  rdfs:comment "Malformed literals are allowed when embedded.";
+  rdfs:comment "Malformed literals are allowed when quoted.";
   mf:action <malformed-literal.ttl>;
   mf:entailmentRegime "RDF";
   mf:name "malformed-literal-accepted";
@@ -328,11 +328,11 @@ trs:opaque-literal-control a mf:PositiveEntailmentTest;
   mf:unrecognizedDatatypes ();
   test:approval test:NotClassified .
 
-trs:same-bnode-same-embedded-term a mf:PositiveEntailmentTest;
-  rdfs:comment "Identical embedded term can be replaced by the same fresh bnode multiple times.";
+trs:same-bnode-same-quoted-term a mf:PositiveEntailmentTest;
+  rdfs:comment "Identical quoted term can be replaced by the same fresh bnode multiple times.";
   mf:action <test003a.ttl>;
   mf:entailmentRegime "simple";
-  mf:name "same-bnode-same-embedded-term";
+  mf:name "same-bnode-same-quoted-term";
   mf:recognizedDatatypes ();
   mf:result <test002sbr.ttl>;
   mf:unrecognizedDatatypes ();

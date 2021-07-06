@@ -79,7 +79,7 @@ trs:sparql-star-results-1x rdf:type mf:QueryEvaluationTest ;
     .
 
 trs:sparql-star-basic-2 rdf:type mf:QueryEvaluationTest ;
-    mf:name      "SPARQL-star - match constant embedded triple" ;
+    mf:name      "SPARQL-star - match constant quoted triple" ;
     mf:action [
        qt:query  <sparql-star-basic-2.rq> ;
        qt:data   <data-1.ttl>
@@ -88,7 +88,7 @@ trs:sparql-star-basic-2 rdf:type mf:QueryEvaluationTest ;
     .
 
 trs:sparql-star-basic-3 rdf:type mf:QueryEvaluationTest ;
-    mf:name      "SPARQL-star - match embedded triple, var subject" ;
+    mf:name      "SPARQL-star - match quoted triple, var subject" ;
     mf:action [
        qt:query  <sparql-star-basic-3.rq> ;
        qt:data   <data-1.ttl>
@@ -97,7 +97,7 @@ trs:sparql-star-basic-3 rdf:type mf:QueryEvaluationTest ;
     .
 
 trs:sparql-star-basic-4 rdf:type mf:QueryEvaluationTest ;
-    mf:name      "SPARQL-star - match embedded triple, var predicate" ;
+    mf:name      "SPARQL-star - match quoted triple, var predicate" ;
     mf:action [
        qt:query  <sparql-star-basic-4.rq> ;
        qt:data   <data-1.ttl>
@@ -106,7 +106,7 @@ trs:sparql-star-basic-4 rdf:type mf:QueryEvaluationTest ;
     .
 
 trs:sparql-star-basic-5 rdf:type mf:QueryEvaluationTest ;
-    mf:name      "SPARQL-star - match embedded triple, var object" ;
+    mf:name      "SPARQL-star - match quoted triple, var object" ;
     mf:action [
        qt:query  <sparql-star-basic-5.rq> ;
        qt:data   <data-1.ttl>
@@ -115,7 +115,7 @@ trs:sparql-star-basic-5 rdf:type mf:QueryEvaluationTest ;
     .
 
 trs:sparql-star-basic-6 rdf:type mf:QueryEvaluationTest ;
-    mf:name      "SPARQL-star - no match of embedded triple" ;
+    mf:name      "SPARQL-star - no match of quoted triple" ;
     mf:action [
        qt:query  <sparql-star-basic-6.rq> ;
        qt:data   <data-1.ttl>
@@ -124,7 +124,7 @@ trs:sparql-star-basic-6 rdf:type mf:QueryEvaluationTest ;
     .
 
 trs:sparql-star-pattern-1 rdf:type mf:QueryEvaluationTest ;
-    mf:name    "SPARQL-star - Asserted and embedded triple" ;
+    mf:name    "SPARQL-star - Asserted and quoted triple" ;
     mf:action
         [ qt:query  <sparql-star-pattern-01.rq> ;
           qt:data   <data-2.ttl> ] ;
@@ -132,7 +132,7 @@ trs:sparql-star-pattern-1 rdf:type mf:QueryEvaluationTest ;
     .
 
 trs:sparql-star-pattern-2 rdf:type mf:QueryEvaluationTest ;
-    mf:name    "SPARQL-star -  Asserted and embedded triple" ;
+    mf:name    "SPARQL-star -  Asserted and quoted triple" ;
     mf:action
         [ qt:query  <sparql-star-pattern-02.rq> ;
           qt:data   <data-2.ttl> ] ;
@@ -140,7 +140,7 @@ trs:sparql-star-pattern-2 rdf:type mf:QueryEvaluationTest ;
     .
 
 trs:sparql-star-pattern-3 rdf:type mf:QueryEvaluationTest ;
-    mf:name    "SPARQL-star - Pattern - Variable for embedded triple" ;
+    mf:name    "SPARQL-star - Pattern - Variable for quoted triple" ;
     mf:action
         [ qt:query  <sparql-star-pattern-03.rq> ;
           qt:data   <data-2.ttl> ] ;

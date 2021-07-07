@@ -51,7 +51,7 @@
   doap:created "2021-05-29"^^xsd:date;
 ] .
 <> foaf:primaryTopic <https://rubygems/gems/sparql> ;
-  dc:issued "2021-05-29T11:33:48-07:00"^^xsd:dateTime ;
+  dc:issued "2021-07-07T12:53:50-07:00"^^xsd:dateTime ;
   foaf:maker <https://greggkellogg.net/foaf#me> .
 
 <https://greggkellogg.net/foaf#me> a earl:Assertor;
@@ -64,8 +64,8 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:name """SPARQL-star - subject embedded triple""";
-    dc:date "2021-05-29T11:33:48-07:00"^^xsd:dateTime];
+    dc:name """SPARQL-star - subject quoted triple""";
+    dc:date "2021-07-07T12:53:50-07:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -75,8 +75,8 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:name """SPARQL-star - object embedded triple""";
-    dc:date "2021-05-29T11:33:48-07:00"^^xsd:dateTime];
+    dc:name """SPARQL-star - object quoted triple""";
+    dc:date "2021-07-07T12:53:50-07:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -86,8 +86,8 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:name """SPARQL-star - subject embedded triple - vars""";
-    dc:date "2021-05-29T11:33:48-07:00"^^xsd:dateTime];
+    dc:name """SPARQL-star - subject quoted triple - vars""";
+    dc:date "2021-07-07T12:53:50-07:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -97,8 +97,8 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:name """SPARQL-star - object embedded triple - vars""";
-    dc:date "2021-05-29T11:33:48-07:00"^^xsd:dateTime];
+    dc:name """SPARQL-star - object quoted triple - vars""";
+    dc:date "2021-07-07T12:53:50-07:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -109,7 +109,7 @@
     a earl:TestResult;
     earl:outcome earl:passed;
     dc:name """SPARQL-star - Embedded triple in VALUES""";
-    dc:date "2021-05-29T11:33:48-07:00"^^xsd:dateTime];
+    dc:date "2021-07-07T12:53:50-07:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -120,7 +120,7 @@
     a earl:TestResult;
     earl:outcome earl:passed;
     dc:name """SPARQL-star - Embedded triple in CONSTRUCT""";
-    dc:date "2021-05-29T11:33:48-07:00"^^xsd:dateTime];
+    dc:date "2021-07-07T12:53:50-07:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -131,7 +131,7 @@
     a earl:TestResult;
     earl:outcome earl:passed;
     dc:name """SPARQL-star - Embedded triples in CONSTRUCT WHERE""";
-    dc:date "2021-05-29T11:33:48-07:00"^^xsd:dateTime];
+    dc:date "2021-07-07T12:53:50-07:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -141,8 +141,8 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:name """SPARQL-star - embedded triple inside blankNodePropertyList""";
-    dc:date "2021-05-29T11:33:48-07:00"^^xsd:dateTime];
+    dc:name """SPARQL-star - quoted triple inside blankNodePropertyList""";
+    dc:date "2021-07-07T12:53:50-07:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -152,8 +152,8 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:name """SPARQL-star - embedded triple inside collection""";
-    dc:date "2021-05-29T11:33:48-07:00"^^xsd:dateTime];
+    dc:name """SPARQL-star - quoted triple inside collection""";
+    dc:date "2021-07-07T12:53:50-07:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -163,8 +163,8 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:name """SPARQL-star - nested embedded triple, subject position""";
-    dc:date "2021-05-29T11:33:48-07:00"^^xsd:dateTime];
+    dc:name """SPARQL-star - nested quoted triple, subject position""";
+    dc:date "2021-07-07T12:53:50-07:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -174,8 +174,8 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:name """SPARQL-star - nested embedded triple, object position""";
-    dc:date "2021-05-29T11:33:48-07:00"^^xsd:dateTime];
+    dc:name """SPARQL-star - nested quoted triple, object position""";
+    dc:date "2021-07-07T12:53:50-07:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -186,7 +186,7 @@
     a earl:TestResult;
     earl:outcome earl:passed;
     dc:name """SPARQL-star - compound forms""";
-    dc:date "2021-05-29T11:33:48-07:00"^^xsd:dateTime];
+    dc:date "2021-07-07T12:53:50-07:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -197,7 +197,7 @@
     a earl:TestResult;
     earl:outcome earl:passed;
     dc:name """SPARQL-star - blank node subject""";
-    dc:date "2021-05-29T11:33:48-07:00"^^xsd:dateTime];
+    dc:date "2021-07-07T12:53:50-07:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -208,7 +208,7 @@
     a earl:TestResult;
     earl:outcome earl:passed;
     dc:name """SPARQL-star - blank node object""";
-    dc:date "2021-05-29T11:33:48-07:00"^^xsd:dateTime];
+    dc:date "2021-07-07T12:53:50-07:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -219,7 +219,7 @@
     a earl:TestResult;
     earl:outcome earl:passed;
     dc:name """SPARQL-star - blank node""";
-    dc:date "2021-05-29T11:33:48-07:00"^^xsd:dateTime];
+    dc:date "2021-07-07T12:53:50-07:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -230,7 +230,7 @@
     a earl:TestResult;
     earl:outcome earl:passed;
     dc:name """SPARQL-star - Annotation form""";
-    dc:date "2021-05-29T11:33:48-07:00"^^xsd:dateTime];
+    dc:date "2021-07-07T12:53:50-07:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -241,7 +241,7 @@
     a earl:TestResult;
     earl:outcome earl:passed;
     dc:name """SPARQL-star - Annotation example""";
-    dc:date "2021-05-29T11:33:48-07:00"^^xsd:dateTime];
+    dc:date "2021-07-07T12:53:50-07:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -252,7 +252,7 @@
     a earl:TestResult;
     earl:outcome earl:passed;
     dc:name """SPARQL-star - Annotation example""";
-    dc:date "2021-05-29T11:33:48-07:00"^^xsd:dateTime];
+    dc:date "2021-07-07T12:53:50-07:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -262,8 +262,8 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:name """SPARQL-star - Annotation with embedding""";
-    dc:date "2021-05-29T11:33:48-07:00"^^xsd:dateTime];
+    dc:name """SPARQL-star - Annotation with quoting""";
+    dc:date "2021-07-07T12:53:50-07:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -273,8 +273,8 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:name """SPARQL-star - Annotation on triple with embedded object""";
-    dc:date "2021-05-29T11:33:48-07:00"^^xsd:dateTime];
+    dc:name """SPARQL-star - Annotation on triple with quoted object""";
+    dc:date "2021-07-07T12:53:50-07:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -285,7 +285,7 @@
     a earl:TestResult;
     earl:outcome earl:passed;
     dc:name """SPARQL-star - Annotation with path""";
-    dc:date "2021-05-29T11:33:48-07:00"^^xsd:dateTime];
+    dc:date "2021-07-07T12:53:50-07:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -296,7 +296,7 @@
     a earl:TestResult;
     earl:outcome earl:passed;
     dc:name """SPARQL-star - Annotation with nested path""";
-    dc:date "2021-05-29T11:33:48-07:00"^^xsd:dateTime];
+    dc:date "2021-07-07T12:53:50-07:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -307,7 +307,7 @@
     a earl:TestResult;
     earl:outcome earl:passed;
     dc:name """SPARQL-star - Annotation in CONSTRUCT """;
-    dc:date "2021-05-29T11:33:48-07:00"^^xsd:dateTime];
+    dc:date "2021-07-07T12:53:50-07:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -318,7 +318,7 @@
     a earl:TestResult;
     earl:outcome earl:passed;
     dc:name """SPARQL-star - Annotation in CONSTRUCT WHERE""";
-    dc:date "2021-05-29T11:33:48-07:00"^^xsd:dateTime];
+    dc:date "2021-07-07T12:53:50-07:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -329,7 +329,7 @@
     a earl:TestResult;
     earl:outcome earl:passed;
     dc:name """SPARQL-star - Expressions - Embedded triple""";
-    dc:date "2021-05-29T11:33:48-07:00"^^xsd:dateTime];
+    dc:date "2021-07-07T12:53:50-07:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -340,7 +340,7 @@
     a earl:TestResult;
     earl:outcome earl:passed;
     dc:name """SPARQL-star - Expressions - Embedded triple""";
-    dc:date "2021-05-29T11:33:48-07:00"^^xsd:dateTime];
+    dc:date "2021-07-07T12:53:50-07:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -351,7 +351,7 @@
     a earl:TestResult;
     earl:outcome earl:passed;
     dc:name """SPARQL-star - Expressions - Functions""";
-    dc:date "2021-05-29T11:33:48-07:00"^^xsd:dateTime];
+    dc:date "2021-07-07T12:53:50-07:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -362,7 +362,7 @@
     a earl:TestResult;
     earl:outcome earl:passed;
     dc:name """SPARQL-star - Expressions - TRIPLE""";
-    dc:date "2021-05-29T11:33:48-07:00"^^xsd:dateTime];
+    dc:date "2021-07-07T12:53:50-07:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -373,7 +373,7 @@
     a earl:TestResult;
     earl:outcome earl:passed;
     dc:name """SPARQL-star - Expressions - Functions""";
-    dc:date "2021-05-29T11:33:48-07:00"^^xsd:dateTime];
+    dc:date "2021-07-07T12:53:50-07:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -384,7 +384,7 @@
     a earl:TestResult;
     earl:outcome earl:passed;
     dc:name """SPARQL-star - Expressions - BIND - CONSTRUCT""";
-    dc:date "2021-05-29T11:33:48-07:00"^^xsd:dateTime];
+    dc:date "2021-07-07T12:53:50-07:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -394,8 +394,8 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:name """SPARQL-star - bad - embedded triple as predicate""";
-    dc:date "2021-05-29T11:33:48-07:00"^^xsd:dateTime];
+    dc:name """SPARQL-star - bad - quoted triple as predicate""";
+    dc:date "2021-07-07T12:53:50-07:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -405,8 +405,8 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:name """SPARQL-star - bad - embedded triple outside triple""";
-    dc:date "2021-05-29T11:33:48-07:00"^^xsd:dateTime];
+    dc:name """SPARQL-star - bad - quoted triple outside triple""";
+    dc:date "2021-07-07T12:53:50-07:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -416,8 +416,8 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:name """SPARQL-star - bad - collection list in embedded triple""";
-    dc:date "2021-05-29T11:33:48-07:00"^^xsd:dateTime];
+    dc:name """SPARQL-star - bad - collection list in quoted triple""";
+    dc:date "2021-07-07T12:53:50-07:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -427,8 +427,8 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:name """SPARQL-star - bad - literal in subject position of embedded triple""";
-    dc:date "2021-05-29T11:33:48-07:00"^^xsd:dateTime];
+    dc:name """SPARQL-star - bad - literal in subject position of quoted triple""";
+    dc:date "2021-07-07T12:53:50-07:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -438,8 +438,8 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:name """SPARQL-star - bad - blank node  as predicate in embedded triple""";
-    dc:date "2021-05-29T11:33:48-07:00"^^xsd:dateTime];
+    dc:name """SPARQL-star - bad - blank node  as predicate in quoted triple""";
+    dc:date "2021-07-07T12:53:50-07:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -450,7 +450,7 @@
     a earl:TestResult;
     earl:outcome earl:passed;
     dc:name """SPARQL-star - bad - compound blank node expression""";
-    dc:date "2021-05-29T11:33:48-07:00"^^xsd:dateTime];
+    dc:date "2021-07-07T12:53:50-07:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -460,8 +460,8 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:name """SPARQL-star - bad - incomplete embedded triple""";
-    dc:date "2021-05-29T11:33:48-07:00"^^xsd:dateTime];
+    dc:name """SPARQL-star - bad - incomplete quoted triple""";
+    dc:date "2021-07-07T12:53:50-07:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -471,8 +471,8 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:name """SPARQL-star - bad - quad embedded triple""";
-    dc:date "2021-05-29T11:33:48-07:00"^^xsd:dateTime];
+    dc:name """SPARQL-star - bad - quad quoted triple""";
+    dc:date "2021-07-07T12:53:50-07:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -482,8 +482,8 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:name """SPARQL-star - bad - variable in embedded triple in VALUES """;
-    dc:date "2021-05-29T11:33:48-07:00"^^xsd:dateTime];
+    dc:name """SPARQL-star - bad - variable in quoted triple in VALUES """;
+    dc:date "2021-07-07T12:53:50-07:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -493,8 +493,8 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:name """SPARQL-star - bad - blank node in embedded triple in VALUES """;
-    dc:date "2021-05-29T11:33:48-07:00"^^xsd:dateTime];
+    dc:name """SPARQL-star - bad - blank node in quoted triple in VALUES """;
+    dc:date "2021-07-07T12:53:50-07:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -504,8 +504,8 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:name """SPARQL-star - bad - blank node in embedded triple in FILTER""";
-    dc:date "2021-05-29T11:33:48-07:00"^^xsd:dateTime];
+    dc:name """SPARQL-star - bad - blank node in quoted triple in FILTER""";
+    dc:date "2021-07-07T12:53:50-07:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -515,8 +515,8 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:name """SPARQL-star - bad - blank node in embedded triple in BIND""";
-    dc:date "2021-05-29T11:33:48-07:00"^^xsd:dateTime];
+    dc:name """SPARQL-star - bad - blank node in quoted triple in BIND""";
+    dc:date "2021-07-07T12:53:50-07:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -527,7 +527,7 @@
     a earl:TestResult;
     earl:outcome earl:passed;
     dc:name """SPARQL-star - bad - empty annotation""";
-    dc:date "2021-05-29T11:33:48-07:00"^^xsd:dateTime];
+    dc:date "2021-07-07T12:53:50-07:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -538,7 +538,7 @@
     a earl:TestResult;
     earl:outcome earl:passed;
     dc:name """SPARQL-star - bad - triples in annotation""";
-    dc:date "2021-05-29T11:33:48-07:00"^^xsd:dateTime];
+    dc:date "2021-07-07T12:53:50-07:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -549,7 +549,7 @@
     a earl:TestResult;
     earl:outcome earl:passed;
     dc:name """SPARQL-star - bad - path - seq""";
-    dc:date "2021-05-29T11:33:48-07:00"^^xsd:dateTime];
+    dc:date "2021-07-07T12:53:50-07:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -560,7 +560,7 @@
     a earl:TestResult;
     earl:outcome earl:passed;
     dc:name """SPARQL-star - bad - path - alt""";
-    dc:date "2021-05-29T11:33:48-07:00"^^xsd:dateTime];
+    dc:date "2021-07-07T12:53:50-07:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -571,7 +571,7 @@
     a earl:TestResult;
     earl:outcome earl:passed;
     dc:name """SPARQL-star - bad - path - p*""";
-    dc:date "2021-05-29T11:33:48-07:00"^^xsd:dateTime];
+    dc:date "2021-07-07T12:53:50-07:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -582,7 +582,7 @@
     a earl:TestResult;
     earl:outcome earl:passed;
     dc:name """SPARQL-star - bad - path - p+""";
-    dc:date "2021-05-29T11:33:48-07:00"^^xsd:dateTime];
+    dc:date "2021-07-07T12:53:50-07:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -593,7 +593,7 @@
     a earl:TestResult;
     earl:outcome earl:passed;
     dc:name """SPARQL-star - bad - path - p?""";
-    dc:date "2021-05-29T11:33:48-07:00"^^xsd:dateTime];
+    dc:date "2021-07-07T12:53:50-07:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -604,7 +604,7 @@
     a earl:TestResult;
     earl:outcome earl:passed;
     dc:name """SPARQL-star - bad - path in CONSTRUCT""";
-    dc:date "2021-05-29T11:33:48-07:00"^^xsd:dateTime];
+    dc:date "2021-07-07T12:53:50-07:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -615,7 +615,7 @@
     a earl:TestResult;
     earl:outcome earl:passed;
     dc:name """SPARQL-star - bad - path in CONSTRUCT""";
-    dc:date "2021-05-29T11:33:48-07:00"^^xsd:dateTime];
+    dc:date "2021-07-07T12:53:50-07:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -626,7 +626,7 @@
     a earl:TestResult;
     earl:outcome earl:passed;
     dc:name """SPARQL-star - update""";
-    dc:date "2021-05-29T11:33:48-07:00"^^xsd:dateTime];
+    dc:date "2021-07-07T12:53:50-07:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -637,7 +637,7 @@
     a earl:TestResult;
     earl:outcome earl:passed;
     dc:name """SPARQL-star - update""";
-    dc:date "2021-05-29T11:33:48-07:00"^^xsd:dateTime];
+    dc:date "2021-07-07T12:53:50-07:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -648,7 +648,7 @@
     a earl:TestResult;
     earl:outcome earl:passed;
     dc:name """SPARQL-star - update""";
-    dc:date "2021-05-29T11:33:48-07:00"^^xsd:dateTime];
+    dc:date "2021-07-07T12:53:50-07:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -658,8 +658,8 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:name """SPARQL-star - update with embedding""";
-    dc:date "2021-05-29T11:33:48-07:00"^^xsd:dateTime];
+    dc:name """SPARQL-star - update with quoting""";
+    dc:date "2021-07-07T12:53:50-07:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -669,8 +669,8 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:name """SPARQL-star - update with embedded object""";
-    dc:date "2021-05-29T11:33:48-07:00"^^xsd:dateTime];
+    dc:name """SPARQL-star - update with quoted object""";
+    dc:date "2021-07-07T12:53:50-07:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -681,7 +681,7 @@
     a earl:TestResult;
     earl:outcome earl:passed;
     dc:name """SPARQL-star - update with annotation template""";
-    dc:date "2021-05-29T11:33:48-07:00"^^xsd:dateTime];
+    dc:date "2021-07-07T12:53:50-07:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -692,7 +692,7 @@
     a earl:TestResult;
     earl:outcome earl:passed;
     dc:name """SPARQL-star - update with annotation, template and pattern""";
-    dc:date "2021-05-29T11:33:48-07:00"^^xsd:dateTime];
+    dc:date "2021-07-07T12:53:50-07:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -703,7 +703,7 @@
     a earl:TestResult;
     earl:outcome earl:passed;
     dc:name """SPARQL-star - update DATA with annotation""";
-    dc:date "2021-05-29T11:33:48-07:00"^^xsd:dateTime];
+    dc:date "2021-07-07T12:53:50-07:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -714,7 +714,7 @@
     a earl:TestResult;
     earl:outcome earl:passed;
     dc:name """SPARQL-star - update - bad syntax""";
-    dc:date "2021-05-29T11:33:48-07:00"^^xsd:dateTime];
+    dc:date "2021-07-07T12:53:50-07:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -725,7 +725,7 @@
     a earl:TestResult;
     earl:outcome earl:passed;
     dc:name """SPARQL-star - update - bad syntax""";
-    dc:date "2021-05-29T11:33:48-07:00"^^xsd:dateTime];
+    dc:date "2021-07-07T12:53:50-07:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -736,7 +736,7 @@
     a earl:TestResult;
     earl:outcome earl:passed;
     dc:name """SPARQL-star - update - bad syntax""";
-    dc:date "2021-05-29T11:33:48-07:00"^^xsd:dateTime];
+    dc:date "2021-07-07T12:53:50-07:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -747,7 +747,7 @@
     a earl:TestResult;
     earl:outcome earl:passed;
     dc:name """SPARQL-star - update - bad syntax""";
-    dc:date "2021-05-29T11:33:48-07:00"^^xsd:dateTime];
+    dc:date "2021-07-07T12:53:50-07:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -758,7 +758,7 @@
     a earl:TestResult;
     earl:outcome earl:passed;
     dc:name """SPARQL-star - all graph triples (JSON results)""";
-    dc:date "2021-05-29T11:33:48-07:00"^^xsd:dateTime];
+    dc:date "2021-07-07T12:53:50-07:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -769,7 +769,7 @@
     a earl:TestResult;
     earl:outcome earl:passed;
     dc:name """SPARQL-star - all graph triples (XML results)""";
-    dc:date "2021-05-29T11:33:48-07:00"^^xsd:dateTime];
+    dc:date "2021-07-07T12:53:50-07:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -779,8 +779,8 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:name """SPARQL-star - match constant embedded triple""";
-    dc:date "2021-05-29T11:33:48-07:00"^^xsd:dateTime];
+    dc:name """SPARQL-star - match constant quoted triple""";
+    dc:date "2021-07-07T12:53:50-07:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -790,8 +790,8 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:name """SPARQL-star - match embedded triple, var subject""";
-    dc:date "2021-05-29T11:33:48-07:00"^^xsd:dateTime];
+    dc:name """SPARQL-star - match quoted triple, var subject""";
+    dc:date "2021-07-07T12:53:50-07:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -801,8 +801,8 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:name """SPARQL-star - match embedded triple, var predicate""";
-    dc:date "2021-05-29T11:33:48-07:00"^^xsd:dateTime];
+    dc:name """SPARQL-star - match quoted triple, var predicate""";
+    dc:date "2021-07-07T12:53:50-07:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -812,8 +812,8 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:name """SPARQL-star - match embedded triple, var object""";
-    dc:date "2021-05-29T11:33:48-07:00"^^xsd:dateTime];
+    dc:name """SPARQL-star - match quoted triple, var object""";
+    dc:date "2021-07-07T12:53:50-07:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -823,8 +823,8 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:name """SPARQL-star - no match of embedded triple""";
-    dc:date "2021-05-29T11:33:48-07:00"^^xsd:dateTime];
+    dc:name """SPARQL-star - no match of quoted triple""";
+    dc:date "2021-07-07T12:53:50-07:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -834,8 +834,8 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:name """SPARQL-star - Asserted and embedded triple""";
-    dc:date "2021-05-29T11:33:48-07:00"^^xsd:dateTime];
+    dc:name """SPARQL-star - Asserted and quoted triple""";
+    dc:date "2021-07-07T12:53:50-07:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -845,8 +845,8 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:name """SPARQL-star -  Asserted and embedded triple""";
-    dc:date "2021-05-29T11:33:48-07:00"^^xsd:dateTime];
+    dc:name """SPARQL-star -  Asserted and quoted triple""";
+    dc:date "2021-07-07T12:53:50-07:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -856,8 +856,8 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:name """SPARQL-star - Pattern - Variable for embedded triple""";
-    dc:date "2021-05-29T11:33:48-07:00"^^xsd:dateTime];
+    dc:name """SPARQL-star - Pattern - Variable for quoted triple""";
+    dc:date "2021-07-07T12:53:50-07:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -868,7 +868,7 @@
     a earl:TestResult;
     earl:outcome earl:passed;
     dc:name """SPARQL-star - Pattern - No match""";
-    dc:date "2021-05-29T11:33:48-07:00"^^xsd:dateTime];
+    dc:date "2021-07-07T12:53:50-07:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -879,7 +879,7 @@
     a earl:TestResult;
     earl:outcome earl:passed;
     dc:name """SPARQL-star - Pattern - match variables in triple terms""";
-    dc:date "2021-05-29T11:33:48-07:00"^^xsd:dateTime];
+    dc:date "2021-07-07T12:53:50-07:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -890,7 +890,7 @@
     a earl:TestResult;
     earl:outcome earl:passed;
     dc:name """SPARQL-star - Pattern - Nesting 1""";
-    dc:date "2021-05-29T11:33:48-07:00"^^xsd:dateTime];
+    dc:date "2021-07-07T12:53:50-07:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -901,7 +901,7 @@
     a earl:TestResult;
     earl:outcome earl:passed;
     dc:name """SPARQL-star - Pattern - Nesting - 2""";
-    dc:date "2021-05-29T11:33:48-07:00"^^xsd:dateTime];
+    dc:date "2021-07-07T12:53:50-07:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -912,7 +912,7 @@
     a earl:TestResult;
     earl:outcome earl:passed;
     dc:name """SPARQL-star - Pattern - Match and nesting""";
-    dc:date "2021-05-29T11:33:48-07:00"^^xsd:dateTime];
+    dc:date "2021-07-07T12:53:50-07:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -923,7 +923,7 @@
     a earl:TestResult;
     earl:outcome earl:passed;
     dc:name """SPARQL-star - Pattern - Same variable""";
-    dc:date "2021-05-29T11:33:48-07:00"^^xsd:dateTime];
+    dc:date "2021-07-07T12:53:50-07:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -934,7 +934,7 @@
     a earl:TestResult;
     earl:outcome earl:passed;
     dc:name """SPARQL-star - CONSTRUCT with constant template""";
-    dc:date "2021-05-29T11:33:48-07:00"^^xsd:dateTime];
+    dc:date "2021-07-07T12:53:50-07:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -945,7 +945,7 @@
     a earl:TestResult;
     earl:outcome earl:passed;
     dc:name """SPARQL-star - CONSTRUCT WHERE with constant template""";
-    dc:date "2021-05-29T11:33:48-07:00"^^xsd:dateTime];
+    dc:date "2021-07-07T12:53:50-07:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -956,7 +956,7 @@
     a earl:TestResult;
     earl:outcome earl:passed;
     dc:name """SPARQL-star - CONSTRUCT - about every triple""";
-    dc:date "2021-05-29T11:33:48-07:00"^^xsd:dateTime];
+    dc:date "2021-07-07T12:53:50-07:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -967,7 +967,7 @@
     a earl:TestResult;
     earl:outcome earl:passed;
     dc:name """SPARQL-star - CONSTRUCT with annotation syntax""";
-    dc:date "2021-05-29T11:33:48-07:00"^^xsd:dateTime];
+    dc:date "2021-07-07T12:53:50-07:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -978,7 +978,7 @@
     a earl:TestResult;
     earl:outcome earl:passed;
     dc:name """SPARQL-star - CONSTRUCT WHERE with annotation syntax""";
-    dc:date "2021-05-29T11:33:48-07:00"^^xsd:dateTime];
+    dc:date "2021-07-07T12:53:50-07:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -989,7 +989,7 @@
     a earl:TestResult;
     earl:outcome earl:passed;
     dc:name """SPARQL-star - GRAPH""";
-    dc:date "2021-05-29T11:33:48-07:00"^^xsd:dateTime];
+    dc:date "2021-07-07T12:53:50-07:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -1000,7 +1000,7 @@
     a earl:TestResult;
     earl:outcome earl:passed;
     dc:name """SPARQL-star - GRAPHs with blank node""";
-    dc:date "2021-05-29T11:33:48-07:00"^^xsd:dateTime];
+    dc:date "2021-07-07T12:53:50-07:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -1011,7 +1011,7 @@
     a earl:TestResult;
     earl:outcome earl:passed;
     dc:name """SPARQL-star - Embedded triple - BIND - CONSTRUCT""";
-    dc:date "2021-05-29T11:33:48-07:00"^^xsd:dateTime];
+    dc:date "2021-07-07T12:53:50-07:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -1022,7 +1022,7 @@
     a earl:TestResult;
     earl:outcome earl:passed;
     dc:name """SPARQL-star - Embedded triple - Functions""";
-    dc:date "2021-05-29T11:33:48-07:00"^^xsd:dateTime];
+    dc:date "2021-07-07T12:53:50-07:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -1033,7 +1033,7 @@
     a earl:TestResult;
     earl:outcome earl:passed;
     dc:name """SPARQL-star - Embedded triple - sameTerm""";
-    dc:date "2021-05-29T11:33:48-07:00"^^xsd:dateTime];
+    dc:date "2021-07-07T12:53:50-07:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -1044,7 +1044,7 @@
     a earl:TestResult;
     earl:outcome earl:passed;
     dc:name """SPARQL-star - Embedded triple - value-equality""";
-    dc:date "2021-05-29T11:33:48-07:00"^^xsd:dateTime];
+    dc:date "2021-07-07T12:53:50-07:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -1055,7 +1055,7 @@
     a earl:TestResult;
     earl:outcome earl:passed;
     dc:name """SPARQL-star - Embedded triple - value-inequality""";
-    dc:date "2021-05-29T11:33:48-07:00"^^xsd:dateTime];
+    dc:date "2021-07-07T12:53:50-07:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -1066,7 +1066,7 @@
     a earl:TestResult;
     earl:outcome earl:passed;
     dc:name """SPARQL-star - Embedded triple - value-inequality""";
-    dc:date "2021-05-29T11:33:48-07:00"^^xsd:dateTime];
+    dc:date "2021-07-07T12:53:50-07:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -1077,7 +1077,7 @@
     a earl:TestResult;
     earl:outcome earl:passed;
     dc:name """SPARQL-star - Embedded triple - ORDER BY""";
-    dc:date "2021-05-29T11:33:48-07:00"^^xsd:dateTime];
+    dc:date "2021-07-07T12:53:50-07:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -1088,7 +1088,7 @@
     a earl:TestResult;
     earl:outcome earl:passed;
     dc:name """SPARQL-star - Embedded triple - ordering""";
-    dc:date "2021-05-29T11:33:48-07:00"^^xsd:dateTime];
+    dc:date "2021-07-07T12:53:50-07:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -1099,7 +1099,7 @@
     a earl:TestResult;
     earl:outcome earl:passed;
     dc:name """SPARQL-star - Update""";
-    dc:date "2021-05-29T11:33:48-07:00"^^xsd:dateTime];
+    dc:date "2021-07-07T12:53:50-07:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -1110,7 +1110,7 @@
     a earl:TestResult;
     earl:outcome earl:passed;
     dc:name """SPARQL-star - Update - annotation""";
-    dc:date "2021-05-29T11:33:48-07:00"^^xsd:dateTime];
+    dc:date "2021-07-07T12:53:50-07:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -1121,5 +1121,5 @@
     a earl:TestResult;
     earl:outcome earl:passed;
     dc:name """SPARQL-star - Update - data""";
-    dc:date "2021-05-29T11:33:48-07:00"^^xsd:dateTime];
+    dc:date "2021-07-07T12:53:50-07:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .

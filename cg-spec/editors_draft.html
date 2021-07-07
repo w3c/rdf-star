@@ -517,15 +517,15 @@ INSERT {
           <td>::=</td>
           <td>
             <code class="grammar-literal">'&lt;&lt;'</code>
-            <a href="#grammar-production-qTSubject">qTSubject</a>
+            <a href="#grammar-production-qtSubject">qtSubject</a>
             <a data-cite="TURTLE#grammar-production-verb">verb</a>
-            <a href="#grammar-production-qTObject">qTObject</a>
+            <a href="#grammar-production-qtObject">qtObject</a>
             <code class="grammar-literal">'&gt;&gt;'</code>
           </td>
         </tr>
-        <tr style="font-weight: bold" id="grammar-production-qTSubject">
+        <tr style="font-weight: bold" id="grammar-production-qtSubject">
           <td>[28t]</td>
-          <td>`qTSubject`</td>
+          <td>`qtSubject`</td>
           <td>::=</td>
           <td>
             <a data-cite="TURTLE#grammar-production-iri">iri</a> `|`
@@ -533,9 +533,9 @@ INSERT {
             <a href="#grammar-production-quotedTriple">quotedTriple</a>
           </td>
         </tr>
-        <tr style="font-weight: bold" id="grammar-production-qTObject">
+        <tr style="font-weight: bold" id="grammar-production-qtObject">
           <td>[29t]</td>
-          <td>`qTObject`</td>
+          <td>`qtObject`</td>
           <td>::=</td>
           <td>
             <a data-cite="TURTLE#grammar-production-iri">iri</a> `|`
@@ -561,7 +561,7 @@ INSERT {
         and <a href="#grammar-production-object">`object`</a> productions
         have been extended to accept <a>quoted triples</a>,
         which are described by the new productions <a href="#grammar-production-quotedTriple">27t</a>
-        to <a href="#grammar-production-qTObject">30t</a>.
+        to <a href="#grammar-production-qtObject">30t</a>.
         Note that <a>quoted triples</a> accept a more restricted range of
         <a>subject</a> and <a>object</a> expressions
         than <a>asserted triples</a>.
@@ -577,7 +577,7 @@ INSERT {
       <ul>
         <li id="curObject">
           <a>RDF-star Term</a> |curObject| —
-          The |curObject| is bound to the <a href="#grammar-production-qTObject">`qTObject`</a> production.</li>
+          The |curObject| is bound to the <a href="#grammar-production-qtObject">`qtObject`</a> production.</li>
       </ul>
       <p>Additionally, the <a data-cite="TURTLE#curSubject">|curSubject|</a>
         can be bound to any <a>RDF-star term</a>
@@ -586,11 +586,11 @@ INSERT {
       <p>A <dfn>Turtle-star document</dfn> defines an <a>RDF-star graph</a>
         composed of a set of <a>RDF-star triples</a>.
         The <a href="#grammar-production-subject">`subject`</a>
-        and <a href="#grammar-production-qTSubject">`qTSubject`</a> productions set the |curSubject|.
+        and <a href="#grammar-production-qtSubject">`qtSubject`</a> productions set the |curSubject|.
         The <a data-cite="TURTLE#grammar-production-verb">`verb`</a> production
         sets the <a data-cite="TURTLE#curPredicate">|curPredicate|</a>.
         The <a href="#grammar-production-object">`object`</a>
-        and <a href="#grammar-production-qTObject">`qTObject`</a> productions
+        and <a href="#grammar-production-qtObject">`qtObject`</a> productions
         set the |curObject|.
         Finishing the <a href="#grammar-production-object">`object`</a> production,
         an <a>RDF-star triple</a> |curSubject| |curPredicate| |curObject| is produced
@@ -763,15 +763,15 @@ INSERT {
           <td>::=</td>
           <td>
             <code class="grammar-literal">'&lt;&lt;'</code>
-            <a href="#trig-grammar-production-qTSubject">qTSubject</a>
+            <a href="#trig-grammar-production-qtSubject">qtSubject</a>
             <a data-cite="TURTLE#grammar-production-verb">verb</a>
-            <a href="#trig-grammar-production-qTObject">qTObject</a>
+            <a href="#trig-grammar-production-qtObject">qtObject</a>
             <code class="grammar-literal">'&gt;&gt;'</code>
           </td>
         </tr>
-        <tr style="font-weight: bold" id="trig-grammar-production-qTSubject">
+        <tr style="font-weight: bold" id="trig-grammar-production-qtSubject">
           <td>[28t]</td>
-          <td>`qTSubject`</td>
+          <td>`qtSubject`</td>
           <td>::=</td>
           <td>
             <a data-cite="TRIG#grammar-production-iri">iri</a> `|`
@@ -779,9 +779,9 @@ INSERT {
             <a href="#trig-grammar-production-quotedTriple">quotedTriple</a>
           </td>
         </tr>
-        <tr style="font-weight: bold" id="trig-grammar-production-qTObject">
+        <tr style="font-weight: bold" id="trig-grammar-production-qtObject">
           <td>[29t]</td>
-          <td>`qTObject`</td>
+          <td>`qtObject`</td>
           <td>::=</td>
           <td>
             <a data-cite="TRIG#grammar-production-iri">iri</a> `|`
@@ -1552,9 +1552,9 @@ INSERT {
           <td style="font-weight: bold">::=</td>
           <td style="font-weight: bold">
             <code class="token">'&lt;&lt;'</code>
-            <a href="#rQTSubjectOrObject">QTSubjectOrObject</a>
+            <a href="#rqtSubjectOrObject">qtSubjectOrObject</a>
             <a data-cite="SPARQL11-QUERY#rVerb">Verb</a>
-            <a href="#rQTSubjectOrObject">QTSubjectOrObject</a>
+            <a href="#rqtSubjectOrObject">qtSubjectOrObject</a>
             <code class="token">'&gt;&gt;'</code>
           </td>
         </tr>
@@ -1574,9 +1574,9 @@ INSERT {
             <code class="token">'&gt;&gt;'</code>
           </td>
         </tr>
-        <tr id="rQTSubjectOrObject">
+        <tr id="rqtSubjectOrObject">
           <td>[176]</td>
-          <td style="font-weight: bold">`QTSubjectOrObject`</td>
+          <td style="font-weight: bold">`qtSubjectOrObject`</td>
           <td style="font-weight: bold">::=</td>
           <td style="font-weight: bold">
             <a data-cite="SPARQL11-QUERY#rVar">Var</a> `|`

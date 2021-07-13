@@ -298,9 +298,8 @@ This pattern is quite common, so Turtle-star offers a dedicated syntax for it, c
 
   # this is equivalent to:
   #
-  # :employee38
-  #     :familyName "Smith" ;
-  #     :jobTitle "Assistant Designer" .
+  # :employee38 :familyName "Smith" .
+  # :employee38 :jobTitle "Assistant Designer" .
   # << :employee38 :jobTitle "Assistant Designer" >> :accordingTo :employee22 .
   -->
 </pre>
@@ -415,6 +414,118 @@ INSERT {
 
     <p>Again, this definition is an extension of the notion of <a>RDF dataset</a>, hence it follows that any <a>RDF dataset</a> is also an <a>RDF-star dataset</a>.</p>
 
+    <section class="informative" id="quoted-triples">
+      <h2>Quoted and Asserted Triples</h2>
+
+      <p>
+        A triple in RDF is a tuple of three components: subject, predicate and object. These are
+        collectively known as <dfn data-cite="RDF11-CONCEPTS#section-rdf-graph">RDF terms</dfn>.
+      </p>
+      <p>
+        RDF-star introduces <em>quoted triple</em>, which a new kind of RDF term.
+        A <em>quoted triple</em> is a triple used as the subject or object of another triple. Quoted
+        triples can also be called "embedded triples".
+      </p>
+
+      <p>
+        in RDF 1.1, an <em>asserted triple</em> is a element of the set of triples that
+        make up an <a>RDF graph</a>. RDF-star does not change this except that an RDF-star
+        triple can contain quoted triples. A triple can be used as an <em>asserted
+        triple</em> and as a <em>quoted triple</em> in the same graph.
+      </p>
+
+      <p>
+        A quoted triple is written in Turtle-star and related syntaxes using delimiters `<<` and `>>`.
+      </p>
+      <pre data-transform="updateExample" data-content-type="text/turtle" class="nohighlight example">
+        <!--
+            << :a :name "Alice" >>
+        -->
+      </pre>  
+      <p>
+        The definition of quoted triple is recursive. A quoted triple can itself have a
+        subject or object component which is another quoted triple. Cycles are not allowed
+        and can not be written in any RDF syntax. In this next example, there is a quoted
+        triple with property `:reportedBy` and whose subject is another quoted triple `:a
+        :name "Alice"`.
+      </p>
+      <pre data-transform="updateExample" data-content-type="text/turtle" class="nohighlight example">
+        <!--
+            << << :a :name "Alice" >> :reportedBy :charlie >>
+        -->
+      </pre> 
+    </section>
+
+    <section id="rdf-star-graph-examples">
+      <h2>RDF-star Graph Examples</h2>
+        
+      <pre data-transform="updateExample" data-content-type="text/turtle" class="nohighlight example">
+        <!--
+            PREFIX : <http://www.example.org/> 
+
+            :bob :name "Bob" .
+            << :a :name "Alice" >> :statedBy :bob .
+              -->
+      </pre> 
+      <p>
+        In the example above, there is a quoted triple `:a :name "Alice"` which is used as subject for an asserted
+        triple. The example graph has two asserted triples:
+      </p>
+      <ol>
+        <li>`:bob :name "Bob" .`</li>
+        <li>`&lt;&lt; :a :name "Alice" &gt;&gt; :statedBy :bob .`</li>
+      </ol>
+      <p>
+        The graph does not have an asserted triple `:a :name "Alice"` because
+        the triple `:a :name "Alice"` is not an element of the set of triples.
+      </p>
+      <p>
+        A triple can be used as both an asserted triple and quoted triple in the same graph.
+      </p>
+      <pre data-transform="updateExample" data-content-type="text/turtle" class="nohighlight example">
+        <!--
+            PREFIX : <http://www.example.org/> 
+
+            :bob :name "Bob" .
+            :a :name "Alice" .
+            << :a :name "Alice" >> :statedBy :bob .
+              -->
+      </pre> 
+    </section>
+
+    <section id="annotation-syntax">
+      <h2>Annotation Syntax</h2>
+      <p>
+        <em>Annotation syntax</em> provides a convenience short cut.  It is used to both
+        assert a triple and also use the triple as a quoted triple as the subject of
+        further triples.  It uses delimiters `{|` and `|}` folliwing an asserted triple to
+        make that triple, as a quoted string, the subject of the enclosed RDF triples.
+      </p>
+      <p>
+        Annotation syntax does not appear in the RDF-star abstract data model. It is
+        only a syntactic short cut and the RDF-star abstract data model does not
+        distinguished how the triples were written.
+      </p>
+      <pre data-transform="updateExample" 
+           data-content-type="text/turtle" 
+           class="nohighlight example">
+        <!--
+            :a :name "Alice" {| :statedBy :bob ; :recorded "2021-07-07"^^xsd:date |} .
+          -->
+      </pre>
+      <p>is the same set of triples as:</p>
+      <pre data-transform="updateExample"
+           data-content-type="text/turtle"
+           class="nohighlight example">
+        <!--
+            << :a :name "Alice" >> :statedBy :bob .
+            << :a :name "Alice" >> :recorded "2021-07-07"^^xsd:date .
+            :a :name "Alice"
+         -->
+      </pre>
+      <p>and <a>RDF-star graph</a> contains three asserted triples.</p>
+    </section>
+    
     <section class="informative" id="occurrences">
       <h2>Triples and occurrences</h2>
 

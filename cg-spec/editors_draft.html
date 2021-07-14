@@ -419,20 +419,20 @@ INSERT {
       <h2>Quoted and Asserted Triples</h2>
 
       <p>
-        A triple in RDF is a tuple of three components: subject, predicate and object. These are
+        A triple in RDF is a tuple of three components: subject, predicate, and object. These are
         collectively known as <a>RDF Terms</a> as defined in [[RDF11-CONCEPTS]].
       </p>
       <p>
-        RDF-star introduces <a>quoted triple</a>, which a new kind of RDF term.
+        RDF-star introduces <a>quoted triple</a>, which is a new kind of RDF term.
         A <em>quoted triple</em> is a triple used as the subject or object of another triple. Quoted
         triples can also be called "embedded triples".
       </p>
 
       <p>
-        in RDF 1.1, an <a>asserted triple</a> is a element of the set of triples that
+        in RDF 1.1, an <a>asserted triple</a> is an element of the set of triples that
         make up an <a>RDF graph</a>. RDF-star does not change this except that an RDF-star
         triple can contain quoted triples. A triple can be used as an <em>asserted
-        triple</em> and as a <em>quoted triple</em> in the same graph.
+        triple</em>, a <em>quoted triple</em>, or both, in a given graph.
       </p>
 
       <p>
@@ -460,6 +460,10 @@ INSERT {
     <section id="rdf-star-graph-examples">
       <h2>RDF-star Graph Examples</h2>
         
+      <p>
+        In the example below, there is a quoted triple, `:a :name "Alice"`, which is used
+        as the subject for an asserted triple:
+      </p>
       <pre data-transform="updateExample" data-content-type="text/turtle" class="nohighlight example">
         <!--
             PREFIX : <http://www.example.org/> 
@@ -469,19 +473,15 @@ INSERT {
               -->
       </pre> 
       <p>
-        In the example above, there is a quoted triple `:a :name "Alice"` which is used as subject for an asserted
-        triple. The example graph has two asserted triples:
+        The graph of this example has two asserted triples:
       </p>
       <ol>
         <li>`:bob :name "Bob" .`</li>
         <li>`&lt;&lt; :a :name "Alice" &gt;&gt; :statedBy :bob .`</li>
       </ol>
       <p>
-        The graph does not have an asserted triple `:a :name "Alice"` because
-        the triple `:a :name "Alice"` is not an element of the set of triples.
-      </p>
-      <p>
-        A triple can be used as both an asserted triple and quoted triple in the same graph.
+        This graph does not have an asserted triple, `:a :name "Alice"`, because
+        that triple is not an element of the set of triples.
       </p>
       <pre data-transform="updateExample" data-content-type="text/turtle" class="nohighlight example">
         <!--

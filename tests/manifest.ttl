@@ -13,7 +13,7 @@
 trs:manifest  rdf:type mf:Manifest ;
   rdfs:label "RDF-star test suite"@en ;
 	rdfs:label "La suite des tests pour RDF-star"@fr;
-	rdfs:label "Conjuto de pruebas para RDF-star"@es;
+	rdfs:label "Conjunto de pruebas para RDF-star"@es;
 	dct:issued "2021-06-21"^^xsd:date ; #not sure if this was the first release date
 	dct:creator [ foaf:name "Gregg Kellog" ] ; #maybe add foaf:homepage
 	dct:creator [ foaf:name "Andy Seaborne" ];

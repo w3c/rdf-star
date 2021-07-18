@@ -15,7 +15,7 @@
 trs:manifest  rdf:type mf:Manifest ;
    rdfs:label "Turtle-star Syntax Tests"@en ;
    rdfs:label "La suite des tests pour la syntaxe Turtle-star"@fr;
-	rdfs:label "Conjuto de pruebas para la sintaxis Turtle-star"@es;
+	rdfs:label "Conjunto de pruebas para la sintaxis Turtle-star"@es;
 	dct:issued "2021-06-21"^^xsd:date ; #not sure if this was the first release date
 	dct:creator [ foaf:name "Gregg Kellog" ] ; #maybe add foaf:homepage
 	dct:creator [ foaf:name "Andy Seaborne" ];

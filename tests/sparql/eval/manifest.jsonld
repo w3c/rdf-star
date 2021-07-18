@@ -100,7 +100,7 @@
         "qt:data": "data-1.ttl",
         "qt:query": "sparql-star-basic-2.rq"
       },
-      "name": "SPARQL-star - match constant embedded triple",
+      "name": "SPARQL-star - match constant quoted triple",
       "result": "sparql-star-basic-2.srj"
     },
     {
@@ -110,7 +110,7 @@
         "qt:data": "data-1.ttl",
         "qt:query": "sparql-star-basic-3.rq"
       },
-      "name": "SPARQL-star - match embedded triple, var subject",
+      "name": "SPARQL-star - match quoted triple, var subject",
       "result": "sparql-star-basic-3.srj"
     },
     {
@@ -120,7 +120,7 @@
         "qt:data": "data-1.ttl",
         "qt:query": "sparql-star-basic-4.rq"
       },
-      "name": "SPARQL-star - match embedded triple, var predicate",
+      "name": "SPARQL-star - match quoted triple, var predicate",
       "result": "sparql-star-basic-4.srj"
     },
     {
@@ -130,7 +130,7 @@
         "qt:data": "data-1.ttl",
         "qt:query": "sparql-star-basic-5.rq"
       },
-      "name": "SPARQL-star - match embedded triple, var object",
+      "name": "SPARQL-star - match quoted triple, var object",
       "result": "sparql-star-basic-5.srj"
     },
     {
@@ -140,7 +140,7 @@
         "qt:data": "data-1.ttl",
         "qt:query": "sparql-star-basic-6.rq"
       },
-      "name": "SPARQL-star - no match of embedded triple",
+      "name": "SPARQL-star - no match of quoted triple",
       "result": "sparql-star-basic-6.srj"
     },
     {
@@ -150,7 +150,7 @@
         "qt:data": "data-2.ttl",
         "qt:query": "sparql-star-pattern-01.rq"
       },
-      "name": "SPARQL-star - Asserted and embedded triple",
+      "name": "SPARQL-star - Asserted and quoted triple",
       "result": "sparql-star-pattern-01.srj"
     },
     {
@@ -160,7 +160,7 @@
         "qt:data": "data-2.ttl",
         "qt:query": "sparql-star-pattern-02.rq"
       },
-      "name": "SPARQL-star -  Asserted and embedded triple",
+      "name": "SPARQL-star -  Asserted and quoted triple",
       "result": "sparql-star-pattern-02.srj"
     },
     {
@@ -170,7 +170,7 @@
         "qt:data": "data-2.ttl",
         "qt:query": "sparql-star-pattern-03.rq"
       },
-      "name": "SPARQL-star - Pattern - Variable for embedded triple",
+      "name": "SPARQL-star - Pattern - Variable for quoted triple",
       "result": "sparql-star-pattern-03.srj"
     },
     {

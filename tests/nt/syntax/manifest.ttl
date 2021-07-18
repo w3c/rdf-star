@@ -32,17 +32,17 @@ trs:manifest  rdf:type mf:Manifest ;
     ) .
 
 trs:ntriples-star-1 rdf:type rdft:TestNTriplesPositiveSyntax ;
-   mf:name      "N-Triples-star - subject embedded triple" ;
+   mf:name      "N-Triples-star - subject quoted triple" ;
    mf:action    <ntriples-star-syntax-1.nt> ;
    .
 
 trs:ntriples-star-2 rdf:type rdft:TestNTriplesPositiveSyntax ;
-   mf:name      "N-Triples-star - object embedded triple" ;
+   mf:name      "N-Triples-star - object quoted triple" ;
    mf:action    <ntriples-star-syntax-2.nt> ;
    .
 
 trs:ntriples-star-3 rdf:type rdft:TestNTriplesPositiveSyntax ;
-   mf:name      "N-Triples-star - subject and object embedded triples" ;
+   mf:name      "N-Triples-star - subject and object quoted triples" ;
    mf:action    <ntriples-star-syntax-3.nt> ;
    .
 
@@ -81,21 +81,21 @@ trs:ntriples-star-nested-2 rdf:type rdft:TestNTriplesPositiveSyntax ;
 ## Bad syntax
  
 trs:ntriples-star-bad-1 rdf:type rdft:TestNTriplesNegativeSyntax ;
-    mf:name      "N-Triples-star - Bad - embedded triple as predicate" ;
+    mf:name      "N-Triples-star - Bad - quoted triple as predicate" ;
     mf:action    <ntriples-star-bad-syntax-1.nt> ;
     .
     
 trs:ntriples-star-bad-2 rdf:type rdft:TestNTriplesNegativeSyntax ;
-    mf:name      "N-Triples-star - Bad - embedded triple, literal subject" ;
+    mf:name      "N-Triples-star - Bad - quoted triple, literal subject" ;
     mf:action    <ntriples-star-bad-syntax-2.nt> ;
     .
 
 trs:ntriples-star-bad-3 rdf:type rdft:TestNTriplesNegativeSyntax ;
-    mf:name      "N-Triples-star - Bad - embedded triple, literal predicate" ;
+    mf:name      "N-Triples-star - Bad - quoted triple, literal predicate" ;
     mf:action    <ntriples-star-bad-syntax-3.nt> ;
     .
 
 trs:ntriples-star-bad-4 rdf:type rdft:TestNTriplesNegativeSyntax ;
-    mf:name      "N-Triples-star - Bad - embedded triple, blank node predicate" ;
+    mf:name      "N-Triples-star - Bad - quoted triple, blank node predicate" ;
     mf:action    <ntriples-star-bad-syntax-4.nt> ;
     .

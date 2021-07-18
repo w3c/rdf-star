@@ -157,13 +157,13 @@
   "seeAlso": "https://w3c.github.io/rdf-star/tests/semantics/README",
   "entries": [
     {
-      "@id": "trs:all-identical-embedded-triples-are-the-same",
+      "@id": "trs:all-identical-quoted-triples-are-the-same",
       "@type": "PositiveEntailmentTest",
-      "comment": "Multiple occurences of the same embedded triples are undistinguishable in the abstract model.",
+      "comment": "Multiple occurences of the same quoted triples are undistinguishable in the abstract model.",
       "approval": "Proposed",
       "action": "test001a.ttl",
       "entailmentRegime": "simple",
-      "name": "all-identical-embedded-triples-are-the-same",
+      "name": "all-identical-quoted-triples-are-the-same",
       "recognizedDatatypes": [
 
       ],
@@ -173,13 +173,13 @@
       ]
     },
     {
-      "@id": "trs:embedded-triples-no-spurious",
+      "@id": "trs:quoted-triples-no-spurious",
       "@type": "NegativeEntailmentTest",
       "comment": "This test ensures that other entailments are not spurious.",
       "approval": "Proposed",
       "action": "test002a.ttl",
       "entailmentRegime": "simple",
-      "name": "embedded-triples-no-spurious",
+      "name": "quoted-triples-no-spurious",
       "recognizedDatatypes": [
 
       ],
@@ -189,13 +189,13 @@
       ]
     },
     {
-      "@id": "trs:bnodes-in-embedded-subject",
+      "@id": "trs:bnodes-in-quoted-subject",
       "@type": "PositiveEntailmentTest",
-      "comment": "Terms in embedded triples can be replaced by fresh bnodes.",
+      "comment": "Terms in quoted triples can be replaced by fresh bnodes.",
       "approval": "Proposed",
       "action": "test002a.ttl",
       "entailmentRegime": "simple",
-      "name": "bnodes-in-embedded-subject",
+      "name": "bnodes-in-quoted-subject",
       "recognizedDatatypes": [
 
       ],
@@ -205,13 +205,13 @@
       ]
     },
     {
-      "@id": "trs:bnodes-in-embedded-object",
+      "@id": "trs:bnodes-in-quoted-object",
       "@type": "PositiveEntailmentTest",
-      "comment": "Terms in embedded triples can be replaced by fresh bnodes.",
+      "comment": "Terms in quoted triples can be replaced by fresh bnodes.",
       "approval": "Proposed",
       "action": "test002a.ttl",
       "entailmentRegime": "simple",
-      "name": "bnodes-in-embedded-object",
+      "name": "bnodes-in-quoted-object",
       "recognizedDatatypes": [
 
       ],
@@ -221,13 +221,13 @@
       ]
     },
     {
-      "@id": "trs:bnodes-in-embedded-subject-and-object",
+      "@id": "trs:bnodes-in-quoted-subject-and-object",
       "@type": "PositiveEntailmentTest",
-      "comment": "Terms in embedded triples can be replaced by fresh bnodes.",
+      "comment": "Terms in quoted triples can be replaced by fresh bnodes.",
       "approval": "Proposed",
       "action": "test002a.ttl",
       "entailmentRegime": "simple",
-      "name": "bnodes-in-embedded-subject-and-object",
+      "name": "bnodes-in-quoted-subject-and-object",
       "recognizedDatatypes": [
 
       ],
@@ -237,13 +237,13 @@
       ]
     },
     {
-      "@id": "trs:bnodes-in-embedded-subject-and-object-fail",
+      "@id": "trs:bnodes-in-quoted-subject-and-object-fail",
       "@type": "NegativeEntailmentTest",
-      "comment": "The same bnode can not match different embedded terms.",
+      "comment": "The same bnode can not match different quoted terms.",
       "approval": "Proposed",
       "action": "test002a.ttl",
       "entailmentRegime": "simple",
-      "name": "bnodes-in-embedded-subject-and-object-fail",
+      "name": "bnodes-in-quoted-subject-and-object-fail",
       "recognizedDatatypes": [
 
       ],
@@ -253,13 +253,13 @@
       ]
     },
     {
-      "@id": "trs:same-bnode-same-embedded-term",
+      "@id": "trs:same-bnode-same-quoted-term",
       "@type": "PositiveEntailmentTest",
-      "comment": "Identical embedded term can be replaced by the same fresh bnode multiple times.",
+      "comment": "Identical quoted term can be replaced by the same fresh bnode multiple times.",
       "approval": "Proposed",
       "action": "test003a.ttl",
       "entailmentRegime": "simple",
-      "name": "same-bnode-same-embedded-term",
+      "name": "same-bnode-same-quoted-term",
       "recognizedDatatypes": [
 
       ],
@@ -269,13 +269,13 @@
       ]
     },
     {
-      "@id": "trs:different-bnodes-same-embedded-term",
+      "@id": "trs:different-bnodes-same-quoted-term",
       "@type": "PositiveEntailmentTest",
-      "comment": "Different bnodes can match identical embedded terms.",
+      "comment": "Different bnodes can match identical quoted terms.",
       "approval": "Proposed",
       "action": "test003a.ttl",
       "entailmentRegime": "simple",
-      "name": "different-bnodes-same-embedded-term",
+      "name": "different-bnodes-same-quoted-term",
       "recognizedDatatypes": [
 
       ],
@@ -285,13 +285,13 @@
       ]
     },
     {
-      "@id": "trs:constrained-bnodes-in-embedded-subject",
+      "@id": "trs:constrained-bnodes-in-quoted-subject",
       "@type": "PositiveEntailmentTest",
-      "comment": "Terms in embedded triples and outside can be replaced by fresh bnodes",
+      "comment": "Terms in quoted triples and outside can be replaced by fresh bnodes",
       "approval": "Proposed",
       "action": "test004a.ttl",
       "entailmentRegime": "simple",
-      "name": "constrained-bnodes-in-embedded-subject",
+      "name": "constrained-bnodes-in-quoted-subject",
       "recognizedDatatypes": [
 
       ],
@@ -301,13 +301,13 @@
       ]
     },
     {
-      "@id": "trs:constrained-bnodes-in-embedded-object",
+      "@id": "trs:constrained-bnodes-in-quoted-object",
       "@type": "PositiveEntailmentTest",
-      "comment": "Terms in embedded triples and outside can be replaced by fresh bnodes.",
+      "comment": "Terms in quoted triples and outside can be replaced by fresh bnodes.",
       "approval": "Proposed",
       "action": "test004a.ttl",
       "entailmentRegime": "simple",
-      "name": "constrained-bnodes-in-embedded-object",
+      "name": "constrained-bnodes-in-quoted-object",
       "recognizedDatatypes": [
 
       ],
@@ -317,13 +317,13 @@
       ]
     },
     {
-      "@id": "trs:constrained-bnodes-in-embedded-fail",
+      "@id": "trs:constrained-bnodes-in-quoted-fail",
       "@type": "NegativeEntailmentTest",
-      "comment": "Embedded bnode identifiers share the same scope as non-embedded ones. A bnode occuring both in embedded triples and in asserted triples must statisfy them all at the same time.",
+      "comment": "Embedded bnode identifiers share the same scope as non-quoted ones. A bnode occuring both in quoted triples and in asserted triples must statisfy them all at the same time.",
       "approval": "Proposed",
       "action": "test004a.ttl",
       "entailmentRegime": "simple",
-      "name": "constrained-bnodes-in-embedded-fail",
+      "name": "constrained-bnodes-in-quoted-fail",
       "recognizedDatatypes": [
 
       ],
@@ -335,7 +335,7 @@
     {
       "@id": "trs:constrained-bnodes-on-literal",
       "@type": "PositiveEntailmentTest",
-      "comment": "Literals in embedded triples and outside can be replaced by fresh bnodes.",
+      "comment": "Literals in quoted triples and outside can be replaced by fresh bnodes.",
       "approval": "Proposed",
       "action": "test006a.ttl",
       "entailmentRegime": "simple",
@@ -367,7 +367,7 @@
     {
       "@id": "trs:malformed-literal",
       "@type": "NegativeEntailmentTest",
-      "comment": "Malformed literals are allowed when embedded.",
+      "comment": "Malformed literals are allowed when quoted.",
       "approval": "Proposed",
       "action": "malformed-literal.ttl",
       "entailmentRegime": "RDF",
@@ -383,7 +383,7 @@
     {
       "@id": "trs:malformed-literal-accepted",
       "@type": "PositiveEntailmentTest",
-      "comment": "Malformed literals are allowed when embedded.",
+      "comment": "Malformed literals are allowed when quoted.",
       "approval": "Proposed",
       "action": "malformed-literal.ttl",
       "entailmentRegime": "RDF",
@@ -525,13 +525,13 @@
       ]
     },
     {
-      "@id": "trs:embedded-not-asserted",
+      "@id": "trs:quoted-not-asserted",
       "@type": "NegativeEntailmentTest",
       "comment": "Embedded triples are not asserted.",
       "approval": "Proposed",
       "action": "test002a.ttl",
       "entailmentRegime": "simple",
-      "name": "embedded-not-asserted",
+      "name": "quoted-not-asserted",
       "recognizedDatatypes": [
 
       ],

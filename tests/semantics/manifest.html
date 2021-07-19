@@ -323,7 +323,7 @@ prefix : &lt;http://example.com/ns#&gt;
 &lt;&lt; _:x :b :c &gt;&gt; :p1 :o1.
 _:x :label "C".
 </pre>
-<p>Embedded bnode identifiers share the same scope as non-quoted ones. A bnode occuring both in quoted triples and in asserted triples must statisfy them all at the same time.</p>
+<p>Quoted bnode identifiers share the same scope as non-quoted ones. A bnode occurring both in quoted triples and in asserted triples must statisfy all occurrences at the same time.</p>
 </section><section id="constrained-bnodes-on-literal" class="entry proposed PositiveEntailmentTest">
 <h2>constrained-bnodes-on-literal <a href="#constrained-bnodes-on-literal">🔗</a></h2>
 <table class="properties">
@@ -422,7 +422,7 @@ prefix : &lt;http://example.com/ns#&gt;
 prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt;
 
 &lt;&lt; :a :b "d"^^xsd:integer &gt;&gt; :p1 :o1.</pre>
-<p>Embedded malformed literals do not lead to spurious entailment.</p>
+<p>Quoted malformed literals do not lead to spurious entailment.</p>
 </section><section id="malformed-literal-bnode-neg" class="entry proposed NegativeEntailmentTest">
 <h2>malformed-literal-bnode <a href="#malformed-literal-bnode-neg">🔗</a></h2>
 <table class="properties">
@@ -488,7 +488,7 @@ prefix : &lt;http://example.com/ns#&gt;
 prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt;
 
 &lt;&lt; :a :b "42"^^xsd:integer &gt;&gt; :p1 :o1.</pre>
-<p>Embedded literals are opaque, even when their datatype is recognized.</p>
+<p>Quoted literals are opaque, even when their datatype is recognized.</p>
 </section><section id="opaque-language-string-control" class="entry proposed PositiveEntailmentTest">
 <h2>opaque-language-string-control <a href="#opaque-language-string-control">🔗</a></h2>
 <table class="properties">
@@ -528,7 +528,7 @@ prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt;
 prefix : &lt;http://example.com/ns#&gt;
 
 &lt;&lt; :a :b "hello"@en-US &gt;&gt; :p1 :o1.</pre>
-<p>Embedded literals (including language strings) are opaque, even when their datatype is recognized.</p>
+<p>Quoted literals (including language strings) are opaque, even when their datatype is recognized.</p>
 </section><section id="opaque-iri-control" class="entry proposed PositiveEntailmentTest">
 <h2>opaque-iri-control <a href="#opaque-iri-control">🔗</a></h2>
 <table class="properties">
@@ -573,7 +573,7 @@ prefix : &lt;http://example.com/ns#&gt;
 
 &lt;&lt; :clark :can :fly &gt;&gt; :reportedBy :clark.
 </pre>
-<p>Embedded IRIs are opaque.</p>
+<p>Quoted IRIs are opaque.</p>
 </section><section id="quoted-not-asserted" class="entry proposed NegativeEntailmentTest">
 <h2>quoted-not-asserted <a href="#quoted-not-asserted">🔗</a></h2>
 <table class="properties">
@@ -594,7 +594,7 @@ prefix : &lt;http://example.com/ns#&gt;
 
 :a :b :c.
 </pre>
-<p>Embedded triples are not asserted.</p>
+<p>Quoted triples are not asserted.</p>
 </section><section id="annotated-asserted" class="entry proposed PositiveEntailmentTest">
 <h2>annotated-asserted <a href="#annotated-asserted">🔗</a></h2>
 <table class="properties">

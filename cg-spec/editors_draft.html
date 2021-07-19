@@ -438,11 +438,11 @@ INSERT {
       <p>
         A quoted triple is written in Turtle-star and related syntaxes using delimiters `<<` and `>>`.
       </p>
-      <pre data-transform="updateExample" data-content-type="text/turtle" class="nohighlight example">
-        <!--
-            << :a :name "Alice" >>
-        -->
-      </pre>  
+      <p style="margin-left: 2em;">
+        <code>
+          &lt;&lt; :a :name "Alice" &gt;&gt;
+        </code>
+      </p>
       <p>
         The definition of quoted triple is recursive. A quoted triple can itself have a
         subject or object component which is another quoted triple. Cycles of quoted
@@ -450,11 +450,11 @@ INSERT {
         property `:reportedBy` and whose subject is another quoted triple `:a :name
         "Alice"`.
       </p>
-      <pre data-transform="updateExample" data-content-type="text/turtle" class="nohighlight example">
-        <!--
-            << << :a :name "Alice" >> :reportedBy :charlie >>
-        -->
-      </pre> 
+      <p style="margin-left: 2em;">
+        <code>
+          &lt;&lt; &lt;&lt; :a :name "Alice" &gt;&gt;  :reportedBy :charlie &gt;&gt;
+        </code>
+      </p>
     </section>
 
     <section id="rdf-star-graph-examples">
@@ -483,6 +483,11 @@ INSERT {
         This graph does not have an asserted triple, `:a :name "Alice"`, because
         that triple is not an element of the set of triples.
       </p>
+      <p>
+        On the other hand, the graph in the example below contains three asserted triples:
+        the same two as the previous example, and `:a :name "Alice"`. The latter is used
+        both as an <a>asserted triple</a> and a <a>quoted triple</a> in this graph.
+      </p>
       <pre data-transform="updateExample" data-content-type="text/turtle" class="nohighlight example">
         <!--
             PREFIX : <http://www.example.org/> 
@@ -491,7 +496,7 @@ INSERT {
             :a :name "Alice" .
             << :a :name "Alice" >> :statedBy :bob .
               -->
-      </pre> 
+      </pre>  
     </section>
 
     <section id="annotation-syntax">

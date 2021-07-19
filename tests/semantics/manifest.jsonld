@@ -122,7 +122,7 @@
     {
       "@id": "trs:triple-in-object",
       "@type": "PositiveEntailmentTest",
-      "comment": "Embedded triples can appear in object position (withdrawn, as it belongs to concrete syntax test-suites).",
+      "comment": "Quoted triples can appear in object position (withdrawn, as it belongs to concrete syntax test-suites).",
       "approval": "Withdrawn",
       "action": "test000o.ttl",
       "entailmentRegime": "simple",
@@ -138,7 +138,7 @@
     {
       "@id": "trs:triple-in-subject",
       "@type": "PositiveEntailmentTest",
-      "comment": "Embedded triples can appear in subject position (withdrawn, as it belongs to concrete syntax test-suites).",
+      "comment": "Quoted triples can appear in subject position (withdrawn, as it belongs to concrete syntax test-suites).",
       "approval": "Withdrawn",
       "action": "test000s.ttl",
       "entailmentRegime": "simple",
@@ -319,7 +319,7 @@
     {
       "@id": "trs:constrained-bnodes-in-quoted-fail",
       "@type": "NegativeEntailmentTest",
-      "comment": "Embedded bnode identifiers share the same scope as non-quoted ones. A bnode occuring both in quoted triples and in asserted triples must statisfy them all at the same time.",
+      "comment": "Quoted bnode identifiers share the same scope as non-quoted ones. A bnode occurring both in quoted triples and in asserted triples must statisfy all occurrences at the same time.",
       "approval": "Proposed",
       "action": "test004a.ttl",
       "entailmentRegime": "simple",
@@ -399,7 +399,7 @@
     {
       "@id": "trs:malformed-literal-no-spurious",
       "@type": "NegativeEntailmentTest",
-      "comment": "Embedded malformed literals do not lead to spurious entailment.",
+      "comment": "Quoted malformed literals do not lead to spurious entailment.",
       "approval": "Proposed",
       "action": "malformed-literal.ttl",
       "entailmentRegime": "RDF",
@@ -447,7 +447,7 @@
     {
       "@id": "trs:opaque-literal",
       "@type": "NegativeEntailmentTest",
-      "comment": "Embedded literals are opaque, even when their datatype is recognized.",
+      "comment": "Quoted literals are opaque, even when their datatype is recognized.",
       "approval": "Proposed",
       "action": "non-canonical-literal.ttl",
       "entailmentRegime": "RDF",
@@ -479,7 +479,7 @@
     {
       "@id": "trs:opaque-language-string",
       "@type": "NegativeEntailmentTest",
-      "comment": "Embedded literals (including language strings) are opaque, even when their datatype is recognized.",
+      "comment": "Quoted literals (including language strings) are opaque, even when their datatype is recognized.",
       "approval": "Proposed",
       "action": "lowercase-language-string.ttl",
       "entailmentRegime": "RDF",
@@ -511,7 +511,7 @@
     {
       "@id": "trs:opaque-iri",
       "@type": "NegativeEntailmentTest",
-      "comment": "Embedded IRIs are opaque.",
+      "comment": "Quoted IRIs are opaque.",
       "approval": "Proposed",
       "action": "superman.ttl",
       "entailmentRegime": "RDFS-Plus",
@@ -527,7 +527,7 @@
     {
       "@id": "trs:quoted-not-asserted",
       "@type": "NegativeEntailmentTest",
-      "comment": "Embedded triples are not asserted.",
+      "comment": "Quoted triples are not asserted.",
       "approval": "Proposed",
       "action": "test002a.ttl",
       "entailmentRegime": "simple",

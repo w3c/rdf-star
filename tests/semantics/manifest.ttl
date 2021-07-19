@@ -119,7 +119,7 @@ trs:bnodes-in-quoted-subject-and-object-fail a mf:NegativeEntailmentTest;
   test:approval test:NotClassified .
 
 trs:constrained-bnodes-in-quoted-fail a mf:NegativeEntailmentTest;
-  rdfs:comment "Embedded bnode identifiers share the same scope as non-quoted ones. A bnode occuring both in quoted triples and in asserted triples must statisfy them all at the same time.";
+  rdfs:comment "Quoted bnode identifiers share the same scope as non-quoted ones. A bnode occurring both in quoted triples and in asserted triples must statisfy all occurrences at the same time.";
   mf:action <test004a.ttl>;
   mf:entailmentRegime "simple";
   mf:name "constrained-bnodes-in-quoted-fail";
@@ -169,7 +169,7 @@ trs:different-bnodes-same-quoted-term a mf:PositiveEntailmentTest;
   test:approval test:NotClassified .
 
 trs:quoted-not-asserted a mf:NegativeEntailmentTest;
-  rdfs:comment "Embedded triples are not asserted.";
+  rdfs:comment "Quoted triples are not asserted.";
   mf:action <test002a.ttl>;
   mf:entailmentRegime "simple";
   mf:name "quoted-not-asserted";
@@ -259,7 +259,7 @@ trs:malformed-literal-control a mf:PositiveEntailmentTest;
   test:approval test:NotClassified .
 
 trs:malformed-literal-no-spurious a mf:NegativeEntailmentTest;
-  rdfs:comment "Embedded malformed literals do not lead to spurious entailment.";
+  rdfs:comment "Quoted malformed literals do not lead to spurious entailment.";
   mf:action <malformed-literal.ttl>;
   mf:entailmentRegime "RDF";
   mf:name "malformed-literal-no-spurious";
@@ -269,7 +269,7 @@ trs:malformed-literal-no-spurious a mf:NegativeEntailmentTest;
   test:approval test:NotClassified .
 
 trs:opaque-iri a mf:NegativeEntailmentTest;
-  rdfs:comment "Embedded IRIs are opaque.";
+  rdfs:comment "Quoted IRIs are opaque.";
   mf:action <superman.ttl>;
   mf:entailmentRegime "RDFS-Plus";
   mf:name "opaque-iri";
@@ -289,7 +289,7 @@ trs:opaque-iri-control a mf:PositiveEntailmentTest;
   test:approval test:NotClassified .
 
 trs:opaque-language-string a mf:NegativeEntailmentTest;
-  rdfs:comment "Embedded literals (including language strings) are opaque, even when their datatype is recognized.";
+  rdfs:comment "Quoted literals (including language strings) are opaque, even when their datatype is recognized.";
   mf:action <lowercase-language-string.ttl>;
   mf:entailmentRegime "RDF";
   mf:name "opaque-language-string";
@@ -309,7 +309,7 @@ trs:opaque-language-string-control a mf:PositiveEntailmentTest;
   test:approval test:NotClassified .
 
 trs:opaque-literal a mf:NegativeEntailmentTest;
-  rdfs:comment "Embedded literals are opaque, even when their datatype is recognized.";
+  rdfs:comment "Quoted literals are opaque, even when their datatype is recognized.";
   mf:action <non-canonical-literal.ttl>;
   mf:entailmentRegime "RDF";
   mf:name "opaque-literal";
@@ -339,7 +339,7 @@ trs:same-bnode-same-quoted-term a mf:PositiveEntailmentTest;
   test:approval test:NotClassified .
 
 trs:triple-in-object a mf:PositiveEntailmentTest;
-  rdfs:comment "Embedded triples can appear in object position (withdrawn, as it belongs to concrete syntax test-suites).";
+  rdfs:comment "Quoted triples can appear in object position (withdrawn, as it belongs to concrete syntax test-suites).";
   mf:action <test000o.ttl>;
   mf:entailmentRegime "simple";
   mf:name "triple-in-object";
@@ -349,7 +349,7 @@ trs:triple-in-object a mf:PositiveEntailmentTest;
   test:approval test:Withdrawn .
 
 trs:triple-in-subject a mf:PositiveEntailmentTest;
-  rdfs:comment "Embedded triples can appear in subject position (withdrawn, as it belongs to concrete syntax test-suites).";
+  rdfs:comment "Quoted triples can appear in subject position (withdrawn, as it belongs to concrete syntax test-suites).";
   mf:action <test000s.ttl>;
   mf:entailmentRegime "simple";
   mf:name "triple-in-subject";

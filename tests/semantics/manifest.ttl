@@ -119,7 +119,7 @@ trs:bnodes-in-quoted-subject-and-object-fail a mf:NegativeEntailmentTest;
   test:approval test:NotClassified .
 
 trs:constrained-bnodes-in-quoted-fail a mf:NegativeEntailmentTest;
-  rdfs:comment "Quoted bnode identifiers share the same scope as non-quoted ones. A bnode occurring both inside quoted triples and inside asserted triples must statisfy all occurrences at the same time.";
+  rdfs:comment "Quoted bnode identifiers share the same scope as non-quoted ones. A bnode that occurs both inside quoted triples and inside asserted triples must satisfy all occurrences at the same time.";
   mf:action <test004a.ttl>;
   mf:entailmentRegime "simple";
   mf:name "constrained-bnodes-in-quoted-fail";

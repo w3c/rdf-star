@@ -319,7 +319,7 @@
     {
       "@id": "trs:constrained-bnodes-in-quoted-fail",
       "@type": "NegativeEntailmentTest",
-      "comment": "Quoted bnode identifiers share the same scope as non-quoted ones. A bnode occurring both inside quoted triples and inside asserted triples must statisfy all occurrences at the same time.",
+      "comment": "Quoted bnode identifiers share the same scope as non-quoted ones. A bnode that occurs both inside quoted triples and inside asserted triples must satisfy all occurrences at the same time.",
       "approval": "Proposed",
       "action": "test004a.ttl",
       "entailmentRegime": "simple",

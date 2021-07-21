@@ -498,40 +498,6 @@ INSERT {
               -->
       </pre>  
     </section>
-
-    <section id="annotation-syntax">
-      <h2>Annotation Syntax</h2>
-      <p>
-        <em>Annotation syntax</em> provides a convenience shortcut in Turtle-star and
-        related syntaxes. It is used to both assert a triple and have that triple be the
-        subject of further triples. It uses delimiters `{|` and `|}` following an asserted
-        triple to make that triple, as a <a>quoted triple</a>, the subject of the enclosed RDF
-        triples.
-      </p>
-      <p>
-        Annotation syntax does not appear in the RDF-star abstract data model. It is
-        only a syntactic short cut and the RDF-star abstract data model does not
-        distinguished how the triples were written.
-      </p>
-      <pre data-transform="updateExample" 
-           data-content-type="text/turtle" 
-           class="nohighlight example">
-        <!--
-            :a :name "Alice" {| :statedBy :bob ; :recorded "2021-07-07"^^xsd:date |} .
-          -->
-      </pre>
-      <p>is the same set of triples as:</p>
-      <pre data-transform="updateExample"
-           data-content-type="text/turtle"
-           class="nohighlight example">
-        <!--
-            << :a :name "Alice" >> :statedBy :bob .
-            << :a :name "Alice" >> :recorded "2021-07-07"^^xsd:date .
-            :a :name "Alice"
-         -->
-      </pre>
-      <p>and <a>RDF-star graph</a> contains three asserted triples.</p>
-    </section>
     
     <section class="informative" id="occurrences">
       <h2>Triples and occurrences</h2>
@@ -575,6 +541,40 @@ INSERT {
     <a href="#sparql-star-grammar" class="sectionRef"></a>
     and the changes for the result set formats in
     <a href="#query-result-formats" class="sectionRef"></a>.</p>
+
+    <section id="annotation-syntax">
+      <h2>Annotation Syntax</h2>
+      <p>Theer are syntax additions for <a>quoted triples</a> and also for
+        <em>Annotation syntax</em> which provides a convenience shortcut in Turtle-star and
+        TriG-star syntaxes. It is used to both assert a triple and have that triple be the
+        subject of further triples. It uses delimiters `{|` and `|}` following an asserted
+        triple to make that triple, as a <a>quoted triple</a>, the subject of the enclosed
+        RDF triples.
+      </p>
+      <p>
+        Annotation syntax does not appear in the RDF-star abstract data model. It is
+        only a syntactic short cut and the RDF-star abstract data model does not
+        distinguished how the triples were written.
+      </p>
+      <pre data-transform="updateExample" 
+           data-content-type="text/turtle" 
+           class="nohighlight example">
+        <!--
+            :a :name "Alice" {| :statedBy :bob ; :recorded "2021-07-07"^^xsd:date |} .
+          -->
+      </pre>
+      <p>is the same set of triples as:</p>
+      <pre data-transform="updateExample"
+           data-content-type="text/turtle"
+           class="nohighlight example">
+        <!--
+            << :a :name "Alice" >> :statedBy :bob .
+            << :a :name "Alice" >> :recorded "2021-07-07"^^xsd:date .
+            :a :name "Alice"
+         -->
+      </pre>
+      <p>and <a>RDF-star graph</a> contains three asserted triples.</p>
+    </section>
 
   <section id="turtle-star">
     <h2>Turtle-star</h2>

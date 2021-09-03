@@ -14,11 +14,10 @@ trs:manifest  rdf:type mf:Manifest ;
     rdfs:label "La suite des tests pour SPARQL-star"@fr;
 	rdfs:label "Conjunto de pruebas para SPARQL-star"@es;
 	dct:issued "2021-06-21"^^xsd:date ; #not sure if this was the first release date
-	dct:creator [ foaf:name "Olaf Hartif" ] ; #maybe add foaf:homepage
     rdfs:seeAlso <https://w3c.github.io/rdf-tests/> ;
 	dct:modified "2021-07-18"^^xsd:date ; # change to the exact date
 	dct:licence <https://www.w3.org/Consortium/Legal/2008/03-bsd-license> ;
-	dct:contributor [ foaf:homepage <https://w3c.github.io/rdf-star/> ; foaf:name " W3C RDF-star Working Group" ] ;
+	dct:creator [ foaf:homepage <https://w3c.github.io/rdf-star/> ; foaf:name " W3C RDF-star Working Group" ] ;
     mf:entries
     (
         trs:sparql-star-1

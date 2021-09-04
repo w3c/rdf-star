@@ -3059,6 +3059,32 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
       This issue proposes to introduce a vocabulary for locally overriding the <a href="#ref-opacity">opaque</a> semantics of <a>quoted triples</a>, making them transparent in some contexts.
     </div>
 
+    <div class="defn">
+      <pre>## Vocabulary for concepts used by or introduced by RDF-star.
+PREFIX rdf:       &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;
+PREFIX rdfs:      &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
+PREFIX rdf-star:  &lt;http://www.w3.org/ns/rdf-star#&gt;
+
+rdf-star:Triple      a rdfs:Class ;
+    rdfs:isDefinedBy   &lt;http://www.w3.org/ns/rdf-star#&gt;
+    rdfs:label         "RDF Triple" ;
+    rdfs:comment       "The class of RDF triples." ;
+    rdfs:subClassOf    rdfs:Resource .
+
+rdf-star:Graph       a rdfs:Class ;
+    rdfs:isDefinedBy   &lt;http://www.w3.org/ns/rdf-star#&gt;
+    rdfs:label         "RDF Graph" ;
+    rdfs:comment       "The class of RDF graphs." ;
+    rdfs:subClassOf    rdfs:Resource .
+
+rdf-star:Source      a rdfs:Class ;
+    rdfs:isDefinedBy   &lt;http://www.w3.org/ns/rdf-star#&gt;
+    rdfs:label         "RDF Source" ;
+    rdfs:seeAlso       &lt;https://www.w3.org/TR/rdf11-concepts/#h3_change-over-time&gt; ;
+    rdfs:comment       "The class of RDF Sources." ;
+    rdfs:subClassOf    rdfs:Resource .
+      </pre>
+    </div>
   </section>
 
   <section class="appendix informative">

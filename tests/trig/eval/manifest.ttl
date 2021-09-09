@@ -33,9 +33,9 @@ trs:manifest  rdf:type mf:Manifest ;
         trs:trig-star-annotation-3
         trs:trig-star-annotation-4
         trs:trig-star-annotation-5
-        trs:trig-star-embed-annotation-1
-        trs:trig-star-embed-annotation-2
-        trs:trig-star-embed-annotation-3
+        trs:trig-star-quoted-annotation-1
+        trs:trig-star-quoted-annotation-2
+        trs:trig-star-quoted-annotation-3
     ) .
 
 trs:trig-star-1 rdf:type rdft:TestTrigEval ;
@@ -92,20 +92,20 @@ trs:trig-star-annotation-5 rdf:type rdft:TestTrigEval ;
    mf:result    <trig-star-eval-annotation-5.nq> ;
    .
 
-trs:trig-star-embed-annotation-1 rdf:type rdft:TestTrigEval ;
-   mf:name      "TriG-star - Annotation with embedding" ;
-   mf:action    <trig-star-eval-embed-annotation-1.trig> ;
-   mf:result    <trig-star-eval-embed-annotation-1.nq> ;
+trs:turtle-star-quoted-annotation-1 rdf:type rdft:TestTurtleEval ;
+   mf:name      "Turtle-star - Annotation with quoting" ;
+   mf:action    <turtle-star-eval-quoted-annotation-1.ttl> ;
+   mf:result    <turtle-star-eval-quoted-annotation-1.nt> ;
    .
 
-trs:trig-star-embed-annotation-2 rdf:type rdft:TestTrigEval ;
-   mf:name      "TriG-star - Annotation on triple with embedded subject" ;
-   mf:action    <trig-star-eval-embed-annotation-2.trig> ;
-   mf:result    <trig-star-eval-embed-annotation-2.nq> ;
+trs:turtle-star-quoted-annotation-2 rdf:type rdft:TestTurtleEval ;
+   mf:name      "Turtle-star - Annotation on triple with quoted subject" ;
+   mf:action    <turtle-star-eval-quoted-annotation-2.ttl> ;
+   mf:result    <turtle-star-eval-quoted-annotation-2.nt> ;
    .
-
-trs:trig-star-embed-annotation-3 rdf:type rdft:TestTrigEval ;
-   mf:name      "TriG-star - Annotation on triple with embedded object" ;
-   mf:action    <trig-star-eval-embed-annotation-3.trig> ;
-   mf:result    <trig-star-eval-embed-annotation-3.nq> ;
+   
+trs:turtle-star-quoted-annotation-3 rdf:type rdft:TestTurtleEval ;
+   mf:name      "Turtle-star - Annotation on triple with quoted object" ;
+   mf:action    <turtle-star-eval-quoted-annotation-3.ttl> ;
+   mf:result    <turtle-star-eval-quoted-annotation-3.nt> ;
    .

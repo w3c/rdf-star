@@ -97,7 +97,7 @@ trs:turtle-star-quoted-annotation-1 rdf:type rdft:TestTurtleEval ;
    mf:action    <turtle-star-eval-quoted-annotation-1.ttl> ;
    mf:result    <turtle-star-eval-quoted-annotation-1.nt> ;
    .
-
+   
 trs:turtle-star-quoted-annotation-2 rdf:type rdft:TestTurtleEval ;
    mf:name      "Turtle-star - Annotation on triple with quoted subject" ;
    mf:action    <turtle-star-eval-quoted-annotation-2.ttl> ;

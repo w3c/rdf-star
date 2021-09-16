@@ -20,7 +20,7 @@ trs:manifest a mf:Manifest;
   rdfs:label "Conjunto de pruebas para la semántica de RDF-star"@es;
   dct:issued "2021-06-21"^^xsd:date ;
   dct:modified "2021-07-18"^^xsd:date ;
-  dct:licence <https://www.w3.org/Consortium/Legal/2008/03-bsd-license> ;
+  dct:license <https://www.w3.org/Consortium/Legal/2008/03-bsd-license> ;
   dct:creator [ foaf:homepage <https://w3c.github.io/rdf-star/> ; foaf:name " W3C RDF-star Working Group" ] ;
   rdfs:seeAlso <README>;
   mf:entries (

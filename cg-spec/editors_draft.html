@@ -200,6 +200,16 @@
     .heavy { color:black; font-weight:bold }
     .small { font-size: smaller; }
 
+    #structure-map .box {
+      display: block;
+      border: thin solid gray;
+      border-radius: 0.5em;
+      margin: 0.7em 1em;
+      padding: 0.35em 0.5em;
+      box-shadow: 0.25em 0.25em 0.5em darkgray;
+      text-align: center;
+    }
+
     /* remove "unofficial draft" watermark */
     body.no-watermark {
       background: url('https://www.w3.org/StyleSheets/TR/2016/logos/back-cg-draft') no-repeat !important
@@ -350,6 +360,51 @@ INSERT {
 <tr><td>`dct:`</td><td>`&lt;http://purl.org/dc/terms/&gt;`</td></tr>
 </table>
 
+    </section>
+
+    <section id="structure">
+      <h2>Structure of this document</h2>
+      <p>This specification covers many aspect of RDF-star, and not all sections will be of interest to all readers.</p>
+      <p><a href="#concepts">Section 2</a> first describes the concepts and abstract syntax of RDF-star, to which all following sections refer.
+      The next three sections focus on how users will interact with the abstract syntax, describing the <a href="#concrete-syntaxes">concrete syntaxes</a>, the <a href="#sparql-star">query language SPARQL-star</a> and its <a href="#sparql-star-update">counterpart for updates</a>. <a href="#rdf-star-semantics">Section 6</a> then describes RDF-star's formal semantics, which lays the foundation for reasoning with RDF-star data. Finally, <a href="#rdf-star-vocabulary">section 7</a> defines an RDF vocabulary capturing the main concepts of RDF-star.</p>
+
+      <figure id="structure-map">
+        <table>
+          <tr>
+            <td rowspan=3>
+              <div class="box">
+                <strong>querying</strong><br>
+                <a href="#sparql-star"></a><br>
+              </div>
+              <div class="box">
+                <strong>updating</strong><br>
+                  <a href="#sparql-star-update"></a>
+              </div>
+            <td>
+              <div class="box">
+                <strong>reasoning</strong><br>
+                <a href="#rdf-star-semantics"></a>
+              </div>
+            <td>
+            <td rowspan=3>
+              <div class="box">
+                <strong>representing</strong><br>
+                <a href="#rdf-star-vocabulary"></a>
+              </div>
+          <tr>
+            <td>
+              <div class="box">
+                <a href="#concepts"></a>
+              </div>
+          <tr>
+            <td>
+              <div class="box">
+                <strong>serializing</strong><br>
+                <a href="#concrete-syntaxes"></a>
+              </div>
+        </table>
+        <figcaption>A visual map of the sections of this document</figcaption>
+      </figure>
     </section>
 
     <section id="conformance">

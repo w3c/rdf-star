@@ -72,7 +72,7 @@
 <li class="proposed"><a href="#malformed-literal">malformed-literal</a>
 <li class="proposed"><a href="#malformed-literal-accepted">malformed-literal-accepted</a>
 <li class="proposed"><a href="#malformed-literal-no-spurious">malformed-literal-no-spurious</a>
-<li class="proposed"><a href="#malformed-literal-bnode">malformed-literal-bnode</a>
+<li class="proposed"><a href="#malformed-literal-bnode-neg">malformed-literal-bnode</a>
 <li class="proposed"><a href="#opaque-literal-control">opaque-literal-control</a>
 <li class="proposed"><a href="#opaque-literal">opaque-literal</a>
 <li class="proposed"><a href="#opaque-language-string-control">opaque-language-string-control</a>
@@ -149,7 +149,7 @@ prefix : &lt;http://example.com/ns#&gt;
 
 &lt;&lt; _:x :b :c &gt;&gt; :p1 :o1.
 </pre>
-<p>Terms in quoted triples can be replaced by fresh bnodes.</p>
+<p>Terms inside quoted triples can be replaced by fresh bnodes.</p>
 </section><section id="bnodes-in-quoted-object" class="entry proposed PositiveEntailmentTest">
 <h2>bnodes-in-quoted-object <a href="#bnodes-in-quoted-object">🔗</a></h2>
 <table class="properties">
@@ -170,7 +170,7 @@ prefix : &lt;http://example.com/ns#&gt;
 
 &lt;&lt; :a :b _:x &gt;&gt; :p1 :o1.
 </pre>
-<p>Terms in quoted triples can be replaced by fresh bnodes.</p>
+<p>Terms inside quoted triples can be replaced by fresh bnodes.</p>
 </section><section id="bnodes-in-quoted-subject-and-object" class="entry proposed PositiveEntailmentTest">
 <h2>bnodes-in-quoted-subject-and-object <a href="#bnodes-in-quoted-subject-and-object">🔗</a></h2>
 <table class="properties">
@@ -191,7 +191,7 @@ prefix : &lt;http://example.com/ns#&gt;
 
 &lt;&lt; _:x :b _:y &gt;&gt; :p1 :o1.
 </pre>
-<p>Terms in quoted triples can be replaced by fresh bnodes.</p>
+<p>Terms inside quoted triples can be replaced by fresh bnodes.</p>
 </section><section id="bnodes-in-quoted-subject-and-object-fail" class="entry proposed NegativeEntailmentTest">
 <h2>bnodes-in-quoted-subject-and-object-fail <a href="#bnodes-in-quoted-subject-and-object-fail">🔗</a></h2>
 <table class="properties">
@@ -277,7 +277,7 @@ prefix : &lt;http://example.com/ns#&gt;
 &lt;&lt; _:x :b :c &gt;&gt; :p1 :o1.
 _:x :label "A".
 </pre>
-<p>Terms in quoted triples and outside can be replaced by fresh bnodes</p>
+<p>Terms inside and outside quoted triples can be replaced by fresh bnodes</p>
 </section><section id="constrained-bnodes-in-quoted-object" class="entry proposed PositiveEntailmentTest">
 <h2>constrained-bnodes-in-quoted-object <a href="#constrained-bnodes-in-quoted-object">🔗</a></h2>
 <table class="properties">
@@ -300,7 +300,7 @@ prefix : &lt;http://example.com/ns#&gt;
 &lt;&lt; :a :b _:x &gt;&gt; :p1 :o1.
 _:x :label "C".
 </pre>
-<p>Terms in quoted triples and outside can be replaced by fresh bnodes.</p>
+<p>Terms inside and outside quoted triples can be replaced by fresh bnodes.</p>
 </section><section id="constrained-bnodes-in-quoted-fail" class="entry proposed NegativeEntailmentTest">
 <h2>constrained-bnodes-in-quoted-fail <a href="#constrained-bnodes-in-quoted-fail">🔗</a></h2>
 <table class="properties">
@@ -323,7 +323,7 @@ prefix : &lt;http://example.com/ns#&gt;
 &lt;&lt; _:x :b :c &gt;&gt; :p1 :o1.
 _:x :label "C".
 </pre>
-<p>quoted bnode identifiers share the same scope as non-quoted ones. A bnode occuring both in quoted triples and in asserted triples must statisfy them all at the same time.</p>
+<p>Quoted bnode identifiers share the same scope as non-quoted ones. A bnode occuring both in quoted triples and in asserted triples must statisfy them all at the same time.</p>
 </section><section id="constrained-bnodes-on-literal" class="entry proposed PositiveEntailmentTest">
 <h2>constrained-bnodes-on-literal <a href="#constrained-bnodes-on-literal">🔗</a></h2>
 <table class="properties">
@@ -346,7 +346,7 @@ prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt;
 
 &lt;&lt; :a :b _:x &gt;&gt; :p1 :o1.
 :s2 :p2 _:x.</pre>
-<p>Literals in quoted triples and outside can be replaced by fresh bnodes.</p>
+<p>Literals inside and outside quoted triples can be replaced by fresh bnodes.</p>
 </section><section id="malformed-literal-control" class="entry proposed PositiveEntailmentTest">
 <h2>malformed-literal-control <a href="#malformed-literal-control">🔗</a></h2>
 <table class="properties">
@@ -422,9 +422,9 @@ prefix : &lt;http://example.com/ns#&gt;
 prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt;
 
 &lt;&lt; :a :b "d"^^xsd:integer &gt;&gt; :p1 :o1.</pre>
-<p>quoted malformed literals do not lead to spurious entailment.</p>
-</section><section id="malformed-literal-bnode" class="entry proposed NegativeEntailmentTest">
-<h2>malformed-literal-bnode <a href="#malformed-literal-bnode">🔗</a></h2>
+<p>Quoted malformed literals do not lead to spurious entailment.</p>
+</section><section id="malformed-literal-bnode-neg" class="entry proposed NegativeEntailmentTest">
+<h2>malformed-literal-bnode <a href="#malformed-literal-bnode-neg">🔗</a></h2>
 <table class="properties">
 <tr class="status"><th>status:</th><td>proposed</td>
 <tr class="type"><th>type:</th><td>negative entailment test</td>
@@ -488,7 +488,7 @@ prefix : &lt;http://example.com/ns#&gt;
 prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt;
 
 &lt;&lt; :a :b "42"^^xsd:integer &gt;&gt; :p1 :o1.</pre>
-<p>quoted literals are opaque, even when their datatype is recognized.</p>
+<p>Quoted literals are opaque, even when their datatype is recognized.</p>
 </section><section id="opaque-language-string-control" class="entry proposed PositiveEntailmentTest">
 <h2>opaque-language-string-control <a href="#opaque-language-string-control">🔗</a></h2>
 <table class="properties">
@@ -528,7 +528,7 @@ prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt;
 prefix : &lt;http://example.com/ns#&gt;
 
 &lt;&lt; :a :b "hello"@en-US &gt;&gt; :p1 :o1.</pre>
-<p>quoted literals (including language strings) are opaque, even when their datatype is recognized.</p>
+<p>Quoted literals (including language strings) are opaque, even when their datatype is recognized.</p>
 </section><section id="opaque-iri-control" class="entry proposed PositiveEntailmentTest">
 <h2>opaque-iri-control <a href="#opaque-iri-control">🔗</a></h2>
 <table class="properties">
@@ -573,7 +573,7 @@ prefix : &lt;http://example.com/ns#&gt;
 
 &lt;&lt; :clark :can :fly &gt;&gt; :reportedBy :clark.
 </pre>
-<p>quoted IRIs are opaque.</p>
+<p>Quoted IRIs are opaque.</p>
 </section><section id="quoted-not-asserted" class="entry proposed NegativeEntailmentTest">
 <h2>quoted-not-asserted <a href="#quoted-not-asserted">🔗</a></h2>
 <table class="properties">
@@ -594,7 +594,7 @@ prefix : &lt;http://example.com/ns#&gt;
 
 :a :b :c.
 </pre>
-<p>quoted triples are not asserted.</p>
+<p>Quoted triples are not asserted.</p>
 </section><section id="annotated-asserted" class="entry proposed PositiveEntailmentTest">
 <h2>annotated-asserted <a href="#annotated-asserted">🔗</a></h2>
 <table class="properties">

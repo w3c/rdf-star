@@ -356,6 +356,8 @@ INSERT {
 <tr><td>`rdfs:`</td><td>`&lt;http://www.w3.org/2000/01/rdf-schema#&gt;`</td></tr>
 <tr><td>`owl:`</td><td>`&lt;http://www.w3.org/2002/07/owl#&gt;`</td></tr>
 <tr><td>`prov:`</td><td>`&lt;http://www.w3.org/ns/prov#&gt;`</td></tr>
+<tr><td>`dbo:`</td><td>`&lt;http://dbpedia.org/ontology/&gt;`</td></tr>
+<tr><td>`dbr:`</td><td>`&lt;http://dbpedia.org/resource/&gt;`</td></tr>
 <tr><td>`dc:`</td><td>`&lt;http://purl.org/dc/elements/1.1/&gt;`</td></tr>
 <tr><td>`dct:`</td><td>`&lt;http://purl.org/dc/terms/&gt;`</td></tr>
 </table>
@@ -3029,22 +3031,22 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
         <!--
         #### under D-entailment
 
-        :linköping :population "0104232"^^xsd::integer
-            {| :source <https://en.wikipedia.org/wiki/Link%C3%B6ping> |}.
+        dbr:Linköping dbo:populationTotal "104232"^^xsd::nonNegativeInteger
+            {| :source <https://dbpedia.org/data/Linköping> |}.
 
         #### does NOT entail
 
-        :linköping :population "104232"^^xsd::integer
-            {| :source <https://en.wikipedia.org/wiki/Link%C3%B6ping> |}.
+        dbr:Linköping dbo:populationTotal "0104232"^^xsd::nonNegativeInteger
+            {| :source <https://dbpedia.org/data/Linköping> |}.
 
         #### more precisely, it DOES entail
 
-        :linköping :population "104232"^^xsd::integer.
+        dbr:Linköping dbo:populationTotal "0104232"^^xsd::nonNegativeInteger.
 
         #### but it does NOT entail
 
-        << :linköping :population "104232"^^xsd::integer >>
-            source <https://en.wikipedia.org/wiki/Link%C3%B6ping> .
+        << dbr:Linköping dbo:populationTotal "0104232"^^xsd::nonNegativeInteger >>
+            :source <https://dbpedia.org/data/Linköping>.
         -->
         </pre>
 
@@ -3085,6 +3087,39 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
               </ul>
           </li>
         </ul>
+
+      </section>
+
+      <section>
+        <h2>Selective referential opacity</h2>
+
+        <p>Since the need for referential opacity/transparency is use-case dependant (as discussed <a href="#ref-opacity">above</a>), it may make sense for different predicates to have different behaviours. Consider the following example.</p>
+
+        <pre id="selective-ref-opacity"
+        data-transform="updateExample"
+        data-content-type="text/turtle"
+        class="nohighlight example"
+        >
+        <!--
+        << dbr:Linköping dbo:populationTotal "104232"^^xsd::nonNegativeInteger >>
+          :at "2010-12-31"^^xsd:date ;
+          :source <https://dbpedia.org/data/Linköping.ttl> .
+
+        ### Candidate entailment #1
+
+        << dbr:Linköping dbo:populationTotal "0104232"^^xsd::nonNegativeInteger >>
+          :at "2010-12-31"^^xsd:date .
+
+        ### Candidate entailment #2
+
+        << dbr:Linköping dbo:populationTotal "0104232"^^xsd::nonNegativeInteger >>
+          :source <https://dbpedia.org/data/Linköping.ttl> .
+        -->
+        </pre>
+
+        <p>One could argue that the candidate entailment #1 is desirable because the property `:at` is understood to be about the <em>statement</em> made by the subject triple (that statement was true at the given date, regardless of its RDF expression). On the other hand, the candidate entailment #2 may be considered not desirable because the predicate `:source` is about the triple itself (that specific triple was parsed from the given Turtle file).</p>
+
+        <p>Subclasses of `rdf:Property` could therefore be defined to identify properties that imply referential transparency on their subject triple, on their object triple, or on both. Note however, that the group has not reached consensus on the definition or usefulness of such a vocabulary.</p>
 
       </section>
 

@@ -3121,6 +3121,48 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
 
         <p>Subclasses of `rdf:Property` could therefore be defined to identify properties that imply referential transparency on their subject triple, on their object triple, or on both. Note however, that the group has not reached consensus on the definition or usefulness of such a vocabulary.</p>
 
+        <p>To BE DISCUSSED: Here is a sketch of an idea to change or extend the semantics in a way that it can work with such properties. The basis of the idea is that each such property&nbsp;|p| is identified by adding to the RDF-star graph a triple of the form (|p|, `rdf:type`, `rdf-star:TransparencyEnforcingProperty`); e.g., for the previous example, this triple would be (`:at`, `rdf:type`, `rdf-star:TransparencyEnforcingProperty`). Then, the IRIs of these properties can be collected into a set&nbsp;|T|. The corresponding definitions are given as follows.</p>
+
+        <p>Given an <a>RDF-star graph</a> |G| and a set |T| of <a>IRIs</a>, the following steps define the <dfn data-lt="T-unstar">T-unstar mapping</dfn>, which transforms |G| into an <a>RDF graph</a> that we call <a>unstar</a>(|G|,|T|).</p>
+
+        <div class="algorithm">
+        <ol>
+          <li>Apply step 1 of the <a>unstar</a> mapping.</li>
+
+          <li>While |G| contains an <a>RDF-star triple</a> (|s|, |p|, |o|), which may be an <a>asserted</a> triple in |G| or a <a>quoted triple</a> in the <a>constituents</a> of |G|, such that |p| is in |T| and |s| is a <a>quoted triple</a>:<ol>
+            <li>Pick such an <a>RDF-star triple</a> (|s|, |p|, |o|), and let the <a>quoted triple</a>&nbsp;|s| be (|s|', |p|', |o|').</li>
+            <li>Mint a fresh blank node |b| (i.e., such that |b| is not in the <a>constituents</a> of |G|).</li>
+            <li>Replace with |b| all occurrences of (|s|', |p|', |o|') in the <a>subject</a> position of every <a>asserted</a> or <a>quoted</a> triple (|s|'', |p|'', |o|'') of |G| for which |p|'' is in |T| (which includes the triple (|s|, |p|, |o|) that was picked, but possibly also other triples).</li>
+            <li id="unstar-add-triples">Add the following <a>asserted triples</a> to |G|:<ul>
+              <li>(|b|, `unstar:subject`,`   `|s|')</li>
+              <li>(|b|, `unstar:predicate`,` `|p|')</li>
+              <li>(|b|, `unstar:object`,`    `|o|') unless |o|' is an <a>ill-typed</a> literal</li>
+            </ul></li>
+          </ol></li>
+
+          <li>While |G| contains an <a>RDF-star triple</a> (|s|, |p|, |o|), which may be an <a>asserted</a> triple in |G| or a <a>quoted triple</a> in the <a>constituents</a> of |G|, such that |p| is in |T| and |o| is a <a>quoted triple</a>:<ol>
+            <li>Pick such an <a>RDF-star triple</a> (|s|, |p|, |o|), and let the <a>quoted triple</a>&nbsp;|o| be (|s|', |p|', |o|').</li>
+            <li>Mint a fresh blank node |b| (i.e., such that |b| is not in the <a>constituents</a> of |G|).</li>
+            <li>Replace with |b| all occurrences of (|s|', |p|', |o|') in the <a>object</a> position of every <a>asserted</a> or <a>quoted</a> triple (|s|'', |p|'', |o|'') of |G| for which |p|'' is in |T| (which includes the triple (|s|, |p|, |o|) that was picked, but possibly also other triples).</li>
+            <li id="unstar-add-triples">Add the following <a>asserted triples</a> to |G|:<ul>
+              <li>(|b|, `unstar:subject`,`   `|s|')</li>
+              <li>(|b|, `unstar:predicate`,` `|p|')</li>
+              <li>(|b|, `unstar:object`,`    `|o|') unless |o|' is an <a>ill-typed</a> literal</li>
+            </ul></li>
+          </ol></li>
+
+          <li>Apply step 2 of the <a>unstar</a> mapping.</li>
+        </ol>
+        </div>
+
+        <p>Note that the <a>T-unstar</a> mapping collapses to the <a>unstar</a> mapping if |T| is empty.</p>
+
+        <p>Given two <a>RDF-star graphs</a> |G| and |H|:</p>
+        <ul>
+          <li>We say that |G| is star*-<a>satisfiable</a> (resp. star*-<a>unsatisfiable</a>) if and only if <a data-lt="T-unstar">unstar</a>(|G|,|T|) is simply <a>satisfiable</a> (resp. simply <a>unsatisfiable</a>) where |T| is defined as follows: <br/> |T|={ |p| | (|p|, `rdf:type`, `rdf-star:TransparencyEnforcingProperty`) is an <a>asserted triple</a> in |G| }.</li>
+          <li>We say that |H| is star*-<a>entailed</a> by (resp. star*-<a>equivalent</a> to) |G| if and only if <a data-lt="T-unstar">unstar</a>(|H|,|T|) is simply <a>entailed</a> by (resp. simply <a>equivalent</a> to) <a data-lt="T-unstar">unstar</a>(|G|,|T|) where |T| is defined as follows: <br/> |T|={ |p| | (|p|, `rdf:type`, `rdf-star:TransparencyEnforcingProperty`) is an <a>asserted triple</a> in |G| }.</li>
+        </ul>
+
       </section>
 
     </section>

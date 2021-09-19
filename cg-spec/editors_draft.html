@@ -2822,11 +2822,11 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
 
       <div class="algorithm">
       <ol>
-        <li>For each <a>IRI</a> |i| in the <a>constituents</a> of |G| starting with `https://w3c.github.io/rdf-star/unstar#`: <ol>
+        <li id="unstar-replace-unstar-IRIs">For each <a>IRI</a> |i| in the <a>constituents</a> of |G| starting with `https://w3c.github.io/rdf-star/unstar#`: <ol>
           <li>Mint a new <a>IRI</a> |j| by appending an underscore (`_`) to |i|.</li>
           <li>Replace with |j| all occurrences of |i| in the <a>subject</a>, <a>predicate</a>, or <a>object</a> position of an <a>asserted</a> or <a>quoted</a> triple of |G|.</li>
         </ol></li>
-        <li>While |G| contains <a>quoted triples</a>:<ol>
+        <li id="unstar-loop">While |G| contains <a>quoted triples</a>:<ol>
           <li>Pick an <a>RDF-star triple</a> (|s|, |p|, |o|) in the <a>constituents</a> of |G| such that neither |s| nor |o| is a <a>quoted triple</a>.</li>
           <li>Mint a fresh blank node |b| (i.e., such that |b| is not in the <a>constituents</a> of |G|).</li>
           <li>Replace with |b| all occurrences of (|s|, |p|, |o|) in the <a>subject</a> or <a>object</a> position of an <a>asserted</a> or <a>quoted</a> triple of |G|.</li>
@@ -3072,7 +3072,7 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
 
         <div class="algorithm">
         <ol>
-          <li>Apply step 1 of the <a>unstar</a> mapping.</li>
+          <li>Apply <a href="#unstar-replace-unstar-IRIs">step 1</a> of the <a>unstar</a> mapping.</li>
 
           <li id="T-unstar-S-loop">While |G| contains an <a>asserted</a> triple (|s|, |p|, |o|) such that |p| is in |T| and |s| is a <a>quoted triple</a>:<ol>
             <li>Pick such an <a>asserted</a> triple (|s|, |p|, |o|), and let the <a>quoted triple</a>&nbsp;|s| be (|s|', |p|', |o|').</li>
@@ -3098,7 +3098,7 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
             </ul></li>
           </ol></li>
 
-          <li>Apply step 2 of the <a>unstar</a> mapping.</li>
+          <li>Apply <a href="#unstar-loop">step 2</a> of the <a>unstar</a> mapping (note, the blank nodes minted in that step are different from the blank nodes minted in the steps above, even if the same quoted triples are involved).</li>
         </ol>
         </div>
 

@@ -3132,7 +3132,7 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
           <li>While |G| contains an <a>asserted</a> triple (|s|, |p|, |o|) such that |p| is in |T| and |s| is a <a>quoted triple</a>:<ol>
             <li>Pick such an <a>asserted</a> triple (|s|, |p|, |o|), and let the <a>quoted triple</a>&nbsp;|s| be (|s|', |p|', |o|').</li>
             <li>Mint a fresh blank node |b| (i.e., such that |b| is not in the <a>constituents</a> of |G|).</li>
-            <li>Replace with |b| all occurrences of (|s|', |p|', |o|') in the <a>subject</a> position of every <a>asserted</a> or <a>quoted</a> triple (|s|'', |p|'', |o|'') of |G| for which |p|'' is in |T| (which includes the triple (|s|, |p|, |o|) that was picked, but possibly also other triples).</li>
+            <li>Replace with |b| all occurrences of (|s|', |p|', |o|') in the <a>subject</a> position of every <a>asserted</a> triple (|s|'', |p|'', |o|'') of |G| for which |p|'' is in |T| (which includes the triple (|s|, |p|, |o|) that was picked, but possibly also other triples).</li>
             <li>Add the following <a>asserted triples</a> to |G|:<ul>
               <li>(|b|, `unstar:subject`,`   `|s|')</li>
               <li>(|b|, `unstar:predicate`,` `|p|')</li>
@@ -3143,7 +3143,7 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
           <li>While |G| contains an <a>asserted</a> triple (|s|, |p|, |o|) such that |p| is in |T| and |o| is a <a>quoted triple</a>:<ol>
             <li>Pick such an <a>asserted</a> triple (|s|, |p|, |o|), and let the <a>quoted triple</a>&nbsp;|o| be (|s|', |p|', |o|').</li>
             <li>Mint a fresh blank node |b| (i.e., such that |b| is not in the <a>constituents</a> of |G|).</li>
-            <li>Replace with |b| all occurrences of (|s|', |p|', |o|') in the <a>object</a> position of every <a>asserted</a> or <a>quoted</a> triple (|s|'', |p|'', |o|'') of |G| for which |p|'' is in |T| (which includes the triple (|s|, |p|, |o|) that was picked, but possibly also other triples).</li>
+            <li>Replace with |b| all occurrences of (|s|', |p|', |o|') in the <a>object</a> position of every <a>asserted</a> triple (|s|'', |p|'', |o|'') of |G| for which |p|'' is in |T| (which includes the triple (|s|, |p|, |o|) that was picked, but possibly also other triples).</li>
             <li>Add the following <a>asserted triples</a> to |G|:<ul>
               <li>(|b|, `unstar:subject`,`   `|s|')</li>
               <li>(|b|, `unstar:predicate`,` `|p|')</li>

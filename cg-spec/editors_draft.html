@@ -3050,7 +3050,7 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
         -->
         </pre>
 
-        <p>Note that the current semantics does not forbid the additional inferences to be drawn. However, they would require additional knowledge and an appropriate <a data-cite="RDF11-MT#dfn-semantic-extension">semantic extension</a>, not specified in this document. This makes RDF-star less readily usable for (but not incompatible with) that latter kind of use-cases.</p>
+        <p>Note that the current semantics does not forbid the additional inferences to be drawn. However, they would require additional knowledge and an appropriate <a data-cite="RDF11-MT#dfn-semantic-extension">semantic extension</a> (such as the one discussed in <a href="#selective-ref-transparency"></a>). This makes RDF-star less readily usable for (but not incompatible with) that latter kind of use-cases.</p>
 
       </section>
 
@@ -3090,8 +3090,8 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
 
       </section>
 
-      <section>
-        <h2>Selective Referential Transparency</h2>
+      <section id="selective-ref-transparency">
+        <h2>Selective referential transparency</h2>
 
         <p>Since the need for referential opacity/transparency is use-case dependent (as discussed <a href="#ref-opacity">above</a>), it may make sense for different predicates to have different behaviors. Consider the following example.</p>
 
@@ -3121,50 +3121,63 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
 
         <p>Subclasses of `rdf:Property` could therefore be defined to identify properties that imply referential transparency on their subject triple, on their object triple, or on both. Note however, that the group has not reached consensus on the definition or usefulness of such a vocabulary.</p>
 
-        <p>To BE DISCUSSED: Here is a sketch of an idea to change or extend the semantics in a way that it can work with such properties. The basis of the idea is that each such property&nbsp;|p| is identified by adding to the RDF-star graph a triple of the form (|p|, `rdf:type`, `rdf-star:TransparencyEnforcingProperty`); e.g., for the previous example, this triple would be (`:at`, `rdf:type`, `rdf-star:TransparencyEnforcingProperty`). Then, the IRIs of these properties can be collected into a set&nbsp;|T|. The corresponding definitions are given as follows.</p>
+        <p>Here is a sketch of how to extend the semantics in a way that it can work with such properties. The basis of the idea is that each such property&nbsp;|p| is identified by adding to the RDF-star graph a triple of the form (|p|, `rdf:type`, `rdf-star:TransparencyEnforcingProperty`); e.g., for the previous example, this triple would be (`:at`, `rdf:type`, `rdf-star:TransparencyEnforcingProperty`).</p>
 
-        <p>Given an <a>RDF-star graph</a> |G| and a set |T| of <a>IRIs</a>, the following steps define the <dfn data-lt="T-unstar">T-unstar mapping</dfn>, which transforms |G| into an <a>RDF graph</a> that we call <a>unstar</a>(|G|,|T|).</p>
-
-        <div class="algorithm">
+        <p>A <dfn>TEP-interpretation</dfn> is a <a data-cite="RDF11-MT#simple-interpretations">simple interpretation</a> I which satisfies the following conditions:</p>
+          
         <ol>
-          <li>Apply <a href="#unstar-replace-unstar-IRIs">step 1</a> of the <a>unstar</a> mapping.</li>
+          <li><em>Ensure that, for all quoted triples in this interpretation, all "equivalent" triples also exist in the interpretation.</em>
+          <ul>
+            <li>For all |t|, |s|, |p|, |o| in the domain IR such that<ul>
+              <li>(|t|, |s|) ∈ IEXT(`unstar:subject`),
+              <li>(|t|, |p|) ∈ IEXT(`unstar:predicate`),
+              <li>(|t|, |o|) ∈ IEXT(`unstar:object`)
+            </ul>
+            <li>and for all terms |s|', |p|' and |o|' such that <ul>
+              <li>I(|s|') = |s|,
+              <li>I(|p|') = |p|,
+              <li>I(|o|') = |o|
+            </ul>
+            <li>there must exist |t|' in IR such that<ul>
+              <li>(|t|', |s|) ∈ IEXT(`unstar:subject`),
+              <li>(|t|', |p|) ∈ IEXT(`unstar:predicate`),
+              <li>(|t|', |o|) ∈ IEXT(`unstar:object`),
+              <li>(|t|', I(L(|s|'))) ∈ IEXT(`unstar:subjectLexical`),
+              <li>(|t|', I(L(|p|'))) ∈ IEXT(`unstar:predicateLexical`),
+              <li>(|t|', I(L(|o|'))) ∈ IEXT(`unstar:objectLexical`)
+            </ul>
+          </ul>
+          
+          <li><em>Ensure that TEPs that hold for a triple also hold for all "equivalent" triples.</em>
+          <div>For every |p| such that (|p|,IS(`rdf-star:TransparencyEnforcingProperty`)) ∈ IEXT(IS(`rdf:type`))</div><ul>
+            <li>|p| must be an element of IP
+            <li>for all |t|, |u|, |s|', |p|', |o|', |t|' in IR such that<ul>
+              <li>(|t|, |u|) ∈ IEXT(`p`)
+              <li>(|t|, |s|') ∈ IEXT(`unstar:subject`),
+              <li>(|t|, |p|') ∈ IEXT(`unstar:predicate`),
+              <li>(|t|, |o|') ∈ IEXT(`unstar:object`),
+              <li>(|t|', |s|') ∈ IEXT(`unstar:subject`),
+              <li>(|t|', |p|') ∈ IEXT(`unstar:predicate`),
+              <li>(|t|', |o|') ∈ IEXT(`unstar:object`)
+            </ul>
+            then (|t|', |u|) must also be an element of IEXT(|p|).
+            <li>for all |t|, |u|, |s|', |p|', |o|', |t|' in IR such that<ul>
+              <li>(|u|, |t|) ∈ IEXT(`p`)
+              <li>(|t|, |s|') ∈ IEXT(`unstar:subject`),
+              <li>(|t|, |p|') ∈ IEXT(`unstar:predicate`),
+              <li>(|t|, |o|') ∈ IEXT(`unstar:object`),
+              <li>(|t|', |s|') ∈ IEXT(`unstar:subject`),
+              <li>(|t|', |p|') ∈ IEXT(`unstar:predicate`),
+              <li>(|t|', |o|') ∈ IEXT(`unstar:object`)
+            </ul>
+            then (|u|, |t|') must also be an element of IEXT(|p|).
+          </ul>
+          </ol>          
+          
+        <p>Given two <a>RDF-star graphs</a> |G| and |H|, and following standard terminology, we say that a TEP-interpretation I satisfies |G| if I(|G|) = true, that |G| is TEP-satisfiable if a TEP-interpretation exists that satisfies it, otherwise TEP-unsatisfiable. We say that |G| TEP-entails |H| when every TEP-interpretation which satisfies |G| also satisfies |H|. If |G| and |H| each entail the other, they are TEP-equivalent.</p>
 
-          <li id="T-unstar-S-loop">While |G| contains an <a>asserted</a> triple (|s|, |p|, |o|) such that |p| is in |T| and |s| is a <a>quoted triple</a>:<ol>
-            <li>Pick such an <a>asserted</a> triple (|s|, |p|, |o|), and let the <a>quoted triple</a>&nbsp;|s| be (|s|', |p|', |o|').</li>
-            <li>If (|s|', |p|', |o|') has not been considered already in an earlier iteration step of this loop,
-            mint a fresh blank node&nbsp;|b| for it (i.e., such that |b| is not in the <a>constituents</a> of |G|); otherwise, reuse the blank node&nbsp;|b| created earlier for it.</li>
-            <li>Replace with |b| all occurrences of (|s|', |p|', |o|') in the <a>subject</a> position of every <a>asserted</a> triple (|s|'', |p|'', |o|'') of |G| for which |p|'' is in |T| (which includes the triple (|s|, |p|, |o|) that was picked, but possibly also other triples).</li>
-            <li>Add the following <a>asserted triples</a> to |G|:<ul>
-              <li>(|b|, `unstar:subject`,`   `|s|')</li>
-              <li>(|b|, `unstar:predicate`,` `|p|')</li>
-              <li>(|b|, `unstar:object`,`    `|o|') unless |o|' is an <a>ill-typed</a> literal</li>
-            </ul></li>
-          </ol></li>
-
-          <li id="T-unstar-O-loop">While |G| contains an <a>asserted</a> triple (|s|, |p|, |o|) such that |p| is in |T| and |o| is a <a>quoted triple</a>:<ol>
-            <li>Pick such an <a>asserted</a> triple (|s|, |p|, |o|), and let the <a>quoted triple</a>&nbsp;|o| be (|s|', |p|', |o|').</li>
-            <li>Mint a fresh blank node |b| (i.e., such that |b| is not in the <a>constituents</a> of |G|).</li>
-            <li>If (|s|', |p|', |o|') has not been considered already in an earlier iteration step of this loop or during the loop in <a href="#T-unstar-S-loop">step 2</a>, mint a fresh blank node&nbsp;|b| for it (i.e., such that |b| is not in the <a>constituents</a> of |G|); otherwise, reuse the blank node&nbsp;|b| created earlier for it.</li>
-            <li>Replace with |b| all occurrences of (|s|', |p|', |o|') in the <a>object</a> position of every <a>asserted</a> triple (|s|'', |p|'', |o|'') of |G| for which |p|'' is in |T| (which includes the triple (|s|, |p|, |o|) that was picked, but possibly also other triples).</li>
-            <li>Add the following <a>asserted triples</a> to |G|:<ul>
-              <li>(|b|, `unstar:subject`,`   `|s|')</li>
-              <li>(|b|, `unstar:predicate`,` `|p|')</li>
-              <li>(|b|, `unstar:object`,`    `|o|') unless |o|' is an <a>ill-typed</a> literal</li>
-            </ul></li>
-          </ol></li>
-
-          <li>Apply <a href="#unstar-loop">step 2</a> of the <a>unstar</a> mapping (note, the blank nodes minted in that step are different from the blank nodes minted in the steps above, even if the same quoted triples are involved).</li>
-        </ol>
-        </div>
-
-        <p>Note that the <a>T-unstar</a> mapping collapses to the <a>unstar</a> mapping if |T| is empty.</p>
-
-        <p>Given two <a>RDF-star graphs</a> |G| and |H|:</p>
-        <ul>
-          <li>We say that |G| is star*-<a>satisfiable</a> (resp. star*-<a>unsatisfiable</a>) if and only if <a data-lt="T-unstar">unstar</a>(|G|,|T|) is simply <a>satisfiable</a> (resp. simply <a>unsatisfiable</a>) where |T| is defined as follows: <br/> |T|={ |p| | (|p|, `rdf:type`, `rdf-star:TransparencyEnforcingProperty`) is an <a>asserted triple</a> in |G| }.</li>
-          <li>We say that |H| is star*-<a>entailed</a> by (resp. star*-<a>equivalent</a> to) |G| if and only if <a data-lt="T-unstar">unstar</a>(|H|,|T|) is simply <a>entailed</a> by (resp. simply <a>equivalent</a> to) <a data-lt="T-unstar">unstar</a>(|G|,|T|) where |T| is defined as follows: <br/> |T|={ |p| | (|p|, `rdf:type`, `rdf-star:TransparencyEnforcingProperty`) is an <a>asserted triple</a> in |G| }.</li>
-        </ul>
-
+        <p>TEP-entailment is defined here as an extension <a data-cite="RDF11-MT#simpleentailment">simple entailment</a>, but other entailment (such as <a data-cite="RDF11-MT#rdf-entailment">RDF entailment</a> or <a data-cite="RDF11-MT#rdfs-entailment">RDFS entailment</a>) can be extended in the exact same way.</p>  
+    
       </section>
 
     </section>

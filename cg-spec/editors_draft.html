@@ -3088,6 +3088,8 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
           </li>
         </ul>
 
+        <div class=note>Other design choices for the semantics have also been discussed by the community group; these have been <a href="https://github.com/w3c/rdf-star/issues/95">summarized in a Github issue</a>.</div>
+
       </section>
 
       <section id="selective-ref-transparency">
@@ -3121,9 +3123,9 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
 
         <p>Subclasses of `rdf:Property` could therefore be defined to identify properties that imply referential transparency on their subject triple, on their object triple, or on both. Note however, that the group has not reached consensus on the definition or usefulness of such a vocabulary.</p>
 
-        <p>Here is a sketch of how to extend the semantics in a way that it can work with such properties. The basis of the idea is that each such property&nbsp;|p| is identified by adding to the RDF-star graph a triple of the form (|p|, `rdf:type`, `rdf-star:TransparencyEnforcingProperty`); e.g., for the previous example, this triple would be (`:at`, `rdf:type`, `rdf-star:TransparencyEnforcingProperty`).</p>
+        <p>Here is a sketch of how to extend the semantics in a way that it can work with such properties. The basis of the idea is that each such property&nbsp;|p| is identified by adding to the RDF-star graph a triple of the form (|p|, `rdf:type`, `rdf-star:TransparencyEnforcingProperty`); e.g., for the previous example, this triple would be (`:at`, `rdf:type`, `rdf-star:TransparencyEnforcingProperty`). We call such a property a <dfn data-lt="TEP">transparency-enforcing property (TEP)</dfn>. The semantics of such TEPs can be captured for the different <a data-cite="RDF11-MT#dfn-entailment-regime">entailment regimes</a> by extending the corresponding notion of <a data-cite="RDF11-MT#dfn-interpretation">interpretation</a> as exemplified in the following for the <a data-cite="RDF11-MT#simple-interpretations">simple interpretation</a> of the <a data-cite="RDF11-MT#simpleentailment">simple entailment regime</a>.</p>
 
-        <p>A <dfn>TEP-interpretation</dfn> is a <a data-cite="RDF11-MT#simple-interpretations">simple interpretation</a> I which satisfies the following conditions:</p>
+        <p>A <dfn>simple TEP-interpretation</dfn> is a <a data-cite="RDF11-MT#simple-interpretations">simple interpretation</a> |I| that satisfies the following two additional conditions:</p>
           
         <ol>
           <li><em>Ensure that, for all quoted triples in this interpretation, all "equivalent" triples also exist in the interpretation.</em>
@@ -3131,27 +3133,27 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
             <li>For all |t|, |s|, |p|, |o| in the domain IR such that<ul>
               <li>(|t|, |s|) ∈ IEXT(`unstar:subject`),
               <li>(|t|, |p|) ∈ IEXT(`unstar:predicate`),
-              <li>(|t|, |o|) ∈ IEXT(`unstar:object`)
+              <li>(|t|, |o|) ∈ IEXT(`unstar:object`),
             </ul>
-            <li>and for all terms |s|', |p|' and |o|' such that <ul>
-              <li>I(|s|') = |s|,
-              <li>I(|p|') = |p|,
-              <li>I(|o|') = |o|
+            <li>and for all terms |s|', |p|', and |o|' such that <ul>
+              <li>|I|(|s|') = |s|,
+              <li>|I|(|p|') = |p|,
+              <li>|I|(|o|') = |o|,
             </ul>
             <li>there must exist |t|' in IR such that<ul>
               <li>(|t|', |s|) ∈ IEXT(`unstar:subject`),
               <li>(|t|', |p|) ∈ IEXT(`unstar:predicate`),
               <li>(|t|', |o|) ∈ IEXT(`unstar:object`),
-              <li>(|t|', I(L(|s|'))) ∈ IEXT(`unstar:subjectLexical`),
-              <li>(|t|', I(L(|p|'))) ∈ IEXT(`unstar:predicateLexical`),
-              <li>(|t|', I(L(|o|'))) ∈ IEXT(`unstar:objectLexical`)
+              <li>(|t|', |I|(L(|s|'))) ∈ IEXT(`unstar:subjectLexical`),
+              <li>(|t|', |I|(L(|p|'))) ∈ IEXT(`unstar:predicateLexical`), and
+              <li>(|t|', |I|(L(|o|'))) ∈ IEXT(`unstar:objectLexical`).
             </ul>
           </ul>
           
           <li><em>Ensure that TEPs that hold for a triple also hold for all "equivalent" triples.</em>
           <div>For every |p| such that (|p|,IS(`rdf-star:TransparencyEnforcingProperty`)) ∈ IEXT(IS(`rdf:type`))</div><ul>
             <li>|p| must be an element of IP
-            <li>for all |t|, |u|, |s|', |p|', |o|', |t|' in IR such that<ul>
+            <li>For all |t|, |u|, |s|', |p|', |o|', |t|' in IR such that<ul>
               <li>(|t|, |u|) ∈ IEXT(`p`)
               <li>(|t|, |s|') ∈ IEXT(`unstar:subject`),
               <li>(|t|, |p|') ∈ IEXT(`unstar:predicate`),
@@ -3161,7 +3163,7 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
               <li>(|t|', |o|') ∈ IEXT(`unstar:object`)
             </ul>
             then (|t|', |u|) must also be an element of IEXT(|p|).
-            <li>for all |t|, |u|, |s|', |p|', |o|', |t|' in IR such that<ul>
+            <li>For all |t|, |u|, |s|', |p|', |o|', |t|' in IR such that<ul>
               <li>(|u|, |t|) ∈ IEXT(`p`)
               <li>(|t|, |s|') ∈ IEXT(`unstar:subject`),
               <li>(|t|, |p|') ∈ IEXT(`unstar:predicate`),
@@ -3174,15 +3176,13 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
           </ul>
           </ol>          
           
-        <p>Given two <a>RDF-star graphs</a> |G| and |H|, and following standard terminology, we say that a TEP-interpretation I satisfies |G| if I(|G|) = true, that |G| is TEP-satisfiable if a TEP-interpretation exists that satisfies it, otherwise TEP-unsatisfiable. We say that |G| TEP-entails |H| when every TEP-interpretation which satisfies |G| also satisfies |H|. If |G| and |H| each entail the other, they are TEP-equivalent.</p>
+        <p>Given two <a>RDF-star graphs</a> |G| and |H|, and following standard terminology, we say that a simple TEP-interpretation |I| satisfies |G| if |I|(|G|) = true, that |G| is (simply) TEP-satisfiable if a simple TEP-interpretation exists that satisfies |G|, otherwise |G| is (simply) TEP-unsatisfiable. We say that |G| simply TEP-entails |H| if every simple TEP-interpretation that satisfies |G| also satisfies |H|. If |G| and |H| each TEP-entail the other, they are TEP-equivalent.</p>
 
-        <p>TEP-entailment is defined here as an extension <a data-cite="RDF11-MT#simpleentailment">simple entailment</a>, but other entailment (such as <a data-cite="RDF11-MT#rdf-entailment">RDF entailment</a> or <a data-cite="RDF11-MT#rdfs-entailment">RDFS entailment</a>) can be extended in the exact same way.</p>  
+        <p>TEP-entailment is defined here as an extension of <a data-cite="RDF11-MT#simpleentailment">simple entailment</a>, but other entailment regimes (such as <a data-cite="RDF11-MT#rdf-entailment">RDF entailment</a> or <a data-cite="RDF11-MT#rdfs-entailment">RDFS entailment</a>) can be extended in the exact same way (i.e., by extending their respective notion of interpretation with the aforementioned two conditions).</p>  
     
       </section>
 
     </section>
-
-    <div class=note>Other design choices for the semantics have also been discussed by the community group; these have been <a href="https://github.com/w3c/rdf-star/issues/95">summarized in a Github issue</a>.</div>
 
   </section>
 

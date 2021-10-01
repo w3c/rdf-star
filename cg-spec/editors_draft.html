@@ -512,6 +512,22 @@ INSERT {
           &lt;&lt; &lt;&lt; :a :name "Alice" &gt;&gt;  :reportedBy :charlie &gt;&gt;
         </code>
       </p>
+      <p>
+        It may be apt to draw a parallel between &quot;quoted&quot; triples and
+        quoted expressions in the <em>programming language Lisp</em>.
+        Expressions in Lisp (called &quot;s-expressions&quot;) are interpreted
+        through a process called &quot;evaluation&quot;, and as a result they
+        have a value. A quoted expression evaluates to the expression itself -
+        you can imagine that quoting prevents the expression from being
+        evaluated. In RDF (as well as in RDF-star), <em>asserting</em> a triple
+        (i.e., considering it to be &quot;true&quot;) serves as the analogue of
+        evaluation. Triples are asserted, unless (in RDF-star) they are quoted
+        which, effectively, prevents the triple from being asserted - thus a
+        quoted triple stands by itself and we assign no truth value to it.
+      </p>
+      <p>
+        Obviously this way of thinking is helpful only if you understand how Lisp works.
+      </p>
     </section>
 
     <section id="rdf-star-graph-examples">

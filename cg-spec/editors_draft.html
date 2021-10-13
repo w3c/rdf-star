@@ -360,6 +360,7 @@ INSERT {
 <tr><td>`dbr:`</td><td>`&lt;http://dbpedia.org/resource/&gt;`</td></tr>
 <tr><td>`dc:`</td><td>`&lt;http://purl.org/dc/elements/1.1/&gt;`</td></tr>
 <tr><td>`dct:`</td><td>`&lt;http://purl.org/dc/terms/&gt;`</td></tr>
+<tr><td>`rdf-star:`</td><td>`&lt;http://www.w3.org/ns/rdf-star#&gt;`</td></tr>
 </table>
 
     </section>
@@ -3208,10 +3209,57 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
   <section class="informative">
     <h2>RDF-star vocabulary</h2>
 
-    <p>This section will eventually describe a number of IRIs that may be useful when using RDF-star. At the moment, it contains links to the Github issues where such terms have been discussed.</p>
+    <p>In this section, we propose a minimal vocabulary that can be useful when working with RDF-star, especially when describing other vocabularies meant to be used with RDF-star triples and graphs.</p>
 
-    <div class="issue" data-number="102">
-    </div>
+    <section>
+      <h2>Vocabulary description</h2>
+
+      <dl>
+        <dt>`rdf-star:Triple`</dt>
+        <dd>This term identifies the class of all <a>RDF-star triples</a>. It is expected to serve, among other things, as the `rdfs:domain` or `rdfs:range` of properties meant to apply to <a>quoted triples</a>.</dd>
+
+        <dt>`rdf-star:Graph`</dt>
+        <dd>This term identifies the class of all <a>RDF-star graphs</a>.</dd>
+
+        <dt>`rdf-star:Source`</dt>
+        <dd>This term identifies the class of all RDF-star sources, an extension of the notion of <dfn data-cite="RDF11-CONCEPTS#dfn-rdf-source">RDF source</dfn>: a persistent yet mutable source or container of <a>RDF-star graphs</a>.</dd>
+      </dl>
+
+      <p>Below is a Turtle description of that vocabulary.</p>
+
+      <div class="defn">
+        <pre>## Vocabulary for concepts used by or introduced by RDF-star.
+PREFIX rdf:       &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;
+PREFIX rdfs:      &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
+PREFIX rdf-star:  &lt;http://www.w3.org/ns/rdf-star#&gt;
+
+rdf-star:Triple      a rdfs:Class ;
+    rdfs:isDefinedBy   &lt;http://www.w3.org/ns/rdf-star#&gt; ;
+    rdfs:label         "RDF-star Triple" ;
+    rdfs:comment       "The class of RDF-star triples." ;
+    rdfs:subClassOf    rdfs:Resource .
+
+rdf-star:Graph       a rdfs:Class ;
+    rdfs:isDefinedBy   &lt;http://www.w3.org/ns/rdf-star#&gt; ;
+    rdfs:label         "RDF-star Graph" ;
+    rdfs:comment       "The class of RDF-star graphs." ;
+    rdfs:subClassOf    rdfs:Resource .
+
+rdf-star:Source      a rdfs:Class ;
+    rdfs:isDefinedBy   &lt;http://www.w3.org/ns/rdf-star#&gt; ;
+    rdfs:label         "RDF-star Source" ;
+    rdfs:seeAlso       &lt;https://www.w3.org/TR/rdf11-concepts/#h3_change-over-time&gt; ;
+    rdfs:comment       "The class of RDF-star sources." ;
+    rdfs:subClassOf    rdfs:Resource .
+        </pre>
+      </div>
+    </section>
+
+    <section>
+      <h2>Vocabulary semantics</h2>
+
+      <p>We now describe a <a data-cite="RDF11-MT#dfn-semantic-extension">semantic extension</a> embedding the inherent semantics of the RDF-star vocabulary described above. TODO</p>
+    </section>
 
     <div class="issue" data-number="169">
       This issue discusses the relevance of introducing a standard property to link a <a>quoted triple</a> to its occurrences (as illustrated in <a href="#occurrences-example"></a>), as well as other related properties and classes.
@@ -3225,32 +3273,6 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
       This issue proposes to introduce a vocabulary for locally overriding the <a href="#ref-opacity">opaque</a> semantics of <a>quoted triples</a>, making them transparent in some contexts.
     </div>
 
-    <div class="defn">
-      <pre>## Vocabulary for concepts used by or introduced by RDF-star.
-PREFIX rdf:       &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;
-PREFIX rdfs:      &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
-PREFIX rdf-star:  &lt;http://www.w3.org/ns/rdf-star#&gt;
-
-rdf-star:Triple      a rdfs:Class ;
-    rdfs:isDefinedBy   &lt;http://www.w3.org/ns/rdf-star#&gt;
-    rdfs:label         "RDF-star Triple" ;
-    rdfs:comment       "The class of RDF-star triples." ;
-    rdfs:subClassOf    rdfs:Resource .
-
-rdf-star:Graph       a rdfs:Class ;
-    rdfs:isDefinedBy   &lt;http://www.w3.org/ns/rdf-star#&gt;
-    rdfs:label         "RDF-star Graph" ;
-    rdfs:comment       "The class of RDF-star graphs." ;
-    rdfs:subClassOf    rdfs:Resource .
-
-rdf-star:Source      a rdfs:Class ;
-    rdfs:isDefinedBy   &lt;http://www.w3.org/ns/rdf-star#&gt;
-    rdfs:label         "RDF-star Source" ;
-    rdfs:seeAlso       &lt;https://www.w3.org/TR/rdf11-concepts/#h3_change-over-time&gt; ;
-    rdfs:comment       "The class of RDF-star sources." ;
-    rdfs:subClassOf    rdfs:Resource .
-      </pre>
-    </div>
   </section>
 
   <section class="appendix informative">

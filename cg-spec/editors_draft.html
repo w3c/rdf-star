@@ -207,7 +207,15 @@
       margin: 0.7em 1em;
       padding: 0.35em 0.5em;
       box-shadow: 0.25em 0.25em 0.5em darkgray;
+      background-color: white;
       text-align: center;
+      position: relative;
+    }
+
+    #structure-map table {
+      background-image: url("branches.svg");
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
     }
 
     /* remove "unofficial draft" watermark */
@@ -375,22 +383,18 @@ INSERT {
           <tr>
             <td rowspan=3>
               <div class="box">
-                <strong>querying</strong><br>
                 <a href="#sparql-star"></a><br>
               </div>
               <div class="box">
-                <strong>updating</strong><br>
-                  <a href="#sparql-star-update"></a>
+                <a href="#sparql-star-update"></a>
               </div>
             <td>
               <div class="box">
-                <strong>reasoning</strong><br>
                 <a href="#rdf-star-semantics"></a>
               </div>
             <td>
             <td rowspan=3>
               <div class="box">
-                <strong>representing</strong><br>
                 <a href="#rdf-star-vocabulary"></a>
               </div>
           <tr>
@@ -398,12 +402,13 @@ INSERT {
               <div class="box">
                 <a href="#concepts"></a>
               </div>
+            <td>
           <tr>
             <td>
               <div class="box">
-                <strong>serializing</strong><br>
                 <a href="#concrete-syntaxes"></a>
               </div>
+            <td>
         </table>
         <figcaption>A visual map of the sections of this document</figcaption>
       </figure>

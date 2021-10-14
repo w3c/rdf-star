@@ -200,6 +200,10 @@
     .heavy { color:black; font-weight:bold }
     .small { font-size: smaller; }
 
+    #structure-map table td {
+      width: 33.34%;
+    }
+
     #structure-map .box {
       display: block;
       border: thin solid gray;
@@ -373,29 +377,9 @@ INSERT {
       <figure id="structure-map">
         <table>
           <tr>
-            <td rowspan=3>
-              <div class="box">
-                <em>... queried with</em><br>
-                <a href="#sparql-star"></a><br>
-              </div>
-              <div class="box">
-                <em>... updated with</em><br>
-                  <a href="#sparql-star-update"></a>
-              </div>
             <td>
-              <div class="box">
-                <em>... interpreted through</em><br>
-                <a href="#rdf-star-semantics"></a>
-              </div>
-            <td>
-            <td rowspan=3>
-              <div class="box">
-                <em>... represented by</em><br>
-                <a href="#rdf-star-vocabulary"></a>
-              </div>
-          <tr>
-            <td>
-              <div class="box">
+            <td rowspan=2>
+              <div class="box" style="margin-bottom: 5em;">
                 <a href="#concepts"></a><br>
                 <strong>can be...</strong>
               </div>
@@ -407,6 +391,26 @@ INSERT {
                 <a href="#concrete-syntaxes"></a>
               </div>
             <td>
+              <div class="box">
+                <em>... represented by</em><br>
+                <a href="#rdf-star-vocabulary"></a>
+              </div>
+          <tr>
+            <td>
+              <div class="box">
+                <em>... queried with</em><br>
+                <a href="#sparql-star"></a><br>
+              </div>
+            <td>
+              <div class="box">
+                <em>... updated with</em><br>
+                <a href="#sparql-star-update"></a>
+              </div>
+            <td>
+              <div class="box">
+                <em>... interpreted through</em><br>
+                <a href="#rdf-star-semantics"></a>
+              </div>
         </table>
         <figcaption>A visual map of the sections of this document</figcaption>
       </figure>

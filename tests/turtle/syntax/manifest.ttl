@@ -204,12 +204,12 @@ trs:nt-ttl-star-3 rdf:type rdft:TestTurtlePositiveSyntax ;
    mf:action    <nt-ttl-star-syntax-3.ttl> ;
    .
 
-trs:nt-ttl-star-4 rdf:type rdft:TestNTriplesPositiveSyntax ;
+trs:nt-ttl-star-4 rdf:type rdft:TestTurtlePositiveSyntax ;
    mf:name      "N-Triples-star as Turtle-star - whitespace and terms" ;
    mf:action    <nt-ttl-star-syntax-4.ttl> ;
    .
 
-trs:nt-ttl-star-5 rdf:type rdft:TestNTriplesPositiveSyntax ;
+trs:nt-ttl-star-5 rdf:type rdft:TestTurtlePositiveSyntax ;
    mf:name      "N-Triples-star as Turtle-star - Nested, no whitespace" ;
    mf:action    <nt-ttl-star-syntax-5.ttl> ;
    .

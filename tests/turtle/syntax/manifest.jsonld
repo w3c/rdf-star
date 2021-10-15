@@ -225,13 +225,13 @@
     },
     {
       "@id": "trs:nt-ttl-star-4",
-      "@type": "rdft:TestNTriplesPositiveSyntax",
+      "@type": "TestTurtlePositiveSyntax",
       "action": "nt-ttl-star-syntax-4.ttl",
       "name": "N-Triples-star as Turtle-star - whitespace and terms"
     },
     {
       "@id": "trs:nt-ttl-star-5",
-      "@type": "rdft:TestNTriplesPositiveSyntax",
+      "@type": "TestTurtlePositiveSyntax",
       "action": "nt-ttl-star-syntax-5.ttl",
       "name": "N-Triples-star as Turtle-star - Nested, no whitespace"
     },

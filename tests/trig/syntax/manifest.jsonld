@@ -11,6 +11,7 @@
     "trs": "https://w3c.github.io/rdf-star/tests/trig/syntax#",
     "@vocab": "http://www.w3.org/2001/sw/DataAccess/tests/test-manifest#",
     "@base": "https://w3c.github.io/rdf-star/tests/trig/syntax/",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
     "include": {
       "@type": "@id",
       "@container": "@list"

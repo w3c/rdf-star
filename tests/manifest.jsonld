@@ -2,8 +2,8 @@
     "@context": "manifest-context.jsonld",
     "@id" : "manifest",
     "@type": "Manifest",
-    "label": {"en": "RDF-star test suite",
-              "fr": "Les tests de RDF-star",
+    "label": {"en": "RDF-star test suite"},
+    "prefLabel": {"fr": "Les tests de RDF-star",
               "es": "Conjunto de pruebas de RDF-star"
             },
     "issued": "2021-06-21",

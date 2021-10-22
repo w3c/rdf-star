@@ -12,6 +12,7 @@
     "@vocab": "http://www.w3.org/2001/sw/DataAccess/tests/test-manifest#",
     "dct": "http://purl.org/dc/terms/",
     "foaf": "http://xmlns.com/foaf/0.1/",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
     "@base": "https://w3c.github.io/rdf-star/tests/turtle/eval/",
     "include": {
       "@type": "@id",
@@ -49,6 +50,10 @@
     },
     "label": {
       "@id": "rdfs:label",
+      "@container": "@language"
+    },
+    "prefLabel": {
+      "@id": "http://www.w3.org/2004/02/skos/core#prefLabel",
       "@container": "@language"
     },
     "comment": "rdfs:comment",
@@ -98,7 +103,7 @@
       "foaf:homepage": {
         "@id": "../../../"
       },
-      "foaf:name": " W3C RDF-star Working Group"
+      "foaf:name": " RDF-star Interest Group within the W3C RDF-DEV Community Group"
     }
   ],
   "issued": "2021-06-21",
@@ -107,9 +112,7 @@
   },
   "modified": "2021-07-18",
   "label": {
-    "fr": "La suite des tests pour Turtle-star",
-    "en": "Turtle-star Evaluation Tests",
-    "es": "Conjunto de pruebas para Turtle-star"
+    "en": "Turtle-star Evaluation Tests"
   },
   "seeAlso": "https://w3c.github.io/rdf-tests/",
   "entries": [
@@ -197,5 +200,9 @@
       "name": "Turtle-star - Annotation on triple with quoted object",
       "result": "turtle-star-eval-quoted-annotation-3.nt"
     }
-  ]
+  ],
+  "prefLabel": {
+    "es": "Conjunto de pruebas para Turtle-star",
+    "fr": "La suite des tests pour Turtle-star"
+  }
 }

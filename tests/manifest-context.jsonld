@@ -52,7 +52,7 @@
             "@id": "rdfs:label", 
             "@container": "@language"
         },
-        "prefLabel": 
+        "prefLabel": {
             "@id": "http://www.w3.org/2004/02/skos/core#prefLabel", 
             "@container": "@language"
         },

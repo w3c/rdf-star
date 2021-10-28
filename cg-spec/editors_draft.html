@@ -3167,6 +3167,12 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
 
         <dt>`rdf-star:Source`</dt>
         <dd>This term identifies the class of all RDF-star sources, an extension of the notion of <dfn data-cite="RDF11-CONCEPTS#dfn-rdf-source">RDF source</dfn>: a persistent yet mutable source or container of <a>RDF-star graphs</a>.</dd>
+
+        <dt>`rdf-star:SPARQLStarQuery`</dt>
+        <dd>This term identifies the extension of the SPARQL query language defined in Section <a href="#sparql-star"></a>. It is expected to serve as the value of `sd:supportedLanguage` in SPARQL service descriptions [[SPARQL11-SERVICE-DESCRIPTION]].</dd>
+
+        <dt>`rdf-star:SPARQLStarUpdate`</dt>
+        <dd>This term identifies the extension of the SPARQL update language defined in Section <a href="#sparql-star-update"></a>. It is expected to value as the domain of `sd:supportedLanguage` in SPARQL service descriptions [[SPARQL11-SERVICE-DESCRIPTION]].</dd>
       </dl>
 
       <p>Below is a Turtle description of that vocabulary.</p>
@@ -3176,6 +3182,7 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
 PREFIX rdf:       &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;
 PREFIX rdfs:      &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
 PREFIX rdf-star:  &lt;http://www.w3.org/ns/rdf-star#&gt;
+PREFIX sd:        &lt;http://www.w3.org/ns/sparql-service-description#&gt;
 
 rdf-star:Triple      a rdfs:Class ;
     rdfs:isDefinedBy   &lt;http://www.w3.org/ns/rdf-star#&gt; ;
@@ -3195,6 +3202,16 @@ rdf-star:Source      a rdfs:Class ;
     rdfs:seeAlso       &lt;https://www.w3.org/TR/rdf11-concepts/#h3_change-over-time&gt; ;
     rdfs:comment       "The class of RDF-star sources." ;
     rdfs:subClassOf    rdfs:Resource .
+
+rdf-star:SPARQLStarQuery a sd:Language ;
+    rdfs:isDefinedBy   &lt;http://www.w3.org/ns/rdf-star#&gt; ;
+    rdfs:label         "SPARQL-star" ;
+    rdfs:comment       "The SPARQL-star query language" .
+
+rdf-star:SPARQLStarUpdate a sd:Language ;
+    rdfs:isDefinedBy   &lt;http://www.w3.org/ns/rdf-star#&gt; ;
+    rdfs:label         "SPARQL-star Update" ;
+    rdfs:comment       "The SPARQL-star update language" .
         </pre>
       </div>
     </section>
@@ -3306,15 +3323,6 @@ rdf-star:TransparencyEnablingProperty a rdfs:Class ;
     <div class="issue" data-number="169">
       This issue discusses the relevance of introducing a standard property to link a <a>quoted triple</a> to its occurrences (as illustrated in <a href="#occurrences-example"></a>), as well as other related properties and classes.
     </div>
-
-    <div class="issue" data-number="164">
-      This issue was raised to introduce IRIs to be used with [[SPARQL11-SERVICE-DESCRIPTION]], in order for a SPARQL-star endpoint to advertise its support for RDF-star.
-    </div>
-
-    <div class="issue" data-number="170">
-      This issue proposes to introduce a vocabulary for locally overriding the <a href="#ref-opacity">opaque</a> semantics of <a>quoted triples</a>, making them transparent in some contexts.
-    </div>
-
   </section>
 
   <section class="appendix informative">

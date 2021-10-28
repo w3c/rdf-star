@@ -3154,7 +3154,9 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
     <p>In this section, we propose a minimal vocabulary that can be useful when working with RDF-star, especially when describing other vocabularies meant to be used with RDF-star triples and graphs.</p>
 
     <section>
-      <h2>Vocabulary description</h2>
+      <h2>Core vocabulary</h2>
+
+      <p>In this section we define IRIs for the concepts defined in other normative parts of this document.</p>
 
       <dl>
         <dt>`rdf-star:Triple`</dt>
@@ -3165,15 +3167,12 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
 
         <dt>`rdf-star:Source`</dt>
         <dd>This term identifies the class of all RDF-star sources, an extension of the notion of <dfn data-cite="RDF11-CONCEPTS#dfn-rdf-source">RDF source</dfn>: a persistent yet mutable source or container of <a>RDF-star graphs</a>.</dd>
-
-        <dt>`rdf-star:TransparencyEnablingProperty`</dt>
-        <dd>A special kind of property that, when applied to a <a>quoted triple</a>, also holds for any semantically equivalent triple, as discussed in <a href="#selective-ref-transparency"></a>.</dd>
       </dl>
 
       <p>Below is a Turtle description of that vocabulary.</p>
 
       <div class="defn">
-        <pre>## Vocabulary for concepts used by or introduced by RDF-star.
+        <pre>## RDF-star core vocabulary
 PREFIX rdf:       &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;
 PREFIX rdfs:      &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
 PREFIX rdf-star:  &lt;http://www.w3.org/ns/rdf-star#&gt;
@@ -3196,6 +3195,27 @@ rdf-star:Source      a rdfs:Class ;
     rdfs:seeAlso       &lt;https://www.w3.org/TR/rdf11-concepts/#h3_change-over-time&gt; ;
     rdfs:comment       "The class of RDF-star sources." ;
     rdfs:subClassOf    rdfs:Resource .
+        </pre>
+      </div>
+    </section>
+
+    <section>
+      <h2>Extended vocabulary</h2>
+
+      <p>In this section we define IRIs for the concepts defined in other non-normative parts of this document.</p>
+
+      <dl>
+        <dt>`rdf-star:TransparencyEnablingProperty`</dt>
+        <dd>A special kind of property that, when applied to a <a>quoted triple</a>, also holds for any semantically equivalent triple, as discussed in <a href="#selective-ref-transparency"></a>.</dd>
+      </dl>
+
+      <p>Below is a Turtle description of that vocabulary.</p>
+
+      <div class="defn">
+        <pre>## RDF-star extended vocabulary
+PREFIX rdf:       &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;
+PREFIX rdfs:      &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
+PREFIX rdf-star:  &lt;http://www.w3.org/ns/rdf-star#&gt;
 
 rdf-star:TransparencyEnablingProperty a rdfs:Class ;
     rdfs:isDefinedBy   &lt;http://www.w3.org/ns/rdf-star#&gt; ;
@@ -3209,7 +3229,7 @@ rdf-star:TransparencyEnablingProperty a rdfs:Class ;
     <section id="vocabulary-semantics">
       <h2>Vocabulary semantics</h2>
 
-      <p>We now describe a <a data-cite="RDF11-MT#dfn-semantic-extension">semantic extension</a> of RDF-star, embedding the inherent semantics of the RDF-star vocabulary (RSV) described above. A <dfn data-lt="RSV-interpretation">simple RSV-interpretation</dfn> is a <a data-cite="RDF11-MT#simple-interpretations">simple interpretation</a> |I| that satisfies the following additional conditions:</p>
+      <p>We now describe a <a data-cite="RDF11-MT#dfn-semantic-extension">semantic extension</a> of RDF-star, embedding the inherent semantics of the RDF-star vocabulary (RSV) described above (core and extended). A <dfn data-lt="RSV-interpretation">simple RSV-interpretation</dfn> is a <a data-cite="RDF11-MT#simple-interpretations">simple interpretation</a> |I| that satisfies the following additional conditions:</p>
 
       <ol>
         <li><em>Ensure that all quoted triples in this interpretations are instances of `rdf-star:Triple`.</em><ul>

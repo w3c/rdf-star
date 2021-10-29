@@ -3003,7 +3003,7 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
       <section id="ref-opacity">
         <h2>Referential opacity</h2>
 
-        <p>The way the <a>unstar mapping</a> is defined, the denotation of a <a>quoted triple</a> does not only depend on the denotation of its component terms, but also on their syntactical form (for IRIs and literals). This behavior is referred to as <a href="https://en.wikipedia.org/wiki/Opaque_context">referential opacity</a>. A consequence is that two different triples, that would be semantically equivalent if asserted, are not automatically considered to denote the same thing when <a>quoted</a>. In the example below, assuming <a data-cite="RDF11-MT#datatype-entailment">D-entailment</a>: while `"104232"^^xsd:nonNegativeInteger` and `"0104232"^^xsd:nonNegativeInteger` denote the same thing (namely, the number 104232), the two <a>quoted triples</a> are allowed to have different denotations, and so the entailment does not hold.</p>
+        <p>The way the <a>unstar mapping</a> is defined, the denotation of a <a>quoted triple</a> does not only depend on the denotation of its component terms, but also on their syntactical form (for IRIs and literals). This behavior is referred to as <a href="https://en.wikipedia.org/wiki/Opaque_context">referential opacity</a>. A consequence is that two different triples, that would be semantically equivalent if asserted, are not automatically considered to denote the same thing when <a>quoted</a>. In the example below, assuming <a data-cite="RDF11-MT#datatype-entailment">D-entailment</a>: while `"104232"^^xsd:nonNegativeInteger` and `"000104232"^^xsd:nonNegativeInteger` denote the same thing (namely, the number 104232), the two <a>quoted triples</a> are allowed to have different denotations, and so the entailment does not hold.</p>
 
         <pre id="ref-opacity-d-entailment"
         data-transform="updateExample"
@@ -3018,8 +3018,10 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
 
         #### does NOT entail
 
-        << dbr:Linköping dbo:populationTotal "0104232"^^xsd::nonNegativeInteger >>
+        << dbr:Linköping dbo:populationTotal "000104232"^^xsd::nonNegativeInteger >>
             :source <https://dbpedia.org/data/Linköping>.
+        
+        # (notice the leading zeros in the literal)
         -->
         </pre>
 
@@ -3057,16 +3059,18 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
 
         #### does NOT entail
 
-        dbr:Linköping dbo:populationTotal "0104232"^^xsd::nonNegativeInteger
+        dbr:Linköping dbo:populationTotal "000104232"^^xsd::nonNegativeInteger
             {| :source <https://dbpedia.org/data/Linköping> |}.
+        
+        # (notice the leading zeros in the literal)
 
         #### more precisely, it DOES entail
 
-        dbr:Linköping dbo:populationTotal "0104232"^^xsd::nonNegativeInteger.
+        dbr:Linköping dbo:populationTotal "000104232"^^xsd::nonNegativeInteger.
 
         #### but it does NOT entail
 
-        << dbr:Linköping dbo:populationTotal "0104232"^^xsd::nonNegativeInteger >>
+        << dbr:Linköping dbo:populationTotal "000104232"^^xsd::nonNegativeInteger >>
             :source <https://dbpedia.org/data/Linköping>.
         -->
         </pre>
@@ -3090,13 +3094,15 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
 
         ### Candidate entailment #1
 
-        << dbr:Linköping dbo:populationTotal "0104232"^^xsd::nonNegativeInteger >>
+        << dbr:Linköping dbo:populationTotal "000104232"^^xsd::nonNegativeInteger >>
           :on "2010-12-31"^^xsd:date .
 
         ### Candidate entailment #2
 
-        << dbr:Linköping dbo:populationTotal "0104232"^^xsd::nonNegativeInteger >>
+        << dbr:Linköping dbo:populationTotal "000104232"^^xsd::nonNegativeInteger >>
           :source <https://dbpedia.org/data/Linköping.ttl> .
+
+        # (notice the leading zeros in the literal in both candidate entailments)
         -->
         </pre>
 

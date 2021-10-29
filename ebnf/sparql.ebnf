@@ -222,7 +222,7 @@
 
 @terminals
 
-[139] IRIREF                  ::= '<' ([^#x00-#x20<>"{}|^`\] | UCHAR)* '>'
+[139] IRIREF                  ::= '<' ([^<>"{}|^`\]-[#x00-#x20])* '>'
 [140] PNAME_NS                ::= PN_PREFIX? ':'
 [141] PNAME_LN                ::= PNAME_NS PN_LOCAL
 [142] BLANK_NODE_LABEL        ::= '_:' ( PN_CHARS_U | [0-9] ) ((PN_CHARS|'.')* PN_CHARS)?

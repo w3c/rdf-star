@@ -767,8 +767,8 @@ INSERT {
 
       <p class="note">The complete grammar may be found in <a href="#turtle-star-ebnf"></a>.</p>
 
-      <p class="note">As with N-Triples-star,
-        the changes are that <a href="#grammar-production-subject">`subject`</a>
+      <p class="note">
+        The changes are that <a href="#grammar-production-subject">`subject`</a>
         and <a href="#grammar-production-object">`object`</a> productions
         have been extended to accept <a>quoted triples</a>,
         which are described by the new productions <a href="#grammar-production-quotedTriple">27t</a>
@@ -1111,7 +1111,7 @@ INSERT {
 
       <p class="note">The complete grammar may be found in <a href="#n-triples-star-ebnf"></a>.</p>
 
-      <p class="note">The changes are
+      <p class="note">The changes are that
         <a href="#grammar-production-nt-subject">`subject`</a>
         and <a href="#grammar-production-nt-object">`object`</a> productions
         have been extended to accept <a>quoted triples</a>,
@@ -3359,6 +3359,9 @@ rdf-star:Source      a rdfs:Class ;
 
   </section>
 
+  <section class="appendix">
+    <h2>Complete EBNF Grammars</h2>
+
   <section class="appendix informative" id="turtle-star-ebnf">
     <h2>Turtle-Star EBNF Grammar</h2>
     <p>The following is a complete grammar for Turtle-Star.
@@ -3397,6 +3400,7 @@ rdf-star:Source      a rdfs:Class ;
       The EBNF used here is defined in XML 1.0 [[EBNF-NOTATION]].</p>
 
     <div data-include="../ebnf/sparql.html"></div>
+  </section>
   </section>
 
   <section class="appendix informative" id="issue-summary">

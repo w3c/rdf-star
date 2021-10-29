@@ -91,6 +91,22 @@
         repoURL: "w3c/rdf-star",
         branch: "main",
       },
+      localBiblio: {
+        "EBNF-NOTATION": {
+          title: "EBNF NOTATION",
+          href: "http://www.w3.org/TR/REC-xml/#sec-notation",
+          publisher: "W3C",
+          date: "26 November 2008",
+          status: "W3C Recommendation",
+          authors: [
+            "Tim Bray",
+            "Jean Paoli",
+            "C. M. Sperberg-McQueen",
+            "Eve Maler",
+            "François Yergeau"
+          ]
+        }
+      },
       wgPublicList: "public-rdf-star",
       shortName: "rdf-star",
       group: "rdf-dev",
@@ -763,7 +779,7 @@ INSERT {
         </tr>
       </table>
 
-      <p class="note">The complete grammar may be found <a href="ebnf/turtle.html">here</a>.</p>
+      <p class="note">The complete grammar may be found in <a href="#turtle-star-ebnf"></a>.</p>
 
       <p class="note">As with N-Triples-star,
         the changes are that <a href="#grammar-production-subject">`subject`</a>
@@ -1011,7 +1027,7 @@ INSERT {
         </tr>
       </table>
 
-      <p class="note">The complete grammar may be found <a href="ebnf/trig.html">here</a>.</p>
+      <p class="note">The complete grammar may be found in <a href="#trig-star-ebnf"></a>.</p>
     </section>
 
     <section id="trig-star-parsing">
@@ -1084,7 +1100,7 @@ INSERT {
         which replace the productions having the same number
         (if any) in the original grammar.</p>
 
-      <table class="n-triples-star-ebnf">
+      <table class="grammar">
         <tbody id="grammar-productions" class="ebnf">
           <tr id="grammar-production-nt-subject">
             <td>[3]</td>
@@ -1107,7 +1123,7 @@ INSERT {
         </tbody>
       </table>
 
-      <p class="note">The complete grammar may be found <a href="ebnf/n-triples.html">here</a>.</p>
+      <p class="note">The complete grammar may be found in <a href="#n-triples-star-ebnf"></a>.</p>
 
       <p class="note">The changes are
         <a href="#grammar-production-nt-subject">`subject`</a>
@@ -1152,7 +1168,7 @@ INSERT {
     <p>The [[N-QUADS]] format is extended to describe the
       N-Quads-star format using the same production updates described in the <a href="#n-triples-star-grammar">N-Triples-star Grammar</a>.</p>
 
-    <p class="note">The complete grammar may be found <a href="ebnf/n-quads.html">here</a>.</p>
+    <p class="note">The complete grammar may be found in <a href="#n-quads-star-ebnf"></a>.</p>
 
     <p class="note">As RDF-star describes <a>quoted triples</a> and not quoted quads,
       the <a data-cite="N-QUADS#grammar-production-graphLabel">`graphLabel`</a>
@@ -1874,7 +1890,7 @@ INSERT {
         </tr>
       </table>
 
-      <p class="note">The complete grammar may be found <a href="ebnf/sparql.html">here</a>.</p>
+      <p class="note">The complete grammar may be found in <a href="#sparql-star-ebnf"></a>.</p>
 
       <p>
         This introduces a notation for <dfn>quoted triple patterns</dfn>
@@ -3355,6 +3371,46 @@ rdf-star:Source      a rdfs:Class ;
 
     </section>
 
+  </section>
+
+  <section class="appendix informative" id="turtle-star-ebnf">
+    <h2>Turtle-Star EBNF Grammar</h2>
+    <p>The following is a complete grammar for Turtle-Star.
+      The EBNF used here is defined in XML 1.0 [[EBNF-NOTATION]].</p>
+
+    <div data-include="../ebnf/turtle.html"></div>
+  </section>
+
+  <section class="appendix informative" id="trig-star-ebnf">
+    <h2>TriG-Star EBNF Grammar</h2>
+    <p>The following is a complete grammar for TriG-Star.
+      The EBNF used here is defined in XML 1.0 [[EBNF-NOTATION]].</p>
+
+    <div data-include="../ebnf/trig.html"></div>
+  </section>
+
+  <section class="appendix informative" id="n-triples-star-ebnf">
+    <h2>N-Triples-Star EBNF Grammar</h2>
+    <p>The following is a complete grammar for N-Triples-Star.
+      The EBNF used here is defined in XML 1.0 [[EBNF-NOTATION]].</p>
+
+    <div data-include="../ebnf/n-triples.html"></div>
+  </section>
+
+  <section class="appendix informative" id="n-quads-star-ebnf">
+    <h2>N-Quads-Star EBNF Grammar</h2>
+    <p>The following is a complete grammar for N-Quads-Star.
+      The EBNF used here is defined in XML 1.0 [[EBNF-NOTATION]].</p>
+
+    <div data-include="../ebnf/n-quads.html"></div>
+  </section>
+
+  <section class="appendix informative" id="sparql-star-ebnf">
+    <h2>SPARQL-Star EBNF Grammar</h2>
+    <p>The following is a complete grammar for SPARQL-Star.
+      The EBNF used here is defined in XML 1.0 [[EBNF-NOTATION]].</p>
+
+    <div data-include="../ebnf/sparql.html"></div>
   </section>
 
   <section class="appendix informative" id="issue-summary">

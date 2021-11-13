@@ -496,7 +496,7 @@
     }
   ],
   "prefLabel": {
-    "es": "Conjunto de pruebas para SPARQL-star",
-    "fr": "La suite des tests pour SPARQL-star"
+    "fr": "La suite des tests pour SPARQL-star",
+    "es": "Conjunto de pruebas para SPARQL-star"
   }
 }

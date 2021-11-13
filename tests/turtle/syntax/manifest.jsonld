@@ -327,7 +327,7 @@
     }
   ],
   "prefLabel": {
-    "fr": "La suite des tests pour la syntaxe Turtle-star",
-    "es": "Conjunto de pruebas para la sintaxis Turtle-star"
+    "es": "Conjunto de pruebas para la sintaxis Turtle-star",
+    "fr": "La suite des tests pour la syntaxe Turtle-star"
   }
 }

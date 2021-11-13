@@ -632,7 +632,7 @@
     }
   ],
   "prefLabel": {
-    "fr": "La suite des tests pour la sémantique de RDF-star",
-    "es": "Conjunto de pruebas para la semántica de RDF-star"
+    "es": "Conjunto de pruebas para la semántica de RDF-star",
+    "fr": "La suite des tests pour la sémantique de RDF-star"
   }
 }

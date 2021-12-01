@@ -441,7 +441,24 @@ INSERT {
     </section>
 
     <section id="conformance">
-      <div class=issue data-number="3"></div>
+      <p>A system supports RDF-star:</p>
+      <ul>
+        <li>if it supports one or more of the RDF 1.1 standard syntaxes for input, and 
+          one or more of its input syntaxes passes the tests described in the
+          <a href="https://w3c.github.io/rdf-star/tests/">RDF-star test suite</a>.
+        </li>
+        <li>if it supports one or more RDF standard syntaxes for output, and
+          one or more of its output syntaxes premits <a>quoted triples</a> as described in the
+          <a href="https://w3c.github.io/rdf-star/tests/">RDF-star test suite</a>.
+        </li>
+      </ul>
+      <p> 
+        A system supports SPARQL-star if it passes
+        the <a href="https://w3c.github.io/rdf-star/tests/sparql/syntax/"
+           >SPARQL-star syntax</a> test suite</li>
+        and the <a href="https://w3c.github.io/rdf-star/tests/sparql/eval/"
+           >SPARQL-star evaluation</a> test suites.</li>
+      </ul>
     </section>
 
   </section>

@@ -375,6 +375,21 @@ INSERT {
 -->
 </pre>
 
+    </section>
+    <section>
+      <h2>Common misconceptions</h2>
+
+      <p>Many people come to RDF-star with wrong ideas about what it is or how to use it. This section lists and corrects the most frequent ones.
+
+      <p>RDF-star is <em>not</em> syntactic sugar for <a href="https://www.w3.org/TR/rdf11-mt/#reification">standard reification</a>. While the latter is a vocabulary fitting in the standard RDF model (abstract syntax), RDF-star extends that model (see <a href="#concepts"></a>) with a new construct, namely <a>quoted triples</a>. Note also that the two are not mutually exclusive: standard reification can still be used in conjunction with RDF-star.
+
+      <p>Unlike reified statements, RDF-star <a>quoted triples</a> are unique: wherever `&lt;&lt; :employee38 :jobTitle "Assistant Designer" &gt;&gt;` appears, it denotes one and the same thing. This impacts the modelling choices one has to make when using RDF-star; this is further discussed in <a href="#occurrences"></a>.
+
+      <p>Finally, <a>quoted triples</a> are referentially opaque. This means that two <a>quoted triples</a> containing distinct but equivalent terms (i.e. known to denote the same thing) are nonetheless considered to be different triples. <a href="#ref-opacity"></a> and the following sections discuss the rationale for this design, and how some form of referential transparency can still be added to RDF-star if and when needed.
+    </section>
+
+    <section>
+      <h2>Conventions</h2>
 <p>For the remainder of this document, examples will assume that the following prefixes have been declared to represent the IRIs shown with them here: </p>
 
 <table>

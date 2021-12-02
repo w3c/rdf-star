@@ -301,7 +301,7 @@
     <section class="informative">
       <h2>Overview</h2>
 
-<p>This specification describes RDF-star, an extension of RDF's conceptual data model and concrete syntaxes, providing a more compact form of reification. This model and syntaxes enable the creation of concise triples that reference other triples as subject and object resources.
+<p>This specification describes RDF-star, an extension of RDF's conceptual data model and concrete syntaxes, providing a compact alternative to <a href="https://www.w3.org/TR/rdf11-mt/#reification">standard reification</a>. This model and syntaxes enable the creation of concise triples that reference other triples as subject and object resources.
 Triples that include a triple as a subject or an object are known as <a>RDF-star triples</a>. The following dataset shows the example RDF-star triples from above using the <a href="#turtle-star">Turtle-star</a> syntax, which uses double angle brackets to enclose a triple serving as a subject or object resource:</p>
 
       <pre data-transform="updateExample"
@@ -318,7 +318,7 @@ PREFIX :    <http://www.example.org/>
 
 <p>After declaring a prefix so that IRIs can be abbreviated, the first triple in this example asserts that employee38 has a familyName of "Smith". Note that this dataset does not assert that employee38 has a jobTitle of "Assistant Designer"; it says that employee22 has made that claim. In other words, the triple "employee38 has a jobTitle of 'Assistant Designer'" is not what we call an <a>asserted triple</a>, like "employee38 has a familyName of 'Smith'" above; rather, it is known as a <a>quoted triple</a>.</p>
 
-<p>If we added the triple `:employee38 :jobTitle "Assistant Designer"` below the triple about employee22's claim in the example above, then this triple about employee38's jobTitle would be both a <a>quoted</a> and an <a>asserted</a> triple.
+<p>If we added the triple `:employee38 :jobTitle "Assistant Designer"` in the example above, then this triple about employee38's jobTitle would be both a <a>quoted</a> and an <a>asserted</a> triple.
 This pattern is quite common, so Turtle-star offers a dedicated syntax for it, called the <a>annotation syntax</a>, illustrated in <a href="#example-annotation"></a> below. Note that this construct is purely syntactic sugar, as it can be expanded using only the double angle brackets.</p>
 
 <pre data-transform="updateExample"
@@ -352,7 +352,7 @@ This pattern is quite common, so Turtle-star offers a dedicated syntax for it, c
 PREFIX : <http://www.example.org/> 
 
 SELECT ?claimer WHERE {
-   ?claimer :claims << :employee38 ?property ?value >>
+   << :employee38 ?property ?value >> :accordingTo ?claimer
 }
 -->
 </pre>

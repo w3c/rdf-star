@@ -96,7 +96,7 @@
       "@reverse": "test:approval"
     }
   },
-  "@id": "../../../tests#manifest",
+  "@id": "trs:manifest",
   "@type": "Manifest",
   "creator": [
     {
@@ -117,140 +117,140 @@
   "seeAlso": "https://w3c.github.io/rdf-tests/",
   "entries": [
     {
-      "@id": "../../../tests#trig-star-1",
+      "@id": "trs:trig-star-1",
       "@type": "rdft:TestTrigPositiveSyntax",
       "action": "trig-star-syntax-basic-01.trig",
       "name": "TriG-star - subject quoted triple"
     },
     {
-      "@id": "../../../tests#trig-star-2",
+      "@id": "trs:trig-star-2",
       "@type": "rdft:TestTrigPositiveSyntax",
       "action": "trig-star-syntax-basic-02.trig",
       "name": "TriG-star - object quoted triple"
     },
     {
-      "@id": "../../../tests#trig-star-inside-1",
+      "@id": "trs:trig-star-inside-1",
       "@type": "rdft:TestTrigPositiveSyntax",
       "action": "trig-star-syntax-inside-01.trig",
       "name": "TriG-star - quoted triple inside blankNodePropertyList"
     },
     {
-      "@id": "../../../tests#trig-star-inside-2",
+      "@id": "trs:trig-star-inside-2",
       "@type": "rdft:TestTrigPositiveSyntax",
       "action": "trig-star-syntax-inside-02.trig",
       "name": "TriG-star - quoted triple inside collection"
     },
     {
-      "@id": "../../../tests#trig-star-nested-1",
+      "@id": "trs:trig-star-nested-1",
       "@type": "rdft:TestTrigPositiveSyntax",
       "action": "trig-star-syntax-nested-01.trig",
       "name": "TriG-star - nested quoted triple, subject position"
     },
     {
-      "@id": "../../../tests#trig-star-nested-2",
+      "@id": "trs:trig-star-nested-2",
       "@type": "rdft:TestTrigPositiveSyntax",
       "action": "trig-star-syntax-nested-02.trig",
       "name": "TriG-star - nested quoted triple, object position"
     },
     {
-      "@id": "../../../tests#trig-star-compound-1",
+      "@id": "trs:trig-star-compound-1",
       "@type": "rdft:TestTrigPositiveSyntax",
       "action": "trig-star-syntax-compound.trig",
       "name": "TriG-star - compound forms"
     },
     {
-      "@id": "../../../tests#trig-star-bnode-1",
+      "@id": "trs:trig-star-bnode-1",
       "@type": "rdft:TestTrigPositiveSyntax",
       "action": "trig-star-syntax-bnode-01.trig",
       "name": "TriG-star - blank node subject"
     },
     {
-      "@id": "../../../tests#trig-star-bnode-2",
+      "@id": "trs:trig-star-bnode-2",
       "@type": "rdft:TestTrigPositiveSyntax",
       "action": "trig-star-syntax-bnode-02.trig",
       "name": "TriG-star - blank node object"
     },
     {
-      "@id": "../../../tests#trig-star-bnode-3",
+      "@id": "trs:trig-star-bnode-3",
       "@type": "rdft:TestTrigPositiveSyntax",
       "action": "trig-star-syntax-bnode-03.trig",
       "name": "TriG-star - blank node"
     },
     {
-      "@id": "../../../tests#trig-star-bad-1",
+      "@id": "trs:trig-star-bad-1",
       "@type": "rdft:TestTrigNegativeSyntax",
       "action": "trig-star-syntax-bad-01.trig",
       "name": "TriG-star - bad - quoted triple as predicate"
     },
     {
-      "@id": "../../../tests#trig-star-bad-2",
+      "@id": "trs:trig-star-bad-2",
       "@type": "rdft:TestTrigNegativeSyntax",
       "action": "trig-star-syntax-bad-02.trig",
       "name": "TriG-star - bad - quoted triple outside triple"
     },
     {
-      "@id": "../../../tests#trig-star-bad-3",
+      "@id": "trs:trig-star-bad-3",
       "@type": "rdft:TestTrigNegativeSyntax",
       "action": "trig-star-syntax-bad-03.trig",
       "name": "TriG-star - bad - collection list in quoted triple"
     },
     {
-      "@id": "../../../tests#trig-star-bad-4",
+      "@id": "trs:trig-star-bad-4",
       "@type": "rdft:TestTrigNegativeSyntax",
       "action": "trig-star-syntax-bad-04.trig",
       "name": "TriG-star - bad - literal in subject position of quoted triple"
     },
     {
-      "@id": "../../../tests#trig-star-bad-5",
+      "@id": "trs:trig-star-bad-5",
       "@type": "rdft:TestTrigNegativeSyntax",
       "action": "trig-star-syntax-bad-05.trig",
       "name": "TriG-star - bad - blank node  as predicate in quoted triple"
     },
     {
-      "@id": "../../../tests#trig-star-bad-6",
+      "@id": "trs:trig-star-bad-6",
       "@type": "rdft:TestTrigNegativeSyntax",
       "action": "trig-star-syntax-bad-06.trig",
       "name": "TriG-star - bad - compound blank node expression"
     },
     {
-      "@id": "../../../tests#trig-star-bad-7",
+      "@id": "trs:trig-star-bad-7",
       "@type": "rdft:TestTrigNegativeSyntax",
       "action": "trig-star-syntax-bad-07.trig",
       "name": "TriG-star - bad - incomplete quoted triple"
     },
     {
-      "@id": "../../../tests#trig-star-bad-8",
+      "@id": "trs:trig-star-bad-8",
       "@type": "rdft:TestTrigNegativeSyntax",
       "action": "trig-star-syntax-bad-08.trig",
       "name": "TriG-star - bad - over-long quoted triple"
     },
     {
-      "@id": "../../../tests#trig-star-ann-1",
+      "@id": "trs:trig-star-ann-1",
       "@type": "rdft:TestTrigPositiveSyntax",
       "action": "trig-star-annotation-1.trig",
       "name": "TriG-star - Annotation form"
     },
     {
-      "@id": "../../../tests#trig-star-ann-2",
+      "@id": "trs:trig-star-ann-2",
       "@type": "rdft:TestTrigPositiveSyntax",
       "action": "trig-star-annotation-2.trig",
       "name": "TriG-star - Annotation example"
     },
     {
-      "@id": "../../../tests#trig-star-bad-ann-1",
+      "@id": "trs:trig-star-bad-ann-1",
       "@type": "rdft:TestTrigNegativeSyntax",
       "action": "trig-star-syntax-bad-ann-1.trig",
       "name": "TriG-star - bad - empty annotation"
     },
     {
-      "@id": "../../../tests#trig-star-bad-ann-2",
+      "@id": "trs:trig-star-bad-ann-2",
       "@type": "rdft:TestTrigNegativeSyntax",
       "action": "trig-star-syntax-bad-ann-2.trig",
       "name": "TriG-star - bad - triple as annotation"
     }
   ],
   "prefLabel": {
-    "fr": "La suite des tests pour la syntaxe de TriG-star",
-    "es": "Conjunto de pruebas para la sintaxis de Trig-star"
+    "es": "Conjunto de pruebas para la sintaxis de Trig-star",
+    "fr": "La suite des tests pour la syntaxe de TriG-star"
   }
 }

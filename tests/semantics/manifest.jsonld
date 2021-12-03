@@ -96,10 +96,10 @@
       "@reverse": "test:approval"
     }
   },
-  "@id": "../../tests#manifest",
+  "@id": "trs:manifest",
   "@included": [
     {
-      "@id": "../../tests#malformed-literal-bnode",
+      "@id": "trs:malformed-literal-bnode",
       "@type": "PositiveEntailmentTest",
       "comment": "Malformed literals can be replaced by blank nodes (withdrawn as the current semantics does not enforce this).",
       "approval": "Withdrawn",
@@ -115,7 +115,7 @@
       ]
     },
     {
-      "@id": "../../tests#malformed-literal-bnode-2",
+      "@id": "trs:malformed-literal-bnode-2",
       "@type": "PositiveEntailmentTest",
       "comment": "Identical malformed literals can be replaced with the same blank node  (withdrawn as the current semantics does not enforce this).",
       "approval": "Withdrawn",
@@ -131,7 +131,7 @@
       ]
     },
     {
-      "@id": "../../tests#malformed-literal-bnode-3",
+      "@id": "trs:malformed-literal-bnode-3",
       "@type": "NegativeEntailmentTest",
       "comment": "Identical malformed literals can not be replaced with the same blank node (withdrawn as the current semantics does not enforce this).",
       "approval": "Withdrawn",
@@ -147,7 +147,7 @@
       ]
     },
     {
-      "@id": "../../tests#triple-in-object",
+      "@id": "trs:triple-in-object",
       "@type": "PositiveEntailmentTest",
       "comment": "Quoted triples can appear in object position (withdrawn, as it belongs to concrete syntax test-suites).",
       "approval": "Withdrawn",
@@ -163,7 +163,7 @@
       ]
     },
     {
-      "@id": "../../tests#triple-in-subject",
+      "@id": "trs:triple-in-subject",
       "@type": "PositiveEntailmentTest",
       "comment": "Quoted triples can appear in subject position (withdrawn, as it belongs to concrete syntax test-suites).",
       "approval": "Withdrawn",
@@ -199,7 +199,7 @@
   "seeAlso": "https://w3c.github.io/rdf-star/tests/semantics/README",
   "entries": [
     {
-      "@id": "../../tests#all-identical-quoted-triples-are-the-same",
+      "@id": "trs:all-identical-quoted-triples-are-the-same",
       "@type": "PositiveEntailmentTest",
       "comment": "Multiple occurences of the same quoted triples are undistinguishable in the abstract model.",
       "approval": "Proposed",
@@ -215,7 +215,7 @@
       ]
     },
     {
-      "@id": "../../tests#quoted-triples-no-spurious",
+      "@id": "trs:quoted-triples-no-spurious",
       "@type": "NegativeEntailmentTest",
       "comment": "This test ensures that other entailments are not spurious.",
       "approval": "Proposed",
@@ -231,7 +231,7 @@
       ]
     },
     {
-      "@id": "../../tests#bnodes-in-quoted-subject",
+      "@id": "trs:bnodes-in-quoted-subject",
       "@type": "PositiveEntailmentTest",
       "comment": "Terms inside quoted triples can be replaced by fresh bnodes.",
       "approval": "Proposed",
@@ -247,7 +247,7 @@
       ]
     },
     {
-      "@id": "../../tests#bnodes-in-quoted-object",
+      "@id": "trs:bnodes-in-quoted-object",
       "@type": "PositiveEntailmentTest",
       "comment": "Terms inside quoted triples can be replaced by fresh bnodes.",
       "approval": "Proposed",
@@ -263,7 +263,7 @@
       ]
     },
     {
-      "@id": "../../tests#bnodes-in-quoted-subject-and-object",
+      "@id": "trs:bnodes-in-quoted-subject-and-object",
       "@type": "PositiveEntailmentTest",
       "comment": "Terms inside quoted triples can be replaced by fresh bnodes.",
       "approval": "Proposed",
@@ -279,7 +279,7 @@
       ]
     },
     {
-      "@id": "../../tests#bnodes-in-quoted-subject-and-object-fail",
+      "@id": "trs:bnodes-in-quoted-subject-and-object-fail",
       "@type": "NegativeEntailmentTest",
       "comment": "The same bnode can not match different quoted terms.",
       "approval": "Proposed",
@@ -295,7 +295,7 @@
       ]
     },
     {
-      "@id": "../../tests#same-bnode-same-quoted-term",
+      "@id": "trs:same-bnode-same-quoted-term",
       "@type": "PositiveEntailmentTest",
       "comment": "Identical quoted term can be replaced by the same fresh bnode multiple times.",
       "approval": "Proposed",
@@ -311,7 +311,7 @@
       ]
     },
     {
-      "@id": "../../tests#different-bnodes-same-quoted-term",
+      "@id": "trs:different-bnodes-same-quoted-term",
       "@type": "PositiveEntailmentTest",
       "comment": "Different bnodes can match identical quoted terms.",
       "approval": "Proposed",
@@ -327,7 +327,7 @@
       ]
     },
     {
-      "@id": "../../tests#constrained-bnodes-in-quoted-subject",
+      "@id": "trs:constrained-bnodes-in-quoted-subject",
       "@type": "PositiveEntailmentTest",
       "comment": "Terms inside and outside quoted triples can be replaced by fresh bnodes",
       "approval": "Proposed",
@@ -343,7 +343,7 @@
       ]
     },
     {
-      "@id": "../../tests#constrained-bnodes-in-quoted-object",
+      "@id": "trs:constrained-bnodes-in-quoted-object",
       "@type": "PositiveEntailmentTest",
       "comment": "Terms inside and outside quoted triples can be replaced by fresh bnodes.",
       "approval": "Proposed",
@@ -359,7 +359,7 @@
       ]
     },
     {
-      "@id": "../../tests#constrained-bnodes-in-quoted-fail",
+      "@id": "trs:constrained-bnodes-in-quoted-fail",
       "@type": "NegativeEntailmentTest",
       "comment": "Quoted bnode identifiers share the same scope as non-quoted ones. A bnode that occurs both inside quoted triples and inside asserted triples must satisfy all occurrences at the same time.",
       "approval": "Proposed",
@@ -375,7 +375,7 @@
       ]
     },
     {
-      "@id": "../../tests#constrained-bnodes-on-literal",
+      "@id": "trs:constrained-bnodes-on-literal",
       "@type": "PositiveEntailmentTest",
       "comment": "Literals inside and outside quoted triples can be replaced by fresh bnodes.",
       "approval": "Proposed",
@@ -391,7 +391,7 @@
       ]
     },
     {
-      "@id": "../../tests#malformed-literal-control",
+      "@id": "trs:malformed-literal-control",
       "@type": "PositiveEntailmentTest",
       "comment": "Checks that xsd:integer is indeed recognized, to ensure that malformed-literal-* tests do not pass spuriously.",
       "approval": "Proposed",
@@ -407,7 +407,7 @@
       ]
     },
     {
-      "@id": "../../tests#malformed-literal",
+      "@id": "trs:malformed-literal",
       "@type": "NegativeEntailmentTest",
       "comment": "Malformed literals are allowed when quoted.",
       "approval": "Proposed",
@@ -423,7 +423,7 @@
       ]
     },
     {
-      "@id": "../../tests#malformed-literal-accepted",
+      "@id": "trs:malformed-literal-accepted",
       "@type": "PositiveEntailmentTest",
       "comment": "Malformed literals are allowed when quoted.",
       "approval": "Proposed",
@@ -439,7 +439,7 @@
       ]
     },
     {
-      "@id": "../../tests#malformed-literal-no-spurious",
+      "@id": "trs:malformed-literal-no-spurious",
       "@type": "NegativeEntailmentTest",
       "comment": "Quoted malformed literals do not lead to spurious entailment.",
       "approval": "Proposed",
@@ -455,7 +455,7 @@
       ]
     },
     {
-      "@id": "../../tests#malformed-literal-bnode-neg",
+      "@id": "trs:malformed-literal-bnode-neg",
       "@type": "NegativeEntailmentTest",
       "comment": "Malformed literals can not be replaced by blank nodes.",
       "approval": "Proposed",
@@ -471,7 +471,7 @@
       ]
     },
     {
-      "@id": "../../tests#opaque-literal-control",
+      "@id": "trs:opaque-literal-control",
       "@type": "PositiveEntailmentTest",
       "comment": "Checks that xsd:integer is indeed recognized, to ensure that opaque-literal does not pass spuriously.",
       "approval": "Proposed",
@@ -487,7 +487,7 @@
       ]
     },
     {
-      "@id": "../../tests#opaque-literal",
+      "@id": "trs:opaque-literal",
       "@type": "NegativeEntailmentTest",
       "comment": "Quoted literals are opaque, even when their datatype is recognized.",
       "approval": "Proposed",
@@ -503,7 +503,7 @@
       ]
     },
     {
-      "@id": "../../tests#opaque-language-string-control",
+      "@id": "trs:opaque-language-string-control",
       "@type": "PositiveEntailmentTest",
       "comment": "Checks that language strings are indeed recognized, to ensure that opaque-language-string does not pass spuriously.",
       "approval": "Proposed",
@@ -519,7 +519,7 @@
       ]
     },
     {
-      "@id": "../../tests#opaque-language-string",
+      "@id": "trs:opaque-language-string",
       "@type": "NegativeEntailmentTest",
       "comment": "Quoted literals (including language strings) are opaque, even when their datatype is recognized.",
       "approval": "Proposed",
@@ -535,7 +535,7 @@
       ]
     },
     {
-      "@id": "../../tests#opaque-iri-control",
+      "@id": "trs:opaque-iri-control",
       "@type": "PositiveEntailmentTest",
       "comment": "Check that owl:sameAs works as expected, to ensure that opaque-iri does not pass spuriously.",
       "approval": "Proposed",
@@ -551,7 +551,7 @@
       ]
     },
     {
-      "@id": "../../tests#opaque-iri",
+      "@id": "trs:opaque-iri",
       "@type": "NegativeEntailmentTest",
       "comment": "Quoted IRIs are opaque.",
       "approval": "Proposed",
@@ -567,7 +567,7 @@
       ]
     },
     {
-      "@id": "../../tests#quoted-not-asserted",
+      "@id": "trs:quoted-not-asserted",
       "@type": "NegativeEntailmentTest",
       "comment": "Quoted triples are not asserted.",
       "approval": "Proposed",
@@ -583,7 +583,7 @@
       ]
     },
     {
-      "@id": "../../tests#annotated-asserted",
+      "@id": "trs:annotated-asserted",
       "@type": "PositiveEntailmentTest",
       "comment": "Annotated triples are asserted.",
       "approval": "Proposed",
@@ -599,7 +599,7 @@
       ]
     },
     {
-      "@id": "../../tests#annotation",
+      "@id": "trs:annotation",
       "@type": "PositiveEntailmentTest",
       "comment": "Annotation are about the annotated triple.",
       "approval": "Proposed",
@@ -615,7 +615,7 @@
       ]
     },
     {
-      "@id": "../../tests#annotation-unfolded",
+      "@id": "trs:annotation-unfolded",
       "@type": "PositiveEntailmentTest",
       "comment": "Annotation is the same as separate assertions.",
       "approval": "Proposed",
@@ -632,7 +632,7 @@
     }
   ],
   "prefLabel": {
-    "es": "Conjunto de pruebas para la semántica de RDF-star",
-    "fr": "La suite des tests pour la sémantique de RDF-star"
+    "fr": "La suite des tests pour la sémantique de RDF-star",
+    "es": "Conjunto de pruebas para la semántica de RDF-star"
   }
 }

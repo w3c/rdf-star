@@ -319,7 +319,7 @@ PREFIX :    <http://www.example.org/>
 <p>After declaring a prefix so that IRIs can be abbreviated, the first triple in this example asserts that employee38 has a familyName of "Smith". Note that this dataset does not assert that employee38 has a jobTitle of "Assistant Designer"; it says that employee22 has made that claim. In other words, the triple "employee38 has a jobTitle of 'Assistant Designer'" is not what we call an <a>asserted triple</a>, like "employee38 has a familyName of 'Smith'" above; rather, it is known as a <a>quoted triple</a>.</p>
 
 <p>If we added the triple `:employee38 :jobTitle "Assistant Designer"` below the triple about employee22's claim in the example above, then this triple about employee38's jobTitle would be both a <a>quoted</a> and an <a>asserted</a> triple.
-This pattern is quite common, so Turtle-star offers a dedicated syntax for it, called the annotation syntax, illustrated in <a href="#example-annotation"></a> below. Note that this construct is purely syntactic sugar, as it can be expanded using only the double angle brackets.</p>
+This pattern is quite common, so Turtle-star offers a dedicated syntax for it, called the <a>annotation syntax</a>, illustrated in <a href="#example-annotation"></a> below. Note that this construct is purely syntactic sugar, as it can be expanded using only the double angle brackets.</p>
 
 <pre data-transform="updateExample"
      data-content-type="text/turtle"
@@ -441,20 +441,25 @@ INSERT {
     </section>
 
     <section id="conformance">
-      <p>A system supports RDF-star:</p>
-      <ul>
-        <li>if it supports one or more of the RDF 1.1 standard syntaxes for input, and 
-          one or more of its input syntaxes passes the tests described in the
-          <a href="https://w3c.github.io/rdf-star/tests/">RDF-star test suite</a>
-          (i.e., the <a href="https://w3c.github.io/rdf-star/tests/nt/syntax/">N-Triples Syntax tests</a>,
-          the <a href="https://w3c.github.io/rdf-star/tests/turtle/syntax/">Turtle Syntax tests</a>, or
-          the <a href="https://w3c.github.io/rdf-star/tests/trig/syntax/">TriG Syntax tests</a>).
-        </li>
-        <li>if it supports one or more of the RDF 1.1 standard syntaxes for output, and
-          one or more of its output syntaxes permits <a>quoted triples</a> as described in the
-          <a href="https://w3c.github.io/rdf-star/tests/">RDF-star test suite</a>.
-        </li>
-      </ul>
+      <p>A system supports RDF-star for input if it supports an input syntax for 
+        an RDF 1.1 standard syntax that has additional syntax for  
+        <a>quoted triples</a>.
+        Such input syntaxes include those in the 
+        <a href="https://w3c.github.io/rdf-star/tests/">RDF-star test suite</a>
+        (<a href="https://w3c.github.io/rdf-star/tests/nt/syntax/">N-Triples-star syntax tests</a>
+        , <a href="https://w3c.github.io/rdf-star/tests/turtle/syntax/">Turtle-star syntax tests</a>
+        , or <a href="https://w3c.github.io/rdf-star/tests/trig/syntax/">TriG-star syntax tests</a>).
+      </p>
+
+      <p>A system support RDF-star for output if it supports an output syntax for
+        an RDF 1.1 standard syntax that has additional syntax for  
+        <a>quoted triples</a>.
+        Such output syntaxes include those in the
+        <a href="https://w3c.github.io/rdf-star/tests/">RDF-star test suite</a>
+        (<a href="https://w3c.github.io/rdf-star/tests/nt/syntax/">N-Triples-star syntax tests</a>
+        , <a href="https://w3c.github.io/rdf-star/tests/turtle/syntax/">Turtle-star syntax tests</a>
+        , or <a href="https://w3c.github.io/rdf-star/tests/trig/syntax/">TriG-star syntax tests</a>).
+      </p>
       <p> 
         A system supports SPARQL-star if it passes
         the <a href="https://w3c.github.io/rdf-star/tests/sparql/syntax/"
@@ -671,7 +676,8 @@ INSERT {
     <section id="annotation-syntax">
       <h2>Annotation Syntax</h2>
       <p>There are syntax additions for <a>quoted triples</a> and also for
-        <em>annotation syntax</em> which provides a convenient shortcut in Turtle-star and
+        <dfn data-lt="annotation-syntax">annotation syntax</dfn>
+        which provides a convenient shortcut in Turtle-star and
         TriG-star syntaxes. It is used to both assert a triple and have that triple be the
         subject of further triples. It uses delimiters `{|` and `|}` following an asserted
         triple to make that triple, as a <a>quoted triple</a>, the subject of the
@@ -896,7 +902,7 @@ INSERT {
       <p>Because the above example includes the triple (|b|, `http://example.org/#name`, `"Alice"`)
         as an <a>asserted triple</a>,
         the same RDF-star graph may also be represented
-        by using the Turtle-star annotation syntax as follows:</p>
+        by using the Turtle-star <a>annotation syntax</a> as follows:</p>
 
       <pre class="example"
            data-transform="updateExample"

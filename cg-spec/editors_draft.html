@@ -318,7 +318,7 @@ PREFIX :    <http://www.example.org/>
 
 <p>After declaring a prefix so that IRIs can be abbreviated, the first triple in this example asserts that employee38 has a familyName of "Smith". Note that this dataset does not assert that employee38 has a jobTitle of "Assistant Designer"; it says that employee22 has made that claim. In other words, the triple "employee38 has a jobTitle of 'Assistant Designer'" is not what we call an <a>asserted triple</a>, like "employee38 has a familyName of 'Smith'" above; rather, it is known as a <a>quoted triple</a>.</p>
 
-<p>If we added the triple `:employee38 :jobTitle "Assistant Designer"` in the example above, then this triple about employee38's jobTitle would be both a <a>quoted</a> and an <a>asserted</a> triple.
+<p>If we added the triple `:employee38 :jobTitle "Assistant Designer"` to the example above, then this triple about employee38's jobTitle would be both a <a>quoted</a> and an <a>asserted</a> triple.
 This pattern is quite common, so Turtle-star offers a dedicated syntax for it, called the <a>annotation syntax</a>, illustrated in <a href="#example-annotation"></a> below. Note that this construct is purely syntactic sugar, as it can be expanded using only the double angle brackets.</p>
 
 <pre data-transform="updateExample"
@@ -381,9 +381,9 @@ INSERT {
 
       <p>People coming to RDF-star may have wrong ideas about what it is or how to use it. The purpose of this section is to dispel the most common misconceptions.
 
-      <p>RDF-star is <em>not</em> syntactic sugar for <a href="https://www.w3.org/TR/rdf11-mt/#reification">standard reification</a>. While the latter is a vocabulary fitting in the standard RDF model (abstract syntax), RDF-star extends that model (see <a href="#concepts"></a>) with a new construct, namely <a>quoted triples</a>. Note also that the two are not mutually exclusive: standard reification can still be used in conjunction with RDF-star.
+      <p>RDF-star is <em>not</em> syntactic sugar for <a href="https://www.w3.org/TR/rdf11-mt/#reification">standard reification</a>. While the latter is a vocabulary that fits into the standard RDF model (abstract syntax), RDF-star extends that model (see <a href="#concepts"></a>) with a new construct, namely <a>quoted triples</a>. Note also that the two are not mutually exclusive: standard reification can be used in conjunction with RDF-star.
 
-      <p>Unlike reified statements, RDF-star <a>quoted triples</a> are unique: wherever `&lt;&lt; :employee38 :jobTitle "Assistant Designer" &gt;&gt;` appears, it denotes one and the same thing. This impacts the modelling choices one has to make when using RDF-star; this is further discussed in <a href="#occurrences"></a>.
+      <p>Unlike reified statements, RDF-star <a>quoted triples</a> are unique: wherever `&lt;&lt; :employee38 :jobTitle "Assistant Designer" &gt;&gt;` appears, it always denotes one and the same thing. This impacts the modeling choices one has to make when using RDF-star; this is further discussed in <a href="#occurrences"></a>.
 
       <p>Finally, <a>quoted triples</a> are referentially opaque. This means that two <a>quoted triples</a> containing distinct but equivalent terms (i.e. known to denote the same thing) are nonetheless considered to be different triples. <a href="#ref-opacity"></a> and the following sections discuss the rationale for this design, and how some form of referential transparency can still be added to RDF-star if and when needed.
     </section>

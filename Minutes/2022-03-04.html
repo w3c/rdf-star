@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+<meta charset=utf-8>
+<title>RDF-star &ndash; 04 March 2022</title>
+<meta name=viewport content="width=device-width">
+<link rel="stylesheet" type="text/css" title="2018" href="https://www.w3.org/StyleSheets/scribe2/public.css">
+<link rel="alternate stylesheet" type="text/css" title="2004" href="https://www.w3.org/StyleSheets/base.css">
+<link rel="alternate stylesheet" type="text/css" title="2004" href="https://www.w3.org/StyleSheets/public.css">
+<link rel="alternate stylesheet" type="text/css" title="2004" href="https://www.w3.org/2004/02/minutes-style.css">
+<link rel="alternate stylesheet" type="text/css" title="Fancy" href="https://www.w3.org/StyleSheets/scribe2/fancy.css">
+<link rel="alternate stylesheet" type="text/css" title="Typewriter" href="https://www.w3.org/StyleSheets/scribe2/tt-member.css">
+</head>
+
+<body>
+<header>
+<p><a href="https://www.w3.org/"><img src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" alt=W3C border=0 height=48 width=72></a></p>
+
+<h1>&ndash; DRAFT &ndash;<br>
+RDF-star</h1>
+<h2>04 March 2022</h2>
+
+<nav id=links>
+<a href="https://w3c.github.io/rdf-star/Minutes/2022-02-11.html"><img alt="Previous meeting." title="Previous meeting" src="https://www.w3.org/StyleSheets/scribe2/go-previous.png"></a>
+<a href="https://lists.w3.org/Archives/Public/public-rdf-star/2022Mar/0001.html"><img alt="Agenda." title="Agenda" src="https://www.w3.org/StyleSheets/scribe2/chronometer.png"></a>
+<a href="https://www.w3.org/2022/03/04-rdf-star-irc"><img alt="IRC log." title="IRC log" src="https://www.w3.org/StyleSheets/scribe2/text-plain.png"></a>
+<a href="https://w3c.github.io/rdf-star/Minutes/2022-03-25.html"><img alt="Next meeting." title="Next meeting" src="https://www.w3.org/StyleSheets/scribe2/go-next.png"></a>
+</nav>
+</header>
+
+<div id=prelims>
+<div id=attendees>
+<h2>Attendees</h2>
+<dl class=intro>
+<dt>Present</dt><dd>AndyS, doerthe, gkellogg, olaf, ora, pchampin, rivettp, TallTed</dd>
+<dt>Regrets</dt><dd>-</dd>
+<dt>Chair</dt><dd>pchampin</dd>
+<dt>Scribe</dt><dd>csarven, pchampin</dd>
+</dl>
+</div>
+
+<nav id=toc>
+<h2>Contents</h2>
+<ol>
+<li><a href="#t01">Announcements and newcomers</a></li>
+<li><a href="#t02">Open actions</a></li>
+<li><a href="#t03">WG chartering</a></li>
+<li><a href="#t04">Schedule next call</a></li>
+<li class=app><a href="#ActionSummary">Summary of action items</a></li>
+<li class=app><a href="#ResolutionSummary">Summary of resolutions</a></li>
+</ol>
+</nav>
+</div>
+
+<main id=meeting class=meeting>
+<h2>Meeting minutes</h2>
+<section></section>
+
+<section>
+<h3 id=t01>Announcements and newcomers</h3>
+<p id=x029 class="phone s01"><cite>csarven:</cite> have been working on Linked Data stack for a while<br>
+<span id=x030>… chairing the Solid CG, involved in WebID</span><br>
+<span id=x031>… curious about what's coming from this group</span></p>
+</section>
+
+<section>
+<h3 id=t02>Open actions</h3>
+<p id=x036 class=irc><cite>&lt;pchampin&gt;</cite> <a href="https://github.com/w3c/rdf-star/issues?q=is%3Aopen+is%3Aissue+label%3Aaction">https://<wbr>github.com/<wbr>w3c/<wbr>rdf-star/<wbr>issues?q=is%3Aopen+is%3Aissue+label%3Aaction</a></p>
+<p id=x041 class="phone s02"><cite>pchampin:</cite> we have a number of open actions.. mostly for future reference. long time pending<br>
+<span id=x042>… rather than going through each, does anyone have something to report on one of these actions?</span><br>
+<span id=x043>… I have one but if anybody else?</span></p>
+<p id=x045 class="phone s03"><cite>olaf:</cite> Just for the record.. I haven't heard from Cambridge Semantics, Ontotext, Stardog</p>
+<p id=x047 class=irc><cite>&lt;pchampin&gt;</cite> <a href="https://github.com/w3c/rdf-star/issues/247">https://<wbr>github.com/<wbr>w3c/<wbr>rdf-star/<wbr>issues/<wbr>247</a></p>
+<p id=x053 class="phone s02"><cite>pchampin:</cite> I do have something for danbri. I have tried reaching out. He did reply. Hope that the final report will be published on the CG page.<br>
+<span id=x054>… We also talked briefly not directly related ot the action, the chartering we are working on.</span><br>
+<span id=x055>… He has some concerns on the amount of the work the group is taking on.</span></p>
+<p id=x056 class="phone s04"><cite>AndyS:</cite> What were the questions?</p>
+<p id=x061 class="phone s02"><cite>pchampin:</cite> Some were.. you'll have describe the semantics of SPARQL.<br>
+<span id=x062>… how do we deal with multiple edges I've also pointed him to the blogpost.</span><br>
+<span id=x063>… I hope that explains our positions and some patterns dealing with that.</span><br>
+<span id=x064>… That's basically the concerns that he has raised</span></p>
+<p id=x067 class="phone s04"><cite>AndyS:</cite> I can understand the discussions in the mailing list.<br>
+<span id=x068>… That's an observation. Did he say how they can be resolved so we can go forwards?</span></p>
+<p id=x072 class="phone s02"><cite>pchampin:</cite> This was just ... didn't hav emuch time to develop the discussion<br>
+<span id=x073>… We believe that there is enough interest in the RDF-star in the community. So, that's my position and shared by other people here.</span><br>
+<span id=x074>… There is enough interest in RDF-star and join the WG.</span></p>
+<p id=x077 class="phone s05"><cite>gkellogg:</cite> The issue was publishing the final report on the CG page.<br>
+<span id=x078>… It sounds like his objections to the charter for the WG is a different issue.</span></p>
+<p id=x079 class="phone s02"><cite>pchampin:</cite> When I asked him again for the report, he didn't object to the report. I think it'll be done soon.</p>
+<p id=x080 class="phone s02"><cite>pchampin:</cite> Does that answer the question?</p>
+<p id=x081 class="phone s05"><cite>gkellogg:</cite> I'm wondering if there is a need ot take the report wider to the group.</p>
+<p id=x082 class=summary>^ was AndyS?</p>
+<p id=x086 class="phone s05"><cite>gkellogg:</cite> The reason to publish was to get wider review.<br>
+<span id=x087>… but those issues can be separated regarding the charter.</span><br>
+<span id=x088>… It is like you said, what comes first the cart or the horse.. important to get the report out.</span><br>
+<span id=x089>… Not sure there is more to do for the report to have it published.</span></p>
+<p id=x090 class="phone s02"><cite>pchampin:</cite> I didn't perceive any concerns or problems with the publishing of the CG report.</p>
+<p id=x091 class="phone s05"><cite>gkellogg:</cite> This is input for the WG .. not an invitation to rubber stamp.</p>
+<p id=x093 class="phone s02"><cite>pchampin:</cite> Creating the WG was the point. To be transparent, I mentioned the proposed charter and also wrt chairing.<br>
+<span id=x094>… sent a probe to danbri with that respect. Whether this thing was ready to create a WG.. and therefore moving to REC.</span></p>
+<p id=x096 class="phone s02"><cite>pchampin:</cite> I'll probably encourage danbri to have the discussion on the mailing list.<br>
+<span id=x097>… Whether that's the RDF-star mailing list or something else.. we do need ot have it soon to broaden the discussion for the SW community at large.</span></p>
+<p id=x101 class="phone s02"><cite>pchampin:</cite> Another issue? On the CG reports front?<br>
+<span id=x102>… Hearing none.</span><br>
+<span id=x103>… I propose we move on to chartering and review actions.</span></p>
+</section>
+
+<section>
+<h3 id=t03>WG chartering</h3>
+<p id=x106 class=irc><cite>&lt;pchampin&gt;</cite> <a href="https://github.com/w3c/rdf-star-wg-charter/issues">https://<wbr>github.com/<wbr>w3c/<wbr>rdf-star-wg-charter/<wbr>issues</a></p>
+<p id=x107 class=irc><cite>&lt;pchampin&gt;</cite> <a href="https://github.com/w3c/rdf-star-wg-charter/issues/13">https://<wbr>github.com/<wbr>w3c/<wbr>rdf-star-wg-charter/<wbr>issues/<wbr>13</a></p>
+<p id=x108 class=irc><cite>&lt;pchampin&gt;</cite> Andy to add missing SPARQL documents</p>
+<p id=x110 class="phone s02"><cite>pchampin:</cite> Issue 13 was completed. Thank you AndyS. I've merged the PR already.<br>
+<span id=x111>… There is another document (CSV and TSC SPARQL result) that was not added. Was that deliberate?</span></p>
+<p id=x112 class="phone s04"><cite>AndyS:</cite> I can't remember. Remember looking at them.. But there is no problem with TSV or CSV? It is fine.</p>
+<p id=x117 class="phone s02"><cite>pchampin:</cite> I did add them as well.. <br>
+<span id=x118>… How to best quote triples in teh CSV. Even if it doesn't support it, it should be said. For the group decide.</span><br>
+<span id=x119>… We can close that one (issue 13)</span><br>
+<span id=x120>… after the call</span></p>
+<p id=x121 class=irc><cite>&lt;pchampin&gt;</cite> <a href="https://github.com/w3c/rdf-star-wg-charter/issues/14">https://<wbr>github.com/<wbr>w3c/<wbr>rdf-star-wg-charter/<wbr>issues/<wbr>14</a></p>
+<p id=x122 class=irc><cite>&lt;pchampin&gt;</cite> add explicit reference to RDF primer</p>
+<p id=x123 class=irc><cite>&lt;pchampin&gt;</cite> PR: <a href="https://github.com/w3c/rdf-star-wg-charter/pull/17">https://<wbr>github.com/<wbr>w3c/<wbr>rdf-star-wg-charter/<wbr>pull/<wbr>17</a></p>
+<p id=x125 class="phone s02"><cite>pchampin:</cite> add explicit reference to RDF primer, in the list of non-normative reports.<br>
+<span id=x126>… I pushed this PR shortly before the call. If you can review, please do.</span></p>
+<p id=x127 class=irc><cite>&lt;pchampin&gt;</cite> <a href="https://github.com/w3c/rdf-star-wg-charter/issues/10">https://<wbr>github.com/<wbr>w3c/<wbr>rdf-star-wg-charter/<wbr>issues/<wbr>10</a></p>
+<p id=x128 class=irc><cite>&lt;pchampin&gt;</cite> liaisons with other groups</p>
+<p id=x130 class="phone s02"><cite>pchampin:</cite> Addressed issue 10 for liaison with other groups<br>
+<span id=x131>… with Property Graph schema WG at LDBC. Also related ISO group for Property Graph extension for SQL</span></p>
+<p id=x132 class=irc><cite>&lt;pchampin&gt;</cite> PR: <a href="https://github.com/w3c/rdf-star-wg-charter/pull/18">https://<wbr>github.com/<wbr>w3c/<wbr>rdf-star-wg-charter/<wbr>pull/<wbr>18</a></p>
+<p id=x140 class="phone s02"><cite>pchampin:</cite> I added the links .. made another PR 18.<br>
+<span id=x141>… Not so much for the CG itself but to include anything that would come up during the chartering process or the lifetime of htis group.</span><br>
+<span id=x142>… What I had in mind was for the upcoming RDF canonicalization. We can't point yet but hopefully it exists. Starts to exists before/at the time with this WG. So I've put a link in the proposed charter to under the RDF-DEV CG item.</span><br>
+<span id=x143>… Any questions/comments?</span></p>
+<p id=x145 class="phone s05"><cite>gkellogg:</cite> There seems to be activity in SPARQL 1.2 group.. I'm not sure where it is with regards to a charter. That's something that needs to be coordinated if there is an overalap.</p>
+<p id=x146 class="phone s02"><cite>pchampin:</cite> Or the more we claim for the spARQL specification</p>
+<p id=x147 class="phone s06"><cite>TallTed:</cite> I haven't seen anything like movement toward a SPARQL 1.2 WG charter. We should say if SPARQL 1.2 happens we should coordinate.</p>
+<p id=x148 class="phone s02"><cite>pchampin:</cite> Good point. I'll action myself.</p>
+<p id=a01 class=action><strong>Action:</strong> pchampin to add liaison with Sparql 1.2 CG</p>
+<p id=x152 class=irc><cite>&lt;pchampin&gt;</cite> <a href="https://github.com/w3c/rdf-star-wg-charter/issues/19">https://<wbr>github.com/<wbr>w3c/<wbr>rdf-star-wg-charter/<wbr>issues/<wbr>19</a></p>
+<p id=x159 class="phone s01"><cite>csarven:</cite> may have missed some steps in the creation of the charter,<br>
+<span id=x160>… but I noticed that RDFa 1.2 was not mentioned</span><br>
+<span id=x161>… while a majority of concrete syntax are mentioned</span><br>
+<span id=x162>… Was this discussed previously? What are the requirements to have this included?</span><br>
+<span id=x163>… RDFa 1.0 and 1.1 are widely adopted.</span></p>
+<p id=x165 class=irc><cite>&lt;gkellogg&gt;</cite> <a href="https://github.com/w3c/rdf-star-wg-charter/issues/6">https://<wbr>github.com/<wbr>w3c/<wbr>rdf-star-wg-charter/<wbr>issues/<wbr>6</a></p>
+<p id=x170 class="phone s02"><cite>pchampin:</cite> We have discussed RDFa and CSVW.<br>
+<span id=x171>… There are so many RDF related specs and we can't possibly commit to all.</span><br>
+<span id=x172>… We decided to focus on the WGs that RDF and SPARQL.</span><br>
+<span id=x173>… it'd be a shame not to address this where people are interested in order to progress</span><br>
+<span id=x174>… ew.g., some of us have worked with JSON-LD-Star.. and managed by another WG</span></p>
+<p id=x175 class=irc><cite>&lt;gkellogg&gt;</cite> <a href="https://json-ld.github.io/json-ld-star/">https://<wbr>json-ld.github.io/<wbr>json-ld-star/</a></p>
+<p id=x181 class="phone s02"><cite>pchampin:</cite> the decision was to leave the door open by mentioning that the group could adopt during its lifetime, requiring re-chartering.<br>
+<span id=x182>… people interested in working on it should come to us.</span><br>
+<span id=x183>… including it in the initial charter would could make it look unrealistic.</span></p>
+<p id=x188 class="phone s07"><cite>ora:</cite> there are serialization syntaxes and there is almost like a one way dependency<br>
+<span id=x189>… so rdf-star doesn't need to depend on a particular serialization</span><br>
+<span id=x190>… we work on the model so the key issues give the community at least one serialization syntax</span><br>
+<span id=x191>… and other people can volunteer on the other stuff</span><br>
+<span id=x192>… but rdf-star is not held back</span></p>
+<p id=x194 class="phone s02"><cite>pchampin:</cite> csarven's concern was ... indeed that I also agree with this dependency thing as you've put it.</p>
+<p id=x199 class="phone s05"><cite>gkellogg:</cite> We did discuss this with regards to JSON-LD<br>
+<span id=x200>… there is a WG active</span><br>
+<span id=x201>… which could get together to work on JSON-LD to include these features</span><br>
+<span id=x202>… we also discussed RDFa CSVW.. there is no WG that's active within their scope. It seems like for a new WG to be chartered.</span></p>
+<p id=x203 class=irc><cite>&lt;Fabio&gt;</cite> [leaving]. Will keep on reading the scribe. Sorry. Ciao!</p>
+<p id=x204 class=irc><cite>&lt;TallTed&gt;</cite> It may be worth noting that &quot;these serializations were chosen for our focus because...&quot; in the charter doc, and being more explicit about accepting/adopting submissions of specs for other serializations</p>
+<p id=x209 class="phone s05"><cite>gkellogg:</cite> they could be included by recharter RDF-star WG.. but there need sto be preliminary work.<br>
+<span id=x210>… JSON-LD-star there is improvements that can be done</span><br>
+<span id=x211>… I'm interested in seeing what we can do to improve support for RDFa.</span><br>
+<span id=x212>… There are supports for graph in RDFa</span><br>
+<span id=x213>… There are serialization formats tha tthe WG did not do.. the best place for that work to happen in a group with intersted people</span></p>
+<p id=x216 class="phone s02"><cite>pchampin:</cite> The idea was to keep the charter tight so that the AC find it realistic</p>
+<p id=x217 class="phone s04"><cite>AndyS:</cite> I agree with the discussions so far. Within the charter.. there is a rather ??? with the specs. And ... might be active. When the group picks up too much. Exit from the group ??? RDFa related to RDF-star. It could be added to the RDF-star itself.</p>
+<p id=x218 class=summary>^ I'm sorry I couldn't scribe that well</p>
+<p id=x221 class=irc><cite>&lt;TallTed&gt;</cite> might limit to &quot;editorial errata&quot; which won't require implementation changes so won't put a major gate on exiting CR</p>
+<p id=x222 class=irc><cite>&lt;AndyS&gt;</cite> AndyS: The work on RDF Core/SPARQL WG specs includes errata work.</p>
+<p id=x223 class="phone s01"><cite>csarven:</cite> is it a requirement that such work should be part of a working group ?</p>
+<p id=x224 class=irc><cite>&lt;ora&gt;</cite> RDF/XML should just die.</p>
+<p id=x226 class="phone s01"><cite>csarven:</cite> compared to RDF/XML, other syntaxes are more useful.<br>
+<span id=x227>… Again, RDFa is largely used.</span></p>
+<p id=x228 class=irc><cite>&lt;AndyS&gt;</cite> There are people that use and like it. YMMV.</p>
+<p id=x234 class="phone s02"><cite>pchampin:</cite> RDF/XML was a deliverable of the RDF group.. so we added notes saying that provided that there is enough involvement<br>
+<span id=x235>… to answer you questoin on the necessity of a WG.. with JSON-LD there is a group that could take care of the JSON-LD star or 1.2</span><br>
+<span id=x236>… That's not the case for RDFa or CSW..</span><br>
+<span id=x237>… Our view is that this group will happily adopt if people want to work on it.</span><br>
+<span id=x238>… and will consider bringing it to REC state.</span></p>
+<p id=x239 class="phone s04"><cite>AndyS:</cite> Could be through RDFa CG</p>
+<p id=x240 class="phone s05"><cite>gkellogg:</cite> There is not going to be critical mass behind RDF/XML to put something together but there could easily be for RDFa 1.2. For if CG is established, settle on syntax, publish a report, then that could be a reasonable thing for RDF-star WG to adopt after charter update</p>
+<p id=x243 class="phone s05"><cite>gkellogg:</cite> There is language in charters time allowing, the group will consider &quot;these&quot; documents..<br>
+<span id=x244>… .the question is that the type of thing that should be added in rechartering.. or would that complicate what's there</span><br>
+<span id=x245>… IMO ??? could all obe in that category if time allowed.</span></p>
+<p id=x246 class=irc><cite>&lt;AndyS&gt;</cite> AndyS: There isn't anything blocking RDFa discussion either on RDF-DEV or here.</p>
+<p id=x247 class="phone s05"><cite>gkellogg:</cite> There may not be enough time for us to get to RDF/XML /s</p>
+<p id=x253 class="phone s02"><cite>pchampin:</cite> We can continue on the github issue.<br>
+<span id=x254>… The choice was a bit arbitrary</span><br>
+<span id=x255>… Initially for RDF and SPARQL WG</span><br>
+<span id=x256>… and leave an opening for rechartering</span><br>
+<span id=x257>… it is arbitrary but it allows us to draw the line</span><br>
+<span id=x258>… and be open to new stuff if it comes up</span></p>
+<p id=x259 class="phone s05"><cite>gkellogg:</cite> To what AndyS suggested to open up discussion on RDFa and take up call time.. or establish a new group for that?</p>
+<p id=x260 class="phone s04"><cite>AndyS:</cite> If they're interested that's fine. Not until now but we don't take up on others' interest</p>
+<p id=x267 class="phone s02"><cite>pchampin:</cite> csarven raised that as well<br>
+<span id=x268>… We can see in the community to see if there is more interest.</span><br>
+<span id=x269>… Just to be clear, this call and &quot;task force&quot; .. there is nothing formal about. We're from the RDF-DEV.. and for more focused discussion on RDF-star.. and this call and people here came up from shared interest to writ eup the report.</span><br>
+<span id=x270>… the scope of the CG is larger so good to check</span><br>
+<span id=x271>… we had to focus on getting things done</span><br>
+<span id=x272>… yes, if people are interested, we can piggyback on this call to discuss</span><br>
+<span id=x273>… so, bottom line is calling for people interested...</span></p>
+</section>
+
+<section>
+<h3 id=t04>Schedule next call</h3>
+<p id=x279 class="phone s02"><cite>pchampin:</cite> decided no to fix every two weeks.. but adhoc based on requirements.<br>
+<span id=x280>… I have one action that can be handled that doesn't need much discussion. SPARQL group has liasoain on. besides discussing with danbri</span><br>
+<span id=x281>… do we need to discuss WG chairs than later</span><br>
+<span id=x282>… otherwise 2-3 weeks from now is ...</span></p>
+<p id=x283 class=irc><cite>&lt;olaf&gt;</cite> let's pencil down two weeks from now</p>
+<p id=x285 class="phone s05"><cite>gkellogg:</cite> As I recal there are people that wanted to participate .. if we leave out two weeks that might help</p>
+<p id=x286 class="phone s02"><cite>pchampin:</cite> Not sure wha tyou mean by pencil down</p>
+<p id=x287 class=irc><cite>&lt;olaf&gt;</cite> okay, then three weeks</p>
+<p id=x288 class=irc><cite>&lt;rivettp&gt;</cite> I do have another call every other week</p>
+<p id=x289 class="phone s03"><cite>olaf:</cite> suggestion is to put it two weeks from now but three weeks is fine too</p>
+<p id=x290 class=irc><cite>&lt;rivettp&gt;</cite> so would not be able t make 3 weeks</p>
+<p id=x291 class=summary>PROPOSED: next call on 25th of march</p>
+<p id=x292 class=summary>+1</p>
+<p id=x293 class=irc><cite>&lt;olaf&gt;</cite> +1</p>
+<p id=x294 class=irc><cite>&lt;doerthe&gt;</cite> +1</p>
+<p id=x295 class=irc><cite>&lt;Dominik_T&gt;</cite> +1</p>
+<p id=x296 class=irc><cite>&lt;ora&gt;</cite> +1</p>
+<p id=x297 class=irc><cite>&lt;gkellogg&gt;</cite> +1</p>
+<p id=x298 class=irc><cite>&lt;rivettp&gt;</cite> -1</p>
+<p id=x299 class=irc><cite>&lt;AndyS&gt;</cite> +1</p>
+<p id=x300 class=irc><cite>&lt;csarven&gt;</cite> +1</p>
+<p id=x301 class=irc><cite>&lt;TallTed&gt;</cite> +1  25th is fine</p>
+<p id=x302 class="phone s08"><cite>rivettp:</cite> Mind the daylight changes.</p>
+<p id=x303 class="phone s02"><cite>pchampin:</cite> oooooohhhh</p>
+<p id=r01 class=resolution><strong>Resolution:</strong> next call on 25th of march</p>
+<p id=x306 class="phone s02"><cite>pchampin:</cite> will look into it when I do the proper date</p>
+<p id=x308 class=irc><cite>&lt;AndyS&gt;</cite> Bye!</p>
+</section>
+</main>
+
+<div id=ActionSummary>
+<h2>Summary of action items</h2>
+<ol>
+<li><a href="#a01">pchampin to add liaison with Sparql 1.2 CG</a></li>
+</ol>
+</div>
+
+<div id=ResolutionSummary>
+<h2>Summary of resolutions</h2>
+<ol>
+<li><a href="#r01">next call on 25th of march</a></li>
+</ol>
+</div>
+
+
+<address>Minutes manually created (not a transcript), formatted by <a
+href="https://w3c.github.io/scribe2/scribedoc.html"
+>scribe.perl</a> version 142 (Tue Jun  1 16:59:13 2021 UTC).</address>
+
+</body>
+</html>

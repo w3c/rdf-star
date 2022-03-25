@@ -39,3 +39,7 @@ table th {
   padding-right: 0.5em ;
   background-color: #ededee;
 }
+
+img {
+  border: 0;
+}

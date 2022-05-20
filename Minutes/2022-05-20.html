@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+<meta charset=utf-8>
+<title>RDF-star &ndash; 20 May 2022</title>
+<meta name=viewport content="width=device-width">
+<link rel="stylesheet" type="text/css" title="2018" href="https://www.w3.org/StyleSheets/scribe2/public.css">
+<link rel="alternate stylesheet" type="text/css" title="2004" href="https://www.w3.org/StyleSheets/base.css">
+<link rel="alternate stylesheet" type="text/css" title="2004" href="https://www.w3.org/StyleSheets/public.css">
+<link rel="alternate stylesheet" type="text/css" title="2004" href="https://www.w3.org/2004/02/minutes-style.css">
+<link rel="alternate stylesheet" type="text/css" title="Fancy" href="https://www.w3.org/StyleSheets/scribe2/fancy.css">
+<link rel="alternate stylesheet" type="text/css" title="Typewriter" href="https://www.w3.org/StyleSheets/scribe2/tt-member.css">
+</head>
+
+<body>
+<header>
+<p><a href="https://www.w3.org/"><img src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" alt=W3C border=0 height=48 width=72></a></p>
+
+<h1>RDF-star</h1>
+<h2>20 May 2022</h2>
+
+<nav id=links>
+<a href="https://w3c.github.io/rdf-star/Minutes/2022-05-06.html"><img alt="Previous meeting." title="Previous meeting" src="https://www.w3.org/StyleSheets/scribe2/go-previous.png"></a>
+<a href="https://lists.w3.org/Archives/Public/public-rdf-star/2022May/0001.html"><img alt="Agenda." title="Agenda" src="https://www.w3.org/StyleSheets/scribe2/chronometer.png"></a>
+<a href="https://www.w3.org/2022/05/20-rdf-star-irc"><img alt="IRC log." title="IRC log" src="https://www.w3.org/StyleSheets/scribe2/text-plain.png"></a>
+<a href="https://w3c.github.io/rdf-star/Minutes/2022-06-10.html"><img alt="Next meeting." title="Next meeting" src="https://www.w3.org/StyleSheets/scribe2/go-next.png"></a>
+</nav>
+</header>
+
+<div id=prelims>
+<div id=attendees>
+<h2>Attendees</h2>
+<dl class=intro>
+<dt>Present</dt><dd>AndyS, doerthe, Dominik_T, gkellogg, olaf, ora, Pierre-Antoine</dd>
+<dt>Regrets</dt><dd>-</dd>
+<dt>Chair</dt><dd>Pierre-Antoine</dd>
+<dt>Scribe</dt><dd>gkellogg</dd>
+</dl>
+</div>
+
+<nav id=toc>
+<h2>Contents</h2>
+<ol>
+<li><a href="#t01">Announcements and newcomers</a></li>
+<li><a href="#t02">Open actions</a></li>
+<li><a href="#t03">WG chartering</a></li>
+<li><a href="#t04">Schedule next call</a></li>
+<li><a href="#t05">Open-ended discussions</a></li>
+<li class=app><a href="#ActionSummary">Summary of action items</a></li>
+<li class=app><a href="#ResolutionSummary">Summary of resolutions</a></li>
+</ol>
+</nav>
+</div>
+
+<main id=meeting class=meeting>
+<h2>Meeting minutes</h2>
+<section></section>
+
+<section>
+<h3 id=t01>Announcements and newcomers</h3>
+<p id=x026 class="phone s01"><cite>olaf:</cite> We have a paper accepted in the GRADES Workshop, about mapping graph databases to RDF-star, running querying and seeing the performance impact.</p>
+<p id=x028 class=irc><cite>&lt;olaf&gt;</cite> &quot;Converting Property Graphs to RDF: A Preliminary Study of the Practical Impact of Different Mappings&quot; <a href="http://olafhartig.de/files/KhayatbashiEtAl_GRADES2022.pdf">http://<wbr>olafhartig.de/<wbr>files/<wbr>KhayatbashiEtAl_GRADES2022.pdf</a></p>
+</section>
+
+<section>
+<h3 id=t02>Open actions</h3>
+<p id=x032 class=irc><cite>&lt;Pierre-Antoine&gt;</cite> <a href="https://github.com/w3c/rdf-star/issues?q=is%3Aopen+is%3Aissue+label%3Aaction">https://<wbr>github.com/<wbr>w3c/<wbr>rdf-star/<wbr>issues?q=is%3Aopen+is%3Aissue+label%3Aaction</a></p>
+<p id=x033 class=irc><cite>&lt;Pierre-Antoine&gt;</cite> <a href="https://github.com/w3c/rdf-star-wg-charter/issues?q=is%3Aopen+is%3Aissue+label%3Aaction">https://<wbr>github.com/<wbr>w3c/<wbr>rdf-star-wg-charter/<wbr>issues?q=is%3Aopen+is%3Aissue+label%3Aaction</a></p>
+<p id=x035 class="phone s02"><cite>pchampin:</cite> I haven't spoken to danbri since the last call about w3c/rdf-star#247, but nothing more to report.</p>
+<p id=x036 class=irc><cite>&lt;ghurlbot&gt;</cite> <a href="https://github.com/w3c/rdf-star/issues/247">Action 247 ping DanBri about publishing the final report on the CG page (on pchampin)</a></p>
+<p id=x037 class="phone s02"><cite>pchampin:</cite> On w3c/rdf-star-wg-charter#29, I've been waiting for ora's validation on the PR.</p>
+<p id=x038 class=irc><cite>&lt;ghurlbot&gt;</cite> <a href="https://w3c.github.io/rdf-star/Minutes/2022-04-08.html#a02">Action 29 Add Ora Lassila as one of the expected chair (on pchampin) As decided during today's call:</a> <a href="https://github.com/w3c/rdf-star-wg-charter/issues/29">https://<wbr>github.com/<wbr>w3c/<wbr>rdf-star-wg-charter/<wbr>issues/<wbr>29</a></p>
+<p id=x039 class="phone s03"><cite>ora:</cite> Sorry, I missed that. But to be clear, it's okay for me to be a chair, if that's what the group desires.</p>
+</section>
+
+<section>
+<h3 id=t03>WG chartering</h3>
+<p id=x044 class="phone s02"><cite>pchampin:</cite> I've sent the charter to W3CM for approval, which is currently in progress.<br>
+<span id=x045>… The current draft doesn't mention chairs, but I've communicated offline.</span><br>
+<span id=x046>… We've also contacted some other potential chairs, and have some positive answers from Vladimir at Ontotext, and will meet him next week at a Dataspace interoperability workshop.</span></p>
+<p id=x048 class="phone s01"><cite>olaf:</cite> I also reached out to Adrian Gschwend, who is somewhat skeptical about his suitability. But, he'd like to talk about it some more.</p>
+<p id=x050 class="phone s02"><cite>pchampin:</cite> Yes, Ora should be there too.</p>
+<p id=x051 class=irc><cite>&lt;olaf&gt;</cite> Adrian Gschwend from Zazuko</p>
+<p id=a01 class=action><strong>Action:</strong> olaf to organize a call with Adrian Gschwend</p>
+<p id=x053 class=irc><cite>&lt;ghurlbot&gt;</cite> Created <a href="https://github.com/w3c/rdf-star-wg-charter/issues/43">action 43 organize a call with Adrian Gschwend (on ) due 27 May 2022</a></p>
+<p id=x056 class="phone s04"><cite>Dominik_T:</cite> Any news about Josh? He was also discussed.</p>
+<p id=x061 class="phone s02"><cite>pchampin:</cite> We had some exchange after the last call, but LinkedIn is not a W3C member, which makes it more difficult.<br>
+<span id=x062>… They either need to be part of a member organization, or an Invited Expert.</span><br>
+<span id=x063>… In the case of Josh, LinkedIn is not a member, and inviting him as an IE is difficult, as he hasn't participated in the group to date.</span><br>
+<span id=x064>… That said, Zazuko is not a member or either. But, it's a startup, and that might make it easier.</span></p>
+<p id=x067 class="phone s05"><cite>AndyS:</cite> In the past, it was easier to get an IE added, but it's become more difficult.<br>
+<span id=x068>… In the past, it's been hard to be an IE if you work for a company that would be expected to join as a member otherwise.</span></p>
+<p id=x069 class="phone s02"><cite>pchampin:</cite> That might be an issue for Adrian.</p>
+<p id=x070 class="phone s06"><cite>gkellogg:</cite> Rates for small companies used to be more afordable.</p>
+<p id=x071 class="phone s02"><cite>pchampin:</cite> I'll talk with the communication team about criteria.</p>
+<p id=x072 class=irc><cite>&lt;Pierre-Antoine&gt;</cite> <a href="https://github.com/w3c/rdf-star-wg-charter/issues/41">https://<wbr>github.com/<wbr>w3c/<wbr>rdf-star-wg-charter/<wbr>issues/<wbr>41</a></p>
+<p id=x075 class="phone s02"><cite>pchampin:</cite> We have a number of expressions of support, and no contrary expressions to date.<br>
+<span id=x076>… Some from organizations, some from individuals.</span></p>
+<p id=x078 class=irc><cite>&lt;AndyS&gt;</cite> <a href="https://github.com/w3c/rdf-star-wg-charter/issues?q=is%3Aissue+is%3Aopen+label%3Aexpression_of_support">https://<wbr>github.com/<wbr>w3c/<wbr>rdf-star-wg-charter/<wbr>issues?q=is%3Aissue+is%3Aopen+label%3Aexpression_of_support</a></p>
+<p id=x079 class="phone s03"><cite>ora:</cite> Two weeks ago at the KG conference, I ran into Souriprya Das from Oracle, and they could join.</p>
+<p id=x080 class="phone s05"><cite>AndyS:</cite> He has his head in the space.</p>
+<p id=x081 class="phone s03"><cite>ora:</cite> He's interested in the whole PG vs RDF space, and had an interesting presentation on neighborhood aware path queries.</p>
+<p id=x082 class=irc><cite>&lt;ora&gt;</cite> Souriprya Das from Oracle</p>
+<p id=x087 class="phone s02"><cite>pchampin:</cite> I think we could do with three chairs, but if we have more than two, one should be identified as &quot;head&quot; chair, or the others as co-chairs.<br>
+<span id=x088>… With too many chairs, the responsibilities dilute.</span><br>
+<span id=x089>… The amount of work justifies more than two chairs.</span></p>
+<p id=x090 class="phone s05"><cite>AndyS:</cite> I think it's a good idea.</p>
+<p id=x092 class="phone s03"><cite>ora:</cite> I'm not sure I like the idea of three chairs. It should be possible for things to get done in a WG without a chair having direct responsibility.<br>
+<span id=x093>… But, I do like the idea of not being the _only_ chair.</span></p>
+<p id=x094 class="phone s02"><cite>pchampin:</cite> Most WGs lately have two (or even three) chairs. If we go for three, I think if we go for three, there should be some kind of hierarchy, but your opinion weighs more.</p>
+<p id=x095 class="phone s03"><cite>ora:</cite> If we do end up with three chairs, I think it would be good if they're not all Bay Area graph vendors.</p>
+<p id=x097 class="phone s02"><cite>pchampin:</cite> Having chairs from the industry strengthen's the proposal from the W3M perspective, but other communities should also be represented.<br>
+<span id=x098>… Chairing the group, it sends a strong signal if a GDB vendor is involved.</span></p>
+<p id=x099 class="phone s03"><cite>ora:</cite> I think two chairs from vendors is fine. If three DB vendors are involved, then it might seem that the group is dominated by industry.</p>
+<p id=x100 class="phone s02"><cite>pchampin:</cite> If we ask Souriprya to chair, we might need to choose between him and Vladimir.</p>
+<p id=x101 class="phone s03"><cite>ora:</cite> Maybe we just lobby Souriprya to make sure Oracle joins the WG.</p>
+<p id=a02 class=action><strong>Action:</strong> Pierre-Antoine to come back to Vladimir</p>
+<p id=x103 class=irc><cite>&lt;ghurlbot&gt;</cite> Created <a href="https://github.com/w3c/rdf-star-wg-charter/issues/42">action 42 come back to Vladimir (on ) due 27 May 2022</a></p>
+<p id=x104 class="phone s02"><cite>pchampin:</cite> Thank you ghurlbot!</p>
+<p id=x106 class="phone s02"><cite>pchampin:</cite> If you can encourage more people to express support on the repo, please do so. That will all help W3M to decide.</p>
+</section>
+
+<section>
+<h3 id=t04>Schedule next call</h3>
+<p id=x115 class="phone s02"><cite>pchampin:</cite> I hope to have some W3M answers next week.<br>
+<span id=x116>… I'm not sure if we need a call before the call for votes goes out. Maybe have a regular call in 2-3 weeks.</span><br>
+<span id=x117>… A call in three weeks (June 10) may be in the middle of the call for votes.</span></p>
+<p id=x118 class=irc><cite>&lt;Pierre-Antoine&gt;</cite> PROPOSED: have our next call in 3 weeks, 2022-06-10</p>
+<p id=x119 class=irc><cite>&lt;Pierre-Antoine&gt;</cite> +1</p>
+<p id=x120 class=irc><cite>&lt;olaf&gt;</cite> +1</p>
+<p id=x121 class=irc><cite>&lt;gkellogg&gt;</cite> +1</p>
+<p id=x122 class=irc><cite>&lt;Dominik_T&gt;</cite> +1</p>
+<p id=x123 class=irc><cite>&lt;AndyS&gt;</cite> +1</p>
+<p id=x124 class=irc><cite>&lt;doerthe&gt;</cite> +1</p>
+<p id=x125 class=irc><cite>&lt;ora&gt;</cite> +1</p>
+<p id=r01 class=resolution><strong>Resolution:</strong> have our next call in 3 weeks, 2022-06-10</p>
+<p id=x128 class=irc><cite>&lt;ora&gt;</cite> (had to check the calendar)</p>
+</section>
+
+<section>
+<h3 id=t05>Open-ended discussions</h3>
+<p id=x134 class="phone s02"><cite>pchampin:</cite> TPAC is coming in September, which will be a Hybrid meeting. 12-16 September. It would be nice to have a meeting during TPAC, if a WG is chartered.</p>
+<p id=x135 class=irc><cite>&lt;olaf&gt;</cite> W3C TPAC, Sep. 12-16, in Vancouver</p>
+<p id=x136 class="phone s02"><cite>pchampin:</cite> It is in Vancouver.</p>
+<p id=x137 class=summary><a href="https://www.w3.org/blog/news/archives/9503">https://<wbr>www.w3.org/<wbr>blog/<wbr>news/<wbr>archives/<wbr>9503</a><br>
+<span id=x138>… It should be in a convenient time slot for other parts of the world.</span></p>
+<p id=x140 class=irc><cite>&lt;AndyS&gt;</cite> CA</p>
+<p id=x141 class="phone s03"><cite>ora:</cite> I may be in Seatle around that time, so going to Vancouver would be easy enought.</p>
+<p id=x142 class="phone s01"><cite>olaf:</cite> Unfortunately, it overlaps with the European semantics conference.</p>
+<p id=x143 class=irc><cite>&lt;olaf&gt;</cite> The SEMANTiCS conference in Vienna is in the same week</p>
+<p id=x144 class="phone s02"><cite>pchampin:</cite> Are there other groups that might also meet at TPAC so we can organize a joint meeting?</p>
+<p id=x145 class="phone s05"><cite>AndyS:</cite> RDF Canonicalization and DCAT groups may be there.</p>
+<p id=x146 class="phone s06"><cite>gkellogg:</cite> JSON-LD will probably have at least a BOF at TPAC.</p>
+</section>
+</main>
+
+<div id=ActionSummary>
+<h2>Summary of action items</h2>
+<ol>
+<li><a href="#a01">olaf to organize a call with Adrian Gschwend</a></li>
+<li><a href="#a02">Pierre-Antoine to come back to Vladimir</a></li>
+</ol>
+</div>
+
+<div id=ResolutionSummary>
+<h2>Summary of resolutions</h2>
+<ol>
+<li><a href="#r01">have our next call in 3 weeks, 2022-06-10</a></li>
+</ol>
+</div>
+
+
+<address>Minutes manually created (not a transcript), formatted by <a
+href="https://w3c.github.io/scribe2/scribedoc.html"
+>scribe.perl</a> version 142 (Tue Jun  1 16:59:13 2021 UTC).</address>
+
+</body>
+</html>

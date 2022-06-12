@@ -2287,8 +2287,9 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
       <section id="sparql-compare">
         <h3>sparql-compare</h3>
         
-        <p>The function <code>sparql-compare</code> is defined to support value-comparison
-          operators such as <code>=</code> and <code>ORDER BY</code>.
+        <p>
+          The function <code>sparql-compare</code> is defined to support value-comparison
+          operators, such as <code>=</code> and <code>&lt;</code>.
         </p>
         <p>
           <code>xsd:integer</code> &nbsp;
@@ -2301,8 +2302,9 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
           error, based on the comparison of two
           <a href="#dfn-rdf-star-terms">RDF-star terms</a>.
           When comparing two RDF-star triple terms, comparison is 
-          by pairwise comparison of subject, then predicate, then object.
-        </p>
+          by pairwise comparison of components subject, then predicate, then object.
+          An error is thrown if comparing two components throws an error.
+        </p> 
         <div class="defn">
           <p>
             <b>Definition: 
@@ -2311,19 +2313,34 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
             </b>
           </p>
           <ul>
-            <li>If neither A nor B is an RDF-star triple term,
-              compare by SPARQL 1.1 operators
-              <code>&lt;</code>, <code>=</code>, <code>&gt;</code>)
-              and return the comparison value (`-1`, `0`, `+1`) or throw an error
-              as defined by SPARQL 1.1.<br/>
+            <li>
+              If neither A nor B is an RDF-star triple term, apply the
+              <a href="https://www.w3.org/TR/sparql11-query/#OperatorMapping"
+                 >the SPARQL 1.1 operator mappings</a>.
+              If none apply, raise an error.
+              Return `-1`, `0`, or `+1` based on which
+              of <code>&lt;</code>, <code>=</code> and <code>&gt;</code>
+              returns true.
             </li>
-            <li>If either A or B is an RDF-star triple term, and the other is not 
-              an RDF-star triple term, then error.</li>
-            <li>If <code>sparql-compare(SUBJECT(A), SUBJECT(B)) != 0</code>,
-              then return this value.</li>
-            <li>If <code>sparql-compare(PREDICATE(A), PREDICATE(B)) != 0</code>,
-              then return this value.</li>
-            <li>Return <code>sparql-compare(OBJECT(A), OBJECT(B))</code></li>
+            <li>
+              If either A or B is an RDF-star triple term, and the other is not 
+              an RDF-star triple term, then raise an error.
+            </li>
+            <li>
+              Evaluate <code>sparql-compare(SUBJECT(A), SUBJECT(B))</code>.
+              If the evalution causes an error, raise an error.
+              If the evaluation result is -1 or +1, return this value.
+            </li>
+            <li>
+              Evaluate <code>sparql-compare(PREDICATE(A), PREDICATE(B)).</code>
+              If the evalution causes an error, raise an error.
+              If the evaluation result is -1 or +1, return this value.
+            </li>
+            <li>
+              Evaluate <code>sparql-compare(OBJECT(A), OBJECT(B))</code>.
+              If the evalution causes an error, raise an error.
+              otherwise return the evaluation value.
+            </li>
           </ul>
         </div>
       </section>

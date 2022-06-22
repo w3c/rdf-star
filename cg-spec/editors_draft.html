@@ -2299,11 +2299,10 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
         </p>
         <p>
           The function <code>sparql-compare</code> returns `-1`, `0`, `1`, or throws an
-          error, based on the comparison of two
-          <a href="#dfn-rdf-star-terms">RDF-star terms</a>.
-          When comparing two RDF-star triple terms, comparison is 
-          by pairwise comparison of components subject, then predicate, then object.
-          An error is thrown if comparing two components throws an error.
+          error. Comparison is performed pairwise on the components of the
+          <a href="#dfn-rdf-star-terms">RDF-star terms</a> in the order subject,
+          predicate, object until the result is determined.
+          An error is thrown if comparing two components results in an error.
         </p> 
         <div class="defn">
           <p>

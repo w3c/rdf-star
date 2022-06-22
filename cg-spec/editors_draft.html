@@ -2153,12 +2153,9 @@ respectively).</p>
           <code>RDF-star triple</code> &nbsp;
           <code style="color:black;font-weight:bold">TRIPLE</code>
           (
-            <code>RDF-star term </code>
-            <code style="color:black">term1</code>,
-            <code>RDF-star term </code>
-            <code style="color:black">term2</code>,
-            <code>RDF-star term </code>
-            <code style="color:black">term3</code>
+          <code>RDF-star term  <span style="color:black">term, </span></code>
+          <code>RDF-star term  <span style="color:black">term, </span></code>
+          <code>RDF-star term  <span style="color:black">term</span></code>
           )
         </p>
 
@@ -2173,8 +2170,7 @@ respectively).</p>
           <code>RDF-star term</code> &nbsp;
           <code style="color:black;font-weight:bold">SUBJECT</code>
           (
-            <code>RDF-star triple </code>
-            <code style="color:black">triple</code>
+            <code>RDF-star term  <span style="color:black">term</span></code>
           )
         </p>
 
@@ -2189,8 +2185,7 @@ respectively).</p>
           <code>RDF-star term</code> &nbsp;
           <code style="color:black;font-weight:bold">PREDICATE</code>
           (
-            <code>RDF-star triple </code>
-            <code style="color:black">triple</code>
+            <code>RDF-star term  <span style="color:black">term</span></code>
           )
         </p>
 
@@ -2205,8 +2200,7 @@ respectively).</p>
           <code>RDF-star term</code> &nbsp;
           <code style="color:black;font-weight:bold">OBJECT</code>
           (
-            <code>RDF-star triple </code>
-            <code style="color:black">triple</code>
+            <code>RDF-star term  <span style="color:black">term</span></code>
           )
         </p>
 
@@ -2221,8 +2215,7 @@ respectively).</p>
           <code>xsd:boolean</code> &nbsp;
           <code style="color:black;font-weight:bold">isTRIPLE</code>
           (
-            <code>RDF-star term </code>
-            <code style="color:black">term</code>
+            <code>RDF-star term  <span style="color:black">term</span></code>
           )
         </p>
 
@@ -2235,9 +2228,9 @@ respectively).</p>
         <p>
           <code>RDF-star triple</code> &nbsp;
           <code style="color:black;font-weight:bold">&lt;&lt;</code>
-          <code>RDF-star term</code> <code style="color:black">term1</code>,
-          <code>RDF-star term</code> <code style="color:black">term2</code>,
-          <code>RDF-star term</code> <code style="color:black">term3</code>
+          <code>RDF-star term <span style="color:black">term1,</span></code>
+          <code>RDF-star term <span style="color:black">term2,</span></code>
+          <code>RDF-star term <span style="color:black">term3</span></code>
           <code style="color:black;font-weight:bold">&gt;&gt;</code>
         </p>
         <p>
@@ -2254,7 +2247,10 @@ respectively).</p>
         <p>
           <code>xsd:boolean</code>
           <code style="color:black;font-weight:bold">sameTerm</code>
-          (<code style="color:black">term</code>, <code style="color:black">term</code>)
+          (
+             <code>RDF-star term </code><code style="color:black">term1</code>,
+             <code>RDF-star term </code><code style="color:black">term2</code>
+          )
         </p>
         
         <p>The function <code>sameTerm</code> is extended to support term comparison for

@@ -2314,7 +2314,7 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
           </p>
           <ul>
             <li>
-              If neither A nor B is an RDF-star triple term, apply the
+              If neither A nor B is an RDF-star triple term, apply
               <a href="https://www.w3.org/TR/sparql11-query/#OperatorMapping"
                  >the SPARQL 1.1 operator mappings</a>.
               If none apply, raise an error.
@@ -2329,17 +2329,16 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
             <li>
               Evaluate <code>sparql-compare(SUBJECT(A), SUBJECT(B))</code>.
               If the evalution causes an error, raise an error.
-              If the evaluation result is -1 or +1, return this value.
+              If the evaluation result is `-1` or `+1`, return this result.
             </li>
             <li>
               Evaluate <code>sparql-compare(PREDICATE(A), PREDICATE(B)).</code>
               If the evalution causes an error, raise an error.
-              If the evaluation result is -1 or +1, return this value.
-            </li>
+              If the evaluation result is `-1` or `+1`, return this result.
             <li>
               Evaluate <code>sparql-compare(OBJECT(A), OBJECT(B))</code>.
               If the evalution causes an error, raise an error.
-              otherwise return the evaluation value.
+              Otherwise, return the evaluation result.
             </li>
           </ul>
         </div>
@@ -2494,8 +2493,8 @@ style="color:black;font-weight:bold">sameTerm</code></dfn></b>
       <section id="triple-term-comparison">
         <h3>Triple terms with ORDER BY</h3>
         <p>
-          There is an added item to the ordering of terms when they would not 
-          otherwise be ordered. RDF-star triple terms are placed last (highest).
+          There is an item added to the ordering of terms when they would not 
+          otherwise be ordered: RDF-star triple terms are placed last (highest).
         </p>
         <ol>
           <li>(Lowest) no value assigned to the variable 

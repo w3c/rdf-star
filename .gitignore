@@ -5,3 +5,4 @@
 .*.swp
 \#*#
 reports/manifests.nt
+.DS_Store

@@ -40,6 +40,11 @@ trs:manifest  rdf:type mf:Manifest ;
         trs:ntriples-star-bad-2
         trs:ntriples-star-bad-3
         trs:ntriples-star-bad-4
+
+        trs:ntriples-star-bnode-bad-annotated-syntax-1
+        trs:ntriples-star-bnode-bad-annotated-syntax-2
+        trs:ntriples-star-nested-bad-annotated-syntax-1
+        trs:ntriples-star-nested-bad-annotated-syntax-2
     ) .
 
 trs:ntriples-star-1 rdf:type rdft:TestNTriplesPositiveSyntax ;

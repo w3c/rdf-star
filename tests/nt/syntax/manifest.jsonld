@@ -193,6 +193,30 @@
       "@type": "rdft:TestNTriplesNegativeSyntax",
       "action": "ntriples-star-bad-syntax-4.nt",
       "name": "N-Triples-star - Bad - quoted triple, blank node predicate"
+    },
+    {
+      "@id": "trs:ntriples-star-bnode-bad-annotated-syntax-1",
+      "@type": "rdft:TestNTriplesNegativeSyntax",
+      "action": "ntriples-star-bnode-bad-annotated-syntax-1.nt",
+      "name": "N-Triples-star - Bad - annotated triple, blank node subject"
+    },
+    {
+      "@id": "trs:ntriples-star-bnode-bad-annotated-syntax-2",
+      "@type": "rdft:TestNTriplesNegativeSyntax",
+      "action": "ntriples-star-bnode-bad-annotated-syntax-2.nt",
+      "name": "N-Triples-star - Bad - annotated triple, blank node object"
+    },
+    {
+      "@id": "trs:ntriples-star-nested-bad-annotated-syntax-1",
+      "@type": "rdft:TestNTriplesNegativeSyntax",
+      "action": "ntriples-star-nested-bad-annotated-syntax-1.nt",
+      "name": "N-Triples-star - Bad - annotated triple, nested subject term"
+    },
+    {
+      "@id": "trs:ntriples-star-nested-bad-annotated-syntax-2",
+      "@type": "rdft:TestNTriplesNegativeSyntax",
+      "action": "ntriples-star-nested-bad-annotated-syntax-2.nt",
+      "name": "N-Triples-star - Bad - annotated triple, nested object term"
     }
   ],
   "prefLabel": {

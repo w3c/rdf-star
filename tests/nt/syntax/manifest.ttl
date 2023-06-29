@@ -40,6 +40,11 @@ trs:manifest  rdf:type mf:Manifest ;
         trs:ntriples-star-bad-2
         trs:ntriples-star-bad-3
         trs:ntriples-star-bad-4
+
+        trs:ntriples-star-bnode-bad-annotated-syntax-1
+        trs:ntriples-star-bnode-bad-annotated-syntax-2
+        trs:ntriples-star-nested-bad-annotated-syntax-1
+        trs:ntriples-star-nested-bad-annotated-syntax-2
     ) .
 
 trs:ntriples-star-1 rdf:type rdft:TestNTriplesPositiveSyntax ;
@@ -109,4 +114,26 @@ trs:ntriples-star-bad-3 rdf:type rdft:TestNTriplesNegativeSyntax ;
 trs:ntriples-star-bad-4 rdf:type rdft:TestNTriplesNegativeSyntax ;
     mf:name      "N-Triples-star - Bad - quoted triple, blank node predicate" ;
     mf:action    <ntriples-star-bad-syntax-4.nt> ;
+    .
+
+# Annotation syntax is not permitted in nt
+
+trs:ntriples-star-bnode-bad-annotated-syntax-1 rdf:type rdft:TestNTriplesNegativeSyntax ;
+    mf:name      "N-Triples-star - Bad - annotated triple, blank node subject" ;
+    mf:action    <ntriples-star-bnode-bad-annotated-syntax-1.nt> ;
+    .
+
+trs:ntriples-star-bnode-bad-annotated-syntax-2 rdf:type rdft:TestNTriplesNegativeSyntax ;
+    mf:name      "N-Triples-star - Bad - annotated triple, blank node object" ;
+    mf:action    <ntriples-star-bnode-bad-annotated-syntax-2.nt> ;
+    .
+
+trs:ntriples-star-nested-bad-annotated-syntax-1 rdf:type rdft:TestNTriplesNegativeSyntax ;
+    mf:name      "N-Triples-star - Bad - annotated triple, nested subject term" ;
+    mf:action    <ntriples-star-nested-bad-annotated-syntax-1.nt> ;
+    .
+
+trs:ntriples-star-nested-bad-annotated-syntax-2 rdf:type rdft:TestNTriplesNegativeSyntax ;
+    mf:name      "N-Triples-star - Bad - annotated triple, nested object term" ;
+    mf:action    <ntriples-star-nested-bad-annotated-syntax-2.nt> ;
     .

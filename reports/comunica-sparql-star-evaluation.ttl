@@ -1,0 +1,509 @@
+@prefix dc: <http://purl.org/dc/terms/>.
+@prefix doap: <http://usefulinc.com/ns/doap#>.
+@prefix earl: <http://www.w3.org/ns/earl#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix mf: <http://www.w3.org/2001/sw/DataAccess/tests/test-manifest#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix rdft: <http://www.w3.org/ns/rdftest#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+<> foaf:primaryTopic <https://www.npmjs.com/package/@comunica/query-sparql>;
+    dc:issued "2023-07-04T08:19:47.153Z"^^xsd:dateTime;
+    foaf:maker <https://www.rubensworks.net/#me>.
+<https://www.npmjs.com/package/@comunica/query-sparql> a earl:Software, earl:TestSubject, doap:Project;
+    doap:name "Comunica SPARQL";
+    dc:title "Comunica SPARQL";
+    doap:homepage <https://comunica.dev/>;
+    doap:license <http://opensource.org/licenses/MIT>;
+    doap:programming-language "JavaScript";
+    doap:implements <http://www.w3.org/TR/sparql11-query/>;
+    doap:category <http://dbpedia.org/resource/Resource_Description_Framework>;
+    doap:download-page <https://npmjs.org/package/@comunica/query-sparql>;
+    doap:bug-database <https://github.com/comunica/comunica/issues>;
+    doap:developer <https://www.rubensworks.net/#me>;
+    doap:maintainer <https://www.rubensworks.net/#me>;
+    doap:documenter <https://www.rubensworks.net/#me>;
+    doap:maker <https://www.rubensworks.net/#me>;
+    dc:creator <https://www.rubensworks.net/#me>;
+    dc:description "A Comunica engine for SPARQL query evaluation over heterogeneous interfaces"@en;
+    doap:description "A Comunica engine for SPARQL query evaluation over heterogeneous interfaces"@en.
+<https://www.rubensworks.net/#me> a foaf:Person, earl:Assertor;
+    foaf:name "Ruben Taelman";
+    foaf:homepage <https://www.rubensworks.net/>.
+<https://w3c.github.io/rdf-star/tests/sparql/eval#sparql-star-results-1j> a earl:TestCriterion, earl:TestCase;
+    dc:title "SPARQL-star - all graph triples (JSON results)";
+    earl:assertions _:assertions0.
+_:assertions0 rdf:first _:assertion0;
+    rdf:rest rdf:nil.
+_:assertion0 a earl:Assertion;
+    earl:assertedBy <https://www.rubensworks.net/#me>;
+    earl:test <https://w3c.github.io/rdf-star/tests/sparql/eval#sparql-star-results-1j>;
+    earl:subject <https://www.npmjs.com/package/@comunica/query-sparql>;
+    earl:mode earl:automatic;
+    earl:result _:result0.
+_:result0 a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2023-07-04T08:19:47.153Z"^^xsd:dateTime.
+<https://w3c.github.io/rdf-star/tests/sparql/eval#sparql-star-results-1x> a earl:TestCriterion, earl:TestCase;
+    dc:title "SPARQL-star - all graph triples (XML results)";
+    earl:assertions _:assertions1.
+_:assertions1 rdf:first _:assertion1;
+    rdf:rest rdf:nil.
+_:assertion1 a earl:Assertion;
+    earl:assertedBy <https://www.rubensworks.net/#me>;
+    earl:test <https://w3c.github.io/rdf-star/tests/sparql/eval#sparql-star-results-1x>;
+    earl:subject <https://www.npmjs.com/package/@comunica/query-sparql>;
+    earl:mode earl:automatic;
+    earl:result _:result1.
+_:result1 a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2023-07-04T08:19:47.153Z"^^xsd:dateTime.
+<https://w3c.github.io/rdf-star/tests/sparql/eval#sparql-star-basic-2> a earl:TestCriterion, earl:TestCase;
+    dc:title "SPARQL-star - match constant quoted triple";
+    earl:assertions _:assertions2.
+_:assertions2 rdf:first _:assertion2;
+    rdf:rest rdf:nil.
+_:assertion2 a earl:Assertion;
+    earl:assertedBy <https://www.rubensworks.net/#me>;
+    earl:test <https://w3c.github.io/rdf-star/tests/sparql/eval#sparql-star-basic-2>;
+    earl:subject <https://www.npmjs.com/package/@comunica/query-sparql>;
+    earl:mode earl:automatic;
+    earl:result _:result2.
+_:result2 a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2023-07-04T08:19:47.153Z"^^xsd:dateTime.
+<https://w3c.github.io/rdf-star/tests/sparql/eval#sparql-star-basic-3> a earl:TestCriterion, earl:TestCase;
+    dc:title "SPARQL-star - match quoted triple, var subject";
+    earl:assertions _:assertions3.
+_:assertions3 rdf:first _:assertion3;
+    rdf:rest rdf:nil.
+_:assertion3 a earl:Assertion;
+    earl:assertedBy <https://www.rubensworks.net/#me>;
+    earl:test <https://w3c.github.io/rdf-star/tests/sparql/eval#sparql-star-basic-3>;
+    earl:subject <https://www.npmjs.com/package/@comunica/query-sparql>;
+    earl:mode earl:automatic;
+    earl:result _:result3.
+_:result3 a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2023-07-04T08:19:47.153Z"^^xsd:dateTime.
+<https://w3c.github.io/rdf-star/tests/sparql/eval#sparql-star-basic-4> a earl:TestCriterion, earl:TestCase;
+    dc:title "SPARQL-star - match quoted triple, var predicate";
+    earl:assertions _:assertions4.
+_:assertions4 rdf:first _:assertion4;
+    rdf:rest rdf:nil.
+_:assertion4 a earl:Assertion;
+    earl:assertedBy <https://www.rubensworks.net/#me>;
+    earl:test <https://w3c.github.io/rdf-star/tests/sparql/eval#sparql-star-basic-4>;
+    earl:subject <https://www.npmjs.com/package/@comunica/query-sparql>;
+    earl:mode earl:automatic;
+    earl:result _:result4.
+_:result4 a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2023-07-04T08:19:47.153Z"^^xsd:dateTime.
+<https://w3c.github.io/rdf-star/tests/sparql/eval#sparql-star-basic-5> a earl:TestCriterion, earl:TestCase;
+    dc:title "SPARQL-star - match quoted triple, var object";
+    earl:assertions _:assertions5.
+_:assertions5 rdf:first _:assertion5;
+    rdf:rest rdf:nil.
+_:assertion5 a earl:Assertion;
+    earl:assertedBy <https://www.rubensworks.net/#me>;
+    earl:test <https://w3c.github.io/rdf-star/tests/sparql/eval#sparql-star-basic-5>;
+    earl:subject <https://www.npmjs.com/package/@comunica/query-sparql>;
+    earl:mode earl:automatic;
+    earl:result _:result5.
+_:result5 a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2023-07-04T08:19:47.153Z"^^xsd:dateTime.
+<https://w3c.github.io/rdf-star/tests/sparql/eval#sparql-star-basic-6> a earl:TestCriterion, earl:TestCase;
+    dc:title "SPARQL-star - no match of quoted triple";
+    earl:assertions _:assertions6.
+_:assertions6 rdf:first _:assertion6;
+    rdf:rest rdf:nil.
+_:assertion6 a earl:Assertion;
+    earl:assertedBy <https://www.rubensworks.net/#me>;
+    earl:test <https://w3c.github.io/rdf-star/tests/sparql/eval#sparql-star-basic-6>;
+    earl:subject <https://www.npmjs.com/package/@comunica/query-sparql>;
+    earl:mode earl:automatic;
+    earl:result _:result6.
+_:result6 a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2023-07-04T08:19:47.153Z"^^xsd:dateTime.
+<https://w3c.github.io/rdf-star/tests/sparql/eval#sparql-star-pattern-1> a earl:TestCriterion, earl:TestCase;
+    dc:title "SPARQL-star - Asserted and quoted triple";
+    earl:assertions _:assertions7.
+_:assertions7 rdf:first _:assertion7;
+    rdf:rest rdf:nil.
+_:assertion7 a earl:Assertion;
+    earl:assertedBy <https://www.rubensworks.net/#me>;
+    earl:test <https://w3c.github.io/rdf-star/tests/sparql/eval#sparql-star-pattern-1>;
+    earl:subject <https://www.npmjs.com/package/@comunica/query-sparql>;
+    earl:mode earl:automatic;
+    earl:result _:result7.
+_:result7 a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2023-07-04T08:19:47.153Z"^^xsd:dateTime.
+<https://w3c.github.io/rdf-star/tests/sparql/eval#sparql-star-pattern-2> a earl:TestCriterion, earl:TestCase;
+    dc:title "SPARQL-star -  Asserted and quoted triple";
+    earl:assertions _:assertions8.
+_:assertions8 rdf:first _:assertion8;
+    rdf:rest rdf:nil.
+_:assertion8 a earl:Assertion;
+    earl:assertedBy <https://www.rubensworks.net/#me>;
+    earl:test <https://w3c.github.io/rdf-star/tests/sparql/eval#sparql-star-pattern-2>;
+    earl:subject <https://www.npmjs.com/package/@comunica/query-sparql>;
+    earl:mode earl:automatic;
+    earl:result _:result8.
+_:result8 a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2023-07-04T08:19:47.153Z"^^xsd:dateTime.
+<https://w3c.github.io/rdf-star/tests/sparql/eval#sparql-star-pattern-3> a earl:TestCriterion, earl:TestCase;
+    dc:title "SPARQL-star - Pattern - Variable for quoted triple";
+    earl:assertions _:assertions9.
+_:assertions9 rdf:first _:assertion9;
+    rdf:rest rdf:nil.
+_:assertion9 a earl:Assertion;
+    earl:assertedBy <https://www.rubensworks.net/#me>;
+    earl:test <https://w3c.github.io/rdf-star/tests/sparql/eval#sparql-star-pattern-3>;
+    earl:subject <https://www.npmjs.com/package/@comunica/query-sparql>;
+    earl:mode earl:automatic;
+    earl:result _:result9.
+_:result9 a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2023-07-04T08:19:47.153Z"^^xsd:dateTime.
+<https://w3c.github.io/rdf-star/tests/sparql/eval#sparql-star-pattern-4> a earl:TestCriterion, earl:TestCase;
+    dc:title "SPARQL-star - Pattern - No match";
+    earl:assertions _:assertions10.
+_:assertions10 rdf:first _:assertion10;
+    rdf:rest rdf:nil.
+_:assertion10 a earl:Assertion;
+    earl:assertedBy <https://www.rubensworks.net/#me>;
+    earl:test <https://w3c.github.io/rdf-star/tests/sparql/eval#sparql-star-pattern-4>;
+    earl:subject <https://www.npmjs.com/package/@comunica/query-sparql>;
+    earl:mode earl:automatic;
+    earl:result _:result10.
+_:result10 a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2023-07-04T08:19:47.153Z"^^xsd:dateTime.
+<https://w3c.github.io/rdf-star/tests/sparql/eval#sparql-star-pattern-5> a earl:TestCriterion, earl:TestCase;
+    dc:title "SPARQL-star - Pattern - match variables in triple terms";
+    earl:assertions _:assertions11.
+_:assertions11 rdf:first _:assertion11;
+    rdf:rest rdf:nil.
+_:assertion11 a earl:Assertion;
+    earl:assertedBy <https://www.rubensworks.net/#me>;
+    earl:test <https://w3c.github.io/rdf-star/tests/sparql/eval#sparql-star-pattern-5>;
+    earl:subject <https://www.npmjs.com/package/@comunica/query-sparql>;
+    earl:mode earl:automatic;
+    earl:result _:result11.
+_:result11 a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2023-07-04T08:19:47.153Z"^^xsd:dateTime.
+<https://w3c.github.io/rdf-star/tests/sparql/eval#sparql-star-pattern-6> a earl:TestCriterion, earl:TestCase;
+    dc:title "SPARQL-star - Pattern - Nesting 1";
+    earl:assertions _:assertions12.
+_:assertions12 rdf:first _:assertion12;
+    rdf:rest rdf:nil.
+_:assertion12 a earl:Assertion;
+    earl:assertedBy <https://www.rubensworks.net/#me>;
+    earl:test <https://w3c.github.io/rdf-star/tests/sparql/eval#sparql-star-pattern-6>;
+    earl:subject <https://www.npmjs.com/package/@comunica/query-sparql>;
+    earl:mode earl:automatic;
+    earl:result _:result12.
+_:result12 a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2023-07-04T08:19:47.153Z"^^xsd:dateTime.
+<https://w3c.github.io/rdf-star/tests/sparql/eval#sparql-star-pattern-7> a earl:TestCriterion, earl:TestCase;
+    dc:title "SPARQL-star - Pattern - Nesting - 2";
+    earl:assertions _:assertions13.
+_:assertions13 rdf:first _:assertion13;
+    rdf:rest rdf:nil.
+_:assertion13 a earl:Assertion;
+    earl:assertedBy <https://www.rubensworks.net/#me>;
+    earl:test <https://w3c.github.io/rdf-star/tests/sparql/eval#sparql-star-pattern-7>;
+    earl:subject <https://www.npmjs.com/package/@comunica/query-sparql>;
+    earl:mode earl:automatic;
+    earl:result _:result13.
+_:result13 a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2023-07-04T08:19:47.153Z"^^xsd:dateTime.
+<https://w3c.github.io/rdf-star/tests/sparql/eval#sparql-star-pattern-8> a earl:TestCriterion, earl:TestCase;
+    dc:title "SPARQL-star - Pattern - Match and nesting";
+    earl:assertions _:assertions14.
+_:assertions14 rdf:first _:assertion14;
+    rdf:rest rdf:nil.
+_:assertion14 a earl:Assertion;
+    earl:assertedBy <https://www.rubensworks.net/#me>;
+    earl:test <https://w3c.github.io/rdf-star/tests/sparql/eval#sparql-star-pattern-8>;
+    earl:subject <https://www.npmjs.com/package/@comunica/query-sparql>;
+    earl:mode earl:automatic;
+    earl:result _:result14.
+_:result14 a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2023-07-04T08:19:47.153Z"^^xsd:dateTime.
+<https://w3c.github.io/rdf-star/tests/sparql/eval#sparql-star-pattern-9> a earl:TestCriterion, earl:TestCase;
+    dc:title "SPARQL-star - Pattern - Same variable";
+    earl:assertions _:assertions15.
+_:assertions15 rdf:first _:assertion15;
+    rdf:rest rdf:nil.
+_:assertion15 a earl:Assertion;
+    earl:assertedBy <https://www.rubensworks.net/#me>;
+    earl:test <https://w3c.github.io/rdf-star/tests/sparql/eval#sparql-star-pattern-9>;
+    earl:subject <https://www.npmjs.com/package/@comunica/query-sparql>;
+    earl:mode earl:automatic;
+    earl:result _:result15.
+_:result15 a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2023-07-04T08:19:47.153Z"^^xsd:dateTime.
+<https://w3c.github.io/rdf-star/tests/sparql/eval#sparql-star-construct-1> a earl:TestCriterion, earl:TestCase;
+    dc:title "SPARQL-star - CONSTRUCT with constant template";
+    earl:assertions _:assertions16.
+_:assertions16 rdf:first _:assertion16;
+    rdf:rest rdf:nil.
+_:assertion16 a earl:Assertion;
+    earl:assertedBy <https://www.rubensworks.net/#me>;
+    earl:test <https://w3c.github.io/rdf-star/tests/sparql/eval#sparql-star-construct-1>;
+    earl:subject <https://www.npmjs.com/package/@comunica/query-sparql>;
+    earl:mode earl:automatic;
+    earl:result _:result16.
+_:result16 a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2023-07-04T08:19:47.153Z"^^xsd:dateTime.
+<https://w3c.github.io/rdf-star/tests/sparql/eval#sparql-star-construct-2> a earl:TestCriterion, earl:TestCase;
+    dc:title "SPARQL-star - CONSTRUCT WHERE with constant template";
+    earl:assertions _:assertions17.
+_:assertions17 rdf:first _:assertion17;
+    rdf:rest rdf:nil.
+_:assertion17 a earl:Assertion;
+    earl:assertedBy <https://www.rubensworks.net/#me>;
+    earl:test <https://w3c.github.io/rdf-star/tests/sparql/eval#sparql-star-construct-2>;
+    earl:subject <https://www.npmjs.com/package/@comunica/query-sparql>;
+    earl:mode earl:automatic;
+    earl:result _:result17.
+_:result17 a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2023-07-04T08:19:47.153Z"^^xsd:dateTime.
+<https://w3c.github.io/rdf-star/tests/sparql/eval#sparql-star-construct-3> a earl:TestCriterion, earl:TestCase;
+    dc:title "SPARQL-star - CONSTRUCT - about every triple";
+    earl:assertions _:assertions18.
+_:assertions18 rdf:first _:assertion18;
+    rdf:rest rdf:nil.
+_:assertion18 a earl:Assertion;
+    earl:assertedBy <https://www.rubensworks.net/#me>;
+    earl:test <https://w3c.github.io/rdf-star/tests/sparql/eval#sparql-star-construct-3>;
+    earl:subject <https://www.npmjs.com/package/@comunica/query-sparql>;
+    earl:mode earl:automatic;
+    earl:result _:result18.
+_:result18 a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2023-07-04T08:19:47.153Z"^^xsd:dateTime.
+<https://w3c.github.io/rdf-star/tests/sparql/eval#sparql-star-construct-4> a earl:TestCriterion, earl:TestCase;
+    dc:title "SPARQL-star - CONSTRUCT with annotation syntax";
+    earl:assertions _:assertions19.
+_:assertions19 rdf:first _:assertion19;
+    rdf:rest rdf:nil.
+_:assertion19 a earl:Assertion;
+    earl:assertedBy <https://www.rubensworks.net/#me>;
+    earl:test <https://w3c.github.io/rdf-star/tests/sparql/eval#sparql-star-construct-4>;
+    earl:subject <https://www.npmjs.com/package/@comunica/query-sparql>;
+    earl:mode earl:automatic;
+    earl:result _:result19.
+_:result19 a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2023-07-04T08:19:47.153Z"^^xsd:dateTime.
+<https://w3c.github.io/rdf-star/tests/sparql/eval#sparql-star-construct-5> a earl:TestCriterion, earl:TestCase;
+    dc:title "SPARQL-star - CONSTRUCT WHERE with annotation syntax";
+    earl:assertions _:assertions20.
+_:assertions20 rdf:first _:assertion20;
+    rdf:rest rdf:nil.
+_:assertion20 a earl:Assertion;
+    earl:assertedBy <https://www.rubensworks.net/#me>;
+    earl:test <https://w3c.github.io/rdf-star/tests/sparql/eval#sparql-star-construct-5>;
+    earl:subject <https://www.npmjs.com/package/@comunica/query-sparql>;
+    earl:mode earl:automatic;
+    earl:result _:result20.
+_:result20 a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2023-07-04T08:19:47.153Z"^^xsd:dateTime.
+<https://w3c.github.io/rdf-star/tests/sparql/eval#sparql-star-graphs-1> a earl:TestCriterion, earl:TestCase;
+    dc:title "SPARQL-star - GRAPH";
+    earl:assertions _:assertions21.
+_:assertions21 rdf:first _:assertion21;
+    rdf:rest rdf:nil.
+_:assertion21 a earl:Assertion;
+    earl:assertedBy <https://www.rubensworks.net/#me>;
+    earl:test <https://w3c.github.io/rdf-star/tests/sparql/eval#sparql-star-graphs-1>;
+    earl:subject <https://www.npmjs.com/package/@comunica/query-sparql>;
+    earl:mode earl:automatic;
+    earl:result _:result21.
+_:result21 a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2023-07-04T08:19:47.153Z"^^xsd:dateTime.
+<https://w3c.github.io/rdf-star/tests/sparql/eval#sparql-star-graphs-2> a earl:TestCriterion, earl:TestCase;
+    dc:title "SPARQL-star - GRAPHs with blank node";
+    earl:assertions _:assertions22.
+_:assertions22 rdf:first _:assertion22;
+    rdf:rest rdf:nil.
+_:assertion22 a earl:Assertion;
+    earl:assertedBy <https://www.rubensworks.net/#me>;
+    earl:test <https://w3c.github.io/rdf-star/tests/sparql/eval#sparql-star-graphs-2>;
+    earl:subject <https://www.npmjs.com/package/@comunica/query-sparql>;
+    earl:mode earl:automatic;
+    earl:result _:result22.
+_:result22 a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2023-07-04T08:19:47.153Z"^^xsd:dateTime.
+<https://w3c.github.io/rdf-star/tests/sparql/eval#sparql-star-expr-1> a earl:TestCriterion, earl:TestCase;
+    dc:title "SPARQL-star - Embedded triple - BIND - CONSTRUCT";
+    earl:assertions _:assertions23.
+_:assertions23 rdf:first _:assertion23;
+    rdf:rest rdf:nil.
+_:assertion23 a earl:Assertion;
+    earl:assertedBy <https://www.rubensworks.net/#me>;
+    earl:test <https://w3c.github.io/rdf-star/tests/sparql/eval#sparql-star-expr-1>;
+    earl:subject <https://www.npmjs.com/package/@comunica/query-sparql>;
+    earl:mode earl:automatic;
+    earl:result _:result23.
+_:result23 a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2023-07-04T08:19:47.153Z"^^xsd:dateTime.
+<https://w3c.github.io/rdf-star/tests/sparql/eval#sparql-star-expr-2> a earl:TestCriterion, earl:TestCase;
+    dc:title "SPARQL-star - Embedded triple - Functions";
+    earl:assertions _:assertions24.
+_:assertions24 rdf:first _:assertion24;
+    rdf:rest rdf:nil.
+_:assertion24 a earl:Assertion;
+    earl:assertedBy <https://www.rubensworks.net/#me>;
+    earl:test <https://w3c.github.io/rdf-star/tests/sparql/eval#sparql-star-expr-2>;
+    earl:subject <https://www.npmjs.com/package/@comunica/query-sparql>;
+    earl:mode earl:automatic;
+    earl:result _:result24.
+_:result24 a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2023-07-04T08:19:47.153Z"^^xsd:dateTime.
+<https://w3c.github.io/rdf-star/tests/sparql/eval#sparql-star-op-1> a earl:TestCriterion, earl:TestCase;
+    dc:title "SPARQL-star - Embedded triple - sameTerm";
+    earl:assertions _:assertions25.
+_:assertions25 rdf:first _:assertion25;
+    rdf:rest rdf:nil.
+_:assertion25 a earl:Assertion;
+    earl:assertedBy <https://www.rubensworks.net/#me>;
+    earl:test <https://w3c.github.io/rdf-star/tests/sparql/eval#sparql-star-op-1>;
+    earl:subject <https://www.npmjs.com/package/@comunica/query-sparql>;
+    earl:mode earl:automatic;
+    earl:result _:result25.
+_:result25 a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2023-07-04T08:19:47.153Z"^^xsd:dateTime.
+<https://w3c.github.io/rdf-star/tests/sparql/eval#sparql-star-op-2> a earl:TestCriterion, earl:TestCase;
+    dc:title "SPARQL-star - Embedded triple - value-equality";
+    earl:assertions _:assertions26.
+_:assertions26 rdf:first _:assertion26;
+    rdf:rest rdf:nil.
+_:assertion26 a earl:Assertion;
+    earl:assertedBy <https://www.rubensworks.net/#me>;
+    earl:test <https://w3c.github.io/rdf-star/tests/sparql/eval#sparql-star-op-2>;
+    earl:subject <https://www.npmjs.com/package/@comunica/query-sparql>;
+    earl:mode earl:automatic;
+    earl:result _:result26.
+_:result26 a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2023-07-04T08:19:47.153Z"^^xsd:dateTime.
+<https://w3c.github.io/rdf-star/tests/sparql/eval#sparql-star-op-3> a earl:TestCriterion, earl:TestCase;
+    dc:title "SPARQL-star - Embedded triple - value-inequality";
+    earl:assertions _:assertions27.
+_:assertions27 rdf:first _:assertion27;
+    rdf:rest rdf:nil.
+_:assertion27 a earl:Assertion;
+    earl:assertedBy <https://www.rubensworks.net/#me>;
+    earl:test <https://w3c.github.io/rdf-star/tests/sparql/eval#sparql-star-op-3>;
+    earl:subject <https://www.npmjs.com/package/@comunica/query-sparql>;
+    earl:mode earl:automatic;
+    earl:result _:result27.
+_:result27 a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2023-07-04T08:19:47.153Z"^^xsd:dateTime.
+<https://w3c.github.io/rdf-star/tests/sparql/eval#sparql-star-op-4> a earl:TestCriterion, earl:TestCase;
+    dc:title "SPARQL-star - Embedded triple - value-inequality";
+    earl:assertions _:assertions28.
+_:assertions28 rdf:first _:assertion28;
+    rdf:rest rdf:nil.
+_:assertion28 a earl:Assertion;
+    earl:assertedBy <https://www.rubensworks.net/#me>;
+    earl:test <https://w3c.github.io/rdf-star/tests/sparql/eval#sparql-star-op-4>;
+    earl:subject <https://www.npmjs.com/package/@comunica/query-sparql>;
+    earl:mode earl:automatic;
+    earl:result _:result28.
+_:result28 a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2023-07-04T08:19:47.153Z"^^xsd:dateTime.
+<https://w3c.github.io/rdf-star/tests/sparql/eval#sparql-star-order-1> a earl:TestCriterion, earl:TestCase;
+    dc:title "SPARQL-star - Embedded triple - ORDER BY";
+    earl:assertions _:assertions29.
+_:assertions29 rdf:first _:assertion29;
+    rdf:rest rdf:nil.
+_:assertion29 a earl:Assertion;
+    earl:assertedBy <https://www.rubensworks.net/#me>;
+    earl:test <https://w3c.github.io/rdf-star/tests/sparql/eval#sparql-star-order-1>;
+    earl:subject <https://www.npmjs.com/package/@comunica/query-sparql>;
+    earl:mode earl:automatic;
+    earl:result _:result29.
+_:result29 a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2023-07-04T08:19:47.153Z"^^xsd:dateTime.
+<https://w3c.github.io/rdf-star/tests/sparql/eval#sparql-star-order-2> a earl:TestCriterion, earl:TestCase;
+    dc:title "SPARQL-star - Embedded triple - ordering";
+    earl:assertions _:assertions30.
+_:assertions30 rdf:first _:assertion30;
+    rdf:rest rdf:nil.
+_:assertion30 a earl:Assertion;
+    earl:assertedBy <https://www.rubensworks.net/#me>;
+    earl:test <https://w3c.github.io/rdf-star/tests/sparql/eval#sparql-star-order-2>;
+    earl:subject <https://www.npmjs.com/package/@comunica/query-sparql>;
+    earl:mode earl:automatic;
+    earl:result _:result30.
+_:result30 a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2023-07-04T08:19:47.153Z"^^xsd:dateTime.
+<https://w3c.github.io/rdf-star/tests/sparql/eval#sparql-star-update-1> a earl:TestCriterion, earl:TestCase;
+    dc:title "SPARQL-star - Update";
+    earl:assertions _:assertions31.
+_:assertions31 rdf:first _:assertion31;
+    rdf:rest rdf:nil.
+_:assertion31 a earl:Assertion;
+    earl:assertedBy <https://www.rubensworks.net/#me>;
+    earl:test <https://w3c.github.io/rdf-star/tests/sparql/eval#sparql-star-update-1>;
+    earl:subject <https://www.npmjs.com/package/@comunica/query-sparql>;
+    earl:mode earl:automatic;
+    earl:result _:result31.
+_:result31 a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2023-07-04T08:19:47.153Z"^^xsd:dateTime.
+<https://w3c.github.io/rdf-star/tests/sparql/eval#sparql-star-update-2> a earl:TestCriterion, earl:TestCase;
+    dc:title "SPARQL-star - Update - annotation";
+    earl:assertions _:assertions32.
+_:assertions32 rdf:first _:assertion32;
+    rdf:rest rdf:nil.
+_:assertion32 a earl:Assertion;
+    earl:assertedBy <https://www.rubensworks.net/#me>;
+    earl:test <https://w3c.github.io/rdf-star/tests/sparql/eval#sparql-star-update-2>;
+    earl:subject <https://www.npmjs.com/package/@comunica/query-sparql>;
+    earl:mode earl:automatic;
+    earl:result _:result32.
+_:result32 a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2023-07-04T08:19:47.153Z"^^xsd:dateTime.
+<https://w3c.github.io/rdf-star/tests/sparql/eval#sparql-star-update-3> a earl:TestCriterion, earl:TestCase;
+    dc:title "SPARQL-star - Update - data";
+    earl:assertions _:assertions33.
+_:assertions33 rdf:first _:assertion33;
+    rdf:rest rdf:nil.
+_:assertion33 a earl:Assertion;
+    earl:assertedBy <https://www.rubensworks.net/#me>;
+    earl:test <https://w3c.github.io/rdf-star/tests/sparql/eval#sparql-star-update-3>;
+    earl:subject <https://www.npmjs.com/package/@comunica/query-sparql>;
+    earl:mode earl:automatic;
+    earl:result _:result33.
+_:result33 a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2023-07-04T08:19:47.153Z"^^xsd:dateTime.
